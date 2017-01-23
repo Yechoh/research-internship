@@ -1,0 +1,145 @@
+|| ?module? iTasks._Framework.RemoteAccess
+
+
+iTasks._Framework.RemoteAccess.httpRequest_client !method_0 !url_1 !mbBody_2 !iworld_3 = StdMisc.undef
+iTasks._Framework.RemoteAccess.mkFileName_7 !_vtoString_0 taskTime_1 !part_2 = <{StdString.+++_11}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 taskTime_1) (<{StdString.+++_11}> "-rpc-" part_2)
+iTasks._Framework.RemoteAccess.readAll !file_0 = let _x_1_0 = StdFile.freads file_0 1048576, chunk_1_1 = select _x_1_0::_Tuple2 0 in case (<{StdInt.<_17}> (_SystemArray.size_20 chunk_1_1) 1048576) (True -> _Tuple2 chunk_1_1 (select _x_1_0::_Tuple2 1)) (False -> let _x_3_0 = iTasks._Framework.RemoteAccess.readAll (select _x_1_0::_Tuple2 1) in _Tuple2 (<{StdString.+++_11}> chunk_1_1 (select _x_3_0::_Tuple2 0)) (select _x_3_0::_Tuple2 1)) 
+iTasks._Framework.RemoteAccess.openException s_0 = let e_1_0 = iTasks.API.Core.Types.FileException s_0 System.File.CannotOpen in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.API.Core.Types.TD;FileException}>))) (iTasks.API.Core.Types.toString_37 e_1_0))
+iTasks._Framework.RemoteAccess.closeException s_0 = let e_1_0 = iTasks.API.Core.Types.FileException s_0 System.File.CannotClose in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.API.Core.Types.TD;FileException}>))) (iTasks.API.Core.Types.toString_37 e_1_0))
+iTasks._Framework.RemoteAccess.fileTask !filename_0 f_1 !iworld_2 = case iworld_2 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let _x_3_0 = StdFile.fopen_31 filename_0 3 world_1_12 in case (StdBool.not (select _x_3_0::_Tuple3 0)) (True -> _Tuple2 (iTasks._Framework.RemoteAccess.openException filename_0) (update iworld_2::iTasks._Framework.IWorld._IWorld [12:select _x_3_0::_Tuple3 2])) (False -> let file_5_0 = select _x_3_0::_Tuple3 1, _x_5_1 = f_1 file_5_0, file_5_2 = select _x_5_1::_Tuple2 1, world_5_3 = select _x_3_0::_Tuple3 2, _x_5_4 = StdFile.fclose_30 file_5_2 world_5_3 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> _Tuple2 (iTasks._Framework.RemoteAccess.closeException filename_0) (update iworld_2::iTasks._Framework.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) (False -> _Tuple2 (Data.Error.Ok (select _x_5_1::_Tuple2 0)) (update iworld_2::iTasks._Framework.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) ) ) ) 
+iTasks._Framework.RemoteAccess.mkFileName_381 !taskTime_0::I !part_1 = <{StdString.+++_11}> (StdString.toString_5 taskTime_0) (<{StdString.+++_11}> "-rpc-" part_1)
+iTasks._Framework.RemoteAccess.httpRequest_server !method_0 !uri_1 !request_2 !iworld_3 = case iworld_3 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case server_1_0 (iTasks._Framework.IWorld._ServerInfo serverName_2_0 serverURL_2_1 build_2_2 _x_2_3 -> case _x_2_3 (iTasks._Framework.IWorld._SystemPaths appDirectory_3_0 dataDirectory_3_1 publicWebDirectories_3_2 saplDirectory_3_3 saplFlavourFile_3_4 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_4_0 task_4_1 session_4_2 attachmentChain_4_3 nextTaskNo_4_4 -> let infile_5_0 = <{System.FilePath.</>}> dataDirectory_3_1 (<{StdString.+++_11}> "tmp-" (<{System.FilePath.</>}> build_2_2 (iTasks._Framework.RemoteAccess.mkFileName_381 taskTime_4_0 "request"))), _x_5_1 = System.File.writeFile (<{StdFile.FileSystem;}> StdFile.fclose_30 StdFile.fopen_31 StdFile.sfopen_32 StdFile.stdio_33) infile_5_0 request_2 world_1_12 in case (Data.Error.isError (select _x_5_1::_Tuple2 0)) (True -> StdMisc.abort "httpRequest_server: infile creation error") (False -> let cmd_7_0 = <{System.FilePath.</>}> "Tools" (<{System.FilePath.</>}> "Curl" "curl.exe"), options_7_1 = <{iTasks._Framework.RemoteAccess._c;80;15_382}> method_0, outfile_7_2 = <{System.FilePath.</>}> dataDirectory_3_1 (<{StdString.+++_11}> "tmp-" (<{System.FilePath.</>}> build_2_2 (iTasks._Framework.RemoteAccess.mkFileName_381 taskTime_4_0 "response"))), hfile_7_3 = <{System.FilePath.</>}> dataDirectory_3_1 (<{StdString.+++_11}> "tmp-" (<{System.FilePath.</>}> build_2_2 (iTasks._Framework.RemoteAccess.mkFileName_381 taskTime_4_0 "response-header"))), url_7_4 = Text.URI.toString_15 uri_1, args_7_5 = _predefined._Cons options_7_1 (_predefined._Cons "--data-binary" (_predefined._Cons (<{StdString.+++_11}> "@" infile_5_0) (_predefined._Cons "-s" (_predefined._Cons "-o" (_predefined._Cons outfile_7_2 (_predefined._Cons "-D" (_predefined._Cons hfile_7_3 (_predefined._Cons url_7_4 _predefined._Nil)))))))), world_7_6 = select _x_5_1::_Tuple2 1, _x_7_7 = System.Process.callProcess cmd_7_0 args_7_5 Data.Maybe.Nothing world_7_6 in case (Data.Error.isError (select _x_7_7::_Tuple2 0)) (True -> StdMisc.abort "httpRequest_server: callProcess failed") (False -> let world_9_0 = select _x_7_7::_Tuple2 1, _x_9_1 = iTasks._Framework.RemoteAccess.fileTask outfile_7_2 iTasks._Framework.RemoteAccess.readAll (update iworld_3::iTasks._Framework.IWorld._IWorld [12:world_9_0]), res1_9_2 = select _x_9_1::_Tuple2 0 in case (Data.Error.isError res1_9_2) (True -> StdMisc.abort "httpRequest_server: reading output file failed") (False -> let iworld_11_0 = select _x_9_1::_Tuple2 1, _x_11_1 = iTasks._Framework.RemoteAccess.fileTask hfile_7_3 iTasks._Framework.RemoteAccess.readAll iworld_11_0, res2_11_2 = select _x_11_1::_Tuple2 0 in case (Data.Error.isError res2_11_2) (True -> StdMisc.abort "httpRequest_server: reading header output file failed") (False -> let iworld_13_0 = select _x_11_1::_Tuple2 1 in <{iTasks._Framework.RemoteAccess._c;71;11_383}> (Internet.HTTP.parseResponse (<{StdString.+++_11}> (Data.Error.fromOk res2_11_2) (Data.Error.fromOk res1_9_2))) iworld_13_0) ) ) ) ) ) ) ) 
+<{iTasks._Framework.RemoteAccess._c;71;11_383}> !_x_0 !iworld_1 = case _x_0 (Data.Maybe.Just res_1_0 -> <{_Tuple2!3}> res_1_0 iworld_1) (Data.Maybe.Nothing -> StdMisc.abort "httpRequest_server: invalid response") 
+<{iTasks._Framework.RemoteAccess._c;80;15_382}> !method_0 = case method_0 (Internet.HTTP.HTTP_GET -> "--get") (Internet.HTTP.HTTP_POST -> "") (Internet.HTTP.HTTP_PUT -> "-XPUT") 
+iTasks._Framework.RemoteAccess.httpRequest !method_0 !uri_1 !mbBody_2 !iworld_3 = case iworld_3 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case onClient_1_14 (True -> iTasks._Framework.RemoteAccess.httpRequest_client (Internet.HTTP.toString_15 method_0) (Text.URI.toString_15 uri_1) mbBody_2 iworld_3) ) (_ -> case mbBody_2 (Data.Maybe.Nothing -> iTasks._Framework.RemoteAccess.httpRequest_server method_0 uri_1 "" iworld_3) (Data.Maybe.Just body_1_0 -> iTasks._Framework.RemoteAccess.httpRequest_server method_0 uri_1 body_1_0 iworld_3) )
+
+
+|| Converted Records
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_s;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_s}
+
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_ss;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_ss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_sss;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_sss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_s;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_s}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_ss;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_ss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_sss;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_sss}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_s;}> = {iTasks._Framework.RemoteAccess.gDefault_s}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_ss;}> = {iTasks._Framework.RemoteAccess.gDefault_ss}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_sss;}> = {iTasks._Framework.RemoteAccess.gDefault_sss}
+
+:: <{iTasks._Framework.RemoteAccess.gText_s;}> = {!iTasks._Framework.RemoteAccess.gText_s}
+
+:: <{iTasks._Framework.RemoteAccess.gText_ss;}> = {!iTasks._Framework.RemoteAccess.gText_ss}
+
+:: <{iTasks._Framework.RemoteAccess.gText_sss;}> = {!iTasks._Framework.RemoteAccess.gText_sss}
+
+:: <{iTasks._Framework.RemoteAccess.gEditor_s;}> = {iTasks._Framework.RemoteAccess.gEditor_s}
+
+:: <{iTasks._Framework.RemoteAccess.gEditor_ss;}> = {iTasks._Framework.RemoteAccess.gEditor_ss}
+
+:: <{iTasks._Framework.RemoteAccess.gEditor_sss;}> = {iTasks._Framework.RemoteAccess.gEditor_sss}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_s;}> = {!iTasks._Framework.RemoteAccess.gEq_s}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_ss;}> = {!iTasks._Framework.RemoteAccess.gEq_ss}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_sss;}> = {!iTasks._Framework.RemoteAccess.gEq_sss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_ssss;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_ssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_ssss;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_ssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_ssss;}> = {!iTasks._Framework.RemoteAccess.gEq_ssss}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_ssss;}> = {iTasks._Framework.RemoteAccess.gDefault_ssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_sssss;}> = {!iTasks._Framework.RemoteAccess.gEq_sssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_ssssss;}> = {!iTasks._Framework.RemoteAccess.gEq_ssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_sssssss;}> = {!iTasks._Framework.RemoteAccess.gEq_sssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_ssssssss;}> = {!iTasks._Framework.RemoteAccess.gEq_ssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEq_sssssssss;}> = {!iTasks._Framework.RemoteAccess.gEq_sssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.bimap_s;}> = {iTasks._Framework.RemoteAccess.bimap_s}
+
+:: <{iTasks._Framework.RemoteAccess.bimap_ss;}> = {iTasks._Framework.RemoteAccess.bimap_ss}
+
+:: <{iTasks._Framework.RemoteAccess.bimap_sss;}> = {iTasks._Framework.RemoteAccess.bimap_sss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_sssss;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_sssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_ssssss;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_sssssss;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_ssssssss;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONEncode_sssssssss;}> = {!iTasks._Framework.RemoteAccess.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_sssss;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_sssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_ssssss;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_sssssss;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_ssssssss;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.JSONDecode_sssssssss;}> = {!iTasks._Framework.RemoteAccess.JSONDecode_sssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_s;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_s}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_ss;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_ss}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_sss;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_sss}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_ssss;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_ssss}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_sssss;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_sssss}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_ssssss;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_ssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_sssssss;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_sssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_ssssssss;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_ssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gLexOrd_sssssssss;}> = {!iTasks._Framework.RemoteAccess.gLexOrd_sssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gText_ssss;}> = {!iTasks._Framework.RemoteAccess.gText_ssss}
+
+:: <{iTasks._Framework.RemoteAccess.gText_sssss;}> = {!iTasks._Framework.RemoteAccess.gText_sssss}
+
+:: <{iTasks._Framework.RemoteAccess.gText_ssssss;}> = {!iTasks._Framework.RemoteAccess.gText_ssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gText_sssssss;}> = {!iTasks._Framework.RemoteAccess.gText_sssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gText_ssssssss;}> = {!iTasks._Framework.RemoteAccess.gText_ssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gText_sssssssss;}> = {!iTasks._Framework.RemoteAccess.gText_sssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_sssss;}> = {iTasks._Framework.RemoteAccess.gDefault_sssss}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_ssssss;}> = {iTasks._Framework.RemoteAccess.gDefault_ssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_sssssss;}> = {iTasks._Framework.RemoteAccess.gDefault_sssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_ssssssss;}> = {iTasks._Framework.RemoteAccess.gDefault_ssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gDefault_sssssssss;}> = {iTasks._Framework.RemoteAccess.gDefault_sssssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEditor_ssss;}> = {iTasks._Framework.RemoteAccess.gEditor_ssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEditor_sssss;}> = {iTasks._Framework.RemoteAccess.gEditor_sssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEditor_ssssss;}> = {iTasks._Framework.RemoteAccess.gEditor_ssssss}
+
+:: <{iTasks._Framework.RemoteAccess.gEditor_sssssss;}> = {iTasks._Framework.RemoteAccess.gEditor_sssssss}
+

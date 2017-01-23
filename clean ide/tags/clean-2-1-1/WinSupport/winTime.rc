@@ -1,0 +1,41 @@
+#include <winver.h>
+
+#define VERSION_RES_BIN_NAME         "ShowTimeProfile.exe\0"
+#define VERSION_RES_BIN_DESCRIPTION  "Clean Time Profile Viewer\0"
+#define VERSION_RES_STRING           "2.1.1\0"
+#define VERSION_RES_PRODUCT_NAME     "ShowTimeProfile\0"
+#define VERSION_RES_COMPANY_NAME     "Radboud University Nijmegen\0"
+#define VERSION_RES_COPYRIGHT        "Copyright (C) 1987--2005 Radboud University Nijmegen.\0"
+
+//
+// Version resource
+//
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     2,1,1,0
+PRODUCTVERSION  2,1,1,0
+FILEFLAGSMASK   0x0030003FL
+FILEFLAGS       VS_FF_PRERELEASE
+FILEOS          VOS__WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "CompanyName",        VERSION_RES_COMPANY_NAME
+      VALUE "FileDescription",    VERSION_RES_BIN_DESCRIPTION
+      VALUE "FileVersion",        VERSION_RES_STRING
+      VALUE "InternalName",       VERSION_RES_BIN_NAME
+      VALUE "LegalCopyright",     VERSION_RES_COPYRIGHT
+      VALUE "OriginalFilename",   VERSION_RES_BIN_NAME
+      VALUE "ProductName",        VERSION_RES_PRODUCT_NAME
+      VALUE "ProductVersion",     VERSION_RES_STRING
+    END
+  END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

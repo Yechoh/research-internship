@@ -1,0 +1,59 @@
+#include <winver.h>
+
+#define VERSION_RES_BIN_NAME         "CleanIde.exe\0"
+#define VERSION_RES_BIN_DESCRIPTION  "Clean Integrated Development Environment\0"
+#define VERSION_RES_STRING           "2.2\0"
+#define VERSION_RES_PRODUCT_NAME     "CleanIde\0"
+#define VERSION_RES_COMPANY_NAME     "Radboud University Nijmegen\0"
+#define VERSION_RES_COPYRIGHT        "Copyright (C) 1987--2006 Radboud University Nijmegen.\0"
+
+32512	ICON	icons\clean_exe.ico
+32513	ICON	icons\clean_prj.ico
+32514	ICON	icons\clean_abc.ico
+32515	ICON	icons\clean_dcl.ico
+32516	ICON	icons\clean_icl.ico
+32517	ICON	icons\clean_pcl.ico
+32518	ICON	icons\clean_chp.ico
+
+32512	BITMAP	bitmaps\aboutIDE.bmp
+32513	BITMAP	bitmaps\findBM.bmp
+32514	BITMAP	bitmaps\newfBM.bmp
+32515	BITMAP	bitmaps\openBM.bmp
+32516	BITMAP	bitmaps\prntBM.bmp
+32517	BITMAP	bitmaps\saveBM.bmp
+32518	BITMAP	bitmaps\srchBM.bmp
+32519	BITMAP	bitmaps\updtBM.bmp
+32520	BITMAP	bitmaps\urunBM.bmp
+
+//
+// Version resource
+//
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     2,2,0,0
+PRODUCTVERSION  2,2,0,0
+FILEFLAGSMASK   0x0030003FL
+FILEFLAGS       VS_FF_PRERELEASE
+FILEOS          VOS__WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "CompanyName",        VERSION_RES_COMPANY_NAME
+      VALUE "FileDescription",    VERSION_RES_BIN_DESCRIPTION
+      VALUE "FileVersion",        VERSION_RES_STRING
+      VALUE "InternalName",       VERSION_RES_BIN_NAME
+      VALUE "LegalCopyright",     VERSION_RES_COPYRIGHT
+      VALUE "OriginalFilename",   VERSION_RES_BIN_NAME
+      VALUE "ProductName",        VERSION_RES_PRODUCT_NAME
+      VALUE "ProductVersion",     VERSION_RES_STRING
+    END
+  END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

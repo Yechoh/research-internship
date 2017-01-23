@@ -1,0 +1,97 @@
+implementation module EdCommon
+
+import EdMonad, EdText, EdSelection
+import StrictList
+import IdeState
+import PmParse, PmPath
+import StdMenuElement
+
+from search			import sr_find_def_imp_sel,FindBoxInfo,Pathname,SearchType,ExtListBoxId,MessageIn,MessageOut,SearchImports
+from EdMovement		import selectWordAt
+from EdVisualCursor	import vChangeSelectionTo
+
+:: *PLocState :== General
+
+mChangeSelectionTo :: Selection -> EditMonad (PSt General) nothing
+mChangeSelectionTo newSelection =
+	getText											>>>= \text ->
+	getMenuSelection								>>>= \mselold ->
+	accEnv (getMenuIds)								>>>= \mIds ->
+	let (frag,_)	= getTextFragment (orderSelection newSelection) text
+		mselnew		= dofrag frag
+		fragaction
+			| changed mselold mselnew = (handlefrag mselnew mIds	>>> setMenuSelection mselnew)
+			= skip
+	in
+	fragaction
+where
+	changed Nothing Nothing = False
+	changed (Just strl) (Just strr) = strl <> strr
+	changed _ _ = True
+	
+	dofrag (SCons (str) SNil) 
+		| CleanModId str
+			= Just str
+		= Nothing
+	dofrag _ = Nothing
+
+	handlefrag (Just str) mIds
+		=	appEnv (appPIO (setMenuElementTitles
+				[(mIds.mn_odm,"Open "+++(MakeDefPathname str))
+				,(mIds.mn_oim,"Open "+++(MakeImpPathname str))
+				]))
+	handlefrag _ mIds =
+		appEnv (appPIO (setMenuElementTitles
+			[(mIds.mn_odm,"Open Definition...")
+			,(mIds.mn_oim,"Open Implementation...")
+			]))
+
+mRemoveSelection :: EditMonad (PSt General) nothing
+mRemoveSelection =
+	getMenuSelection								>>>= \mselold ->
+	accEnv (getMenuIds)								>>>= \mIds ->
+	let
+		mselnew		= Nothing
+		fragaction
+			| changed mselold mselnew = (handlefrag mselnew mIds	>>> setMenuSelection mselnew)
+			= skip
+	in
+	fragaction
+where
+	changed Nothing Nothing = False
+	changed (Just strl) (Just strr) = strl <> strr
+	changed _ _ = True
+	
+	handlefrag (Just str) mIds
+		=	appEnv (appPIO (setMenuElementTitles
+				[(mIds.mn_odm,"Open "+++(MakeDefPathname str))
+				,(mIds.mn_oim,"Open "+++(MakeImpPathname str))
+				]))
+	handlefrag _ mIds =
+		appEnv (appPIO (setMenuElementTitles
+			[(mIds.mn_odm,"Open Definition...")
+			,(mIds.mn_oim,"Open Implementation...")
+			]))
+
+// control click
+
+controlDoubleClick :: !.Bool !.Position -> EditMonad (PSt General) nothing
+controlDoubleClick shiftDown position =
+	selectWordAt position						>>>= \selection ->
+  	getPathName									>>>= \pathname ->
+  	getText										>>>= \text ->
+	let orderedSelection	= orderSelection selection
+		(fragment, _)		= getTextFragment orderedSelection text
+	    string				= case fragment of
+	    						SCons string SNil	-> string
+	    						_					-> ""
+	in
+	vChangeSelectionTo selection				>>>
+	setSelectMode (SelectWords selection)		>>>
+	accEnv getFBI								>>>= \fbi ->
+	let
+		fbi` = {fbi & kind = if shiftDown Implementation Definition, type = SearchImports}
+	in
+	// should make sure single line selection, here or in sr_find_def_imp...
+	// now done above...
+	appEnv ( sr_find_def_imp_sel False string pathname fbi` )

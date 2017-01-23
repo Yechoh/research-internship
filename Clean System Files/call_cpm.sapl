@@ -1,0 +1,141 @@
+|| ?module? call_cpm
+
+
+call_cpm.examplecode = ""
+call_cpm.cpmloc = "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223\\cpm.exe"
+call_cpm.buildloc = "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223\\Libraries\\iTasks-SDK\\research internship\\test1"
+call_cpm.setOptions_6 !s_0 = Text.replaceSubString_9 "HeapSize:\t2097152" "HeapSize:\t20971520" s_0
+call_cpm.anon_5 !projectFile_0 !content_1 = iTasks.API.Common.ExportTasks.exportTextFile projectFile_0 (call_cpm.setOptions_6 content_1)
+call_cpm.createExec cpmBin_0 buildDir_1 mainModule_2 = let projectFile_1_0 = <{System.FilePath.</>}> buildDir_1 (<{StdString.+++_11}> mainModule_2 ".prj") in <{iTasks.API.Common.TaskCombinators.@!}> (<{iTasks.API.Core.Types.>>|_10}> (<{iTasks._Framework.Generic.iTask;}> (<{call_cpm.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{call_cpm.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{call_cpm.JSONEncode_s;}> Text.JSON.JSONEncode__String_14) (<{call_cpm.JSONDecode_s;}> Text.JSON.JSONDecode__String_38) (<{call_cpm.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{call_cpm.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{call_cpm.gEditor_s;}> iTasks.API.Core.Types.gEditor_ProcessStatus_175) (<{call_cpm.gText_s;}> iTasks.API.Core.Types.gText_ProcessStatus_176) (<{call_cpm.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode_ProcessStatus_177) (<{call_cpm.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode_ProcessStatus_178) (<{call_cpm.gDefault_s;}> iTasks.API.Core.Types.gDefault_ProcessStatus_179) (<{call_cpm.gEq_s;}> iTasks.API.Core.Types.gEq_ProcessStatus_180) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.API.Core.Types.TD;ProcessStatus}>))) (<{iTasks.API.Core.Types.>>|_10}> (<{iTasks._Framework.Generic.iTask;}> (<{call_cpm.gEditor_s;}> iTasks.API.Core.Types.gEditor_ProcessStatus_175) (<{call_cpm.gText_s;}> iTasks.API.Core.Types.gText_ProcessStatus_176) (<{call_cpm.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode_ProcessStatus_177) (<{call_cpm.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode_ProcessStatus_178) (<{call_cpm.gDefault_s;}> iTasks.API.Core.Types.gDefault_ProcessStatus_179) (<{call_cpm.gEq_s;}> iTasks.API.Core.Types.gEq_ProcessStatus_180) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.API.Core.Types.TD;ProcessStatus}>))) (<{iTasks._Framework.Generic.iTask;}> (<{call_cpm.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{call_cpm.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{call_cpm.JSONEncode_s;}> Text.JSON.JSONEncode__String_14) (<{call_cpm.JSONDecode_s;}> Text.JSON.JSONDecode__String_38) (<{call_cpm.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{call_cpm.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (iTasks.API.Core.IntegrationTasks.callProcess (<{iTasks.UI.Prompt.toPrompt;}> iTasks.UI.Prompt.toPrompt_1) "Create project" _predefined._Nil cpmBin_0 (_predefined._Cons "project" (_predefined._Cons mainModule_2 (_predefined._Cons "create" _predefined._Nil))) (Data.Maybe.Just buildDir_1)) (<{iTasks.API.Common.TaskCombinators.>>-}> (<{iTasks._Framework.Generic.iTask;}> (<{call_cpm.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{call_cpm.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{call_cpm.JSONEncode_s;}> Text.JSON.JSONEncode__String_14) (<{call_cpm.JSONDecode_s;}> Text.JSON.JSONDecode__String_38) (<{call_cpm.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{call_cpm.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{call_cpm.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{call_cpm.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{call_cpm.JSONEncode_s;}> Text.JSON.JSONEncode__String_14) (<{call_cpm.JSONDecode_s;}> Text.JSON.JSONDecode__String_38) (<{call_cpm.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{call_cpm.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (iTasks.API.Common.ImportTasks.importTextFile projectFile_1_0) (call_cpm.anon_5 projectFile_1_0))) (iTasks.API.Core.IntegrationTasks.callProcess (<{iTasks.UI.Prompt.toPrompt;}> iTasks.UI.Prompt.toPrompt_1) "Building project" _predefined._Nil cpmBin_0 (_predefined._Cons (<{StdString.+++_11}> mainModule_2 ".prj") _predefined._Nil) (Data.Maybe.Just buildDir_1))) _predefined._Unit
+call_cpm.Start !world_0 = iTasks._Framework.Engine.startEngine (<{iTasks._Framework.Engine.Publishable;}> (iTasks._Framework.Engine.publishAll_6 (<{iTasks._Framework.Generic.iTask;}> (<{call_cpm.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{call_cpm.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{call_cpm.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{call_cpm.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{call_cpm.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{call_cpm.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))))) (call_cpm.createExec call_cpm.cpmloc call_cpm.buildloc "test1") world_0
+
+
+|| Converted Records
+:: <{call_cpm.JSONEncode_s;}> = {!call_cpm.JSONEncode_s}
+
+:: <{call_cpm.JSONEncode_ss;}> = {!call_cpm.JSONEncode_ss}
+
+:: <{call_cpm.JSONEncode_sss;}> = {!call_cpm.JSONEncode_sss}
+
+:: <{call_cpm.JSONDecode_s;}> = {!call_cpm.JSONDecode_s}
+
+:: <{call_cpm.JSONDecode_ss;}> = {!call_cpm.JSONDecode_ss}
+
+:: <{call_cpm.JSONDecode_sss;}> = {!call_cpm.JSONDecode_sss}
+
+:: <{call_cpm.gDefault_s;}> = {call_cpm.gDefault_s}
+
+:: <{call_cpm.gDefault_ss;}> = {call_cpm.gDefault_ss}
+
+:: <{call_cpm.gDefault_sss;}> = {call_cpm.gDefault_sss}
+
+:: <{call_cpm.gText_s;}> = {!call_cpm.gText_s}
+
+:: <{call_cpm.gText_ss;}> = {!call_cpm.gText_ss}
+
+:: <{call_cpm.gText_sss;}> = {!call_cpm.gText_sss}
+
+:: <{call_cpm.gEditor_s;}> = {call_cpm.gEditor_s}
+
+:: <{call_cpm.gEditor_ss;}> = {call_cpm.gEditor_ss}
+
+:: <{call_cpm.gEditor_sss;}> = {call_cpm.gEditor_sss}
+
+:: <{call_cpm.gEq_s;}> = {!call_cpm.gEq_s}
+
+:: <{call_cpm.gEq_ss;}> = {!call_cpm.gEq_ss}
+
+:: <{call_cpm.gEq_sss;}> = {!call_cpm.gEq_sss}
+
+:: <{call_cpm.JSONEncode_ssss;}> = {!call_cpm.JSONEncode_ssss}
+
+:: <{call_cpm.JSONDecode_ssss;}> = {!call_cpm.JSONDecode_ssss}
+
+:: <{call_cpm.gEq_ssss;}> = {!call_cpm.gEq_ssss}
+
+:: <{call_cpm.gDefault_ssss;}> = {call_cpm.gDefault_ssss}
+
+:: <{call_cpm.gEq_sssss;}> = {!call_cpm.gEq_sssss}
+
+:: <{call_cpm.gEq_ssssss;}> = {!call_cpm.gEq_ssssss}
+
+:: <{call_cpm.gEq_sssssss;}> = {!call_cpm.gEq_sssssss}
+
+:: <{call_cpm.gEq_ssssssss;}> = {!call_cpm.gEq_ssssssss}
+
+:: <{call_cpm.gEq_sssssssss;}> = {!call_cpm.gEq_sssssssss}
+
+:: <{call_cpm.bimap_s;}> = {call_cpm.bimap_s}
+
+:: <{call_cpm.bimap_ss;}> = {call_cpm.bimap_ss}
+
+:: <{call_cpm.bimap_sss;}> = {call_cpm.bimap_sss}
+
+:: <{call_cpm.JSONEncode_sssss;}> = {!call_cpm.JSONEncode_sssss}
+
+:: <{call_cpm.JSONEncode_ssssss;}> = {!call_cpm.JSONEncode_ssssss}
+
+:: <{call_cpm.JSONEncode_sssssss;}> = {!call_cpm.JSONEncode_sssssss}
+
+:: <{call_cpm.JSONEncode_ssssssss;}> = {!call_cpm.JSONEncode_ssssssss}
+
+:: <{call_cpm.JSONEncode_sssssssss;}> = {!call_cpm.JSONEncode_sssssssss}
+
+:: <{call_cpm.JSONDecode_sssss;}> = {!call_cpm.JSONDecode_sssss}
+
+:: <{call_cpm.JSONDecode_ssssss;}> = {!call_cpm.JSONDecode_ssssss}
+
+:: <{call_cpm.JSONDecode_sssssss;}> = {!call_cpm.JSONDecode_sssssss}
+
+:: <{call_cpm.JSONDecode_ssssssss;}> = {!call_cpm.JSONDecode_ssssssss}
+
+:: <{call_cpm.JSONDecode_sssssssss;}> = {!call_cpm.JSONDecode_sssssssss}
+
+:: <{call_cpm.gLexOrd_s;}> = {!call_cpm.gLexOrd_s}
+
+:: <{call_cpm.gLexOrd_ss;}> = {!call_cpm.gLexOrd_ss}
+
+:: <{call_cpm.gLexOrd_sss;}> = {!call_cpm.gLexOrd_sss}
+
+:: <{call_cpm.gLexOrd_ssss;}> = {!call_cpm.gLexOrd_ssss}
+
+:: <{call_cpm.gLexOrd_sssss;}> = {!call_cpm.gLexOrd_sssss}
+
+:: <{call_cpm.gLexOrd_ssssss;}> = {!call_cpm.gLexOrd_ssssss}
+
+:: <{call_cpm.gLexOrd_sssssss;}> = {!call_cpm.gLexOrd_sssssss}
+
+:: <{call_cpm.gLexOrd_ssssssss;}> = {!call_cpm.gLexOrd_ssssssss}
+
+:: <{call_cpm.gLexOrd_sssssssss;}> = {!call_cpm.gLexOrd_sssssssss}
+
+:: <{call_cpm.gText_ssss;}> = {!call_cpm.gText_ssss}
+
+:: <{call_cpm.gText_sssss;}> = {!call_cpm.gText_sssss}
+
+:: <{call_cpm.gText_ssssss;}> = {!call_cpm.gText_ssssss}
+
+:: <{call_cpm.gText_sssssss;}> = {!call_cpm.gText_sssssss}
+
+:: <{call_cpm.gText_ssssssss;}> = {!call_cpm.gText_ssssssss}
+
+:: <{call_cpm.gText_sssssssss;}> = {!call_cpm.gText_sssssssss}
+
+:: <{call_cpm.gDefault_sssss;}> = {call_cpm.gDefault_sssss}
+
+:: <{call_cpm.gDefault_ssssss;}> = {call_cpm.gDefault_ssssss}
+
+:: <{call_cpm.gDefault_sssssss;}> = {call_cpm.gDefault_sssssss}
+
+:: <{call_cpm.gDefault_ssssssss;}> = {call_cpm.gDefault_ssssssss}
+
+:: <{call_cpm.gDefault_sssssssss;}> = {call_cpm.gDefault_sssssssss}
+
+:: <{call_cpm.gEditor_ssss;}> = {call_cpm.gEditor_ssss}
+
+:: <{call_cpm.gEditor_sssss;}> = {call_cpm.gEditor_sssss}
+
+:: <{call_cpm.gEditor_ssssss;}> = {call_cpm.gEditor_ssssss}
+
+:: <{call_cpm.gEditor_sssssss;}> = {call_cpm.gEditor_sssssss}
+

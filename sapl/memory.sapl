@@ -1,0 +1,47 @@
+|| ?module? memory
+
+
+memory.getMemory !world_0 = <{_Tuple2!3}> memory.Mem world_0
+memory.putMemory !mem_0 !world_1 = world_1
+memory.readByte !address_0::I !mem_1 = error "no AnyCodeExpr"
+memory.readWord !address_0::I !mem_1 = error "no AnyCodeExpr"
+memory.readHalfWord !address_0::I !mem_1 = error "no AnyCodeExpr"
+memory.readWord1 !address_0::I !mem_1 = error "no AnyCodeExpr"
+memory.readHalfWord1 !address_0::I !mem_1 = error "no AnyCodeExpr"
+memory.readByte1 !address_0::I !mem_1 = error "no AnyCodeExpr"
+memory.address_of_buffer !mem_0 = error "no AnyCodeExpr"
+memory.writeWord1 !value_0::I !ptr_1::I !_x_2 = error "no AnyCodeExpr"
+memory.writeByte1 !value_0::C !ptr_1::I !_x_2 = error "no AnyCodeExpr"
+memory.get_module_id1_13::I !_x_0 = error "no AnyCodeExpr"
+memory.collect_14 !_vArray_0 !i_1::I !limit_2::I address_3::I module_name_4 mem_5 = case (<{StdInt.==_16}> i_1 limit_2) (True -> _Tuple2 module_name_4 mem_5) (False -> let _x_2_0 = memory.readByte address_3 mem_5 in memory.collect_14 _vArray_0 (<{StdInt.+_6}> i_1 StdInt.one_11) limit_2 (<{StdInt.+_6}> address_3 StdInt.one_11) (select _vArray_0::<{_SystemArray.Array;}> 5 module_name_4 i_1 (StdChar.toChar_21 (select _x_2_0::_Tuple2 0))) (select _x_2_0::_Tuple2 1)) 
+memory.collect_58 !i_0::I !limit_1::I address_2::I module_name_3 mem_4 = case (<{StdInt.==_16}> i_0 limit_1) (True -> _Tuple2 module_name_3 mem_4) (False -> let _x_2_0 = memory.readByte address_2 mem_4 in memory.collect_58 (<{StdInt.+_6}> i_0 StdInt.one_11) limit_1 (<{StdInt.+_6}> address_2 StdInt.one_11) (_SystemArray.update_21 module_name_3 i_0 (StdChar.toChar_21 (select _x_2_0::_Tuple2 0))) (select _x_2_0::_Tuple2 1)) 
+memory.get_module_id !module_id_0 = let address_1_0::I = memory.get_module_id1_13 module_id_0, _x_1_1 = memory.readWord address_1_0 memory.Mem, length_1_2::I = select _x_1_1::_Tuple2 0 in <{_Tuple2!3}> (select (memory.collect_58 0 length_1_2 (<{StdInt.+_6}> address_1_0 4) (_SystemArray.createArray_17 length_1_2 ' ') (select _x_1_1::_Tuple2 1))::_Tuple2 0) address_1_0
+<{memory.TD;Mem}> _x_0::B = _predefined._Nil
+
+:: memory.Mem = memory.Mem
+
+|| Converted Records
+:: <{memory.gEq_s;}> = {!memory.gEq_s}
+
+:: <{memory.gEq_ss;}> = {!memory.gEq_ss}
+
+:: <{memory.gEq_sss;}> = {!memory.gEq_sss}
+
+:: <{memory.gEq_ssss;}> = {!memory.gEq_ssss}
+
+:: <{memory.gEq_sssss;}> = {!memory.gEq_sssss}
+
+:: <{memory.gEq_ssssss;}> = {!memory.gEq_ssssss}
+
+:: <{memory.gEq_sssssss;}> = {!memory.gEq_sssssss}
+
+:: <{memory.gEq_ssssssss;}> = {!memory.gEq_ssssssss}
+
+:: <{memory.gEq_sssssssss;}> = {!memory.gEq_sssssssss}
+
+:: <{memory.bimap_s;}> = {memory.bimap_s}
+
+:: <{memory.bimap_ss;}> = {memory.bimap_ss}
+
+:: <{memory.bimap_sss;}> = {memory.bimap_sss}
+

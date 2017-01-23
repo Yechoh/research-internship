@@ -1,0 +1,73 @@
+Version: 1.4
+Global
+	Built:	True
+	Target:	Object IO
+	Exec:	{Project}\ShowTimeProfile.exe
+	CodeGen
+		CheckStacks:	False
+		CheckIndexes:	True
+		TargetProcessor:	CurrentProcessor
+	Application
+		HeapSize:	4194304
+		StackSize:	102400
+		ExtraMemory:	81920
+		IntialHeapSize:	204800
+		HeapSizeMultiplier:	4096
+		ShowExecutionTime:	False
+		ShowGC:	False
+		ShowStackSize:	False
+		MarkingCollector:	False
+		StandardRuntimeEnv:	True
+		Profile
+			Memory:	False
+			MemoryMinimumHeapSize:	0
+			Time:	False
+			Stack:	False
+		Output
+			Output:	NoConsole
+			Font:	Courier
+			FontSize:	9
+			WriteStdErr:	False
+	Link
+		LinkMethod:	Static
+		GenerateRelocations:	False
+		GenerateLinkMap:	False
+		LinkResources:	True
+		ResourceSource:	{Project}\WinSupport\winTime.rsrc
+		GenerateDLL:	False
+		ExportedNames:	
+	Paths
+		Path:	{Project}\TimeProfile
+		Path:	{Project}\Win\ArgEnvWindows
+		Path:	{Project}\Win\PatchConsoleEvents
+		Path:	{Project}\Util
+MainModule
+	Name:	timeprofiler
+	Dir:	{Project}\TimeProfile
+	Compiler
+		NeverMemoryProfile:	False
+		NeverTimeProfile:	False
+		StrictnessAnalysis:	True
+		ListTypes:	StrictExportTypes
+		ListAttributes:	False
+		Warnings:	True
+		Verbose:	True
+		ReadableABC:	False
+		ReuseUniqueNodes:	True
+	Dcl
+		WindowPosition
+			X:	144
+			Y:	23
+			SizeX:	849
+			SizeY:	566
+	DclOpen:	False
+	Icl
+		WindowPosition
+			X:	144
+			Y:	23
+			SizeX:	849
+			SizeY:	566
+	IclOpen:	True
+	LastModified:	No 0 0 0 0 0 0
+	NeededLibraries
+		Library:	time_profiler_kernel_library

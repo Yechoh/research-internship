@@ -1,0 +1,49 @@
+Version: 1.4
+Global
+	Built:	True
+	Target:	Object IO
+	Exec:	{Project}\ShowHeapProfile.exe
+	CodeGen
+		CheckStacks:	False
+		CheckIndexes:	False
+	Application
+		HeapSize:	37748736
+		StackSize:	524288
+		ExtraMemory:	81920
+		IntialHeapSize:	1048576
+		HeapSizeMultiplier:	768
+		ShowExecutionTime:	False
+		ShowGC:	False
+		ShowStackSize:	False
+		MarkingCollector:	True
+		StandardRuntimeEnv:	True
+		Profile
+			Memory:	False
+			MemoryMinimumHeapSize:	4194304
+			Time:	False
+			Stack:	False
+		Output
+			Output:	NoConsole
+			Font:	Courier
+			FontSize:	9
+			WriteStdErr:	False
+	Link
+		LinkMethod:	Static
+		GenerateRelocations:	False
+		GenerateLinkMap:	False
+		LinkResources:	True
+		ResourceSource:	{Project}\WinSupport\winHeap.rsrc
+		GenerateDLL:	False
+		ExportedNames:	
+	Paths
+		Path:	{Project}\HeapProfile
+		Path:	{Project}\Win\PatchConsoleEvents
+		Path:	{Project}\Util
+		Path:	{Project}\Win
+		Path:	{Application}\Libraries\ArgEnvWindows 1.0.3
+		Path:	{Application}\Libraries\Directory 1.1.2
+	Precompile:	
+	Postlink:	
+MainModule
+	Name:	heapprofiler
+	Dir:	{Project}\HeapProfile

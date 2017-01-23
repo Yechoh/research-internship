@@ -1,0 +1,192 @@
+|| ?module? iTasks.API.Common.ImportTasks
+
+
+iTasks.API.Common.ImportTasks.openException s_0 = let e_1_0 = iTasks.API.Core.Types.FileException s_0 System.File.CannotOpen in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.API.Core.Types.TD;FileException}>))) (iTasks.API.Core.Types.toString_37 e_1_0))
+iTasks.API.Common.ImportTasks.readAll !file_0 = let _x_1_0 = StdFile.freads file_0 1048576, chunk_1_1 = select _x_1_0::_Tuple2 0 in case (<{StdInt.<_17}> (_SystemArray.size_20 chunk_1_1) 1048576) (True -> _Tuple2 chunk_1_1 (select _x_1_0::_Tuple2 1)) (False -> let _x_3_0 = iTasks.API.Common.ImportTasks.readAll (select _x_1_0::_Tuple2 1) in _Tuple2 (<{StdString.+++_11}> chunk_1_1 (select _x_3_0::_Tuple2 0)) (select _x_3_0::_Tuple2 1)) 
+iTasks.API.Common.ImportTasks.closeException s_0 = let e_1_0 = iTasks.API.Core.Types.FileException s_0 System.File.CannotClose in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.API.Core.Types.TD;FileException}>))) (iTasks.API.Core.Types.toString_37 e_1_0))
+iTasks.API.Common.ImportTasks.readDocument task_0 !filename_1 !iworld_2 = case iworld_2 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let _x_3_0 = StdFile.fopen_31 filename_1 3 world_1_12 in case (StdBool.not (select _x_3_0::_Tuple3 0)) (True -> _Tuple2 (iTasks.API.Common.ImportTasks.openException filename_1) (update iworld_2::iTasks._Framework.IWorld._IWorld [12:select _x_3_0::_Tuple3 2])) (False -> let file_5_0 = select _x_3_0::_Tuple3 1, _x_5_1 = iTasks.API.Common.ImportTasks.readAll file_5_0, file_5_2 = select _x_5_1::_Tuple2 1, world_5_3 = select _x_3_0::_Tuple3 2, _x_5_4 = StdFile.fclose_30 file_5_2 world_5_3 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> _Tuple2 (iTasks.API.Common.ImportTasks.closeException filename_1) (update iworld_2::iTasks._Framework.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) (False -> let name_7_0 = System.FilePath.dropDirectory filename_1, mime_7_1 = Text.Encodings.MIME.extensionToMimeType (System.FilePath.takeExtension name_7_0), content_7_2 = select _x_5_1::_Tuple2 0, world_7_3 = select _x_5_4::_Tuple2 1, _x_7_4 = iTasks._Framework.TaskStore.createDocument name_7_0 mime_7_1 content_7_2 (update iworld_2::iTasks._Framework.IWorld._IWorld [12:world_7_3]), iworld_7_5 = select _x_7_4::_Tuple2 1 in <{iTasks.API.Common.ImportTasks._c;104;7_420}> (select _x_7_4::_Tuple2 0) iworld_7_5) ) ) ) 
+<{iTasks.API.Common.ImportTasks._c;104;7_420}> !_x_0 iworld_1 = case _x_0 (Data.Error.Ok document_1_0 -> _Tuple2 (Data.Error.Ok document_1_0) iworld_1) (Data.Error.Error e_1_0 -> _Tuple2 (Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{System.File.TD;FileError}>))) (System.File.toString_10 e_1_0))) iworld_1) 
+iTasks.API.Common.ImportTasks.eval_16 !filename_0 task_1 !iworld_2 = iTasks.API.Common.ImportTasks.readDocument task_1 filename_0 iworld_2
+iTasks.API.Common.ImportTasks.importDocument !filename_0 = iTasks._Framework.Task.mkInstantTask (<{iTasks._Framework.Generic.iTask;}> (<{iTasks.API.Common.ImportTasks.gEditor_s;}> iTasks.API.Core.Types.gEditor_Document_72) (<{iTasks.API.Common.ImportTasks.gText_s;}> iTasks.API.Core.Types.gText_Document_68) (<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode_Document_52) (<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode_Document_56) (<{iTasks.API.Common.ImportTasks.gDefault_s;}> iTasks.API.Core.Types.gDefault_Document_60) (<{iTasks.API.Common.ImportTasks.gEq_s;}> iTasks.API.Core.Types.gEq_Document_64) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.API.Core.Types.TD;Document}>))) (iTasks.API.Common.ImportTasks.eval_16 filename_0)
+iTasks.API.Common.ImportTasks.fileTask task_0 !filename_1 f_2 !iworld_3 = case iworld_3 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let _x_3_0 = StdFile.fopen_31 filename_1 3 world_1_12 in case (StdBool.not (select _x_3_0::_Tuple3 0)) (True -> _Tuple2 (iTasks.API.Common.ImportTasks.openException filename_1) (update iworld_3::iTasks._Framework.IWorld._IWorld [12:select _x_3_0::_Tuple3 2])) (False -> let file_5_0 = select _x_3_0::_Tuple3 1, _x_5_1 = f_2 file_5_0, file_5_2 = select _x_5_1::_Tuple2 1, world_5_3 = select _x_3_0::_Tuple3 2, _x_5_4 = StdFile.fclose_30 file_5_2 world_5_3 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> _Tuple2 (iTasks.API.Common.ImportTasks.closeException filename_1) (update iworld_3::iTasks._Framework.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) (False -> _Tuple2 (Data.Error.Ok (select _x_5_1::_Tuple2 0)) (update iworld_3::iTasks._Framework.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) ) ) ) 
+iTasks.API.Common.ImportTasks.eval_17 !filename_0 task_1 !iworld_2 = iTasks.API.Common.ImportTasks.fileTask task_1 filename_0 iTasks.API.Common.ImportTasks.readAll iworld_2
+iTasks.API.Common.ImportTasks.importTextFile !filename_0 = iTasks._Framework.Task.mkInstantTask (<{iTasks._Framework.Generic.iTask;}> (<{iTasks.API.Common.ImportTasks.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{iTasks.API.Common.ImportTasks.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> Text.JSON.JSONEncode__String_14) (<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> Text.JSON.JSONDecode__String_38) (<{iTasks.API.Common.ImportTasks.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{iTasks.API.Common.ImportTasks.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (iTasks.API.Common.ImportTasks.eval_17 filename_0)
+iTasks.API.Common.ImportTasks.eval_18 !filename_0 task_1 !iworld_2 = iTasks.API.Common.ImportTasks.fileTask task_1 filename_0 Text.CSV.readCSVFile iworld_2
+iTasks.API.Common.ImportTasks.gEq_s_76::B !_vgEq_s_0 x1_1 x2_2 = GenEq.gEq__List_16 (select _vgEq_s_0::<{iTasks.API.Common.ImportTasks.gEq_s;}> 0) x1_1 x2_2
+iTasks.API.Common.ImportTasks.JSONEncode_s_116 !_vJSONEncode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONEncode__List_16 (select _vJSONEncode_s_0::<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> 0) x1_1 x2_2
+iTasks.API.Common.ImportTasks.JSONDecode_s_155 !_vJSONDecode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONDecode__List_43 (select _vJSONDecode_s_0::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0) x1_1 x2_2
+iTasks.API.Common.ImportTasks.gText_s_238 !_vgText_s_0 !x1_1 x2_2 = iTasks._Framework.Generic.Visualization.gText__List_16 (select _vgText_s_0::<{iTasks.API.Common.ImportTasks.gText_s;}> 0) x1_1 x2_2
+iTasks.API.Common.ImportTasks.gDefault_s_310 !_vgDefault_s_0 = iTasks._Framework.Generic.Defaults.gDefault__List_13 (select _vgDefault_s_0::<{iTasks.API.Common.ImportTasks.gDefault_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_355 !_vgEditor_s_0 !_vgText_s_1 !_vgDefault_s_2 !_vJSONEncode_s_3 !_vJSONDecode_s_4 = iTasks.UI.Editor.Generic.gEditor__List_12 (select _vgEditor_s_0::<{iTasks.API.Common.ImportTasks.gEditor_s;}> 0) (select _vgText_s_1::<{iTasks.API.Common.ImportTasks.gText_s;}> 0) (select _vgDefault_s_2::<{iTasks.API.Common.ImportTasks.gDefault_s;}> 0) (select _vJSONEncode_s_3::<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> 0) (select _vJSONDecode_s_4::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEq_s_408::B x1_0 x2_1 = GenEq.gEq__List_16 GenEq.gEq__String_6 x1_0 x2_1
+iTasks.API.Common.ImportTasks.gEq_s_409::B x1_0 x2_1 = GenEq.gEq__List_16 iTasks.API.Common.ImportTasks.gEq_s_408 x1_0 x2_1
+iTasks.API.Common.ImportTasks.gDefault_s_400 = iTasks._Framework.Generic.Defaults.gDefault__List_13 iTasks._Framework.Generic.Defaults.gDefault__String_12
+iTasks.API.Common.ImportTasks.gDefault_s_407 = iTasks._Framework.Generic.Defaults.gDefault__List_13 iTasks.API.Common.ImportTasks.gDefault_s_400
+iTasks.API.Common.ImportTasks.JSONDecode_s_402 !x1_0::B !x2_1 = Text.JSON.JSONDecode__List_43 Text.JSON.JSONDecode__String_38 x1_0 x2_1
+iTasks.API.Common.ImportTasks.JSONDecode_s_406 !x1_0::B !x2_1 = Text.JSON.JSONDecode__List_43 iTasks.API.Common.ImportTasks.JSONDecode_s_402 x1_0 x2_1
+iTasks.API.Common.ImportTasks.JSONEncode_s_401 !x1_0::B !x2_1 = Text.JSON.JSONEncode__List_16 Text.JSON.JSONEncode__String_14 x1_0 x2_1
+iTasks.API.Common.ImportTasks.JSONEncode_s_405 !x1_0::B !x2_1 = Text.JSON.JSONEncode__List_16 iTasks.API.Common.ImportTasks.JSONEncode_s_401 x1_0 x2_1
+iTasks.API.Common.ImportTasks.gText_s_399 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText__List_16 iTasks._Framework.Generic.Visualization.gText__String_15 x1_0 x2_1
+iTasks.API.Common.ImportTasks.gText_s_404 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText__List_16 iTasks.API.Common.ImportTasks.gText_s_399 x1_0 x2_1
+iTasks.API.Common.ImportTasks.gEditor_s_398 !_vgText_s_0 !_vgDefault_s_1 !_vJSONEncode_s_2 !_vJSONDecode_s_3 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 (select _vgText_s_0::<{iTasks.API.Common.ImportTasks.gText_s;}> 0) (select _vgDefault_s_1::<{iTasks.API.Common.ImportTasks.gDefault_s;}> 0) (select _vJSONEncode_s_2::<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> 0) (select _vJSONDecode_s_3::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_410 !_vgDefault_s_0 !_vJSONEncode_s_1 !_vJSONDecode_s_2 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks._Framework.Generic.Visualization.gText__String_15 (select _vgDefault_s_0::<{iTasks.API.Common.ImportTasks.gDefault_s;}> 0) (select _vJSONEncode_s_1::<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> 0) (select _vJSONDecode_s_2::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_411 !_vJSONEncode_s_0 !_vJSONDecode_s_1 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks._Framework.Generic.Visualization.gText__String_15 iTasks._Framework.Generic.Defaults.gDefault__String_12 (select _vJSONEncode_s_0::<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> 0) (select _vJSONDecode_s_1::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_412 !_vJSONDecode_s_0 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks._Framework.Generic.Visualization.gText__String_15 iTasks._Framework.Generic.Defaults.gDefault__String_12 Text.JSON.JSONEncode__String_14 (select _vJSONDecode_s_0::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_413 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks._Framework.Generic.Visualization.gText__String_15 iTasks._Framework.Generic.Defaults.gDefault__String_12 Text.JSON.JSONEncode__String_14 Text.JSON.JSONDecode__String_38
+iTasks.API.Common.ImportTasks.gEditor_s_403 !_vgText_s_0 !_vgDefault_s_1 !_vJSONEncode_s_2 !_vJSONDecode_s_3 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.API.Common.ImportTasks.gEditor_s_413 (select _vgText_s_0::<{iTasks.API.Common.ImportTasks.gText_s;}> 0) (select _vgDefault_s_1::<{iTasks.API.Common.ImportTasks.gDefault_s;}> 0) (select _vJSONEncode_s_2::<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> 0) (select _vJSONDecode_s_3::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_414 !_vgDefault_s_0 !_vJSONEncode_s_1 !_vJSONDecode_s_2 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.API.Common.ImportTasks.gEditor_s_413 iTasks.API.Common.ImportTasks.gText_s_399 (select _vgDefault_s_0::<{iTasks.API.Common.ImportTasks.gDefault_s;}> 0) (select _vJSONEncode_s_1::<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> 0) (select _vJSONDecode_s_2::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_415 !_vJSONEncode_s_0 !_vJSONDecode_s_1 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.API.Common.ImportTasks.gEditor_s_413 iTasks.API.Common.ImportTasks.gText_s_399 iTasks.API.Common.ImportTasks.gDefault_s_400 (select _vJSONEncode_s_0::<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> 0) (select _vJSONDecode_s_1::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_416 !_vJSONDecode_s_0 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.API.Common.ImportTasks.gEditor_s_413 iTasks.API.Common.ImportTasks.gText_s_399 iTasks.API.Common.ImportTasks.gDefault_s_400 iTasks.API.Common.ImportTasks.JSONEncode_s_401 (select _vJSONDecode_s_0::<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> 0)
+iTasks.API.Common.ImportTasks.gEditor_s_417 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.API.Common.ImportTasks.gEditor_s_413 iTasks.API.Common.ImportTasks.gText_s_399 iTasks.API.Common.ImportTasks.gDefault_s_400 iTasks.API.Common.ImportTasks.JSONEncode_s_401 iTasks.API.Common.ImportTasks.JSONDecode_s_402
+iTasks.API.Common.ImportTasks.importCSVFile !filename_0 = iTasks._Framework.Task.mkInstantTask (<{iTasks._Framework.Generic.iTask;}> (<{iTasks.API.Common.ImportTasks.gEditor_s;}> iTasks.API.Common.ImportTasks.gEditor_s_417) (<{iTasks.API.Common.ImportTasks.gText_s;}> iTasks.API.Common.ImportTasks.gText_s_404) (<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> iTasks.API.Common.ImportTasks.JSONEncode_s_405) (<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> iTasks.API.Common.ImportTasks.JSONDecode_s_406) (<{iTasks.API.Common.ImportTasks.gDefault_s;}> iTasks.API.Common.ImportTasks.gDefault_s_407) (<{iTasks.API.Common.ImportTasks.gEq_s;}> iTasks.API.Common.ImportTasks.gEq_s_409) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.API.Common.ImportTasks.eval_18 filename_0)
+iTasks.API.Common.ImportTasks.eval_19 !document_0 task_1 !iworld_2 = let _x_1_0 = iTasks._Framework.TaskStore.documentLocation document_0 iworld_2 in iTasks.API.Common.ImportTasks.fileTask task_1 (select _x_1_0::_Tuple2 0) Text.CSV.readCSVFile (select _x_1_0::_Tuple2 1)
+iTasks.API.Common.ImportTasks.importCSVDocument !_x_0 = case _x_0 (iTasks.API.Core.Types._Document document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4 -> iTasks._Framework.Task.mkInstantTask (<{iTasks._Framework.Generic.iTask;}> (<{iTasks.API.Common.ImportTasks.gEditor_s;}> iTasks.API.Common.ImportTasks.gEditor_s_417) (<{iTasks.API.Common.ImportTasks.gText_s;}> iTasks.API.Common.ImportTasks.gText_s_404) (<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> iTasks.API.Common.ImportTasks.JSONEncode_s_405) (<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> iTasks.API.Common.ImportTasks.JSONDecode_s_406) (<{iTasks.API.Common.ImportTasks.gDefault_s;}> iTasks.API.Common.ImportTasks.gDefault_s_407) (<{iTasks.API.Common.ImportTasks.gEq_s;}> iTasks.API.Common.ImportTasks.gEq_s_409) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.API.Common.ImportTasks.eval_19 document_1_0)) 
+iTasks.API.Common.ImportTasks.eval_20 !filename_0 delimitChar_1::C quoteChar_2::C escapeChar_3::C task_4 !iworld_5 = iTasks.API.Common.ImportTasks.fileTask task_4 filename_0 (Text.CSV.readCSVFileWith delimitChar_1 quoteChar_2 escapeChar_3) iworld_5
+iTasks.API.Common.ImportTasks.importCSVFileWith !delimitChar_0::C !quoteChar_1::C !escapeChar_2::C !filename_3 = iTasks._Framework.Task.mkInstantTask (<{iTasks._Framework.Generic.iTask;}> (<{iTasks.API.Common.ImportTasks.gEditor_s;}> iTasks.API.Common.ImportTasks.gEditor_s_417) (<{iTasks.API.Common.ImportTasks.gText_s;}> iTasks.API.Common.ImportTasks.gText_s_404) (<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> iTasks.API.Common.ImportTasks.JSONEncode_s_405) (<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> iTasks.API.Common.ImportTasks.JSONDecode_s_406) (<{iTasks.API.Common.ImportTasks.gDefault_s;}> iTasks.API.Common.ImportTasks.gDefault_s_407) (<{iTasks.API.Common.ImportTasks.gEq_s;}> iTasks.API.Common.ImportTasks.gEq_s_409) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.API.Common.ImportTasks.eval_20 filename_3 delimitChar_0 quoteChar_1 escapeChar_2)
+iTasks.API.Common.ImportTasks.eval_21 delimitChar_0::C quoteChar_1::C escapeChar_2::C !document_3 task_4 !iworld_5 = let _x_1_0 = iTasks._Framework.TaskStore.documentLocation document_3 iworld_5 in iTasks.API.Common.ImportTasks.fileTask task_4 (select _x_1_0::_Tuple2 0) (Text.CSV.readCSVFileWith delimitChar_0 quoteChar_1 escapeChar_2) (select _x_1_0::_Tuple2 1)
+iTasks.API.Common.ImportTasks.importCSVDocumentWith !delimitChar_0::C !quoteChar_1::C !escapeChar_2::C !_x_3 = case _x_3 (iTasks.API.Core.Types._Document document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4 -> iTasks._Framework.Task.mkInstantTask (<{iTasks._Framework.Generic.iTask;}> (<{iTasks.API.Common.ImportTasks.gEditor_s;}> iTasks.API.Common.ImportTasks.gEditor_s_417) (<{iTasks.API.Common.ImportTasks.gText_s;}> iTasks.API.Common.ImportTasks.gText_s_404) (<{iTasks.API.Common.ImportTasks.JSONEncode_s;}> iTasks.API.Common.ImportTasks.JSONEncode_s_405) (<{iTasks.API.Common.ImportTasks.JSONDecode_s;}> iTasks.API.Common.ImportTasks.JSONDecode_s_406) (<{iTasks.API.Common.ImportTasks.gDefault_s;}> iTasks.API.Common.ImportTasks.gDefault_s_407) (<{iTasks.API.Common.ImportTasks.gEq_s;}> iTasks.API.Common.ImportTasks.gEq_s_409) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.API.Common.ImportTasks.eval_21 delimitChar_0 quoteChar_1 escapeChar_2 document_1_0)) 
+iTasks.API.Common.ImportTasks.parseException s_0 = let e_1_0 = iTasks.API.Core.Types.CannotParse (<{StdString.+++_11}> "Cannot parse JSON file " s_0) in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.API.Core.Types.TD;ParseException}>))) (iTasks.API.Core.Types.toString_38 e_1_0))
+iTasks.API.Common.ImportTasks.readJSON !_vfromString_0 task_1 !filename_2 parsefun_3 !iworld_4 = case iworld_4 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let _x_3_0 = StdFile.fopen_31 filename_2 3 world_1_12 in case (StdBool.not (select _x_3_0::_Tuple3 0)) (True -> _Tuple2 (iTasks.API.Common.ImportTasks.openException filename_2) (update iworld_4::iTasks._Framework.IWorld._IWorld [12:select _x_3_0::_Tuple3 2])) (False -> let file_5_0 = select _x_3_0::_Tuple3 1, _x_5_1 = iTasks.API.Common.ImportTasks.readAll file_5_0, file_5_2 = select _x_5_1::_Tuple2 1, world_5_3 = select _x_3_0::_Tuple3 2, _x_5_4 = StdFile.fclose_30 file_5_2 world_5_3 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> _Tuple2 (iTasks.API.Common.ImportTasks.closeException filename_2) (update iworld_4::iTasks._Framework.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) (False -> let world_7_0 = select _x_5_4::_Tuple2 1 in <{iTasks.API.Common.ImportTasks._c;89;7_421}> (parsefun_3 (select _vfromString_0::<{StdOverloaded.fromString;}> 0 (select _x_5_1::_Tuple2 0))) iworld_4 world_7_0 filename_2) ) ) ) 
+<{iTasks.API.Common.ImportTasks._c;89;7_421}> !_x_0 iworld_1 world_2 filename_3 = case _x_0 (Data.Maybe.Just a_1_0 -> _Tuple2 (Data.Error.Ok a_1_0) (update iworld_1::iTasks._Framework.IWorld._IWorld [12:world_2])) (Data.Maybe.Nothing -> _Tuple2 (iTasks.API.Common.ImportTasks.parseException filename_3) (update iworld_1::iTasks._Framework.IWorld._IWorld [12:world_2])) 
+iTasks.API.Common.ImportTasks.readJSON_418 task_0 !filename_1 parsefun_2 !iworld_3 = case iworld_3 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let _x_3_0 = StdFile.fopen_31 filename_1 3 world_1_12 in case (StdBool.not (select _x_3_0::_Tuple3 0)) (True -> _Tuple2 (iTasks.API.Common.ImportTasks.openException filename_1) (update iworld_3::iTasks._Framework.IWorld._IWorld [12:select _x_3_0::_Tuple3 2])) (False -> let file_5_0 = select _x_3_0::_Tuple3 1, _x_5_1 = iTasks.API.Common.ImportTasks.readAll file_5_0, file_5_2 = select _x_5_1::_Tuple2 1, world_5_3 = select _x_3_0::_Tuple3 2, _x_5_4 = StdFile.fclose_30 file_5_2 world_5_3 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> _Tuple2 (iTasks.API.Common.ImportTasks.closeException filename_1) (update iworld_3::iTasks._Framework.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) (False -> let world_7_0 = select _x_5_4::_Tuple2 1 in <{iTasks.API.Common.ImportTasks._c;89;7_422}> (parsefun_2 (Text.JSON.fromString_8 (select _x_5_1::_Tuple2 0))) iworld_3 world_7_0 filename_1) ) ) ) 
+<{iTasks.API.Common.ImportTasks._c;89;7_422}> !_x_0 iworld_1 world_2 filename_3 = case _x_0 (Data.Maybe.Just a_1_0 -> _Tuple2 (Data.Error.Ok a_1_0) (update iworld_1::iTasks._Framework.IWorld._IWorld [12:world_2])) (Data.Maybe.Nothing -> _Tuple2 (iTasks.API.Common.ImportTasks.parseException filename_3) (update iworld_1::iTasks._Framework.IWorld._IWorld [12:world_2])) 
+iTasks.API.Common.ImportTasks.eval_22 !<{_vJSONDecode*_0}> !filename_1 task_2 !iworld_3 = iTasks.API.Common.ImportTasks.readJSON_418 task_2 filename_1 (Text.JSON.fromJSON <{_vJSONDecode*_0}>) iworld_3
+iTasks.API.Common.ImportTasks.importJSONFile !_viTask_0 !filename_1 = iTasks._Framework.Task.mkInstantTask _viTask_0 (iTasks.API.Common.ImportTasks.eval_22 (select _viTask_0::<{iTasks._Framework.Generic.iTask;}> 3) filename_1)
+iTasks.API.Common.ImportTasks.eval_23 !<{_vJSONDecode*_0}> !document_1 task_2 !iworld_3 = let _x_1_0 = iTasks._Framework.TaskStore.documentLocation document_1 iworld_3, iworld_1_1 = select _x_1_0::_Tuple2 1, _x_1_2 = iTasks._Framework.TaskStore.loadDocumentContent document_1 iworld_1_1, iworld_1_3 = select _x_1_2::_Tuple2 1, filename_1_4 = select _x_1_0::_Tuple2 0 in <{iTasks.API.Common.ImportTasks._c;56;7_424}> (select _x_1_2::_Tuple2 0) <{_vJSONDecode*_0}> iworld_1_3 filename_1_4
+<{iTasks.API.Common.ImportTasks._c;56;7_424}> !_x_0 <{_vJSONDecode*_1}> iworld_2 filename_3 = case _x_0 (Data.Maybe.Just str_1_0 -> <{iTasks.API.Common.ImportTasks._c;57;21_423}> (Text.JSON.fromJSON <{_vJSONDecode*_1}> (Text.JSON.fromString_8 str_1_0)) iworld_2 filename_3) (_ -> _Tuple2 (iTasks.API.Common.ImportTasks.openException filename_3) iworld_2)
+<{iTasks.API.Common.ImportTasks._c;57;21_423}> !_x_0 iworld_1 filename_2 = case _x_0 (Data.Maybe.Just a_1_0 -> _Tuple2 (Data.Error.Ok a_1_0) iworld_1) (_ -> _Tuple2 (iTasks.API.Common.ImportTasks.parseException filename_2) iworld_1)
+iTasks.API.Common.ImportTasks.importJSONDocument !_viTask_0 !_x_1 = case _x_1 (iTasks.API.Core.Types._Document document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4 -> iTasks._Framework.Task.mkInstantTask _viTask_0 (iTasks.API.Common.ImportTasks.eval_23 (select _viTask_0::<{iTasks._Framework.Generic.iTask;}> 3) document_1_0)) 
+iTasks.API.Common.ImportTasks.eval_24 !_vfromString_0 !filename_1 parsefun_2 task_3 !iworld_4 = iTasks.API.Common.ImportTasks.readJSON _vfromString_0 task_3 filename_1 parsefun_2 iworld_4
+iTasks.API.Common.ImportTasks.eval_419 !filename_0 parsefun_1 task_2 !iworld_3 = iTasks.API.Common.ImportTasks.readJSON_418 task_2 filename_0 parsefun_1 iworld_3
+iTasks.API.Common.ImportTasks.importJSONFileWith !_viTask_0 !parsefun_1 !filename_2 = iTasks._Framework.Task.mkInstantTask _viTask_0 (iTasks.API.Common.ImportTasks.eval_419 filename_2 parsefun_1)
+
+
+|| Converted Records
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_s;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_s}
+
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_ss;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_ss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_sss;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_sss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_s;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_s}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_ss;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_ss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_sss;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_sss}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_s;}> = {iTasks.API.Common.ImportTasks.gDefault_s}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_ss;}> = {iTasks.API.Common.ImportTasks.gDefault_ss}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_sss;}> = {iTasks.API.Common.ImportTasks.gDefault_sss}
+
+:: <{iTasks.API.Common.ImportTasks.gText_s;}> = {!iTasks.API.Common.ImportTasks.gText_s}
+
+:: <{iTasks.API.Common.ImportTasks.gText_ss;}> = {!iTasks.API.Common.ImportTasks.gText_ss}
+
+:: <{iTasks.API.Common.ImportTasks.gText_sss;}> = {!iTasks.API.Common.ImportTasks.gText_sss}
+
+:: <{iTasks.API.Common.ImportTasks.gEditor_s;}> = {iTasks.API.Common.ImportTasks.gEditor_s}
+
+:: <{iTasks.API.Common.ImportTasks.gEditor_ss;}> = {iTasks.API.Common.ImportTasks.gEditor_ss}
+
+:: <{iTasks.API.Common.ImportTasks.gEditor_sss;}> = {iTasks.API.Common.ImportTasks.gEditor_sss}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_s;}> = {!iTasks.API.Common.ImportTasks.gEq_s}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_ss;}> = {!iTasks.API.Common.ImportTasks.gEq_ss}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_sss;}> = {!iTasks.API.Common.ImportTasks.gEq_sss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_ssss;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_ssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_ssss;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_ssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_ssss;}> = {!iTasks.API.Common.ImportTasks.gEq_ssss}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_ssss;}> = {iTasks.API.Common.ImportTasks.gDefault_ssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_sssss;}> = {!iTasks.API.Common.ImportTasks.gEq_sssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_ssssss;}> = {!iTasks.API.Common.ImportTasks.gEq_ssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_sssssss;}> = {!iTasks.API.Common.ImportTasks.gEq_sssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_ssssssss;}> = {!iTasks.API.Common.ImportTasks.gEq_ssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEq_sssssssss;}> = {!iTasks.API.Common.ImportTasks.gEq_sssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.bimap_s;}> = {iTasks.API.Common.ImportTasks.bimap_s}
+
+:: <{iTasks.API.Common.ImportTasks.bimap_ss;}> = {iTasks.API.Common.ImportTasks.bimap_ss}
+
+:: <{iTasks.API.Common.ImportTasks.bimap_sss;}> = {iTasks.API.Common.ImportTasks.bimap_sss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_sssss;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_sssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_ssssss;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_ssssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_sssssss;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_sssssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_ssssssss;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_ssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONEncode_sssssssss;}> = {!iTasks.API.Common.ImportTasks.JSONEncode_sssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_sssss;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_sssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_ssssss;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_ssssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_sssssss;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_sssssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_ssssssss;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_ssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.JSONDecode_sssssssss;}> = {!iTasks.API.Common.ImportTasks.JSONDecode_sssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_s;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_s}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_ss;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_ss}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_sss;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_sss}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_ssss;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_ssss}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_sssss;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_sssss}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_ssssss;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_ssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_sssssss;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_sssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_ssssssss;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_ssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gLexOrd_sssssssss;}> = {!iTasks.API.Common.ImportTasks.gLexOrd_sssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gText_ssss;}> = {!iTasks.API.Common.ImportTasks.gText_ssss}
+
+:: <{iTasks.API.Common.ImportTasks.gText_sssss;}> = {!iTasks.API.Common.ImportTasks.gText_sssss}
+
+:: <{iTasks.API.Common.ImportTasks.gText_ssssss;}> = {!iTasks.API.Common.ImportTasks.gText_ssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gText_sssssss;}> = {!iTasks.API.Common.ImportTasks.gText_sssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gText_ssssssss;}> = {!iTasks.API.Common.ImportTasks.gText_ssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gText_sssssssss;}> = {!iTasks.API.Common.ImportTasks.gText_sssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_sssss;}> = {iTasks.API.Common.ImportTasks.gDefault_sssss}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_ssssss;}> = {iTasks.API.Common.ImportTasks.gDefault_ssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_sssssss;}> = {iTasks.API.Common.ImportTasks.gDefault_sssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_ssssssss;}> = {iTasks.API.Common.ImportTasks.gDefault_ssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gDefault_sssssssss;}> = {iTasks.API.Common.ImportTasks.gDefault_sssssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEditor_ssss;}> = {iTasks.API.Common.ImportTasks.gEditor_ssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEditor_sssss;}> = {iTasks.API.Common.ImportTasks.gEditor_sssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEditor_ssssss;}> = {iTasks.API.Common.ImportTasks.gEditor_ssssss}
+
+:: <{iTasks.API.Common.ImportTasks.gEditor_sssssss;}> = {iTasks.API.Common.ImportTasks.gEditor_sssssss}
+
