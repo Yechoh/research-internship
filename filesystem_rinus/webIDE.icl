@@ -21,8 +21,8 @@ import qualified Data.Map as DM
 				}
 derive class iTask Settings
 
-settings = sharedStore "settings" 	{ dirCpm = "D:/Clean/iTasks-SDK/Examples/temp/cpm.exe"
-									, dirClean = "D:/Clean"
+settings = sharedStore "settings" 	{ dirCpm = "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223/cpm.exe"
+									, dirClean = "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223"
 									}
 updSettings 
 	= 		updateSharedInformation "Current Setting: " [] settings
@@ -93,7 +93,7 @@ treeEdit
  	>>= \pwd ->					selectFromTree pwd isCleanFile 
 	>>= \path ->				viewInformation "selected fule" [] path
 	>>= \path ->				readFromFile path
-	>>- \content -> 			editFile path (dropDirectory path) content
+	>>- \content -> 			editFile (takeDirectory path) (dropDirectory path) content
 
 browseEdit :: Task ()
 browseEdit 
@@ -117,7 +117,7 @@ editFile path name content
 	 		]
 	 		++ 
 	 		if (takeExtension name <> "icl") []
-	 		[	OnAction (Action "Build")	(hasValue (buildProject path (dropExtension name)))
+	 		[	OnAction (Action "Build")	(hasValue (const (buildProject path (dropExtension name))))
 	 		,	OnAction (Action "Run")		(always (runExec (path </> dropExtension name +++ ".exe") 8080))
 	 		]
 	 >>*	[   OnAction  ActionQuit    	(always (return ()))
@@ -133,9 +133,10 @@ where
 			 	,	OnAction ActionCancel	(always (return ()))
 			 	]
 		
-	buildProject buildPath iclFileName _
+	buildProject buildPath iclFileName 
 		= 					get settings 
-		>>- \curSet ->		createExec curSet.dirCpm buildPath iclFileName
+		>>- \curSet ->		viewInformation "Calling cpm : " [] (curSet.dirCpm, buildPath, iclFileName)
+		>>|					createExec curSet.dirCpm buildPath iclFileName
 
 
 

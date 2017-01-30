@@ -1,0 +1,67 @@
+|| ?module? memory_mapped_files
+
+
+memory_mapped_files.initialState = memory_mapped_files.ST
+memory_mapped_files.CloseST::B !_x_0 = True
+memory_mapped_files.GetLastError::I = error "no AnyCodeExpr"
+memory_mapped_files.GetCurrentDirectory_45::I !_x_0::I !_x_1 = error "no AnyCodeExpr"
+memory_mapped_files.GetCurrentDirectory_46::I !_x_0::I !_x_1::I = error "no AnyCodeExpr"
+memory_mapped_files.GetCurrentDirectory_47 !buffer_size_0::I !_x_1 = case _x_1 (memory_mapped_files.Ptr lpName_1_0 -> <{_Tuple2!3}> (memory_mapped_files.GetCurrentDirectory_45 buffer_size_0 lpName_1_0) lpName_1_0) (memory_mapped_files.NULL -> <{_Tuple2!3}> (memory_mapped_files.GetCurrentDirectory_46 buffer_size_0 0) "") 
+memory_mapped_files.GetCurrentDirectory = let _x_1_0 = memory_mapped_files.GetCurrentDirectory_47 0 memory_mapped_files.NULL, s_current_directory_1_1 = select _x_1_0::_Tuple2 0, current_directory_1_2::I = _SystemArray.createArray_17 s_current_directory_1_1 ' ', _x_1_3 = memory_mapped_files.GetCurrentDirectory_47 512 (memory_mapped_files.Ptr current_directory_1_2) in case (<{StdInt.==_16}> (select _x_1_3::_Tuple2 0) 0) (True -> StdMisc.abort "GetCurrentDirectory; error calling GetCurrentDirectory") (False -> let current_directory_3_0 = select _x_1_3::_Tuple2 1 in <{StdString.%_10}> current_directory_3_0 (_Tuple2 0 (<{StdInt.-_7}> (_SystemArray.size_20 current_directory_3_0) 2))) 
+memory_mapped_files.CreateFileMapping_48::I !hFile_0::I !lpFileMappingAttributes_1::I !flProtect_2::I !dwMaximumSizeHigh_3::I !dwMaximumSizeLow_4::I !lpName_5 = error "no AnyCodeExpr"
+memory_mapped_files.CreateFileMapping_49::I !hFile_0::I !lpFileMappingAttributes_1::I !flProtect_2::I !dwMaximumSizeHigh_3::I !dwMaximumSizeLow_4::I !lpName_5::I = error "no AnyCodeExpr"
+memory_mapped_files.CreateFileMapping !hFile_0::I !_x_1 !flProtect_2::I !dwMaximumSizeHigh_3::I !dwMaximumSizeLow_4::I !_x_5 !st_6 = case _x_1 (memory_mapped_files.NULL -> case _x_5 (memory_mapped_files.Ptr lpName_2_0 -> <{_Tuple2!3}> (memory_mapped_files.CreateFileMapping_48 hFile_0 0 flProtect_2 dwMaximumSizeHigh_3 dwMaximumSizeLow_4 lpName_2_0) st_6) (memory_mapped_files.NULL -> <{_Tuple2!3}> (memory_mapped_files.CreateFileMapping_49 hFile_0 0 flProtect_2 dwMaximumSizeHigh_3 dwMaximumSizeLow_4 0) st_6) ) 
+memory_mapped_files.MapViewOfFile_50::I !hFileMappingObject_0::I !dwDesiredAccess_1::I !dwFileOffsetHigh_2::I !dwFileOffsetLow_3::I !dwNumberOfBytesToMap_4::I = error "no AnyCodeExpr"
+memory_mapped_files.MapViewOfFile !hFileMappingObject_0::I !dwDesiredAccess_1::I !dwFileOffsetHigh_2::I !dwFileOffsetLow_3::I !dwNumberOfBytesToMap_4::I !st_5 = <{_Tuple2!3}> (memory_mapped_files.MapViewOfFile_50 hFileMappingObject_0 dwDesiredAccess_1 dwFileOffsetHigh_2 dwFileOffsetLow_3 dwNumberOfBytesToMap_4) st_5
+memory_mapped_files.DuplicateHandle_51::I !hSourceProcessHandle_0::I !hSourceHandle_1::I !hTargetProcessHandle_2::I !lpTargetHandle_3::I !dwDesiredAccess_4::I !b_5::I !dwOptions_6::I = error "no AnyCodeExpr"
+memory_mapped_files.DuplicateHandle !hSourceProcessHandle_0::I !hSourceHandle_1::I !hTargetProcessHandle_2::I !_x_3 !dwDesiredAccess_4::I !b_5::I !dwOptions_6::I !st_7 = case _x_3 (memory_mapped_files.Ptr lpTargetHandle_1_0 -> <{_Tuple2!3}> (memory_mapped_files.DuplicateHandle_51 hSourceProcessHandle_0 hSourceHandle_1 hTargetProcessHandle_2 lpTargetHandle_1_0 dwDesiredAccess_4 b_5 dwOptions_6) st_7) 
+memory_mapped_files.GetCurrentProcess2::I = error "no AnyCodeExpr"
+memory_mapped_files.GetCurrentProcess !st_0 = <{_Tuple2!3}> memory_mapped_files.GetCurrentProcess2 st_0
+memory_mapped_files.CreateFile_52::I !lpFileName_0 !dwDesiredAccess_1::I !dwShareMode_2::I !_x_3::I !dwCreationDisposition_4::I !dwFlagsAndAttributes_5::I !hTemplateFile_6::I = error "no AnyCodeExpr"
+memory_mapped_files.CreateFile !lpFileName_0 !dwDesiredAccess_1::I !dwShareMode_2::I !_x_3 !dwCreationDisposition_4::I !dwFlagsAndAttributes_5::I !hTemplateFile_6::I !st_7 = case _x_3 (memory_mapped_files.NULL -> <{_Tuple2!3}> (memory_mapped_files.CreateFile_52 lpFileName_0 dwDesiredAccess_1 dwShareMode_2 0 dwCreationDisposition_4 dwFlagsAndAttributes_5 hTemplateFile_6) st_7) 
+memory_mapped_files.UnmapViewOfFile2_53::I !lpcvoid_0::I = error "no AnyCodeExpr"
+memory_mapped_files.UnmapViewOfFile !lpcvoid_0::I !st_1 = <{_Tuple2!3}> (memory_mapped_files.UnmapViewOfFile2_53 lpcvoid_0) st_1
+memory_mapped_files.CloseHandle_54::I !handle_0::I = error "no AnyCodeExpr"
+memory_mapped_files.CloseHandle !handle_0::I !st_1 = <{_Tuple2!3}> (memory_mapped_files.CloseHandle_54 handle_0) st_1
+memory_mapped_files.GetFileSize_55::I !hfile_0::I !lpFileSizeHigh_1::I = error "no AnyCodeExpr"
+memory_mapped_files.GetFileSize !hfile_0::I !_x_1 !st_2 = case _x_1 (memory_mapped_files.NULL -> <{_Tuple2!3}> (memory_mapped_files.GetFileSize_55 hfile_0 0) st_2) 
+memory_mapped_files.CreateMySharedString_56 !_x_0::I !_x_1::I = error "no AnyCodeExpr"
+memory_mapped_files.CreateSharedString !ptr_0::I !size_1::I !st_2 = <{_Tuple2!3}> (select (memory_mapped_files.CreateMySharedString_56 ptr_0 size_1)::_Tuple1 0) st_2
+memory_mapped_files.OpenProcess_57::I !_x_0::I !_x_1::I !_x_2::I = error "no AnyCodeExpr"
+memory_mapped_files.OpenProcess !dwDesiredAccess_0::I !b_1::I !dwProcess_2::I !st_3 = <{_Tuple2!3}> (memory_mapped_files.OpenProcess_57 dwDesiredAccess_0 b_1 dwProcess_2) st_3
+<{memory_mapped_files.TD;HINSTANCE}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;PSTR}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;HWND}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;UINT}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;WPARAM}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPARAM}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LRESULT}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;DWORD}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPDWORD}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;POINT}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;MSG}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;BOOL}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPCSTR}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPCTSTR}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;HMODULE}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;HDC}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPPAINTSTRUCT}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPRECT}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;HMENU}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPVOID}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPCVOID}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;LPWNDCLASSEX}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;ATOM}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;HANDLE}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;HFILE}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;PLHANDLE}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;SECURITY_ATTRIBUTES}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;MyString}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;ST}> _x_0::B = _predefined._Nil
+<{memory_mapped_files.TD;Ptr}> _x_0::B = _predefined._Nil
+
+:: memory_mapped_files.MyString = memory_mapped_files.MyString !a1
+:: memory_mapped_files.Ptr = memory_mapped_files.NULL | memory_mapped_files.Ptr a1
+:: memory_mapped_files.ST = memory_mapped_files.ST
+
+|| Converted Records
