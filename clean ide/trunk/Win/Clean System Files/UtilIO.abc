@@ -1,0 +1,1332 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "Platform" "20170123155356"
+.depend "StdLibMisc" "20161223204047"
+.depend "Directory" "20161223204009"
+.depend "StdPathname" "20170123155353"
+.depend "_SystemArray" "20161223204046"
+.depend "StdArray" "20161223204046"
+.depend "StdTuple" "20161223204046"
+.depend "StdReal" "20161223204046"
+.depend "StdChar" "20161223204046"
+.depend "StdInt" "20161223204046"
+.depend "StdBool" "20161223204046"
+.depend "StdClass" "20161223204046"
+.depend "StdList" "20161223204046"
+.depend "UtilDate" "20170123155353"
+.depend "StdFile" "20170206141502"
+.depend "StdString" "20161223204046"
+.depend "StdOverloaded" "20161223204046"
+.depend "_SystemDynamic" "20161223204009"
+.depend "UtilIO" "20170123155357"
+.implib "util_io_kernel_lib"
+.module m_UtilIO "UtilIO" "20170123155357"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod Directory
+.implab e_Directory_sgetFileInfo
+.implab e_Directory_spd_StringToPath
+.implab e_Directory_s==;13
+.impdesc e_Directory_dNoDirError
+.impmod _SystemArray
+.impmod StdChar
+.implab e_StdChar_s==;18
+.impmod StdInt
+.implab e_StdInt_s+;6
+.implab e_StdInt_s-;7
+.implab e_StdInt_sone;11
+.implab e_StdInt_s==;16
+.implab e_StdInt_s<;17
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod UtilDate
+.impdesc e_UtilDate_rDATE
+.impmod StdString
+.implab e_StdString_s%;10
+.implab e_StdString_s+++;11
+.export e_UtilIO_sTD;OSToolbox
+.export e_UtilIO_eaTD;OSToolbox
+.descexp e_UtilIO_dTD;OSToolbox e_UtilIO_nTD;OSToolbox e_UtilIO_lTD;OSToolbox 1 0 "TD;OSToolbox"
+.o 2 0
+e_UtilIO_lTD;OSToolbox
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_UtilIO_eaTD;OSToolbox
+.n 1 e_UtilIO_dTD;OSToolbox e_UtilIO_eaTD;OSToolbox
+.o 1 0
+e_UtilIO_nTD;OSToolbox
+	push_node _cycle_in_spine 1
+.o 2 0
+e_UtilIO_eaTD;OSToolbox
+.o 2 0
+e_UtilIO_sTD;OSToolbox
+.o 2 0
+s30
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_UtilIO_sGetCurrentDirectory
+.descexp e_UtilIO_dGetCurrentDirectory e_UtilIO_nGetCurrentDirectory e_UtilIO_lGetCurrentDirectory 0 0 "GetCurrentDirectory"
+.o 1 0
+e_UtilIO_lGetCurrentDirectory
+	halt
+.n 0 e_UtilIO_dGetCurrentDirectory
+.o 1 0
+e_UtilIO_nGetCurrentDirectory
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea11
+.o 1 1 b
+	push_a 0
+	buildh ARRAY 1
+	buildB_b 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 0
+ea11
+.o 0 0
+e_UtilIO_sGetCurrentDirectory
+.o 0 0
+s11
+	buildAC "\000"
+	pushI 0
+.d 1 1 i
+	jsr s29
+.o 0 1 i
+	pushC '\000'
+	push_b 1
+	create_array CHAR 0 1
+	push_a 0
+	push_b 0
+	updatepop_b 0 1
+.d 1 1 i
+	jsr s29
+.o 0 1 i
+	pushI 0
+	push_b 1
+	eqI
+	notB
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+.o 1 1 i
+s29
+	ccall GetCurrentDirectoryA@8 "PIs:I"
+
+.d 0 1 i
+	rtn
+.export e_UtilIO_sGetShortPathName
+.descexp e_UtilIO_dGetShortPathName e_UtilIO_nGetShortPathName e_UtilIO_lGetShortPathName 1 0 "GetShortPathName"
+.o 2 0
+e_UtilIO_lGetShortPathName
+	pop_a 1
+.d 1 0
+	jsr ea10
+.o 1 1 b
+	push_a 0
+	buildh ARRAY 1
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_UtilIO_dGetShortPathName
+.o 1 0
+e_UtilIO_nGetShortPathName
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea10
+.o 1 1 b
+	push_a 0
+	buildh ARRAY 1
+	buildB_b 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea10
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_UtilIO_sGetShortPathName
+.o 1 0
+s10
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_a 0
+	select CHAR 0 1
+	pushC '\000'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	push_a 0
+	push_b 0
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s32
+.o 1 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr s37
+.o 1 1 i
+	push_a 0
+	buildI_b 0
+	push_b 1
+.d 2 1 b
+	jsr s33
+.o 1 0
+	push_b 0
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	notB
+	push_a 0
+	updatepop_a 0 2
+	updatepop_b 0 2
+.d 1 1 b
+	rtn
+.o 2 1 b
+s33
+	eqB_b TRUE 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.2
+	push_a 1
+	push_a 0
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+	push_arraysize CHAR 0 1
+	pushI 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	rtn
+.o 1 1 b
+s32
+	eqB_b TRUE 0
+	jmp_true case.3
+	jmp case.4
+case.3
+	pop_b 1
+.d 1 0
+	rtn
+case.4
+	buildAC "\000"
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.o 2 1 i
+s28
+	ccall GetShortPathNameA@12 "PssI:I"
+
+.d 0 1 i
+	rtn
+.export e_UtilIO_sGetLongPathName
+.descexp e_UtilIO_dGetLongPathName e_UtilIO_nGetLongPathName e_UtilIO_lGetLongPathName 1 0 "GetLongPathName"
+.o 2 0
+e_UtilIO_lGetLongPathName
+	pop_a 1
+.d 1 0
+	jsr ea9
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_UtilIO_dGetLongPathName
+.o 1 0
+e_UtilIO_nGetLongPathName
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea9
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea9
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_UtilIO_sGetLongPathName
+.o 1 0
+s9
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jmp s26
+.export e_UtilIO_sFFileSize
+.descexp e_UtilIO_dFFileSize e_UtilIO_nFFileSize e_UtilIO_lFFileSize 3 0 "FFileSize"
+.a 0 a8
+.o 2 0
+e_UtilIO_lFFileSize
+	repl_args 2 2
+.o 3 0
+a8
+.d 3 0
+	jsr ea8
+.o 1 2 bi
+	push_a 0
+	buildI_b 1
+	buildB_b 0
+	buildh _Tuple 2
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 2
+.d 1 0
+	rtn
+.n 3 e_UtilIO_dFFileSize
+.o 1 0
+e_UtilIO_nFFileSize
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea8
+.o 1 2 bi
+	push_a 0
+	buildI_b 1
+	buildB_b 0
+	buildh _Tuple 2
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 2
+.d 1 0
+	rtn
+.o 3 0
+ea8
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	push_r_args 1 4 0
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	update_a 3 5
+	update_a 1 3
+	pop_a 2
+.o 6 0
+e_UtilIO_sFFileSize
+.o 6 0
+s8
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	buildh _Nil 0
+	update_a 0 11
+	update_a 0 12
+	pop_a 1
+.d 6 0
+	jsr e_Directory_spd_StringToPath
+.o 2 1 b
+	push_a 0
+	push_b 0
+	push_b 0
+	notB
+	jmp_false else.5
+	pushI 0
+	pushB FALSE
+	push_a 2
+	updatepop_a 0 9
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 bi
+	rtn
+else.5
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 5
+	update_a 5 6
+	update_a 0 5
+	pop_a 1
+	pop_b 2
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+.d 6 0
+	jsr e_Directory_sgetFileInfo
+.o 3 0
+	push_a 1
+	push_a 1
+	buildh e_Directory_dNoDirError 0
+	push_a 1
+	update_a 3 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr e_Directory_s==;13
+.o 0 1 b
+	notB
+	jmp_false else.6
+	pushI 0
+	pushB FALSE
+	push_a 1
+	updatepop_a 0 2
+.d 1 2 bi
+	rtn
+else.6
+	jsr_eval 0
+	push_r_args_a 0 2 0 1 1
+	repl_r_args 0 11
+	update_b 1 10
+	updatepop_b 0 9
+	update_b 0 1
+	pop_b 1
+	pushB TRUE
+	push_a 1
+	updatepop_a 0 2
+.d 1 2 bi
+	rtn
+.export e_UtilIO_sFReadOnly
+.descexp e_UtilIO_dFReadOnly e_UtilIO_nFReadOnly e_UtilIO_lFReadOnly 3 0 "FReadOnly"
+.a 0 a7
+.o 2 0
+e_UtilIO_lFReadOnly
+	repl_args 2 2
+.o 3 0
+a7
+.d 3 0
+	jsr ea7
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 e_UtilIO_dFReadOnly
+.o 1 0
+e_UtilIO_nFReadOnly
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea7
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea7
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	push_r_args 1 4 0
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	update_a 3 5
+	update_a 1 3
+	pop_a 2
+.o 6 0
+e_UtilIO_sFReadOnly
+.o 6 0
+s7
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	buildh _Nil 0
+	update_a 0 11
+	update_a 0 12
+	pop_a 1
+.d 6 0
+	jsr e_Directory_spd_StringToPath
+.o 2 1 b
+	push_a 0
+	push_b 0
+	push_b 0
+	notB
+	jmp_false else.7
+	push_a 2
+	pushB FALSE
+	updatepop_a 0 9
+	updatepop_b 0 2
+.d 1 1 b
+	rtn
+else.7
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 5
+	update_a 5 6
+	update_a 0 5
+	pop_a 1
+	pop_b 2
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+.d 6 0
+	jsr e_Directory_sgetFileInfo
+.o 3 0
+	push_a 1
+	push_a 1
+	buildh e_Directory_dNoDirError 0
+	push_a 1
+	update_a 3 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr e_Directory_s==;13
+.o 0 1 b
+	notB
+	jmp_false else.8
+	push_a 1
+	pushB FALSE
+	updatepop_a 0 2
+.d 1 1 b
+	rtn
+else.8
+	jsr_eval 0
+	push_r_args_a 0 2 0 1 1
+	repl_r_args 0 11
+	pop_b 10
+	push_a 1
+	updatepop_a 0 2
+.d 1 1 b
+	rtn
+.export e_UtilIO_sGetFullApplicationPath
+.descexp e_UtilIO_dGetFullApplicationPath e_UtilIO_nGetFullApplicationPath e_UtilIO_lGetFullApplicationPath 1 0 "GetFullApplicationPath"
+.o 2 0
+e_UtilIO_lGetFullApplicationPath
+	pop_a 1
+.d 1 0
+	jsr ea6
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 1 e_UtilIO_dGetFullApplicationPath
+.o 1 0
+e_UtilIO_nGetFullApplicationPath
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea6
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 1 0
+ea6
+	jsr_eval 0
+.o 1 0
+e_UtilIO_sGetFullApplicationPath
+.o 1 0
+s6
+	push_a 0
+	buildAC ""
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s5
+.o 2 0
+	push_a 0
+	buildh ARRAY 1
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	rtn
+.export e_UtilIO_sFStartUpDir
+.descexp e_UtilIO_dFStartUpDir e_UtilIO_nFStartUpDir e_UtilIO_lFStartUpDir 2 0 "FStartUpDir"
+.a 0 a5
+.o 2 0
+e_UtilIO_lFStartUpDir
+	repl_args 1 1
+.o 2 0
+a5
+.d 2 0
+	jsr ea5
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh ARRAY 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 2 e_UtilIO_dFStartUpDir
+.o 1 0
+e_UtilIO_nFStartUpDir
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea5
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh ARRAY 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea5
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_UtilIO_sFStartUpDir
+.o 2 0
+s5
+	pop_a 1
+	ccall WinGetModulePath "-S"
+
+.d 1 0
+	jsr s17
+.o 1 0
+.d 1 0
+	jsr s26
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+.o 1 0
+s17
+	pushI 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	subI
+	push_a 0
+.d 1 1 i
+	jsr s18
+.o 0 2 bi
+	push_b 0
+	jmp_false else.9
+	pushI 1
+	push_b 2
+	subI
+	pushI 0
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	rtn
+else.9
+	pop_b 2
+.d 1 0
+	rtn
+.o 1 1 i
+s18
+	push_b 0
+	pushI 0
+	ltI
+	notB
+	jmp_false else.10
+	pushI 0
+	pushB FALSE
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.10
+	push_b 0
+	push_a 0
+	select CHAR 0 1
+	pushC '\\'
+	eqC
+	jmp_false else.11
+	push_b 0
+	pushB TRUE
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.11
+	pushI 1
+	push_b 1
+	subI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	jmp s18
+.o 0 0
+s14
+.inline WinGetModulePath
+	ccall WinGetModulePath "-S"
+.end
+
+.d 1 0
+	rtn
+.o 1 0
+s26
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_a 0
+.d 1 1 i
+	jsr s36
+.o 1 1 b
+	push_b 0
+	notB
+	jmp_false else.12
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+else.12
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 1
+	push_b 1
+	subI
+	pushI 0
+	push_a 1
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	jsr s26
+.o 1 0
+	push_a 1
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 1
+	push_b 2
+	addI
+	push_a 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "\\"
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "\000"
+	push_a 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jsr s24
+.o 1 1 b
+	push_b 0
+	jmp_false else.13
+	push_a 0
+	pop_b 1
+	updatepop_a 0 2
+.d 1 0
+	jsr s23
+.o 1 0
+	buildAC "\\"
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+else.13
+	updatepop_a 1 2
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+s23
+	push_a 0
+	pushI 44
+.d 1 1 i
+	jsr s22
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 44
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	rtn
+.o 1 1 i
+s22
+	push_a 0
+	push_arraysize CHAR 0 1
+	push_b 1
+	ltI
+	jmp_false else.14
+	push_b 0
+	push_a 0
+	select CHAR 0 1
+	pushC '\000'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	notB
+	jmp_false else.14
+	pushI 1
+	push_b 1
+	addI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	jmp s22
+else.14
+	pop_a 1
+.d 0 1 i
+	rtn
+.o 1 0
+s24
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr s19
+.o 1 1 i
+	pushI -1
+	push_b 1
+	eqI
+	notB
+	jmp_false else.16
+	push_b 0
+.d 0 1 i
+	jsr s21
+.o 0 1 i
+	push_b 0
+	push_b 1
+	eqI
+	jmp_false else.17
+	push_a 0
+	pushB TRUE
+	updatepop_a 0 1
+	updatepop_b 0 2
+.d 1 1 b
+	rtn
+else.17
+	push_a 0
+	pushB FALSE
+	updatepop_a 0 1
+	updatepop_b 0 2
+.d 1 1 b
+	rtn
+else.16
+	buildAC ""
+	pushB FALSE
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+.o 0 1 i
+s21
+	ccall FindClose@4 "PI:I"
+
+.d 0 1 i
+	rtn
+.o 1 0
+s19
+	pushC '\000'
+	pushI 318
+	create_array CHAR 0 1
+	push_a 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s20
+.o 0 1 i
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 i
+	rtn
+.o 2 0
+s20
+	ccall FindFirstFileA@8 "Pss:I"
+
+.d 0 1 i
+	rtn
+.export e_UtilIO_sFModified
+.descexp e_UtilIO_dFModified e_UtilIO_nFModified e_UtilIO_lFModified 2 0 "FModified"
+.a 0 a4
+.o 2 0
+e_UtilIO_lFModified
+	repl_args 1 1
+.o 2 0
+a4
+.d 2 0
+	jsr ea4
+.o 1 7 biiiiii
+	push_a 0
+	build_r e_UtilDate_rDATE 0 7 0 0
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 7
+.d 1 0
+	rtn
+.n 2 e_UtilIO_dFModified
+.o 1 0
+e_UtilIO_nFModified
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea4
+.o 1 7 biiiiii
+	push_a 0
+	build_r e_UtilDate_rDATE 0 7 0 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 7
+.d 1 0
+	rtn
+.o 2 0
+ea4
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_UtilIO_sFModified
+.o 2 0
+s4
+	push_a 0
+	updatepop_a 0 1
+	ccall WinFileModifiedDate "S-IIIIIII"
+
+	push_b 6
+	push_b 6
+	push_b 6
+	push_b 6
+	push_b 6
+	push_b 6
+	push_b 6
+	push_a 0
+	updatepop_a 0 1
+	update_b 6 13
+	update_b 5 12
+	update_b 4 11
+	update_b 3 10
+	update_b 2 9
+	update_b 1 8
+	updatepop_b 0 7
+.d 1 7 biiiiii
+	rtn
+.o 1 0
+s15
+.inline WinFileModifiedDate
+	ccall WinFileModifiedDate "S-IIIIIII"
+.end
+
+.d 0 7 biiiiii
+	rtn
+.export e_UtilIO_sFExists
+.descexp e_UtilIO_dFExists e_UtilIO_nFExists e_UtilIO_lFExists 2 0 "FExists"
+.a 0 a3
+.o 2 0
+e_UtilIO_lFExists
+	repl_args 1 1
+.o 2 0
+a3
+.d 2 0
+	jsr ea3
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_UtilIO_dFExists
+.o 1 0
+e_UtilIO_nFExists
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea3
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea3
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_UtilIO_sFExists
+.o 2 0
+s3
+	push_a 0
+	updatepop_a 0 1
+	ccall WinFileExists "S-I"
+
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	rtn
+.o 1 0
+s16
+.inline WinFileExists
+	ccall WinFileExists "S-I"
+.end
+
+.d 0 1 b
+	rtn
+.export e_UtilIO_sLaunchApplication`
+.descexp e_UtilIO_dLaunchApplication` e_UtilIO_nLaunchApplication` e_UtilIO_lLaunchApplication` 3 0 "LaunchApplication`"
+.a 0 a2
+.o 2 0
+e_UtilIO_lLaunchApplication`
+	repl_args 2 2
+.o 3 0
+a2
+.d 3 0
+	jsr ea2
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 e_UtilIO_dLaunchApplication`
+.o 1 0
+e_UtilIO_nLaunchApplication`
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea2
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea2
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushB_a 1
+	push_array 0
+	update_a 0 2
+	pop_a 2
+.o 2 1 b
+e_UtilIO_sLaunchApplication`
+.o 2 1 b
+s2
+	pushI 42
+	push_b 1
+	push_a 0
+	update_b 1 2
+	updatepop_b 0 1
+	updatepop_a 0 1
+	ccall WinLaunchApp "SII-II"
+
+	update_b 0 1
+	pop_b 1
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	rtn
+.o 1 2 bi
+s12
+.inline WinLaunchApp
+	ccall WinLaunchApp "SII-II"
+.end
+
+.d 0 2 bi
+	rtn
+.export e_UtilIO_sLaunchApplication
+.descexp e_UtilIO_dLaunchApplication e_UtilIO_nLaunchApplication e_UtilIO_lLaunchApplication 4 0 "LaunchApplication"
+.a 0 a1
+.o 2 0
+e_UtilIO_lLaunchApplication
+	repl_args 3 3
+.o 4 0
+a1
+.d 4 0
+	jsr ea1
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 4 e_UtilIO_dLaunchApplication
+.o 1 0
+e_UtilIO_nLaunchApplication
+	push_node _cycle_in_spine 4
+.d 4 0
+	jsr ea1
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 4 0
+ea1
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushB_a 2
+	push_array 1
+	push_array 1
+	update_a 1 4
+	update_a 0 3
+	pop_a 3
+.o 3 1 b
+e_UtilIO_sLaunchApplication
+.o 3 1 b
+s1
+	pushI 42
+	push_b 1
+	push_a 1
+	push_a 1
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 1 3
+	updatepop_a 0 2
+	ccall WinLaunchApp2 "SSII-II"
+
+	update_b 0 1
+	pop_b 1
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	rtn
+.o 2 2 bi
+s13
+.inline WinLaunchApp2
+	ccall WinLaunchApp2 "SSII-II"
+.end
+
+.d 0 2 bi
+	rtn
+.o 1 1 i
+s36
+	pushI 0
+	push_b 1
+	ltI
+	jmp_false else.18
+	buildI -1
+	pushB FALSE
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+else.18
+	push_b 0
+	push_a 0
+	select CHAR 0 1
+	pushC '\\'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.19
+	buildI_b 0
+	pushB TRUE
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+else.19
+	pushI 1
+	push_b 1
+	subI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	jmp s36
+.o 1 0
+s37
+	pushI 0
+	buildAC "\000"
+	push_a 1
+.d 2 1 i
+	jsr s28
+.o 0 1 i
+	pushC '\000'
+	push_b 1
+	create_array CHAR 0 1
+	push_b 0
+	push_a 0
+	push_a 2
+	updatepop_b 0 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 1 i
+	jsr s28
+.o 0 1 i
+	push_a 0
+	push_b 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	rtn

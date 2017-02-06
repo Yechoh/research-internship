@@ -1,0 +1,2799 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdMisc" "20161223204046"
+.depend "StdOrdList" "20161223204046"
+.depend "StdList" "20161223204046"
+.depend "_SystemArray" "20161223204046"
+.depend "StdArray" "20161223204046"
+.depend "StdChar" "20161223204046"
+.depend "StdReal" "20161223204046"
+.depend "StdInt" "20161223204046"
+.depend "StdString" "20161223204046"
+.depend "StdBool" "20161223204046"
+.depend "StdClass" "20161223204046"
+.depend "StdOverloaded" "20161223204046"
+.depend "_SystemDynamic" "20161223204009"
+.depend "UtilStrictLists" "20170123155353"
+.module m_UtilStrictLists "UtilStrictLists" "20170123155354"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdMisc
+.implab e_StdMisc_sabort
+.impmod StdOrdList
+.implab e_StdOrdList_ssort
+.impmod StdInt
+.implab e_StdInt_s+;6
+.implab e_StdInt_s-;7
+.implab e_StdInt_sone;11
+.impmod StdString
+.implab e_StdString_s==;2
+.impdesc e_StdString_d<;3
+.implab e_StdString_s<;3
+.implab e_StdString_s+++;11
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod StdClass
+.impdesc e_StdClass_rOrd;
+.impmod StdOverloaded
+.impdesc e_StdOverloaded_r<;
+.export e_UtilStrictLists_sTD;List
+.export e_UtilStrictLists_eaTD;List
+.descexp e_UtilStrictLists_dTD;List e_UtilStrictLists_nTD;List e_UtilStrictLists_lTD;List 1 0 "TD;List"
+.o 2 0
+e_UtilStrictLists_lTD;List
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_UtilStrictLists_eaTD;List
+.n 1 e_UtilStrictLists_dTD;List e_UtilStrictLists_eaTD;List
+.o 1 0
+e_UtilStrictLists_nTD;List
+	push_node _cycle_in_spine 1
+.o 2 0
+e_UtilStrictLists_eaTD;List
+.o 2 0
+e_UtilStrictLists_sTD;List
+.o 2 0
+s31
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_UtilStrictLists_stoString;29
+.descexp e_UtilStrictLists_dtoString;29 e_UtilStrictLists_ntoString;29 e_UtilStrictLists_ltoString;29 2 0 "toString;29"
+.a 0 a30
+.o 2 0
+e_UtilStrictLists_ltoString;29
+	repl_args 1 1
+.o 2 0
+a30
+.d 2 0
+	jsr ea30
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 2 e_UtilStrictLists_dtoString;29
+.o 1 0
+e_UtilStrictLists_ntoString;29
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea30
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+ea30
+	jsr_eval 1
+	jsr_eval 0
+	repl_r_args 1 0
+.o 2 0
+e_UtilStrictLists_stoString;29
+.o 2 0
+s30
+	eq_desc _Nil 0 1
+	jmp_true case.1
+	jmp case.2
+case.1
+	pop_a 2
+	buildAC "[]"
+.d 1 0
+	rtn
+case.2
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	push_a 3
+	update_a 4 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s37
+.o 1 0
+	buildAC "]"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 2
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 4
+	update_a 0 5
+	pop_a 1
+	jsr_ap 1
+	push_array 0
+	updatepop_a 0 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "["
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.o 2 0
+s37
+	eq_desc _Nil 0 1
+	jmp_true case.3
+	jmp case.4
+case.3
+	pop_a 2
+	buildAC ""
+.d 1 0
+	rtn
+case.4
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	push_a 3
+	update_a 4 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s37
+.o 1 0
+	push_a 2
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 4
+	update_a 0 5
+	pop_a 1
+	jsr_ap 1
+	push_array 0
+	updatepop_a 0 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC ","
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sMapR
+.export e_UtilStrictLists_eaMapR
+.descexp e_UtilStrictLists_dMapR e_UtilStrictLists_nMapR e_UtilStrictLists_lMapR 2 0 "MapR"
+.a 2 e_UtilStrictLists_eaMapR
+.o 2 0
+e_UtilStrictLists_lMapR
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaMapR
+.n 2 e_UtilStrictLists_dMapR e_UtilStrictLists_eaMapR
+.o 1 0
+e_UtilStrictLists_nMapR
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaMapR
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sMapR
+.o 3 0
+s29
+	buildh _Nil 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp s35
+.o 4 0
+s35
+	eq_desc _Nil 0 1
+	jmp_true case.5
+	jmp case.6
+case.5
+	fill_a 2 3
+	pop_a 3
+.d 1 0
+	rtn
+case.6
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	push_a 3
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_ap 1
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Cons 2
+	push_a 1
+	push_a 3
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp s35
+.export e_UtilStrictLists_sMap
+.export e_UtilStrictLists_eaMap
+.descexp e_UtilStrictLists_dMap e_UtilStrictLists_nMap e_UtilStrictLists_lMap 2 0 "Map"
+.a 2 e_UtilStrictLists_eaMap
+.o 2 0
+e_UtilStrictLists_lMap
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaMap
+.n 2 e_UtilStrictLists_dMap e_UtilStrictLists_eaMap
+.o 1 0
+e_UtilStrictLists_nMap
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaMap
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sMap
+.o 3 0
+s28
+	eq_desc _Cons 2 1
+	jmp_true case.7
+	jmp case.8
+case.7
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	create
+	push_a 2
+	push_a 4
+	update_a 5 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 3
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 6
+	pop_a 1
+	jsr_ap 1
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh _Cons 2 7
+.d 3 0
+	jsr s28.2
+.o 1 0
+	pop_a 3
+.d 1 0
+	rtn
+case.8
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+s28.2
+	eq_desc _Cons 2 1
+	jmp_true case.9
+	jmp case.10
+case.9
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	create
+	push_a 2
+	push_a 4
+	update_a 5 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 3
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 6
+	pop_a 1
+	jsr_ap 1
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh _Cons 2 7
+.keep 5 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s28.2
+case.10
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sInclString
+.export e_UtilStrictLists_eaInclString
+.descexp e_UtilStrictLists_dInclString e_UtilStrictLists_nInclString e_UtilStrictLists_lInclString 2 0 "InclString"
+.a 2 e_UtilStrictLists_eaInclString
+.o 2 0
+e_UtilStrictLists_lInclString
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaInclString
+.n 2 e_UtilStrictLists_dInclString e_UtilStrictLists_eaInclString
+.o 1 0
+e_UtilStrictLists_nInclString
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaInclString
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 3 0
+e_UtilStrictLists_sInclString
+.o 3 0
+s25
+	push_a 1
+	push_a 1
+.d 2 0
+	jsr s22
+.o 0 1 b
+	jmp_false else.11
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+else.11
+	push_a 1
+	push_a 1
+	buildh ARRAY 1
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sEQStrings
+.descexp e_UtilStrictLists_dEQStrings e_UtilStrictLists_nEQStrings e_UtilStrictLists_lEQStrings 2 0 "EQStrings"
+.a 0 a24
+.o 2 0
+e_UtilStrictLists_lEQStrings
+	repl_args 1 1
+.o 2 0
+a24
+.d 2 0
+	jsr ea24
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_UtilStrictLists_dEQStrings
+.o 1 0
+e_UtilStrictLists_nEQStrings
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea24
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea24
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_UtilStrictLists_sEQStrings
+.o 2 0
+s24
+	eq_desc _Nil 0 0
+	jmp_true case.12
+	jmp case.13
+case.12
+	eq_desc _Nil 0 1
+	jmp_true case.15
+	jmp case.14
+case.15
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.13
+	repl_args 2 2
+	eq_desc _Cons 2 2
+	jmp_true case.16
+	pop_a 1
+	jmp case.14
+case.16
+	push_args 2 2 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	push_array 0
+	push_array 3
+	update_a 5 6
+	update_a 3 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.17
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s24
+else.17
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.14
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_UtilStrictLists_sSortStrings
+.export e_UtilStrictLists_eaSortStrings
+.descexp e_UtilStrictLists_dSortStrings e_UtilStrictLists_nSortStrings e_UtilStrictLists_lSortStrings 1 0 "SortStrings"
+.o 2 0
+e_UtilStrictLists_lSortStrings
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_UtilStrictLists_eaSortStrings
+.n 1 e_UtilStrictLists_dSortStrings e_UtilStrictLists_eaSortStrings
+.o 1 0
+e_UtilStrictLists_nSortStrings
+	push_node _cycle_in_spine 1
+.o 2 0
+e_UtilStrictLists_eaSortStrings
+	jsr_eval 0
+.o 2 0
+e_UtilStrictLists_sSortStrings
+.o 2 0
+s23
+	create
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s26
+.o 1 0
+	buildh e_StdString_d<;3 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdOrdList_ssort
+.o 1 0
+.d 2 0
+	jmp s27
+.export e_UtilStrictLists_sListToStrictList
+.export e_UtilStrictLists_eaListToStrictList
+.descexp e_UtilStrictLists_dListToStrictList e_UtilStrictLists_nListToStrictList e_UtilStrictLists_lListToStrictList 1 0 "ListToStrictList"
+.o 2 0
+e_UtilStrictLists_lListToStrictList
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_UtilStrictLists_eaListToStrictList
+.n 1 e_UtilStrictLists_dListToStrictList e_UtilStrictLists_eaListToStrictList
+.o 1 0
+e_UtilStrictLists_nListToStrictList
+	push_node _cycle_in_spine 1
+.o 2 0
+e_UtilStrictLists_eaListToStrictList
+	jsr_eval 0
+.o 2 0
+e_UtilStrictLists_sListToStrictList
+.o 2 0
+s27
+	buildh _Nil 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s41
+.o 3 0
+s41
+	eq_desc _Nil 0 1
+	jmp_true case.18
+	jmp case.19
+case.18
+	fill_a 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.19
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	create
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s41
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s39
+.o 3 0
+s39
+	push_a 1
+	push_a 1
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sStrictListToList
+.export e_UtilStrictLists_eaStrictListToList
+.descexp e_UtilStrictLists_dStrictListToList e_UtilStrictLists_nStrictListToList e_UtilStrictLists_lStrictListToList 1 0 "StrictListToList"
+.o 2 0
+e_UtilStrictLists_lStrictListToList
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_UtilStrictLists_eaStrictListToList
+.n 1 e_UtilStrictLists_dStrictListToList e_UtilStrictLists_eaStrictListToList
+.o 1 0
+e_UtilStrictLists_nStrictListToList
+	push_node _cycle_in_spine 1
+.o 2 0
+e_UtilStrictLists_eaStrictListToList
+	jsr_eval 0
+.o 2 0
+e_UtilStrictLists_sStrictListToList
+.o 2 0
+s26
+	eq_desc _Nil 0 0
+	jmp_true case.20
+	jmp case.21
+case.20
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.21
+	repl_args 2 2
+	push_a 1
+	build e_UtilStrictLists_dStrictListToList 1 e_UtilStrictLists_nStrictListToList
+	push_a 1
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sStringOccurs
+.descexp e_UtilStrictLists_dStringOccurs e_UtilStrictLists_nStringOccurs e_UtilStrictLists_lStringOccurs 2 0 "StringOccurs"
+.a 0 a22
+.o 2 0
+e_UtilStrictLists_lStringOccurs
+	repl_args 1 1
+.o 2 0
+a22
+.d 2 0
+	jsr ea22
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_UtilStrictLists_dStringOccurs
+.o 1 0
+e_UtilStrictLists_nStringOccurs
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea22
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea22
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_UtilStrictLists_sStringOccurs
+.o 2 0
+s22
+	eq_desc _Nil 0 1
+	jmp_true case.22
+	jmp case.23
+case.22
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.23
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 2
+	push_array 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.24
+	pop_a 3
+	pushB TRUE
+.d 0 1 b
+	rtn
+else.24
+	push_a 0
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s22
+.export e_UtilStrictLists_sUnionStringList
+.export e_UtilStrictLists_eaUnionStringList
+.descexp e_UtilStrictLists_dUnionStringList e_UtilStrictLists_nUnionStringList e_UtilStrictLists_lUnionStringList 2 0 "UnionStringList"
+.a 2 e_UtilStrictLists_eaUnionStringList
+.o 2 0
+e_UtilStrictLists_lUnionStringList
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaUnionStringList
+.n 2 e_UtilStrictLists_dUnionStringList e_UtilStrictLists_eaUnionStringList
+.o 1 0
+e_UtilStrictLists_nUnionStringList
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaUnionStringList
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sUnionStringList
+.o 3 0
+s21
+	eq_desc _Nil 0 0
+	jmp_true case.25
+	jmp case.26
+case.25
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+case.26
+	eq_desc _Nil 0 1
+	jmp_true case.27
+	jmp case.28
+case.27
+	fill_a 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.28
+	push_args 1 2 2
+	eq_desc _Cons 2 2
+	jmp_true case.29
+	pop_a 2
+	jmp s21.1
+case.29
+	push_args 2 2 2
+	push_array 2
+	push_array 1
+.d 2 0
+	jsr cmpAC
+.o 0 1 i
+	pushI 0
+	gtI
+	jmp_false else.30
+	create
+	push_a 6
+	push_a 3
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s21.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+else.30
+	push_array 0
+	push_array 3
+.d 2 0
+	jsr cmpAC
+.o 0 1 i
+	pushI 0
+	gtI
+	jmp_false else.31
+	create
+	push_a 4
+	push_a 6
+	update_a 5 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s21.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+else.31
+	create
+	push_a 4
+	push_a 3
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s21.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+s21.1
+	pop_a 3
+	pushD m_UtilStrictLists
+	pushD e_UtilStrictLists_dUnionStringList
+.d 0 2 ii
+	jmp _match_error
+.o 3 0
+s21.2
+	eq_desc _Nil 0 0
+	jmp_true case.32
+	jmp case.33
+case.32
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+case.33
+	eq_desc _Nil 0 1
+	jmp_true case.34
+	jmp case.35
+case.34
+	fill_a 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.35
+	push_args 1 2 2
+	eq_desc _Cons 2 2
+	jmp_true case.36
+	pop_a 2
+	jmp s21.3
+case.36
+	push_args 2 2 2
+	push_array 2
+	push_array 1
+.d 2 0
+	jsr cmpAC
+.o 0 1 i
+	pushI 0
+	gtI
+	jmp_false else.37
+	create
+	push_a 6
+	push_a 3
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s21.2
+else.37
+	push_array 0
+	push_array 3
+.d 2 0
+	jsr cmpAC
+.o 0 1 i
+	pushI 0
+	gtI
+	jmp_false else.38
+	create
+	push_a 4
+	push_a 6
+	update_a 5 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s21.2
+else.38
+	create
+	push_a 4
+	push_a 3
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s21.2
+s21.3
+	pop_a 3
+	pushD m_UtilStrictLists
+	pushD e_UtilStrictLists_dUnionStringList
+.d 0 2 ii
+	jmp _match_error
+.export e_UtilStrictLists_sRemoveMembers
+.export e_UtilStrictLists_eaRemoveMembers
+.descexp e_UtilStrictLists_dRemoveMembers e_UtilStrictLists_nRemoveMembers e_UtilStrictLists_lRemoveMembers 3 0 "RemoveMembers"
+.a 3 e_UtilStrictLists_eaRemoveMembers
+.o 2 0
+e_UtilStrictLists_lRemoveMembers
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.d 4 0
+	jmp e_UtilStrictLists_eaRemoveMembers
+.n 3 e_UtilStrictLists_dRemoveMembers e_UtilStrictLists_eaRemoveMembers
+.o 1 0
+e_UtilStrictLists_nRemoveMembers
+	push_node _cycle_in_spine 3
+.o 4 0
+e_UtilStrictLists_eaRemoveMembers
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	repl_r_args 1 0
+.o 4 0
+e_UtilStrictLists_sRemoveMembers
+.o 4 0
+s20
+	eq_desc _Nil 0 2
+	jmp_true case.39
+	jmp case.40
+case.39
+	fill_a 1 3
+	pop_a 3
+.d 1 0
+	rtn
+case.40
+	push_args 2 2 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	create
+	push_a 4
+	push_a 2
+	push_a 5
+	update_a 6 8
+	update_a 5 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jsr s19
+.o 1 0
+	push_a 1
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp s20
+.export e_UtilStrictLists_sRemoveMember
+.export e_UtilStrictLists_eaRemoveMember
+.descexp e_UtilStrictLists_dRemoveMember e_UtilStrictLists_nRemoveMember e_UtilStrictLists_lRemoveMember 3 0 "RemoveMember"
+.a 3 e_UtilStrictLists_eaRemoveMember
+.o 2 0
+e_UtilStrictLists_lRemoveMember
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.d 4 0
+	jmp e_UtilStrictLists_eaRemoveMember
+.n 3 e_UtilStrictLists_dRemoveMember e_UtilStrictLists_eaRemoveMember
+.o 1 0
+e_UtilStrictLists_nRemoveMember
+	push_node _cycle_in_spine 3
+.o 4 0
+e_UtilStrictLists_eaRemoveMember
+	jsr_eval 2
+	jsr_eval 0
+	repl_r_args 1 0
+.o 4 0
+e_UtilStrictLists_sRemoveMember
+.o 4 0
+s19
+	eq_desc _Cons 2 2
+	jmp_true case.41
+	jmp case.42
+case.41
+	push_args 2 2 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	push_a 3
+	push_a 3
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	jsr_ap 2
+	pushB_a 0
+	pop_a 1
+	jmp_false else.43
+	fill_a 1 5
+	pop_a 5
+.d 1 0
+	rtn
+else.43
+	create
+	push_a 2
+	push_a 5
+	push_a 5
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	push_a 3
+	push_a 5
+	fillh _Cons 2 7
+.d 4 0
+	jsr s19.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+case.42
+	fillh _Nil 0 3
+	pop_a 3
+.d 1 0
+	rtn
+.o 4 0
+s19.2
+	eq_desc _Cons 2 2
+	jmp_true case.44
+	jmp case.45
+case.44
+	push_args 2 2 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	push_a 3
+	push_a 3
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	jsr_ap 2
+	pushB_a 0
+	pop_a 1
+	jmp_false else.46
+	fill_a 1 5
+	pop_a 5
+.d 1 0
+	rtn
+else.46
+	create
+	push_a 2
+	push_a 5
+	push_a 5
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	push_a 3
+	push_a 5
+	fillh _Cons 2 7
+.keep 5 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp s19.2
+case.45
+	fillh _Nil 0 3
+	pop_a 3
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sRemoveStringFromList
+.export e_UtilStrictLists_eaRemoveStringFromList
+.descexp e_UtilStrictLists_dRemoveStringFromList e_UtilStrictLists_nRemoveStringFromList e_UtilStrictLists_lRemoveStringFromList 2 0 "RemoveStringFromList"
+.a 2 e_UtilStrictLists_eaRemoveStringFromList
+.o 2 0
+e_UtilStrictLists_lRemoveStringFromList
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaRemoveStringFromList
+.n 2 e_UtilStrictLists_dRemoveStringFromList e_UtilStrictLists_eaRemoveStringFromList
+.o 1 0
+e_UtilStrictLists_nRemoveStringFromList
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaRemoveStringFromList
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 3 0
+e_UtilStrictLists_sRemoveStringFromList
+.o 3 0
+s18
+	eq_desc _Nil 0 1
+	jmp_true case.47
+	jmp case.48
+case.47
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.48
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 2
+	push_array 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.49
+	fill_a 1 4
+	pop_a 4
+.d 1 0
+	rtn
+else.49
+	create
+	push_a 2
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s18.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+s18.2
+	eq_desc _Nil 0 1
+	jmp_true case.50
+	jmp case.51
+case.50
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.51
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 2
+	push_array 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.52
+	fill_a 1 4
+	pop_a 4
+.d 1 0
+	rtn
+else.52
+	create
+	push_a 2
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s18.2
+.export e_UtilStrictLists_sRemoveDup
+.export e_UtilStrictLists_eaRemoveDup
+.descexp e_UtilStrictLists_dRemoveDup e_UtilStrictLists_nRemoveDup e_UtilStrictLists_lRemoveDup 2 0 "RemoveDup"
+.a 2 e_UtilStrictLists_eaRemoveDup
+.o 2 0
+e_UtilStrictLists_lRemoveDup
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaRemoveDup
+.n 2 e_UtilStrictLists_dRemoveDup e_UtilStrictLists_eaRemoveDup
+.o 1 0
+e_UtilStrictLists_nRemoveDup
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaRemoveDup
+	jsr_eval 1
+	jsr_eval 0
+	repl_r_args 1 0
+.o 3 0
+e_UtilStrictLists_sRemoveDup
+.o 3 0
+s17
+	eq_desc _Cons 2 1
+	jmp_true case.53
+	jmp case.54
+case.53
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.impmod StdClass
+.impdesc e_StdClass_rEq;
+	build_r e_StdClass_rEq; 1 0 2 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh d38 2
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr s9
+.o 1 0
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s17.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+case.54
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+s17.2
+	eq_desc _Cons 2 1
+	jmp_true case.55
+	jmp case.56
+case.55
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	build_r e_StdClass_rEq; 1 0 2 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh d38 2
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr s9
+.o 1 0
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s17.2
+case.56
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+.desc d38 _hnf l38 3 0 "<>;39"
+.a 0 a38
+.o 2 0
+l38
+	repl_args 2 2
+.o 3 0
+a38
+.d 3 0
+	jsr ea38
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea38
+	jsr_eval 2
+	repl_r_args 1 0
+.o 3 0
+s38
+	push_a 2
+	push_a 1
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	jsr_ap 2
+	pushB_a 0
+	pop_a 1
+	notB
+.d 0 1 b
+	rtn
+.export e_UtilStrictLists_sInsertStringInList
+.export e_UtilStrictLists_eaInsertStringInList
+.descexp e_UtilStrictLists_dInsertStringInList e_UtilStrictLists_nInsertStringInList e_UtilStrictLists_lInsertStringInList 2 0 "InsertStringInList"
+.a 2 e_UtilStrictLists_eaInsertStringInList
+.o 2 0
+e_UtilStrictLists_lInsertStringInList
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaInsertStringInList
+.n 2 e_UtilStrictLists_dInsertStringInList e_UtilStrictLists_eaInsertStringInList
+.o 1 0
+e_UtilStrictLists_nInsertStringInList
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaInsertStringInList
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 3 0
+e_UtilStrictLists_sInsertStringInList
+.o 3 0
+s16
+	eq_desc _Nil 0 1
+	jmp_true case.57
+	jmp case.58
+case.57
+	buildh _Nil 0
+	push_a 1
+	buildh ARRAY 1
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+case.58
+	push_args 1 2 2
+	push_a 2
+	push_array 1
+.d 2 0
+	jsr cmpAC
+.o 0 1 i
+	pushI 0
+	gtI
+	jmp_false else.59
+	create
+	push_a 2
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s16.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+else.59
+	push_a 2
+	push_array 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.60
+	fill_a 3 4
+	pop_a 4
+.d 1 0
+	rtn
+else.60
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_a 3
+	buildh ARRAY 1
+	fillh _Cons 2 6
+	pop_a 4
+.d 1 0
+	rtn
+.o 3 0
+s16.2
+	eq_desc _Nil 0 1
+	jmp_true case.61
+	jmp case.62
+case.61
+	buildh _Nil 0
+	push_a 1
+	buildh ARRAY 1
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+case.62
+	push_args 1 2 2
+	push_a 2
+	push_array 1
+.d 2 0
+	jsr cmpAC
+.o 0 1 i
+	pushI 0
+	gtI
+	jmp_false else.63
+	create
+	push_a 2
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s16.2
+else.63
+	push_a 2
+	push_array 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.64
+	fill_a 3 4
+	pop_a 4
+.d 1 0
+	rtn
+else.64
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_a 3
+	buildh ARRAY 1
+	fillh _Cons 2 6
+	pop_a 4
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sP_MapR
+.descexp e_UtilStrictLists_dP_MapR e_UtilStrictLists_nP_MapR e_UtilStrictLists_lP_MapR 2 0 "P_MapR"
+.a 0 a15
+.o 2 0
+e_UtilStrictLists_lP_MapR
+	repl_args 1 1
+.o 2 0
+a15
+.d 2 0
+	jsr ea15
+.o 1 1 b
+	buildB_b 0
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_UtilStrictLists_dP_MapR
+.o 1 0
+e_UtilStrictLists_nP_MapR
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea15
+.o 1 1 b
+	buildB_b 0
+	push_a 1
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea15
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_UtilStrictLists_sP_MapR
+.o 2 0
+s15
+	eq_desc _Nil 0 1
+	jmp_true case.65
+	jmp case.66
+case.65
+	buildh _Nil 0
+	pushB TRUE
+	updatepop_a 0 2
+.d 1 1 b
+	rtn
+case.66
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	push_a 3
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_ap 1
+	buildh _Nil 0
+	push_arg 1 2 1
+	jsr_eval 0
+	push_arg 2 2 2
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	push_a 3
+	push_a 5
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 1 b
+	jmp s36
+.o 4 1 b
+s36
+	eq_desc _Nil 0 1
+	jmp_true case.67
+	jmp case.68
+case.67
+	push_a 3
+	push_a 3
+	buildh _Cons 2
+	push_b 0
+	updatepop_a 0 4
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+case.68
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	push_a 3
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_ap 1
+	push_arg 0 2 1
+	jsr_eval 0
+	push_a 6
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Cons 2
+	push_a 1
+	push_b 0
+	updatepop_b 0 1
+	buildh _Nil 0
+	update_a 0 3
+	update_a 0 8
+	pop_a 1
+.d 1 1 b
+	jsr s42
+.o 0 1 b
+	push_a 5
+	push_a 3
+	push_a 5
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 4 1 b
+	jmp s36
+.o 1 1 b
+s42
+	eqB_b TRUE 0
+	jmp_true case.69
+	jmp case.70
+case.69
+	push_arg 0 2 2
+	pop_b 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 2
+.d 0 1 b
+	rtn
+case.70
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_UtilStrictLists_sFlattenList
+.export e_UtilStrictLists_eaFlattenList
+.descexp e_UtilStrictLists_dFlattenList e_UtilStrictLists_nFlattenList e_UtilStrictLists_lFlattenList 1 0 "FlattenList"
+.o 2 0
+e_UtilStrictLists_lFlattenList
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_UtilStrictLists_eaFlattenList
+.n 1 e_UtilStrictLists_dFlattenList e_UtilStrictLists_eaFlattenList
+.o 1 0
+e_UtilStrictLists_nFlattenList
+	push_node _cycle_in_spine 1
+.o 2 0
+e_UtilStrictLists_eaFlattenList
+	jsr_eval 0
+.o 2 0
+e_UtilStrictLists_sFlattenList
+.o 2 0
+s14
+	eq_desc _Cons 2 0
+	jmp_true case.71
+	jmp case.72
+case.71
+	repl_args 2 2
+	create
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s14
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s13
+case.72
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sAppendLists
+.export e_UtilStrictLists_eaAppendLists
+.descexp e_UtilStrictLists_dAppendLists e_UtilStrictLists_nAppendLists e_UtilStrictLists_lAppendLists 2 0 "AppendLists"
+.a 2 e_UtilStrictLists_eaAppendLists
+.o 2 0
+e_UtilStrictLists_lAppendLists
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaAppendLists
+.n 2 e_UtilStrictLists_dAppendLists e_UtilStrictLists_eaAppendLists
+.o 1 0
+e_UtilStrictLists_nAppendLists
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaAppendLists
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sAppendLists
+.o 3 0
+s13
+	eq_desc _Nil 0 0
+	jmp_true case.73
+	jmp case.74
+case.73
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+case.74
+	repl_args 2 2
+	create
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s13.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+s13.2
+	eq_desc _Nil 0 0
+	jmp_true case.75
+	jmp case.76
+case.75
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+case.76
+	repl_args 2 2
+	create
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s13.2
+.export e_UtilStrictLists_sUpdate2
+.export e_UtilStrictLists_eaUpdate2
+.descexp e_UtilStrictLists_dUpdate2 e_UtilStrictLists_nUpdate2 e_UtilStrictLists_lUpdate2 4 0 "Update2"
+.a 4 e_UtilStrictLists_eaUpdate2
+.o 2 0
+e_UtilStrictLists_lUpdate2
+	push_args 0 3 3
+	update_a 4 3
+	create
+	update_a 0 5
+	pop_a 1
+.d 5 0
+	jmp e_UtilStrictLists_eaUpdate2
+.n 4 e_UtilStrictLists_dUpdate2 e_UtilStrictLists_eaUpdate2
+.o 1 0
+e_UtilStrictLists_nUpdate2
+	push_node _cycle_in_spine 4
+.o 5 0
+e_UtilStrictLists_eaUpdate2
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 2
+	pushI_a 1
+	update_a 0 2
+	pop_a 2
+.o 3 2 ii
+e_UtilStrictLists_sUpdate2
+.o 3 2 ii
+s12
+	eq_desc _Cons 2 0
+	jmp_true case.77
+	jmp case.78
+case.77
+	repl_args 2 2
+	eqI_b 0 0
+	jmp_true case.79
+	jmp case.80
+case.79
+	create
+	push_a 3
+	push_b 1
+	push_a 2
+	updatepop_b 0 2
+	update_a 4 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 1 i
+	jsr s34
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh _Cons 2 3
+	pop_a 1
+.d 1 0
+	rtn
+case.80
+	pushI 1
+	push_b 1
+	subI
+	create
+	push_a 3
+	push_b 2
+	push_a 3
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 2 ii
+	jsr s12.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+case.78
+	buildAC "Update2: index out of range"
+	updatepop_a 0 2
+	pop_b 2
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 3 2 ii
+s12.2
+	eq_desc _Cons 2 0
+	jmp_true case.81
+	jmp case.82
+case.81
+	repl_args 2 2
+	eqI_b 0 0
+	jmp_true case.83
+	jmp case.84
+case.83
+	create
+	push_a 3
+	push_b 1
+	push_a 2
+	updatepop_b 0 2
+	update_a 4 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 1 i
+	jsr s34
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh _Cons 2 3
+	pop_a 1
+.d 1 0
+	rtn
+case.84
+	pushI 1
+	push_b 1
+	subI
+	create
+	push_a 3
+	push_b 2
+	push_a 3
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 2 ii
+	jmp s12.2
+case.82
+	buildAC "Update2: index out of range"
+	updatepop_a 0 2
+	pop_b 2
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 3 1 i
+s34
+	eq_desc _Cons 2 0
+	jmp_true case.85
+	jmp case.86
+case.85
+	repl_args 2 2
+	eqI_b 0 0
+	jmp_true case.87
+	jmp case.88
+case.87
+	push_a 1
+	push_a 3
+	fillh _Cons 2 5
+	pop_a 3
+	pop_b 1
+.d 1 0
+	rtn
+case.88
+	pushI 1
+	push_b 1
+	subI
+	create
+	push_a 3
+	push_a 3
+	updatepop_b 0 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 1 i
+	jsr s34.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+case.86
+	buildAC "Update: index out of range"
+	updatepop_a 0 2
+	pop_b 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 3 1 i
+s34.2
+	eq_desc _Cons 2 0
+	jmp_true case.89
+	jmp case.90
+case.89
+	repl_args 2 2
+	eqI_b 0 0
+	jmp_true case.91
+	jmp case.92
+case.91
+	push_a 1
+	push_a 3
+	fillh _Cons 2 5
+	pop_a 3
+	pop_b 1
+.d 1 0
+	rtn
+case.92
+	pushI 1
+	push_b 1
+	subI
+	create
+	push_a 3
+	push_a 3
+	updatepop_b 0 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 1 i
+	jmp s34.2
+case.90
+	buildAC "Update: index out of range"
+	updatepop_a 0 2
+	pop_b 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sSelect
+.descexp e_UtilStrictLists_dSelect e_UtilStrictLists_nSelect e_UtilStrictLists_lSelect 2 0 "Select"
+.a 0 ea11
+.o 2 0
+e_UtilStrictLists_lSelect
+	repl_args 1 1
+.d 2 0
+	jmp ea11
+.n 2 e_UtilStrictLists_dSelect _
+.o 1 0
+e_UtilStrictLists_nSelect
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea11
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+ea11
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 1
+	update_a 0 1
+	pop_a 1
+.o 1 1 i
+e_UtilStrictLists_sSelect
+.o 1 1 i
+s11
+	eq_desc _Cons 2 0
+	jmp_true case.93
+	jmp case.94
+case.93
+	repl_args 2 2
+	eqI_b 0 0
+	jmp_true case.95
+	jmp case.96
+case.95
+	pop_b 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+case.96
+	pushI 1
+	push_b 1
+	subI
+	push_a 1
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 1 1 i
+	jmp s11
+case.94
+	buildAC "Select: index out of range"
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sAppend
+.export e_UtilStrictLists_eaAppend
+.descexp e_UtilStrictLists_dAppend e_UtilStrictLists_nAppend e_UtilStrictLists_lAppend 2 0 "Append"
+.a 2 e_UtilStrictLists_eaAppend
+.o 2 0
+e_UtilStrictLists_lAppend
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaAppend
+.n 2 e_UtilStrictLists_dAppend e_UtilStrictLists_eaAppend
+.o 1 0
+e_UtilStrictLists_nAppend
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaAppend
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sAppend
+.o 3 0
+s10
+	eq_desc _Nil 0 0
+	jmp_true case.97
+	jmp case.98
+case.97
+	buildh _Nil 0
+	push_a 2
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+case.98
+	repl_args 2 2
+	create
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s10.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+s10.2
+	eq_desc _Nil 0 0
+	jmp_true case.99
+	jmp case.100
+case.99
+	buildh _Nil 0
+	push_a 2
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+case.100
+	repl_args 2 2
+	create
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s10.2
+.export e_UtilStrictLists_sFilter
+.export e_UtilStrictLists_eaFilter
+.descexp e_UtilStrictLists_dFilter e_UtilStrictLists_nFilter e_UtilStrictLists_lFilter 2 0 "Filter"
+.a 2 e_UtilStrictLists_eaFilter
+.o 2 0
+e_UtilStrictLists_lFilter
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaFilter
+.n 2 e_UtilStrictLists_dFilter e_UtilStrictLists_eaFilter
+.o 1 0
+e_UtilStrictLists_nFilter
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaFilter
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sFilter
+.o 3 0
+s9
+	eq_desc _Nil 0 1
+	jmp_true case.101
+	jmp case.102
+case.101
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.102
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	push_a 3
+	jsr_ap 1
+	pushB_a 0
+	pop_a 1
+	jmp_false else.103
+	create
+	push_a 2
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s9.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+else.103
+	push_a 1
+	push_a 3
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s9
+.o 3 0
+s9.2
+	eq_desc _Nil 0 1
+	jmp_true case.104
+	jmp case.105
+case.104
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.105
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	push_a 3
+	jsr_ap 1
+	pushB_a 0
+	pop_a 1
+	jmp_false else.106
+	create
+	push_a 2
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s9.2
+else.106
+	push_a 1
+	push_a 3
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s9
+.export e_UtilStrictLists_sFilterR
+.export e_UtilStrictLists_eaFilterR
+.descexp e_UtilStrictLists_dFilterR e_UtilStrictLists_nFilterR e_UtilStrictLists_lFilterR 2 0 "FilterR"
+.a 2 e_UtilStrictLists_eaFilterR
+.o 2 0
+e_UtilStrictLists_lFilterR
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaFilterR
+.n 2 e_UtilStrictLists_dFilterR e_UtilStrictLists_eaFilterR
+.o 1 0
+e_UtilStrictLists_nFilterR
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaFilterR
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sFilterR
+.o 3 0
+s8
+	buildh _Nil 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp s33
+.o 4 0
+s33
+	eq_desc _Nil 0 1
+	jmp_true case.107
+	jmp case.108
+case.107
+	fill_a 2 3
+	pop_a 3
+.d 1 0
+	rtn
+case.108
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	push_a 3
+	jsr_ap 1
+	pushB_a 0
+	pop_a 1
+	jmp_false else.109
+	push_a 4
+	push_a 1
+	buildh _Cons 2
+	push_a 2
+	push_a 4
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s33
+else.109
+	push_a 4
+	push_a 2
+	push_a 4
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s33
+.export e_UtilStrictLists_sLLength
+.descexp e_UtilStrictLists_dLLength e_UtilStrictLists_nLLength e_UtilStrictLists_lLLength 1 0 "LLength"
+.o 2 0
+e_UtilStrictLists_lLLength
+	pop_a 1
+.d 1 0
+	jsr ea7
+.o 0 1 i
+	buildI_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_UtilStrictLists_dLLength
+.o 1 0
+e_UtilStrictLists_nLLength
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea7
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea7
+	jsr_eval 0
+.o 1 0
+e_UtilStrictLists_sLLength
+.o 1 0
+s7
+	push_a 0
+	pushI 0
+	updatepop_a 0 1
+.d 1 1 i
+	jmp s32
+.o 1 1 i
+s32
+	eq_desc _Nil 0 0
+	jmp_true case.110
+	jmp case.111
+case.110
+	pop_a 1
+.d 0 1 i
+	rtn
+case.111
+	repl_args 2 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	addI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	jmp s32
+.export e_UtilStrictLists_sReverse
+.export e_UtilStrictLists_eaReverse
+.descexp e_UtilStrictLists_dReverse e_UtilStrictLists_nReverse e_UtilStrictLists_lReverse 1 0 "Reverse"
+.o 2 0
+e_UtilStrictLists_lReverse
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_UtilStrictLists_eaReverse
+.n 1 e_UtilStrictLists_dReverse e_UtilStrictLists_eaReverse
+.o 1 0
+e_UtilStrictLists_nReverse
+	push_node _cycle_in_spine 1
+.o 2 0
+e_UtilStrictLists_eaReverse
+	jsr_eval 0
+.o 2 0
+e_UtilStrictLists_sReverse
+.o 2 0
+s5
+	buildh _Nil 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s6
+.export e_UtilStrictLists_sReverse2
+.export e_UtilStrictLists_eaReverse2
+.descexp e_UtilStrictLists_dReverse2 e_UtilStrictLists_nReverse2 e_UtilStrictLists_lReverse2 2 0 "Reverse2"
+.a 2 e_UtilStrictLists_eaReverse2
+.o 2 0
+e_UtilStrictLists_lReverse2
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaReverse2
+.n 2 e_UtilStrictLists_dReverse2 e_UtilStrictLists_eaReverse2
+.o 1 0
+e_UtilStrictLists_nReverse2
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaReverse2
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sReverse2
+.o 3 0
+s6
+	eq_desc _Nil 0 0
+	jmp_true case.112
+	jmp case.113
+case.112
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+case.113
+	repl_args 2 2
+	push_a 2
+	push_a 1
+	buildh _Cons 2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s6
+.export e_UtilStrictLists_sConcat
+.export e_UtilStrictLists_eaConcat
+.descexp e_UtilStrictLists_dConcat e_UtilStrictLists_nConcat e_UtilStrictLists_lConcat 2 0 "Concat"
+.a 2 e_UtilStrictLists_eaConcat
+.o 2 0
+e_UtilStrictLists_lConcat
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_UtilStrictLists_eaConcat
+.n 2 e_UtilStrictLists_dConcat e_UtilStrictLists_eaConcat
+.o 1 0
+e_UtilStrictLists_nConcat
+	push_node _cycle_in_spine 2
+.o 3 0
+e_UtilStrictLists_eaConcat
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_UtilStrictLists_sConcat
+.o 3 0
+s4
+	eq_desc _Cons 2 0
+	jmp_true case.114
+	jmp case.115
+case.114
+	repl_args 2 2
+	create
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.d 3 0
+	jsr s4.2
+.o 1 0
+	pop_a 2
+.d 1 0
+	rtn
+case.115
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+s4.2
+	eq_desc _Cons 2 0
+	jmp_true case.116
+	jmp case.117
+case.116
+	repl_args 2 2
+	create
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 2
+	push_a 4
+	fillh _Cons 2 6
+.keep 4 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s4.2
+case.117
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sHead
+.descexp e_UtilStrictLists_dHead e_UtilStrictLists_nHead e_UtilStrictLists_lHead 1 0 "Head"
+.o 2 0
+e_UtilStrictLists_lHead
+	pop_a 1
+.d 1 0
+	jmp ea3
+.n 1 e_UtilStrictLists_dHead _
+.o 1 0
+e_UtilStrictLists_nHead
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea3
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea3
+	jsr_eval 0
+.o 1 0
+e_UtilStrictLists_sHead
+.o 1 0
+s3
+	eq_desc _Cons 2 0
+	jmp_true case.118
+	jmp case.119
+case.118
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.119
+	buildAC "Head: Empty list"
+	updatepop_a 0 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+.d 1 0
+	rtn
+.export e_UtilStrictLists_sIsEmptyList
+.descexp e_UtilStrictLists_dIsEmptyList e_UtilStrictLists_nIsEmptyList e_UtilStrictLists_lIsEmptyList 1 0 "IsEmptyList"
+.o 2 0
+e_UtilStrictLists_lIsEmptyList
+	pop_a 1
+.d 1 0
+	jsr ea2
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_UtilStrictLists_dIsEmptyList
+.o 1 0
+e_UtilStrictLists_nIsEmptyList
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea2
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea2
+	jsr_eval 0
+.o 1 0
+e_UtilStrictLists_sIsEmptyList
+.o 1 0
+s2
+	eq_desc _Nil 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.export e_UtilStrictLists_sSingleton
+.descexp e_UtilStrictLists_dSingleton e_UtilStrictLists_nSingleton e_UtilStrictLists_lSingleton 1 0 "Singleton"
+.o 2 0
+e_UtilStrictLists_lSingleton
+	pop_a 1
+.d 1 0
+	jmp ea1
+.n 1 e_UtilStrictLists_dSingleton _
+.o 1 0
+e_UtilStrictLists_nSingleton
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea1
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea1
+	jsr_eval 0
+.o 1 0
+e_UtilStrictLists_sSingleton
+.o 1 0
+s1
+	eq_desc _Cons 2 0
+	jmp_true case.120
+	jmp s1.1
+case.120
+	repl_args 2 2
+	eq_desc _Nil 0 1
+	jmp_true case.121
+	pop_a 1
+	jmp s1.1
+case.121
+	updatepop_a 0 1
+.d 1 0
+	rtn
+s1.1
+	pop_a 1
+	pushD m_UtilStrictLists
+	pushD e_UtilStrictLists_dSingleton
+.d 0 2 ii
+	jmp _match_error
+.impmod _system
+.implab _match_error

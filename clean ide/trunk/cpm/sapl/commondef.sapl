@@ -1,0 +1,162 @@
+|| ?module? commondef
+
+
+<{commondef.k`}> _x_0 !y_1 = y_1
+commondef.dist::I !x_0::I !y_1::I = StdInt.abs_13 (<{StdInt.-_7}> x_0 y_1)
+commondef.setBetween::I !x_0::I !low_1::I !up_2::I = case (StdBool.not (<{StdInt.<_17}> low_1 x_0)) (True -> low_1) (False -> case (StdBool.not (<{StdInt.<_17}> x_0 up_2)) (True -> up_2) (False -> x_0) ) 
+commondef.setBetweenCheckBounds::I !x_0::I !low_1::I !up_2::I = case (StdBool.not (<{StdInt.<_17}> low_1 up_2)) (True -> low_1) (False -> case (StdBool.not (<{StdInt.<_17}> low_1 x_0)) (True -> low_1) (False -> case (StdBool.not (<{StdInt.<_17}> x_0 up_2)) (True -> up_2) (False -> x_0) ) ) 
+commondef.isBetween::B !x_0::I !low_1::I !up_2::I = case (<{StdInt.<_17}> x_0 low_1) (True -> False) (False -> StdBool.not (<{StdInt.<_17}> up_2 x_0)) 
+commondef.minmax !a_0::I !b_1::I = case (StdBool.not (<{StdInt.<_17}> b_1 a_0)) (True -> <{_Tuple2!3}> a_0 b_1) (False -> <{_Tuple2!3}> b_1 a_0) 
+commondef.addPointSize !_x_0 !_x_1 = case _x_0 (StdIOBasic._Size w_1_0 h_1_1 -> case _x_1 (StdIOBasic._Point2 x_2_0 y_2_1 -> StdIOBasic._Point2 (<{StdInt.+_6}> x_2_0 w_1_0) (<{StdInt.+_6}> y_2_1 h_1_1)) ) 
+commondef.rectangleToRect !_x_0 = case _x_0 (StdIOBasic._Rectangle _x_1_0 _x_1_1 -> case _x_1_0 (StdIOBasic._Point2 a_2_0 b_2_1 -> case _x_1_1 (StdIOBasic._Point2 a`_3_0 b`_3_1 -> let <{x_less_x`_4_0}>::B = StdBool.not (<{StdInt.<_17}> <{a`_3_0}> a_2_0), <{y_less_y`_4_1}>::B = StdBool.not (<{StdInt.<_17}> <{b`_3_1}> b_2_1) in case (case <{x_less_x`_4_0}> (True -> <{y_less_y`_4_1}>) (False -> False) ) (True -> ostypes._OSRect a_2_0 b_2_1 <{a`_3_0}> <{b`_3_1}>) (False -> case <{x_less_x`_4_0}> (True -> ostypes._OSRect a_2_0 <{b`_3_1}> <{a`_3_0}> b_2_1) (False -> case <{y_less_y`_4_1}> (True -> ostypes._OSRect <{a`_3_0}> b_2_1 a_2_0 <{b`_3_1}>) (False -> ostypes._OSRect <{a`_3_0}> <{b`_3_1}> a_2_0 b_2_1) ) ) ) ) ) 
+commondef.rectToRectangle !_x_0 = case _x_0 (ostypes._OSRect rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3 -> StdIOBasic._Rectangle (StdIOBasic._Point2 rleft_1_0 rtop_1_1) (StdIOBasic._Point2 rright_1_2 rbottom_1_3)) 
+commondef.isEmptyRect::B !_x_0 = case _x_0 (ostypes._OSRect rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3 -> case (<{StdInt.==_16}> rleft_1_0 rright_1_2) (True -> True) (False -> <{StdInt.==_16}> rtop_1_1 rbottom_1_3) ) 
+commondef.isEmptyRectangle::B !_x_0 = case _x_0 (StdIOBasic._Rectangle corner1_1_0 corner2_1_1 -> case (<{StdInt.==_16}> (select corner1_1_0::StdIOBasic._Point2 0) (select corner2_1_1::StdIOBasic._Point2 0)) (True -> True) (False -> <{StdInt.==_16}> (select corner1_1_0::StdIOBasic._Point2 1) (select corner2_1_1::StdIOBasic._Point2 1)) ) 
+commondef.pointInRect::B !_x_0 !_x_1 = case _x_0 (StdIOBasic._Point2 x_1_0 y_1_1 -> case _x_1 (ostypes._OSRect rleft_2_0 rtop_2_1 rright_2_2 rbottom_2_3 -> case (commondef.isBetween x_1_0 rleft_2_0 rright_2_2) (True -> commondef.isBetween y_1_1 rtop_2_1 rbottom_2_3) (False -> False) ) ) 
+commondef.pointInRectangle::B !point_0 !rectangle_1 = commondef.pointInRect point_0 (commondef.rectangleToRect rectangle_1)
+commondef.posSizeToRect !_x_0 !_x_1 = case _x_0 (StdIOBasic._Point2 x_1_0 y_1_1 -> case _x_1 (StdIOBasic._Size w_2_0 h_2_1 -> let _x_3_0 = commondef.minmax x_1_0 (<{StdInt.+_6}> x_1_0 w_2_0), _x_3_1 = commondef.minmax y_1_1 (<{StdInt.+_6}> y_1_1 h_2_1) in ostypes._OSRect (select _x_3_0::_Tuple2 0) (select _x_3_1::_Tuple2 0) (select _x_3_0::_Tuple2 1) (select _x_3_1::_Tuple2 1)) ) 
+commondef.posSizeToRectangle !pos_0 !_x_1 = case pos_0 (StdIOBasic._Point2 x_1_0 y_1_1 -> case _x_1 (StdIOBasic._Size w_2_0 h_2_1 -> StdIOBasic._Rectangle pos_0 (StdIOBasic._Point2 (<{StdInt.+_6}> x_1_0 w_2_0) (<{StdInt.+_6}> y_1_1 h_2_1))) ) 
+commondef.sizeToRect !size_0 = commondef.posSizeToRect StdIOBasic.zero_21 size_0
+commondef.sizeToRectangle !_x_0 = case _x_0 (StdIOBasic._Size w_1_0 h_1_1 -> update StdIOBasic.zero_26::StdIOBasic._Rectangle [1:StdIOBasic._Point2 w_1_0 h_1_1]) 
+commondef.disjointRects::B !rect1_0 !rect2_1 = case (commondef.isEmptyRect rect1_0) (True -> True) (False -> case (commondef.isEmptyRect rect2_1) (True -> True) (False -> case (StdBool.not (<{StdInt.<_17}> (select rect1_0::ostypes._OSRect 0) (select rect2_1::ostypes._OSRect 2))) (True -> True) (False -> case (StdBool.not (<{StdInt.<_17}> (select rect2_1::ostypes._OSRect 1) (select rect1_0::ostypes._OSRect 3))) (True -> True) (False -> case (StdBool.not (<{StdInt.<_17}> (select rect2_1::ostypes._OSRect 0) (select rect1_0::ostypes._OSRect 2))) (True -> True) (False -> StdBool.not (<{StdInt.<_17}> (select rect1_0::ostypes._OSRect 1) (select rect2_1::ostypes._OSRect 3))) ) ) ) ) 
+commondef.zero_64 = ostypes._OSRect 0 0 0 0
+commondef.intersectRects !rect1_0 !rect2_1 = case (commondef.disjointRects rect1_0 rect2_1) (True -> commondef.zero_64) (False -> let x_2_0::I = select rect1_0::ostypes._OSRect 0, y_2_1::I = select rect2_1::ostypes._OSRect 0, x_2_2::I = select rect1_0::ostypes._OSRect 1, y_2_3::I = select rect2_1::ostypes._OSRect 1, x_2_4::I = select rect1_0::ostypes._OSRect 2, y_2_5::I = select rect2_1::ostypes._OSRect 2, x_2_6::I = select rect1_0::ostypes._OSRect 3, y_2_7::I = select rect2_1::ostypes._OSRect 3 in ostypes._OSRect (<{commondef._c;51;16_154}> (<{StdInt.<_17}> x_2_0 y_2_1) y_2_1 x_2_0) (<{commondef._c;51;16_155}> (<{StdInt.<_17}> x_2_2 y_2_3) y_2_3 x_2_2) (<{commondef._c;48;16_156}> (<{StdInt.<_17}> x_2_4 y_2_5) x_2_4 y_2_5) (<{commondef._c;48;16_157}> (<{StdInt.<_17}> x_2_6 y_2_7) x_2_6 y_2_7)) 
+<{commondef._c;48;16_157}>::I !_x_0::B x_1::I y_2::I = case _x_0 (True -> x_1) (_ -> y_2)
+<{commondef._c;48;16_156}>::I !_x_0::B x_1::I y_2::I = case _x_0 (True -> x_1) (_ -> y_2)
+<{commondef._c;51;16_155}>::I !_x_0::B y_1::I x_2::I = case _x_0 (True -> y_1) (_ -> x_2)
+<{commondef._c;51;16_154}>::I !_x_0::B y_1::I x_2::I = case _x_0 (True -> y_1) (_ -> x_2)
+commondef.anon_103 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+commondef.fromTuple4_81 !_x_0 = case _x_0 (_Tuple4 l_1_0 t_1_1 r_1_2 b_1_3 -> StdIOBasic._Rectangle (StdIOBasic._Point2 l_1_0 t_1_1) (StdIOBasic._Point2 r_1_2 b_1_3)) 
+commondef.fromTuple4_79 !r_0 = commondef.rectangleToRect (commondef.fromTuple4_81 r_0)
+commondef.anon_147::B !g_0 x_1 = StdBool.not (g_0 x_1)
+commondef.anon_148::B !x_0 = StdBool.not (commondef.isEmptyRect x_0)
+commondef.subtractFittingRect_92 !_x_0 !_x_1 = case _x_0 (ostypes._OSRect l1_1_0 t1_1_1 r1_1_2 b1_1_3 -> case _x_1 (ostypes._OSRect l2_2_0 t2_2_1 r2_2_2 b2_2_3 -> StdList.filter commondef.anon_148 (StdList.map commondef.fromTuple4_79 (_predefined._Cons (_Tuple4 l1_1_0 t1_1_1 r1_1_2 t2_2_1) (_predefined._Cons (_Tuple4 l1_1_0 t2_2_1 l2_2_0 b2_2_3) (_predefined._Cons (_Tuple4 r2_2_2 t2_2_1 r1_1_2 b2_2_3) (_predefined._Cons (_Tuple4 l1_1_0 b2_2_3 r1_1_2 b1_1_3) _predefined._Nil)))))) ) 
+commondef.subtractRects !rect1_0 !rect2_1 = commondef.subtractFittingRect_92 rect1_0 (commondef.intersectRects rect1_0 rect2_1)
+commondef.rectSize !_x_0 = case _x_0 (ostypes._OSRect rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3 -> StdIOBasic._Size (StdInt.abs_13 (<{StdInt.-_7}> rright_1_2 rleft_1_0)) (StdInt.abs_13 (<{StdInt.-_7}> rbottom_1_3 rtop_1_1))) 
+commondef.intersectRgnRect !rgnH_0::I !rect_1 !tb_2::I = let _x_1_0 = osrgn.osnewrectrgn rect_1 tb_2, aidRgn_1_1::I = select _x_1_0::_Tuple2 0, _x_1_2 = osrgn.ossectrgn rgnH_0 aidRgn_1_1 (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (select _x_1_2::_Tuple2 0) (osrgn.osdisposergn aidRgn_1_1 (select _x_1_2::_Tuple2 1))
+commondef.swap !_x_0 = case _x_0 (_Tuple2 a_1_0 b_1_1 -> _Tuple2 b_1_1 a_1_0) 
+commondef.error !rule_0 !moduleName_1 !error_2 = StdMisc.abort (<{StdString.+++_11}> "Error in rule " (<{StdString.+++_11}> rule_0 (<{StdString.+++_11}> " [" (<{StdString.+++_11}> moduleName_1 (<{StdString.+++_11}> "]: " (<{StdString.+++_11}> error_2 ".\n"))))))
+commondef.fatalError !rule_0 !moduleName_1 !error_2 = StdMisc.abort (<{StdString.+++_11}> "Fatal error in rule " (<{StdString.+++_11}> rule_0 (<{StdString.+++_11}> " [" (<{StdString.+++_11}> moduleName_1 (<{StdString.+++_11}> "]: " (<{StdString.+++_11}> error_2 ".\n"))))))
+commondef.dummy !error_0 = StdMisc.abort (<{StdString.+++_11}> "Fatal error: dummy evaluated! " (<{StdString.+++_11}> error_0 ".\n"))
+commondef.zeroBound::B !_x_0 = case _x_0 (commondef.Finite i_1_0 -> StdBool.not (<{StdInt.<_17}> 0 i_1_0)) (_ -> False)
+commondef.decBound !_x_0 = case _x_0 (commondef.Finite i_1_0 -> case (StdBool.not (<{StdInt.<_17}> 0 i_1_0)) (True -> commondef.Finite 0) (False -> commondef.Finite (<{StdInt.-_7}> i_1_0 1)) ) (_ -> _x_0)
+commondef.incBound !_x_0 = case _x_0 (commondef.Finite i_1_0 -> case (StdBool.not (<{StdInt.<_17}> 0 i_1_0)) (True -> commondef.Finite 1) (False -> commondef.Finite (<{StdInt.+_6}> i_1_0 1)) ) (_ -> _x_0)
+commondef.orc::B !ca_0 cb_1 x_2 = case (ca_0 x_2) (True -> True) (False -> cb_1 x_2) 
+commondef.andc::B !ca_0 cb_1 x_2 = case (ca_0 x_2) (True -> cb_1 x_2) (False -> False) 
+commondef.uisEmpty !_x_0 = case _x_0 (_predefined._Nil -> <{_Tuple2!3}> True _predefined._Nil) (_ -> <{_Tuple2!3}> False _x_0)
+commondef.isSingleton::B !_x_0 = case _x_0 (_predefined._Cons x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> True) ) (_ -> False)
+commondef.hdtl !_x_0 = case _x_0 (_predefined._Cons x_1_0 xs_1_1 -> <{_Tuple2!3}> x_1_0 xs_1_1) 
+commondef.initLast !_x_0 = case _x_0 (_predefined._Cons x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> <{_Tuple2!3}> _predefined._Nil x_1_0) (_ -> let _x_2_0 = commondef.initLast _x_1_1 in <{_Tuple2!3}> (_predefined._Cons x_1_0 (select _x_2_0::_Tuple2 0)) (select _x_2_0::_Tuple2 1))) 
+commondef.split !_x_0::I !_x_1 = case _x_1 (_predefined._Nil -> <{_Tuple2!3}> _predefined._Nil _predefined._Nil) (_ -> case (StdBool.not (<{StdInt.<_17}> 0 _x_0)) (True -> <{_Tuple2!3}> _predefined._Nil _x_1) (False -> let _x_2_0 = commondef.hdtl _x_1, _x_2_1 = commondef.split (<{StdInt.-_7}> _x_0 1) (select _x_2_0::_Tuple2 1) in <{_Tuple2!3}> (_predefined._Cons (select _x_2_0::_Tuple2 0) (select _x_2_1::_Tuple2 0)) (select _x_2_1::_Tuple2 1)) )
+commondef.condMap c_0 !f_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> case (c_0 x_1_0) (True -> <{_Tuple2!3}> True (_predefined._Cons (f_1 x_1_0) (select (commondef.condMap c_0 f_1 xs_1_1)::_Tuple2 1))) (False -> let _x_3_0 = commondef.condMap c_0 f_1 xs_1_1 in <{_Tuple2!3}> (select _x_3_0::_Tuple2 0) (_predefined._Cons x_1_0 (select _x_3_0::_Tuple2 1))) ) (_ -> <{_Tuple2!3}> False _predefined._Nil)
+commondef.uspan !c_0 !_x_1 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> let _x_2_0 = c_0 x_1_0 in case (select _x_2_0::_Tuple2 0) (True -> let _x_4_0 = commondef.uspan c_0 xs_1_1 in <{_Tuple2!3}> (_predefined._Cons (select _x_2_0::_Tuple2 1) (select _x_4_0::_Tuple2 0)) (select _x_4_0::_Tuple2 1)) (False -> <{_Tuple2!3}> _predefined._Nil (_predefined._Cons (select _x_2_0::_Tuple2 1) xs_1_1)) ) (_ -> <{_Tuple2!3}> _predefined._Nil _predefined._Nil)
+commondef.filterMap !f_0 !_x_1 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> let !_x_2_0 = f_0 x_1_0, !ys_2_1 = commondef.filterMap f_0 xs_1_1 in case (select _x_2_0::_Tuple2 0) (True -> _predefined._Cons (select _x_2_0::_Tuple2 1) ys_2_1) (False -> ys_2_1) ) (_ -> _predefined._Nil)
+commondef.stateMap !f_0 !_x_1 !s_2 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> let !_x_2_0 = f_0 x_1_0 s_2, !_x_2_1 = commondef.stateMap f_0 xs_1_1 (select _x_2_0::_Tuple2 1) in <{_Tuple2!3}> (_predefined._Cons (select _x_2_0::_Tuple2 0) (select _x_2_1::_Tuple2 0)) (select _x_2_1::_Tuple2 1)) (_ -> <{_Tuple2!3}> _predefined._Nil s_2)
+commondef.stateMap2 !f_0 !_x_1 !s_2 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> commondef.stateMap2 f_0 xs_1_1 (f_0 x_1_0 s_2)) (_ -> s_2)
+commondef.strictSeq !_x_0 !s_1 = case _x_0 (_predefined._Cons f_1_0 fs_1_1 -> commondef.strictSeq fs_1_1 (f_1_0 s_1)) (_ -> s_1)
+commondef.strictSeqList !_x_0 !s_1 = case _x_0 (_predefined._Cons f_1_0 fs_1_1 -> let _x_2_0 = f_1_0 s_1, _x_2_1 = commondef.strictSeqList fs_1_1 (select _x_2_0::_Tuple2 1) in <{_Tuple2!3}> (_predefined._Cons (select _x_2_0::_Tuple2 0) (select _x_2_1::_Tuple2 0)) (select _x_2_1::_Tuple2 1)) (_ -> <{_Tuple2!3}> _predefined._Nil s_1)
+commondef.allList !cond_0 !_x_1 !s_2 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> let _x_2_0 = cond_0 x_1_0 s_2 in case (select _x_2_0::_Tuple2 0) (True -> commondef.allList cond_0 xs_1_1 (select _x_2_0::_Tuple2 1)) (False -> <{_Tuple2!3}> False (select _x_2_0::_Tuple2 1)) ) (_ -> <{_Tuple2!3}> True s_2)
+commondef.contains::B !c_0 !_x_1 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> case (c_0 x_1_0) (True -> True) (False -> commondef.contains c_0 xs_1_1) ) (_ -> False)
+commondef.ucontains !c_0 !_x_1 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> let _x_2_0 = c_0 x_1_0 in case (select _x_2_0::_Tuple2 0) (True -> <{_Tuple2!3}> True (_predefined._Cons (select _x_2_0::_Tuple2 1) xs_1_1)) (False -> let _x_4_0 = commondef.ucontains c_0 xs_1_1 in <{_Tuple2!3}> (select _x_4_0::_Tuple2 0) (_predefined._Cons (select _x_2_0::_Tuple2 1) (select _x_4_0::_Tuple2 1))) ) (_predefined._Nil -> <{_Tuple2!3}> False _predefined._Nil) 
+commondef.cselect !c_0 n_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> case (c_0 x_1_0) (True -> <{_Tuple2!1}> True x_1_0) (False -> commondef.cselect c_0 n_1 xs_1_1) ) (_ -> <{_Tuple2!1}> False n_1)
+commondef.ucselect !c_0 n_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> case (c_0 x_1_0) (True -> <{_Tuple3!5}> True x_1_0 (_predefined._Cons x_1_0 xs_1_1)) (False -> let _x_3_0 = commondef.ucselect c_0 n_1 xs_1_1 in <{_Tuple3!5}> (select _x_3_0::_Tuple3 0) (select _x_3_0::_Tuple3 1) (_predefined._Cons x_1_0 (select _x_3_0::_Tuple3 2))) ) (_predefined._Nil -> <{_Tuple3!5}> False n_1 _predefined._Nil) 
+commondef.selected_93 cond_0 dummy_1 !_x_2 !i_3::I = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> case (cond_0 x_1_0) (True -> <{_Tuple3!3}> True i_3 x_1_0) (False -> commondef.selected_93 cond_0 dummy_1 xs_1_1 (<{StdInt.+_6}> i_3 1)) ) (_ -> <{_Tuple3!3}> False i_3 dummy_1)
+commondef.selectedAtIndex !cond_0 dummy_1 !xs_2 = let _x_1_0::I = commondef.selected_93 cond_0 dummy_1 xs_2 1, i_1_1 = select _x_1_0::_Tuple3 1 in <{_Tuple2!1}> (<{commondef._if;387;8_158}> (select _x_1_0::_Tuple3 0) i_1_1) (select _x_1_0::_Tuple3 2)
+<{commondef._if;387;8_158}>::I !_x_0::B i_1::I = case _x_0 (True -> i_1) (_ -> 0)
+commondef.access !acc_0 n_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> let _x_2_0 = acc_0 x_1_0, _x_2_1 = select _x_2_0::_Tuple2 0 in case (select _x_2_1::_Tuple2 0) (True -> <{_Tuple3!5}> True (select _x_2_1::_Tuple2 1) (_predefined._Cons (select _x_2_0::_Tuple2 1) xs_1_1)) (False -> let _x_4_0 = commondef.access acc_0 n_1 xs_1_1 in <{_Tuple3!5}> (select _x_4_0::_Tuple3 0) (select _x_4_0::_Tuple3 1) (_predefined._Cons (select _x_2_0::_Tuple2 1) (select _x_4_0::_Tuple3 2))) ) (_predefined._Nil -> <{_Tuple3!5}> False n_1 _predefined._Nil) 
+commondef.accessList !acc_0 !_x_1 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> let !_x_2_0 = acc_0 x_1_0, !_x_2_1 = commondef.accessList acc_0 xs_1_1 in <{_Tuple2!3}> (_predefined._Cons (select _x_2_0::_Tuple2 0) (select _x_2_1::_Tuple2 0)) (_predefined._Cons (select _x_2_0::_Tuple2 1) (select _x_2_1::_Tuple2 1))) (_predefined._Nil -> <{_Tuple2!3}> _predefined._Nil _predefined._Nil) 
+commondef.remove !c_0 n_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> case (c_0 x_1_0) (True -> <{_Tuple3!5}> True x_1_0 xs_1_1) (False -> let _x_3_0 = commondef.remove c_0 n_1 xs_1_1 in <{_Tuple3!5}> (select _x_3_0::_Tuple3 0) (select _x_3_0::_Tuple3 1) (_predefined._Cons x_1_0 (select _x_3_0::_Tuple3 2))) ) (_ -> <{_Tuple3!5}> False n_1 _predefined._Nil)
+commondef.uremove !c_0 n_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> let _x_2_0 = c_0 x_1_0 in case (select _x_2_0::_Tuple2 0) (True -> <{_Tuple3!5}> True (select _x_2_0::_Tuple2 1) xs_1_1) (False -> let _x_4_0 = commondef.uremove c_0 n_1 xs_1_1 in <{_Tuple3!5}> (select _x_4_0::_Tuple3 0) (select _x_4_0::_Tuple3 1) (_predefined._Cons (select _x_2_0::_Tuple2 1) (select _x_4_0::_Tuple3 2))) ) (_predefined._Nil -> <{_Tuple3!5}> False n_1 _predefined._Nil) 
+commondef.creplace !c_0 y_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> case (c_0 x_1_0) (True -> <{_Tuple2!3}> True (_predefined._Cons y_1 xs_1_1)) (False -> let _x_3_0 = commondef.creplace c_0 y_1 xs_1_1 in <{_Tuple2!3}> (select _x_3_0::_Tuple2 0) (_predefined._Cons x_1_0 (select _x_3_0::_Tuple2 1))) ) (_ -> <{_Tuple2!3}> False _predefined._Nil)
+commondef.ucreplace !c_0 y_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> let _x_2_0 = c_0 x_1_0 in case (select _x_2_0::_Tuple2 0) (True -> <{_Tuple2!3}> True (_predefined._Cons y_1 xs_1_1)) (False -> let _x_4_0 = commondef.ucreplace c_0 y_1 xs_1_1 in <{_Tuple2!3}> (select _x_4_0::_Tuple2 0) (_predefined._Cons (select _x_2_0::_Tuple2 1) (select _x_4_0::_Tuple2 1))) ) (_predefined._Nil -> <{_Tuple2!3}> False _predefined._Nil) 
+commondef.replaceOrAppend !c_0 y_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> case (c_0 x_1_0) (True -> _predefined._Cons y_1 xs_1_1) (False -> _predefined._Cons x_1_0 (commondef.replaceOrAppend c_0 y_1 xs_1_1)) ) (_ -> _predefined._Cons y_1 _predefined._Nil)
+commondef.ureplaceOrAppend !c_0 y_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> let _x_2_0 = c_0 x_1_0 in case (select _x_2_0::_Tuple2 0) (True -> _predefined._Cons y_1 xs_1_1) (False -> _predefined._Cons (select _x_2_0::_Tuple2 1) (commondef.ureplaceOrAppend c_0 y_1 xs_1_1)) ) (_ -> _predefined._Cons y_1 _predefined._Nil)
+commondef.removeCheck !_vEq_0 y_1 !_x_2 = case _x_2 (_predefined._Cons x_1_0 xs_1_1 -> case (select (select _vEq_0::<{StdClass.Eq;}> 0)::<{StdOverloaded.==;}> 0 y_1 x_1_0) (True -> <{_Tuple2!3}> True xs_1_1) (False -> let _x_3_0 = commondef.removeCheck _vEq_0 y_1 xs_1_1 in <{_Tuple2!3}> (select _x_3_0::_Tuple2 0) (_predefined._Cons x_1_0 (select _x_3_0::_Tuple2 1))) ) (_ -> <{_Tuple2!3}> False _predefined._Nil)
+<{commondef.c;497;39_97}> !_vArray_0 !g_i_1::I !g_s_2::I g_a_3 = case (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = select _vArray_0::<{_SystemArray.Array;}> 6 g_a_3 g_i_1 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{commondef.c;497;39_97}> _vArray_0 (<{StdInt.+_6}> g_i_1 StdInt.one_11) g_s_2 g_a_2_0)) (False -> _predefined._Nil) 
+<{commondef.removeSpecialChars`_98}> !sc_0 !_x_1 = case _x_1 (_predefined._Cons c1_1_0 cs1_1_1 -> case cs1_1_1 (_predefined._Cons c2_2_0 cs2_2_1 -> case (StdList.isMember_52 c1_1_0 sc_0) (True -> _predefined._Cons c2_2_0 (<{commondef.removeSpecialChars`_98}> sc_0 cs2_2_1)) (False -> _predefined._Cons c1_1_0 (<{commondef.removeSpecialChars`_98}> sc_0 cs1_1_1)) ) (_predefined._Nil -> case (StdList.isMember_52 c1_1_0 sc_0) (True -> _predefined._Nil) (False -> _predefined._Cons c1_1_0 _predefined._Nil) ) ) (_ -> _predefined._Nil)
+<{commondef.c;497;39_96}> !_vArray_0 !g_i_1::I !g_s_2::I g_a_3 = case (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = select _vArray_0::<{_SystemArray.Array;}> 6 g_a_3 g_i_1 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{commondef.c;497;39_96}> _vArray_0 (<{StdInt.+_6}> g_i_1 StdInt.one_11) g_s_2 g_a_2_0)) (False -> _predefined._Nil) 
+<{commondef.cu;497;9_95}> !_vone_0 !<{_v+_1}> c_l_i_2 !g_l_3 = <{commondef.g_c1;497;12_159}> g_l_3 _vone_0 <{_v+_1}> c_l_i_2
+<{commondef.g_c1;497;12_159}> !g_l_0 _vone_1 <{_v+_2}> c_l_i_3 = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{commondef.cu;497;9_95}> _vone_1 <{_v+_2}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 c_l_i_3 (select _vone_1::<{StdOverloaded.one;}> 0)) g_t_1_1) (_ -> c_l_i_3)
+<{commondef.cu;497;9_94}> !_vArray_0 c_a_1 c_i_2::I !g_l_3 = <{commondef.g_c1;497;12_160}> g_l_3 _vArray_0 c_a_1 c_i_2
+<{commondef.g_c1;497;12_160}> !g_l_0 _vArray_1 c_a_2 c_i_3::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{commondef.cu;497;9_94}> _vArray_1 (select _vArray_1::<{_SystemArray.Array;}> 5 c_a_2 c_i_3 c_1_0) (<{StdInt.+_6}> c_i_3 StdInt.one_11) g_t_1_1) (_ -> c_a_2)
+<{commondef.c;497;39_151}> !g_i_0::I !g_s_1::I g_a_2 = case (StdBool.not (<{StdInt.<_17}> g_s_1 g_i_0)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = _SystemArray.uselect_22 g_a_2 g_i_0 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{commondef.c;497;39_151}> (<{StdInt.+_6}> g_i_0 StdInt.one_11) g_s_1 g_a_2_0)) (False -> _predefined._Nil) 
+<{commondef.c;497;39_149}> !g_i_0::I !g_s_1::I g_a_2 = case (StdBool.not (<{StdInt.<_17}> g_s_1 g_i_0)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = _SystemArray.uselect_22 g_a_2 g_i_0 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{commondef.c;497;39_149}> (<{StdInt.+_6}> g_i_0 StdInt.one_11) g_s_1 g_a_2_0)) (False -> _predefined._Nil) 
+<{commondef.cu;497;9_150}>::I !<{_v+_0}> c_l_i_1::I !g_l_2 = <{commondef.g_c1;497;12_161}> g_l_2 <{_v+_0}> c_l_i_1
+<{commondef.g_c1;497;12_161}>::I !g_l_0 <{_v+_1}> c_l_i_2::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{commondef.cu;497;9_150}> <{_v+_1}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 c_l_i_2 StdInt.one_11) g_t_1_1) (_ -> c_l_i_2)
+<{commondef.cu;497;9_152}> !c_a_0 c_i_1::I !g_l_2 = <{commondef.g_c1;497;12_162}> g_l_2 c_a_0 c_i_1
+<{commondef.g_c1;497;12_162}> !g_l_0 !c_a_1 c_i_2::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{commondef.cu;497;9_152}> (_SystemArray.update_21 c_a_1 c_i_2 c_1_0) (<{StdInt.+_6}> c_i_2 StdInt.one_11) g_t_1_1) (_ -> c_a_1)
+<{commondef.cu;497;9_153}>::I !c_l_i_0::I !g_l_1 = <{commondef.g_c1;497;12_163}> g_l_1 c_l_i_0
+<{commondef.g_c1;497;12_163}>::I !g_l_0 !c_l_i_1::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{commondef.cu;497;9_153}> (<{StdInt.+_6}> c_l_i_1 StdInt.one_11) g_t_1_1) (_ -> c_l_i_1)
+commondef.removeSpecialChars !sc_0 !string_1 = let _x_1_0 = _SystemArray.usize_23 string_1, _x_1_1 = _SystemArray.usize_23 string_1 in <{commondef.cu;497;9_152}> (_SystemArray._createArray_16 (<{commondef.cu;497;9_153}> 0 (<{commondef.removeSpecialChars`_98}> sc_0 (<{commondef.c;497;39_149}> 0 (<{StdInt.-_7}> (select _x_1_0::_Tuple2 0) 1) (select _x_1_0::_Tuple2 1))))) 0 (<{commondef.removeSpecialChars`_98}> sc_0 (<{commondef.c;497;39_151}> 0 (<{StdInt.-_7}> (select _x_1_1::_Tuple2 0) 1) (select _x_1_1::_Tuple2 1)))
+commondef.ulength !_x_0 = case _x_0 (_predefined._Cons x_1_0 xs_1_1 -> let _x_2_0 = commondef.ulength xs_1_1 in <{_Tuple2!3}> (<{StdInt.+_6}> (select _x_2_0::_Tuple2 0) 1) (_predefined._Cons x_1_0 (select _x_2_0::_Tuple2 1))) (_ -> <{_Tuple2!3}> 0 _predefined._Nil)
+commondef.shorter_99::B !_x_0 !_x_1 = case _x_0 (_predefined._Nil -> True) (_predefined._Cons x_1_0 xs_1_1 -> case _x_1 (_predefined._Cons y_2_0 ys_2_1 -> commondef.shorter_99 xs_1_1 ys_2_1) ) (_ -> False)
+<{commondef.disjointLists`_100}>::B !_vEq_0 !_x_1 !ys_2 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> case (StdBool.not (StdList.isMember _vEq_0 x_1_0 ys_2)) (True -> <{commondef.disjointLists`_100}> _vEq_0 xs_1_1 ys_2) (False -> False) ) (_ -> True)
+commondef.disjointLists::B !_vEq_0 !xs_1 !ys_2 = case (case (StdList.isEmpty xs_1) (True -> True) (False -> StdList.isEmpty ys_2) ) (True -> True) (False -> case (commondef.shorter_99 xs_1 ys_2) (True -> <{commondef.disjointLists`_100}> _vEq_0 xs_1 ys_2) (False -> <{commondef.disjointLists`_100}> _vEq_0 ys_2 xs_1) ) 
+commondef.noDuplicates::B !_vEq_0 !_x_1 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> case (StdBool.not (StdList.isMember _vEq_0 x_1_0 xs_1_1)) (True -> commondef.noDuplicates _vEq_0 xs_1_1) (False -> False) ) (_ -> True)
+commondef.unzip3 !_x_0 = case _x_0 (_predefined._Cons _x_1_0 abcs_1_1 -> case _x_1_0 (_Tuple3 a_2_0 b_2_1 c_2_2 -> let !_x_3_0 = commondef.unzip3 abcs_1_1 in <{_Tuple3!7}> (_predefined._Cons a_2_0 (select _x_3_0::_Tuple3 0)) (_predefined._Cons b_2_1 (select _x_3_0::_Tuple3 1)) (_predefined._Cons c_2_2 (select _x_3_0::_Tuple3 2))) ) (_predefined._Nil -> <{_Tuple3!7}> _predefined._Nil _predefined._Nil _predefined._Nil) 
+commondef.unzip4 !_x_0 = case _x_0 (_predefined._Cons _x_1_0 abcds_1_1 -> case _x_1_0 (_Tuple4 a_2_0 b_2_1 c_2_2 d_2_3 -> let !_x_3_0 = commondef.unzip4 abcds_1_1 in <{_Tuple4!15}> (_predefined._Cons a_2_0 (select _x_3_0::_Tuple4 0)) (_predefined._Cons b_2_1 (select _x_3_0::_Tuple4 1)) (_predefined._Cons c_2_2 (select _x_3_0::_Tuple4 2)) (_predefined._Cons d_2_3 (select _x_3_0::_Tuple4 3))) ) (_predefined._Nil -> <{_Tuple4!15}> _predefined._Nil _predefined._Nil _predefined._Nil _predefined._Nil) 
+<{commondef.==_65}>::B !r1_0 !r2_1 = case (<{StdInt.==_16}> (select r1_0::ostypes._OSRect 0) (select r2_1::ostypes._OSRect 0)) (True -> case (<{StdInt.==_16}> (select r1_0::ostypes._OSRect 1) (select r2_1::ostypes._OSRect 1)) (True -> case (<{StdInt.==_16}> (select r1_0::ostypes._OSRect 2) (select r2_1::ostypes._OSRect 2)) (True -> <{StdInt.==_16}> (select r1_0::ostypes._OSRect 3) (select r2_1::ostypes._OSRect 3)) (False -> False) ) (False -> False) ) (False -> False) 
+commondef.addVector_66 !_x_0 !_x_1 = case _x_0 (StdIOBasic._Vector2 vx_1_0 vy_1_1 -> case _x_1 (StdIOBasic._Point2 x_2_0 y_2_1 -> StdIOBasic._Point2 (<{StdInt.+_6}> x_2_0 vx_1_0) (<{StdInt.+_6}> y_2_1 vy_1_1)) ) 
+commondef.addVector_67 !_x_0 !_x_1 = case _x_0 (StdIOBasic._Vector2 vx_1_0 vy_1_1 -> case _x_1 (ostypes._OSRect rleft_2_0 rtop_2_1 rright_2_2 rbottom_2_3 -> ostypes._OSRect (<{StdInt.+_6}> rleft_2_0 vx_1_0) (<{StdInt.+_6}> rtop_2_1 vy_1_1) (<{StdInt.+_6}> rright_2_2 vx_1_0) (<{StdInt.+_6}> rbottom_2_3 vy_1_1)) ) 
+commondef.addVector_68 !v_0 !_x_1 = case _x_1 (StdIOBasic._Rectangle corner1_1_0 corner2_1_1 -> StdIOBasic._Rectangle (commondef.addVector_66 v_0 corner1_1_0) (commondef.addVector_66 v_0 corner2_1_1)) 
+commondef.subVector_69 !_x_0 !_x_1 = case _x_0 (StdIOBasic._Vector2 vx_1_0 vy_1_1 -> case _x_1 (StdIOBasic._Point2 x_2_0 y_2_1 -> StdIOBasic._Point2 (<{StdInt.-_7}> x_2_0 vx_1_0) (<{StdInt.-_7}> y_2_1 vy_1_1)) ) 
+commondef.subVector_70 !_x_0 !_x_1 = case _x_0 (StdIOBasic._Vector2 vx_1_0 vy_1_1 -> case _x_1 (ostypes._OSRect rleft_2_0 rtop_2_1 rright_2_2 rbottom_2_3 -> ostypes._OSRect (<{StdInt.-_7}> rleft_2_0 vx_1_0) (<{StdInt.-_7}> rtop_2_1 vy_1_1) (<{StdInt.-_7}> rright_2_2 vx_1_0) (<{StdInt.-_7}> rbottom_2_3 vy_1_1)) ) 
+commondef.subVector_71 !v_0 !_x_1 = case _x_1 (StdIOBasic._Rectangle corner1_1_0 corner2_1_1 -> StdIOBasic._Rectangle (commondef.subVector_69 v_0 corner1_1_0) (commondef.subVector_69 v_0 corner2_1_1)) 
+commondef.toTuple_72 !_x_0 = case _x_0 (StdIOBasic._Size w_1_0 h_1_1 -> <{_Tuple2!3}> w_1_0 h_1_1) 
+commondef.fromTuple_73 !_x_0 = case _x_0 (_Tuple2 w_1_0 h_1_1 -> StdIOBasic._Size w_1_0 h_1_1) 
+commondef.toTuple_74 !_x_0 = case _x_0 (StdIOBasic._Point2 x_1_0 y_1_1 -> <{_Tuple2!3}> x_1_0 y_1_1) 
+commondef.fromTuple_75 !_x_0 = case _x_0 (_Tuple2 x_1_0 y_1_1 -> StdIOBasic._Point2 x_1_0 y_1_1) 
+commondef.toTuple_76 !_x_0 = case _x_0 (StdIOBasic._Vector2 vx_1_0 vy_1_1 -> <{_Tuple2!3}> vx_1_0 vy_1_1) 
+commondef.fromTuple_77 !_x_0 = case _x_0 (_Tuple2 vx_1_0 vy_1_1 -> StdIOBasic._Vector2 vx_1_0 vy_1_1) 
+commondef.toTuple4_78 !_x_0 = case _x_0 (ostypes._OSRect rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3 -> <{_Tuple4!15}> rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3) 
+commondef.toTuple4_80 !r_0 = commondef.toTuple4_78 (commondef.rectangleToRect r_0)
+<{commondef.==_82}>::B !_x_0 !_x_1 = case _x_0 (commondef.Finite i_1_0 -> case _x_1 (commondef.Finite j_2_0 -> case (<{StdInt.==_16}> i_1_0 j_2_0) (True -> True) (False -> case (StdBool.not (<{StdInt.<_17}> 0 i_1_0)) (True -> StdBool.not (<{StdInt.<_17}> 0 j_2_0)) (False -> False) ) ) ) (commondef.Infinite -> case _x_1 (commondef.Infinite -> True) ) (_ -> False)
+<{commondef.TD;Bound}> _x_0::B = _predefined._Nil
+<{commondef.TD;Cond}> _x_0::B = _predefined._Nil
+<{commondef.TD;UCond}> _x_0::B = _predefined._Nil
+<{commondef.TD;addVector;}> _x_0::B = _predefined._Nil
+<{commondef.TD;subVector;}> _x_0::B = _predefined._Nil
+<{commondef.TD;toTuple;}> _x_0::B = _predefined._Nil
+<{commondef.TD;fromTuple;}> _x_0::B = _predefined._Nil
+<{commondef.TD;toTuple4;}> _x_0::B = _predefined._Nil
+<{commondef.TD;fromTuple4;}> _x_0::B = _predefined._Nil
+
+:: commondef.Bound = commondef.Finite a1::I | commondef.Infinite
+
+|| Converted Records
+:: <{commondef.addVector;}> = {!commondef.addVector}
+
+:: <{commondef.subVector;}> = {!commondef.subVector}
+
+:: <{commondef.toTuple;}> = {!commondef.toTuple}
+
+:: <{commondef.fromTuple;}> = {!commondef.fromTuple}
+
+:: <{commondef.toTuple4;}> = {!commondef.toTuple4}
+
+:: <{commondef.fromTuple4;}> = {!commondef.fromTuple4}
+
+:: <{commondef.gEq_s;}> = {!commondef.gEq_s}
+
+:: <{commondef.gEq_ss;}> = {!commondef.gEq_ss}
+
+:: <{commondef.gEq_sss;}> = {!commondef.gEq_sss}
+
+:: <{commondef.gEq_ssss;}> = {!commondef.gEq_ssss}
+
+:: <{commondef.gEq_sssss;}> = {!commondef.gEq_sssss}
+
+:: <{commondef.gEq_ssssss;}> = {!commondef.gEq_ssssss}
+
+:: <{commondef.gEq_sssssss;}> = {!commondef.gEq_sssssss}
+
+:: <{commondef.gEq_ssssssss;}> = {!commondef.gEq_ssssssss}
+
+:: <{commondef.gEq_sssssssss;}> = {!commondef.gEq_sssssssss}
+
+:: <{commondef.bimap_s;}> = {commondef.bimap_s}
+
+:: <{commondef.bimap_ss;}> = {commondef.bimap_ss}
+
+:: <{commondef.bimap_sss;}> = {commondef.bimap_sss}
+

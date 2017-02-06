@@ -1,0 +1,19 @@
+|| ?module? ArgEnv
+
+
+ArgEnv.copyEnv !_x_0::I !_x_1 = error "no AnyCodeExpr"
+ArgEnv.getEnvSize::I !_x_0 = error "no AnyCodeExpr"
+ArgEnv.getEnvironmentVariable !name_0 = let <{name`_1_0}>::I = <{StdString.+++_11}> name_0 "\0", size_1_1 = ArgEnv.getEnvSize <{name`_1_0}> in case (<{StdInt.==_16}> size_1_1 0) (True -> ArgEnv.EnvironmentVariableUndefined) (False -> ArgEnv.EnvironmentVariable (ArgEnv.copyEnv size_1_1 <{name`_1_0}>)) 
+ArgEnv.copy !length_0::I !cString_1::I = error "no AnyCodeExpr"
+ArgEnv.getCommandLineArgument !_x_0::I = error "no AnyCodeExpr"
+ArgEnv.getArg !i_0::I = let _x_1_0 = ArgEnv.getCommandLineArgument i_0 in ArgEnv.copy (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+<{ArgEnv.cu;83;19_9}> !_vArray_0 c_a_1 !c_i_2::I !g_s_3::I = case (StdBool.not (<{StdInt.<_17}> g_s_3 c_i_2)) (True -> <{ArgEnv.cu;83;19_9}> _vArray_0 (select _vArray_0::<{_SystemArray.Array;}> 5 c_a_1 c_i_2 (ArgEnv.getArg c_i_2)) (<{StdInt.+_6}> c_i_2 StdInt.one_11) g_s_3) (False -> c_a_1) 
+ArgEnv.getCommandLineCount::I = error "no AnyCodeExpr"
+<{ArgEnv.cu;83;19_12}> !c_a_0 !c_i_1::I !g_s_2::I = case (StdBool.not (<{StdInt.<_17}> g_s_2 c_i_1)) (True -> <{ArgEnv.cu;83;19_12}> (_SystemArray.update_77 c_a_0 c_i_1 (ArgEnv.getArg c_i_1)) (<{StdInt.+_6}> c_i_1 StdInt.one_11) g_s_2) (False -> c_a_0) 
+ArgEnv.getCommandLine = let g_s_1_0::I = <{StdInt.-_7}> ArgEnv.getCommandLineCount 1 in <{ArgEnv.cu;83;19_12}> (_SystemArray._createArray_72 (<{StdInt.+_6}> g_s_1_0 StdInt.one_11)) 0 g_s_1_0
+<{ArgEnv.TD;EnvironmentVariable}> _x_0::B = _predefined._Nil
+<{ArgEnv.TD;CString}> _x_0::B = _predefined._Nil
+
+:: ArgEnv.EnvironmentVariable = ArgEnv.EnvironmentVariableUndefined | ArgEnv.EnvironmentVariable !a1
+
+|| Converted Records

@@ -1,0 +1,10 @@
+|| ?module? logfile
+
+
+logfile.openLogfile !_vFileSystem_0 !prj_name_1 !env_2 = select _vFileSystem_0::<{StdFile.FileSystem;}> 1 (<{StdString.+++.}> (StdPathname.RemoveSuffix prj_name_1) ".log") 1 env_2
+logfile.closeLogfile !_vFileSystem_0 !file_1 !env_2 = let _x_1_0 = StdFile.ferror file_1, file_1_1 = select _x_1_0::_Tuple2 1, _x_1_2 = select _vFileSystem_0::<{StdFile.FileSystem;}> 0 file_1_1 env_2 in <{_Tuple2!3}> (logfile._f3_3 (select _x_1_0::_Tuple2 0) _x_1_2) (select _x_1_2::_Tuple2 1)
+logfile._f3_3::B !_x_0::B _x_1 = case _x_0 (True -> select _x_1::_Tuple2 0) (_ -> False)
+logfile.writeLogfile !s_0 !file_1 = StdFile.fwrites (<{StdString.+++.}> s_0 "\n") file_1
+
+
+|| Converted Records

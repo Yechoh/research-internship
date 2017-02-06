@@ -1,0 +1,41 @@
+|| ?module? CpmLogic2
+
+
+CpmLogic2.projectpath = "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223\\Libraries\\iTasks-SDK\\research internship"
+CpmLogic2.pn = "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223\\Libraries\\iTasks-SDK\\research internship\\showlines.prj"
+CpmLogic2.ideenvs = "IDEEnvs"
+CpmLogic2.force::B = False
+CpmLogic2.cleanhome = "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223"
+CpmLogic2.pwd = CpmLogic2.cleanhome
+CpmLogic2.cleanup_9 exepath_0 bool1_1 bool2_2 !ps_3 = IdeState.abortLog False "" ps_3
+CpmLogic2.pinit_8 !force_rebuild_0::B !gst_1 = PmDriver.BringProjectUptoDate force_rebuild_0 CpmLogic2.cleanup_9 gst_1
+CpmLogic2.createProject !cleanhome_0 pwd_1 !pn_2 !world_3 = let proj_path_1_0 = UtilIO.GetLongPathName pn_2, _x_1_1 = CpmPaths.readIDEEnvs cleanhome_0 CpmLogic2.ideenvs world_3, world_1_2 = select _x_1_1::_Tuple2 1, _x_1_3 = StdFile.accFiles_34 (PmProject.ReadProjectFile proj_path_1_0 cleanhome_0) world_1_2, _x_1_4 = select _x_1_3::_Tuple2 0, err_1_5 = select _x_1_4::_Tuple3 2 in case (case (StdBool.not (select _x_1_4::_Tuple3 1)) (True -> True) (False -> StdBool.not (<{StdString.==_2}> err_1_5 "")) ) (True -> CpmLogic.error (<{StdString.+++_11}> "CPM failed while opening project: " (<{StdString.+++_11}> err_1_5 "\n")) (select _x_1_3::_Tuple2 1)) (False -> let _x_3_0 = StdFile.stdio_33 (select _x_1_3::_Tuple2 1) in select (CpmLogic2.pinit_8 CpmLogic2.force (IdeState._GeneralSt (IdeState.initGeneral True PmCompilerOptions.DefaultCompilerOptions cleanhome_0 cleanhome_0 (select _x_1_4::_Tuple3 0) (select _x_1_1::_Tuple2 0) (select _x_3_0::_Tuple2 0)) (select _x_3_0::_Tuple2 1) False))::IdeState._GeneralSt 1) 
+CpmLogic2.Start !world_0 = let _x_1_0 = System.Directory.getCurrentDirectory world_0, world_1_1 = select _x_1_0::_Tuple2 1 in <{CpmLogic2._c;71;7_53}> (select _x_1_0::_Tuple2 0) world_1_1
+<{CpmLogic2._c;71;7_53}> !_x_0 !world_1 = case _x_0 (Data.Error.Ok pwd_1_0 -> CpmLogic2.createProject CpmLogic2.cleanhome pwd_1_0 CpmLogic2.pn (select (StdFile.accFiles_34 UtilIO.GetFullApplicationPath world_1)::_Tuple2 1)) (Data.Error.Error e_1_0 -> StdMisc.abort "Failed to read current directory") 
+
+
+|| Converted Records
+:: <{CpmLogic2.gEq_s;}> = {!CpmLogic2.gEq_s}
+
+:: <{CpmLogic2.gEq_ss;}> = {!CpmLogic2.gEq_ss}
+
+:: <{CpmLogic2.gEq_sss;}> = {!CpmLogic2.gEq_sss}
+
+:: <{CpmLogic2.gEq_ssss;}> = {!CpmLogic2.gEq_ssss}
+
+:: <{CpmLogic2.gEq_sssss;}> = {!CpmLogic2.gEq_sssss}
+
+:: <{CpmLogic2.gEq_ssssss;}> = {!CpmLogic2.gEq_ssssss}
+
+:: <{CpmLogic2.gEq_sssssss;}> = {!CpmLogic2.gEq_sssssss}
+
+:: <{CpmLogic2.gEq_ssssssss;}> = {!CpmLogic2.gEq_ssssssss}
+
+:: <{CpmLogic2.gEq_sssssssss;}> = {!CpmLogic2.gEq_sssssssss}
+
+:: <{CpmLogic2.bimap_s;}> = {CpmLogic2.bimap_s}
+
+:: <{CpmLogic2.bimap_ss;}> = {CpmLogic2.bimap_ss}
+
+:: <{CpmLogic2.bimap_sss;}> = {CpmLogic2.bimap_sss}
+

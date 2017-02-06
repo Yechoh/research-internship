@@ -136,7 +136,7 @@ where
 									items world
 		# items					= if (isEmpty items) [] [ToolbarSeparator:items]
 /*		# (items,world)			= toolIconFun
-									execBM 
+									execBM
 									(Just "Run")
 									pm_run
 									items world

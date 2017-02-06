@@ -1,31 +1,24 @@
 || ?module? StdMaybe
 
 
-StdMaybe.mapMaybe f_0 !_x_1 = case _x_1 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x_1_0 -> Data.Maybe.Just (f_0 x_1_0)) 
+StdMaybe.isJust::B !_x_0 = case _x_0 (StdMaybe.Nothing -> False) (_ -> True)
+StdMaybe.isNothing::B !_x_0 = case _x_0 (StdMaybe.Nothing -> True) (_ -> False)
+StdMaybe.fromJust !_x_0 = case _x_0 (StdMaybe.Just x_1_0 -> x_1_0) 
+StdMaybe.u_isJust !nothing_0 = case nothing_0 (StdMaybe.Nothing -> <{_Tuple2!3}> False nothing_0) (_ -> <{_Tuple2!3}> True nothing_0)
+StdMaybe.u_isNothing !nothing_0 = case nothing_0 (StdMaybe.Nothing -> <{_Tuple2!3}> True nothing_0) (_ -> <{_Tuple2!3}> False nothing_0)
+StdMaybe.accMaybe f_0 !_x_1 = case _x_1 (StdMaybe.Just x_1_0 -> let _x_2_0 = f_0 x_1_0 in <{_Tuple2!3}> (StdMaybe.Just (select _x_2_0::_Tuple2 0)) (StdMaybe.Just (select _x_2_0::_Tuple2 1))) (_ -> <{_Tuple2!3}> StdMaybe.Nothing _x_1)
+StdMaybe.mapMaybe f_0 !_x_1 = case _x_1 (StdMaybe.Just x_1_0 -> StdMaybe.Just (f_0 x_1_0)) (_ -> StdMaybe.Nothing)
+StdMaybe.maybeToList !_x_0 = case _x_0 (StdMaybe.Nothing -> _predefined._Nil) (StdMaybe.Just a_1_0 -> _predefined._Cons a_1_0 _predefined._Nil) 
+StdMaybe.listToMaybe !_x_0 = case _x_0 (_predefined._Nil -> StdMaybe.Nothing) (_predefined._Cons a_1_0 _x_1_1 -> StdMaybe.Just a_1_0) 
+<{StdMaybe.c;65;31_12}> !g_l_0 = <{StdMaybe.g_c1;65;41_14}> g_l_0
+<{StdMaybe.g_c1;65;41_14}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{StdMaybe.g_c2;65;41_13}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{StdMaybe.g_c2;65;41_13}> !g_h_0 g_t_1 = case g_h_0 (StdMaybe.Just m_1_0 -> _predefined._Cons m_1_0 (<{StdMaybe.c;65;31_12}> g_t_1)) (_ -> <{StdMaybe.c;65;31_12}> g_t_1)
+StdMaybe.catMaybes !ms_0 = <{StdMaybe.c;65;31_12}> ms_0
+<{StdMaybe.==_10}>::B !<{_v==_0}> !_x_1 !maybe_2 = case _x_1 (StdMaybe.Nothing -> <{StdMaybe._c;49;27_15}> maybe_2) (StdMaybe.Just a_1_0 -> <{StdMaybe._c;52;27_16}> maybe_2 <{_v==_0}> a_1_0) 
+<{StdMaybe._c;52;27_16}>::B !maybe_0 <{_v==_1}> a_2 = case maybe_0 (StdMaybe.Just b_1_0 -> select <{_v==_1}>::<{StdOverloaded.==;}> 0 a_2 b_1_0) (_ -> False)
+<{StdMaybe._c;49;27_15}>::B !maybe_0 = case maybe_0 (StdMaybe.Nothing -> True) (_ -> False)
+<{StdMaybe.TD;Maybe}> _x_0::B = _predefined._Nil
 
+:: StdMaybe.Maybe = StdMaybe.Just a1 | StdMaybe.Nothing
 
 || Converted Records
-:: <{StdMaybe.gEq_s;}> = {!StdMaybe.gEq_s}
-
-:: <{StdMaybe.gEq_ss;}> = {!StdMaybe.gEq_ss}
-
-:: <{StdMaybe.gEq_sss;}> = {!StdMaybe.gEq_sss}
-
-:: <{StdMaybe.gEq_ssss;}> = {!StdMaybe.gEq_ssss}
-
-:: <{StdMaybe.gEq_sssss;}> = {!StdMaybe.gEq_sssss}
-
-:: <{StdMaybe.gEq_ssssss;}> = {!StdMaybe.gEq_ssssss}
-
-:: <{StdMaybe.gEq_sssssss;}> = {!StdMaybe.gEq_sssssss}
-
-:: <{StdMaybe.gEq_ssssssss;}> = {!StdMaybe.gEq_ssssssss}
-
-:: <{StdMaybe.gEq_sssssssss;}> = {!StdMaybe.gEq_sssssssss}
-
-:: <{StdMaybe.bimap_s;}> = {StdMaybe.bimap_s}
-
-:: <{StdMaybe.bimap_ss;}> = {StdMaybe.bimap_ss}
-
-:: <{StdMaybe.bimap_sss;}> = {StdMaybe.bimap_sss}
-

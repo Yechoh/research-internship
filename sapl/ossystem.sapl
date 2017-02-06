@@ -1,0 +1,23 @@
+|| ?module? ossystem
+
+
+ossystem.theApplicationPath =: select (clCCall_12.winGetCStringAndFree clCCall_12.winGetAppPath 99)::_Tuple2 0
+ossystem.osHomepath !fname_0 = <{StdString.+++_11}> ossystem.theApplicationPath fname_0
+ossystem.osApplicationpath !fname_0 = <{StdString.+++_11}> ossystem.theApplicationPath fname_0
+ossystem.osMMtoHPixels::I !mm_0::D = StdInt.toInt_22 (<{StdReal.*_4}> (<{StdReal./_5}> mm_0 25.4) (StdReal.toReal_13 clCCall_12.winGetHorzResolution))
+ossystem.osMMtoVPixels::I !mm_0::D = StdInt.toInt_22 (<{StdReal.*_4}> (<{StdReal./_5}> mm_0 25.4) (StdReal.toReal_13 clCCall_12.winGetVertResolution))
+ossystem.osMaxScrollWindowSize = clCCall_12.winMaxScrollWindowSize
+ossystem.osMaxFixedWindowSize = clCCall_12.winMaxFixedWindowSize
+ossystem.osScreenrect !tb_0::I = let _x_1_0 = clCCall_12.winScreenXSize tb_0, _x_1_1 = clCCall_12.winScreenYSize (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (ostypes._OSRect 0 0 (select _x_1_0::_Tuple2 0) (select _x_1_1::_Tuple2 0)) (select _x_1_1::_Tuple2 1)
+ossystem.osPrintSetupTypical::B = False
+ossystem.osGetProcessWindowDimensions !osdinfo_0 !tb_1::I = let maybeOS_1_0 = osdocumentinterface.getOSDInfoOSInfo osdinfo_0 in case (StdMaybe.isNothing maybeOS_1_0) (True -> ossystem.osScreenrect tb_1) (False -> let osinfo_3_0 = StdMaybe.fromJust maybeOS_1_0, _x_3_1 = windowCrossCall_12.winGetWindowPos (select osinfo_3_0::osdocumentinterface._OSInfo 0) tb_1, _x_3_2::I = select _x_3_1::_Tuple2 0, x_3_3::I = select _x_3_2::_Tuple2 0, y_3_4 = select _x_3_2::_Tuple2 1, _x_3_5 = windowCrossCall_12.winGetClientSize (select osinfo_3_0::osdocumentinterface._OSInfo 2) (select _x_3_1::_Tuple2 1), _x_3_6 = select _x_3_5::_Tuple2 0 in <{_Tuple2!3}> (ostypes._OSRect x_3_3 y_3_4 (<{StdInt.+_6}> x_3_3 (select _x_3_6::_Tuple2 0)) (<{StdInt.+_6}> y_3_4 (select _x_3_6::_Tuple2 1))) (select _x_3_5::_Tuple2 1)) 
+ossystem.osDefaultWindowMetrics !tb_0::I = let _x_1_0 = osfont.osDialogfont tb_0, font_1_1::I = select _x_1_0::_Tuple2 0, _x_1_2::I = osfont.osGetfontmetrics False 0 font_1_1 (select _x_1_0::_Tuple2 1), _x_1_3::D = select _x_1_2::_Tuple2 0, ascent_1_4::I = select _x_1_3::_Tuple4 0, descent_1_5::I = select _x_1_3::_Tuple4 1, leading_1_6::I = select _x_1_3::_Tuple4 2, height_1_7::I = <{StdInt.+_6}> (<{StdInt.+_6}> ascent_1_4 descent_1_5) leading_1_6, unit_1_8 = <{StdReal./_5}> (StdReal.toReal_13 height_1_7) 8.0, margin_1_9 = StdInt.toInt_22 (<{StdReal.*_4}> unit_1_8 7.0), itemspace_1_10 = StdInt.toInt_22 (<{StdReal.*_4}> unit_1_8 4.0), _x_1_11 = clCCall_12.winScrollbarSize (select _x_1_2::_Tuple2 1) in <{_Tuple2!3}> (ossystem._OSWindowMetrics font_1_1 (_Tuple3 ascent_1_4 descent_1_5 leading_1_6) height_1_7 margin_1_9 margin_1_9 itemspace_1_10 itemspace_1_10 (select _x_1_11::_Tuple3 1) (select _x_1_11::_Tuple3 0)) (select _x_1_11::_Tuple3 2)
+ossystem.osStripOuterSize !isMD_0::B !isResizable_1::B !tb_2::I = case isMD_0 (True -> let _x_2_0 = clCCall_12.winMDIClientToOuterSizeDims (<{ossystem._if;106;27_16}> isResizable_1) tb_2 in <{_Tuple2!3}> (_Tuple2 (select _x_2_0::_Tuple3 0) (select _x_2_0::_Tuple3 1)) (select _x_2_0::_Tuple3 2)) (False -> let _x_2_0 = clCCall_12.winSDIClientToOuterSizeDims (<{ossystem._if;106;27_17}> isResizable_1) tb_2 in <{_Tuple2!3}> (_Tuple2 (select _x_2_0::_Tuple3 0) (select _x_2_0::_Tuple3 1)) (select _x_2_0::_Tuple3 2)) 
+<{ossystem._if;106;27_17}>::I !isResizable_0::B = case isResizable_0 (True -> 262144) (_ -> 0)
+<{ossystem._if;106;27_16}>::I !isResizable_0::B = case isResizable_0 (True -> 262144) (_ -> 0)
+<{ossystem.TD;OSWindowMetrics}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: ossystem._OSWindowMetrics = {!ossystem.osmFont, !ossystem.osmFontMetrics, !ossystem.osmHeight::I, !ossystem.osmHorMargin::I, !ossystem.osmVerMargin::I, !ossystem.osmHorItemSpace::I, !ossystem.osmVerItemSpace::I, !ossystem.osmHSliderHeight::I, !ossystem.osmVSliderWidth::I}
+

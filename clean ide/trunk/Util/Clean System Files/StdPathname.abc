@@ -1,0 +1,1044 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "Platform" "20170123155356"
+.depend "_SystemArray" "20161223204046"
+.depend "StdArray" "20161223204046"
+.depend "StdReal" "20161223204046"
+.depend "StdChar" "20161223204046"
+.depend "StdInt" "20161223204046"
+.depend "StdBool" "20161223204046"
+.depend "StdClass" "20161223204046"
+.depend "StdList" "20161223204046"
+.depend "StdString" "20161223204046"
+.depend "StdOverloaded" "20161223204046"
+.depend "_SystemDynamic" "20161223204009"
+.depend "StdPathname" "20170123155353"
+.module m_StdPathname "StdPathname" "20170123155353"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod _SystemArray
+.impmod StdChar
+.implab e_StdChar_s==;18
+.impmod StdInt
+.implab e_StdInt_s+;6
+.implab e_StdInt_s-;7
+.implab e_StdInt_sone;11
+.implab e_StdInt_s<;17
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod StdClass
+.impdesc e_StdClass_rEq;
+.impmod StdList
+.implab e_StdList_sisMember
+.impmod StdString
+.impdesc e_StdString_d==;2
+.implab e_StdString_s==;2
+.implab e_StdString_s%;10
+.implab e_StdString_s+++;11
+.impmod StdOverloaded
+.impdesc e_StdOverloaded_r==;
+.export e_StdPathname_sTD;Pathname
+.export e_StdPathname_eaTD;Pathname
+.descexp e_StdPathname_dTD;Pathname e_StdPathname_nTD;Pathname e_StdPathname_lTD;Pathname 1 0 "TD;Pathname"
+.o 2 0
+e_StdPathname_lTD;Pathname
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdPathname_eaTD;Pathname
+.n 1 e_StdPathname_dTD;Pathname e_StdPathname_eaTD;Pathname
+.o 1 0
+e_StdPathname_nTD;Pathname
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdPathname_eaTD;Pathname
+.o 2 0
+e_StdPathname_sTD;Pathname
+.o 2 0
+s11
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdPathname_squoted_string
+.descexp e_StdPathname_dquoted_string e_StdPathname_nquoted_string e_StdPathname_lquoted_string 1 0 "quoted_string"
+.o 2 0
+e_StdPathname_lquoted_string
+	pop_a 1
+.d 1 0
+	jsr ea10
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdPathname_dquoted_string
+.o 1 0
+e_StdPathname_nquoted_string
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea10
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea10
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_StdPathname_squoted_string
+.o 1 0
+s10
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jmp s12
+.o 1 0
+s12
+	buildAC "\""
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "\""
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.export e_StdPathname_sreplace_dots_by_dir_separators
+.descexp e_StdPathname_dreplace_dots_by_dir_separators e_StdPathname_nreplace_dots_by_dir_separators e_StdPathname_lreplace_dots_by_dir_separators 1 0 "replace_dots_by_dir_separators"
+.o 2 0
+e_StdPathname_lreplace_dots_by_dir_separators
+	pop_a 1
+.d 1 0
+	jsr ea9
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdPathname_dreplace_dots_by_dir_separators
+.o 1 0
+e_StdPathname_nreplace_dots_by_dir_separators
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea9
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea9
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_StdPathname_sreplace_dots_by_dir_separators
+.o 1 0
+s9
+	push_a 0
+	updatepop_a 0 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	subI
+	pushI 1
+	push_b 1
+	addI
+	create_array_ CHAR 0 1
+	push_a 1
+	push_b 0
+	pushI 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 2 2 ii
+	jmp s20
+.o 2 2 ii
+s20
+	push_b 0
+	push_b 2
+	ltI
+	notB
+	jmp_false else.1
+	push_b 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 0
+	select CHAR 0 1
+	pushI 1
+	push_b 2
+	addI
+	pushC '.'
+	push_b 2
+	eqC
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+.d 0 2 bc
+	jsr s23
+.o 0 1 c
+	push_b 3
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	update CHAR 0 1
+	push_a 1
+	push_b 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 4
+	updatepop_b 0 3
+.d 2 2 ii
+	jmp s20
+else.1
+	updatepop_a 0 1
+	pop_b 2
+.d 1 0
+	rtn
+.o 0 2 bc
+s23
+	eqB_b TRUE 0
+	jmp_true case.2
+	jmp case.3
+case.2
+	pop_b 2
+	pushC '\\'
+.d 0 1 c
+	rtn
+case.3
+	pop_b 1
+.d 0 1 c
+	rtn
+.export e_StdPathname_sMakeFullPathname
+.descexp e_StdPathname_dMakeFullPathname e_StdPathname_nMakeFullPathname e_StdPathname_lMakeFullPathname 2 0 "MakeFullPathname"
+.a 0 a8
+.o 2 0
+e_StdPathname_lMakeFullPathname
+	repl_args 1 1
+.o 2 0
+a8
+.d 2 0
+	jsr ea8
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 2 e_StdPathname_dMakeFullPathname
+.o 1 0
+e_StdPathname_nMakeFullPathname
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea8
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+ea8
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	push_array 1
+	update_a 1 3
+	update_a 0 2
+	pop_a 2
+.o 2 0
+e_StdPathname_sMakeFullPathname
+.o 2 0
+s8
+	push_a 1
+	buildAC "\\"
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.export e_StdPathname_sIsFullPathname
+.descexp e_StdPathname_dIsFullPathname e_StdPathname_nIsFullPathname e_StdPathname_lIsFullPathname 1 0 "IsFullPathname"
+.o 2 0
+e_StdPathname_lIsFullPathname
+	pop_a 1
+.d 1 0
+	jsr ea7
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_StdPathname_dIsFullPathname
+.o 1 0
+e_StdPathname_nIsFullPathname
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea7
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea7
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_StdPathname_sIsFullPathname
+.o 1 0
+s7
+	pushI 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	subI
+	push_a 0
+	pushC '\\'
+	updatepop_a 0 1
+.d 1 2 ci
+	jsr s16
+.o 0 1 i
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	notB
+.d 0 1 b
+	rtn
+.o 1 2 ci
+s16
+	push_b 1
+	pushI 0
+	ltI
+	notB
+	jmp_false else.4
+	pop_a 1
+	pop_b 2
+	pushI -1
+.d 0 1 i
+	rtn
+else.4
+	push_b 1
+	push_a 0
+	select CHAR 0 1
+	push_b 1
+	eqC
+	jmp_false else.5
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+else.5
+	pushI 1
+	push_b 2
+	subI
+	push_a 0
+	push_b 1
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 ci
+	jmp s16
+.export e_StdPathname_sequal_suffix
+.descexp e_StdPathname_dequal_suffix e_StdPathname_nequal_suffix e_StdPathname_lequal_suffix 2 0 "equal_suffix"
+.a 0 a6
+.o 2 0
+e_StdPathname_lequal_suffix
+	repl_args 1 1
+.o 2 0
+a6
+.d 2 0
+	jsr ea6
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdPathname_dequal_suffix
+.o 1 0
+e_StdPathname_nequal_suffix
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea6
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea6
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	push_array 1
+	update_a 1 3
+	update_a 0 2
+	pop_a 2
+.o 2 0
+e_StdPathname_sequal_suffix
+.o 2 0
+s6
+	pushI 1
+	push_a 1
+	push_arraysize CHAR 0 1
+	subI
+	pushI 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	subI
+	push_b 0
+	push_b 2
+	ltI
+	jmp_false else.6
+	pop_a 2
+	pop_b 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.6
+	push_b 0
+	push_b 2
+	subI
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	push_a 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+.d 0 1 b
+	rtn
+.export e_StdPathname_sreplace_prefix_path
+.descexp e_StdPathname_dreplace_prefix_path e_StdPathname_nreplace_prefix_path e_StdPathname_lreplace_prefix_path 3 0 "replace_prefix_path"
+.a 0 a5
+.o 2 0
+e_StdPathname_lreplace_prefix_path
+	repl_args 2 2
+.o 3 0
+a5
+.d 3 0
+	jsr ea5
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 3 e_StdPathname_dreplace_prefix_path
+.o 1 0
+e_StdPathname_nreplace_prefix_path
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea5
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 3 0
+ea5
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_array 2
+	push_array 2
+	push_array 2
+	update_a 2 5
+	update_a 1 4
+	update_a 0 3
+	pop_a 3
+.o 3 0
+e_StdPathname_sreplace_prefix_path
+.o 3 0
+s5
+	push_a 2
+	push_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.7
+	updatepop_a 1 2
+.d 1 0
+	rtn
+else.7
+	push_a 2
+	push_a 1
+.d 2 0
+	jsr s14
+.o 0 1 b
+	jmp_false else.8
+	pushI 1
+	push_a 2
+	push_arraysize CHAR 0 1
+	subI
+	pushI 1
+	push_a 0
+	updatepop_a 0 1
+	push_arraysize CHAR 0 1
+	addI
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "\\"
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+else.8
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+s14
+	pushI 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	subI
+	pushI 1
+	push_a 1
+	push_arraysize CHAR 0 1
+	subI
+	push_b 1
+	ltI
+	notB
+	jmp_false else.9
+	pop_a 2
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.9
+	pushI 1
+	push_b 1
+	addI
+	push_a 1
+	select CHAR 0 1
+	pushC '\\'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.10
+	push_b 0
+	pushI 0
+	push_a 1
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+.d 0 1 b
+	rtn
+else.10
+	pop_a 2
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StdPathname_sRemoveFilename
+.descexp e_StdPathname_dRemoveFilename e_StdPathname_nRemoveFilename e_StdPathname_lRemoveFilename 1 0 "RemoveFilename"
+.o 2 0
+e_StdPathname_lRemoveFilename
+	pop_a 1
+.d 1 0
+	jsr ea4
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdPathname_dRemoveFilename
+.o 1 0
+e_StdPathname_nRemoveFilename
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea4
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea4
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_StdPathname_sRemoveFilename
+.o 1 0
+s4
+	pushI 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	subI
+	push_a 0
+	pushC '\\'
+.d 1 2 ci
+	jsr s15
+.o 0 2 bi
+	push_b 0
+	jmp_false else.11
+	pushI 1
+	push_b 2
+	subI
+	pushI 0
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	rtn
+else.11
+	pop_b 2
+.d 1 0
+	rtn
+.export e_StdPathname_sRemoveSuffix`
+.descexp e_StdPathname_dRemoveSuffix` e_StdPathname_nRemoveSuffix` e_StdPathname_lRemoveSuffix` 1 0 "RemoveSuffix`"
+.o 2 0
+e_StdPathname_lRemoveSuffix`
+	pop_a 1
+.d 1 0
+	jsr ea3
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdPathname_dRemoveSuffix`
+.o 1 0
+e_StdPathname_nRemoveSuffix`
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea3
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea3
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_StdPathname_sRemoveSuffix`
+.o 1 0
+s3
+	pushI 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	subI
+	push_a 0
+	pushC '.'
+.d 1 2 ci
+	jsr s15
+.o 0 2 bi
+	push_b 0
+	notB
+	jmp_false else.12
+	pop_b 2
+.d 1 0
+	rtn
+else.12
+	pushI 1
+	push_b 2
+	subI
+	pushI 0
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	rtn
+.export e_StdPathname_sRemoveSuffix
+.descexp e_StdPathname_dRemoveSuffix e_StdPathname_nRemoveSuffix e_StdPathname_lRemoveSuffix 1 0 "RemoveSuffix"
+.o 2 0
+e_StdPathname_lRemoveSuffix
+	pop_a 1
+.d 1 0
+	jsr ea2
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdPathname_dRemoveSuffix
+.o 1 0
+e_StdPathname_nRemoveSuffix
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea2
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea2
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_StdPathname_sRemoveSuffix
+.o 1 0
+s2
+	pushI 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	subI
+	push_b 0
+	push_a 0
+	pushC '.'
+.d 1 2 ci
+	jsr s15
+.o 0 2 bi
+	push_b 0
+	notB
+	jmp_false else.13
+	pop_b 3
+.d 1 0
+	rtn
+else.13
+	buildI_b 1
+	buildh _Nil 0
+	buildAC ".prj"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".cxo"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".xo"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".obj2"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".obj1"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".obj0"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".obj"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".o"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".abc"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".lhs"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".hs"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".icl"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC ".dcl"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC "."
+	buildh ARRAY 1
+	buildh _Cons 2
+	push_b 2
+	push_a 1
+	push_a 3
+	build_u _ 2 1 n26
+	buildh e_StdString_d==;2 0
+	pop_b 3
+.d 3 0
+	jsr e_StdList_sisMember
+.o 0 1 b
+	notB
+	jmp_false else.14
+	pop_a 1
+.d 1 0
+	rtn
+else.14
+	pushI 1
+	pushI_a 0
+	subI
+	pushI 0
+	push_a 1
+	updatepop_a 0 2
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n26
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea26
+.o 3 1 i
+s26
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	push_a 0
+	updatepop_a 0 2
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdPathname_sRemovePath
+.descexp e_StdPathname_dRemovePath e_StdPathname_nRemovePath e_StdPathname_lRemovePath 1 0 "RemovePath"
+.o 2 0
+e_StdPathname_lRemovePath
+	pop_a 1
+.d 1 0
+	jsr ea1
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdPathname_dRemovePath
+.o 1 0
+e_StdPathname_nRemovePath
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea1
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_StdPathname_sRemovePath
+.o 1 0
+s1
+	pushI 1
+	push_a 0
+	push_arraysize CHAR 0 1
+	subI
+	push_b 0
+	push_a 0
+	pushC '\\'
+.d 1 2 ci
+	jsr s15
+.o 0 2 bi
+	push_b 0
+	jmp_false else.15
+	pushI 1
+	push_b 2
+	addI
+	push_b 3
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 4
+	updatepop_b 0 3
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	rtn
+else.15
+	pop_b 3
+.d 1 0
+	rtn
+.o 1 2 ci
+s15
+	push_b 1
+	pushI 0
+	ltI
+	notB
+	jmp_false else.16
+	pushI 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.16
+	push_b 1
+	push_a 0
+	select CHAR 0 1
+	push_b 1
+	eqC
+	jmp_false else.17
+	push_b 1
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.17
+	pushI 1
+	push_b 2
+	subI
+	push_a 0
+	push_b 1
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 ci
+	jmp s15

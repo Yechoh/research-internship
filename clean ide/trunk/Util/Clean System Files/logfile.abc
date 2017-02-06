@@ -1,0 +1,302 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdPathname" "20170123155353"
+.depend "StdBool" "20161223204046"
+.depend "StdFile" "20170206141502"
+.depend "StdString" "20161223204046"
+.depend "StdOverloaded" "20161223204046"
+.depend "_SystemDynamic" "20161223204009"
+.depend "logfile" "20170123155354"
+.module m_logfile "logfile" "20170123155353"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdPathname
+.implab e_StdPathname_sRemoveSuffix
+.impmod StdFile
+.implab e_StdFile_sfwrites
+.implab e_StdFile_sferror
+.impmod StdString
+.implab e_StdString_s+++.
+.export e_logfile_swriteLogfile
+.descexp e_logfile_dwriteLogfile e_logfile_nwriteLogfile e_logfile_lwriteLogfile 2 0 "writeLogfile"
+.a 0 a3
+.o 2 0
+e_logfile_lwriteLogfile
+	repl_args 1 1
+.o 2 0
+a3
+.d 2 0
+	jsr ea3
+.o 0 2 f
+	buildF_b 0
+	pop_b 2
+.d 1 0
+	rtn
+.n 2 e_logfile_dwriteLogfile
+.o 1 0
+e_logfile_nwriteLogfile
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea3
+.o 0 2 f
+	fillF_b 0 0
+	pop_b 2
+.d 1 0
+	rtn
+.o 2 0
+ea3
+	jsr_eval 1
+	jsr_eval 0
+	pushF_a 1
+	push_array 0
+	update_a 0 2
+	pop_a 2
+.o 1 2 f
+e_logfile_swriteLogfile
+.o 1 2 f
+s3
+	buildAC "\n"
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 f
+	jsr writeFS
+.o 0 2 f
+.d 0 2 f
+	rtn
+.export e_logfile_scloseLogfile
+.descexp e_logfile_dcloseLogfile e_logfile_ncloseLogfile e_logfile_lcloseLogfile 3 0 "closeLogfile"
+.a 0 a2
+.o 2 0
+e_logfile_lcloseLogfile
+	repl_args 2 2
+.o 3 0
+a2
+.d 3 0
+	jsr ea2
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 e_logfile_dcloseLogfile
+.o 1 0
+e_logfile_ncloseLogfile
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea2
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea2
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushF_a 1
+	repl_r_args 4 0
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.o 5 2 f
+e_logfile_scloseLogfile
+.o 5 2 f
+s2
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 f
+	jsr errorF
+.o 0 3 b f
+	push_a 4
+	push_a 1
+	buildF_b 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	jsr_ap 2
+	push_arg 0 2 2
+	jsr_eval 0
+	push_a 1
+	push_b 0
+	updatepop_b 0 3
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 1 1 b
+	jsr s4
+.o 0 1 b
+	updatepop_a 0 1
+.d 1 1 b
+	rtn
+.o 1 1 b
+s4
+	eqB_b TRUE 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	push_arg 0 2 1
+	pop_b 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 2
+.d 0 1 b
+	rtn
+case.2
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_logfile_sopenLogfile
+.descexp e_logfile_dopenLogfile e_logfile_nopenLogfile e_logfile_lopenLogfile 3 0 "openLogfile"
+.a 0 a1
+.o 2 0
+e_logfile_lopenLogfile
+	repl_args 2 2
+.o 3 0
+a1
+.d 3 0
+	jsr ea1
+.o 1 3 bf
+	push_a 0
+	buildF_b 1
+	buildB_b 0
+	buildh _Tuple 3
+	updatepop_a 0 1
+	pop_b 3
+.d 1 0
+	rtn
+.n 3 e_logfile_dopenLogfile
+.o 1 0
+e_logfile_nopenLogfile
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea1
+.o 1 3 bf
+	push_a 0
+	buildF_b 1
+	buildB_b 0
+	fillh _Tuple 3 4
+	pop_a 1
+	pop_b 3
+.d 1 0
+	rtn
+.o 3 0
+ea1
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	push_r_args 1 4 0
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	update_a 3 5
+	update_a 1 3
+	pop_a 2
+.o 6 0
+e_logfile_sopenLogfile
+.o 6 0
+s1
+	push_a 5
+	buildI 1
+	push_a 6
+	build _ 1 n7
+	push_a 4
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	jsr_ap 3
+	repl_args 3 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushF_a 1
+	pushB_a 0
+	pop_a 2
+.d 1 3 bf
+	rtn
+.n 1 _ ea7
+.o 1 0
+n7
+	push_node _cycle_in_spine 1
+.o 2 0
+ea7
+.o 2 0
+s7
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_StdPathname_sRemoveSuffix
+.o 1 0
+	buildAC ".log"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn

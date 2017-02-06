@@ -94,3 +94,6 @@ help :: !String ![String] !*World -> *World
  * in between, then print that new string to console.
  */
 showLines :: ![String] !*World -> *World
+
+getLine :: *World -> *(String, *World)
+

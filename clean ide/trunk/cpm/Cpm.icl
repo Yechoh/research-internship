@@ -5,7 +5,7 @@
  * and is targeted at OS X and Linux users who do not have access to the
  * CleanIDE.
  */
-module Cpm
+implementation module Cpm
 
 /**
  * CPM imports

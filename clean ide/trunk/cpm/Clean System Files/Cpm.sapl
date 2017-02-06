@@ -1,0 +1,40 @@
+|| ?module? Cpm
+
+
+<{Cpm.c;48;64_1}> !_vfromString_0 !g_l_1 = <{Cpm.g_c1;48;71_47}> g_l_1 _vfromString_0
+<{Cpm.g_c1;48;71_47}> !g_l_0 _vfromString_1 = case g_l_0 (_predefined._Cons arg_1_0 g_t_1_1 -> _predefined._Cons (select _vfromString_1::<{StdOverloaded.fromString;}> 0 arg_1_0) (<{Cpm.c;48;64_1}> _vfromString_1 g_t_1_1)) (_ -> _predefined._Nil)
+<{Cpm.c;48;64_46}> !g_l_0 = <{Cpm.g_c1;48;71_48}> g_l_0
+<{Cpm.g_c1;48;71_48}> !g_l_0 = case g_l_0 (_predefined._Cons arg_1_0 g_t_1_1 -> _predefined._Cons (StdString.fromString_4 arg_1_0) (<{Cpm.c;48;64_46}> g_t_1_1)) (_ -> _predefined._Nil)
+Cpm.mkCl_2 !cmd_0 = Text.concat_0 (Data.List.intersperse " " (StdList.tl (<{Cpm.c;48;64_46}> cmd_0)))
+Cpm.Start !world_0 = let _x_1_0 = System.CommandLine.getCommandLine world_0, world_1_1 = select _x_1_0::_Tuple2 1, _x_1_2 = System.Directory.getCurrentDirectory world_1_1, world_1_3 = select _x_1_2::_Tuple2 1, cmd_1_4 = select _x_1_0::_Tuple2 0 in <{Cpm._c;45;5_52}> (select _x_1_2::_Tuple2 0) world_1_3 cmd_1_4
+<{Cpm._c;45;5_52}> !_x_0 !world_1 cmd_2 = case _x_0 (Data.Error.Ok pwd_1_0 -> let _x_2_0 = StdFile.accFiles_34 UtilIO.GetFullApplicationPath world_1, _x_2_1 = <{Cpm._c;42;22_51}> (System.Environment.getEnvironmentVariable "CLEAN_HOME" (select _x_2_0::_Tuple2 1)) cpmd_2_2, cpmd_2_2 = select _x_2_0::_Tuple2 0 in CpmLogic.doCpmAction (select _x_2_1::_Tuple2 0) pwd_1_0 (Parser.startParse (<{Data.Func.$}> StdList.fromString_78 (Cpm.mkCl_2 cmd_2))) (select _x_2_1::_Tuple2 1)) (Data.Error.Error e_1_0 -> StdMisc.abort "Failed to read current directory") 
+<{Cpm._c;42;22_51}> !_x_0 cpmd_1 = case _x_0 (_Tuple2 _x_1_0 world_1_1 -> Cpm._f50_50 _x_1_0 world_1_1 cpmd_1) 
+Cpm._f50_50 !_x_0 world_1 cpmd_2 = case _x_0 (Data.Maybe.Just ch_1_0 -> _Tuple2 ch_1_0 world_1) (_ -> _Tuple2 (<{Cpm._if;41;22_49}> (Text.endsWith_2 "bin" cpmd_2) cpmd_2) world_1)
+<{Cpm._if;41;22_49}> !_x_0::B !cpmd_1 = case _x_0 (True -> System.FilePath.takeDirectory cpmd_1) (_ -> cpmd_1)
+
+
+|| Converted Records
+:: <{Cpm.gEq_s;}> = {!Cpm.gEq_s}
+
+:: <{Cpm.gEq_ss;}> = {!Cpm.gEq_ss}
+
+:: <{Cpm.gEq_sss;}> = {!Cpm.gEq_sss}
+
+:: <{Cpm.gEq_ssss;}> = {!Cpm.gEq_ssss}
+
+:: <{Cpm.gEq_sssss;}> = {!Cpm.gEq_sssss}
+
+:: <{Cpm.gEq_ssssss;}> = {!Cpm.gEq_ssssss}
+
+:: <{Cpm.gEq_sssssss;}> = {!Cpm.gEq_sssssss}
+
+:: <{Cpm.gEq_ssssssss;}> = {!Cpm.gEq_ssssssss}
+
+:: <{Cpm.gEq_sssssssss;}> = {!Cpm.gEq_sssssssss}
+
+:: <{Cpm.bimap_s;}> = {Cpm.bimap_s}
+
+:: <{Cpm.bimap_ss;}> = {Cpm.bimap_ss}
+
+:: <{Cpm.bimap_sss;}> = {Cpm.bimap_sss}
+

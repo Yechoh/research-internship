@@ -68,5 +68,20 @@ how to run hello.java:
 "C:\Program Files\Java\jdk1.8.0_73\bin\javac" "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223\\Libraries\\iTasks-SDK\\research internship\\Hello.java"
 geeft een error, maar dat maakt niet uit
 
-
-
+---
+"Wat je het beste kan doen is kijken naar hoe de clean compiler zelf “CleanCompiler.exe” wordt aangeroepen door cpm of de Clean IDE. Die schrijft namelijk standaard zijn output al naar files."
+cpm roept doCpmAction van cpmLogic aan
+	doCpmAction in cpmLogic krijgt een projectaction mee.
+	Deze kan BuildProject zijn.
+	doCpmAction roept initGeneral van IdeState aan
+		initGeneral heeft geen beschrijving. Het lijkt gewoon wat data te verzamelen
+	daarna roept CpmAction pinit aan.
+		dat roept BringProjectUpToDate in PmDriver aan
+		beschrijving: bring complete project up to date. it has a boolean, when true it recompiles
+		deze lijkt het echte werk te doen.
+		het gebruikt ShowInfo in messwin om berichtjes te sturen
+			deze gebruikt writeLog in ideState
+				onduidelijk of deze log eerder geinitialiseerd wordt of zo, of hoe het werkt. het roept appPLoc aan, maar die husselt alleen wat info
+				logfile zit in generalSt, wat een verzameling is van info, maar ook een world. logfile is een file. Hoe deze dan gemaakt, geprint, watefs wordt is onduidelijk. Dit moet logischerwijs gezien later in de programflow gebeuren. De vraag is waar.
+doCpmAction is het laatste wat cpm aanroept. Deze moet de logfile dus printen
+	

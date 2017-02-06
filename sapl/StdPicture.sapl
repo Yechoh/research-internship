@@ -1,0 +1,174 @@
+|| ?module? StdPicture
+
+
+StdPicture.setPenSize !w_0::I !picture_1 = ospicture.setpictpensize w_0 picture_1
+StdPicture.setPenPos !pos_0 !picture_1 = ospicture.setpictpenpos pos_0 picture_1
+StdPicture.setPenColour !c_0 !picture_1 = ospicture.setpictpencolour c_0 picture_1
+StdPicture.setPenBack !c_0 !picture_1 = ospicture.setpictbackcolour c_0 picture_1
+StdPicture.setPenFont !f_0 !picture_1 = ospicture.setpictpenfont f_0 picture_1
+StdPicture.setattribute_122 !_x_0 !picture_1 = case _x_0 (StdPictureDef.PenSize size_1_0 -> StdPicture.setPenSize size_1_0 picture_1) (StdPictureDef.PenPos pos_1_0 -> StdPicture.setPenPos pos_1_0 picture_1) (StdPictureDef.PenColour c_1_0 -> StdPicture.setPenColour c_1_0 picture_1) (StdPictureDef.PenBack c_1_0 -> StdPicture.setPenBack c_1_0 picture_1) (StdPictureDef.PenFont font_1_0 -> StdPicture.setPenFont font_1_0 picture_1) 
+StdPicture.setPenAttributes !atts_0 !picture_1 = commondef.stateMap2 StdPicture.setattribute_122 atts_0 picture_1
+StdPicture.getPenAttributes !picture_0 = ospicture.getpictpenattributes picture_0
+StdPicture.getPenPos !picture_0 = ospicture.getpictpenpos picture_0
+StdPicture.getPenSize !picture_0 = ospicture.getpictpensize picture_0
+StdPicture.setDefaultPenSize !picture_0 = ospicture.setpictpensize 1 picture_0
+StdPicture.getPenColour !picture_0 = ospicture.getpictpencolour picture_0
+StdPicture.getPenBack !picture_0 = ospicture.getpictbackcolour picture_0
+StdPicture.setDefaultPenColour !picture_0 = ospicture.setpictpencolour StdPictureDef.Black picture_0
+StdPicture.setDefaultPenBack !picture_0 = ospicture.setpictbackcolour StdPictureDef.White picture_0
+StdPicture.toRGBColour !colour_0 = let _x_1_0 = ospicture.toRGBtriple colour_0 in StdPictureDef._RGBColour (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 1) (select _x_1_0::_Tuple3 2)
+StdPicture.getPenFont !picture_0 = ospicture.getpictpenfont picture_0
+StdPicture.setDefaultPenFont !picture_0 = ospicture.setpictpendefaultfont picture_0
+StdPicture.openFont !_x_0 !picture_1 = case _x_0 (StdPictureDef._FontDef fName_1_0 fStyles_1_1 fSize_1_2 -> let _x_2_0 = ospicture.peekPicture picture_1, _x_2_1 = osfont.osSelectfont (_Tuple3 fName_1_0 fStyles_1_1 fSize_1_2) (select _x_2_0::_Tuple5 4) in <{_Tuple2!3}> (_Tuple2 (select _x_2_1::_Tuple3 0) (select _x_2_1::_Tuple3 1)) (ospicture.unpeekPicture (select _x_2_0::_Tuple5 0) (select _x_2_0::_Tuple5 1) (select _x_2_0::_Tuple5 2) (select _x_2_0::_Tuple5 3) (select _x_2_1::_Tuple3 2))) 
+StdPicture.openDefaultFont !picture_0 = ospicture.accpicttoolbox osfont.osDefaultfont picture_0
+StdPicture.openDialogFont !picture_0 = ospicture.accpicttoolbox osfont.osDialogfont picture_0
+StdPicture.getFontNames !picture_0 = ospicture.accpicttoolbox osfont.osFontnames picture_0
+StdPicture.getFontStyles !fName_0 !picture_1 = ospicture.accpicttoolbox (osfont.osFontstyles fName_0) picture_1
+StdPicture.getFontSizes !sizeBound1_0::I !sizeBound2_1::I !fName_2 !picture_3 = ospicture.accpicttoolbox (osfont.osFontsizes sizeBound1_0 sizeBound2_1 fName_2) picture_3
+StdPicture.getFontDef !font_0 = let _x_1_0 = osfont.osFontgetdef font_0 in StdPictureDef._FontDef (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 1) (select _x_1_0::_Tuple3 2)
+StdPicture.getFontCharWidth !font_0 !char_1::C !picture_2 = let _x_1_0 = ospicture.peekOSPictContext picture_2, _x_1_1 = ospicture.accpicttoolbox (osfont.osGetfontcharwidths True (select _x_1_0::_Tuple2 0) (_predefined._Cons char_1 _predefined._Nil) font_0) (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (StdList.hd (select _x_1_1::_Tuple2 0)) (select _x_1_1::_Tuple2 1)
+StdPicture.anon_123 char_0::C font_1 = StdPicture.getFontCharWidth font_1 char_0
+StdPicture.getPenFontInfo !fontfun_0 !picture_1 = let _x_1_0 = StdPicture.getPenFont picture_1, font_1_1 = select _x_1_0::_Tuple2 0, _x_1_2 = fontfun_0 font_1_1 (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (select _x_1_2::_Tuple2 0) (StdPicture.setPenFont font_1_1 (select _x_1_2::_Tuple2 1))
+StdPicture.getPenFontCharWidth !char_0::C !picture_1 = StdPicture.getPenFontInfo (StdPicture.anon_123 char_0) picture_1
+StdPicture.getFontCharWidths !font_0 !chars_1 !picture_2 = let _x_1_0 = ospicture.peekOSPictContext picture_2 in ospicture.accpicttoolbox (osfont.osGetfontcharwidths True (select _x_1_0::_Tuple2 0) chars_1 font_0) (select _x_1_0::_Tuple2 1)
+StdPicture.anon_124 chars_0 font_1 = StdPicture.getFontCharWidths font_1 chars_0
+StdPicture.getPenFontCharWidths !chars_0 !picture_1 = StdPicture.getPenFontInfo (StdPicture.anon_124 chars_0) picture_1
+StdPicture.getFontStringWidth !font_0 !string_1 !picture_2 = let _x_1_0 = ospicture.peekOSPictContext picture_2, _x_1_1 = ospicture.accpicttoolbox (osfont.osGetfontstringwidths True (select _x_1_0::_Tuple2 0) (_predefined._Cons string_1 _predefined._Nil) font_0) (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (StdList.hd (select _x_1_1::_Tuple2 0)) (select _x_1_1::_Tuple2 1)
+StdPicture.anon_125 string_0 font_1 = StdPicture.getFontStringWidth font_1 string_0
+StdPicture.getPenFontStringWidth !string_0 !picture_1 = StdPicture.getPenFontInfo (StdPicture.anon_125 string_0) picture_1
+StdPicture.getFontStringWidths !font_0 !strings_1 !picture_2 = let _x_1_0 = ospicture.peekOSPictContext picture_2 in ospicture.accpicttoolbox (osfont.osGetfontstringwidths True (select _x_1_0::_Tuple2 0) strings_1 font_0) (select _x_1_0::_Tuple2 1)
+StdPicture.anon_126 strings_0 font_1 = StdPicture.getFontStringWidths font_1 strings_0
+StdPicture.getPenFontStringWidths !strings_0 !picture_1 = StdPicture.getPenFontInfo (StdPicture.anon_126 strings_0) picture_1
+StdPicture.getFontMetrics !font_0 !picture_1 = let _x_1_0 = ospicture.peekOSPictContext picture_1, _x_1_1 = ospicture.accpicttoolbox (osfont.osGetfontmetrics True (select _x_1_0::_Tuple2 0) font_0) (select _x_1_0::_Tuple2 1), _x_1_2 = select _x_1_1::_Tuple2 0 in <{_Tuple2!3}> (StdPictureDef._FontMetrics (select _x_1_2::_Tuple4 0) (select _x_1_2::_Tuple4 1) (select _x_1_2::_Tuple4 2) (select _x_1_2::_Tuple4 3)) (select _x_1_1::_Tuple2 1)
+StdPicture.anon_127 font_0 = StdPicture.getFontMetrics font_0
+StdPicture.getPenFontMetrics !picture_0 = StdPicture.getPenFontInfo StdPicture.anon_127 picture_0
+StdPicture.isEmptyRegion::B !_x_0 = case _x_0 (StdPicture._Region _x_1_0 region_bound_1_1 -> case _x_1_0 (_predefined._Nil -> True) ) (_ -> False)
+StdPicture.getRegionBound !_x_0 = case _x_0 (StdPicture._Region region_shape_1_0 region_bound_1_1 -> commondef.rectToRectangle region_bound_1_1) 
+StdPicture.appPicture !drawf_0 !picture_1 = let _x_1_0 = ospicture.getpictpen picture_1 in ospicture.setpictpen (select _x_1_0::_Tuple2 0) (drawf_0 (select _x_1_0::_Tuple2 1))
+StdPicture.accPicture !drawf_0 !picture_1 = let _x_1_0 = ospicture.getpictpen picture_1, _x_1_1 = drawf_0 (select _x_1_0::_Tuple2 1) in <{_Tuple2!2}> (select _x_1_1::_Tuple2 0) (ospicture.setpictpen (select _x_1_0::_Tuple2 0) (select _x_1_1::_Tuple2 1))
+StdPicture.anon_128 drawf_0 p_1 = _Tuple2 StdMisc.undef (drawf_0 p_1)
+StdPicture.anon_142 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+StdPicture.scale_134::I !_x_0 !x_1::I = case _x_0 (_Tuple2 n_1_0 d_1_1 -> <{StdInt./_10}> (<{StdInt.*_9}> n_1_0 x_1) d_1_1) 
+StdPicture.anon_131 vFac_0 hFac_1 !_x_2 = case _x_2 (StdIOBasic._Vector2 vx_1_0 vy_1_1 -> _Tuple2 (StdPicture.scale_134 hFac_1 vx_1_0) (StdPicture.scale_134 vFac_0 vy_1_1)) 
+StdPicture.setrgnshape_132 !hFac_0 !vFac_1 !_x_2 !_x_3 !rgn_4::I !tb_5::I = case _x_2 (StdIOBasic._Point2 ox_1_0 oy_1_1 -> case _x_3 (StdPicture.RegionRect _x_2_0 -> case _x_2_0 (ostypes._OSRect rleft_3_0 rtop_3_1 rright_3_2 rbottom_3_3 -> let _x_4_0 = osrgn.osnewrectrgn (ostypes._OSRect (StdPicture.scale_134 hFac_0 (<{StdInt.-_7}> rleft_3_0 ox_1_0)) (StdPicture.scale_134 vFac_1 (<{StdInt.-_7}> rtop_3_1 oy_1_1)) (StdPicture.scale_134 hFac_0 (<{StdInt.-_7}> rright_3_2 ox_1_0)) (StdPicture.scale_134 vFac_1 (<{StdInt.-_7}> rbottom_3_3 oy_1_1))) tb_5, rectrgn_4_1::I = select _x_4_0::_Tuple2 0, _x_4_2 = osrgn.osunionrgn rectrgn_4_1 rgn_4 (select _x_4_0::_Tuple2 1) in <{_Tuple2!3}> (select _x_4_2::_Tuple2 0) (osrgn.osdisposergn rgn_4 (osrgn.osdisposergn rectrgn_4_1 (select _x_4_2::_Tuple2 1)))) ) (StdPicture.RegionPolygon _x_2_0 shape_2_1 -> case _x_2_0 (StdIOBasic._Point2 x_3_0 y_3_1 -> let _x_4_0 = osrgn.osnewrgn tb_5, _x_4_1::I = osrgn.ospolyrgn (_Tuple2 (StdPicture.scale_134 hFac_0 (<{StdInt.-_7}> x_3_0 ox_1_0)) (StdPicture.scale_134 vFac_1 (<{StdInt.-_7}> y_3_1 oy_1_1))) (StdList.map (StdPicture.anon_131 vFac_1 hFac_0) shape_2_1) (select _x_4_0::_Tuple2 0) (select _x_4_0::_Tuple2 1), polyrgn_4_2 = select _x_4_1::_Tuple2 0, _x_4_3 = osrgn.osunionrgn polyrgn_4_2 rgn_4 (select _x_4_1::_Tuple2 1) in <{_Tuple2!3}> (select _x_4_3::_Tuple2 0) (osrgn.osdisposergn rgn_4 (osrgn.osdisposergn polyrgn_4_2 (select _x_4_3::_Tuple2 1)))) ) ) 
+StdPicture.setrgnshapes_133 !hFac_0 !vFac_1 !origin_2 !_x_3 !rgn_4::I !tb_5::I = case _x_3 (_predefined._Cons shape_1_0 shapes_1_1 -> let _x_2_0 = StdPicture.setrgnshape_132 hFac_0 vFac_1 origin_2 shape_1_0 rgn_4 tb_5 in StdPicture.setrgnshapes_133 hFac_0 vFac_1 origin_2 shapes_1_1 (select _x_2_0::_Tuple2 0) (select _x_2_0::_Tuple2 1)) (_ -> <{_Tuple2!3}> rgn_4 tb_5)
+StdPicture.anon_129 _x_0 tb_1 = _Tuple2 True tb_1
+StdPicture.anon_130 _x_0 !x_1 = x_1
+StdPicture.anon_143 !f_0 _x_1::I x_2::I = f_0 (osrgn.osdisposergn _x_1 x_2)
+StdPicture.accClipPicture !region_0 !drawf_1 !picture_2 = let !_x_1_0 = ospicture.pictgetcliprgn picture_2, !_x_1_1 = ospicture.peekPicture (select _x_1_0::_Tuple2 1), !_x_1_2 = osrgn.osnewrgn (select _x_1_1::_Tuple5 4), !_x_1_3 = ospicture.getPictureScalingFactors (select _x_1_1::_Tuple5 3) (select _x_1_2::_Tuple2 1), !_x_1_4 = StdPicture.setrgnshapes_133 (select _x_1_3::_Tuple4 0) (select _x_1_3::_Tuple4 1) origin_1_15 (select region_0::StdPicture._Region 0) (select _x_1_2::_Tuple2 0) (select _x_1_3::_Tuple4 3), !isEmpty_1_5 = <{StdPicture._if;344;43_144}> (<{StdInt.==_16}> curClipRgn_1_13 0), !_x_1_6 = isEmpty_1_5 curClipRgn_1_13 (select _x_1_4::_Tuple2 1), !picture_1_7 = ospicture.unpeekPicture origin_1_15 (select _x_1_1::_Tuple5 1) (select _x_1_1::_Tuple5 2) (select _x_1_3::_Tuple4 2) (select _x_1_6::_Tuple2 1), !_x_1_8 = <{StdPicture._if;349;43_145}> (<{StdInt.==_16}> curClipRgn_1_13 0), !picture_1_9 = select _x_1_8::_Tuple2 0 newClipRgn_1_14 picture_1_7, !_x_1_10 = drawf_1 picture_1_9, !picture_1_11 = ospicture.pictsetcliprgn curClipRgn_1_13 (select _x_1_10::_Tuple2 1), !picture_1_12 = ospicture.apppicttoolbox (StdPicture.anon_143 (select _x_1_8::_Tuple2 1 curClipRgn_1_13) newClipRgn_1_14) picture_1_11, curClipRgn_1_13 = select _x_1_0::_Tuple2 0, newClipRgn_1_14::I = select _x_1_4::_Tuple2 0, origin_1_15::I = select _x_1_1::_Tuple5 0 in <{_Tuple2!2}> (select _x_1_10::_Tuple2 0) picture_1_12
+<{StdPicture._if;349;43_145}> !_x_0::B = case _x_0 (True -> _Tuple2 ospicture.pictsetcliprgn StdPicture.anon_130) (_ -> _Tuple2 ospicture.pictandcliprgn osrgn.osdisposergn)
+<{StdPicture._if;344;43_144}> !_x_0::B = case _x_0 (True -> StdPicture.anon_129) (_ -> osrgn.osisemptyrgn)
+StdPicture.appClipPicture !region_0 !drawf_1 !picture_2 = select (StdPicture.accClipPicture region_0 (StdPicture.anon_128 drawf_1) picture_2)::_Tuple2 1
+StdPicture.appXorPicture !drawf_0 !picture_1 = ospicture.setpictnormalmode (drawf_0 (ospicture.setpictxormode picture_1))
+StdPicture.accXorPicture !drawf_0 !picture_1 = let _x_1_0 = drawf_0 (ospicture.setpictxormode picture_1) in <{_Tuple2!2}> (select _x_1_0::_Tuple2 0) (ospicture.setpictnormalmode (select _x_1_0::_Tuple2 1))
+StdPicture.drawPoint !picture_0 = let _x_1_0 = ospicture.getpictpenpos picture_0, curpos_1_1 = select _x_1_0::_Tuple2 0 in ospicture.setpictpenpos (update curpos_1_1::StdIOBasic._Point2 [0:<{StdInt.+_6}> (select curpos_1_1::StdIOBasic._Point2 0) 1]) (ospicture.pictdrawpoint curpos_1_1 (select _x_1_0::_Tuple2 1))
+StdPicture.drawPointAt !point_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.setpictpenpos (select _x_1_0::_Tuple2 0) (ospicture.pictdrawpoint point_0 (select _x_1_0::_Tuple2 1))
+StdPicture.drawLineTo !pos_0 !picture_1 = ospicture.pictdrawlineto pos_0 picture_1
+StdPicture.drawLine !pos1_0 !pos2_1 !picture_2 = ospicture.pictdrawline pos1_0 pos2_1 picture_2
+StdPicture.getResolution !picture_0 = let _x_1_0 = ospicture.peekPicture picture_0, context_1_1::I = select _x_1_0::_Tuple5 3, _x_1_2 = ospicture.getResolutionC context_1_1 (select _x_1_0::_Tuple5 4) in <{_Tuple2!3}> (select _x_1_2::_Tuple2 0) (ospicture.unpeekPicture (select _x_1_0::_Tuple5 0) (select _x_1_0::_Tuple5 1) (select _x_1_0::_Tuple5 2) context_1_1 (select _x_1_2::_Tuple2 1))
+StdPicture.boxtorect !_x_0 !_x_1 = case _x_0 (StdIOBasic._Point2 x_1_0 y_1_1 -> case _x_1 (StdPictureDef._Box box_w_2_0 box_h_2_1 -> let _x_3_0 = commondef.minmax x_1_0 (<{StdInt.+_6}> x_1_0 box_w_2_0), _x_3_1 = commondef.minmax y_1_1 (<{StdInt.+_6}> y_1_1 box_h_2_1) in ostypes._OSRect (select _x_3_0::_Tuple2 0) (select _x_3_1::_Tuple2 0) (select _x_3_0::_Tuple2 1) (select _x_3_1::_Tuple2 1)) ) 
+StdPicture.movePenPos_47 !v_0 !picture_1 = ospicture.movepictpenpos v_0 picture_1
+StdPicture.movePenPos_48 !curve_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.setpictpenpos (select (ospicture.getcurve_rect_begin_end (select _x_1_0::_Tuple2 0) curve_0)::_Tuple3 2) (select _x_1_0::_Tuple2 1)
+StdPicture.zero_139 = StdPicture._Region _predefined._Nil commondef.zero_64
+StdPicture.toRegion_49 !rectangle_0 = let rect_1_0 = commondef.rectangleToRect rectangle_0 in case (commondef.isEmptyRect rect_1_0) (True -> StdPicture.zero_139) (False -> StdPicture._Region (_predefined._Cons (StdPicture.RegionRect rect_1_0) _predefined._Nil) rect_1_0) 
+StdPicture.closeShape_136 !v_0 !_x_1 = case _x_1 (_predefined._Cons v`_1_0 vs_1_1 -> _predefined._Cons <{v`_1_0}> (StdPicture.closeShape_136 (<{StdIOBasic.+_9}> v_0 <{v`_1_0}>) vs_1_1)) (_predefined._Nil -> case (<{StdIOBasic.==_8}> v_0 StdIOBasic.zero_11) (True -> _predefined._Nil) (False -> _predefined._Cons (StdIOBasic._Vector2 (<{StdInt.-_7}> 0 (select v_0::StdIOBasic._Vector2 0)) (<{StdInt.-_7}> 0 (select v_0::StdIOBasic._Vector2 1))) _predefined._Nil) ) 
+StdPicture.polybound_135 !p_0 !_x_1 !_x_2 = case _x_1 (_predefined._Cons v_1_0 vs_1_1 -> case _x_2 (ostypes._OSRect minx_2_0 miny_2_1 maxx_2_2 maxy_2_3 -> let <{p`_3_0}>::I = StdIOBasic.movePoint v_1_0 p_0, x_3_1::I = select <{p`_3_0}>::StdIOBasic._Point2 0, y_3_2 = select <{p`_3_0}>::StdIOBasic._Point2 1 in StdPicture.polybound_135 <{p`_3_0}> vs_1_1 (ostypes._OSRect (<{StdPicture._c;48;16_146}> (<{StdInt.<_17}> minx_2_0 x_3_1) minx_2_0 x_3_1) (<{StdPicture._c;48;16_147}> (<{StdInt.<_17}> miny_2_1 y_3_2) miny_2_1 y_3_2) (<{StdPicture._c;51;16_148}> (<{StdInt.<_17}> maxx_2_2 x_3_1) x_3_1 maxx_2_2) (<{StdPicture._c;51;16_149}> (<{StdInt.<_17}> maxy_2_3 y_3_2) y_3_2 maxy_2_3))) ) (_ -> _x_2)
+<{StdPicture._c;51;16_149}>::I !_x_0::B y_1::I maxy_2::I = case _x_0 (True -> y_1) (_ -> maxy_2)
+<{StdPicture._c;51;16_148}>::I !_x_0::B x_1::I maxx_2::I = case _x_0 (True -> x_1) (_ -> maxx_2)
+<{StdPicture._c;48;16_147}>::I !_x_0::B miny_1::I y_2::I = case _x_0 (True -> miny_1) (_ -> y_2)
+<{StdPicture._c;48;16_146}>::I !_x_0::B minx_1::I x_2::I = case _x_0 (True -> minx_1) (_ -> x_2)
+StdPicture.toRegion_50 !_x_0 = case _x_0 (StdPicture._PolygonAt p_1_0 _x_1_1 -> case p_1_0 (StdIOBasic._Point2 x_2_0 y_2_1 -> case _x_1_1 (StdPictureDef._Polygon polygon_shape_3_0 -> let shape_4_0 = StdPicture.closeShape_136 StdIOBasic.zero_11 polygon_shape_3_0, bound_4_1 = StdPicture.polybound_135 p_1_0 shape_4_0 (ostypes._OSRect x_2_0 y_2_1 x_2_0 y_2_1) in case (commondef.isEmptyRect bound_4_1) (True -> StdPicture.zero_139) (False -> StdPicture._Region (_predefined._Cons (StdPicture.RegionPolygon p_1_0 shape_4_0) _predefined._Nil) bound_4_1) ) ) ) 
+StdPicture.sumbound_137 !_x_0 !_x_1 = case _x_0 (ostypes._OSRect minx_1_0 miny_1_1 maxx_1_2 maxy_1_3 -> case _x_1 (ostypes._OSRect minx`_2_0 miny`_2_1 maxx`_2_2 maxy`_2_3 -> ostypes._OSRect (<{StdPicture._c;48;16_150}> (<{StdInt.<_17}> minx_1_0 <{minx`_2_0}>) minx_1_0 <{minx`_2_0}>) (<{StdPicture._c;48;16_151}> (<{StdInt.<_17}> miny_1_1 <{miny`_2_1}>) miny_1_1 <{miny`_2_1}>) (<{StdPicture._c;51;16_152}> (<{StdInt.<_17}> maxx_1_2 <{maxx`_2_2}>) <{maxx`_2_2}> maxx_1_2) (<{StdPicture._c;51;16_153}> (<{StdInt.<_17}> maxy_1_3 <{maxy`_2_3}>) <{maxy`_2_3}> maxy_1_3)) ) 
+<{StdPicture._c;51;16_153}>::I !_x_0::B <{maxy`_1}>::I maxy_2::I = case _x_0 (True -> <{maxy`_1}>) (_ -> maxy_2)
+<{StdPicture._c;51;16_152}>::I !_x_0::B <{maxx`_1}>::I maxx_2::I = case _x_0 (True -> <{maxx`_1}>) (_ -> maxx_2)
+<{StdPicture._c;48;16_151}>::I !_x_0::B miny_1::I <{miny`_2}>::I = case _x_0 (True -> miny_1) (_ -> <{miny`_2}>)
+<{StdPicture._c;48;16_150}>::I !_x_0::B minx_1::I <{minx`_2}>::I = case _x_0 (True -> minx_1) (_ -> <{minx`_2}>)
+<{StdPicture.+_140}> !r1_0 !r2_1 = case (commondef.isEmptyRect (select r1_0::StdPicture._Region 1)) (True -> r2_1) (False -> case (commondef.isEmptyRect (select r2_1::StdPicture._Region 1)) (True -> r1_0) (False -> StdPicture._Region (<{StdList.++}> (select r1_0::StdPicture._Region 0) (select r2_1::StdPicture._Region 0)) (StdPicture.sumbound_137 (select r1_0::StdPicture._Region 1) (select r2_1::StdPicture._Region 1))) ) 
+StdPicture.toRegion_51 !_vtoRegion_0 !_x_1 = case _x_1 (_predefined._Cons area_1_0 areas_1_1 -> <{StdPicture.+_140}> (select _vtoRegion_0::<{StdPicture.toRegion;}> 0 area_1_0) (StdPicture.toRegion_51 _vtoRegion_0 areas_1_1)) (_ -> StdPicture.zero_139)
+StdPicture.toRegion_52 !_vtoRegion_0 !_vtoRegion_1 !_x_2 = case _x_2 (<{StdIOBasic.:^:}> r1_1_0 r2_1_1 -> <{StdPicture.+_140}> (select _vtoRegion_0::<{StdPicture.toRegion;}> 0 r1_1_0) (select _vtoRegion_1::<{StdPicture.toRegion;}> 0 r2_1_1)) 
+StdPicture.hilite_53 !box_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos (ospicture.setpicthilitemode picture_1) in ospicture.setpictnormalmode (ospicture.pictfillrect (StdPicture.boxtorect (select _x_1_0::_Tuple2 0) box_0) (select _x_1_0::_Tuple2 1))
+StdPicture.hiliteAt_54 !base_0 !box_1 !picture_2 = ospicture.setpictnormalmode (ospicture.pictfillrect (StdPicture.boxtorect base_0 box_1) (ospicture.setpicthilitemode picture_2))
+StdPicture.hilite_55 !rectangle_0 !picture_1 = ospicture.setpictnormalmode (ospicture.pictfillrect (commondef.rectangleToRect rectangle_0) (ospicture.setpicthilitemode picture_1))
+StdPicture.hiliteAt_56 !_x_0 !rectangle_1 !picture_2 = ospicture.setpictnormalmode (ospicture.pictfillrect (commondef.rectangleToRect rectangle_1) (ospicture.setpicthilitemode picture_2))
+StdPicture.draw_57 !char_0::C !picture_1 = ospicture.pictdrawchar char_0 picture_1
+StdPicture.drawAt_58 !pos_0 !char_1::C !picture_2 = let _x_1_0 = ospicture.getpictpenpos picture_2 in ospicture.setpictpenpos (select _x_1_0::_Tuple2 0) (ospicture.pictdrawchar char_1 (ospicture.setpictpenpos pos_0 (select _x_1_0::_Tuple2 1)))
+StdPicture.undraw_59 !char_0::C !picture_1 = ospicture.pictundrawchar char_0 picture_1
+StdPicture.undrawAt_60 !pos_0 !char_1::C !picture_2 = let _x_1_0 = ospicture.getpictpenpos picture_2 in ospicture.setpictpenpos (select _x_1_0::_Tuple2 0) (ospicture.pictundrawchar char_1 (ospicture.setpictpenpos pos_0 (select _x_1_0::_Tuple2 1)))
+StdPicture.draw_61 !string_0 !picture_1 = ospicture.pictdrawstring string_0 picture_1
+StdPicture.drawAt_62 !pos_0 !string_1 !picture_2 = let _x_1_0 = ospicture.getpictpenpos picture_2 in ospicture.setpictpenpos (select _x_1_0::_Tuple2 0) (ospicture.pictdrawstring string_1 (ospicture.setpictpenpos pos_0 (select _x_1_0::_Tuple2 1)))
+StdPicture.undraw_63 !string_0 !picture_1 = ospicture.pictundrawstring string_0 picture_1
+StdPicture.undrawAt_64 !pos_0 !string_1 !picture_2 = let _x_1_0 = ospicture.getpictpenpos picture_2 in ospicture.setpictpenpos (select _x_1_0::_Tuple2 0) (ospicture.pictundrawstring string_1 (ospicture.setpictpenpos pos_0 (select _x_1_0::_Tuple2 1)))
+StdPicture.draw_65 !_x_0 !picture_1 = case _x_0 (StdPictureDef._Line2 line_end1_1_0 line_end2_1_1 -> ospicture.pictdrawline line_end1_1_0 line_end2_1_1 picture_1) 
+StdPicture.drawAt_66 !_x_0 !_x_1 !picture_2 = case _x_1 (StdPictureDef._Line2 line_end1_1_0 line_end2_1_1 -> ospicture.pictdrawline line_end1_1_0 line_end2_1_1 picture_2) 
+StdPicture.undraw_67 !_x_0 !picture_1 = case _x_0 (StdPictureDef._Line2 line_end1_1_0 line_end2_1_1 -> ospicture.pictundrawline line_end1_1_0 line_end2_1_1 picture_1) 
+StdPicture.undrawAt_68 !_x_0 !_x_1 !picture_2 = case _x_1 (StdPictureDef._Line2 line_end1_1_0 line_end2_1_1 -> ospicture.pictundrawline line_end1_1_0 line_end2_1_1 picture_2) 
+StdPicture.draw_69 !_x_0 !picture_1 = case _x_0 (StdIOBasic._Vector2 vx_1_0 vy_1_1 -> let _x_2_0 = ospicture.getpictpenpos picture_1, curpos_2_1 = select _x_2_0::_Tuple2 0 in ospicture.pictdrawlineto (StdIOBasic._Point2 (<{StdInt.+_6}> (select curpos_2_1::StdIOBasic._Point2 0) vx_1_0) (<{StdInt.+_6}> (select curpos_2_1::StdIOBasic._Point2 1) vy_1_1)) (select _x_2_0::_Tuple2 1)) 
+StdPicture.drawAt_70 !pos_0 !_x_1 !picture_2 = case pos_0 (StdIOBasic._Point2 x_1_0 y_1_1 -> case _x_1 (StdIOBasic._Vector2 vx_2_0 vy_2_1 -> ospicture.pictdrawline pos_0 (StdIOBasic._Point2 (<{StdInt.+_6}> x_1_0 vx_2_0) (<{StdInt.+_6}> y_1_1 vy_2_1)) picture_2) ) 
+StdPicture.undraw_71 !_x_0 !picture_1 = case _x_0 (StdIOBasic._Vector2 vx_1_0 vy_1_1 -> let _x_2_0 = ospicture.getpictpenpos picture_1, curpos_2_1 = select _x_2_0::_Tuple2 0 in ospicture.pictundrawlineto (StdIOBasic._Point2 (<{StdInt.+_6}> (select curpos_2_1::StdIOBasic._Point2 0) vx_1_0) (<{StdInt.+_6}> (select curpos_2_1::StdIOBasic._Point2 1) vy_1_1)) (select _x_2_0::_Tuple2 1)) 
+StdPicture.undrawAt_72 !pos_0 !_x_1 !picture_2 = case pos_0 (StdIOBasic._Point2 x_1_0 y_1_1 -> case _x_1 (StdIOBasic._Vector2 vx_2_0 vy_2_1 -> ospicture.pictundrawline pos_0 (StdIOBasic._Point2 (<{StdInt.+_6}> x_1_0 vx_2_0) (<{StdInt.+_6}> y_1_1 vy_2_1)) picture_2) ) 
+StdPicture.draw_73 !oval_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictdrawoval (select _x_1_0::_Tuple2 0) oval_0 (select _x_1_0::_Tuple2 1)
+StdPicture.drawAt_74 !pos_0 !oval_1 !picture_2 = ospicture.pictdrawoval pos_0 oval_1 picture_2
+StdPicture.undraw_75 !oval_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictundrawoval (select _x_1_0::_Tuple2 0) oval_0 (select _x_1_0::_Tuple2 1)
+StdPicture.undrawAt_76 !pos_0 !oval_1 !picture_2 = ospicture.pictundrawoval pos_0 oval_1 picture_2
+StdPicture.fill_77 !oval_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictfilloval (select _x_1_0::_Tuple2 0) oval_0 (select _x_1_0::_Tuple2 1)
+StdPicture.fillAt_78 !pos_0 !oval_1 !picture_2 = ospicture.pictfilloval pos_0 oval_1 picture_2
+StdPicture.unfill_79 !oval_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictunfilloval (select _x_1_0::_Tuple2 0) oval_0 (select _x_1_0::_Tuple2 1)
+StdPicture.unfillAt_80 !pos_0 !oval_1 !picture_2 = ospicture.pictunfilloval pos_0 oval_1 picture_2
+StdPicture.draw_81 !curve_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictdrawcurve True (select _x_1_0::_Tuple2 0) curve_0 (select _x_1_0::_Tuple2 1)
+StdPicture.drawAt_82 !point_0 !curve_1 !picture_2 = ospicture.pictdrawcurve False point_0 curve_1 picture_2
+StdPicture.undraw_83 !curve_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictundrawcurve True (select _x_1_0::_Tuple2 0) curve_0 (select _x_1_0::_Tuple2 1)
+StdPicture.undrawAt_84 !point_0 !curve_1 !picture_2 = ospicture.pictundrawcurve False point_0 curve_1 picture_2
+StdPicture.fill_85 !curve_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictfillcurve True (select _x_1_0::_Tuple2 0) curve_0 (select _x_1_0::_Tuple2 1)
+StdPicture.fillAt_86 !point_0 !curve_1 !picture_2 = ospicture.pictfillcurve False point_0 curve_1 picture_2
+StdPicture.unfill_87 !curve_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictunfillcurve True (select _x_1_0::_Tuple2 0) curve_0 (select _x_1_0::_Tuple2 1)
+StdPicture.unfillAt_88 !point_0 !curve_1 !picture_2 = ospicture.pictunfillcurve False point_0 curve_1 picture_2
+StdPicture.draw_89 !box_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictdrawrect (StdPicture.boxtorect (select _x_1_0::_Tuple2 0) box_0) (select _x_1_0::_Tuple2 1)
+StdPicture.drawAt_90 !point_0 !box_1 !picture_2 = ospicture.pictdrawrect (StdPicture.boxtorect point_0 box_1) picture_2
+StdPicture.undraw_91 !box_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictundrawrect (StdPicture.boxtorect (select _x_1_0::_Tuple2 0) box_0) (select _x_1_0::_Tuple2 1)
+StdPicture.undrawAt_92 !point_0 !box_1 !picture_2 = ospicture.pictundrawrect (StdPicture.boxtorect point_0 box_1) picture_2
+StdPicture.fill_93 !box_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictfillrect (StdPicture.boxtorect (select _x_1_0::_Tuple2 0) box_0) (select _x_1_0::_Tuple2 1)
+StdPicture.fillAt_94 !pos_0 !box_1 !picture_2 = ospicture.pictfillrect (StdPicture.boxtorect pos_0 box_1) picture_2
+StdPicture.unfill_95 !box_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictunfillrect (StdPicture.boxtorect (select _x_1_0::_Tuple2 0) box_0) (select _x_1_0::_Tuple2 1)
+StdPicture.unfillAt_96 !pos_0 !box_1 !picture_2 = ospicture.pictunfillrect (StdPicture.boxtorect pos_0 box_1) picture_2
+StdPicture.draw_97 !rectangle_0 !picture_1 = ospicture.pictdrawrect (commondef.rectangleToRect rectangle_0) picture_1
+StdPicture.drawAt_98 !_x_0 !rectangle_1 !picture_2 = ospicture.pictdrawrect (commondef.rectangleToRect rectangle_1) picture_2
+StdPicture.undraw_99 !rectangle_0 !picture_1 = ospicture.pictundrawrect (commondef.rectangleToRect rectangle_0) picture_1
+StdPicture.undrawAt_100 !_x_0 !rectangle_1 !picture_2 = ospicture.pictundrawrect (commondef.rectangleToRect rectangle_1) picture_2
+StdPicture.fill_101 !rectangle_0 !picture_1 = ospicture.pictfillrect (commondef.rectangleToRect rectangle_0) picture_1
+StdPicture.fillAt_102 !_x_0 !rectangle_1 !picture_2 = ospicture.pictfillrect (commondef.rectangleToRect rectangle_1) picture_2
+StdPicture.unfill_103 !rectangle_0 !picture_1 = ospicture.pictunfillrect (commondef.rectangleToRect rectangle_0) picture_1
+StdPicture.unfillAt_104 !_x_0 !rectangle_1 !picture_2 = ospicture.pictunfillrect (commondef.rectangleToRect rectangle_1) picture_2
+StdPicture.draw_105 !polygon_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictdrawpolygon (select _x_1_0::_Tuple2 0) polygon_0 (select _x_1_0::_Tuple2 1)
+StdPicture.drawAt_106 !base_0 !polygon_1 !picture_2 = ospicture.pictdrawpolygon base_0 polygon_1 picture_2
+StdPicture.undraw_107 !polygon_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictundrawpolygon (select _x_1_0::_Tuple2 0) polygon_0 (select _x_1_0::_Tuple2 1)
+StdPicture.undrawAt_108 !base_0 !polygon_1 !picture_2 = ospicture.pictundrawpolygon base_0 polygon_1 picture_2
+StdPicture.fill_109 !polygon_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictfillpolygon (select _x_1_0::_Tuple2 0) polygon_0 (select _x_1_0::_Tuple2 1)
+StdPicture.fillAt_110 !base_0 !polygon_1 !picture_2 = ospicture.pictfillpolygon base_0 polygon_1 picture_2
+StdPicture.unfill_111 !polygon_0 !picture_1 = let _x_1_0 = ospicture.getpictpenpos picture_1 in ospicture.pictunfillpolygon (select _x_1_0::_Tuple2 0) polygon_0 (select _x_1_0::_Tuple2 1)
+StdPicture.unfillAt_112 !base_0 !polygon_1 !picture_2 = ospicture.pictunfillpolygon base_0 polygon_1 picture_2
+<{StdPicture.TD;Region}> _x_0::B = _predefined._Nil
+<{StdPicture.TD;PolygonAt}> _x_0::B = _predefined._Nil
+<{StdPicture.TD;movePenPos;}> _x_0::B = _predefined._Nil
+<{StdPicture.TD;toRegion;}> _x_0::B = _predefined._Nil
+<{StdPicture.TD;Hilites;}> _x_0::B = _predefined._Nil
+<{StdPicture.TD;Drawables;}> _x_0::B = _predefined._Nil
+<{StdPicture.TD;Fillables;}> _x_0::B = _predefined._Nil
+<{StdPicture.TD;RegionShape}> _x_0::B = _predefined._Nil
+
+:: StdPicture.RegionShape = StdPicture.RegionRect !a1 | StdPicture.RegionPolygon !a1 !a2
+
+|| Converted Records
+:: StdPicture._Region = {!StdPicture.region_shape, !StdPicture.region_bound}
+
+:: StdPicture._PolygonAt = {!StdPicture.polygon_pos, !StdPicture.polygon}
+
+:: <{StdPicture.movePenPos;}> = {!StdPicture.movePenPos}
+
+:: <{StdPicture.toRegion;}> = {!StdPicture.toRegion}
+
+:: <{StdPicture.Hilites;}> = {!StdPicture.hilite, !StdPicture.hiliteAt}
+
+:: <{StdPicture.Drawables;}> = {!StdPicture.draw, !StdPicture.drawAt, !StdPicture.undraw, !StdPicture.undrawAt}
+
+:: <{StdPicture.Fillables;}> = {!StdPicture.fill, !StdPicture.fillAt, !StdPicture.unfill, !StdPicture.unfillAt}
+

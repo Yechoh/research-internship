@@ -1,0 +1,37 @@
+|| ?module? StdBitmap
+
+
+StdBitmap.openBitmap !_vFileSystem_0 !name_1 !env_2 = let _x_1_0 = select _vFileSystem_0::<{StdFile.FileSystem;}> 1 name_1 3 env_2 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> <{_Tuple2!3}> Data.Maybe.Nothing (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, _x_3_1 = osbitmap.osReadBitmap file_3_0 in case (StdBool.not (select _x_3_1::_Tuple3 0)) (True -> <{_Tuple2!3}> Data.Maybe.Nothing (select (select _vFileSystem_0::<{StdFile.FileSystem;}> 0 (select _x_3_1::_Tuple3 2) (select _x_1_0::_Tuple3 2))::_Tuple2 1)) (False -> <{_Tuple2!3}> (Data.Maybe.Just (osbitmap.toBitmap (select _x_3_1::_Tuple3 1))) (select (select _vFileSystem_0::<{StdFile.FileSystem;}> 0 (select _x_3_1::_Tuple3 2) (select _x_1_0::_Tuple3 2))::_Tuple2 1)) ) 
+StdBitmap.getBitmapSize !bitmap_0 = commondef.fromTuple_73 (osbitmap.osGetBitmapSize (osbitmap.fromBitmap bitmap_0))
+StdBitmap.resizeBitmap !size_0 !bitmap_1 = case size_0 (StdIOBasic._Size w_1_0 h_1_1 -> case (case (<{StdInt.<_17}> w_1_0 0) (True -> True) (False -> <{StdInt.<_17}> h_1_1 0) ) (True -> commondef.error "resizeBitmap" "StdBitmap" "a Size record with negative components was passed") (False -> osbitmap.toBitmap (osbitmap.osResizeBitmap (_Tuple2 w_1_0 h_1_1) (osbitmap.fromBitmap bitmap_1))) ) 
+StdBitmap.draw_3 !bitmap_0 !picture_1 = let _x_1_0 = ospicture.peekPicture picture_1, origin_1_1::B = select _x_1_0::_Tuple5 0, _x_1_2 = ospicture.getPenPenPos (select _x_1_0::_Tuple5 1), toScreen_1_3 = select _x_1_0::_Tuple5 2, _x_1_4 = osbitmap.osDrawBitmap (osbitmap.fromBitmap bitmap_0) (commondef.toTuple_74 (select _x_1_2::_Tuple2 0)) (commondef.toTuple_74 origin_1_1) toScreen_1_3 (select _x_1_0::_Tuple5 3) (select _x_1_0::_Tuple5 4) in ospicture.unpeekPicture origin_1_1 (select _x_1_2::_Tuple2 1) toScreen_1_3 (select _x_1_4::_Tuple2 0) (select _x_1_4::_Tuple2 1)
+StdBitmap.drawAt_4 !pos_0 !bitmap_1 !picture_2 = let _x_1_0 = ospicture.peekPicture picture_2, origin_1_1::B = select _x_1_0::_Tuple5 0, toScreen_1_2 = select _x_1_0::_Tuple5 2, _x_1_3 = osbitmap.osDrawBitmap (osbitmap.fromBitmap bitmap_1) (commondef.toTuple_74 pos_0) (commondef.toTuple_74 origin_1_1) toScreen_1_2 (select _x_1_0::_Tuple5 3) (select _x_1_0::_Tuple5 4) in ospicture.unpeekPicture origin_1_1 (select _x_1_0::_Tuple5 1) toScreen_1_2 (select _x_1_3::_Tuple2 0) (select _x_1_3::_Tuple2 1)
+StdBitmap.undraw_5 !bitmap_0 !picture_1 = let _x_1_0 = osbitmap.osGetBitmapSize (osbitmap.fromBitmap bitmap_0) in StdPicture.unfill_95 (StdPictureDef._Box (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)) picture_1
+StdBitmap.undrawAt_6 !pos_0 !bitmap_1 !picture_2 = let _x_1_0 = osbitmap.osGetBitmapSize (osbitmap.fromBitmap bitmap_1) in StdPicture.unfillAt_96 pos_0 (StdPictureDef._Box (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)) picture_2
+
+
+|| Converted Records
+:: <{StdBitmap.gEq_s;}> = {!StdBitmap.gEq_s}
+
+:: <{StdBitmap.gEq_ss;}> = {!StdBitmap.gEq_ss}
+
+:: <{StdBitmap.gEq_sss;}> = {!StdBitmap.gEq_sss}
+
+:: <{StdBitmap.gEq_ssss;}> = {!StdBitmap.gEq_ssss}
+
+:: <{StdBitmap.gEq_sssss;}> = {!StdBitmap.gEq_sssss}
+
+:: <{StdBitmap.gEq_ssssss;}> = {!StdBitmap.gEq_ssssss}
+
+:: <{StdBitmap.gEq_sssssss;}> = {!StdBitmap.gEq_sssssss}
+
+:: <{StdBitmap.gEq_ssssssss;}> = {!StdBitmap.gEq_ssssssss}
+
+:: <{StdBitmap.gEq_sssssssss;}> = {!StdBitmap.gEq_sssssssss}
+
+:: <{StdBitmap.bimap_s;}> = {StdBitmap.bimap_s}
+
+:: <{StdBitmap.bimap_ss;}> = {StdBitmap.bimap_ss}
+
+:: <{StdBitmap.bimap_sss;}> = {StdBitmap.bimap_sss}
+

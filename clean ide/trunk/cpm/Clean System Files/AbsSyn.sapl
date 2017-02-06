@@ -1,0 +1,20 @@
+|| ?module? AbsSyn
+
+
+<{AbsSyn.TD;CpmAction}> _x_0::B = _predefined._Nil
+<{AbsSyn.TD;ProjectAction}> _x_0::B = _predefined._Nil
+<{AbsSyn.TD;PathAction}> _x_0::B = _predefined._Nil
+<{AbsSyn.TD;PathDirection}> _x_0::B = _predefined._Nil
+<{AbsSyn.TD;ModuleAction}> _x_0::B = _predefined._Nil
+<{AbsSyn.TD;ModuleType}> _x_0::B = _predefined._Nil
+<{AbsSyn.TD;EnvironmentAction}> _x_0::B = _predefined._Nil
+
+:: AbsSyn.CpmAction = AbsSyn.Project a1 a2 | AbsSyn.Module a1 a2 | AbsSyn.Environment a1 | AbsSyn.CpmMake | AbsSyn.CpmHelp
+:: AbsSyn.ProjectAction = AbsSyn.CreateProject | AbsSyn.ShowProject | AbsSyn.BuildProject a1::B a2 | AbsSyn.ProjectPath a1 | AbsSyn.SetRelativeRoot a1 | AbsSyn.SetTarget a1 | AbsSyn.SetExec a1 | AbsSyn.ProjectHelp
+:: AbsSyn.PathAction = AbsSyn.AddPathAction a1 | AbsSyn.RemovePathAction a1::I | AbsSyn.ListPathsAction | AbsSyn.MovePathAction a1::I a2 | AbsSyn.PathHelp
+:: AbsSyn.PathDirection = AbsSyn.MovePathUp | AbsSyn.MovePathDown | AbsSyn.MovePathTop | AbsSyn.MovePathBottom
+:: AbsSyn.ModuleAction = AbsSyn.CreateModule a1 | AbsSyn.ModuleHelp
+:: AbsSyn.ModuleType = AbsSyn.ApplicationModule | AbsSyn.LibraryModule
+:: AbsSyn.EnvironmentAction = AbsSyn.ListEnvironments | AbsSyn.ImportEnvironment a1 | AbsSyn.RemoveEnvironment a1 | AbsSyn.ShowEnvironment a1 | AbsSyn.ExportEnvironment a1 | AbsSyn.CreateEnvironment a1 | AbsSyn.RenameEnvironment a1 a2 | AbsSyn.SetEnvironmentCompiler a1 a2 | AbsSyn.SetEnvironmentCodeGen a1 a2 | AbsSyn.EnvironmentHelp
+
+|| Converted Records
