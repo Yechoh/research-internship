@@ -13,6 +13,8 @@ import Data.Error
 import createAndRunExec
 import directoryBrowsing
 
+import CpmLogic2
+
 // -------------
 
 import qualified Data.Map as DM
@@ -46,37 +48,69 @@ selectIcon pwd _ 	 = Nothing
 // -------------
 
 Start :: *World -> *World
-Start world = startEngine (treeEdit2) world
+Start world = startEngine (treeEdit) world
 //Start world = startEngine ideDashboard world
 
 // ------------- to do:
 
-treeEdit2 :: Task ()
-treeEdit2 
-	=				getPwdName
- 	>>= \pwd ->		selectFromTree pwd isCleanFile
-//	>>= \path ->	viewInformation "selected file" [] path
-	>^*				[ 	OnAction  (Action "Open") (hasValue edit2)
-	 				]
-	>>|				return ()
-where
- edit2 path
-	=				readFromFile path
-	>>= \content ->	appendTopLevelTask ('DM'.fromList [("title","malcom x")]) True (editFile path (dropDirectory path) content)
-						 <<@ ToWindow FloatingWindow AlignMiddle AlignCenter
-	>>|-			return ()
+treeEdit :: Task ()
+treeEdit 
+	=							getPwdName
+ 	>>= \pwd ->					selectFromTree pwd isCleanFile 
+	>>= \path ->				viewInformation "selected file" [] path
+	>>= \path ->				readFromFile path
+	>>- \content -> 			editFile (takeDirectory path) (dropDirectory path) content
+
+/*
+//# (exists,world)  = fileExists mainmodule world
+createTempFiles :: String String -> Task (String,String)
+createTempFiles path name =
+	accWorld (getCurrentDirectory) >>=
+	\cur. 
+	(createFile (cur <\> "Temp" <\> name) "" -&&-
+	 createFile (cur <\> "Temp" <\> replaceExtension name "prj")
+*/
 
 editor :: String String (RWShared .() {#.Char} {#.Char})-> Task {#Char}
 editor path name sc =
 	updateSharedInformation (path </> name) [UpdateUsing id (\_ nsc -> nsc) aceTextArea] sc
 
-editFile :: String String String -> Task ()
-editFile path name content 
-= withShared content 
-    (\sc ->
-	 		editor path name sc				// seems to be a bug in the current UpdateUsing ... no change returned
+//updaters
+//updateEverySecond :: 
 
-	 >^*	[ 	OnAction  ActionSave    	(hasValue (saveFile (path </> ("Edited" +++ name))))
+//end updaters
+
+cpmtask :: String (RWShared () {#Char} {#Char}) (RWShared () {#Char} {#Char}) -> Task ()
+cpmtask iclloc content errs = 
+			get currentTime >>=
+			\now.  waitForTime {Time| now & sec=now.Time.sec+1} >>|
+			saveFile iclloc content >>|
+			appWorld (compile prjloc) 
+			>>| readFromFile errorloc
+			>>= \errors. 
+			set ((toString now) +++ errors) errs
+			>>| cpmtask iclloc content errs
+	where
+	saveFile path content 
+		= get content >>= \c. writeToFile path c @! ()
+	prjloc = replaceExtension iclloc "prj"
+	errorloc = replaceFileName iclloc "errors"
+
+//(ifValue (\(a,now1).get currentTime >>= \now2. (now2.sec > now1.sec)))
+
+
+editFile :: String String String -> Task ()
+editFile path name content =
+	accWorld (getCurrentDirectory) >>=
+	\(Ok cur). appWorld (createProject (cur </> "Temp" </> name)) >>|
+	get currentTime >>=
+	\now.withShared content
+	(\sc. withShared (toString now)   
+    (\errs ->
+	 		(editor path name sc 
+	 		-|| 
+	 		viewSharedInformation "errors" [ViewUsing id aceTextArea] errs) -|| (cpmtask (cur </> "Temp" </> name) sc errs)
+	 >^*	[	OnAction  ActionSave    	(hasValue (saveFile (path </> ("Edited" +++ name))))
 	 		,	OnAction  ActionSaveAs		(hasValue (saveFileAs (path </> name)))
 	 		]
 	 		++ 
@@ -86,7 +120,7 @@ editFile path name content
 	 		]
 	 >>*	[   OnAction  ActionQuit    	(always (return ()))
 		    ]
-	)
+	))
 where
 	saveFile path content 
 		= writeToFile path content @! () 

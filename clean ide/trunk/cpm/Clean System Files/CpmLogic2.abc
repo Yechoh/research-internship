@@ -1,8 +1,5 @@
 .comp 920 000111010001
 .start __CpmLogic2_Start
-.depend "System.Time" "20161223204020"
-.depend "System.File" "20161223204020"
-.depend "Data.Void" "20161223204017"
 .depend "set_return_code" "20170123155355"
 .depend "PmDriver" "20170123155351"
 .depend "logfile" "20170123155354"
@@ -15,62 +12,66 @@
 .depend "Directory" "20161223204009"
 .depend "PmAbcMagic" "20170206122647"
 .depend "IdeState" "20170123155400"
-.depend "PmEnvironment" "20170206153527"
+.depend "PmEnvironment" "20170206161455"
 .depend "CpmPaths" "20170123155354"
-.depend "Text" "20161223204016"
-.depend "Data.List" "20161223204017"
-.depend "Data.Func" "20161223204017"
-.depend "System.OSError" "20161223204020"
-.depend "Data.Error" "20161223204017"
-.depend "System.Directory" "20161223204020"
+.depend "UtilIO" "20170123155357"
+.depend "Parser" "20170123155353"
+.depend "UtilOptions" "20170123155354"
+.depend "PmFiles" "20170206122647"
+.depend "UtilDate" "20170123155353"
+.depend "UtilStrictLists" "20170123155353"
+.depend "PmCompilerOptions" "20170123155350"
+.depend "UtilNewlinesFile" "20170123155356"
+.depend "StdPathname" "20170123155353"
+.depend "PmTypes" "20170206141502"
+.depend "PmProject" "20170206122647"
+.depend "AbsSyn" "20170206141502"
+.depend "CpmLogic" "20170206153527"
+.depend "Text.Parsers.ZParsers.ParsersDerived" "20161223204019"
+.depend "Text.Parsers.ZParsers.ParsersKernel" "20161223204019"
 .depend "System.Environment" "20161223204020"
 .depend "System.CommandLine" "20161223204018"
-.depend "UtilIO" "20170123155357"
-.depend "Text.Parsers.ZParsers.ParsersDerived" "20161223204019"
-.depend "_SystemEnum" "20161223204046"
-.depend "StdEnum" "20161223204046"
+.depend "Text" "20161223204016"
+.depend "Data.Func" "20161223204017"
 .depend "StdMisc" "20161223204046"
-.depend "StdFunc" "20161223204046"
 .depend "StdCharList" "20161223204046"
-.depend "StdTuple" "20161223204046"
-.depend "StdOrdList" "20161223204046"
-.depend "StdList" "20161223204046"
 .depend "_SystemArray" "20161223204046"
 .depend "StdArray" "20161223204046"
-.depend "StdChar" "20161223204046"
-.depend "StdReal" "20161223204046"
-.depend "StdInt" "20161223204046"
 .depend "StdEnv" "20161223204046"
-.depend "Text.Parsers.ZParsers.ParsersKernel" "20161223204019"
-.depend "Parser" "20170123155353"
+.depend "System.Directory" "20161223204020"
+.depend "_SystemEnum" "20161223204046"
+.depend "StdEnum" "20161223204046"
+.depend "StdTuple" "20161223204046"
+.depend "StdOrdList" "20161223204046"
+.depend "StdMaybe" "20161223204018"
+.depend "Data.Void" "20161223204017"
+.depend "Data.List" "20161223204017"
+.depend "StdFunc" "20161223204046"
+.depend "System.OSError" "20161223204020"
+.depend "System.Time" "20161223204020"
 .depend "StdFile" "20170206141502"
-.depend "UtilOptions" "20170123155354"
+.depend "System.File" "20161223204020"
+.depend "Data.Error" "20161223204017"
+.depend "StdString" "20161223204046"
 .depend "StdGeneric" "20161223204046"
-.depend "GenEq" "20161223204010"
+.depend "GenEq" "20161223204033"
 .depend "Data.Monoid" "20161223204017"
 .depend "Control.Monad" "20161223204016"
 .depend "Control.Applicative" "20161223204016"
 .depend "System.IO" "20161223204018"
 .depend "Data.Functor" "20161223204017"
 .depend "Data.Maybe" "20161223204017"
-.depend "StdMaybe" "20161223204018"
-.depend "PmFiles" "20170206122647"
-.depend "UtilDate" "20170123155353"
-.depend "StdString" "20161223204046"
-.depend "UtilStrictLists" "20170123155353"
-.depend "PmCompilerOptions" "20170123155350"
+.depend "System.FilePath" "20170122191100"
+.depend "StdReal" "20161223204046"
+.depend "StdChar" "20161223204046"
+.depend "StdInt" "20161223204046"
 .depend "StdBool" "20161223204046"
 .depend "StdClass" "20161223204046"
-.depend "UtilNewlinesFile" "20170123155356"
-.depend "StdPathname" "20170123155353"
-.depend "PmTypes" "20170206141502"
-.depend "PmProject" "20170206122647"
-.depend "System.FilePath" "20170122191100"
-.depend "AbsSyn" "20170206141502"
-.depend "CpmLogic" "20170206153527"
+.depend "StdList" "20161223204046"
 .depend "StdOverloaded" "20161223204046"
 .depend "_SystemDynamic" "20161223204009"
-.module m_CpmLogic2 "CpmLogic2" "20170206155247"
+.depend "CpmLogic2" "20170209182143"
+.module m_CpmLogic2 "CpmLogic2" "20170209182143"
 .endinfo
 .impmod _system
 .implab _cycle_in_spine
@@ -115,52 +116,111 @@
 .impdesc e_IdeState_rGeneralSt
 .impmod CpmPaths
 .implab e_CpmPaths_sreadIDEEnvs
-.impmod Data.Error
-.impdesc e_Data.Error_dError
-.impdesc e_Data.Error_dOk
-.impmod System.Directory
-.implab e_System.Directory_sgetCurrentDirectory
 .impmod UtilIO
 .impdesc e_UtilIO_dGetFullApplicationPath
 .impdesc e_UtilIO_dGetLongPathName
 .implab e_UtilIO_nGetLongPathName
+.impmod PmCompilerOptions
+.implab e_PmCompilerOptions_sDefaultCompilerOptions
+.impmod UtilNewlinesFile
+.impdesc e_UtilNewlinesFile_dNewlineConventionUnix
+.impmod PmTypes
+.implab e_PmTypes_sDefaultLinkOptions
+.implab e_PmTypes_sDefCodeGenOptions
+.implab e_PmTypes_sDefApplicationOptions
+.impdesc e_PmTypes_rEditOptions
+.impdesc e_PmTypes_rEditWdOptions
+.impdesc e_PmTypes_dNoWindowPosAndSize
+.impmod PmProject
+.impdesc e_PmProject_dSaveProjectFile
+.impdesc e_PmProject_dReadProjectFile
+.implab e_PmProject_sPR_NewProject
+.implab e_PmProject_sPR_SetRoot
+.impmod AbsSyn
+.impdesc e_AbsSyn_dCreateModule
+.impdesc e_AbsSyn_dApplicationModule
+.impmod CpmLogic
+.implab e_CpmLogic_sdoModuleAction
+.implab e_CpmLogic_smkProjectFile
+.implab e_CpmLogic_serror
 .impmod StdMisc
 .implab e_StdMisc_sabort
+.impmod System.Directory
+.implab e_System.Directory_sgetCurrentDirectory
 .impmod StdFile
 .implab e_StdFile_sstdio;33
 .implab e_StdFile_saccFiles;34
+.impmod Data.Error
+.impdesc e_Data.Error_dError
+.impdesc e_Data.Error_dOk
 .impmod StdString
 .implab e_StdString_s==;2
 .implab e_StdString_s+++;11
-.impmod PmCompilerOptions
-.implab e_PmCompilerOptions_sDefaultCompilerOptions
+.impmod System.FilePath
+.implab e_System.FilePath_sdropExtension
 .impmod StdBool
 .implab e_StdBool_snot
-.impmod PmProject
-.impdesc e_PmProject_dReadProjectFile
-.impmod CpmLogic
-.implab e_CpmLogic_serror
 .export __CpmLogic2_Start
 .o 0 0
 __CpmLogic2_Start
 	buildI 65536
-	build _ 1 n7
+	build _ 1 n10
 .d 1 0
 	jmp _driver
-.n 1 _ ea7
+.n 1 _ ea10
 .o 1 0
-n7
+n10
 	push_node _cycle_in_spine 1
 .o 2 0
-ea7
+ea10
 	jsr_eval 0
 .o 2 0
-s7
-	push_a 0
+s10
+.d 0 0
+	jsr s5
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
 	updatepop_a 0 1
+.d 3 0
+	jmp s1
+.o 0 0
+s5
+	buildAC "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223\\Libraries\\iTasks-SDK\\research internship\\showlines.prj"
 .d 1 0
-	jsr e_System.Directory_sgetCurrentDirectory
+	rtn
+.export e_CpmLogic2_screateProject
+.export e_CpmLogic2_eacreateProject
+.descexp e_CpmLogic2_dcreateProject e_CpmLogic2_ncreateProject e_CpmLogic2_lcreateProject 2 0 "createProject"
+.a 2 e_CpmLogic2_eacreateProject
 .o 2 0
+e_CpmLogic2_lcreateProject
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_CpmLogic2_eacreateProject
+.n 2 e_CpmLogic2_dcreateProject e_CpmLogic2_eacreateProject
+.o 1 0
+e_CpmLogic2_ncreateProject
+	push_node _cycle_in_spine 2
+.o 3 0
+e_CpmLogic2_screateProject
+.o 3 0
+e_CpmLogic2_eacreateProject
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 3 0
+s2
 	push_a 1
 	push_a 1
 	update_a 1 3
@@ -169,46 +229,264 @@ s7
 	jmp s11
 .o 3 0
 s11
-	eq_desc e_Data.Error_dOk 1 0
-	jmp_true case.1
-	jmp case.2
-case.1
-	repl_args 1 1
-	buildh e_UtilIO_dGetFullApplicationPath 0
-	push_a 2
-	push_a 1
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-	update_a 2 3
-	update_a 1 2
-	updatepop_a 0 1
-.d 2 0
-	jsr e_StdFile_saccFiles;34
-.o 2 0
-	pop_a 1
-.d 0 0
-	jsr s2
-.o 1 0
-.d 0 0
-	jsr s5
-.o 1 0
+	buildh e_AbsSyn_dApplicationModule 0
+	buildh e_AbsSyn_dCreateModule 1
+	create
 	push_a 3
-	push_a 1
-	update_a 1 2
-	update_a 0 1
+	push_a 3
+	buildAC ""
+	buildh ARRAY 1
+	push_a 4
+	update_a 4 5
+	update_a 3 4
+	update_a 0 3
 	pop_a 1
+	update_a 5 6
+	update_a 4 5
 	update_a 3 4
 	update_a 2 3
 	update_a 1 2
 	updatepop_a 0 1
 .d 5 0
-	jmp s8
+	jsr e_CpmLogic_sdoModuleAction
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s12
+.o 3 0
+s12
+	push_a 0
+	build _ 1 n42
+	buildh e_PmTypes_dNoWindowPosAndSize 0
+	buildh e_UtilNewlinesFile_dNewlineConventionUnix 0
+	build_r e_PmTypes_rEditWdOptions 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build _ 0 n8
+	buildh _Nil 0
+	push_a 2
+	push_a 5
+	build _ 3 n44
+	push_a 2
+	push_a 5
+	build _ 3 n43
+	push_a 3
+	buildh e_PmProject_dSaveProjectFile 3
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr e_StdFile_saccFiles;34
+.o 2 0
+	pushB_a 0
+	notB
+	jmp_false else.1
+	push_a 2
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	buildAC "Could not create project file "
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp e_CpmLogic_serror
+else.1
+	fill_a 1 3
+	pop_a 3
+.d 1 0
+	rtn
+.n 3 _ ea44
+.o 1 0
+n44
+	push_node _cycle_in_spine 3
+.o 4 0
+ea44
+.o 4 0
+s44
+.d 0 0
+	jsr e_PmTypes_sDefaultLinkOptions
+.o 5 5 bbbbb
+.d 0 0
+	jsr e_PmTypes_sDefApplicationOptions
+.o 2 19 iiiiibbbbbibbibbbbb
+.d 0 0
+	jsr e_PmTypes_sDefCodeGenOptions
+.o 0 2 bb
+.d 0 0
+	jsr e_PmCompilerOptions_sDefaultCompilerOptions
+.o 1 9 bbbbbbbbb
+	push_r_args 9 2 0
+	push_a 12
+	push_a 11
+	push_a 6
+	update_a 2 7
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 0 6
+	pop_a 1
+	update_a 11 14
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 13 35 bbbbbbbbbbbiiiiibbbbbibbibbbbbbbbbb
+	jmp e_PmProject_sPR_NewProject
+.n 3 _ ea43
+.o 1 0
+n43
+	push_node _cycle_in_spine 3
+.o 4 0
+ea43
+.o 4 0
+s43
+	push_a 2
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 0 0
+	jsr e_PmCompilerOptions_sDefaultCompilerOptions
+.o 1 9 bbbbbbbbb
+	push_r_args 3 2 0
+	push_a 4
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 6 9 bbbbbbbbb
+	jmp e_PmProject_sPR_SetRoot
+.n 1 _ ea42
+.o 1 0
+n42
+	push_node _cycle_in_spine 1
+.o 2 0
+ea42
+.o 2 0
+s42
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_System.FilePath_sdropExtension
+.o 1 0
+.d 1 0
+	jsr e_CpmLogic_smkProjectFile
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.export e_CpmLogic2_scompile
+.export e_CpmLogic2_eacompile
+.descexp e_CpmLogic2_dcompile e_CpmLogic2_ncompile e_CpmLogic2_lcompile 2 0 "compile"
+.a 2 e_CpmLogic2_eacompile
+.o 2 0
+e_CpmLogic2_lcompile
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_CpmLogic2_eacompile
+.n 2 e_CpmLogic2_dcompile e_CpmLogic2_eacompile
+.o 1 0
+e_CpmLogic2_ncompile
+	push_node _cycle_in_spine 2
+.o 3 0
+e_CpmLogic2_scompile
+.o 3 0
+e_CpmLogic2_eacompile
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 3 0
+s1
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_System.Directory_sgetCurrentDirectory
+.o 2 0
+	push_a 1
+	push_a 3
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp s15
+.o 4 0
+s15
+	eq_desc e_Data.Error_dOk 1 0
+	jmp_true case.2
+	jmp case.3
 case.2
+	repl_args 1 1
+	buildh e_UtilIO_dGetFullApplicationPath 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 2 0
+	jsr e_StdFile_saccFiles;34
+.o 2 0
+	pop_a 1
+.d 0 0
+	jsr s8
+.o 1 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 5 0
+	jmp s3
+case.3
 	repl_args 1 1
 	pop_a 1
 	buildAC "Failed to read current directory"
-	updatepop_a 0 1
+	updatepop_a 0 2
 .d 1 0
 	jsr print_string_
 .o 0 0
@@ -217,12 +495,41 @@ case.2
 	pop_a 1
 .d 1 0
 	rtn
+.export e_CpmLogic2_sbuildProject
+.export e_CpmLogic2_eabuildProject
+.descexp e_CpmLogic2_dbuildProject e_CpmLogic2_nbuildProject e_CpmLogic2_lbuildProject 4 0 "buildProject"
+.a 4 e_CpmLogic2_eabuildProject
+.o 2 0
+e_CpmLogic2_lbuildProject
+	push_args 0 3 3
+	update_a 4 3
+	create
+	update_a 0 5
+	pop_a 1
+.d 5 0
+	jmp e_CpmLogic2_eabuildProject
+.n 4 e_CpmLogic2_dbuildProject e_CpmLogic2_eabuildProject
+.o 1 0
+e_CpmLogic2_nbuildProject
+	push_node _cycle_in_spine 4
 .o 5 0
-s8
+e_CpmLogic2_sbuildProject
+.o 5 0
+e_CpmLogic2_eabuildProject
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 0
+	push_array 2
+	push_array 1
+	update_a 1 4
+	update_a 0 2
+	pop_a 2
+.o 5 0
+s3
 	update_a 0 1
 	pop_a 1
 .d 0 0
-	jsr s3
+	jsr s6
 .o 1 0
 	push_a 3
 	push_a 2
@@ -262,7 +569,7 @@ s8
 	pop_a 1
 	push_b 0
 	notB
-	jmp_true then.3
+	jmp_true then.4
 	push_a 1
 	jsr_eval 0
 	push_array 0
@@ -282,8 +589,8 @@ s8
 	notB
 	pushI 0
 	update_b 1 0
-	jmp_false else.3
-then.3
+	jmp_false else.4
+then.4
 	push_a 1
 	jsr_eval 0
 	push_array 0
@@ -313,7 +620,7 @@ then.3
 	updatepop_a 0 1
 .d 3 0
 	jmp e_CpmLogic_serror
-else.3
+else.4
 	push_a 3
 	pop_b 1
 	update_a 1 4
@@ -391,12 +698,12 @@ else.3
 	update_a 0 3
 	pop_a 1
 .d 0 0
-	jsr s4
+	jsr s7
 .o 0 1 b
 	update_a 1 2
 	updatepop_a 0 1
 .d 2 2 bb
-	jsr s9
+	jsr s13
 .o 2 1 b
 	pop_b 1
 	fill_a 1 2
@@ -404,8 +711,8 @@ else.3
 .d 1 0
 	rtn
 .o 2 2 bb
-s9
-	buildh d10 0
+s13
+	buildh d14 0
 	push_b 1
 	push_a 2
 	push_a 2
@@ -422,15 +729,15 @@ s9
 	updatepop_b 0 2
 .d 3 2 bb
 	jmp e_PmDriver_sBringProjectUptoDate
-.desc d10 _hnf l10 4 0 "cleanup;9"
-.a 0 a10
+.desc d14 _hnf l14 4 0 "cleanup;13"
+.a 0 a14
 .o 2 0
-l10
+l14
 	repl_args 3 3
 .o 4 0
-a10
+a14
 .d 4 0
-	jsr ea10
+	jsr ea14
 .o 2 1 b
 	build_r e_IdeState_rGeneralSt 2 1 0 0
 	updatepop_a 0 2
@@ -438,7 +745,7 @@ a10
 .d 1 0
 	rtn
 .o 4 0
-ea10
+ea14
 	jsr_eval 3
 	push_r_args 3 2 1
 	update_a 1 5
@@ -448,7 +755,7 @@ ea10
 	update_a 0 4
 	pop_a 1
 .o 5 1 b
-s10
+s14
 	push_b 0
 	push_a 4
 	push_a 4
@@ -462,22 +769,31 @@ s10
 .d 3 2 bb
 	jmp e_IdeState_sabortLog
 .o 0 0
-s5
-	buildAC "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223"
-.d 1 0
-	rtn
-.o 0 0
-s4
+s7
 	pushB FALSE
 .d 0 1 b
 	rtn
 .o 0 0
-s3
+s6
 	buildAC "IDEEnvs"
 .d 1 0
 	rtn
+.n 0 _
+.o 1 0
+n8
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea8
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
 .o 0 0
-s2
-	buildAC "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223\\Libraries\\iTasks-SDK\\research internship\\showlines.prj"
+ea8
+.o 0 0
+s8
+	buildAC "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223"
 .d 1 0
 	rtn

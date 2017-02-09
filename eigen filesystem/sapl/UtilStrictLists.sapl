@@ -1,0 +1,48 @@
+|| ?module? UtilStrictLists
+
+
+UtilStrictLists.Singleton !_x_0 = case _x_0 (<{_predefined._!Cons!}> x_1_0 _x_1_1 -> case _x_1_1 (<{_predefined._!Nil!}> -> x_1_0) ) 
+UtilStrictLists.IsEmptyList::B !_x_0 = case _x_0 (<{_predefined._!Nil!}> -> True) (_ -> False)
+UtilStrictLists.Head !_x_0 = case _x_0 (<{_predefined._!Cons!}> h_1_0 t_1_1 -> h_1_0) (_ -> StdMisc.abort "Head: Empty list")
+UtilStrictLists.Concat !_x_0 !ys_1 = case _x_0 (<{_predefined._!Cons!}> x_1_0 xs_1_1 -> let !xs_2_0 = UtilStrictLists.Concat xs_1_1 ys_1 in <{_predefined._!Cons!}> x_1_0 xs_2_0) (<{_predefined._!Nil!}> -> ys_1) 
+UtilStrictLists.Reverse2 !_x_0 !rev_1 = case _x_0 (<{_predefined._!Nil!}> -> rev_1) (<{_predefined._!Cons!}> f_1_0 r_1_1 -> UtilStrictLists.Reverse2 r_1_1 (<{_predefined._!Cons!}> f_1_0 rev_1)) 
+UtilStrictLists.Reverse !l_0 = UtilStrictLists.Reverse2 l_0 <{_predefined._!Nil!}>
+UtilStrictLists.Length2::I !n_0::I !_x_1 = case _x_1 (<{_predefined._!Nil!}> -> n_0) (<{_predefined._!Cons!}> f_1_0 r_1_1 -> UtilStrictLists.Length2 (<{StdInt.+_6}> n_0 StdInt.one_11) r_1_1) 
+UtilStrictLists.LLength::I !l_0 = UtilStrictLists.Length2 0 l_0
+UtilStrictLists.FilterR2 !p_0 !_x_1 !acc_2 = case _x_1 (<{_predefined._!Nil!}> -> acc_2) (<{_predefined._!Cons!}> x_1_0 xs_1_1 -> case (p_0 x_1_0) (True -> UtilStrictLists.FilterR2 p_0 xs_1_1 (<{_predefined._!Cons!}> x_1_0 acc_2)) (False -> UtilStrictLists.FilterR2 p_0 xs_1_1 acc_2) ) 
+UtilStrictLists.FilterR !p_0 !list_1 = UtilStrictLists.FilterR2 p_0 list_1 <{_predefined._!Nil!}>
+UtilStrictLists.Filter !_x_0 !_x_1 = case _x_1 (<{_predefined._!Nil!}> -> <{_predefined._!Nil!}>) (<{_predefined._!Cons!}> h_1_0 t_1_1 -> case (_x_0 h_1_0) (True -> <{_predefined._!Cons!}> h_1_0 (UtilStrictLists.Filter _x_0 t_1_1)) (False -> UtilStrictLists.Filter _x_0 t_1_1) ) 
+UtilStrictLists.Append !_x_0 !x_1 = case _x_0 (<{_predefined._!Nil!}> -> <{_predefined._!Cons!}> x_1 <{_predefined._!Nil!}>) (<{_predefined._!Cons!}> f_1_0 r_1_1 -> <{_predefined._!Cons!}> f_1_0 (UtilStrictLists.Append r_1_1 x_1)) 
+UtilStrictLists.Select !_x_0 !_x_1::I = case _x_0 (<{_predefined._!Cons!}> f_1_0 r_1_1 -> case _x_1 (0 -> f_1_0) (_ -> UtilStrictLists.Select r_1_1 (<{StdInt.-_7}> _x_1 StdInt.one_11))) (_ -> StdMisc.abort "Select: index out of range")
+UtilStrictLists.Update_new !_x_0 !_x_1::I !x_2 = case _x_0 (<{_predefined._!Cons!}> f_1_0 r_1_1 -> case _x_1 (0 -> <{_predefined._!Cons!}> x_2 r_1_1) (_ -> <{_predefined._!Cons!}> f_1_0 (UtilStrictLists.Update_new r_1_1 (<{StdInt.-_7}> _x_1 StdInt.one_11) x_2))) (_ -> StdMisc.abort "Update: index out of range")
+UtilStrictLists.Update2 !_x_0 !_x_1::I !j_2::I !x_3 = case _x_0 (<{_predefined._!Cons!}> f_1_0 r_1_1 -> case _x_1 (0 -> <{_predefined._!Cons!}> (UtilStrictLists.Update_new f_1_0 j_2 x_3) r_1_1) (_ -> <{_predefined._!Cons!}> f_1_0 (UtilStrictLists.Update2 r_1_1 (<{StdInt.-_7}> _x_1 StdInt.one_11) j_2 x_3))) (_ -> StdMisc.abort "Update2: index out of range")
+UtilStrictLists.AppendLists !_x_0 !l2_1 = case _x_0 (<{_predefined._!Nil!}> -> l2_1) (<{_predefined._!Cons!}> h_1_0 t_1_1 -> <{_predefined._!Cons!}> h_1_0 (UtilStrictLists.AppendLists t_1_1 l2_1)) 
+UtilStrictLists.FlattenList !_x_0 = case _x_0 (<{_predefined._!Cons!}> h_1_0 t_1_1 -> UtilStrictLists.AppendLists h_1_0 (UtilStrictLists.FlattenList t_1_1)) (<{_predefined._!Nil!}> -> <{_predefined._!Nil!}>) 
+UtilStrictLists.P_MapR2_35 !unchanged_0::B !f_1 !_x_2 !first_3 !acc_4 = case _x_2 (<{_predefined._!Nil!}> -> <{_Tuple2!3}> (<{_predefined._!Cons!}> first_3 acc_4) unchanged_0) (<{_predefined._!Cons!}> x_1_0 xs_1_1 -> let _x_2_0 = f_1 x_1_0 in UtilStrictLists.P_MapR2_35 (UtilStrictLists._f43_43 unchanged_0 _x_2_0) f_1 xs_1_1 first_3 (<{_predefined._!Cons!}> (select _x_2_0::_Tuple2 0) acc_4)) 
+UtilStrictLists._f43_43::B !unchanged_0::B _x_1 = case unchanged_0 (True -> select _x_1::_Tuple2 1) (_ -> False)
+UtilStrictLists.P_MapR !f_0 !_x_1 = case _x_1 (<{_predefined._!Nil!}> -> <{_Tuple2!3}> <{_predefined._!Nil!}> True) (<{_predefined._!Cons!}> x_1_0 xs_1_1 -> let _x_2_0 = f_0 x_1_0 in UtilStrictLists.P_MapR2_35 (select _x_2_0::_Tuple2 1) f_0 xs_1_1 (select _x_2_0::_Tuple2 0) <{_predefined._!Nil!}>) 
+UtilStrictLists.InsertStringInList !name_0 !_x_1 = case _x_1 (<{_predefined._!Nil!}> -> <{_predefined._!Cons!}> name_0 <{_predefined._!Nil!}>) (<{_predefined._!Cons!}> nm_1_0 rest_1_1 -> case (<{StdString.<_3}> nm_1_0 name_0) (True -> <{_predefined._!Cons!}> nm_1_0 (UtilStrictLists.InsertStringInList name_0 rest_1_1)) (False -> case (<{StdString.==_2}> nm_1_0 name_0) (True -> _x_1) (False -> <{_predefined._!Cons!}> name_0 (<{_predefined._!Cons!}> nm_1_0 rest_1_1)) ) ) 
+<{UtilStrictLists.<>_39}>::B !_vEq_0 !x_1 !y_2 = StdBool.not (select (select _vEq_0::<{StdClass.Eq;}> 0)::<{StdOverloaded.==;}> 0 x_1 y_2)
+UtilStrictLists.RemoveDup !_vEq_0 !_x_1 = case _x_1 (<{_predefined._!Cons!}> x_1_0 xs_1_1 -> <{_predefined._!Cons!}> x_1_0 (UtilStrictLists.RemoveDup _vEq_0 (UtilStrictLists.Filter (<{UtilStrictLists.<>_39}> _vEq_0 x_1_0) xs_1_1))) (_ -> <{_predefined._!Nil!}>)
+UtilStrictLists.RemoveStringFromList !name_0 !_x_1 = case _x_1 (<{_predefined._!Nil!}> -> <{_predefined._!Nil!}>) (<{_predefined._!Cons!}> nm_1_0 rest_1_1 -> case (<{StdString.==_2}> nm_1_0 name_0) (True -> rest_1_1) (False -> <{_predefined._!Cons!}> nm_1_0 (UtilStrictLists.RemoveStringFromList name_0 rest_1_1)) ) 
+UtilStrictLists.RemoveMember !<{_v==_0}> e_1 !_x_2 = case _x_2 (<{_predefined._!Cons!}> a_1_0 as_1_1 -> case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 a_1_0 e_1) (True -> as_1_1) (False -> <{_predefined._!Cons!}> a_1_0 (UtilStrictLists.RemoveMember <{_v==_0}> e_1 as_1_1)) ) (<{_predefined._!Nil!}> -> <{_predefined._!Nil!}>) 
+UtilStrictLists.RemoveMembers !<{_v==_0}> !x_1 !_x_2 = case _x_2 (<{_predefined._!Nil!}> -> x_1) (<{_predefined._!Cons!}> b_1_0 y_1_1 -> UtilStrictLists.RemoveMembers <{_v==_0}> (UtilStrictLists.RemoveMember <{_v==_0}> b_1_0 x_1) y_1_1) 
+UtilStrictLists.UnionStringList !_x_0 !ys_1 = case _x_0 (<{_predefined._!Nil!}> -> ys_1) (_ -> case ys_1 (<{_predefined._!Nil!}> -> _x_0) (<{_predefined._!Cons!}> y_1_0 ys_1_1 -> case _x_0 (<{_predefined._!Cons!}> x_2_0 xs_2_1 -> case (<{StdString.<_3}> x_2_0 y_1_0) (True -> <{_predefined._!Cons!}> x_2_0 (UtilStrictLists.UnionStringList xs_2_1 ys_1)) (False -> case (<{StdString.<_3}> y_1_0 x_2_0) (True -> <{_predefined._!Cons!}> y_1_0 (UtilStrictLists.UnionStringList _x_0 ys_1_1)) (False -> <{_predefined._!Cons!}> x_2_0 (UtilStrictLists.UnionStringList xs_2_1 ys_1_1)) ) ) ) )
+UtilStrictLists.StringOccurs::B !s_0 !_x_1 = case _x_1 (<{_predefined._!Nil!}> -> False) (<{_predefined._!Cons!}> x_1_0 xs_1_1 -> case (<{StdString.==_2}> x_1_0 s_0) (True -> True) (False -> UtilStrictLists.StringOccurs s_0 xs_1_1) ) 
+UtilStrictLists.StrictListToList !_x_0 = case _x_0 (<{_predefined._!Nil!}> -> _predefined._Nil) (<{_predefined._!Cons!}> h_1_0 t_1_1 -> _predefined._Cons h_1_0 (UtilStrictLists.StrictListToList t_1_1)) 
+UtilStrictLists.foldr_41 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> op_0 a_1_0 (UtilStrictLists.foldr_41 op_0 r_1 x_1_1)) 
+<{UtilStrictLists.:!_40}> !h_0 !t_1 = <{_predefined._!Cons!}> h_0 t_1
+UtilStrictLists.foldr_42 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> <{UtilStrictLists.:!_40}> a_1_0 (UtilStrictLists.foldr_42 r_0 x_1_1)) 
+UtilStrictLists.ListToStrictList !list_0 = UtilStrictLists.foldr_42 <{_predefined._!Nil!}> list_0
+UtilStrictLists.SortStrings !l_0 = UtilStrictLists.ListToStrictList (StdOrdList.sort (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (UtilStrictLists.StrictListToList l_0))
+UtilStrictLists.EQStrings::B !_x_0 !_x_1 = case _x_0 (<{_predefined._!Nil!}> -> case _x_1 (<{_predefined._!Nil!}> -> True) ) (<{_predefined._!Cons!}> a_1_0 resta_1_1 -> case _x_1 (<{_predefined._!Cons!}> b_2_0 restb_2_1 -> case (<{StdString.==_2}> a_1_0 b_2_0) (True -> UtilStrictLists.EQStrings resta_1_1 restb_2_1) (False -> False) ) ) (_ -> False)
+UtilStrictLists.InclString !new_0 !strs_1 = case (UtilStrictLists.StringOccurs new_0 strs_1) (True -> strs_1) (False -> <{_predefined._!Cons!}> new_0 strs_1) 
+UtilStrictLists.Map !f_0 !_x_1 = case _x_1 (<{_predefined._!Cons!}> a_1_0 x_1_1 -> <{_predefined._!Cons!}> (f_0 a_1_0) (UtilStrictLists.Map f_0 x_1_1)) (<{_predefined._!Nil!}> -> <{_predefined._!Nil!}>) 
+UtilStrictLists.MapR2 f_0 !_x_1 !acc_2 = case _x_1 (<{_predefined._!Nil!}> -> acc_2) (<{_predefined._!Cons!}> x_1_0 xs_1_1 -> UtilStrictLists.MapR2 f_0 xs_1_1 (<{_predefined._!Cons!}> (f_0 x_1_0) acc_2)) 
+UtilStrictLists.MapR !f_0 !list_1 = UtilStrictLists.MapR2 f_0 list_1 <{_predefined._!Nil!}>
+UtilStrictLists.toS_36 !_vtoString_0 !_x_1 = case _x_1 (<{_predefined._!Nil!}> -> "") (<{_predefined._!Cons!}> h_1_0 t_1_1 -> <{StdString.+++_11}> "," (<{StdString.+++_11}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 h_1_0) (UtilStrictLists.toS_36 _vtoString_0 t_1_1))) 
+UtilStrictLists.toString_29 !_vtoString_0 !_x_1 = case _x_1 (<{_predefined._!Nil!}> -> "[]") (<{_predefined._!Cons!}> h_1_0 t_1_1 -> <{StdString.+++_11}> "[" (<{StdString.+++_11}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 h_1_0) (<{StdString.+++_11}> (UtilStrictLists.toS_36 _vtoString_0 t_1_1) "]"))) 
+<{UtilStrictLists.TD;List}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records

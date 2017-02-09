@@ -110,7 +110,7 @@ editFile :: String String String -> Task ()
 editFile path name content 
 = withShared content 
     (\sc ->
-	 		updateSharedInformation (path </> name) [UpdateUsing id (\_ nsc -> nsc) aceTextArea] sc				// seems to be a bug in the current UpdateUsing ... no change returned
+	 		(updateSharedInformation (path </> name) [UpdateUsing id (\_ nsc -> nsc) aceTextArea] sc)				// seems to be a bug in the current UpdateUsing ... no change returned
 
 	 >^*	[ 	OnAction  ActionSave    	(hasValue (saveFile (path </> name)))
 	 		,	OnAction  ActionSaveAs		(hasValue (saveFileAs (path </> name)))

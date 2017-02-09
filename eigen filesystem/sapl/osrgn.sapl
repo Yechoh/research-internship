@@ -1,0 +1,19 @@
+|| ?module? osrgn
+
+
+osrgn.osnewrgn !tb_0::I = rgnCCall_12.winCreateRectRgn 0 0 1 1 tb_0
+osrgn.osnewrectrgn !_x_0 !tb_1::I = case _x_0 (ostypes._OSRect rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3 -> rgnCCall_12.winCreateRectRgn rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3 tb_1) 
+osrgn.osdisposergn::I !osrgn_0::I !tb_1::I = pictCCall_12.winDeleteObject osrgn_0 tb_1
+osrgn.setpolyshape_11::I !shapeH_0::I !i_1::I !_x_2 !_x_3 !tb_4::I = case _x_2 (_Tuple2 x_1_0 y_1_1 -> case _x_3 (_predefined._Cons _x_2_0 vs_2_1 -> case _x_2_0 (_Tuple2 vx_3_0 vy_3_1 -> osrgn.setpolyshape_11 shapeH_0 (<{StdInt.+_6}> i_1 1) (_Tuple2 (<{StdInt.+_6}> x_1_0 vx_3_0) (<{StdInt.+_6}> y_1_1 vy_3_1)) vs_2_1 (pictCCall_12.winSetPolyPoint i_1 x_1_0 y_1_1 shapeH_0 tb_4)) ) ) (_ -> tb_4)
+osrgn.ospolyrgn !base_0 !shape_1 !osrgn_2::I !tb_3::I = let len_1_0::I = StdList.length_47 shape_1 in case (<{StdInt.==_16}> len_1_0 0) (True -> let _x_3_0 = rgnCCall_12.winCombineRgn osrgn_2 osrgn_2 osrgn_2 4 tb_3 in <{_Tuple2!3}> (select _x_3_0::_Tuple2 0) (select _x_3_0::_Tuple2 1)) (False -> let _x_3_0 = rgnCCall_12.winCombineRgn osrgn_2 osrgn_2 osrgn_2 4 tb_3, _x_3_1::I = pictCCall_12.winAllocPolyShape len_1_0 (select _x_3_0::_Tuple2 1), shapeH_3_2 = select _x_3_1::_Tuple2 0, _x_3_3::I = rgnCCall_12.winCreatePolygonRgn shapeH_3_2 len_1_0 2 (osrgn.setpolyshape_11 shapeH_3_2 0 base_0 shape_1 (select _x_3_1::_Tuple2 1)), prgn_3_4 = select _x_3_3::_Tuple2 0, _x_3_5 = rgnCCall_12.winCombineRgn (select _x_3_0::_Tuple2 0) prgn_3_4 prgn_3_4 5 (select _x_3_3::_Tuple2 1) in <{_Tuple2!3}> (select _x_3_5::_Tuple2 0) (pictCCall_12.winFreePolyShape shapeH_3_2 (pictCCall_12.winDeleteObject prgn_3_4 (select _x_3_5::_Tuple2 1)))) 
+osrgn.ossectrgn !rgn1_0::I !rgn2_1::I !tb_2::I = let _x_1_0 = rgnCCall_12.winCreateRectRgn 0 0 1 1 tb_2, _x_1_1 = rgnCCall_12.winCombineRgn (select _x_1_0::_Tuple2 0) rgn1_0 rgn2_1 1 (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (select _x_1_1::_Tuple2 0) (select _x_1_1::_Tuple2 1)
+osrgn.osunionrgn !rgn1_0::I !rgn2_1::I !tb_2::I = let _x_1_0 = rgnCCall_12.winCreateRectRgn 0 0 1 1 tb_2, _x_1_1 = rgnCCall_12.winCombineRgn (select _x_1_0::_Tuple2 0) rgn1_0 rgn2_1 2 (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (select _x_1_1::_Tuple2 0) (select _x_1_1::_Tuple2 1)
+osrgn.osdiffrgn !rgn1_0::I !rgn2_1::I !tb_2::I = let _x_1_0 = rgnCCall_12.winCreateRectRgn 0 0 1 1 tb_2, _x_1_1 = rgnCCall_12.winCombineRgn (select _x_1_0::_Tuple2 0) rgn1_0 rgn2_1 4 (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (select _x_1_1::_Tuple2 0) (select _x_1_1::_Tuple2 1)
+osrgn.osgetrgnbox !rgn_0::I !tb_1::I = let _x_1_0 = rgnCCall_12.winGetRgnBox rgn_0 tb_1 in <{_Tuple3!7}> (select _x_1_0::_Tuple7 4) (ostypes._OSRect (select _x_1_0::_Tuple7 0) (select _x_1_0::_Tuple7 1) (select _x_1_0::_Tuple7 2) (select _x_1_0::_Tuple7 3)) (select _x_1_0::_Tuple7 6)
+osrgn.osisemptyrgn !rgn_0::I !tb_1::I = let _x_1_0 = rgnCCall_12.winGetRgnBox rgn_0 tb_1 in <{_Tuple2!3}> (select _x_1_0::_Tuple7 5) (select _x_1_0::_Tuple7 6)
+osrgn.osrectrgn !_x_0 !osrgn_1::I !tb_2::I = case _x_0 (ostypes._OSRect rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3 -> rgnCCall_12.winSetRgnToRect rleft_1_0 rtop_1_1 rright_1_2 rbottom_1_3 osrgn_1 tb_2) 
+<{osrgn.TD;OSRgnHandle}> _x_0::B = _predefined._Nil
+<{osrgn.TD;OSPointH}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records

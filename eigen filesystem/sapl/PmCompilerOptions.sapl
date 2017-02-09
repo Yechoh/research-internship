@@ -1,0 +1,17 @@
+|| ?module? PmCompilerOptions
+
+
+PmCompilerOptions.DefaultCompilerOptions = PmCompilerOptions._CompilerOptions False False True PmCompilerOptions.StrictExportTypes True True True False True False
+PmCompilerOptions.UnexpectedEvalBefore !defaultValue_0 !_x_1 = defaultValue_0
+PmCompilerOptions.UnexpectedReport::I !message_0 = PmCompilerOptions.UnexpectedEvalBefore 0 (StdFile.fwrites message_0 StdFile.stderr)
+<{PmCompilerOptions.==_1}>::B !_x_0 !_x_1 = case _x_0 (PmCompilerOptions.NoTypes -> case _x_1 (PmCompilerOptions.NoTypes -> True) ) (PmCompilerOptions.InferredTypes -> case _x_1 (PmCompilerOptions.InferredTypes -> True) ) (PmCompilerOptions.StrictExportTypes -> case _x_1 (PmCompilerOptions.StrictExportTypes -> True) ) (PmCompilerOptions.AllTypes -> case _x_1 (PmCompilerOptions.AllTypes -> True) ) (_ -> False)
+PmCompilerOptions.toString_2 !_x_0 = case _x_0 (PmCompilerOptions.NoTypes -> "NoTypes") (PmCompilerOptions.InferredTypes -> "InferredTypes") (PmCompilerOptions.StrictExportTypes -> "StrictExportTypes") (PmCompilerOptions.AllTypes -> "AllTypes") 
+PmCompilerOptions.fromString_3 !_x_0 = case _x_0 ("NoTypes" -> PmCompilerOptions.NoTypes) ("InferredTypes" -> PmCompilerOptions.InferredTypes) ("StrictExportTypes" -> PmCompilerOptions.StrictExportTypes) ("AllTypes" -> PmCompilerOptions.AllTypes) (_ -> PmCompilerOptions.UnexpectedEvalBefore PmCompilerOptions.NoTypes (PmCompilerOptions.UnexpectedReport "fromString (Types): unknown Type"))
+<{PmCompilerOptions.TD;ListTypes}> _x_0::B = _predefined._Nil
+<{PmCompilerOptions.TD;CompilerOptions}> _x_0::B = _predefined._Nil
+
+:: PmCompilerOptions.ListTypes = PmCompilerOptions.NoTypes | PmCompilerOptions.InferredTypes | PmCompilerOptions.StrictExportTypes | PmCompilerOptions.AllTypes
+
+|| Converted Records
+:: PmCompilerOptions._CompilerOptions = {!PmCompilerOptions.neverMemoryProfile::B, !PmCompilerOptions.neverTimeProfile::B, !PmCompilerOptions.sa::B, !PmCompilerOptions.listTypes, !PmCompilerOptions.attr::B, !PmCompilerOptions.gw::B, !PmCompilerOptions.bv::B, !PmCompilerOptions.gc::B, !PmCompilerOptions.reuseUniqueNodes::B, !PmCompilerOptions.fusion::B}
+

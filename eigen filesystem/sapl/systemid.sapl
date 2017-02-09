@@ -1,0 +1,21 @@
+|| ?module? systemid
+
+
+systemid.worldSystemId !nrCreated_0::I = systemid.SystemId (_predefined._Cons 0 _predefined._Nil) nrCreated_0
+systemid.worldChildId !nrCreated_0::I = systemid.SystemId (_predefined._Cons nrCreated_0 (_predefined._Cons 0 _predefined._Nil)) 0
+systemid.initSystemId = systemid.SystemId (_predefined._Cons 1 _predefined._Nil) 0
+systemid.nullSystemId = systemid.SystemId _predefined._Nil 0
+systemid.incrSystemId !id_0 = case id_0 (systemid.SystemId idpath_1_0 nrCreated_1_1 -> let <{idmax`_2_0}>::I = <{StdInt.+_6}> nrCreated_1_1 1 in <{_Tuple2!3}> (systemid.SystemId idpath_1_0 <{idmax`_2_0}>) (systemid.SystemId (_predefined._Cons <{idmax`_2_0}> idpath_1_0) 0)) 
+systemid.eqidpath_8::B !<{_v==_0}> !_x_1 _x_2 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> case _x_2 (_predefined._Cons y_2_0 ys_2_1 -> case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 x_1_0 y_2_0) (True -> systemid.eqidpath_8 <{_v==_0}> xs_1_1 ys_2_1) (False -> False) ) ) (_predefined._Nil -> case _x_2 (_predefined._Nil -> True) ) (_ -> False)
+systemid.eqidpath_11::B !_x_0 _x_1 = case _x_0 (_predefined._Cons x_1_0 xs_1_1 -> case _x_1 (_predefined._Cons y_2_0 ys_2_1 -> case (<{StdInt.==_16}> x_1_0 y_2_0) (True -> systemid.eqidpath_11 xs_1_1 ys_2_1) (False -> False) ) ) (_predefined._Nil -> case _x_1 (_predefined._Nil -> True) ) (_ -> False)
+<{systemid.==_5}>::B !_x_0 !_x_1 = case _x_0 (systemid.SystemId idpath1_1_0 _x_1_1 -> case _x_1 (systemid.SystemId idpath2_2_0 _x_2_1 -> systemid.eqidpath_11 idpath1_1_0 idpath2_2_0) ) 
+systemid.lessidpath_10::B !<{_v<_0}> !_x_1 _x_2 = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> case _x_2 (_predefined._Cons y_2_0 ys_2_1 -> select <{_v<_0}>::<{StdOverloaded.<;}> 0 x_1_0 y_2_0) ) (_predefined._Nil -> case _x_2 (_predefined._Cons _x_2_0 _x_2_1 -> True) ) (_ -> False)
+systemid.removecommonprefix_9 !<{_v==_0}> !<{xs`_1}> <{ys`_2}> = case <{xs`_1}> (_predefined._Cons x_1_0 xs_1_1 -> case <{ys`_2}> (_predefined._Cons y_2_0 ys_2_1 -> case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 x_1_0 y_2_0) (True -> systemid.removecommonprefix_9 <{_v==_0}> xs_1_1 ys_2_1) (False -> _Tuple2 <{xs`_1}> <{ys`_2}>) ) ) (_ -> _Tuple2 <{xs`_1}> <{ys`_2}>)
+systemid.removecommonprefix_12 !<{xs`_0}> <{ys`_1}> = case <{xs`_0}> (_predefined._Cons x_1_0 xs_1_1 -> case <{ys`_1}> (_predefined._Cons y_2_0 ys_2_1 -> case (<{StdInt.==_16}> x_1_0 y_2_0) (True -> systemid.removecommonprefix_12 xs_1_1 ys_2_1) (False -> _Tuple2 <{xs`_0}> <{ys`_1}>) ) ) (_ -> _Tuple2 <{xs`_0}> <{ys`_1}>)
+systemid.lessidpath_13::B !_x_0 _x_1 = case _x_0 (_predefined._Cons x_1_0 xs_1_1 -> case _x_1 (_predefined._Cons y_2_0 ys_2_1 -> <{StdInt.<_17}> x_1_0 y_2_0) ) (_predefined._Nil -> case _x_1 (_predefined._Cons _x_2_0 _x_2_1 -> True) ) (_ -> False)
+<{systemid.<_6}>::B !_x_0 !_x_1 = case _x_0 (systemid.SystemId idpath1_1_0 _x_1_1 -> case _x_1 (systemid.SystemId idpath2_2_0 _x_2_1 -> let _x_3_0 = systemid.removecommonprefix_12 idpath1_1_0 idpath2_2_0 in systemid.lessidpath_13 (select _x_3_0::_Tuple2 0) (select _x_3_0::_Tuple2 1)) ) 
+<{systemid.TD;SystemId}> _x_0::B = _predefined._Nil
+
+:: systemid.SystemId = systemid.SystemId a1 a2::I
+
+|| Converted Records

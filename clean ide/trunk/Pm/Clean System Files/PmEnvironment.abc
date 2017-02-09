@@ -5,36 +5,36 @@
 .depend "StdLibMisc" "20161223204018"
 .depend "Directory" "20161223204009"
 .depend "UtilIO" "20170123155357"
-.depend "StdFunc" "20161223204046"
-.depend "StdList" "20161223204046"
+.depend "UtilOptions" "20170123155354"
+.depend "UtilDate" "20170123155353"
+.depend "UtilStrictLists" "20170123155353"
+.depend "PmCompilerOptions" "20170123155350"
+.depend "UtilNewlinesFile" "20170123155356"
+.depend "StdPathname" "20170123155353"
+.depend "PmTypes" "20170206141502"
 .depend "_SystemArray" "20161223204046"
 .depend "StdArray" "20161223204046"
-.depend "StdChar" "20161223204046"
-.depend "StdReal" "20161223204046"
-.depend "StdInt" "20161223204046"
+.depend "StdMaybe" "20161223204018"
+.depend "StdFunc" "20161223204046"
 .depend "StdFile" "20170206141502"
-.depend "UtilOptions" "20170123155354"
+.depend "StdString" "20161223204046"
 .depend "StdGeneric" "20161223204046"
-.depend "GenEq" "20161223204010"
+.depend "GenEq" "20161223204033"
 .depend "Data.Monoid" "20161223204017"
 .depend "Control.Monad" "20161223204016"
 .depend "Control.Applicative" "20161223204016"
 .depend "System.IO" "20161223204018"
 .depend "Data.Functor" "20161223204017"
 .depend "Data.Maybe" "20161223204017"
-.depend "StdMaybe" "20161223204018"
-.depend "UtilDate" "20170123155353"
-.depend "StdString" "20161223204046"
-.depend "UtilStrictLists" "20170123155353"
-.depend "PmCompilerOptions" "20170123155350"
+.depend "StdReal" "20161223204046"
+.depend "StdChar" "20161223204046"
+.depend "StdInt" "20161223204046"
 .depend "StdBool" "20161223204046"
 .depend "StdClass" "20161223204046"
-.depend "UtilNewlinesFile" "20170123155356"
-.depend "StdPathname" "20170123155353"
-.depend "PmTypes" "20170206141502"
+.depend "StdList" "20161223204046"
 .depend "StdOverloaded" "20161223204046"
 .depend "_SystemDynamic" "20161223204009"
-.depend "PmEnvironment" "20170206153527"
+.depend "PmEnvironment" "20170206161455"
 .module m_PmEnvironment "PmEnvironment" "20170206122647"
 .endinfo
 .impmod _system
@@ -83,30 +83,6 @@
 .impdesc e_Directory_dNoDirError
 .impmod UtilIO
 .impdesc e_UtilIO_dGetFullApplicationPath
-.impmod StdFunc
-.impdesc e_StdFunc_did
-.impdesc e_StdFunc_dconst
-.impmod StdList
-.impdesc e_StdList_d++
-.implab e_StdList_s++
-.implab e_StdList_n++ e_StdList_ea++
-.implab e_StdList_sisEmpty
-.impdesc e_StdList_dmap
-.implab e_StdList_nmap e_StdList_eamap
-.impmod _SystemArray
-.impmod StdInt
-.implab e_StdInt_s-;7
-.implab e_StdInt_s<;17
-.implab e_StdInt_stoInt;23
-.impmod StdFile
-.impdesc e_StdFile_dfclose;26
-.implab e_StdFile_sfclose;26
-.implab e_StdFile_nfclose;26
-.implab e_StdFile_sfopen;27
-.impdesc e_StdFile_dFileSystem;.fclose
-.implab e_StdFile_nFileSystem;.fclose e_StdFile_eaFileSystem;.fclose
-.impdesc e_StdFile_dFileEnv;.accFiles
-.implab e_StdFile_nFileEnv;.accFiles e_StdFile_eaFileEnv;.accFiles
 .impmod UtilOptions
 .implab e_UtilOptions_sWriteOptionsFile
 .implab e_UtilOptions_sReadOptionsFile
@@ -118,11 +94,28 @@
 .implab e_UtilOptions_sList
 .implab e_UtilOptions_sGroup
 .impdesc e_UtilOptions_rOptionsTableEntry
-.impmod Data.Maybe
-.impdesc e_Data.Maybe_disNothing
-.implab e_Data.Maybe_nisNothing
-.impdesc e_Data.Maybe_dNothing
-.impdesc e_Data.Maybe_dJust
+.impmod UtilStrictLists
+.implab e_UtilStrictLists_sStrictListToList
+.implab e_UtilStrictLists_sListToStrictList
+.impmod StdPathname
+.implab e_StdPathname_sMakeFullPathname
+.impmod PmTypes
+.implab e_PmTypes_sDefaultProcessor
+.implab e_PmTypes_stoString;9
+.implab e_PmTypes_sfromString;10
+.impmod _SystemArray
+.impmod StdFunc
+.impdesc e_StdFunc_did
+.impdesc e_StdFunc_dconst
+.impmod StdFile
+.impdesc e_StdFile_dfclose;26
+.implab e_StdFile_sfclose;26
+.implab e_StdFile_nfclose;26
+.implab e_StdFile_sfopen;27
+.impdesc e_StdFile_dFileSystem;.fclose
+.implab e_StdFile_nFileSystem;.fclose e_StdFile_eaFileSystem;.fclose
+.impdesc e_StdFile_dFileEnv;.accFiles
+.implab e_StdFile_nFileEnv;.accFiles e_StdFile_eaFileEnv;.accFiles
 .impmod StdString
 .implab e_StdString_s==;2
 .impdesc e_StdString_dfromString;4
@@ -131,17 +124,24 @@
 .impdesc e_StdString_dtoString;9
 .implab e_StdString_s%;10
 .implab e_StdString_s+++;11
-.impmod UtilStrictLists
-.implab e_UtilStrictLists_sStrictListToList
-.implab e_UtilStrictLists_sListToStrictList
+.impmod Data.Maybe
+.impdesc e_Data.Maybe_disNothing
+.implab e_Data.Maybe_nisNothing
+.impdesc e_Data.Maybe_dNothing
+.impdesc e_Data.Maybe_dJust
+.impmod StdInt
+.implab e_StdInt_s-;7
+.implab e_StdInt_s<;17
+.implab e_StdInt_stoInt;23
 .impmod StdBool
 .implab e_StdBool_snot
-.impmod StdPathname
-.implab e_StdPathname_sMakeFullPathname
-.impmod PmTypes
-.implab e_PmTypes_sDefaultProcessor
-.implab e_PmTypes_stoString;9
-.implab e_PmTypes_sfromString;10
+.impmod StdList
+.impdesc e_StdList_d++
+.implab e_StdList_s++
+.implab e_StdList_n++ e_StdList_ea++
+.implab e_StdList_sisEmpty
+.impdesc e_StdList_dmap
+.implab e_StdList_nmap e_StdList_eamap
 .impmod StdOverloaded
 .impdesc e_StdOverloaded_rtoString;
 .impdesc e_StdOverloaded_rfromString;

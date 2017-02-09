@@ -2,40 +2,40 @@
 .start _nostart_
 .depend "Platform" "20170123155356"
 .depend "PmPath" "20170123155352"
-.depend "_SystemEnumStrict" "20161223204046"
-.depend "_SystemStrictLists" "20161223204046"
-.depend "StdStrictLists" "20161223204046"
 .depend "StdLibMisc" "20161223204018"
 .depend "Directory" "20161223204009"
 .depend "UtilIO" "20170123155357"
+.depend "UtilDate" "20170123155353"
+.depend "UtilStrictLists" "20170123155353"
+.depend "PmCompilerOptions" "20170123155350"
+.depend "UtilNewlinesFile" "20170123155356"
+.depend "StdPathname" "20170123155353"
+.depend "PmTypes" "20170206141502"
+.depend "_SystemEnumStrict" "20161223204046"
+.depend "_SystemStrictLists" "20161223204046"
+.depend "StdStrictLists" "20161223204046"
+.depend "_SystemArray" "20161223204046"
+.depend "StdArray" "20161223204046"
 .depend "_SystemEnum" "20161223204046"
 .depend "StdEnum" "20161223204046"
 .depend "StdOrdList" "20161223204046"
-.depend "StdList" "20161223204046"
-.depend "_SystemArray" "20161223204046"
-.depend "StdArray" "20161223204046"
-.depend "StdChar" "20161223204046"
-.depend "StdReal" "20161223204046"
-.depend "StdInt" "20161223204046"
+.depend "StdMaybe" "20161223204018"
 .depend "StdFile" "20170206141502"
+.depend "StdString" "20161223204046"
 .depend "StdGeneric" "20161223204046"
-.depend "GenEq" "20161223204010"
+.depend "GenEq" "20161223204033"
 .depend "Data.Monoid" "20161223204017"
 .depend "Control.Monad" "20161223204016"
 .depend "Control.Applicative" "20161223204016"
 .depend "System.IO" "20161223204018"
 .depend "Data.Functor" "20161223204017"
 .depend "Data.Maybe" "20161223204017"
-.depend "StdMaybe" "20161223204018"
-.depend "UtilDate" "20170123155353"
-.depend "StdString" "20161223204046"
-.depend "UtilStrictLists" "20170123155353"
-.depend "PmCompilerOptions" "20170123155350"
+.depend "StdReal" "20161223204046"
+.depend "StdChar" "20161223204046"
+.depend "StdInt" "20161223204046"
 .depend "StdBool" "20161223204046"
 .depend "StdClass" "20161223204046"
-.depend "UtilNewlinesFile" "20170123155356"
-.depend "StdPathname" "20170123155353"
-.depend "PmTypes" "20170206141502"
+.depend "StdList" "20161223204046"
 .depend "StdOverloaded" "20161223204046"
 .depend "_SystemDynamic" "20161223204009"
 .depend "PmDirCache" "20170206122647"
@@ -79,9 +79,6 @@
 .implab _driver
 .impmod PmPath
 .implab e_PmPath_ssubdir_and_file_name_of_hmodule_name
-.impmod _SystemStrictLists
-.impdesc e__SystemStrictLists_d_decons_uts;50
-.impdesc e__SystemStrictLists_rList;
 .impmod StdLibMisc
 .impdesc e_StdLibMisc_rTime
 .impdesc e_StdLibMisc_rDate
@@ -92,22 +89,16 @@
 .impdesc e_Directory_dNoDirError
 .impmod UtilIO
 .implab e_UtilIO_sFExists
+.impmod UtilStrictLists
+.implab e_UtilStrictLists_sMap
+.impmod StdPathname
+.implab e_StdPathname_sMakeFullPathname
+.impmod _SystemStrictLists
+.impdesc e__SystemStrictLists_d_decons_uts;50
+.impdesc e__SystemStrictLists_rList;
+.impmod _SystemArray
 .impmod StdOrdList
 .implab e_StdOrdList_ssortBy
-.impmod StdList
-.impdesc e_StdList_d++
-.implab e_StdList_s++
-.implab e_StdList_n++ e_StdList_ea++
-.implab e_StdList_sisEmpty
-.impmod _SystemArray
-.impmod StdChar
-.implab e_StdChar_s==;18
-.impmod StdInt
-.implab e_StdInt_s>>
-.implab e_StdInt_s+;6
-.implab e_StdInt_s-;7
-.implab e_StdInt_sone;11
-.implab e_StdInt_s<;17
 .impmod StdFile
 .impdesc e_StdFile_dfclose;26
 .impdesc e_StdFile_dfopen;27
@@ -119,12 +110,21 @@
 .implab e_StdString_s==;2
 .implab e_StdString_s<;3
 .implab e_StdString_s+++;11
-.impmod UtilStrictLists
-.implab e_UtilStrictLists_sMap
+.impmod StdChar
+.implab e_StdChar_s==;18
+.impmod StdInt
+.implab e_StdInt_s>>
+.implab e_StdInt_s+;6
+.implab e_StdInt_s-;7
+.implab e_StdInt_sone;11
+.implab e_StdInt_s<;17
 .impmod StdBool
 .implab e_StdBool_snot
-.impmod StdPathname
-.implab e_StdPathname_sMakeFullPathname
+.impmod StdList
+.impdesc e_StdList_d++
+.implab e_StdList_s++
+.implab e_StdList_n++ e_StdList_ea++
+.implab e_StdList_sisEmpty
 .export e_PmDirCache_rDirCache
 .record e_PmDirCache_rDirCache aaa 3 0 "DirCache"
 .descexp e_PmDirCache_tDirCache e_PmDirCache_cDirCache _hnf 3 1 "DirCache"

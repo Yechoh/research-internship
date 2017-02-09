@@ -1,4 +1,4 @@
-module CpmLogic2
+implementation module CpmLogic2
 
 import CpmLogic
 
@@ -61,7 +61,10 @@ cleanhome = "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-2016
 pwd = cleanhome
 
 Start :: *World -> *World
-Start world
+Start world = compile pn world
+
+compile :: String *World -> *World
+compile pn world
 	#	(mpwd, world)  = getCurrentDirectory world
 		(cpmd, world)  = accFiles GetFullApplicationPath world
     	//cleandir       = if (endsWith "bin" cpmd) (takeDirectory cpmd) cpmd
@@ -69,11 +72,29 @@ Start world
           //             (Just ch, world)  -> (ch, world)
             //           (_, world)        -> (cleandir, world)
     = case mpwd of
-      Ok pwd   -> createProject cleanhome pwd pn world
+      Ok pwd   -> buildProject cleanhome pwd pn world
       Error e  -> abort "Failed to read current directory"
 
-createProject :: String String String *World -> *World//(*Files -> ((Project,Bool,{#Char}),*Files))
-createProject cleanhome pwd pn world
+createProject :: String *World -> *World
+createProject mainmodule world = mkMainAndProject world
+  where
+	mkMainAndProject world
+    # world = doModuleAction "" mainmodule (CreateModule ApplicationModule) world
+    = mkProject world
+    mkProject world
+    # edit_options   = {eo={newlines=NewlineConventionUnix},pos_size=NoWindowPosAndSize}
+    //Create project file using the Clean IDE libraries
+    # prj            = PR_NewProject mainmodule edit_options DefaultCompilerOptions DefCodeGenOptions
+                         DefApplicationOptions [!!] DefaultLinkOptions
+    # project        = PR_SetRoot mainmodule edit_options DefaultCompilerOptions prj
+    # projectfile    = mkProjectFile (dropExtension mainmodule)
+    # (prjok, world) = accFiles (SaveProjectFile projectfile project cleanhome) world
+    | not prjok      = error ("Could not create project file " +++ projectfile) world
+    = world
+
+
+buildProject :: String String String *World -> *World//(*Files -> ((Project,Bool,{#Char}),*Files))
+buildProject cleanhome pwd pn world
   # (envs, world)            = readIDEEnvs cleanhome ideenvs world
   # proj_path                = GetLongPathName pn// = ReadProjectFile proj_path cleanhome
   # ((proj, ok, err), world) = accFiles (ReadProjectFile proj_path cleanhome) world
