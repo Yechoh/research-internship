@@ -1,0 +1,88 @@
+|| ?module? iTasks._Framework.Tonic.Pretty
+
+
+iTasks._Framework.Tonic.Pretty.sugarPP !_x_0 = case _x_0 ("_Nil" -> "[]") ("_Unit" -> "()") ("_String" -> "String") (_ -> _x_0)
+iTasks._Framework.Tonic.Pretty.ppLit !_x_0 = case _x_0 (iTasks._Framework.Tonic.AbsSyn.TBool x_1_0 -> StdString.toString_8 x_1_0) (iTasks._Framework.Tonic.AbsSyn.TInt x_1_0 -> StdString.toString_5 x_1_0) (iTasks._Framework.Tonic.AbsSyn.TReal x_1_0 -> StdString.toString_7 x_1_0) (iTasks._Framework.Tonic.AbsSyn.TString x_1_0 -> x_1_0) 
+iTasks._Framework.Tonic.Pretty.endsWithNil::B !_x_0 = case _x_0 (iTasks._Framework.Tonic.AbsSyn.TFApp _x_1_0 _x_1_1 _x_1_2 _x_1_3 -> case _x_1_1 ("_Cons" -> case _x_1_2 (_predefined._Cons x_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons xs_4_0 _x_4_1 -> case _x_4_1 (_predefined._Nil -> iTasks._Framework.Tonic.Pretty.endsWithNil xs_4_0) ) ) ) ("_Nil" -> True) ) (_ -> False)
+iTasks._Framework.Tonic.Pretty.ppIntersperse !_x_0 !_x_1 !_x_2 = case _x_2 (_predefined._Nil -> "") (_predefined._Cons x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> _x_0 x_1_0) (_ -> <{StdString.+++_11}> (_x_0 x_1_0) (<{StdString.+++_11}> _x_1 (iTasks._Framework.Tonic.Pretty.ppIntersperse _x_0 _x_1 _x_1_1)))) 
+iTasks._Framework.Tonic.Pretty.anon_9 !d_0::I !_x_1 = case _x_1 (_Tuple2 pat_1_0 expr_1_1 -> <{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> d_0 pat_1_0) (<{StdString.+++_11}> " -> " (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> d_0 expr_1_1))) 
+iTasks._Framework.Tonic.Pretty.ppCases !d_0::I !xs_1 = iTasks._Framework.Tonic.Pretty.ppIntersperse (iTasks._Framework.Tonic.Pretty.anon_9 d_0) "; " xs_1
+iTasks._Framework.Tonic.Pretty.ppTExprTuple !xs_0 = iTasks._Framework.Tonic.Pretty.ppIntersperse iTasks._Framework.Tonic.Pretty.ppTExpr ", " xs_0
+<{iTasks._Framework.Tonic.Pretty.ppTExprList`_10}> !_x_0 = case _x_0 (iTasks._Framework.Tonic.AbsSyn.TFApp _x_1_0 _x_1_1 _x_1_2 _x_1_3 -> case _x_1_1 ("_Cons" -> case _x_1_2 (_predefined._Cons x_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons xs_4_0 _x_4_1 -> case _x_4_1 (_predefined._Nil -> <{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExpr x_3_0) (<{StdString.+++_11}> " : " (iTasks._Framework.Tonic.Pretty.ppTExprList xs_4_0))) ) ) ) ) (_ -> iTasks._Framework.Tonic.Pretty.ppTExpr _x_0)
+iTasks._Framework.Tonic.Pretty.ppTExprNilList_11 !_x_0 = case _x_0 (iTasks._Framework.Tonic.AbsSyn.TFApp _x_1_0 _x_1_1 _x_1_2 _x_1_3 -> case _x_1_1 ("_Cons" -> case _x_1_2 (_predefined._Cons x_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons _x_4_0 _x_4_1 -> case _x_4_0 (iTasks._Framework.Tonic.AbsSyn.TFApp _x_5_0 _x_5_1 _x_5_2 _x_5_3 -> case _x_5_1 ("_Nil" -> case _x_4_1 (_predefined._Nil -> iTasks._Framework.Tonic.Pretty.ppTExpr x_3_0) ) ) (_ -> case _x_4_1 (_predefined._Nil -> <{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExpr x_3_0) (<{StdString.+++_11}> ", " (iTasks._Framework.Tonic.Pretty.ppTExprList _x_4_0))) )) ) ) ) (_ -> iTasks._Framework.Tonic.Pretty.ppTExpr _x_0)
+iTasks._Framework.Tonic.Pretty.ppTExprList !e_0 = case (iTasks._Framework.Tonic.Pretty.endsWithNil e_0) (True -> iTasks._Framework.Tonic.Pretty.ppTExprNilList_11 e_0) (False -> <{iTasks._Framework.Tonic.Pretty.ppTExprList`_10}> e_0) 
+<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> !_x_0::I !_x_1 = case _x_1 (iTasks._Framework.Tonic.AbsSyn.TVar _x_1_0 _x_1_1 ptr_1_2 -> case _x_1_1 ("_x" -> iTasks._Framework.Tonic.Pretty.sugarPP (<{StdString.+++_11}> "x" (StdString.toString_5 ptr_1_2))) (_ -> iTasks._Framework.Tonic.Pretty.sugarPP _x_1_1)) (iTasks._Framework.Tonic.AbsSyn.TPPExpr pp_1_0 -> iTasks._Framework.Tonic.Pretty.sugarPP pp_1_0) (iTasks._Framework.Tonic.AbsSyn.TLit lit_1_0 -> iTasks._Framework.Tonic.Pretty.ppLit lit_1_0) (iTasks._Framework.Tonic.AbsSyn.TFApp _x_1_0 pp_1_1 _x_1_2 _x_1_3 -> case _x_1_2 (_predefined._Nil -> iTasks._Framework.Tonic.Pretty.sugarPP pp_1_1) (_predefined._Cons x_2_0 _x_2_1 -> case pp_1_1 ("_List" -> <{StdString.+++_11}> "[" (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExpr x_2_0) "]")) ) (_ -> case pp_1_1 ("_Cons" -> <{StdString.+++_11}> "[" (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExprList _x_1) "]")) ("_Tuple2" -> <{StdString.+++_11}> "(" (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExprTuple _x_1_2) ")")) ("_Tuple3" -> <{StdString.+++_11}> "(" (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExprTuple _x_1_2) ")")) ("_Tuple4" -> <{StdString.+++_11}> "(" (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExprTuple _x_1_2) ")")) (_ -> case (case (<{StdInt.<_17}> 0 (_SystemArray.size_20 pp_1_1)) (True -> <{StdChar.==_18}> (_SystemArray.select_19 pp_1_1 0) '_') (False -> False) ) (True -> <{StdString.+++_11}> "{ " (<{StdString.+++_11}> (<{StdString.%_10}> pp_1_1 (_Tuple2 1 (_SystemArray.size_20 pp_1_1))) (<{StdString.+++_11}> " | " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppIntersperse iTasks._Framework.Tonic.Pretty.ppTExpr ", " _x_1_2) " }")))) (False -> case _x_1_2 (_predefined._Cons l_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons r_4_0 _x_4_1 -> case _x_4_1 (_predefined._Nil -> case _x_1_3 (iTasks._Framework.Tonic.AbsSyn.TPrio _x_6_0 n_6_1 -> case _x_6_0 (iTasks._Framework.Tonic.AbsSyn.TLeftAssoc -> <{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty._if;28;56_139}> (<{StdInt.<_17}> 0 _x_0)) (<{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1) l_3_0) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.sugarPP pp_1_1) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1) r_4_0) (<{iTasks._Framework.Tonic.Pretty._if;28;155_140}> (<{StdInt.<_17}> 0 _x_0)))))))) (iTasks._Framework.Tonic.AbsSyn.TRightAssoc -> <{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty._if;29;56_141}> (<{StdInt.<_17}> 0 _x_0)) (<{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1) l_3_0) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.sugarPP pp_1_1) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1) r_4_0) (<{iTasks._Framework.Tonic.Pretty._if;29;155_142}> (<{StdInt.<_17}> 0 _x_0)))))))) (iTasks._Framework.Tonic.AbsSyn.TNoAssoc -> <{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1) l_3_0) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.sugarPP pp_1_1) (<{StdString.+++_11}> " " (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1) r_4_0))))) ) ) ) ) (_ -> <{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty._if;31;38_143}> (<{StdInt.<_17}> 0 _x_0)) (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.sugarPP pp_1_1) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppIntersperse (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1)) " " _x_1_2) (<{iTasks._Framework.Tonic.Pretty._if;31;127_144}> (<{StdInt.<_17}> 0 _x_0))))))) ))) (iTasks._Framework.Tonic.AbsSyn.TMApp _x_1_0 _x_1_1 _x_1_2 pp_1_3 _x_1_4 _x_1_5 _x_1_6 -> case _x_1_4 (_predefined._Nil -> iTasks._Framework.Tonic.Pretty.sugarPP pp_1_3) (_predefined._Cons x_2_0 xs_2_1 -> case (case (<{StdInt.<_17}> 0 (_SystemArray.size_20 pp_1_3)) (True -> <{StdChar.==_18}> (_SystemArray.select_19 pp_1_3 0) '_') (False -> False) ) (True -> <{StdString.+++_11}> "{ " (<{StdString.+++_11}> (<{StdString.%_10}> pp_1_3 (_Tuple2 1 (_SystemArray.size_20 pp_1_3))) (<{StdString.+++_11}> " | " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExprTuple xs_2_1) " }")))) ) (_ -> <{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty._if;35;38_145}> (<{StdInt.<_17}> 0 _x_0)) (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.sugarPP pp_1_3) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppIntersperse (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1)) " " _x_1_4) (<{iTasks._Framework.Tonic.Pretty._if;35;127_146}> (<{StdInt.<_17}> 0 _x_0))))))) (iTasks._Framework.Tonic.AbsSyn.TSel e_1_0 es_1_1 -> <{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExpr e_1_0) (<{StdString.+++_11}> "." (iTasks._Framework.Tonic.Pretty.ppIntersperse (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1)) " " es_1_1))) (iTasks._Framework.Tonic.AbsSyn.TLam vars_1_0 e_1_1 -> <{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty._if;37;31_147}> (<{StdInt.<_17}> 0 _x_0)) (<{StdString.+++_11}> "\\" (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppIntersperse (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> (<{StdInt.+_6}> _x_0 1)) " " vars_1_0) (<{StdString.+++_11}> "-> " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppTExpr e_1_1) (<{iTasks._Framework.Tonic.Pretty._if;37;132_148}> (<{StdInt.<_17}> 0 _x_0))))))) (iTasks._Framework.Tonic.AbsSyn.TIf _x_1_0 c_1_1 t_1_2 e_1_3 -> <{StdString.+++_11}> "if (" (<{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> _x_0 c_1_1) (<{StdString.+++_11}> ") (" (<{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> _x_0 t_1_2) (<{StdString.+++_11}> ") (" (<{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> _x_0 e_1_3) ")")))))) (iTasks._Framework.Tonic.AbsSyn.TCase _x_1_0 e_1_1 cs_1_2 -> <{StdString.+++_11}> "case " (<{StdString.+++_11}> (<{iTasks._Framework.Tonic.Pretty.ppTExpr`}> _x_0 e_1_1) (<{StdString.+++_11}> " of { " (<{StdString.+++_11}> (iTasks._Framework.Tonic.Pretty.ppCases _x_0 cs_1_2) "}")))) (iTasks._Framework.Tonic.AbsSyn.TExpand _x_1_0 tt_1_1 -> <{iTasks._Framework.Tonic.Pretty.ppTExpr`}> _x_0 (select tt_1_1::iTasks._Framework.Tonic.AbsSyn._TonicFunc 6)) (iTasks._Framework.Tonic.AbsSyn.TNoBind -> "") (_ -> "ppTExpr: encountered more complex expression than we would like to pretty-print here...")
+iTasks._Framework.Tonic.Pretty.ppTExpr !tcexpr_0 = <{iTasks._Framework.Tonic.Pretty.ppTExpr`}> 0 tcexpr_0
+<{iTasks._Framework.Tonic.Pretty._if;37;132_148}> !_x_0::B = case _x_0 (True -> ")") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;37;31_147}> !_x_0::B = case _x_0 (True -> "(") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;35;127_146}> !_x_0::B = case _x_0 (True -> ")") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;35;38_145}> !_x_0::B = case _x_0 (True -> "(") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;31;127_144}> !_x_0::B = case _x_0 (True -> ")") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;31;38_143}> !_x_0::B = case _x_0 (True -> "(") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;29;155_142}> !_x_0::B = case _x_0 (True -> ")") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;29;56_141}> !_x_0::B = case _x_0 (True -> "(") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;28;155_140}> !_x_0::B = case _x_0 (True -> ")") (_ -> "")
+<{iTasks._Framework.Tonic.Pretty._if;28;56_139}> !_x_0::B = case _x_0 (True -> "(") (_ -> "")
+
+
+|| Converted Records
+:: <{iTasks._Framework.Tonic.Pretty.gEq_s;}> = {!iTasks._Framework.Tonic.Pretty.gEq_s}
+
+:: <{iTasks._Framework.Tonic.Pretty.gEq_ss;}> = {!iTasks._Framework.Tonic.Pretty.gEq_ss}
+
+:: <{iTasks._Framework.Tonic.Pretty.gEq_sss;}> = {!iTasks._Framework.Tonic.Pretty.gEq_sss}
+
+:: <{iTasks._Framework.Tonic.Pretty.gEq_ssss;}> = {!iTasks._Framework.Tonic.Pretty.gEq_ssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.gEq_sssss;}> = {!iTasks._Framework.Tonic.Pretty.gEq_sssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.gEq_ssssss;}> = {!iTasks._Framework.Tonic.Pretty.gEq_ssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.gEq_sssssss;}> = {!iTasks._Framework.Tonic.Pretty.gEq_sssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.gEq_ssssssss;}> = {!iTasks._Framework.Tonic.Pretty.gEq_ssssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.gEq_sssssssss;}> = {!iTasks._Framework.Tonic.Pretty.gEq_sssssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.bimap_s;}> = {iTasks._Framework.Tonic.Pretty.bimap_s}
+
+:: <{iTasks._Framework.Tonic.Pretty.bimap_ss;}> = {iTasks._Framework.Tonic.Pretty.bimap_ss}
+
+:: <{iTasks._Framework.Tonic.Pretty.bimap_sss;}> = {iTasks._Framework.Tonic.Pretty.bimap_sss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_s;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_s}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_ss;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_ss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_sss;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_sss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_ssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_ssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_sssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_sssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_ssssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_sssssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_ssssssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONEncode_sssssssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_s;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_s}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_ss;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_ss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_sss;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_sss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_ssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_ssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_sssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_sssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_ssssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_sssssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_ssssssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.Tonic.Pretty.JSONDecode_sssssssss;}> = {!iTasks._Framework.Tonic.Pretty.JSONDecode_sssssssss}
+

@@ -1,0 +1,86 @@
+|| ?module? Text.Parsers.ZParsers.ParsersAccessories
+
+
+Text.Parsers.ZParsers.ParsersAccessories.foldl_36 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Text.Parsers.ZParsers.ParsersAccessories.foldl_36 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Text.Parsers.ZParsers.ParsersAccessories.foldl_35 op_0 r_1 !l_2 = Text.Parsers.ZParsers.ParsersAccessories.foldl_36 op_0 r_1 l_2
+Text.Parsers.ZParsers.ParsersAccessories.anon_25::I !n_0::I !d_1::C = <{StdInt.+_6}> (<{StdInt.*_9}> 10 n_0) (StdChar.digitToInt d_1)
+Text.Parsers.ZParsers.ParsersAccessories.anon_27::B c_0::C = StdList.isMember_52 c_0 (_SystemEnum._from_to_7 '0' '9')
+Text.Parsers.ZParsers.ParsersAccessories.digit = Text.Parsers.ZParsers.ParsersKernel.satisfy Text.Parsers.ZParsers.ParsersAccessories.anon_27
+Text.Parsers.ZParsers.ParsersAccessories.foldl_85::I !r_0::I !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> Text.Parsers.ZParsers.ParsersAccessories.foldl_85 (Text.Parsers.ZParsers.ParsersAccessories.anon_25 r_0 a_1_0) x_1_1) 
+Text.Parsers.ZParsers.ParsersAccessories.foldl_84::I !r_0::I !l_1 = Text.Parsers.ZParsers.ParsersAccessories.foldl_85 r_0 l_1
+Text.Parsers.ZParsers.ParsersAccessories.number = <{Text.Parsers.ZParsers.ParsersDerived.<@}> (<{Text.Parsers.ZParsers.ParsersDerived.<!+>}> Text.Parsers.ZParsers.ParsersAccessories.digit) (Text.Parsers.ZParsers.ParsersAccessories.foldl_84 0)
+Text.Parsers.ZParsers.ParsersAccessories.foldl_38 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Text.Parsers.ZParsers.ParsersAccessories.foldl_38 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Text.Parsers.ZParsers.ParsersAccessories.foldl_37 op_0 r_1 !l_2 = Text.Parsers.ZParsers.ParsersAccessories.foldl_38 op_0 r_1 l_2
+Text.Parsers.ZParsers.ParsersAccessories.anon_26::I !n_0::I !d_1::C = <{StdInt.+_6}> (<{StdInt.*_9}> 10 n_0) (StdChar.digitToInt d_1)
+Text.Parsers.ZParsers.ParsersAccessories.foldl_87::I !r_0::I !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> Text.Parsers.ZParsers.ParsersAccessories.foldl_87 (Text.Parsers.ZParsers.ParsersAccessories.anon_26 r_0 a_1_0) x_1_1) 
+Text.Parsers.ZParsers.ParsersAccessories.foldl_86::I !r_0::I !l_1 = Text.Parsers.ZParsers.ParsersAccessories.foldl_87 r_0 l_1
+<{Text.Parsers.ZParsers.ParsersAccessories.number`}> = <{Text.Parsers.ZParsers.ParsersDerived.<@}> (<{Text.Parsers.ZParsers.ParsersDerived.<.*>}> Text.Parsers.ZParsers.ParsersAccessories.digit) (Text.Parsers.ZParsers.ParsersAccessories.foldl_86 0)
+Text.Parsers.ZParsers.ParsersAccessories.hexDigit = Text.Parsers.ZParsers.ParsersKernel.satisfy StdChar.isHexDigit
+Text.Parsers.ZParsers.ParsersAccessories.letter = Text.Parsers.ZParsers.ParsersKernel.satisfy StdChar.isAlpha
+Text.Parsers.ZParsers.ParsersAccessories.alphaNum = Text.Parsers.ZParsers.ParsersKernel.satisfy StdChar.isAlphanum
+Text.Parsers.ZParsers.ParsersAccessories.anon_28::B !_vEq_0 !cs_1 c_2 = StdList.isMember _vEq_0 c_2 cs_1
+Text.Parsers.ZParsers.ParsersAccessories.anon_88::B !cs_0 c_1::C = StdList.isMember_52 c_1 cs_0
+Text.Parsers.ZParsers.ParsersAccessories.oneOf cs_0 = Text.Parsers.ZParsers.ParsersKernel.satisfy (Text.Parsers.ZParsers.ParsersAccessories.anon_88 cs_0)
+Text.Parsers.ZParsers.ParsersAccessories.foldl_39 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Text.Parsers.ZParsers.ParsersAccessories.foldl_39 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Text.Parsers.ZParsers.ParsersAccessories.foldl_89 r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> Text.Parsers.ZParsers.ParsersAccessories.foldl_89 (<{Text.Parsers.ZParsers.ParsersKernel.<!>}> r_0 a_1_0) x_1_1) 
+Text.Parsers.ZParsers.ParsersAccessories.choice !l_0 = Text.Parsers.ZParsers.ParsersAccessories.foldl_89 Text.Parsers.ZParsers.ParsersKernel.fail l_0
+Text.Parsers.ZParsers.ParsersAccessories.ds !_vspace_0 p_1 = Text.Parsers.ZParsers.ParsersKernel.dropCheck (select _vspace_0::<{Text.Parsers.ZParsers.ParsersAccessories.space;}> 0) p_1
+Text.Parsers.ZParsers.ParsersAccessories.symbolH !<{_v==_0}> !_vtoString_1 = <{Text.Parsers.ZParsers.ParsersKernel.:=>}> (select _vtoString_1::<{StdOverloaded.toString;}> 0) (Text.Parsers.ZParsers.ParsersKernel.symbol <{_v==_0}>)
+Text.Parsers.ZParsers.ParsersAccessories.tokenH !<{_v==_0}> !_vtoChar_1 = <{Text.Parsers.ZParsers.ParsersKernel.:=>}> (StdList.toString_49 _vtoChar_1) (Text.Parsers.ZParsers.ParsersKernel.token <{_v==_0}>)
+Text.Parsers.ZParsers.ParsersAccessories.anon_29 !_vtoChar_0 c_1 r_2 = StdList.toString_49 _vtoChar_0 (_predefined._Cons c_1 r_2)
+Text.Parsers.ZParsers.ParsersAccessories.anon_90 c_0::C r_1 = StdList.toString_79 (_predefined._Cons c_0 r_1)
+Text.Parsers.ZParsers.ParsersAccessories.anon_30 c_0::C = <{Text.Parsers.ZParsers.ParsersDerived.<@}> (<{Text.Parsers.ZParsers.ParsersDerived.<.*>}> (Text.Parsers.ZParsers.ParsersKernel.satisfy StdChar.isAlphanum)) (Text.Parsers.ZParsers.ParsersAccessories.anon_90 c_0)
+Text.Parsers.ZParsers.ParsersAccessories.identifier = <{Text.Parsers.ZParsers.ParsersKernel.<&>}> (Text.Parsers.ZParsers.ParsersKernel.satisfy StdChar.isAlpha) Text.Parsers.ZParsers.ParsersAccessories.anon_30
+Text.Parsers.ZParsers.ParsersAccessories.lnc_31 tab_0::I !_x_1 !_x_2::I line_3::I col_4::I = case _x_1 (_predefined._Cons c_1_0 _x_1_1 -> case _x_2 (1 -> _Tuple2 line_3 col_4) (_ -> <{Text.Parsers.ZParsers.ParsersAccessories._c;64;33_94}> c_1_0 tab_0 _x_1_1 _x_2 line_3 col_4)) (_predefined._Nil -> StdMisc.abort "ParserKernel.icl: position beyond input-list") 
+<{Text.Parsers.ZParsers.ParsersAccessories._c;64;33_94}> !c_0::C tab_1::I !_x_2 !_x_3::I line_4::I col_5::I = case c_0 ('\n' -> Text.Parsers.ZParsers.ParsersAccessories.lnc_31 tab_1 _x_2 (<{StdInt.-_7}> _x_3 1) (<{StdInt.+_6}> line_4 1) 1) ('\t' -> Text.Parsers.ZParsers.ParsersAccessories.lnc_31 tab_1 _x_2 (<{StdInt.-_7}> _x_3 1) line_4 (<{StdInt.-_7}> (<{StdInt.+_6}> col_5 tab_1) (StdInt.rem_28 (<{StdInt.-_7}> col_5 1) tab_1))) (_ -> Text.Parsers.ZParsers.ParsersAccessories.lnc_31 tab_1 _x_2 (<{StdInt.-_7}> _x_3 1) line_4 (<{StdInt.+_6}> col_5 1))
+Text.Parsers.ZParsers.ParsersAccessories.lineAndColumn !cs_0 !pos_1::I tab_2::I = case (<{StdInt.<_17}> pos_1 1) (True -> StdMisc.abort "ParserKernel.icl: position less than one") (False -> Text.Parsers.ZParsers.ParsersAccessories.lnc_31 tab_2 cs_0 pos_1 1 1) 
+<{Text.Parsers.ZParsers.ParsersAccessories.myZip`_33}> !_vtoString_0 !_vtoString_1 !_x_2 _x_3 = case _x_2 (_predefined._Nil -> "") (_predefined._Cons s_1_0 ss_1_1 -> case _x_3 (_predefined._Cons p_2_0 pp_2_1 -> <{StdString.+++_11}> ", " (<{StdString.+++_11}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 s_1_0) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (select _vtoString_1::<{StdOverloaded.toString;}> 0 p_2_0) (<{Text.Parsers.ZParsers.ParsersAccessories.myZip`_33}> _vtoString_0 _vtoString_1 ss_1_1 pp_2_1))))) ) (_ -> StdMisc.abort "'myZip' in ParserAccessories called with unexpected combination of list lengths")
+Text.Parsers.ZParsers.ParsersAccessories.toString_19 !_x_0 = case _x_0 (Text.Parsers.ZParsers.ParsersKernel.Whole str_1_0 -> str_1_0) (Text.Parsers.ZParsers.ParsersKernel.Slice str_1_0 i_1_1 -> <{StdString.+++_11}> (StdString.toString_5 i_1_1) (<{StdString.+++_11}> Text.Parsers.ZParsers.ParserLanguage.sliceOf str_1_0)) 
+Text.Parsers.ZParsers.ParsersAccessories.toString_34 !_x_0 = case _x_0 (Text.Parsers.ZParsers.ParsersKernel.At i_1_0 -> StdString.toString_5 i_1_0) (Text.Parsers.ZParsers.ParsersKernel.EndAt i_1_0 -> <{StdString.+++_11}> ".." (StdString.toString_5 i_1_0)) 
+<{Text.Parsers.ZParsers.ParsersAccessories.myZip`_91}> !_vtoString_0 !_x_1 _x_2 = case _x_1 (_predefined._Nil -> "") (_predefined._Cons s_1_0 ss_1_1 -> case _x_2 (_predefined._Cons p_2_0 pp_2_1 -> <{StdString.+++_11}> ", " (<{StdString.+++_11}> (Text.Parsers.ZParsers.ParsersAccessories.toString_19 s_1_0) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 p_2_0) (<{Text.Parsers.ZParsers.ParsersAccessories.myZip`_91}> _vtoString_0 ss_1_1 pp_2_1))))) ) (_ -> StdMisc.abort "'myZip' in ParserAccessories called with unexpected combination of list lengths")
+<{Text.Parsers.ZParsers.ParsersAccessories.myZip`_92}> !_x_0 _x_1 = case _x_0 (_predefined._Nil -> "") (_predefined._Cons s_1_0 ss_1_1 -> case _x_1 (_predefined._Cons p_2_0 pp_2_1 -> <{StdString.+++_11}> ", " (<{StdString.+++_11}> (Text.Parsers.ZParsers.ParsersAccessories.toString_19 s_1_0) (<{StdString.+++_11}> " " (<{StdString.+++_11}> (Text.Parsers.ZParsers.ParsersAccessories.toString_34 p_2_0) (<{Text.Parsers.ZParsers.ParsersAccessories.myZip`_92}> ss_1_1 pp_2_1))))) ) (_ -> StdMisc.abort "'myZip' in ParserAccessories called with unexpected combination of list lengths")
+Text.Parsers.ZParsers.ParsersAccessories.myZip !syms_0 ps_1 = let _x_1_0 = StdList.reverse syms_0 in <{StdString.+++_11}> (Text.Parsers.ZParsers.ParsersAccessories.toString_19 (select _x_1_0::_Tuple2 0)) (<{Text.Parsers.ZParsers.ParsersAccessories.myZip`_92}> (select _x_1_0::_Tuple2 1) ps_1)
+Text.Parsers.ZParsers.ParsersAccessories.isEmptyRose::B !_x_0 = case _x_0 (_predefined._Nil -> True) (_predefined._Cons _x_1_0 as_1_1 -> case _x_1_0 (Text.Parsers.ZParsers.ParsersKernel.RoseLeaf -> Text.Parsers.ZParsers.ParsersAccessories.isEmptyRose as_1_1) ) (_ -> False)
+Text.Parsers.ZParsers.ParsersAccessories.flattenSep !_vtoString_0 s_1 !_x_2 = case _x_2 (_predefined._Cons a_1_0 rest_1_1 -> case rest_1_1 (_predefined._Cons b_2_0 _x_2_1 -> <{StdString.+++_11}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 a_1_0) (<{StdString.+++_11}> s_1 (Text.Parsers.ZParsers.ParsersAccessories.flattenSep _vtoString_0 s_1 rest_1_1))) (_predefined._Nil -> select _vtoString_0::<{StdOverloaded.toString;}> 0 a_1_0) ) (_ -> "")
+Text.Parsers.ZParsers.ParsersAccessories.flattenSep_93 s_0 !_x_1 = case _x_1 (_predefined._Cons a_1_0 rest_1_1 -> case rest_1_1 (_predefined._Cons b_2_0 _x_2_1 -> <{StdString.+++_11}> (StdString.toString_9 a_1_0) (<{StdString.+++_11}> s_0 (Text.Parsers.ZParsers.ParsersAccessories.flattenSep_93 s_0 rest_1_1))) (_predefined._Nil -> StdString.toString_9 a_1_0) ) (_ -> "")
+Text.Parsers.ZParsers.ParsersAccessories.pos2str !sp_0 !globalPos_1 = case (<{StdList.==_45}> (<{StdOverloaded.==;}> <{Text.Parsers.ZParsers.ParsersKernel.==_33}>) sp_0 globalPos_1) (True -> "") (False -> <{StdString.+++_11}> " [" (<{StdString.+++_11}> (Text.Parsers.ZParsers.ParsersAccessories.flattenSep_93 "," (StdList.map Text.Parsers.ZParsers.ParsersAccessories.toString_34 sp_0)) "]")) 
+Text.Parsers.ZParsers.ParsersAccessories.fromRose !_x_0 _x_1::I _x_2 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons _x_1_0 rest_1_1 -> case _x_1_0 (Text.Parsers.ZParsers.ParsersKernel.RoseLeaf -> Text.Parsers.ZParsers.ParsersAccessories.fromRose rest_1_1 _x_1 _x_2) (Text.Parsers.ZParsers.ParsersKernel.RoseTwig _x_2_0 down_2_1 -> case _x_2_0 (_Tuple2 str_3_0 pos_3_1 -> let _x_4_0 = <{Text.Parsers.ZParsers.ParsersAccessories._if;122;11_95}> (Text.Parsers.ZParsers.ParsersAccessories.isEmptyRose down_2_1) down_2_1 _x_1 _x_2 in <{StdList.++}> (_predefined._Cons (_Tuple2 _x_1 (<{StdString.+++_11}> str_3_0 (<{StdString.+++_11}> (Text.Parsers.ZParsers.ParsersAccessories.pos2str pos_3_1 _x_2) (select _x_4_0::_Tuple2 0)))) (select _x_4_0::_Tuple2 1)) (Text.Parsers.ZParsers.ParsersAccessories.fromRose rest_1_1 _x_1 _x_2)) ) ) 
+<{Text.Parsers.ZParsers.ParsersAccessories._if;122;11_95}> !_x_0::B down_1 _x_2::I _x_3 = case _x_0 (True -> _Tuple2 "" _predefined._Nil) (_ -> _Tuple2 (<{StdString.+++_11}> ", " (<{StdString.+++_11}> Text.Parsers.ZParsers.ParserLanguage.andWithinThat ":")) (Text.Parsers.ZParsers.ParsersAccessories.fromRose down_1 (<{StdInt.+_6}> _x_2 1) _x_3))
+Text.Parsers.ZParsers.ParsersAccessories.errorToFormat symbolTypes_0 hypotheses_1 position_2 = _predefined._Cons (_Tuple2 0 (<{StdString.+++_11}> Text.Parsers.ZParsers.ParserLanguage.cantAnalyseAsOf ":")) (_predefined._Cons (_Tuple2 0 (<{StdString.+++_11}> (Text.Parsers.ZParsers.ParsersAccessories.myZip symbolTypes_0 position_2) ".")) (_predefined._Cons (_Tuple2 0 (<{Text.Parsers.ZParsers.ParsersAccessories._if;96;15_96}> (Text.Parsers.ZParsers.ParsersAccessories.isEmptyRose hypotheses_1))) (Text.Parsers.ZParsers.ParsersAccessories.fromRose hypotheses_1 0 position_2)))
+<{Text.Parsers.ZParsers.ParsersAccessories._if;96;15_96}> !_x_0::B = case _x_0 (True -> Text.Parsers.ZParsers.ParserLanguage.noOptions) (_ -> <{StdString.+++_11}> Text.Parsers.ZParsers.ParserLanguage.optionsToSolve ":")
+Text.Parsers.ZParsers.ParsersAccessories.anon_32 !_x_0 = case _x_0 (_Tuple2 i_1_0 s_1_1 -> <{StdString.+++_11}> (StdList.toString_79 (StdList.repeatn (<{StdInt.*_9}> i_1_0 4) ' ')) s_1_1) 
+Text.Parsers.ZParsers.ParsersAccessories.errorToStrings symbolTypes_0 hypotheses_1 position_2 = StdList.map Text.Parsers.ZParsers.ParsersAccessories.anon_32 (Text.Parsers.ZParsers.ParsersAccessories.errorToFormat symbolTypes_0 hypotheses_1 position_2)
+Text.Parsers.ZParsers.ParsersAccessories.errorToString symbolTypes_0 hypotheses_1 position_2 = Text.Parsers.ZParsers.ParsersAccessories.flattenSep_93 "\n" (Text.Parsers.ZParsers.ParsersAccessories.errorToStrings symbolTypes_0 hypotheses_1 position_2)
+Text.Parsers.ZParsers.ParsersAccessories.snd_40 !tuple_0 = select tuple_0::_Tuple2 1
+Text.Parsers.ZParsers.ParsersAccessories.simpleErrorToString symbolTypes_0 !hypotheses_1 !position_2 = <{StdString.+++_11}> (<{StdString.+++_11}> "[" (<{StdString.+++_11}> (Text.Parsers.ZParsers.ParsersAccessories.flattenSep_93 "," (StdList.map Text.Parsers.ZParsers.ParsersAccessories.toString_34 position_2)) "]: ")) (Text.Parsers.ZParsers.ParsersAccessories.flattenSep_93 "/" (StdList.map Text.Parsers.ZParsers.ParsersAccessories.snd_40 (Text.Parsers.ZParsers.ParsersAccessories.fromRose hypotheses_1 StdMisc.undef position_2)))
+Text.Parsers.ZParsers.ParsersAccessories.space_18::B !c_0::C = StdChar.isSpace c_0
+<{Text.Parsers.ZParsers.ParsersAccessories.TD;space;}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: <{Text.Parsers.ZParsers.ParsersAccessories.space;}> = {!Text.Parsers.ZParsers.ParsersAccessories.space}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_s;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_s}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_ss;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_ss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_sss;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_sss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_ssss;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_ssss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_sssss;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_sssss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_ssssss;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_ssssss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_sssssss;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_sssssss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_ssssssss;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_ssssssss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.gEq_sssssssss;}> = {!Text.Parsers.ZParsers.ParsersAccessories.gEq_sssssssss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.bimap_s;}> = {Text.Parsers.ZParsers.ParsersAccessories.bimap_s}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.bimap_ss;}> = {Text.Parsers.ZParsers.ParsersAccessories.bimap_ss}
+
+:: <{Text.Parsers.ZParsers.ParsersAccessories.bimap_sss;}> = {Text.Parsers.ZParsers.ParsersAccessories.bimap_sss}
+

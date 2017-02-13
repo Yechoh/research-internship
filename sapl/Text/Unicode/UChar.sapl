@@ -1,0 +1,59 @@
+|| ?module? Text.Unicode.UChar
+
+
+Text.Unicode.UChar.wgencat::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.generalCategory !_vto_0 !_vfrom_1 c_2 = select _vfrom_1::<{StdOverloaded.fromInt;}> 0 (Text.Unicode.UChar.wgencat (select _vto_0::<{StdOverloaded.toInt;}> 0 c_2))
+Text.Unicode.UChar.toInt_28::I !i_0::I = i_0
+Text.Unicode.UChar.fromInt_42 !_x_0::I = case _x_0 (0 -> Text.Unicode.UChar.UppercaseLetter) (1 -> Text.Unicode.UChar.LowercaseLetter) (2 -> Text.Unicode.UChar.TitlecaseLetter) (3 -> Text.Unicode.UChar.ModifierLetter) (4 -> Text.Unicode.UChar.OtherLetter) (5 -> Text.Unicode.UChar.NonSpacingMark) (6 -> Text.Unicode.UChar.SpacingCombiningMark) (7 -> Text.Unicode.UChar.EnclosingMark) (8 -> Text.Unicode.UChar.DecimalNumber) (9 -> Text.Unicode.UChar.LetterNumber) (10 -> Text.Unicode.UChar.OtherNumber) (11 -> Text.Unicode.UChar.ConnectorPunctuation) (12 -> Text.Unicode.UChar.DashPunctuation) (13 -> Text.Unicode.UChar.OpenPunctuation) (14 -> Text.Unicode.UChar.ClosePunctuation) (15 -> Text.Unicode.UChar.InitialQuote) (16 -> Text.Unicode.UChar.FinalQuote) (17 -> Text.Unicode.UChar.OtherPunctuation) (18 -> Text.Unicode.UChar.MathSymbol) (19 -> Text.Unicode.UChar.CurrencySymbol) (20 -> Text.Unicode.UChar.ModifierSymbol) (21 -> Text.Unicode.UChar.OtherSymbol) (22 -> Text.Unicode.UChar.Space) (23 -> Text.Unicode.UChar.LineSeparator) (24 -> Text.Unicode.UChar.ParagraphSeparator) (25 -> Text.Unicode.UChar.Control) (26 -> Text.Unicode.UChar.Format) (27 -> Text.Unicode.UChar.Surrogate) (28 -> Text.Unicode.UChar.PrivateUse) (29 -> Text.Unicode.UChar.NotAssigned) 
+Text.Unicode.UChar.generalCategory_44 !_vfrom_0 c_1::I = select _vfrom_0::<{StdOverloaded.fromInt;}> 0 (Text.Unicode.UChar.wgencat (Text.Unicode.UChar.toInt_28 c_1))
+Text.Unicode.UChar.generalCategory_45 !c_0::I = Text.Unicode.UChar.fromInt_42 (Text.Unicode.UChar.wgencat (Text.Unicode.UChar.toInt_28 c_0))
+Text.Unicode.UChar.isLetter::B !c_0::I = <{Text.Unicode.UChar._c;136;14_46}> (Text.Unicode.UChar.generalCategory_45 c_0)
+<{Text.Unicode.UChar._c;136;14_46}>::B !_x_0 = case _x_0 (Text.Unicode.UChar.UppercaseLetter -> True) (Text.Unicode.UChar.LowercaseLetter -> True) (Text.Unicode.UChar.TitlecaseLetter -> True) (Text.Unicode.UChar.ModifierLetter -> True) (Text.Unicode.UChar.OtherLetter -> True) (_ -> False)
+Text.Unicode.UChar.isMark::B !c_0::I = <{Text.Unicode.UChar._c;147;12_47}> (Text.Unicode.UChar.generalCategory_45 c_0)
+<{Text.Unicode.UChar._c;147;12_47}>::B !_x_0 = case _x_0 (Text.Unicode.UChar.NonSpacingMark -> True) (Text.Unicode.UChar.SpacingCombiningMark -> True) (Text.Unicode.UChar.EnclosingMark -> True) (_ -> False)
+Text.Unicode.UChar.isNumber::B !c_0::I = <{Text.Unicode.UChar._c;156;14_48}> (Text.Unicode.UChar.generalCategory_45 c_0)
+<{Text.Unicode.UChar._c;156;14_48}>::B !_x_0 = case _x_0 (Text.Unicode.UChar.DecimalNumber -> True) (Text.Unicode.UChar.LetterNumber -> True) (Text.Unicode.UChar.OtherNumber -> True) (_ -> False)
+Text.Unicode.UChar.isPunctuation::B !c_0::I = <{Text.Unicode.UChar._c;165;19_49}> (Text.Unicode.UChar.generalCategory_45 c_0)
+<{Text.Unicode.UChar._c;165;19_49}>::B !_x_0 = case _x_0 (Text.Unicode.UChar.ConnectorPunctuation -> True) (Text.Unicode.UChar.DashPunctuation -> True) (Text.Unicode.UChar.OpenPunctuation -> True) (Text.Unicode.UChar.ClosePunctuation -> True) (Text.Unicode.UChar.InitialQuote -> True) (Text.Unicode.UChar.FinalQuote -> True) (Text.Unicode.UChar.OtherPunctuation -> True) (_ -> False)
+Text.Unicode.UChar.isSymbol::B !c_0::I = <{Text.Unicode.UChar._c;178;14_50}> (Text.Unicode.UChar.generalCategory_45 c_0)
+<{Text.Unicode.UChar._c;178;14_50}>::B !_x_0 = case _x_0 (Text.Unicode.UChar.MathSymbol -> True) (Text.Unicode.UChar.CurrencySymbol -> True) (Text.Unicode.UChar.ModifierSymbol -> True) (Text.Unicode.UChar.OtherSymbol -> True) (_ -> False)
+Text.Unicode.UChar.isSeparator::B !c_0::I = <{Text.Unicode.UChar._c;187;17_51}> (Text.Unicode.UChar.generalCategory_45 c_0)
+<{Text.Unicode.UChar._c;187;17_51}>::B !_x_0 = case _x_0 (Text.Unicode.UChar.Space -> True) (Text.Unicode.UChar.LineSeparator -> True) (Text.Unicode.UChar.ParagraphSeparator -> True) (_ -> False)
+Text.Unicode.UChar.iswalpha::I !ch_0::I = error "no AnyCodeExpr"
+<{Text.Unicode.UChar.==_23}>::B !a_0::I !b_1::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.isAlpha::B !c_0::I = StdBool.not (<{Text.Unicode.UChar.==_23}> (Text.Unicode.UChar.iswalpha c_0) 0)
+Text.Unicode.UChar.iswalnum::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.isAlphaNum::B !c_0::I = StdBool.not (<{Text.Unicode.UChar.==_23}> (Text.Unicode.UChar.iswalnum c_0) 0)
+<{Text.Unicode.UChar.<_24}>::B !x_0::I !y_1::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.isAscii::B !c_0::I = <{Text.Unicode.UChar.<_24}> c_0 128
+Text.Unicode.UChar.isLatin1::B !c_0::I = StdBool.not (<{Text.Unicode.UChar.<_24}> 255 c_0)
+Text.Unicode.UChar.fromChar_26::I !c_0::C = error "no AnyCodeExpr"
+Text.Unicode.UChar.isAsciiLower::B !c_0::I = case (StdBool.not (<{Text.Unicode.UChar.<_24}> c_0 (Text.Unicode.UChar.fromChar_26 'a'))) (True -> StdBool.not (<{Text.Unicode.UChar.<_24}> (Text.Unicode.UChar.fromChar_26 'z') c_0)) (False -> False) 
+Text.Unicode.UChar.isAsciiUpper::B !c_0::I = case (StdBool.not (<{Text.Unicode.UChar.<_24}> c_0 (Text.Unicode.UChar.fromChar_26 'A'))) (True -> StdBool.not (<{Text.Unicode.UChar.<_24}> (Text.Unicode.UChar.fromChar_26 'Z') c_0)) (False -> False) 
+Text.Unicode.UChar.iswspace::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.isSpace::B !c_0::I = case (<{Text.Unicode.UChar.==_23}> c_0 (Text.Unicode.UChar.fromChar_26 ' ')) (True -> True) (False -> case (<{Text.Unicode.UChar.==_23}> c_0 (Text.Unicode.UChar.fromChar_26 '\t')) (True -> True) (False -> case (<{Text.Unicode.UChar.==_23}> c_0 (Text.Unicode.UChar.fromChar_26 '\n')) (True -> True) (False -> case (<{Text.Unicode.UChar.==_23}> c_0 (Text.Unicode.UChar.fromChar_26 '\r')) (True -> True) (False -> case (<{Text.Unicode.UChar.==_23}> c_0 (Text.Unicode.UChar.fromChar_26 '\f')) (True -> True) (False -> case (<{Text.Unicode.UChar.==_23}> c_0 (Text.Unicode.UChar.fromChar_26 '\v')) (True -> True) (False -> case (<{Text.Unicode.UChar.==_23}> c_0 160) (True -> True) (False -> StdBool.not (<{Text.Unicode.UChar.==_23}> (Text.Unicode.UChar.iswspace c_0) 0)) ) ) ) ) ) ) 
+Text.Unicode.UChar.iswcntrl::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.isControl::B !c_0::I = StdBool.not (<{Text.Unicode.UChar.==_23}> (Text.Unicode.UChar.iswcntrl c_0) 0)
+Text.Unicode.UChar.iswprint::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.isPrint::B !c_0::I = StdBool.not (<{Text.Unicode.UChar.==_23}> (Text.Unicode.UChar.iswprint c_0) 0)
+Text.Unicode.UChar.iswupper::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.isUpper::B !c_0::I = StdBool.not (<{Text.Unicode.UChar.==_23}> (Text.Unicode.UChar.iswupper c_0) 0)
+Text.Unicode.UChar.iswlower::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.isLower::B !c_0::I = StdBool.not (<{Text.Unicode.UChar.==_23}> (Text.Unicode.UChar.iswlower c_0) 0)
+Text.Unicode.UChar.isDigit::B !c_0::I = case (StdBool.not (<{Text.Unicode.UChar.<_24}> c_0 (Text.Unicode.UChar.fromChar_26 '0'))) (True -> StdBool.not (<{Text.Unicode.UChar.<_24}> (Text.Unicode.UChar.fromChar_26 '9') c_0)) (False -> False) 
+Text.Unicode.UChar.isOctDigit::B !c_0::I = case (StdBool.not (<{Text.Unicode.UChar.<_24}> c_0 (Text.Unicode.UChar.fromChar_26 '0'))) (True -> StdBool.not (<{Text.Unicode.UChar.<_24}> (Text.Unicode.UChar.fromChar_26 '7') c_0)) (False -> False) 
+Text.Unicode.UChar.isHexDigit::B !c_0::I = case (Text.Unicode.UChar.isDigit c_0) (True -> True) (False -> case (case (StdBool.not (<{Text.Unicode.UChar.<_24}> c_0 (Text.Unicode.UChar.fromChar_26 'A'))) (True -> StdBool.not (<{Text.Unicode.UChar.<_24}> (Text.Unicode.UChar.fromChar_26 'F') c_0)) (False -> False) ) (True -> True) (False -> case (StdBool.not (<{Text.Unicode.UChar.<_24}> c_0 (Text.Unicode.UChar.fromChar_26 'a'))) (True -> StdBool.not (<{Text.Unicode.UChar.<_24}> (Text.Unicode.UChar.fromChar_26 'f') c_0)) (False -> False) ) ) 
+Text.Unicode.UChar.towlower::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.toLower::I !c_0::I = Text.Unicode.UChar.towlower c_0
+Text.Unicode.UChar.towupper::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.toUpper::I !c_0::I = Text.Unicode.UChar.towupper c_0
+Text.Unicode.UChar.towtitle::I !ch_0::I = error "no AnyCodeExpr"
+Text.Unicode.UChar.toTitle::I !c_0::I = Text.Unicode.UChar.towtitle c_0
+Text.Unicode.UChar.fromInt_25::I !i_0::I = i_0
+Text.Unicode.UChar.toChar_27::C !i_0::I = error "no AnyCodeExpr"
+<{Text.Unicode.UChar.TD;UChar}> _x_0::B = _predefined._Nil
+<{Text.Unicode.UChar.TD;GeneralCategory}> _x_0::B = _predefined._Nil
+
+:: Text.Unicode.UChar.GeneralCategory = Text.Unicode.UChar.UppercaseLetter | Text.Unicode.UChar.LowercaseLetter | Text.Unicode.UChar.TitlecaseLetter | Text.Unicode.UChar.ModifierLetter | Text.Unicode.UChar.OtherLetter | Text.Unicode.UChar.NonSpacingMark | Text.Unicode.UChar.SpacingCombiningMark | Text.Unicode.UChar.EnclosingMark | Text.Unicode.UChar.DecimalNumber | Text.Unicode.UChar.LetterNumber | Text.Unicode.UChar.OtherNumber | Text.Unicode.UChar.ConnectorPunctuation | Text.Unicode.UChar.DashPunctuation | Text.Unicode.UChar.OpenPunctuation | Text.Unicode.UChar.ClosePunctuation | Text.Unicode.UChar.InitialQuote | Text.Unicode.UChar.FinalQuote | Text.Unicode.UChar.OtherPunctuation | Text.Unicode.UChar.MathSymbol | Text.Unicode.UChar.CurrencySymbol | Text.Unicode.UChar.ModifierSymbol | Text.Unicode.UChar.OtherSymbol | Text.Unicode.UChar.Space | Text.Unicode.UChar.LineSeparator | Text.Unicode.UChar.ParagraphSeparator | Text.Unicode.UChar.Control | Text.Unicode.UChar.Format | Text.Unicode.UChar.Surrogate | Text.Unicode.UChar.PrivateUse | Text.Unicode.UChar.NotAssigned
+
+|| Converted Records

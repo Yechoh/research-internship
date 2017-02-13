@@ -1,0 +1,158 @@
+|| ?module? Internet.HTTP
+
+
+Internet.HTTP.newHTTPRequest = Internet.HTTP._HTTPRequest Internet.HTTP.HTTP_GET "" "" "HTTP/1.0" Internet.HTTP.HTTPProtoHTTP Data.Map.newMap "" Data.Map.newMap Data.Map.newMap Data.Map.newMap Data.Map.newMap "" 80 ""
+Internet.HTTP.newHTTPUpload = Internet.HTTP._HTTPUpload "" "" "" ""
+Internet.HTTP.newHTTPResponse !rspcode_0::I !reason_1 = Internet.HTTP._HTTPResponse rspcode_0 reason_1 _predefined._Nil (<{StdString.+++_11}> (StdString.toString_5 rspcode_0) (<{StdString.+++_11}> " - " reason_1))
+Internet.HTTP.parseRequestLine !line_0 = let parts_1_0 = Text.split_12 " " line_0 in case (StdBool.not (<{StdInt.==_16}> (StdList.length_47 parts_1_0) 3)) (True -> Data.Maybe.Nothing) (False -> let _x_3_1 = select parts_1_0::_Tuple2 1, path_3_2 = select _x_3_1::_Tuple2 0, qindex_3_3 = Text.indexOf_3 "?" path_3_2 in case (StdBool.not (<{StdInt.==_16}> qindex_3_3 -1)) (True -> Data.Maybe.Just (_Tuple4 (select parts_1_0::_Tuple2 0) (<{StdString.%_10}> path_3_2 (_Tuple2 0 (<{StdInt.-_7}> qindex_3_3 1))) (<{StdString.%_10}> path_3_2 (_Tuple2 (<{StdInt.+_6}> qindex_3_3 1) (_SystemArray.size_20 path_3_2))) (select (select _x_3_1::_Tuple2 1)::_Tuple2 0))) (False -> Data.Maybe.Just (_Tuple4 (select parts_1_0::_Tuple2 0) path_3_2 "" (select (select _x_3_1::_Tuple2 1)::_Tuple2 0))) ) 
+Internet.HTTP.parseHeader !header_0 = let index_1_0::I = Text.indexOf_3 ":" header_0 in case (<{StdInt.<_17}> index_1_0 1) (True -> Data.Maybe.Nothing) (False -> Data.Maybe.Just (_Tuple2 (Text.trim_18 (<{StdString.%_10}> header_0 (_Tuple2 0 (<{StdInt.-_7}> index_1_0 1)))) (Text.trim_18 (<{StdString.%_10}> header_0 (_Tuple2 (<{StdInt.+_6}> index_1_0 1) (_SystemArray.size_20 header_0)))))) 
+<{Internet.HTTP.<>_44}>::B !_vEq_0 !x_1 !y_2 = StdBool.not (select (select _vEq_0::<{StdClass.Eq;}> 0)::<{StdOverloaded.==;}> 0 x_1 y_2)
+<{Internet.HTTP.<>_43}>::B !_vEq_0 !x_1 !y_2 = StdBool.not (select (select _vEq_0::<{StdClass.Eq;}> 0)::<{StdOverloaded.==;}> 0 x_1 y_2)
+<{Internet.HTTP.<>_180}>::B !x_0 !y_1 = StdBool.not (<{StdString.==_2}> x_0 y_1)
+<{Internet.HTTP.<>_179}>::B !x_0 !y_1 = StdBool.not (<{StdString.==_2}> x_0 y_1)
+Internet.HTTP.parseResponse !rsp_0 = case (Text.startsWith_13 "HTTP/" rsp_0) (True -> let lines_2_0 = Text.split_12 "\n" rsp_0 in case (<{StdInt.<_17}> (StdList.length_47 lines_2_0) 4) (True -> Data.Maybe.Nothing) (False -> let code_words_4_0 = Text.split_12 " " (StdList.hd lines_2_0) in case (<{StdInt.<_17}> (StdList.length_47 code_words_4_0) 2) (True -> Data.Maybe.Nothing) (False -> Data.Maybe.Just (Internet.HTTP._HTTPResponse (StdInt.toInt_23 (StdList.hd (StdList.tl code_words_4_0))) (Text.join_5 " " (StdList.tl (StdList.tl code_words_4_0))) (StdList.map Data.Maybe.fromJust (StdList.filter Data.Maybe.isJust (StdList.map Internet.HTTP.parseHeader (StdList.takeWhile (<{Internet.HTTP.<>_179}> "\r") (StdList.tl lines_2_0))))) (Text.join_5 "\n" (StdList.tl (StdList.dropWhile (<{Internet.HTTP.<>_180}> "\r") (StdList.tl lines_2_0)))))) ) ) (False -> Data.Maybe.Nothing) 
+<{Internet.HTTP.get`_47}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{Internet.HTTP.get`_47}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{Internet.HTTP.get`_47}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+Internet.HTTP.get_46 !<{_v<_0}> k_1 !m_2 = <{Internet.HTTP.get`_47}> <{_v<_0}> k_1 m_2
+Internet.HTTP.parseGetArguments_32 !req_0 = case (<{StdString.==_2}> (select req_0::Internet.HTTP._HTTPRequest 2) "") (True -> Data.Map.newMap) (False -> Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (Text.Encodings.UrlEncoding.urlDecodePairs (select req_0::Internet.HTTP._HTTPRequest 2))) 
+Internet.HTTP.parsePostArguments_33 !req_0 = Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (Text.Encodings.UrlEncoding.urlDecodePairs (select req_0::Internet.HTTP._HTTPRequest 6))
+<{Internet.HTTP.get`_45}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{Internet.HTTP.get`_45}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{Internet.HTTP.get`_45}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{Internet.HTTP.c;188;42_27}> !g_l_0 = <{Internet.HTTP.g_c1;188;51_189}> g_l_0
+<{Internet.HTTP.g_c1;188;51_189}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Internet.HTTP.g_c2;188;51_188}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Internet.HTTP.g_c2;188;51_188}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 k_1_0 v_1_1 -> case (<{StdString.==_2}> k_1_0 "Content-Disposition") (True -> _predefined._Cons v_1_1 (<{Internet.HTTP.c;188;42_27}> g_t_1)) ) (_ -> <{Internet.HTTP.c;188;42_27}> g_t_1)
+<{Internet.HTTP.c;189;42_28}> !g_l_0 = <{Internet.HTTP.g_c1;189;51_191}> g_l_0
+<{Internet.HTTP.g_c1;189;51_191}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Internet.HTTP.g_c2;189;51_190}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Internet.HTTP.g_c2;189;51_190}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 k_1_0 v_1_1 -> case (<{StdString.==_2}> k_1_0 "Content-Type") (True -> _predefined._Cons v_1_1 (<{Internet.HTTP.c;189;42_28}> g_t_1)) ) (_ -> <{Internet.HTTP.c;189;42_28}> g_t_1)
+Internet.HTTP.removequotes_31 !_vArray_0 !<{_v%_1}> s_2 = case (<{StdInt.<_17}> (select _vArray_0::<{_SystemArray.Array;}> 4 s_2) 2) (True -> s_2) (False -> select <{_v%_1}>::<{StdOverloaded.%;}> 0 s_2 (_Tuple2 (<{Internet.HTTP._if;214;27_192}> (<{StdChar.==_18}> (select _vArray_0::<{_SystemArray.Array;}> 3 s_2 0) '"')) (<{Internet.HTTP._if;215;25_193}> (<{StdChar.==_18}> (select _vArray_0::<{_SystemArray.Array;}> 3 s_2 (<{StdInt.-_7}> (select _vArray_0::<{_SystemArray.Array;}> 4 s_2) 1)) '"') _vArray_0 s_2))) 
+<{Internet.HTTP._if;215;25_193}>::I !_x_0::B !_vArray_1 s_2 = case _x_0 (True -> <{StdInt.-_7}> (select _vArray_1::<{_SystemArray.Array;}> 4 s_2) 2) (_ -> <{StdInt.-_7}> (select _vArray_1::<{_SystemArray.Array;}> 4 s_2) 1)
+<{Internet.HTTP._if;214;27_192}>::I !_x_0::B = case _x_0 (True -> 1) (_ -> 0)
+Internet.HTTP.removequotes_181 !<{_v%_0}> !s_1 = case (<{StdInt.<_17}> (_SystemArray.size_20 s_1) 2) (True -> s_1) (False -> select <{_v%_0}>::<{StdOverloaded.%;}> 0 s_1 (_Tuple2 (<{Internet.HTTP._if;214;27_194}> (<{StdChar.==_18}> (_SystemArray.select_19 s_1 0) '"')) (<{Internet.HTTP._if;215;25_195}> (<{StdChar.==_18}> (_SystemArray.select_19 s_1 (<{StdInt.-_7}> (_SystemArray.size_20 s_1) 1)) '"') s_1))) 
+<{Internet.HTTP._if;215;25_195}>::I !_x_0::B !s_1 = case _x_0 (True -> <{StdInt.-_7}> (_SystemArray.size_20 s_1) 2) (_ -> <{StdInt.-_7}> (_SystemArray.size_20 s_1) 1)
+<{Internet.HTTP._if;214;27_194}>::I !_x_0::B = case _x_0 (True -> 1) (_ -> 0)
+Internet.HTTP.removequotes_182 !s_0 = case (<{StdInt.<_17}> (_SystemArray.size_20 s_0) 2) (True -> s_0) (False -> <{StdString.%_10}> s_0 (_Tuple2 (<{Internet.HTTP._if;214;27_196}> (<{StdChar.==_18}> (_SystemArray.select_19 s_0 0) '"')) (<{Internet.HTTP._if;215;25_197}> (<{StdChar.==_18}> (_SystemArray.select_19 s_0 (<{StdInt.-_7}> (_SystemArray.size_20 s_0) 1)) '"') s_0))) 
+<{Internet.HTTP._if;215;25_197}>::I !_x_0::B !s_1 = case _x_0 (True -> <{StdInt.-_7}> (_SystemArray.size_20 s_1) 2) (_ -> <{StdInt.-_7}> (_SystemArray.size_20 s_1) 1)
+<{Internet.HTTP._if;214;27_196}>::I !_x_0::B = case _x_0 (True -> 1) (_ -> 0)
+Internet.HTTP.getParam_30 !name_0 !header_1 = let index_1_0::I = Text.indexOf_3 (<{StdString.+++_11}> name_0 "=") header_1 in case (<{StdInt.==_16}> index_1_0 -1) (True -> "") (False -> let header_3_0::I = <{StdString.%_10}> header_1 (_Tuple2 (<{StdInt.+_6}> (<{StdInt.+_6}> index_1_0 (_SystemArray.size_20 name_0)) 1) (_SystemArray.size_20 header_1)), index_3_1 = Text.indexOf_3 ";" header_3_0 in case (<{StdInt.==_16}> index_3_1 -1) (True -> Internet.HTTP.removequotes_182 header_3_0) (False -> Internet.HTTP.removequotes_182 (<{StdString.%_10}> header_3_0 (_Tuple2 0 (<{StdInt.-_7}> index_3_1 1)))) ) 
+Internet.HTTP.parseParts_29 !_x_0 arguments_1 uploads_2 = case _x_0 (_predefined._Nil -> _Tuple2 arguments_1 uploads_2) (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (_Tuple2 headers_2_0 body_2_1 -> let disposition_3_0 = <{Internet.HTTP.c;188;42_27}> headers_2_0, type_3_1 = <{Internet.HTTP.c;189;42_28}> headers_2_0 in case (case (StdList.isEmpty disposition_3_0) (True -> True) (False -> StdList.isEmpty type_3_1) ) (True -> Internet.HTTP.parseParts_29 xs_1_1 arguments_1 uploads_2) (False -> let disposition_5_0 = StdList.hd disposition_3_0, name_5_1 = Internet.HTTP.getParam_30 "name" disposition_5_0 in case (<{StdString.==_2}> name_5_1 "") (True -> Internet.HTTP.parseParts_29 xs_1_1 arguments_1 uploads_2) (False -> let filename_7_0 = Internet.HTTP.getParam_30 "filename" disposition_5_0 in case (<{StdString.==_2}> filename_7_0 "") (True -> Internet.HTTP.parseParts_29 xs_1_1 (_predefined._Cons (_Tuple2 name_5_1 body_2_1) arguments_1) uploads_2) (False -> Internet.HTTP.parseParts_29 xs_1_1 arguments_1 (_predefined._Cons (_Tuple2 name_5_1 (update Internet.HTTP.newHTTPUpload::Internet.HTTP._HTTPUpload [0:name_5_1,1:filename_7_0,2:StdList.hd type_3_1,3:body_2_1])) uploads_2)) ) ) ) ) 
+<{Internet.HTTP.get`_183}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{Internet.HTTP.get`_183}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{Internet.HTTP.get`_183}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+Internet.HTTP.parseMultiPartPostArguments_34 !req_0 = let mimetype_1_0 = <{Internet.HTTP.get`_183}> "Content-Type" (select req_0::Internet.HTTP._HTTPRequest 5) in case (Data.Maybe.isNothing mimetype_1_0) (True -> _Tuple2 _predefined._Nil _predefined._Nil) (False -> let mimetype_3_0::I = Data.Maybe.fromJust mimetype_1_0, index_3_1 = Text.indexOf_3 "boundary=" mimetype_3_0 in case (<{StdInt.==_16}> index_3_1 -1) (True -> _Tuple2 _predefined._Nil _predefined._Nil) (False -> Internet.HTTP.parseParts_29 (Text.Encodings.MIME.decodeMimeMultipart (<{StdString.%_10}> mimetype_3_0 (_Tuple2 (<{StdInt.+_6}> index_3_1 9) (_SystemArray.size_20 mimetype_3_0))) (select req_0::Internet.HTTP._HTTPRequest 6)) _predefined._Nil _predefined._Nil) ) 
+<{Internet.HTTP.get`_185}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{Internet.HTTP.get`_185}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{Internet.HTTP.get`_185}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+Internet.HTTP.get_184 k_0 !m_1 = <{Internet.HTTP.get`_185}> k_0 m_1
+Internet.HTTP.parseRequest !req_0 = let req_1_0 = update req_0::Internet.HTTP._HTTPRequest [7:Internet.HTTP.parseGetArguments_32 req_0], type_1_1 = <{Internet.HTTP._c;157;39_198}> (Internet.HTTP.get_184 "Content-Type" (select req_1_0::Internet.HTTP._HTTPRequest 5)) in case (<{StdString.==_2}> (<{StdString.%_10}> type_1_1 (_Tuple2 0 32)) "application/x-www-form-urlencoded") (True -> update req_1_0::Internet.HTTP._HTTPRequest [8:Internet.HTTP.parsePostArguments_33 req_1_0]) (False -> case (<{StdString.==_2}> (<{StdString.%_10}> type_1_1 (_Tuple2 0 18)) "multipart/form-data") (True -> let _x_4_0 = Internet.HTTP.parseMultiPartPostArguments_34 req_1_0 in update req_1_0::Internet.HTTP._HTTPRequest [8:Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (select _x_4_0::_Tuple2 0),10:Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (select _x_4_0::_Tuple2 1)]) (False -> req_1_0) ) 
+<{Internet.HTTP._c;157;39_198}> !_x_0 = case _x_0 (Data.Maybe.Just ct_1_0 -> ct_1_0) (Data.Maybe.Nothing -> "") 
+Internet.HTTP.okResponse = Internet.HTTP.newHTTPResponse 200 "OK"
+Internet.HTTP.isOkResponse::B !_x_0 = case _x_0 (Internet.HTTP._HTTPResponse _x_1_0 rsp_reason_1_1 rsp_headers_1_2 rsp_data_1_3 -> case _x_1_0 (200 -> True) ) (_ -> False)
+Internet.HTTP.notfoundResponse = Internet.HTTP.newHTTPResponse 404 "Not Found"
+Internet.HTTP.forbiddenResponse = Internet.HTTP.newHTTPResponse 403 "Forbidden"
+Internet.HTTP.errorResponse !msg_0 = update (Internet.HTTP.newHTTPResponse 500 "Internal Server Error")::Internet.HTTP._HTTPResponse [3:msg_0]
+Internet.HTTP.badRequestResponse !msg_0 = update (Internet.HTTP.newHTTPResponse 400 "Bad Request")::Internet.HTTP._HTTPResponse [3:msg_0]
+Internet.HTTP.fileMimeType_36 !_x_0 !world_1 = case _x_0 (".jpg" -> <{_Tuple2!3}> "image/jpeg" world_1) (".png" -> <{_Tuple2!3}> "image/png" world_1) (".gif" -> <{_Tuple2!3}> "image/gif" world_1) (".bmp" -> <{_Tuple2!3}> "image/bmp" world_1) (".htm" -> <{_Tuple2!3}> "text/html" world_1) (".html" -> <{_Tuple2!3}> "text/html" world_1) (".txt" -> <{_Tuple2!3}> "text/plain" world_1) (".css" -> <{_Tuple2!3}> "text/css" world_1) (".js" -> <{_Tuple2!3}> "text/javascript" world_1) ("" -> <{_Tuple2!3}> "application/octet-stream" world_1) (_ -> Internet.HTTP.fileMimeType_36 (<{StdString.%_10}> _x_0 (_Tuple2 1 (_SystemArray.size_20 _x_0))) world_1)
+Internet.HTTP.fileContent_35 !filename_0 !world_1 = let _x_1_0 = StdFile.fopen_31 filename_0 3 world_1 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> <{_Tuple3!7}> False "Could not open file" (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, _x_3_1 = StdFile.fseek file_3_0 0 2 in case (StdBool.not (select _x_3_1::_Tuple2 0)) (True -> <{_Tuple3!7}> False "Seek to end of file does not succeed" (select _x_1_0::_Tuple3 2)) (False -> let file_5_0 = select _x_3_1::_Tuple2 1, _x_5_1::I = StdFile.fposition file_5_0, file_5_2 = select _x_5_1::_Tuple2 1, pos_5_3 = select _x_5_1::_Tuple2 0, _x_5_4 = StdFile.fseek file_5_2 (<{StdInt.~_15}> pos_5_3) 1 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> <{_Tuple3!7}> False "Seek to begin of file does not succeed" (select _x_1_0::_Tuple3 2)) (False -> let _x_7_0 = StdFile.freads (select _x_5_4::_Tuple2 1) pos_5_3 in <{_Tuple3!7}> True (select _x_7_0::_Tuple2 0) (select (StdFile.fclose_30 (select _x_7_0::_Tuple2 1) (select _x_1_0::_Tuple3 2))::_Tuple2 1)) ) ) 
+Internet.HTTP.staticResponse !req_0 !world_1 = let filename_1_0 = <{StdString.%_10}> (select req_0::Internet.HTTP._HTTPRequest 1) (_Tuple2 1 (_SystemArray.size_20 (select req_0::Internet.HTTP._HTTPRequest 1))), _x_1_1 = Internet.HTTP.fileMimeType_36 filename_1_0 world_1, world_1_2 = select _x_1_1::_Tuple2 1, _x_1_3 = Internet.HTTP.fileContent_35 filename_1_0 world_1_2 in case (StdBool.not (select _x_1_3::_Tuple3 0)) (True -> <{_Tuple2!3}> Internet.HTTP.notfoundResponse (select _x_1_3::_Tuple3 2)) (False -> let content_3_0 = select _x_1_3::_Tuple3 1 in <{_Tuple2!3}> (update Internet.HTTP.okResponse::Internet.HTTP._HTTPResponse [2:_predefined._Cons (_Tuple2 "Content-Type" (select _x_1_1::_Tuple2 0)) (_predefined._Cons (_Tuple2 "Content-Length" (StdString.toString_5 (_SystemArray.size_20 content_3_0))) _predefined._Nil),3:content_3_0]) (select _x_1_3::_Tuple3 2)) 
+Internet.HTTP.customResponse !_x_0 !fallback_1::B !request_2 !world_3 = case _x_0 (_predefined._Nil -> case fallback_1 (True -> Internet.HTTP.staticResponse request_2 world_3) (False -> <{_Tuple2!3}> Internet.HTTP.notfoundResponse world_3) ) (_predefined._Cons _x_1_0 rest_1_1 -> case _x_1_0 (_Tuple2 pred_2_0 handler_2_1 -> case (pred_2_0 (select request_2::Internet.HTTP._HTTPRequest 1)) (True -> handler_2_1 request_2 world_3) (False -> Internet.HTTP.customResponse rest_1_1 fallback_1 request_2 world_3) ) ) 
+Internet.HTTP.foldr_48 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> op_0 a_1_0 (Internet.HTTP.foldr_48 op_0 r_1 x_1_1)) 
+Internet.HTTP.default_38 def_0 !mbval_1 = <{Internet.HTTP._c;279;25_199}> mbval_1 def_0
+<{Internet.HTTP._c;279;25_199}> !mbval_0 def_1 = case mbval_0 (Data.Maybe.Nothing -> def_1) (Data.Maybe.Just val_1_0 -> val_1_0) 
+Internet.HTTP.skipHeader_39::B s_0 = StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) s_0 (_predefined._Cons "Status" (_predefined._Cons "Date" (_predefined._Cons "Server" (_predefined._Cons "Content-Type" (_predefined._Cons "Content-Length" (_predefined._Cons "Last-Modified" _predefined._Nil))))))
+<{Internet.HTTP.c;274;72_37}> !g_l_0 = <{Internet.HTTP.g_c1;274;81_201}> g_l_0
+<{Internet.HTTP.g_c1;274;81_201}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Internet.HTTP.g_c2;274;81_200}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Internet.HTTP.g_c2;274;81_200}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 n_1_0 v_1_1 -> case (StdBool.not (Internet.HTTP.skipHeader_39 n_1_0)) (True -> _predefined._Cons (<{StdString.+++_11}> n_1_0 (<{StdString.+++_11}> ": " (<{StdString.+++_11}> v_1_1 "\r\n"))) (<{Internet.HTTP.c;274;72_37}> g_t_1)) ) (_ -> <{Internet.HTTP.c;274;72_37}> g_t_1)
+Internet.HTTP.foldr_186 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> <{StdString.+++_11}> a_1_0 (Internet.HTTP.foldr_186 r_0 x_1_1)) 
+Internet.HTTP.encodeResponse !withreply_0::B !_x_1 !world_2 = case _x_1 (Internet.HTTP._HTTPResponse rsp_code_1_0 rsp_reason_1_1 headers_1_2 data_1_3 -> <{_Tuple2!3}> (<{StdString.+++_11}> (<{StdString.+++_11}> (<{StdString.+++_11}> (<{StdString.+++_11}> (<{StdString.+++_11}> (<{Internet.HTTP._if;268;15_202}> withreply_0 headers_1_2) (<{StdString.+++_11}> "Server: " (<{StdString.+++_11}> (Internet.HTTP.default_38 "Clean HTTP tools" (Data.List.lookup (<{StdOverloaded.==;}> <{StdString.==_2}>) "Server" headers_1_2)) "\r\n"))) (<{StdString.+++_11}> "Content-Type: " (<{StdString.+++_11}> (Internet.HTTP.default_38 "text/html" (Data.List.lookup (<{StdOverloaded.==;}> <{StdString.==_2}>) "Content-Type" headers_1_2)) "\r\n"))) (<{StdString.+++_11}> "Content-Length: " (<{StdString.+++_11}> (StdString.toString_5 (_SystemArray.size_20 data_1_3)) "\r\n"))) (Internet.HTTP.foldr_186 "" (<{Internet.HTTP.c;274;72_37}> headers_1_2))) (<{StdString.+++_11}> "\r\n" data_1_3)) world_2) 
+<{Internet.HTTP._if;268;15_202}> !withreply_0::B headers_1 = case withreply_0 (True -> <{StdString.+++_11}> "HTTP/1.0 " (<{StdString.+++_11}> (Internet.HTTP.default_38 "200 OK" (Data.List.lookup (<{StdOverloaded.==;}> <{StdString.==_2}>) "Status" headers_1)) "\r\n")) (_ -> <{StdString.+++_11}> "Status: " (<{StdString.+++_11}> (Internet.HTTP.default_38 "200 OK" (Data.List.lookup (<{StdOverloaded.==;}> <{StdString.==_2}>) "Status" headers_1)) "\r\n"))
+Internet.HTTP.toString_16 !_x_0 = case _x_0 (Internet.HTTP.HTTP_GET -> "GET") (Internet.HTTP.HTTP_HEAD -> "HEAD") (Internet.HTTP.HTTP_PUT -> "PUT") (Internet.HTTP.HTTP_DELETE -> "DELETE") (Internet.HTTP.HTTP_POST -> "POST") (Internet.HTTP.HTTP_OPTIONS -> "OPTIONS") (Internet.HTTP.HTTP_TRACE -> "TRACE") (Internet.HTTP.HTTP_CONNECT -> "CONNECT") (Internet.HTTP.HTTP_CUSTOM str_1_0 -> str_1_0) 
+Internet.HTTP.fromString_17 !str_0 = let ustr_1_0 = Text.toUpperCase_17 str_0 in <{Internet.HTTP._c;72;11_203}> (Data.List.lookup (<{StdOverloaded.==;}> <{StdString.==_2}>) ustr_1_0 (_predefined._Cons (_Tuple2 "GET" Internet.HTTP.HTTP_GET) (_predefined._Cons (_Tuple2 "HEAD" Internet.HTTP.HTTP_HEAD) (_predefined._Cons (_Tuple2 "PUT" Internet.HTTP.HTTP_PUT) (_predefined._Cons (_Tuple2 "DELETE" Internet.HTTP.HTTP_DELETE) (_predefined._Cons (_Tuple2 "POST" Internet.HTTP.HTTP_POST) (_predefined._Cons (_Tuple2 "OPTIONS" Internet.HTTP.HTTP_OPTIONS) (_predefined._Cons (_Tuple2 "TRACE" Internet.HTTP.HTTP_TRACE) (_predefined._Cons (_Tuple2 "CONNECT" Internet.HTTP.HTTP_TRACE) _predefined._Nil))))))))) ustr_1_0
+<{Internet.HTTP._c;72;11_203}> !_x_0 ustr_1 = case _x_0 (Data.Maybe.Just method_1_0 -> method_1_0) (_ -> Internet.HTTP.HTTP_CUSTOM ustr_1)
+Internet.HTTP.foldl_51 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Internet.HTTP.foldl_51 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Internet.HTTP.anon_50 k_0 x_1 xs_2 = _predefined._Cons (_Tuple2 k_0 x_1) xs_2
+<{Internet.HTTP.c;91;57_40}> !g_l_0 = <{Internet.HTTP.g_c1;91;66_205}> g_l_0
+<{Internet.HTTP.g_c1;91;66_205}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Internet.HTTP.g_c2;91;66_204}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Internet.HTTP.g_c2;91;66_204}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 n_1_0 v_1_1 -> _predefined._Cons (<{StdString.+++_11}> n_1_0 (<{StdString.+++_11}> ": " (<{StdString.+++_11}> v_1_1 "\r\n"))) (<{Internet.HTTP.c;91;57_40}> g_t_1)) (_ -> <{Internet.HTTP.c;91;57_40}> g_t_1)
+Internet.HTTP.foldl_187 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> Internet.HTTP.foldl_187 (<{StdString.+++_11}> r_0 a_1_0) x_1_1) 
+Internet.HTTP.toString_18 !_x_0 = case _x_0 (Internet.HTTP._HTTPRequest req_method_1_0 req_path_1_1 req_query_1_2 req_version_1_3 req_protocol_1_4 req_headers_1_5 req_data_1_6 arg_get_1_7 arg_post_1_8 arg_cookies_1_9 arg_uploads_1_10 server_name_1_11 server_port_1_12 client_name_1_13 -> <{StdString.+++_11}> (Internet.HTTP.toString_16 req_method_1_0) (<{StdString.+++_11}> " " (<{StdString.+++_11}> req_path_1_1 (<{StdString.+++_11}> req_query_1_2 (<{StdString.+++_11}> " " (<{StdString.+++_11}> req_version_1_3 (<{StdString.+++_11}> "\r\n" (<{StdString.+++_11}> (Internet.HTTP.foldl_187 "" (<{Internet.HTTP.c;91;57_40}> (Data.Map.foldrWithKey Internet.HTTP.anon_50 _predefined._Nil req_headers_1_5))) (<{StdString.+++_11}> "Host: " (<{StdString.+++_11}> server_name_1_11 (<{StdString.+++_11}> "\r\n\r\n" req_data_1_6))))))))))) 
+<{Internet.HTTP.c;104;29_41}> !g_l_0 = <{Internet.HTTP.g_c1;104;38_207}> g_l_0
+<{Internet.HTTP.g_c1;104;38_207}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Internet.HTTP.g_c2;104;38_206}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Internet.HTTP.g_c2;104;38_206}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 n_1_0 v_1_1 -> _predefined._Cons (<{StdString.+++_11}> n_1_0 (<{StdString.+++_11}> ": " v_1_1)) (<{Internet.HTTP.c;104;29_41}> g_t_1)) (_ -> <{Internet.HTTP.c;104;29_41}> g_t_1)
+Internet.HTTP.toString_19 !_x_0 = case _x_0 (Internet.HTTP._HTTPResponse rsp_code_1_0 rsp_reason_1_1 rsp_headers_1_2 rsp_data_1_3 -> Text.join_5 "\r\n" (<{StdList.++}> (_predefined._Cons (<{StdString.+++_11}> "HTTP/1.0 " (<{StdString.+++_11}> (StdString.toString_5 rsp_code_1_0) (<{StdString.+++_11}> " " rsp_reason_1_1))) _predefined._Nil) (<{StdList.++}> (<{Internet.HTTP.c;104;29_41}> rsp_headers_1_2) (_predefined._Cons "" (_predefined._Cons rsp_data_1_3 _predefined._Nil))))) 
+Internet.HTTP.toString_42 !_x_0 = case _x_0 (Internet.HTTP.HTTPProtoHTTP -> "Http") (Internet.HTTP.HTTPProtoHTTPS -> "Https") 
+<{Internet.HTTP.TD;HTTPMethod}> _x_0::B = _predefined._Nil
+<{Internet.HTTP.TD;HTTPRequestHeader}> _x_0::B = _predefined._Nil
+<{Internet.HTTP.TD;HTTPRequest}> _x_0::B = _predefined._Nil
+<{Internet.HTTP.TD;HTTPProtocol}> _x_0::B = _predefined._Nil
+<{Internet.HTTP.TD;HTTPResponse}> _x_0::B = _predefined._Nil
+<{Internet.HTTP.TD;HTTPResponseHeader}> _x_0::B = _predefined._Nil
+<{Internet.HTTP.TD;HTTPUpload}> _x_0::B = _predefined._Nil
+
+:: Internet.HTTP.HTTPMethod = Internet.HTTP.HTTP_GET | Internet.HTTP.HTTP_HEAD | Internet.HTTP.HTTP_PUT | Internet.HTTP.HTTP_DELETE | Internet.HTTP.HTTP_POST | Internet.HTTP.HTTP_OPTIONS | Internet.HTTP.HTTP_TRACE | Internet.HTTP.HTTP_CONNECT | Internet.HTTP.HTTP_CUSTOM !a1
+:: Internet.HTTP.HTTPProtocol = Internet.HTTP.HTTPProtoHTTP | Internet.HTTP.HTTPProtoHTTPS
+
+|| Converted Records
+:: Internet.HTTP._HTTPRequestHeader = {Internet.HTTP.req_method, Internet.HTTP.req_path, Internet.HTTP.req_query, Internet.HTTP.req_version, Internet.HTTP.req_headers}
+
+:: Internet.HTTP._HTTPRequest = {Internet.HTTP.req_method, Internet.HTTP.req_path, Internet.HTTP.req_query, Internet.HTTP.req_version, Internet.HTTP.req_protocol, Internet.HTTP.req_headers, Internet.HTTP.req_data, Internet.HTTP.arg_get, Internet.HTTP.arg_post, Internet.HTTP.arg_cookies, Internet.HTTP.arg_uploads, Internet.HTTP.server_name, Internet.HTTP.server_port::I, Internet.HTTP.client_name}
+
+:: Internet.HTTP._HTTPResponse = {Internet.HTTP.rsp_code::I, Internet.HTTP.rsp_reason, Internet.HTTP.rsp_headers, Internet.HTTP.rsp_data}
+
+:: Internet.HTTP._HTTPResponseHeader = {Internet.HTTP.rsp_version, Internet.HTTP.rsp_code::I, Internet.HTTP.rsp_reason, Internet.HTTP.rsp_headers}
+
+:: Internet.HTTP._HTTPUpload = {Internet.HTTP.upl_name, Internet.HTTP.upl_filename, Internet.HTTP.upl_mimetype, Internet.HTTP.upl_content}
+
+:: <{Internet.HTTP.gEq_s;}> = {!Internet.HTTP.gEq_s}
+
+:: <{Internet.HTTP.gEq_ss;}> = {!Internet.HTTP.gEq_ss}
+
+:: <{Internet.HTTP.gEq_sss;}> = {!Internet.HTTP.gEq_sss}
+
+:: <{Internet.HTTP.gEq_ssss;}> = {!Internet.HTTP.gEq_ssss}
+
+:: <{Internet.HTTP.gEq_sssss;}> = {!Internet.HTTP.gEq_sssss}
+
+:: <{Internet.HTTP.gEq_ssssss;}> = {!Internet.HTTP.gEq_ssssss}
+
+:: <{Internet.HTTP.gEq_sssssss;}> = {!Internet.HTTP.gEq_sssssss}
+
+:: <{Internet.HTTP.gEq_ssssssss;}> = {!Internet.HTTP.gEq_ssssssss}
+
+:: <{Internet.HTTP.gEq_sssssssss;}> = {!Internet.HTTP.gEq_sssssssss}
+
+:: <{Internet.HTTP.bimap_s;}> = {Internet.HTTP.bimap_s}
+
+:: <{Internet.HTTP.bimap_ss;}> = {Internet.HTTP.bimap_ss}
+
+:: <{Internet.HTTP.bimap_sss;}> = {Internet.HTTP.bimap_sss}
+
+:: <{Internet.HTTP.JSONEncode_s;}> = {!Internet.HTTP.JSONEncode_s}
+
+:: <{Internet.HTTP.JSONEncode_ss;}> = {!Internet.HTTP.JSONEncode_ss}
+
+:: <{Internet.HTTP.JSONEncode_sss;}> = {!Internet.HTTP.JSONEncode_sss}
+
+:: <{Internet.HTTP.JSONEncode_ssss;}> = {!Internet.HTTP.JSONEncode_ssss}
+
+:: <{Internet.HTTP.JSONEncode_sssss;}> = {!Internet.HTTP.JSONEncode_sssss}
+
+:: <{Internet.HTTP.JSONEncode_ssssss;}> = {!Internet.HTTP.JSONEncode_ssssss}
+
+:: <{Internet.HTTP.JSONEncode_sssssss;}> = {!Internet.HTTP.JSONEncode_sssssss}
+
+:: <{Internet.HTTP.JSONEncode_ssssssss;}> = {!Internet.HTTP.JSONEncode_ssssssss}
+
+:: <{Internet.HTTP.JSONEncode_sssssssss;}> = {!Internet.HTTP.JSONEncode_sssssssss}
+
+:: <{Internet.HTTP.JSONDecode_s;}> = {!Internet.HTTP.JSONDecode_s}
+
+:: <{Internet.HTTP.JSONDecode_ss;}> = {!Internet.HTTP.JSONDecode_ss}
+
+:: <{Internet.HTTP.JSONDecode_sss;}> = {!Internet.HTTP.JSONDecode_sss}
+
+:: <{Internet.HTTP.JSONDecode_ssss;}> = {!Internet.HTTP.JSONDecode_ssss}
+
+:: <{Internet.HTTP.JSONDecode_sssss;}> = {!Internet.HTTP.JSONDecode_sssss}
+
+:: <{Internet.HTTP.JSONDecode_ssssss;}> = {!Internet.HTTP.JSONDecode_ssssss}
+
+:: <{Internet.HTTP.JSONDecode_sssssss;}> = {!Internet.HTTP.JSONDecode_sssssss}
+
+:: <{Internet.HTTP.JSONDecode_ssssssss;}> = {!Internet.HTTP.JSONDecode_ssssssss}
+
+:: <{Internet.HTTP.JSONDecode_sssssssss;}> = {!Internet.HTTP.JSONDecode_sssssssss}
+

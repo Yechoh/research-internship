@@ -1,0 +1,147 @@
+|| ?module? test_read_write
+
+
+test_read_write.path = "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223/Libraries/iTasks-SDK/research internship/text.txt"
+test_read_write.write_8 !_vFileSystem_0 path_1 content_2 world_3 = let _x_1_0 = select _vFileSystem_0::<{StdFile.FileSystem;}> 1 path_1 1 world_3 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot open file: " path_1)) (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, file_3_1 = StdFile.fwrites content_2 file_3_0, world_3_2 = select _x_1_0::_Tuple3 2, _x_3_3 = select _vFileSystem_0::<{StdFile.FileSystem;}> 0 file_3_1 world_3_2 in case (StdBool.not (select _x_3_3::_Tuple2 0)) (True -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot close file: " path_1)) (select _x_3_3::_Tuple2 1)) (False -> _Tuple2 (Data.Error.Ok content_2) (select _x_3_3::_Tuple2 1)) ) 
+test_read_write.write_381 !path_0 content_1 !world_2 = let _x_1_0 = StdFile.fopen_31 path_0 1 world_2 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot open file: " path_0)) (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, file_3_1 = StdFile.fwrites content_1 file_3_0, world_3_2 = select _x_1_0::_Tuple3 2, _x_3_3 = StdFile.fclose_30 file_3_1 world_3_2 in case (StdBool.not (select _x_3_3::_Tuple2 0)) (True -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot close file: " path_0)) (select _x_3_3::_Tuple2 1)) (False -> _Tuple2 (Data.Error.Ok content_1) (select _x_3_3::_Tuple2 1)) ) 
+test_read_write.writeToFile path_0 content_1 = iTasks.API.Core.IntegrationTasks.worldIO (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{test_read_write.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{test_read_write.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{test_read_write.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) (<{StdOverloaded.toString;}> StdString.toString_9) (test_read_write.write_381 path_0 content_1)
+test_read_write.anon_5 c_0 = <{iTasks.API.Core.Types.>>|_10}> (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{test_read_write.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{test_read_write.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{test_read_write.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{test_read_write.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{test_read_write.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{test_read_write.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (test_read_write.writeToFile test_read_write.path c_0) (iTasks.API.Core.Types.return_8 (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{test_read_write.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{test_read_write.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{test_read_write.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) _predefined._Unit)
+test_read_write.anon_6 content_0 = <{iTasks.API.Core.Types.>>=_9}> (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{test_read_write.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{test_read_write.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{test_read_write.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{test_read_write.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{test_read_write.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{test_read_write.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (iTasks.API.Common.InteractionTasks.viewInformation (<{iTasks.UI.Prompt.toPrompt;}> iTasks.UI.Prompt.toPrompt_1) (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{test_read_write.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{test_read_write.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{test_read_write.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) "" _predefined._Nil content_0) test_read_write.anon_5
+test_read_write.read_7 !_vFileSystem_0 path_1 world_2 = let _x_1_0 = select _vFileSystem_0::<{StdFile.FileSystem;}> 1 path_1 3 world_2 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot find file: " path_1)) (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, _x_3_1 = System.File.readAll file_3_0, file_3_2 = select _x_3_1::_Tuple2 1, world_3_3 = select _x_1_0::_Tuple3 2, _x_3_4 = select _vFileSystem_0::<{StdFile.FileSystem;}> 0 file_3_2 world_3_3 in case (StdBool.not (select _x_3_4::_Tuple2 0)) (True -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot close file: " path_1)) (select _x_3_4::_Tuple2 1)) (False -> let world_5_0 = select _x_3_4::_Tuple2 1 in <{test_read_write._c;33;7_383}> (select _x_3_1::_Tuple2 0) path_1 world_5_0) ) 
+<{test_read_write._c;33;7_383}> !_x_0 path_1 world_2 = case _x_0 (Data.Error.Error e_1_0 -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot read File:" path_1)) world_2) (Data.Error.Ok content_1_0 -> _Tuple2 (Data.Error.Ok content_1_0) world_2) 
+test_read_write.read_382 !path_0 !world_1 = let _x_1_0 = StdFile.fopen_31 path_0 3 world_1 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot find file: " path_0)) (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, _x_3_1 = System.File.readAll file_3_0, file_3_2 = select _x_3_1::_Tuple2 1, world_3_3 = select _x_1_0::_Tuple3 2, _x_3_4 = StdFile.fclose_30 file_3_2 world_3_3 in case (StdBool.not (select _x_3_4::_Tuple2 0)) (True -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot close file: " path_0)) (select _x_3_4::_Tuple2 1)) (False -> let world_5_0 = select _x_3_4::_Tuple2 1 in <{test_read_write._c;33;7_384}> (select _x_3_1::_Tuple2 0) path_0 world_5_0) ) 
+<{test_read_write._c;33;7_384}> !_x_0 path_1 world_2 = case _x_0 (Data.Error.Error e_1_0 -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Cannot read File:" path_1)) world_2) (Data.Error.Ok content_1_0 -> _Tuple2 (Data.Error.Ok content_1_0) world_2) 
+test_read_write.readFromFile path_0 = iTasks.API.Core.IntegrationTasks.worldIO (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{test_read_write.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{test_read_write.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{test_read_write.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) (<{StdOverloaded.toString;}> StdString.toString_9) (test_read_write.read_382 path_0)
+test_read_write.readandwrite = <{iTasks.API.Common.TaskCombinators.>>-}> (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{test_read_write.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{test_read_write.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{test_read_write.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{test_read_write.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{test_read_write.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{test_read_write.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (test_read_write.readFromFile test_read_write.path) test_read_write.anon_6
+test_read_write.Start !world_0 = iTasks._Framework.Engine.startEngine (<{iTasks._Framework.Engine.Publishable;}> (iTasks._Framework.Engine.publishAll_6 (<{iTasks._Framework.Generic.iTask;}> (<{test_read_write.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{test_read_write.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{test_read_write.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{test_read_write.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{test_read_write.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{test_read_write.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))))) test_read_write.readandwrite world_0
+
+
+|| Converted Records
+:: <{test_read_write.JSONEncode_s;}> = {!test_read_write.JSONEncode_s}
+
+:: <{test_read_write.JSONEncode_ss;}> = {!test_read_write.JSONEncode_ss}
+
+:: <{test_read_write.JSONEncode_sss;}> = {!test_read_write.JSONEncode_sss}
+
+:: <{test_read_write.JSONDecode_s;}> = {!test_read_write.JSONDecode_s}
+
+:: <{test_read_write.JSONDecode_ss;}> = {!test_read_write.JSONDecode_ss}
+
+:: <{test_read_write.JSONDecode_sss;}> = {!test_read_write.JSONDecode_sss}
+
+:: <{test_read_write.gDefault_s;}> = {test_read_write.gDefault_s}
+
+:: <{test_read_write.gDefault_ss;}> = {test_read_write.gDefault_ss}
+
+:: <{test_read_write.gDefault_sss;}> = {test_read_write.gDefault_sss}
+
+:: <{test_read_write.gText_s;}> = {!test_read_write.gText_s}
+
+:: <{test_read_write.gText_ss;}> = {!test_read_write.gText_ss}
+
+:: <{test_read_write.gText_sss;}> = {!test_read_write.gText_sss}
+
+:: <{test_read_write.gEditor_s;}> = {test_read_write.gEditor_s}
+
+:: <{test_read_write.gEditor_ss;}> = {test_read_write.gEditor_ss}
+
+:: <{test_read_write.gEditor_sss;}> = {test_read_write.gEditor_sss}
+
+:: <{test_read_write.gEq_s;}> = {!test_read_write.gEq_s}
+
+:: <{test_read_write.gEq_ss;}> = {!test_read_write.gEq_ss}
+
+:: <{test_read_write.gEq_sss;}> = {!test_read_write.gEq_sss}
+
+:: <{test_read_write.JSONEncode_ssss;}> = {!test_read_write.JSONEncode_ssss}
+
+:: <{test_read_write.JSONDecode_ssss;}> = {!test_read_write.JSONDecode_ssss}
+
+:: <{test_read_write.gEq_ssss;}> = {!test_read_write.gEq_ssss}
+
+:: <{test_read_write.gDefault_ssss;}> = {test_read_write.gDefault_ssss}
+
+:: <{test_read_write.gEq_sssss;}> = {!test_read_write.gEq_sssss}
+
+:: <{test_read_write.gEq_ssssss;}> = {!test_read_write.gEq_ssssss}
+
+:: <{test_read_write.gEq_sssssss;}> = {!test_read_write.gEq_sssssss}
+
+:: <{test_read_write.gEq_ssssssss;}> = {!test_read_write.gEq_ssssssss}
+
+:: <{test_read_write.gEq_sssssssss;}> = {!test_read_write.gEq_sssssssss}
+
+:: <{test_read_write.bimap_s;}> = {test_read_write.bimap_s}
+
+:: <{test_read_write.bimap_ss;}> = {test_read_write.bimap_ss}
+
+:: <{test_read_write.bimap_sss;}> = {test_read_write.bimap_sss}
+
+:: <{test_read_write.JSONEncode_sssss;}> = {!test_read_write.JSONEncode_sssss}
+
+:: <{test_read_write.JSONEncode_ssssss;}> = {!test_read_write.JSONEncode_ssssss}
+
+:: <{test_read_write.JSONEncode_sssssss;}> = {!test_read_write.JSONEncode_sssssss}
+
+:: <{test_read_write.JSONEncode_ssssssss;}> = {!test_read_write.JSONEncode_ssssssss}
+
+:: <{test_read_write.JSONEncode_sssssssss;}> = {!test_read_write.JSONEncode_sssssssss}
+
+:: <{test_read_write.JSONDecode_sssss;}> = {!test_read_write.JSONDecode_sssss}
+
+:: <{test_read_write.JSONDecode_ssssss;}> = {!test_read_write.JSONDecode_ssssss}
+
+:: <{test_read_write.JSONDecode_sssssss;}> = {!test_read_write.JSONDecode_sssssss}
+
+:: <{test_read_write.JSONDecode_ssssssss;}> = {!test_read_write.JSONDecode_ssssssss}
+
+:: <{test_read_write.JSONDecode_sssssssss;}> = {!test_read_write.JSONDecode_sssssssss}
+
+:: <{test_read_write.gLexOrd_s;}> = {!test_read_write.gLexOrd_s}
+
+:: <{test_read_write.gLexOrd_ss;}> = {!test_read_write.gLexOrd_ss}
+
+:: <{test_read_write.gLexOrd_sss;}> = {!test_read_write.gLexOrd_sss}
+
+:: <{test_read_write.gLexOrd_ssss;}> = {!test_read_write.gLexOrd_ssss}
+
+:: <{test_read_write.gLexOrd_sssss;}> = {!test_read_write.gLexOrd_sssss}
+
+:: <{test_read_write.gLexOrd_ssssss;}> = {!test_read_write.gLexOrd_ssssss}
+
+:: <{test_read_write.gLexOrd_sssssss;}> = {!test_read_write.gLexOrd_sssssss}
+
+:: <{test_read_write.gLexOrd_ssssssss;}> = {!test_read_write.gLexOrd_ssssssss}
+
+:: <{test_read_write.gLexOrd_sssssssss;}> = {!test_read_write.gLexOrd_sssssssss}
+
+:: <{test_read_write.gText_ssss;}> = {!test_read_write.gText_ssss}
+
+:: <{test_read_write.gText_sssss;}> = {!test_read_write.gText_sssss}
+
+:: <{test_read_write.gText_ssssss;}> = {!test_read_write.gText_ssssss}
+
+:: <{test_read_write.gText_sssssss;}> = {!test_read_write.gText_sssssss}
+
+:: <{test_read_write.gText_ssssssss;}> = {!test_read_write.gText_ssssssss}
+
+:: <{test_read_write.gText_sssssssss;}> = {!test_read_write.gText_sssssssss}
+
+:: <{test_read_write.gDefault_sssss;}> = {test_read_write.gDefault_sssss}
+
+:: <{test_read_write.gDefault_ssssss;}> = {test_read_write.gDefault_ssssss}
+
+:: <{test_read_write.gDefault_sssssss;}> = {test_read_write.gDefault_sssssss}
+
+:: <{test_read_write.gDefault_ssssssss;}> = {test_read_write.gDefault_ssssssss}
+
+:: <{test_read_write.gDefault_sssssssss;}> = {test_read_write.gDefault_sssssssss}
+
+:: <{test_read_write.gEditor_ssss;}> = {test_read_write.gEditor_ssss}
+
+:: <{test_read_write.gEditor_sssss;}> = {test_read_write.gEditor_sssss}
+
+:: <{test_read_write.gEditor_ssssss;}> = {test_read_write.gEditor_ssssss}
+
+:: <{test_read_write.gEditor_sssssss;}> = {test_read_write.gEditor_sssssss}
+
