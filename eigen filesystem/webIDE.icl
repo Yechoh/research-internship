@@ -26,11 +26,13 @@ import CpmLogic2
 import qualified Data.Map as DM
 :: Settings = 	{ dirCpm 	:: FilePath
 				, dirClean	:: FilePath
+				, dirClean2 :: FilePath
 				}
 derive class iTask Settings
 
 settings = sharedStore "settings" 	{ dirCpm = "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223/cpm.exe"
 									, dirClean = "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223"
+									, dirClean2 = "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223"
 									}
 updSettings 
 	= 		updateSharedInformation "Current Setting: " [] settings
@@ -41,7 +43,7 @@ content = sharedStore "content" ""
 // utility functions
 
 isCleanFile file = isMember (takeExtension file) ["icl", "dcl", "prj", "abc", "sapl"]
-isFile file str = (takeExtension file) == str
+isFile str file = (takeExtension file) == str
 
 selectIcon pwd _ 	 = Nothing	// don't know where to store icons yet
 /*selectIcon pwd "icl" = Just (pwd </> "WebPublic" </> "Clean.icl.ico")
@@ -59,11 +61,18 @@ selectIcon pwd _ 	 = Nothing*/
 
 Start :: *World -> *World
 Start world = startEngine
-	//treeEdit
+	treeEdit
+	//(readFromFile "jemoeder")
 	//ideDashboard
 	//showUnresolvedImports
-	(getPwdName >>= \pwd. viewInformation "" [] (pwd))
-	//(askImports "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223/Libraries/iTasks-SDK/research internship/eigen filesystem/Temp/EditedwebIDE.icl")
+	/*(
+	viewInformation "" [] "ok1?" >>| 
+	getPwdName >>= \pwd.
+	get settings >>= \settings2.
+	viewInformation "" [] (pwd+++settings2.dirClean2) >>|
+	viewInformation "" [] "ok3?"
+	)*/
+	//(askImports "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223\\Libraries\\iTasks-SDK\\research internship\\eigen filesystem\\EditedwebIDE.icl")
 	world
 
 
@@ -72,11 +81,16 @@ Start world = startEngine
 
 treeEdit :: Task ()//(({#Char},String),())
 treeEdit 
-	=							getPwdName
- 	>>= \pwd ->					selectFromTree pwd isCleanFile 
-	>>= \path ->				viewInformation "selected file" [] path
-	>>= \path ->				readFromFile path
-	>>- \content -> 			editFile (takeDirectory path) (dropDirectory path) content
+	=(							getPwdName
+ 	>>- \pwd ->					selectFromTree pwd isCleanFile 
+	>>- \path ->				readFromFile path
+	>>- \(Just contenttxt) -> 	readFromFile (toproj path) 
+	>>- \mprojtxt ->			(case mprojtxt of
+	Nothing	->					appWorld (createProject (pwd </> "Temp" </> (dropDirectory path)))
+	(Just projtxt) -> 			writeToFile (pwd </> "Temp" </> (toproj (dropDirectory path))) projtxt >>| return ())
+	 /*if (isJust mprojtxt) (writeToFile (pwd </> "Temp" </> (toproj (dropDirectory path))) (fromJust mprojtxt) >>| return ()) (appWorld (createProject (pwd </> "Temp" </> (dropDirectory path))))*/
+	>>| 						set contenttxt content  
+	>>|							editFile (takeDirectory path) (dropDirectory path) pwd)
 
 /*
 //# (exists,world)  = fileExists mainmodule world
@@ -104,8 +118,8 @@ cpmtask iclloc =
 			(saveFile iclloc content) >>- \_ ->
 			appWorld (compile prjloc) 
 			>>- \_ -> readFromFile errorloc
-			>>- \errors. 
-			set (/*(toString now) +++ */errors) errorstate
+			>>- \(Just errors). 
+			set (errors) errorstate
 			>>- \_ -> cpmtask iclloc
 	where
 	saveFile path content 
@@ -136,46 +150,43 @@ showUnresolvedImports =
 
 addPath2Project :: String String String -> String
 addPath2Project path cleandir projtxt
-	# path_without_cleandir = subString (size cleandir) (size path) path
-	# newpath = "{Application}" +++ path_without_cleandir
-	# splitted_projtxt = split projtxt ("Path:\t{Project}"+++OS_NEWLINE+++"\t\t")
+	# short_path = dropFileName (subString (size cleandir) (size path) path)
+	# newpath = "\t\tPath:\t{Application}" +++ short_path
+	# splitted_projtxt = split ("Path:\t{Project}"+++OS_NEWLINE) projtxt
 	# paths = hd (tl splitted_projtxt)
-	# newpaths = newpath +++ OS_NEWLINE +++"\t\t" +++ paths
-	# newprojtxt = join ("Path:\t{Project}"+++OS_NEWLINE+++"\t\t") [(hd splitted_projtxt),newpaths]
-	//= newprojtxt
-	//= path_without_cleandir
-	= path
+	# newpaths = newpath +++ OS_NEWLINE +++ paths
+	# newprojtxt = join ("Path:\t{Project}"+++OS_NEWLINE) [(hd splitted_projtxt),newpaths]
+	= newprojtxt
+	//= join "-" splitted_projtxt
+	//= path
+	//= projtxt
 
 showMapSelector :: String -> Task ()
 showMapSelector iclloc = 
 	get settings
-	>>- \settings. selectFromTree settings.dirClean (isFile "dcl") 
+	>>= \settings. selectFromTree settings.dirClean2 (isFile "dcl") 
 	>>= \path. readFromFile projloc 
-	>>- \projtxt. viewInformation "" [] path //(addPath2Project path settings.dirClean projtxt) 
-	>>| return ()
-	/*>>- \projtxt. writeToFile projloc (addPath2Project path projtxt)
+	//>>- \projtxt. (viewInformation "" [ViewUsing id (textArea 'DM'.newMap)] (addPath2Project path settings.dirClean projtxt )) >>| return () 
+	>>- \(Just projtxt). saveFile projloc (addPath2Project path settings.dirClean projtxt) "henk"
 	>>- \_ -> appWorld (compile projloc) 
 	>>- \_ -> readFromFile errorloc
-	>>- \errors. 
+	>>- \(Just errors). 
 	set (errors) errorstate
-	>>- \_ -> showMapSelector iclloc*/
+	>>- \_ -> showMapSelector iclloc
 	where
 		projloc = toproj iclloc
 		errorloc = replaceFileName iclloc "errors"
 
-askImports :: String -> Task ()
-askImports iclloc = 
+askImports :: String (Task ()) -> Task ()
+askImports iclloc uppertask = 
 	showUnresolvedImports
 	||-
 	showMapSelector iclloc
-	>>* [   OnAction  ActionQuit    	(always (return ()))
+	>>* [   OnAction  ActionQuit    	(always (uppertask))
 		]
 
 editFile :: String String String -> Task () //(({#Char},String),())
-editFile path name contenttxt =
-	accWorld (getCurrentDirectory) >>=
-	\(Ok cur). appWorld (createProject (cur </> "Temp" </> name)) >>|
-	set contenttxt content  >>|
+editFile path name cur =
 	 		(editor path name 
 	 		-&&-
 	 		viewSharedInformation "errors" [ViewUsing id (textArea 'DM'.newMap)] errorstate) 
@@ -188,15 +199,13 @@ editFile path name contenttxt =
 	 		if (takeExtension name <> "icl") []
 	 		[	OnAction (Action "Build")	(always (get content>>= \content. (const (buildProject path (dropExtension name)) content)))
 	 		,	OnAction (Action "Run")		(always (runExec (path </> dropExtension name +++ ".exe") 8080))
+	 			 		
 	 		]
 	 >>*	[   OnAction  ActionQuit    	(always (return ()))
-	 		,	OnAction (Action "Import")	(always (askImports (cur </> "Temp" </> name)))
+	 		,	OnAction (Action "Import")	(always (askImports (cur </> "Temp" </> name) (editFile path name cur)))
+
 		    ]
-where
-	saveFile path content temppath = writeToFile path (remove_double_enters content) /*>>- ReadFromFile*/ @! () 
-	
-	toproj path = replaceExtension path "prj"
-	
+where	
 	has_start content = {}
 	
 	saveFileAs path content temppath
@@ -215,6 +224,9 @@ toproj path = replaceExtension path "prj"
 
 remove_double_enters :: String -> String
 remove_double_enters str = {c \\ c <-: str | c <> '\r'}
+
+saveFile :: String String String -> Task ()
+saveFile path content temppath = writeToFile path (remove_double_enters content) /*>>- ReadFromFile*/ @! () 
 
 
 

@@ -1,0 +1,190 @@
+|| ?module? settings_doet_vreemd
+
+
+settings_doet_vreemd.toGenericSettings_17 !x_0 = case x_0 (settings_doet_vreemd._Settings x11_1_0 x12_1_1 x13_1_2 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.PAIR (StdGeneric.FIELD x12_1_1) (StdGeneric.FIELD x13_1_2)))) 
+settings_doet_vreemd.JSONEncode_FIELD_25 !fx_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.FIELD x_1_0 -> fx_0 True x_1_0) 
+<{settings_doet_vreemd.++_24}> !_x_0 !list_1 = case _x_0 (_predefined._Cons hd_1_0 tl_1_1 -> _predefined._Cons hd_1_0 (<{settings_doet_vreemd.++_24}> tl_1_1 list_1)) (_ -> list_1)
+settings_doet_vreemd.JSONEncode_PAIR_23 !fx_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{settings_doet_vreemd.++_24}> (fx_0 False x_1_0) (fy_1 False y_1_1)) 
+settings_doet_vreemd.fli__Settings_11 = _predefined._Cons "dirCpm" (_predefined._Cons "dirClean" (_predefined._Cons "dirClean2" _predefined._Nil))
+settings_doet_vreemd.isNotNull_22::B !_x_0 = case _x_0 (Text.JSON.JSONNull -> False) (_ -> True)
+<{settings_doet_vreemd.c;92;47_21}> !g_l_0 g_l_1 = <{settings_doet_vreemd.g_c1;92;33_423}> g_l_0 g_l_1
+<{settings_doet_vreemd.g_c1;92;33_423}> !g_l_0 g_l_1 = case g_l_0 (_predefined._Cons o_1_0 g_t_1_1 -> <{settings_doet_vreemd.g_c1;92;54_422}> g_l_1 o_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{settings_doet_vreemd.g_c1;92;54_422}> !g_l_0 o_1 g_t_2 = case g_l_0 (_predefined._Cons name_1_0 g_t_1_1 -> case (settings_doet_vreemd.isNotNull_22 o_1) (True -> _predefined._Cons (_Tuple2 name_1_0 o_1) (<{settings_doet_vreemd.c;92;47_21}> g_t_2 g_t_1_1)) (False -> <{settings_doet_vreemd.c;92;47_21}> g_t_2 g_t_1_1) ) (_ -> _predefined._Nil)
+settings_doet_vreemd.JSONEncode_RECORD_20 grd_fields_0 fx_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{settings_doet_vreemd.c;92;47_21}> (fx_1 False x_1_0) grd_fields_0)) _predefined._Nil) 
+settings_doet_vreemd.JSONEncode_FIELD_408 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode__String_15 True x_1_0) 
+settings_doet_vreemd.JSONEncode_PAIR_409 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{settings_doet_vreemd.++_24}> (settings_doet_vreemd.JSONEncode_FIELD_408 False x_1_0) (fy_0 False y_1_1)) 
+settings_doet_vreemd.JSONEncode_RECORD_410 grd_fields_0 fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{settings_doet_vreemd.c;92;47_21}> (settings_doet_vreemd.JSONEncode_PAIR_409 fy_1 False x_1_0) grd_fields_0)) _predefined._Nil) 
+settings_doet_vreemd.JSONEncode_PAIR_411 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{settings_doet_vreemd.++_24}> (settings_doet_vreemd.JSONEncode_FIELD_408 False x_1_0) (settings_doet_vreemd.JSONEncode_FIELD_408 False y_1_1)) 
+settings_doet_vreemd.JSONEncode_PAIR_413 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{settings_doet_vreemd.++_24}> (settings_doet_vreemd.JSONEncode_FIELD_408 False x_1_0) (settings_doet_vreemd.JSONEncode_PAIR_411 False y_1_1)) 
+settings_doet_vreemd.JSONEncode_RECORD_412 grd_fields_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{settings_doet_vreemd.c;92;47_21}> (settings_doet_vreemd.JSONEncode_PAIR_413 False x_1_0) grd_fields_0)) _predefined._Nil) 
+settings_doet_vreemd.JSONEncode_Settings_5 !x1_0::B !x2_1 = settings_doet_vreemd.JSONEncode_RECORD_412 settings_doet_vreemd.fli__Settings_11 x1_0 (settings_doet_vreemd.toGenericSettings_17 x2_1)
+settings_doet_vreemd.findField_33 !match_0 !_x_1 = case _x_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (_Tuple2 l_2_0 x_2_1 -> case (<{StdString.==_2}> l_2_0 match_0) (True -> _predefined._Cons x_2_1 _predefined._Nil) (False -> settings_doet_vreemd.findField_33 match_0 xs_1_1) ) ) (_predefined._Nil -> _predefined._Nil) 
+settings_doet_vreemd.JSONDecode_FIELD_32 gfd_name_0 _x_1::I fx_2 !_x_3::B !l_4 = case l_4 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = settings_doet_vreemd.findField_33 gfd_name_0 fields_2_0 in <{settings_doet_vreemd._c;139;5_424}> (fx_2 True field_4_0) l_4) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{settings_doet_vreemd._c;150;5_425}> (fx_2 True (_predefined._Cons field_4_0 _predefined._Nil)) l_4) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+<{settings_doet_vreemd._c;150;5_425}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{settings_doet_vreemd._c;139;5_424}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+settings_doet_vreemd.d2_31 !x_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 ys_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.PAIR x_0 y_2_0)) ys_1_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+settings_doet_vreemd.d1_30 !fy_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> settings_doet_vreemd.d2_31 x_2_0 (fy_0 False xs_1_1) l_2) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+settings_doet_vreemd.JSONDecode_PAIR_29 !fx_0 !fy_1 !_x_2::B !l_3 = settings_doet_vreemd.d1_30 fy_1 (fx_0 False l_3) l_3
+settings_doet_vreemd.d_27 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+settings_doet_vreemd.d_28 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+settings_doet_vreemd.JSONDecode_RECORD_26 fx_0 !_x_1::B !l_2 = case l_2 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> settings_doet_vreemd.d_27 (fx_0 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_2) (Text.JSON.JSONArray fields_2_0 -> settings_doet_vreemd.d_28 (fx_0 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_2) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+settings_doet_vreemd.fromGenericSettings_16 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.FIELD x1_3_0 -> case c_2_1 (StdGeneric.PAIR c_4_0 c_4_1 -> case c_4_0 (StdGeneric.FIELD x2_5_0 -> case c_4_1 (StdGeneric.FIELD x3_6_0 -> settings_doet_vreemd._Settings x1_3_0 x2_5_0 x3_6_0) ) ) ) ) ) 
+settings_doet_vreemd.bimapFromGeneric_34 !x_0 = settings_doet_vreemd._f426_426 x_0
+settings_doet_vreemd._f426_426 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (settings_doet_vreemd.fromGenericSettings_16 x1_1_0)) 
+settings_doet_vreemd.bimapFromGeneric_35 !x_0 = settings_doet_vreemd._f427_427 x_0
+settings_doet_vreemd._f427_427 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (settings_doet_vreemd.bimapFromGeneric_34 x1_1_0) x2_1_1) 
+settings_doet_vreemd.JSONDecode_FIELD_414 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = settings_doet_vreemd.findField_33 gfd_name_0 fields_2_0 in <{settings_doet_vreemd._c;139;5_428}> (Text.JSON.JSONDecode__String_39 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{settings_doet_vreemd._c;150;5_429}> (Text.JSON.JSONDecode__String_39 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{settings_doet_vreemd._c;150;5_429}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{settings_doet_vreemd._c;139;5_428}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+settings_doet_vreemd.JSONDecode_PAIR_415 gfd_name_0 _x_1::I !fy_2 !_x_3::B !l_4 = settings_doet_vreemd.d1_30 fy_2 (settings_doet_vreemd.JSONDecode_FIELD_414 gfd_name_0 _x_1 False l_4) l_4
+settings_doet_vreemd.JSONDecode_RECORD_416 gfd_name_0 _x_1::I fy_2 !_x_3::B !l_4 = case l_4 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> settings_doet_vreemd.d_27 (settings_doet_vreemd.JSONDecode_PAIR_415 gfd_name_0 _x_1 fy_2 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_4) (Text.JSON.JSONArray fields_2_0 -> settings_doet_vreemd.d_28 (settings_doet_vreemd.JSONDecode_PAIR_415 gfd_name_0 _x_1 fy_2 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_4) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+settings_doet_vreemd.d1_418 gfd_name_0 _x_1::I !_x_2 !l_3 = case _x_2 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> settings_doet_vreemd.d2_31 x_2_0 (settings_doet_vreemd.JSONDecode_FIELD_414 gfd_name_0 _x_1 False xs_1_1) l_3) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_3) ) 
+settings_doet_vreemd.JSONDecode_PAIR_417 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = settings_doet_vreemd.d1_418 gfd_name_2 _x_3 (settings_doet_vreemd.JSONDecode_FIELD_414 gfd_name_0 _x_1 False l_5) l_5
+settings_doet_vreemd.d1_421 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4 !l_5 = case _x_4 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> settings_doet_vreemd.d2_31 x_2_0 (settings_doet_vreemd.JSONDecode_PAIR_417 gfd_name_0 _x_1 gfd_name_2 _x_3 False xs_1_1) l_5) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_5) ) 
+settings_doet_vreemd.JSONDecode_PAIR_420 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I !_x_6::B !l_7 = settings_doet_vreemd.d1_421 gfd_name_2 _x_3 gfd_name_4 _x_5 (settings_doet_vreemd.JSONDecode_FIELD_414 gfd_name_0 _x_1 False l_7) l_7
+settings_doet_vreemd.JSONDecode_RECORD_419 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I !_x_6::B !l_7 = case l_7 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> settings_doet_vreemd.d_27 (settings_doet_vreemd.JSONDecode_PAIR_420 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_7) (Text.JSON.JSONArray fields_2_0 -> settings_doet_vreemd.d_28 (settings_doet_vreemd.JSONDecode_PAIR_420 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_7) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_7)
+settings_doet_vreemd.JSONDecode_Settings_6 !x1_0::B !x2_1 = settings_doet_vreemd.bimapFromGeneric_35 (settings_doet_vreemd.JSONDecode_RECORD_419 "dirCpm" 0 "dirClean" 1 "dirClean2" 2 x1_0 x2_1)
+settings_doet_vreemd.settings = iTasks.API.Core.SDSs.sharedStore (<{settings_doet_vreemd.JSONEncode_s;}> settings_doet_vreemd.JSONEncode_Settings_5) (<{settings_doet_vreemd.JSONDecode_s;}> settings_doet_vreemd.JSONDecode_Settings_6) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{settings_doet_vreemd.TD;Settings}>)) "settings" (settings_doet_vreemd._Settings "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223/cpm.exe" "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223" "C:UsersMartin\0ocumentsclean-classic-itasks-windows-x86-20161223")
+settings_doet_vreemd.anon_2 settings2_0 = <{iTasks.API.Core.Types.>>|_10}> (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{settings_doet_vreemd.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{settings_doet_vreemd.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{settings_doet_vreemd.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{settings_doet_vreemd.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{settings_doet_vreemd.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{settings_doet_vreemd.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{settings_doet_vreemd.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{settings_doet_vreemd.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{settings_doet_vreemd.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{settings_doet_vreemd.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (iTasks.API.Common.InteractionTasks.viewInformation (<{iTasks.UI.Prompt.toPrompt;}> iTasks.UI.Prompt.toPrompt_1) (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{settings_doet_vreemd.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{settings_doet_vreemd.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{settings_doet_vreemd.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{settings_doet_vreemd.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{settings_doet_vreemd.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) "" _predefined._Nil (select settings2_0::settings_doet_vreemd._Settings 2)) (iTasks.API.Common.InteractionTasks.viewInformation (<{iTasks.UI.Prompt.toPrompt;}> iTasks.UI.Prompt.toPrompt_1) (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{settings_doet_vreemd.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{settings_doet_vreemd.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{settings_doet_vreemd.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{settings_doet_vreemd.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{settings_doet_vreemd.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) "" _predefined._Nil "ok3?")
+settings_doet_vreemd.isoSettings_18 = StdGeneric._Bimap settings_doet_vreemd.toGenericSettings_17 settings_doet_vreemd.fromGenericSettings_16
+settings_doet_vreemd.gEditor_Settings_3 = select (iTasks.UI.Editor.Generic.bimap_Editor_29 settings_doet_vreemd.isoSettings_18)::StdGeneric._Bimap 1 (iTasks.UI.Editor.Generic.gEditor_RECORD_5 3 (iTasks.UI.Editor.Generic.gEditor_PAIR_2 (iTasks.UI.Editor.Generic.gEditor_FIELD_6 "dirCpm" iTasks.UI.Editor.Generic.gEditor__String_11) (iTasks.UI.Editor.Generic.gEditor_PAIR_2 (iTasks.UI.Editor.Generic.gEditor_FIELD_6 "dirClean" iTasks.UI.Editor.Generic.gEditor__String_11) (iTasks.UI.Editor.Generic.gEditor_FIELD_6 "dirClean2" iTasks.UI.Editor.Generic.gEditor__String_11))))
+settings_doet_vreemd.bimapToGeneric_19 !x_0 = settings_doet_vreemd._f430_430 x_0
+settings_doet_vreemd._f430_430 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (settings_doet_vreemd.toGenericSettings_17 x1_1_0)) 
+settings_doet_vreemd.gText_Settings_4 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_RECORD_9 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "dirCpm" iTasks._Framework.Generic.Visualization.gText__String_15) (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "dirClean" iTasks._Framework.Generic.Visualization.gText__String_15) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "dirClean2" iTasks._Framework.Generic.Visualization.gText__String_15))) x1_0 (settings_doet_vreemd.bimapToGeneric_19 x2_1)
+settings_doet_vreemd.gDefault_Settings_7 = settings_doet_vreemd.fromGenericSettings_16 (iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12))))
+settings_doet_vreemd.gEq_Settings_8::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_FIELD_12 GenEq.gEq__String_6))) (settings_doet_vreemd.toGenericSettings_17 x1_0) (settings_doet_vreemd.toGenericSettings_17 x2_1)
+settings_doet_vreemd.Start !world_0 = iTasks._Framework.Engine.startEngine (<{iTasks._Framework.Engine.Publishable;}> (iTasks._Framework.Engine.publishAll_6 (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{settings_doet_vreemd.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{settings_doet_vreemd.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{settings_doet_vreemd.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{settings_doet_vreemd.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{settings_doet_vreemd.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (<{iTasks.API.Core.Types.>>=_9}> (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> settings_doet_vreemd.gEditor_Settings_3) (<{settings_doet_vreemd.gText_s;}> settings_doet_vreemd.gText_Settings_4) (<{settings_doet_vreemd.JSONEncode_s;}> settings_doet_vreemd.JSONEncode_Settings_5) (<{settings_doet_vreemd.JSONDecode_s;}> settings_doet_vreemd.JSONDecode_Settings_6) (<{settings_doet_vreemd.gDefault_s;}> settings_doet_vreemd.gDefault_Settings_7) (<{settings_doet_vreemd.gEq_s;}> settings_doet_vreemd.gEq_Settings_8) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{settings_doet_vreemd.TD;Settings}>))) (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{settings_doet_vreemd.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{settings_doet_vreemd.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{settings_doet_vreemd.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{settings_doet_vreemd.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{settings_doet_vreemd.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks.API.Core.Types.>>|_10}> (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{settings_doet_vreemd.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{settings_doet_vreemd.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{settings_doet_vreemd.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{settings_doet_vreemd.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{settings_doet_vreemd.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> settings_doet_vreemd.gEditor_Settings_3) (<{settings_doet_vreemd.gText_s;}> settings_doet_vreemd.gText_Settings_4) (<{settings_doet_vreemd.JSONEncode_s;}> settings_doet_vreemd.JSONEncode_Settings_5) (<{settings_doet_vreemd.JSONDecode_s;}> settings_doet_vreemd.JSONDecode_Settings_6) (<{settings_doet_vreemd.gDefault_s;}> settings_doet_vreemd.gDefault_Settings_7) (<{settings_doet_vreemd.gEq_s;}> settings_doet_vreemd.gEq_Settings_8) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{settings_doet_vreemd.TD;Settings}>))) (iTasks.API.Common.InteractionTasks.viewInformation (<{iTasks.UI.Prompt.toPrompt;}> iTasks.UI.Prompt.toPrompt_1) (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{settings_doet_vreemd.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{settings_doet_vreemd.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{settings_doet_vreemd.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{settings_doet_vreemd.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{settings_doet_vreemd.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) "" _predefined._Nil "ok1?") (iTasks.API.Core.Tasks.get (<{iTasks._Framework.Generic.iTask;}> (<{settings_doet_vreemd.gEditor_s;}> settings_doet_vreemd.gEditor_Settings_3) (<{settings_doet_vreemd.gText_s;}> settings_doet_vreemd.gText_Settings_4) (<{settings_doet_vreemd.JSONEncode_s;}> settings_doet_vreemd.JSONEncode_Settings_5) (<{settings_doet_vreemd.JSONDecode_s;}> settings_doet_vreemd.JSONDecode_Settings_6) (<{settings_doet_vreemd.gDefault_s;}> settings_doet_vreemd.gDefault_Settings_7) (<{settings_doet_vreemd.gEq_s;}> settings_doet_vreemd.gEq_Settings_8) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{settings_doet_vreemd.TD;Settings}>))) settings_doet_vreemd.settings)) settings_doet_vreemd.anon_2) world_0
+<{settings_doet_vreemd.TD;Settings}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: settings_doet_vreemd._Settings = {settings_doet_vreemd.dirCpm, settings_doet_vreemd.dirClean, settings_doet_vreemd.dirClean2}
+
+:: <{settings_doet_vreemd.gEditor_s;}> = {settings_doet_vreemd.gEditor_s}
+
+:: <{settings_doet_vreemd.gEditor_ss;}> = {settings_doet_vreemd.gEditor_ss}
+
+:: <{settings_doet_vreemd.gEditor_sss;}> = {settings_doet_vreemd.gEditor_sss}
+
+:: <{settings_doet_vreemd.gText_s;}> = {!settings_doet_vreemd.gText_s}
+
+:: <{settings_doet_vreemd.gText_ss;}> = {!settings_doet_vreemd.gText_ss}
+
+:: <{settings_doet_vreemd.gText_sss;}> = {!settings_doet_vreemd.gText_sss}
+
+:: <{settings_doet_vreemd.JSONEncode_s;}> = {!settings_doet_vreemd.JSONEncode_s}
+
+:: <{settings_doet_vreemd.JSONEncode_ss;}> = {!settings_doet_vreemd.JSONEncode_ss}
+
+:: <{settings_doet_vreemd.JSONEncode_sss;}> = {!settings_doet_vreemd.JSONEncode_sss}
+
+:: <{settings_doet_vreemd.JSONDecode_s;}> = {!settings_doet_vreemd.JSONDecode_s}
+
+:: <{settings_doet_vreemd.JSONDecode_ss;}> = {!settings_doet_vreemd.JSONDecode_ss}
+
+:: <{settings_doet_vreemd.JSONDecode_sss;}> = {!settings_doet_vreemd.JSONDecode_sss}
+
+:: <{settings_doet_vreemd.gDefault_s;}> = {settings_doet_vreemd.gDefault_s}
+
+:: <{settings_doet_vreemd.gDefault_ss;}> = {settings_doet_vreemd.gDefault_ss}
+
+:: <{settings_doet_vreemd.gDefault_sss;}> = {settings_doet_vreemd.gDefault_sss}
+
+:: <{settings_doet_vreemd.gEq_s;}> = {!settings_doet_vreemd.gEq_s}
+
+:: <{settings_doet_vreemd.gEq_ss;}> = {!settings_doet_vreemd.gEq_ss}
+
+:: <{settings_doet_vreemd.gEq_sss;}> = {!settings_doet_vreemd.gEq_sss}
+
+:: <{settings_doet_vreemd.JSONEncode_ssss;}> = {!settings_doet_vreemd.JSONEncode_ssss}
+
+:: <{settings_doet_vreemd.JSONDecode_ssss;}> = {!settings_doet_vreemd.JSONDecode_ssss}
+
+:: <{settings_doet_vreemd.gEq_ssss;}> = {!settings_doet_vreemd.gEq_ssss}
+
+:: <{settings_doet_vreemd.gDefault_ssss;}> = {settings_doet_vreemd.gDefault_ssss}
+
+:: <{settings_doet_vreemd.gEq_sssss;}> = {!settings_doet_vreemd.gEq_sssss}
+
+:: <{settings_doet_vreemd.gEq_ssssss;}> = {!settings_doet_vreemd.gEq_ssssss}
+
+:: <{settings_doet_vreemd.gEq_sssssss;}> = {!settings_doet_vreemd.gEq_sssssss}
+
+:: <{settings_doet_vreemd.gEq_ssssssss;}> = {!settings_doet_vreemd.gEq_ssssssss}
+
+:: <{settings_doet_vreemd.gEq_sssssssss;}> = {!settings_doet_vreemd.gEq_sssssssss}
+
+:: <{settings_doet_vreemd.bimap_s;}> = {settings_doet_vreemd.bimap_s}
+
+:: <{settings_doet_vreemd.bimap_ss;}> = {settings_doet_vreemd.bimap_ss}
+
+:: <{settings_doet_vreemd.bimap_sss;}> = {settings_doet_vreemd.bimap_sss}
+
+:: <{settings_doet_vreemd.JSONEncode_sssss;}> = {!settings_doet_vreemd.JSONEncode_sssss}
+
+:: <{settings_doet_vreemd.JSONEncode_ssssss;}> = {!settings_doet_vreemd.JSONEncode_ssssss}
+
+:: <{settings_doet_vreemd.JSONEncode_sssssss;}> = {!settings_doet_vreemd.JSONEncode_sssssss}
+
+:: <{settings_doet_vreemd.JSONEncode_ssssssss;}> = {!settings_doet_vreemd.JSONEncode_ssssssss}
+
+:: <{settings_doet_vreemd.JSONEncode_sssssssss;}> = {!settings_doet_vreemd.JSONEncode_sssssssss}
+
+:: <{settings_doet_vreemd.JSONDecode_sssss;}> = {!settings_doet_vreemd.JSONDecode_sssss}
+
+:: <{settings_doet_vreemd.JSONDecode_ssssss;}> = {!settings_doet_vreemd.JSONDecode_ssssss}
+
+:: <{settings_doet_vreemd.JSONDecode_sssssss;}> = {!settings_doet_vreemd.JSONDecode_sssssss}
+
+:: <{settings_doet_vreemd.JSONDecode_ssssssss;}> = {!settings_doet_vreemd.JSONDecode_ssssssss}
+
+:: <{settings_doet_vreemd.JSONDecode_sssssssss;}> = {!settings_doet_vreemd.JSONDecode_sssssssss}
+
+:: <{settings_doet_vreemd.gLexOrd_s;}> = {!settings_doet_vreemd.gLexOrd_s}
+
+:: <{settings_doet_vreemd.gLexOrd_ss;}> = {!settings_doet_vreemd.gLexOrd_ss}
+
+:: <{settings_doet_vreemd.gLexOrd_sss;}> = {!settings_doet_vreemd.gLexOrd_sss}
+
+:: <{settings_doet_vreemd.gLexOrd_ssss;}> = {!settings_doet_vreemd.gLexOrd_ssss}
+
+:: <{settings_doet_vreemd.gLexOrd_sssss;}> = {!settings_doet_vreemd.gLexOrd_sssss}
+
+:: <{settings_doet_vreemd.gLexOrd_ssssss;}> = {!settings_doet_vreemd.gLexOrd_ssssss}
+
+:: <{settings_doet_vreemd.gLexOrd_sssssss;}> = {!settings_doet_vreemd.gLexOrd_sssssss}
+
+:: <{settings_doet_vreemd.gLexOrd_ssssssss;}> = {!settings_doet_vreemd.gLexOrd_ssssssss}
+
+:: <{settings_doet_vreemd.gLexOrd_sssssssss;}> = {!settings_doet_vreemd.gLexOrd_sssssssss}
+
+:: <{settings_doet_vreemd.gText_ssss;}> = {!settings_doet_vreemd.gText_ssss}
+
+:: <{settings_doet_vreemd.gText_sssss;}> = {!settings_doet_vreemd.gText_sssss}
+
+:: <{settings_doet_vreemd.gText_ssssss;}> = {!settings_doet_vreemd.gText_ssssss}
+
+:: <{settings_doet_vreemd.gText_sssssss;}> = {!settings_doet_vreemd.gText_sssssss}
+
+:: <{settings_doet_vreemd.gText_ssssssss;}> = {!settings_doet_vreemd.gText_ssssssss}
+
+:: <{settings_doet_vreemd.gText_sssssssss;}> = {!settings_doet_vreemd.gText_sssssssss}
+
+:: <{settings_doet_vreemd.gDefault_sssss;}> = {settings_doet_vreemd.gDefault_sssss}
+
+:: <{settings_doet_vreemd.gDefault_ssssss;}> = {settings_doet_vreemd.gDefault_ssssss}
+
+:: <{settings_doet_vreemd.gDefault_sssssss;}> = {settings_doet_vreemd.gDefault_sssssss}
+
+:: <{settings_doet_vreemd.gDefault_ssssssss;}> = {settings_doet_vreemd.gDefault_ssssssss}
+
+:: <{settings_doet_vreemd.gDefault_sssssssss;}> = {settings_doet_vreemd.gDefault_sssssssss}
+
+:: <{settings_doet_vreemd.gEditor_ssss;}> = {settings_doet_vreemd.gEditor_ssss}
+
+:: <{settings_doet_vreemd.gEditor_sssss;}> = {settings_doet_vreemd.gEditor_sssss}
+
+:: <{settings_doet_vreemd.gEditor_ssssss;}> = {settings_doet_vreemd.gEditor_ssssss}
+
+:: <{settings_doet_vreemd.gEditor_sssssss;}> = {settings_doet_vreemd.gEditor_sssssss}
+

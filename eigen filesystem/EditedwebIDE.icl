@@ -1,7 +1,8 @@
-module webIDE
+module EditedwebIDE
 
 import iTasks
 
+import Text
 import iTasks.API.Extensions.Admin.WorkflowAdmin
 import iTasks.UI.Layout, iTasks.UI.Definition, iTasks.UI.Editor.Builtin
 import iTasks.API.Extensions.Editors.Ace

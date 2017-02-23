@@ -13,9 +13,11 @@ import Data.Error
 
 :: Directory = Dir FileName [Directory] [FileName]
 :: FileName :== String 									// File name without path, but with extension
+//:: MaybeContent :== Maybe String
 
 derive class iTask Directory
 derive class iTask ChoiceNode
+//derive class iTask Maybe
 
 selectIcon pwd _ 	 = Nothing	// don't know where to store icons yet
 selectIcon pwd "icl" = Just (pwd </> "WebPublic" </> "Clean.icl.ico")
@@ -172,18 +174,18 @@ where
 	| not ok					= (Error ("Cannot open file: " +++ filename),world)
 	= (Ok (),world)	
 	
-readFromFile :: String -> Task String
+readFromFile :: String -> Task (Maybe String)
 readFromFile path = worldIO (read path) 
 where 
 	read path world
 	# (ok,file,world)			= fopen path FReadData world
-	| not ok					= (Error ("Cannot find file: " +++ path), world) 
+	| not ok					= (Ok Nothing, world) 
 	# (res,file)				= readAll file
 	# (ok,world)				= fclose file world
 	| not ok					= (Error ("Cannot close file: " +++ path), world)
     = case res of
         Error e                 = (Error ("Cannot read File:" +++ path), world)
-        Ok content              = (Ok content, world)
+        Ok content              = (Ok (Just content), world)
 
 writeToFile :: String String -> Task String
 writeToFile path content = worldIO (write path content) 

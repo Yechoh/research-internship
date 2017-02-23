@@ -4,9 +4,11 @@ import iTasks
 
 :: Directory = Dir FileName [Directory] [FileName]
 :: FileName :== String 									// File name without path, but with extension
+//:: MaybeContent :== Maybe String
 
 derive class iTask Directory
 derive class iTask ChoiceNode
+//derive class iTask (Maybe String)
 
 // from given directory path recursively fetch all files which name maches the predicate 
 
@@ -26,7 +28,7 @@ readDir 			:: FilePath  -> Task [FileName]  	// returns all names of files and d
 // File I/O	
 
 createFile 			:: FilePath FileName String -> Task ()	// create new file in directory and store content
-readFromFile 		:: String -> Task String				// read from file
+readFromFile 		:: String -> Task (Maybe String)			// read from file. returns Nothing if the file cannot be found.
 writeToFile 		:: String String -> Task String			// write to file
 
 
