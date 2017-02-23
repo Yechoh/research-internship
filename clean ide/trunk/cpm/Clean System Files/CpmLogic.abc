@@ -1,20 +1,25 @@
 .comp 920 000111010001
 .start _nostart_
+.depend "StdDebug" "20170213143808"
 .depend "set_return_code" "20170123155355"
-.depend "PmDriver" "20170123155351"
 .depend "logfile" "20170123155354"
+.depend "CpmPaths" "20170123155354"
+.depend "Data.Func" "20161223204017"
+.depend "AbsSyn" "20170206141502"
+.depend "UtilIO" "20170123155357"
+.depend "StdMisc" "20170213143809"
+.depend "Text" "20161223204016"
 .depend "PmCallBack" "20170123155400"
 .depend "PmCleanSystem" "20170206122648"
 .depend "PmFileInfo" "20170123155350"
+.depend "PmEnvironment" "20170206161455"
 .depend "typewin" "20170123155357"
 .depend "PmDirCache" "20170206122647"
+.depend "StdArray" "20170213143808"
 .depend "StdLibMisc" "20161223204018"
 .depend "Directory" "20161223204009"
 .depend "PmAbcMagic" "20170206122647"
 .depend "IdeState" "20170123155400"
-.depend "PmEnvironment" "20170206161455"
-.depend "CpmPaths" "20170123155354"
-.depend "UtilIO" "20170123155357"
 .depend "UtilOptions" "20170123155354"
 .depend "PmFiles" "20170206122647"
 .depend "UtilDate" "20170123155353"
@@ -24,13 +29,8 @@
 .depend "StdPathname" "20170123155353"
 .depend "PmTypes" "20170206141502"
 .depend "PmProject" "20170206122647"
-.depend "AbsSyn" "20170206141502"
-.depend "StdDebug" "20170213143808"
-.depend "Text" "20161223204016"
-.depend "Data.Func" "20161223204017"
-.depend "StdMisc" "20170213143809"
+.depend "PmDriver" "20170220155731"
 .depend "_SystemArray" "20170213143809"
-.depend "StdArray" "20170213143808"
 .depend "System.Directory" "20161223204020"
 .depend "_SystemEnum" "20170213143809"
 .depend "StdEnum" "20170213143808"
@@ -101,47 +101,11 @@
 .implab _driver
 .impmod set_return_code
 .implab e_set_return_code_sset_return_code_world
-.impmod PmDriver
-.implab e_PmDriver_sBringProjectUptoDate
-.impmod IdeState
-.implab e_IdeState_sinitGeneral
-.implab e_IdeState_sabortLog
-.impdesc e_IdeState_rGeneralSt
 .impmod CpmPaths
 .implab e_CpmPaths_sreadIDEEnvs
-.impmod UtilIO
-.implab e_UtilIO_sGetLongPathName
-.impmod UtilStrictLists
-.implab e_UtilStrictLists_sLLength
-.impdesc e_UtilStrictLists_dStrictListToList
-.implab e_UtilStrictLists_nStrictListToList e_UtilStrictLists_eaStrictListToList
-.implab e_UtilStrictLists_sListToStrictList
-.impmod PmCompilerOptions
-.implab e_PmCompilerOptions_sDefaultCompilerOptions
-.impmod UtilNewlinesFile
-.impdesc e_UtilNewlinesFile_dNewlineConventionUnix
-.impmod PmTypes
-.implab e_PmTypes_sDefaultLinkOptions
-.implab e_PmTypes_sDefCodeGenOptions
-.implab e_PmTypes_sDefApplicationOptions
-.impdesc e_PmTypes_rEditOptions
-.impdesc e_PmTypes_rEditWdOptions
-.impdesc e_PmTypes_dNoWindowPosAndSize
-.impmod PmProject
-.impdesc e_PmProject_dSaveProjectFile
-.impdesc e_PmProject_dReadProjectFile
-.implab e_PmProject_sPR_NewProject
-.implab e_PmProject_sPR_SetRoot
-.impdesc e_PmProject_dPR_SetRelativeRootDir
-.implab e_PmProject_sPR_SetPaths
-.impdesc e_PmProject_dPR_GetPaths
-.implab e_PmProject_sPR_GetPaths
-.implab e_PmProject_nPR_GetPaths e_PmProject_eaPR_GetPaths
-.implab e_PmProject_sPR_GetRelativeRootDir
-.implab e_PmProject_sPR_GetTarget
-.impdesc e_PmProject_dPR_SetTarget
-.implab e_PmProject_sPR_GetExecPath
-.impdesc e_PmProject_dPR_SetExecPath
+.impmod Data.Func
+.implab e_Data.Func_s$
+.implab e_Data.Func_sseqSt
 .impmod AbsSyn
 .impdesc e_AbsSyn_dProject
 .impdesc e_AbsSyn_dModule
@@ -174,13 +138,49 @@
 .impdesc e_AbsSyn_dRenameEnvironment
 .impdesc e_AbsSyn_dSetEnvironmentCompiler
 .impdesc e_AbsSyn_dSetEnvironmentCodeGen
-.impmod Text
-.implab e_Text_sendsWith;2
-.impmod Data.Func
-.implab e_Data.Func_s$
-.implab e_Data.Func_sseqSt
+.impmod UtilIO
+.implab e_UtilIO_sGetLongPathName
 .impmod StdMisc
 .implab e_StdMisc_sabort
+.impmod Text
+.implab e_Text_sendsWith;2
+.impmod IdeState
+.implab e_IdeState_sinitGeneral
+.implab e_IdeState_sabortLog
+.impdesc e_IdeState_rGeneralSt
+.impmod UtilStrictLists
+.implab e_UtilStrictLists_sLLength
+.impdesc e_UtilStrictLists_dStrictListToList
+.implab e_UtilStrictLists_nStrictListToList e_UtilStrictLists_eaStrictListToList
+.implab e_UtilStrictLists_sListToStrictList
+.impmod PmCompilerOptions
+.implab e_PmCompilerOptions_sDefaultCompilerOptions
+.impmod UtilNewlinesFile
+.impdesc e_UtilNewlinesFile_dNewlineConventionUnix
+.impmod PmTypes
+.implab e_PmTypes_sDefaultLinkOptions
+.implab e_PmTypes_sDefCodeGenOptions
+.implab e_PmTypes_sDefApplicationOptions
+.impdesc e_PmTypes_rEditOptions
+.impdesc e_PmTypes_rEditWdOptions
+.impdesc e_PmTypes_dNoWindowPosAndSize
+.impmod PmProject
+.impdesc e_PmProject_dSaveProjectFile
+.impdesc e_PmProject_dReadProjectFile
+.implab e_PmProject_sPR_NewProject
+.implab e_PmProject_sPR_SetRoot
+.impdesc e_PmProject_dPR_SetRelativeRootDir
+.implab e_PmProject_sPR_SetPaths
+.impdesc e_PmProject_dPR_GetPaths
+.implab e_PmProject_sPR_GetPaths
+.implab e_PmProject_nPR_GetPaths e_PmProject_eaPR_GetPaths
+.implab e_PmProject_sPR_GetRelativeRootDir
+.implab e_PmProject_sPR_GetTarget
+.impdesc e_PmProject_dPR_SetTarget
+.implab e_PmProject_sPR_GetExecPath
+.impdesc e_PmProject_dPR_SetExecPath
+.impmod PmDriver
+.implab e_PmDriver_sBringProjectUptoDate
 .impmod _SystemArray
 .impmod System.Directory
 .implab e_System.Directory_sreadDirectory

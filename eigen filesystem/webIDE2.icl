@@ -121,7 +121,7 @@ editFile path name content =
 	 		]
 	 		++ 
 	 		if (takeExtension name <> "icl") []
-	 		[	OnAction (Action "Build")	(hasValue \((content,errors),nothing). (const (buildProject path (dropExtension name)) content))
+	 		[	OnAction (Action "Build")	(always (get sc>>= \content. (const (buildProject path (dropExtension name)) content)))
 	 		,	OnAction (Action "Run")		(always (runExec (path </> dropExtension name +++ ".exe") 8080))
 	 		]
 	 >>*	[   OnAction  ActionQuit    	(always (return ()))

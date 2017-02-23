@@ -8,8 +8,13 @@ import iTasks.API.Extensions.Editors.Ace
 import StdFile, System.File
 import System.Directory
 import System.FilePath
+import _SystemArray
 import Data.Error
 import qualified Data.Map as DM
+import PmDriver
+import Text
+
+import PmProject
 
 import createAndRunExec
 import directoryBrowsing
@@ -30,10 +35,12 @@ updSettings
 	= 		updateSharedInformation "Current Setting: " [] settings
 
 errorstate = sharedStore "errors" ""
+content = sharedStore "content" ""
 
 // utility functions
 
 isCleanFile file = isMember (takeExtension file) ["icl", "dcl", "prj", "abc", "sapl"]
+isFile file str = (takeExtension file) == str
 
 selectIcon pwd _ 	 = Nothing	// don't know where to store icons yet
 /*selectIcon pwd "icl" = Just (pwd </> "WebPublic" </> "Clean.icl.ico")
@@ -73,25 +80,25 @@ createTempFiles path name =
 	 createFile (cur <\> "Temp" <\> replaceExtension name "prj")
 */
 
-editor :: String String (RWShared .() {#.Char} {#.Char})-> Task {#Char}
-editor path name sc =
-	updateSharedInformation (path </> name) [UpdateUsing id (\_ nsc -> nsc) aceTextArea] sc
+editor :: String String -> Task {#Char}
+editor path name =
+	updateSharedInformation (path </> name) [UpdateUsing id (\_ nsc -> nsc) aceTextArea] content
 
 //updaters
 //updateEverySecond :: 
 
 //end updaters
 
-cpmtask :: String (RWShared () {#Char} {#Char}) -> Task ()
-cpmtask iclloc content = 
+cpmtask :: String -> Task ()
+cpmtask iclloc = 
 			get currentTime >>=
 			\now.  waitForTime2 {Time| now & sec=now.Time.sec+1} >>- \_ ->
 			(saveFile iclloc content) >>- \_ ->
 			appWorld (compile prjloc) 
 			>>- \_ -> readFromFile errorloc
 			>>- \errors. 
-			set ((toString now) +++ errors) errorstate
-			>>- \_ -> cpmtask iclloc content
+			set (/*(toString now) +++ */errors) errorstate
+			>>- \_ -> cpmtask iclloc
 	where
 	saveFile path content 
 		= get content >>= \c. writeToFile path c @! ()
@@ -104,36 +111,82 @@ waitForTime2 :: !Time -> Task Time
 waitForTime2 time =
 	watch currentTime >>* [OnValue (ifValue (\now -> time < now) return)]
 
+Errors2Imports :: String -> String
+Errors2Imports errors 
+	# lines = split errors "\n"
+	# importlines = filter (\line. not (endsWith "imported" line)) lines
+	# importlinessplitted = map (split " ") importlines
+	# dclnames = /*map (\x. hd (tl (tl x)))*/ map hd importlinessplitted
+	=  join "\n" dclnames
+
+showUnresolvedImports :: Task String
+showUnresolvedImports = 
+	viewSharedInformation "Unresolved imports" [ViewUsing Errors2Imports (textArea 'DM'.newMap)] errorstate
+
+addPath2Project :: String String -> String
+addPath2Project path projtxt
+	# path_without_cleandir = subString ((size settings.dirClean) (size path) path)
+	# newpath = "{Application}" +++ path
+	# splitted_projtxt = split projtxt "Path:\t{Project}\n\t\t"
+	# paths = hd (tl splitted_projtxt)
+	# newpaths = path +++ "\n\t\t" +++ paths
+	# newprojtxt = join "Path:\t{Project}\n\t\t" [(hd splitted_projtxt),newpaths]
+	= newprojtxt
+
+showMapSelector :: String -> Task ()
+showMapSelector iclloc = 
+	get settings
+	>>- \settings. selectFromTree settings.dirClean (isFile "dcl") 
+	>>= \path. readFromFile projloc 
+	>>- \projtxt. writeToFile path (addPath2Project path projtxt)
+	>>- \_ -> appWorld (compile projloc) 
+	>>- \_ -> readFromFile errorloc
+	>>- \errors. 
+	set (errors) errorstate
+	>>- \_ -> showMapSelector iclloc
+	where
+		projloc = toproj iclloc
+		errorloc = replaceFileName iclloc "errors"
+
+AskImports :: String -> Task ()
+AskImports iclloc = 
+	showUnresolvedImports
+	||-
+	showMapSelector iclloc
+	>>* [   OnAction  ActionQuit    	(always (return ()))
+		]
 
 editFile :: String String String -> Task () //(({#Char},String),())
-editFile path name content =
+editFile path name contenttxt =
 	accWorld (getCurrentDirectory) >>=
 	\(Ok cur). appWorld (createProject (cur </> "Temp" </> name)) >>|
-	withShared content
-	(\sc ->
-	 		(editor path name sc 
+	set contenttxt content  >>|
+	 		(editor path name 
 	 		-&&-
 	 		viewSharedInformation "errors" [ViewUsing id (textArea 'DM'.newMap)] errorstate) 
 	 		-&&-
-	 		(cpmtask (cur </> "Temp" </> name) sc)
-	 >^*	[	OnAction  ActionSave    	(always (get sc >>= \content. saveFile (path </> ("Edited" +++ name)) content))
-	 		,	OnAction  ActionSaveAs		(always (get sc >>= \content. saveFileAs (path </> name)content) )
+	 		(cpmtask (cur </> "Temp" </> name))
+	 >^*	[	OnAction  ActionSave    	(always (get content >>= \content. saveFile (path </> (name)) content (cur </> "Temp" </> name)))
+	 		,	OnAction  ActionSaveAs		(always (get content >>= \content. saveFileAs (path </> name)content (cur </> "Temp" </> name))) 
 	 		]
 	 		++ 
 	 		if (takeExtension name <> "icl") []
-	 		[	OnAction (Action "Build")	(always (get sc>>= \content. (const (buildProject path (dropExtension name)) content)))
+	 		[	OnAction (Action "Build")	(always (get content>>= \content. (const (buildProject path (dropExtension name)) content)))
 	 		,	OnAction (Action "Run")		(always (runExec (path </> dropExtension name +++ ".exe") 8080))
 	 		]
 	 >>*	[   OnAction  ActionQuit    	(always (return ()))
+	 		,	OnAction (Action "Import")	(always (AskImports (cur </> "Temp" </> name)))
 		    ]
-	)
 where
-	saveFile path content 
-		= writeToFile path content @! () 
+	saveFile path content temppath = writeToFile path (remove_double_enters content) /*>>- ReadFromFile*/ @! () 
 	
-	saveFileAs path content 
+	toproj path = replaceExtension path "prj"
+	
+	has_start content = {}
+	
+	saveFileAs path content temppath
 		= 		updateInformation "Where to write to ?" [] path
-		>>*		[	OnAction ActionSave		(hasValue (\name -> saveFile name content))
+		>>*		[	OnAction ActionSave		(hasValue (\name -> saveFile name content temppath))
 			 	,	OnAction ActionCancel	(always (return ()))
 			 	]
 		
@@ -142,7 +195,11 @@ where
 		>>- \curSet ->		viewInformation "Calling cpm : " [] (curSet.dirCpm, buildPath, iclFileName)
 		>>|					createExec curSet.dirCpm buildPath iclFileName
 
+toproj :: String -> String
+toproj path = replaceExtension path "prj"
 
+remove_double_enters :: String -> String
+remove_double_enters str = {c \\ c <-: str | c <> '\r'}
 
 
 

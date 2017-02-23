@@ -1,21 +1,32 @@
 .comp 920 000111010001
 .start __CpmLogic2_Start
 .depend "set_return_code" "20170123155355"
-.depend "PmDriver" "20170123155351"
 .depend "logfile" "20170123155354"
+.depend "CpmPaths" "20170123155354"
+.depend "Data.Func" "20161223204017"
+.depend "System.Environment" "20161223204020"
+.depend "System.CommandLine" "20161223204018"
+.depend "Text.Parsers.ZParsers.ParsersDerived" "20161223204019"
+.depend "StdCharList" "20170213143808"
+.depend "StdEnv" "20170213143808"
+.depend "Text.Parsers.ZParsers.ParsersKernel" "20161223204019"
+.depend "Parser" "20170123155353"
+.depend "AbsSyn" "20170206141502"
+.depend "CpmLogic" "20170206153527"
+.depend "UtilIO" "20170123155357"
+.depend "StdMisc" "20170213143809"
+.depend "Text" "20161223204016"
 .depend "PmCallBack" "20170123155400"
 .depend "PmCleanSystem" "20170206122648"
 .depend "PmFileInfo" "20170123155350"
+.depend "PmEnvironment" "20170206161455"
 .depend "typewin" "20170123155357"
 .depend "PmDirCache" "20170206122647"
+.depend "StdArray" "20170213143808"
 .depend "StdLibMisc" "20161223204018"
 .depend "Directory" "20161223204009"
 .depend "PmAbcMagic" "20170206122647"
 .depend "IdeState" "20170123155400"
-.depend "PmEnvironment" "20170206161455"
-.depend "CpmPaths" "20170123155354"
-.depend "UtilIO" "20170123155357"
-.depend "Parser" "20170123155353"
 .depend "UtilOptions" "20170123155354"
 .depend "PmFiles" "20170206122647"
 .depend "UtilDate" "20170123155353"
@@ -25,19 +36,8 @@
 .depend "StdPathname" "20170123155353"
 .depend "PmTypes" "20170206141502"
 .depend "PmProject" "20170206122647"
-.depend "AbsSyn" "20170206141502"
-.depend "CpmLogic" "20170206153527"
-.depend "Text.Parsers.ZParsers.ParsersDerived" "20161223204019"
-.depend "Text.Parsers.ZParsers.ParsersKernel" "20161223204019"
-.depend "System.Environment" "20161223204020"
-.depend "System.CommandLine" "20161223204018"
-.depend "Text" "20161223204016"
-.depend "Data.Func" "20161223204017"
-.depend "StdMisc" "20170213143809"
-.depend "StdCharList" "20170213143808"
+.depend "PmDriver" "20170220155731"
 .depend "_SystemArray" "20170213143809"
-.depend "StdArray" "20170213143808"
-.depend "StdEnv" "20170213143808"
 .depend "System.Directory" "20161223204020"
 .depend "_SystemEnum" "20170213143809"
 .depend "StdEnum" "20170213143808"
@@ -108,18 +108,25 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.impmod PmDriver
-.implab e_PmDriver_sBringProjectUptoDate
-.impmod IdeState
-.implab e_IdeState_sinitGeneral
-.implab e_IdeState_sabortLog
-.impdesc e_IdeState_rGeneralSt
 .impmod CpmPaths
 .implab e_CpmPaths_sreadIDEEnvs
+.impmod AbsSyn
+.impdesc e_AbsSyn_dCreateModule
+.impdesc e_AbsSyn_dApplicationModule
+.impmod CpmLogic
+.implab e_CpmLogic_sdoModuleAction
+.implab e_CpmLogic_smkProjectFile
+.implab e_CpmLogic_serror
 .impmod UtilIO
 .impdesc e_UtilIO_dGetFullApplicationPath
 .impdesc e_UtilIO_dGetLongPathName
 .implab e_UtilIO_nGetLongPathName
+.impmod StdMisc
+.implab e_StdMisc_sabort
+.impmod IdeState
+.implab e_IdeState_sinitGeneral
+.implab e_IdeState_sabortLog
+.impdesc e_IdeState_rGeneralSt
 .impmod PmCompilerOptions
 .implab e_PmCompilerOptions_sDefaultCompilerOptions
 .impmod UtilNewlinesFile
@@ -136,15 +143,8 @@
 .impdesc e_PmProject_dReadProjectFile
 .implab e_PmProject_sPR_NewProject
 .implab e_PmProject_sPR_SetRoot
-.impmod AbsSyn
-.impdesc e_AbsSyn_dCreateModule
-.impdesc e_AbsSyn_dApplicationModule
-.impmod CpmLogic
-.implab e_CpmLogic_sdoModuleAction
-.implab e_CpmLogic_smkProjectFile
-.implab e_CpmLogic_serror
-.impmod StdMisc
-.implab e_StdMisc_sabort
+.impmod PmDriver
+.implab e_PmDriver_sBringProjectUptoDate
 .impmod System.Directory
 .implab e_System.Directory_sgetCurrentDirectory
 .impmod StdFile

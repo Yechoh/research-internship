@@ -7,6 +7,7 @@ import qualified Data.Map as DM
 import iTasks.UI.Layout, iTasks.UI.Definition, iTasks.UI.Editor.Builtin
 import iTasks.API.Extensions.Editors.Ace
 
+
 path :: String
 path = "C:/Users/Martin/Documents/clean-classic-itasks-windows-x86-20161223/Libraries/iTasks-SDK/research internship/text.txt"
 
@@ -14,7 +15,7 @@ Start :: *World -> *World
 Start world = startEngine (readandwrite) world
 
 readandwrite :: Task ()
-readandwrite = readFromFile path >>- \content. (viewInformation ""  [] content) >>= \c. writeToFile path c >>| return ()
+readandwrite = readFromFile path >>- \content. withShared content (\sc -> (updateSharedInformation ""  [UpdateUsing id (\_ nsc -> nsc) aceTextArea] sc) >>| get sc >>= \c. writeToFile path ("a"+++c) >>| return ())
 
 //[UpdateUsing id (\_ nsc -> nsc) aceTextArea] geen extra enters
 //[ViewUsing id aceTextArea] geen extra enters
