@@ -16,7 +16,7 @@ fetchDirectories 	::  FilePath (FileName -> Bool) -> Task Directory
 
 // directory browsing
 
-selectFromTree 		:: FilePath (FileName -> Bool) -> Task FilePath
+selectFromTree 		:: FilePath (FileName -> Bool) [TaskCont (Maybe [Int]) (Task String)] -> Task FilePath
 browseDirectory 	:: (FilePath -> Bool) -> Task ((FilePath,[FilePath]),Maybe FilePath)
 
 // 

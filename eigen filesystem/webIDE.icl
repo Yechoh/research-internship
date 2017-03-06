@@ -79,11 +79,14 @@ Start world = startEngine
 
 // ------------- to do:
 
+selectFromTreeWithOption :: String -> Task String
+selectFromTreeWithOption pwd = selectFromTree pwd isCleanFile [OnAction (Action "Change paths")	(always ((updateSharedInformation "paths" [] settings) -&&- (viewInformation "" [] "The map research-internship is expected to be in the Itasks-SDK map in the libraries map in the clean directory") >>| selectFromTreeWithOption pwd))]
+
 treeEdit :: Task ()//(({#Char},String),())
 treeEdit 
 	=(							getPwdName
- 	>>- \pwd ->					selectFromTree pwd isCleanFile 
-	>>- \path ->				readFromFile path
+ 	>>- \pwd ->					selectFromTreeWithOption pwd
+ 	>>- \path ->				readFromFile path
 	>>- \(Just contenttxt) -> 	readFromFile (toproj path) 
 	>>- \mprojtxt ->			(case mprojtxt of
 	Nothing	->					appWorld (createProject (pwd </> "Temp" </> (dropDirectory path)))
@@ -91,7 +94,24 @@ treeEdit
 	 /*if (isJust mprojtxt) (writeToFile (pwd </> "Temp" </> (toproj (dropDirectory path))) (fromJust mprojtxt) >>| return ()) (appWorld (createProject (pwd </> "Temp" </> (dropDirectory path))))*/
 	>>| 						set contenttxt content  
 	>>|							editFile (takeDirectory path) (dropDirectory path) pwd)
-
+/*
+treeEdit :: Task ()//(({#Char},String),())
+treeEdit 
+	=							getPwdName
+ 	>>- \pwd ->					selectFromTree pwd isCleanFile []
+ 	>>* [   OnAction  ActionContinue   			(ifValue (isFile "icl") (\path -> openAndEdit path pwd))
+	 	,	OnAction (Action "Change paths")	(always ((updateSharedInformation "paths" [] settings) -&&- (viewInformation "" [] "The map research-internship is expected to be in the Itasks-SDK map in the libraries map in the clean directory") >>| treeEdit))
+	    ]
+openAndEdit :: String String -> Task ()
+openAndEdit path pwd =			
+								readFromFile path
+	>>- \(Just contenttxt) -> 	readFromFile (toproj path) 
+	>>- \mprojtxt ->			(case mprojtxt of
+	Nothing	->					appWorld (createProject (pwd </> "Temp" </> (dropDirectory path)))
+	(Just projtxt) -> 			writeToFile (pwd </> "Temp" </> (toproj (dropDirectory path))) projtxt >>| return ())
+	>>| 						set contenttxt content  
+	>>|							editFile (takeDirectory path) (dropDirectory path) pwd
+*/
 /*
 //# (exists,world)  = fileExists mainmodule world
 createTempFiles :: String String -> Task (String,String)
@@ -164,7 +184,7 @@ addPath2Project path cleandir projtxt
 showMapSelector :: String -> Task ()
 showMapSelector iclloc = 
 	get settings
-	>>= \settings. selectFromTree settings.dirClean2 (isFile "dcl") 
+	>>= \settings. selectFromTree settings.dirClean2 (isFile "dcl") []
 	>>= \path. readFromFile projloc 
 	//>>- \projtxt. (viewInformation "" [ViewUsing id (textArea 'DM'.newMap)] (addPath2Project path settings.dirClean projtxt )) >>| return () 
 	>>- \(Just projtxt). saveFile projloc (addPath2Project path settings.dirClean projtxt) "henk"

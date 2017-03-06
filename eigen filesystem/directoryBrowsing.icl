@@ -20,21 +20,58 @@ derive class iTask ChoiceNode
 //derive class iTask Maybe
 
 selectIcon pwd _ 	 = Nothing	// don't know where to store icons yet
-selectIcon pwd "icl" = Just (pwd </> "WebPublic" </> "Clean.icl.ico")
+/*selectIcon pwd "icl" = Just (pwd </> "WebPublic" </> "Clean.icl.ico")
 selectIcon pwd "dcl" = Just (pwd </> "WebPublic" </> "Clean.dcl.ico")
 selectIcon pwd "prj" = Just (pwd </> "WebPublic" </> "Clean.prj.ico")
 selectIcon pwd "abc" = Just (pwd </> "WebPublic" </> "Clean.abc.ico")
-selectIcon pwd _ 	 = Nothing
+selectIcon pwd _ 	 = Nothing*/
 
 
 // Directory & file selection using a tree
+/*
+shareddir = sharedStore "shareddir" (Dir "" [] [])
 
-selectFromTree :: FilePath (FileName -> Bool) -> Task FilePath
-selectFromTree pwd isWantedFile
+selectFromTree2 :: FilePath (FileName -> Bool) -> Task FilePath
+selectFromTree2 pwd isWantedFile
+	=				fetchDirectories pwd isWantedFile
+	>>- \dirs ->	set dirs shareddir
+	>>- \dir ->		editSelectionWithShared "dirs" False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) dir (\_ -> [])
+	-&&- 			viewSharedInformation "Selected: " [ViewAs (findSelected pwd (conv 0 dirs))] shareddir			
+	>>= 		 	return (findSelected pwd (conv 0 dirs) shareddir)
+
+where
+	edit dirs =	editSelection "dirs" False (SelectInTree toTree fromTree) dirs [0..n]
+	where
+		(toTree,n) 	 	= conv 0 dirs
+		fromTree _ idx 	= idx
+
+	conv :: Int Directory -> ([ChoiceNode],Int)
+	conv i (Dir pwd dirs files) = convDirs i pwd dirs files
+	where
+		convDirs i pwd dirs files
+		# (cds,ii)	= convAllDirs (i+1) dirs
+		# (cfs,iii)	= convFiles ii files
+		= ([{id = i, label = dropDirectory pwd, icon = Nothing, expanded = False, children = cds ++ cfs}],iii)
+	
+		convAllDirs	i [] = ([],i)
+		convAllDirs i [Dir pwd dirs fils:ds]
+		# (cd,ii) 	= convDirs i pwd dirs fils
+		# (cds,iii)	= convAllDirs ii ds
+		= (cd++cds,iii)
+	
+		convFiles i [] 
+					= ([],i)
+		convFiles i [f:fs]
+		# cf		= {id = i, label = f, icon = selectIcon pwd (takeExtension f), expanded = False, children = []}
+		# (cfs,j) 	= convFiles (i+1) fs
+		= ([cf:cfs],j) 
+*/
+selectFromTree :: FilePath (FileName -> Bool) [TaskCont (Maybe [Int]) (Task String)] -> Task FilePath
+selectFromTree pwd isWantedFile options
 	=				fetchDirectories pwd isWantedFile
 	>>= \dirs ->	withShared dirs (\dir -> (editSelectionWithShared "dirs" False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) dir (\_ -> []) ))
 	>&> \mbsel ->	viewSharedInformation "Selected: " [ViewAs (findSelected pwd (conv 0 dirs))] mbsel			
-	>>= \mbsel -> 	return (findSelected pwd (conv 0 dirs) mbsel)
+	>>* options ++ [OnAction ActionContinue (hasValue (\mbsel -> 	return (findSelected pwd (conv 0 dirs) mbsel)))]
 
 where
 	edit dirs =	editSelection "dirs" False (SelectInTree toTree fromTree) dirs [0..n]
