@@ -1,0 +1,34 @@
+|| ?module? EdFile
+
+
+EdFile.readText !_vFileSystem_0 !name_1 !env_2 = let _x_1_0 = select _vFileSystem_0::<{StdFile.FileSystem;}> 1 name_1 3 env_2 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> <{_Tuple2!2}> (_Tuple3 (StdError.Error "error while opening file") UtilNewlinesFile.NewlineConventionNone False) (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, _x_3_1 = UtilNewlinesFile.readConvLines file_3_0, file_3_2 = select _x_3_1::_Tuple3 2, _x_3_3 = StdFile.ferror file_3_2 in case (select _x_3_3::_Tuple2 0) (True -> let _x_5_0 = UtilIO.FReadOnly _vFileSystem_0 name_1 (select _x_1_0::_Tuple3 2) in <{_Tuple2!2}> (_Tuple3 (StdError.Error "error while reading file") (select _x_3_1::_Tuple3 0) (select _x_5_0::_Tuple2 0)) (select (select _vFileSystem_0::<{StdFile.FileSystem;}> 0 (select _x_3_3::_Tuple2 1) (select _x_5_0::_Tuple2 1))::_Tuple2 1)) (False -> let file_5_0 = select _x_3_3::_Tuple2 1, env_5_1 = select _x_1_0::_Tuple3 2, _x_5_2 = UtilIO.FReadOnly _vFileSystem_0 name_1 env_5_1, env_5_3 = select _x_5_2::_Tuple2 1, _x_5_4 = select _vFileSystem_0::<{StdFile.FileSystem;}> 0 file_5_0 env_5_3 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> <{_Tuple2!2}> (_Tuple3 (StdError.Error "error while closing file") (select _x_3_1::_Tuple3 0) (select _x_5_2::_Tuple2 0)) (select _x_5_4::_Tuple2 1)) (False -> <{_Tuple2!2}> (_Tuple3 (StdError.Ok (EdLineText.stringsToText (StrictList.slFromList (select _x_3_1::_Tuple3 1)))) (select _x_3_1::_Tuple3 0) (select _x_5_2::_Tuple2 0)) (select _x_5_4::_Tuple2 1)) ) ) 
+EdFile.ncString_3 !nc_0 = case (<{UtilNewlinesFile.==_4}> nc_0 UtilNewlinesFile.NewlineConventionNone) (True -> "\n") (False -> UtilNewlinesFile.toString_5 nc_0) 
+EdFile.writeLines_2 nc_0 !_x_1 !file_2 = case _x_1 (StrictList.SNil -> file_2) (StrictList.SCons string_1_0 _x_1_1 -> case _x_1_1 (StrictList.SNil -> StdFile.fwrites string_1_0 file_2) (_ -> EdFile.writeLines_2 nc_0 _x_1_1 (StdFile.fwrites (<{StdString.+++_11}> string_1_0 (EdFile.ncString_3 nc_0)) file_2))) 
+EdFile.writeText !_vFileSystem_0 !fileName_1 !nc_2 !text_3 !env_4 = let _x_1_0 = select _vFileSystem_0::<{StdFile.FileSystem;}> 1 fileName_1 4 env_4 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> <{_Tuple2!2}> (Data.Maybe.Just "error opening file for writing") (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, file_3_1 = EdFile.writeLines_2 nc_2 (EdLineText.textToStrings text_3) file_3_0, _x_3_2 = StdFile.ferror file_3_1 in case (select _x_3_2::_Tuple2 0) (True -> <{_Tuple2!2}> (Data.Maybe.Just "error while writing file") (select (select _vFileSystem_0::<{StdFile.FileSystem;}> 0 (select _x_3_2::_Tuple2 1) (select _x_1_0::_Tuple3 2))::_Tuple2 1)) (False -> let file_5_0 = select _x_3_2::_Tuple2 1, env_5_1 = select _x_1_0::_Tuple3 2, _x_5_2 = select _vFileSystem_0::<{StdFile.FileSystem;}> 0 file_5_0 env_5_1 in case (StdBool.not (select _x_5_2::_Tuple2 0)) (True -> <{_Tuple2!2}> (Data.Maybe.Just "error closing file") (select _x_5_2::_Tuple2 1)) (False -> <{_Tuple2!2}> Data.Maybe.Nothing (select _x_5_2::_Tuple2 1)) ) ) 
+
+
+|| Converted Records
+:: <{EdFile.gEq_s;}> = {!EdFile.gEq_s}
+
+:: <{EdFile.gEq_ss;}> = {!EdFile.gEq_ss}
+
+:: <{EdFile.gEq_sss;}> = {!EdFile.gEq_sss}
+
+:: <{EdFile.gEq_ssss;}> = {!EdFile.gEq_ssss}
+
+:: <{EdFile.gEq_sssss;}> = {!EdFile.gEq_sssss}
+
+:: <{EdFile.gEq_ssssss;}> = {!EdFile.gEq_ssssss}
+
+:: <{EdFile.gEq_sssssss;}> = {!EdFile.gEq_sssssss}
+
+:: <{EdFile.gEq_ssssssss;}> = {!EdFile.gEq_ssssssss}
+
+:: <{EdFile.gEq_sssssssss;}> = {!EdFile.gEq_sssssssss}
+
+:: <{EdFile.bimap_s;}> = {EdFile.bimap_s}
+
+:: <{EdFile.bimap_ss;}> = {EdFile.bimap_ss}
+
+:: <{EdFile.bimap_sss;}> = {EdFile.bimap_sss}
+

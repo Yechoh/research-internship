@@ -1,0 +1,35 @@
+|| ?module? clipboardCrossCall_12
+
+
+clipboardCrossCall_12.winInitialiseClipboard::I !_x_0::I = error "no AnyCodeExpr"
+clipboardCrossCall_12.winGetClipboardText !tb_0::I = let _x_1_0::I = clCrossCall_12.issueCleanRequest2 (clCrossCall_12.errorCallback2 "winGetClipboardText") (clCrossCall_12._CrossCallInfo 1811 0 0 0 0 0 0) tb_0, rcci_1_1 = select _x_1_0::_Tuple2 0, rmsg_1_2 = select rcci_1_1::clCrossCall_12._CrossCallInfo 0 in case (<{StdInt.==_16}> rmsg_1_2 11) (True -> clCCall_12.winGetCStringAndFree (select rcci_1_1::clCrossCall_12._CrossCallInfo 1) (select _x_1_0::_Tuple2 1)) (False -> case (<{StdInt.==_16}> rmsg_1_2 1) (True -> <{_Tuple2!3}> "" (select _x_1_0::_Tuple2 1)) (False -> StdMisc.abort "[winGetClipboardText] expected CcRETURN1 value.\n") ) 
+clipboardCrossCall_12.winSetClipboardText::I !text_0 !tb_1::I = let _x_1_0::I = clCCall_12.winMakeCString text_0 tb_1, textptr_1_1 = select _x_1_0::_Tuple2 0 in clCCall_12.winReleaseCString textptr_1_1 (select (clCrossCall_12.issueCleanRequest2 (clCrossCall_12.errorCallback2 "winSetClipboardText") (clCrossCall_12._CrossCallInfo 1810 textptr_1_1 0 0 0 0 0) (select _x_1_0::_Tuple2 1))::_Tuple2 1)
+clipboardCrossCall_12.winHasClipboardText !tb_0::I = let _x_1_0::I = clCrossCall_12.issueCleanRequest2 (clCrossCall_12.errorCallback2 "winHasClipboardText") (clCrossCall_12._CrossCallInfo 1812 0 0 0 0 0 0) tb_0, rcci_1_1 = select _x_1_0::_Tuple2 0, rmsg_1_2 = select rcci_1_1::clCrossCall_12._CrossCallInfo 0 in case (<{StdInt.==_16}> rmsg_1_2 11) (True -> <{_Tuple2!3}> (StdBool.not (<{StdInt.==_16}> (select rcci_1_1::clCrossCall_12._CrossCallInfo 1) 0)) (select _x_1_0::_Tuple2 1)) (False -> case (<{StdInt.==_16}> rmsg_1_2 1) (True -> <{_Tuple2!3}> False (select _x_1_0::_Tuple2 1)) (False -> StdMisc.abort "[winHasClipboardText] expected CcRETURN1 value.") ) 
+clipboardCrossCall_12.winGetClipboardCount !tb_0::I = let _x_1_0::I = clCrossCall_12.issueCleanRequest2 (clCrossCall_12.errorCallback2 "winGetClipboardCount") (clCrossCall_12._CrossCallInfo 1809 0 0 0 0 0 0) tb_0, rcci_1_1 = select _x_1_0::_Tuple2 0, rmsg_1_2 = select rcci_1_1::clCrossCall_12._CrossCallInfo 0 in case (<{StdInt.==_16}> rmsg_1_2 11) (True -> <{_Tuple2!3}> (select rcci_1_1::clCrossCall_12._CrossCallInfo 1) (select _x_1_0::_Tuple2 1)) (False -> case (<{StdInt.==_16}> rmsg_1_2 1) (True -> <{_Tuple2!3}> 0 (select _x_1_0::_Tuple2 1)) (False -> StdMisc.abort "[winGetClipboardCount] expected CcRETURN1 value.\n") ) 
+
+
+|| Converted Records
+:: <{clipboardCrossCall_12.gEq_s;}> = {!clipboardCrossCall_12.gEq_s}
+
+:: <{clipboardCrossCall_12.gEq_ss;}> = {!clipboardCrossCall_12.gEq_ss}
+
+:: <{clipboardCrossCall_12.gEq_sss;}> = {!clipboardCrossCall_12.gEq_sss}
+
+:: <{clipboardCrossCall_12.gEq_ssss;}> = {!clipboardCrossCall_12.gEq_ssss}
+
+:: <{clipboardCrossCall_12.gEq_sssss;}> = {!clipboardCrossCall_12.gEq_sssss}
+
+:: <{clipboardCrossCall_12.gEq_ssssss;}> = {!clipboardCrossCall_12.gEq_ssssss}
+
+:: <{clipboardCrossCall_12.gEq_sssssss;}> = {!clipboardCrossCall_12.gEq_sssssss}
+
+:: <{clipboardCrossCall_12.gEq_ssssssss;}> = {!clipboardCrossCall_12.gEq_ssssssss}
+
+:: <{clipboardCrossCall_12.gEq_sssssssss;}> = {!clipboardCrossCall_12.gEq_sssssssss}
+
+:: <{clipboardCrossCall_12.bimap_s;}> = {clipboardCrossCall_12.bimap_s}
+
+:: <{clipboardCrossCall_12.bimap_ss;}> = {clipboardCrossCall_12.bimap_ss}
+
+:: <{clipboardCrossCall_12.bimap_sss;}> = {clipboardCrossCall_12.bimap_sss}
+

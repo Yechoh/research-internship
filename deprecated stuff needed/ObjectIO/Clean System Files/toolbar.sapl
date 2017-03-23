@@ -1,0 +1,42 @@
+|| ?module? toolbar
+
+
+toolbar.toolbarFatalError !function_0 !error_1 = commondef.fatalError function_0 "toolbar" error_1
+toolbar.openToolbarItem_5 !tbPtr_0::I !_x_1 !_x_2 = case _x_1 (StdIOCommon.ToolbarItem bitmap_1_0 tooltip_1_1 _x_1_2 -> case _x_2 (_Tuple2 index_2_0 tb_2_1 -> <{_Tuple2!3}> (<{StdInt.+_6}> index_2_0 1) (ostoolbar.osCreateBitmapToolbarItem tbPtr_0 (osbitmap.fromBitmap bitmap_1_0) index_2_0 tb_2_1)) ) (StdIOCommon.ToolbarSeparator -> case _x_2 (_Tuple2 index_2_0 tb_2_1 -> <{_Tuple2!3}> index_2_0 (ostoolbar.osCreateToolbarSeparator tbPtr_0 tb_2_1)) ) 
+toolbar.maxBitmapSize_6 !item_0 !size_1 = let itemsize_1_0::I = <{toolbar._c;90;23_50}> item_0, x_1_1::I = select itemsize_1_0::StdIOBasic._Size 0, y_1_2::I = select size_1::StdIOBasic._Size 0, x_1_3::I = select itemsize_1_0::StdIOBasic._Size 1, y_1_4 = select size_1::StdIOBasic._Size 1 in StdIOBasic._Size (<{toolbar._c;51;16_51}> (<{StdInt.<_17}> x_1_1 y_1_2) y_1_2 x_1_1) (<{toolbar._c;51;16_52}> (<{StdInt.<_17}> x_1_3 y_1_4) y_1_4 x_1_3)
+<{toolbar._c;51;16_52}>::I !_x_0::B y_1::I x_2::I = case _x_0 (True -> y_1) (_ -> x_2)
+<{toolbar._c;51;16_51}>::I !_x_0::B y_1::I x_2::I = case _x_0 (True -> y_1) (_ -> x_2)
+<{toolbar._c;90;23_50}> !item_0 = case item_0 (StdIOCommon.ToolbarItem bitmap_1_0 _x_1_1 _x_1_2 -> StdBitmap.getBitmapSize bitmap_1_0) (_ -> StdIOBasic.zero_15)
+toolbar.getBitmapsSize !items_0 = commondef.stateMap2 toolbar.maxBitmapSize_6 items_0 (StdIOBasic._Size 16 16)
+toolbar.openSDIToolbar_3 !items_0 !osd_1 !ioState_2 = let osinfo_1_0 = <{toolbar._c;49;35_53}> (osdocumentinterface.getOSDInfoOSInfo osd_1) in case (Data.Maybe.isJust (select osinfo_1_0::osdocumentinterface._OSInfo 1)) (True -> toolbar.toolbarFatalError "openSDIToolbar" "toolbar already present") (False -> let osFrame_3_0::I = select osinfo_1_0::osdocumentinterface._OSInfo 0, reqSize_3_1 = toolbar.getBitmapsSize items_0, _x_3_2 = sdisize.getSDIWindowSize ioState_2, ioState_3_3::I = select _x_3_2::_Tuple3 2, _x_3_4 = iostate.getIOToolbox ioState_3_3, tb_3_5 = select _x_3_4::_Tuple2 0, _x_3_6 = ostoolbar.osCreateToolbar False osFrame_3_0 (commondef.toTuple_72 reqSize_3_1) tb_3_5, _x_3_7 = select _x_3_6::_Tuple2 0, tbPtr_3_8::I = select _x_3_7::_Tuple2 0 in case (<{StdInt.==_16}> tbPtr_3_8 -1) (True -> toolbar.toolbarFatalError "openSDIToolbar" "toolbar could not be created") (False -> let oldSize_5_0::I = select _x_3_2::_Tuple3 0, tbHeight_5_1 = select _x_3_7::_Tuple2 1 in sdisize.resizeSDIWindow osFrame_3_0 oldSize_5_0 (update oldSize_5_0::StdIOBasic._Size [1:<{StdInt.-_7}> (select oldSize_5_0::StdIOBasic._Size 1) tbHeight_5_1]) (iostate.ioStSetOSDInfo (osdocumentinterface.setOSDInfoOSInfo (update osinfo_1_0::osdocumentinterface._OSInfo [1:Data.Maybe.Just (ostoolbar._OSToolbar tbPtr_3_8 tbHeight_5_1)]) osd_1) (iostate.setIOToolbox (select (commondef.stateMap2 (toolbar.openToolbarItem_5 tbPtr_3_8) items_0 (_Tuple2 1 (select _x_3_6::_Tuple2 1)))::_Tuple2 1) (select _x_3_4::_Tuple2 1)))) ) 
+<{toolbar._c;49;35_53}> !_x_0 = case _x_0 (Data.Maybe.Just info_1_0 -> info_1_0) (_ -> toolbar.toolbarFatalError "openSDIToolbar" "could not retrieve OSInfo from OSDInfo")
+toolbar.openMDIToolbar_4 !items_0 !osd_1 !ioState_2 = let osinfo_1_0 = <{toolbar._c;71;35_54}> (osdocumentinterface.getOSDInfoOSInfo osd_1) in case (Data.Maybe.isJust (select osinfo_1_0::osdocumentinterface._OSInfo 1)) (True -> toolbar.toolbarFatalError "openMDIToolbar" "toolbar already present") (False -> let osFrame_3_0::I = select osinfo_1_0::osdocumentinterface._OSInfo 0, reqSize_3_1 = toolbar.getBitmapsSize items_0, _x_3_2 = iostate.getIOToolbox ioState_2, tb_3_3::I = select _x_3_2::_Tuple2 0, _x_3_4 = ostoolbar.osCreateToolbar True osFrame_3_0 (commondef.toTuple_72 reqSize_3_1) tb_3_3, _x_3_5 = select _x_3_4::_Tuple2 0, tbPtr_3_6::I = select _x_3_5::_Tuple2 0 in case (<{StdInt.==_16}> tbPtr_3_6 -1) (True -> toolbar.toolbarFatalError "openMDIToolbar" "toolbar could not be created") (False -> iostate.ioStSetOSDInfo (osdocumentinterface.setOSDInfoOSInfo (update osinfo_1_0::osdocumentinterface._OSInfo [1:Data.Maybe.Just (ostoolbar._OSToolbar tbPtr_3_6 (select _x_3_5::_Tuple2 1))]) osd_1) (iostate.setIOToolbox (select (commondef.stateMap2 (toolbar.openToolbarItem_5 tbPtr_3_6) items_0 (_Tuple2 1 (select _x_3_4::_Tuple2 1)))::_Tuple2 1) (select _x_3_2::_Tuple2 1))) ) 
+<{toolbar._c;71;35_54}> !_x_0 = case _x_0 (Data.Maybe.Just info_1_0 -> info_1_0) (_ -> toolbar.toolbarFatalError "openMDIToolbar" "could not retrieve OSInfo from OSDInfo")
+toolbar.openToolbar !ioState_0 = let _x_1_0 = iostate.ioStGetOSDInfo ioState_0, osd_1_1 = select _x_1_0::_Tuple2 0, di_1_2 = osdocumentinterface.getOSDInfoDocumentInterface osd_1_1 in case (<{StdIOCommon.==_39}> di_1_2 StdIOCommon.NDI) (True -> select _x_1_0::_Tuple2 1) (False -> let ioState_3_0 = select _x_1_0::_Tuple2 1, _x_3_1 = iostate.ioStGetProcessAttributes ioState_3_0, atts_3_2 = select _x_3_1::_Tuple2 0, _x_3_3 = commondef.cselect StdProcessAttribute.isProcessToolbar StdMisc.undef atts_3_2 in case (StdBool.not (select _x_3_3::_Tuple2 0)) (True -> select _x_3_1::_Tuple2 1) (False -> case (<{StdIOCommon.==_39}> di_1_2 StdIOCommon.SDI) (True -> toolbar.openSDIToolbar_3 (StdProcessAttribute.getProcessToolbarAtt (select _x_3_3::_Tuple2 1)) osd_1_1 (select _x_3_1::_Tuple2 1)) (False -> toolbar.openMDIToolbar_4 (StdProcessAttribute.getProcessToolbarAtt (select _x_3_3::_Tuple2 1)) osd_1_1 (select _x_3_1::_Tuple2 1)) ) ) 
+
+
+|| Converted Records
+:: <{toolbar.gEq_s;}> = {!toolbar.gEq_s}
+
+:: <{toolbar.gEq_ss;}> = {!toolbar.gEq_ss}
+
+:: <{toolbar.gEq_sss;}> = {!toolbar.gEq_sss}
+
+:: <{toolbar.gEq_ssss;}> = {!toolbar.gEq_ssss}
+
+:: <{toolbar.gEq_sssss;}> = {!toolbar.gEq_sssss}
+
+:: <{toolbar.gEq_ssssss;}> = {!toolbar.gEq_ssssss}
+
+:: <{toolbar.gEq_sssssss;}> = {!toolbar.gEq_sssssss}
+
+:: <{toolbar.gEq_ssssssss;}> = {!toolbar.gEq_ssssssss}
+
+:: <{toolbar.gEq_sssssssss;}> = {!toolbar.gEq_sssssssss}
+
+:: <{toolbar.bimap_s;}> = {toolbar.bimap_s}
+
+:: <{toolbar.bimap_ss;}> = {toolbar.bimap_ss}
+
+:: <{toolbar.bimap_sss;}> = {toolbar.bimap_sss}
+

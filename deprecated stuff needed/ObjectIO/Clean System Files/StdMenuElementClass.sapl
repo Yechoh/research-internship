@@ -1,0 +1,79 @@
+|| ?module? StdMenuElementClass
+
+
+StdMenuElementClass.validateSelectState !atts_0 = let _x_1_0 = commondef.remove StdMenuAttribute.isMenuSelectState StdMisc.undef atts_0 in case (select _x_1_0::_Tuple3 0) (True -> <{_Tuple2!3}> (StdMenuAttribute.getMenuSelectStateAtt (select _x_1_0::_Tuple3 1)) (select _x_1_0::_Tuple3 2)) (False -> <{_Tuple2!3}> StdIOCommon.Able (select _x_1_0::_Tuple3 2)) 
+StdMenuElementClass.validateMarkState !atts_0 = let _x_1_0 = commondef.remove StdMenuAttribute.isMenuMarkState StdMisc.undef atts_0 in case (select _x_1_0::_Tuple3 0) (True -> <{_Tuple2!3}> (StdMenuAttribute.getMenuMarkStateAtt (select _x_1_0::_Tuple3 1)) (select _x_1_0::_Tuple3 2)) (False -> <{_Tuple2!3}> StdIOCommon.NoMark (select _x_1_0::_Tuple3 2)) 
+StdMenuElementClass.validateId !atts_0 = let _x_1_0 = commondef.remove StdMenuAttribute.isMenuId StdMisc.undef atts_0 in case (select _x_1_0::_Tuple3 0) (True -> <{_Tuple2!3}> (Data.Maybe.Just (StdMenuAttribute.getMenuIdAtt (select _x_1_0::_Tuple3 1))) (select _x_1_0::_Tuple3 2)) (False -> <{_Tuple2!3}> Data.Maybe.Nothing (select _x_1_0::_Tuple3 2)) 
+StdMenuElementClass.validateShortKey !atts_0 = let _x_1_0 = commondef.remove StdMenuAttribute.isMenuShortKey StdMisc.undef atts_0 in case (select _x_1_0::_Tuple3 0) (True -> <{_Tuple2!3}> (Data.Maybe.Just (StdMenuAttribute.getMenuShortKeyAtt (select _x_1_0::_Tuple3 1))) (select _x_1_0::_Tuple3 2)) (False -> <{_Tuple2!3}> Data.Maybe.Nothing (select _x_1_0::_Tuple3 2)) 
+StdMenuElementClass.anon_43 index_0::I !_x_1 i_2::I = case _x_1 (menuhandle.MenuItemHandle itemH_1_0 -> _Tuple2 (menuhandle.MenuItemHandle (update itemH_1_0::menuhandle._MenuItemHandle [4:<{StdInt.==_16}> i_2 index_0])) (<{StdInt.+_6}> i_2 1)) 
+StdMenuElementClass.validateRadioMenuIndex !index_0::I !itemHs_1 = select (commondef.stateMap (StdMenuElementClass.anon_43 index_0) itemHs_1 1)::_Tuple2 0
+StdMenuElementClass.getMenuElementType_0 !_vMenuElements_0 _x_1 = ""
+StdMenuElementClass.menuElementToHandles_1 !_vMenuElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic._AddLS addLS_1_0 addDef_1_1 -> let _x_2_0 = select _vMenuElements_0::<{StdMenuElementClass.MenuElements;}> 1 addDef_1_1 pState_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuExtendLSHandle (menuhandle._MenuExtendLSHandle addLS_1_0 (StdList.map menuhandle.menuElementStateToMenuElementHandle (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdMenuElementClass.getMenuElementType_2 !_vMenuElements_0 _x_1 = ""
+StdMenuElementClass.menuElementToHandles_3 !_vMenuElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic._NewLS newLS_1_0 newDef_1_1 -> let _x_2_0 = select _vMenuElements_0::<{StdMenuElementClass.MenuElements;}> 1 newDef_1_1 pState_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuChangeLSHandle (menuhandle._MenuChangeLSHandle newLS_1_0 (StdList.map menuhandle.menuElementStateToMenuElementHandle (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdMenuElementClass.getMenuElementType_4 !_vMenuElements_0 _x_1 = ""
+StdMenuElementClass.menuElementToHandles_5 !_vMenuElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic.ListLS mDefs_1_0 -> let _x_2_0 = commondef.stateMap (select _vMenuElements_0::<{StdMenuElementClass.MenuElements;}> 1) mDefs_1_0 pState_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuListLSHandle (StdList.map menuhandle.menuElementStateToMenuElementHandle (StdList.flatten (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdMenuElementClass.getMenuElementType_6 _x_0 = ""
+StdMenuElementClass.menuElementToHandles_7 !_x_0 !pState_1 = case _x_0 (StdIOBasic.NilLS -> <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuListLSHandle _predefined._Nil)) _predefined._Nil) pState_1) 
+StdMenuElementClass.getMenuElementType_8 !_vMenuElements_0 !_vMenuElements_1 _x_2 = ""
+StdMenuElementClass.menuElementToHandles_9 !_vMenuElements_0 !_vMenuElements_1 !_x_2 !pState_3 = case _x_2 (<{StdIOBasic.:+:}> m1_1_0 m2_1_1 -> let _x_2_0 = select _vMenuElements_0::<{StdMenuElementClass.MenuElements;}> 1 m1_1_0 pState_3, _x_2_1 = select _vMenuElements_1::<{StdMenuElementClass.MenuElements;}> 1 m2_1_1 (select _x_2_0::_Tuple2 1) in <{_Tuple2!3}> (<{StdList.++}> (select _x_2_0::_Tuple2 0) (select _x_2_1::_Tuple2 0)) (select _x_2_1::_Tuple2 1)) 
+StdMenuElementClass.getMenuElementType_10 !_vMenuElements_0 _x_1 = "SubMenu"
+StdMenuElementClass.menuElementToHandles_11 !_vMenuElements_0 !_x_1 !pState_2 = case _x_1 (StdMenuDef.SubMenu title_1_0 items_1_1 atts_1_2 -> let _x_2_0 = StdMenuElementClass.validateSelectState atts_1_2, _x_2_1 = StdMenuElementClass.validateId (select _x_2_0::_Tuple2 1), _x_2_2 = select _vMenuElements_0::<{StdMenuElementClass.MenuElements;}> 1 items_1_1 pState_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.SubMenuHandle (menuhandle._SubMenuHandle 0 (select _x_2_1::_Tuple2 0) 0 (StdList.map menuhandle.menuElementStateToMenuElementHandle (select _x_2_2::_Tuple2 0)) title_1_0 (StdIOCommon.enabled (select _x_2_0::_Tuple2 0)) (select _x_2_1::_Tuple2 1)))) _predefined._Nil) (select _x_2_2::_Tuple2 1)) 
+StdMenuElementClass.getMenuElementType_12 _x_0 = "RadioMenu"
+StdMenuElementClass.menuElementToHandles_13 !_x_0 !pState_1 = case _x_0 (StdMenuDef.RadioMenu items_1_0 index_1_1 atts_1_2 -> let _x_2_0::I = StdMenuElementClass.validateSelectState atts_1_2, _x_2_1::I = StdMenuElementClass.validateId (select _x_2_0::_Tuple2 1), nrRadios_2_2 = StdList.length_47 items_1_0, valid_2_3 = <{StdMenuElementClass._if;104;31_87}> (<{StdInt.==_16}> nrRadios_2_2 0) index_1_1 nrRadios_2_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.RadioMenuHandle (menuhandle._RadioMenuHandle (select _x_2_1::_Tuple2 0) valid_2_3 (StdMenuElementClass.validateRadioMenuIndex valid_2_3 (StdList.map menuaccess.radioMenuItemToMenuElementHandle items_1_0)) (StdIOCommon.enabled (select _x_2_0::_Tuple2 0)) (select _x_2_1::_Tuple2 1)))) _predefined._Nil) pState_1) 
+<{StdMenuElementClass._if;104;31_87}>::I !_x_0::B index_1::I nrRadios_2::I = case _x_0 (True -> 0) (_ -> commondef.setBetween index_1 1 nrRadios_2)
+StdMenuElementClass.getMenuElementType_14 _x_0 = "MenuItem"
+StdMenuElementClass.menuElementToHandles_15 !_x_0 !pState_1 = case _x_0 (StdMenuDef.MenuItem title_1_0 atts_1_1 -> let _x_2_0 = StdMenuElementClass.validateSelectState atts_1_1, _x_2_1 = StdMenuElementClass.validateMarkState (select _x_2_0::_Tuple2 1), _x_2_2 = StdMenuElementClass.validateShortKey (select _x_2_1::_Tuple2 1), _x_2_3 = StdMenuElementClass.validateId (select _x_2_2::_Tuple2 1) in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuItemHandle (menuhandle._MenuItemHandle (select _x_2_3::_Tuple2 0) (select _x_2_2::_Tuple2 0) title_1_0 (StdIOCommon.enabled (select _x_2_0::_Tuple2 0)) (StdIOCommon.marked (select _x_2_1::_Tuple2 0)) (select _x_2_3::_Tuple2 1) 0))) _predefined._Nil) pState_1) 
+StdMenuElementClass.getMenuElementType_16 _x_0 = "MenuSeparator"
+StdMenuElementClass.menuElementToHandles_17 !_x_0 !pState_1 = case _x_0 (StdMenuDef.MenuSeparator atts_1_0 -> <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuSeparatorHandle (menuhandle._MenuSeparatorHandle (select (StdMenuElementClass.validateId atts_1_0)::_Tuple2 0) 0))) _predefined._Nil) pState_1) 
+StdMenuElementClass.getPopUpMenuElementType_18 !_vPopUpMenuElements_0 _x_1 = ""
+StdMenuElementClass.popUpMenuElementToHandles_19 !_vPopUpMenuElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic._AddLS addLS_1_0 addDef_1_1 -> let _x_2_0 = select _vPopUpMenuElements_0::<{StdMenuElementClass.PopUpMenuElements;}> 1 addDef_1_1 pState_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuExtendLSHandle (menuhandle._MenuExtendLSHandle addLS_1_0 (StdList.map menuhandle.menuElementStateToMenuElementHandle (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdMenuElementClass.getPopUpMenuElementType_20 !_vPopUpMenuElements_0 _x_1 = ""
+StdMenuElementClass.popUpMenuElementToHandles_21 !_vPopUpMenuElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic._NewLS newLS_1_0 newDef_1_1 -> let _x_2_0 = select _vPopUpMenuElements_0::<{StdMenuElementClass.PopUpMenuElements;}> 1 newDef_1_1 pState_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuChangeLSHandle (menuhandle._MenuChangeLSHandle newLS_1_0 (StdList.map menuhandle.menuElementStateToMenuElementHandle (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdMenuElementClass.getPopUpMenuElementType_22 !_vPopUpMenuElements_0 _x_1 = ""
+StdMenuElementClass.popUpMenuElementToHandles_23 !_vPopUpMenuElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic.ListLS mDefs_1_0 -> let _x_2_0 = commondef.stateMap (select _vPopUpMenuElements_0::<{StdMenuElementClass.PopUpMenuElements;}> 1) mDefs_1_0 pState_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuListLSHandle (StdList.map menuhandle.menuElementStateToMenuElementHandle (StdList.flatten (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdMenuElementClass.getPopUpMenuElementType_24 _x_0 = ""
+StdMenuElementClass.popUpMenuElementToHandles_25 !_x_0 !pState_1 = case _x_0 (StdIOBasic.NilLS -> <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.MenuListLSHandle _predefined._Nil)) _predefined._Nil) pState_1) 
+StdMenuElementClass.getPopUpMenuElementType_26 !_vPopUpMenuElements_0 !_vPopUpMenuElements_1 _x_2 = ""
+StdMenuElementClass.popUpMenuElementToHandles_27 !_vPopUpMenuElements_0 !_vPopUpMenuElements_1 !_x_2 !pState_3 = case _x_2 (<{StdIOBasic.:+:}> m1_1_0 m2_1_1 -> let _x_2_0 = select _vPopUpMenuElements_0::<{StdMenuElementClass.PopUpMenuElements;}> 1 m1_1_0 pState_3, _x_2_1 = select _vPopUpMenuElements_1::<{StdMenuElementClass.PopUpMenuElements;}> 1 m2_1_1 (select _x_2_0::_Tuple2 1) in <{_Tuple2!3}> (<{StdList.++}> (select _x_2_0::_Tuple2 0) (select _x_2_1::_Tuple2 0)) (select _x_2_1::_Tuple2 1)) 
+StdMenuElementClass.getPopUpMenuElementType_28 radioMenu_0 = StdMenuElementClass.getMenuElementType_12 radioMenu_0
+StdMenuElementClass.popUpMenuElementToHandles_29 !radioMenu_0 !pState_1 = StdMenuElementClass.menuElementToHandles_13 radioMenu_0 pState_1
+StdMenuElementClass.getPopUpMenuElementType_30 menu_0 = StdMenuElementClass.getMenuElementType_14 menu_0
+StdMenuElementClass.popUpMenuElementToHandles_31 !menu_0 !pState_1 = StdMenuElementClass.menuElementToHandles_15 menu_0 pState_1
+StdMenuElementClass.getPopUpMenuElementType_32 menuSeparator_0 = StdMenuElementClass.getMenuElementType_16 menuSeparator_0
+StdMenuElementClass.popUpMenuElementToHandles_33 !menuSeparator_0 !pState_1 = StdMenuElementClass.menuElementToHandles_17 menuSeparator_0 pState_1
+StdMenuElementClass.getPopUpMenuElementType_34 !_vPopUpMenuElements_0 _x_1 = "SubMenu"
+StdMenuElementClass.popUpMenuElementToHandles_35 !_vPopUpMenuElements_0 !_x_1 !pState_2 = case _x_1 (StdMenuDef.SubMenu title_1_0 items_1_1 atts_1_2 -> let _x_2_0 = StdMenuElementClass.validateSelectState atts_1_2, _x_2_1 = StdMenuElementClass.validateId (select _x_2_0::_Tuple2 1), _x_2_2 = select _vPopUpMenuElements_0::<{StdMenuElementClass.PopUpMenuElements;}> 1 items_1_1 pState_2 in <{_Tuple2!3}> (_predefined._Cons (menuhandle.menuElementHandleToMenuElementState (menuhandle.SubMenuHandle (menuhandle._SubMenuHandle 0 (select _x_2_1::_Tuple2 0) 0 (StdList.map menuhandle.menuElementStateToMenuElementHandle (select _x_2_2::_Tuple2 0)) title_1_0 (StdIOCommon.enabled (select _x_2_0::_Tuple2 0)) (select _x_2_1::_Tuple2 1)))) _predefined._Nil) (select _x_2_2::_Tuple2 1)) 
+<{StdMenuElementClass.TD;MenuElements;}> _x_0::B = _predefined._Nil
+<{StdMenuElementClass.TD;PopUpMenuElements;}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: <{StdMenuElementClass.MenuElements;}> = {!StdMenuElementClass.getMenuElementType, !StdMenuElementClass.menuElementToHandles}
+
+:: <{StdMenuElementClass.PopUpMenuElements;}> = {!StdMenuElementClass.getPopUpMenuElementType, !StdMenuElementClass.popUpMenuElementToHandles}
+
+:: <{StdMenuElementClass.gEq_s;}> = {!StdMenuElementClass.gEq_s}
+
+:: <{StdMenuElementClass.gEq_ss;}> = {!StdMenuElementClass.gEq_ss}
+
+:: <{StdMenuElementClass.gEq_sss;}> = {!StdMenuElementClass.gEq_sss}
+
+:: <{StdMenuElementClass.gEq_ssss;}> = {!StdMenuElementClass.gEq_ssss}
+
+:: <{StdMenuElementClass.gEq_sssss;}> = {!StdMenuElementClass.gEq_sssss}
+
+:: <{StdMenuElementClass.gEq_ssssss;}> = {!StdMenuElementClass.gEq_ssssss}
+
+:: <{StdMenuElementClass.gEq_sssssss;}> = {!StdMenuElementClass.gEq_sssssss}
+
+:: <{StdMenuElementClass.gEq_ssssssss;}> = {!StdMenuElementClass.gEq_ssssssss}
+
+:: <{StdMenuElementClass.gEq_sssssssss;}> = {!StdMenuElementClass.gEq_sssssssss}
+
+:: <{StdMenuElementClass.bimap_s;}> = {StdMenuElementClass.bimap_s}
+
+:: <{StdMenuElementClass.bimap_ss;}> = {StdMenuElementClass.bimap_ss}
+
+:: <{StdMenuElementClass.bimap_sss;}> = {StdMenuElementClass.bimap_sss}
+

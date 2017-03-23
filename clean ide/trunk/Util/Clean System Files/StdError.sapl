@@ -1,0 +1,10 @@
+|| ?module? StdError
+
+
+StdError.isError::B !_x_0 = case _x_0 (StdError.Error _x_1_0 -> True) (_ -> False)
+StdError.fromOk !_x_0 = case _x_0 (StdError.Ok a_1_0 -> a_1_0) (_ -> StdMisc.abort "fromOk (StdError.icl): the value was an error value")
+<{StdError.TD;Error}> _x_0::B = _predefined._Nil
+
+:: StdError.Error = StdError.Ok a1 | StdError.Error a1
+
+|| Converted Records

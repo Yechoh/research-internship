@@ -1,0 +1,71 @@
+|| ?module? flextextcontrol
+
+
+flextextcontrol.openFlexId !_v_0 !env_1 = select _v_0::<{StdId.Ids;}> 2 env_1
+flextextcontrol.setFlexTexts !_x_0 !ps_1 = case _x_0 (_predefined._Nil -> ps_1) (_predefined._Cons _x_1_0 r_1_1 -> case _x_1_0 (_Tuple2 i_2_0 t_2_1 -> flextextcontrol.setFlexTexts r_1_1 (select (StdReceiver.syncSend2 i_2_0 (flextextcontrol.FlexTextSet t_2_1) ps_1)::_Tuple2 1)) ) 
+flextextcontrol.setFlexPens !_x_0 !ps_1 = case _x_0 (_predefined._Nil -> ps_1) (_predefined._Cons _x_1_0 r_1_1 -> case _x_1_0 (_Tuple2 i_2_0 p_2_1 -> flextextcontrol.setFlexPens r_1_1 (select (StdReceiver.syncSend2 i_2_0 (flextextcontrol.FlexPenSet p_2_1) ps_1)::_Tuple2 1)) ) 
+flextextcontrol.penUpdate !_vEq_0 !p_1 pen_2 = StdList.removeDup _vEq_0 (<{StdList.++}> p_1 pen_2)
+<{flextextcontrol.==_28}>::B !_x_0 !_x_1 = case _x_0 (StdPictureDef.PenSize _x_1_0 -> case _x_1 (StdPictureDef.PenSize _x_2_0 -> True) ) (StdPictureDef.PenPos _x_1_0 -> case _x_1 (StdPictureDef.PenPos _x_2_0 -> True) ) (StdPictureDef.PenColour _x_1_0 -> case _x_1 (StdPictureDef.PenColour _x_2_0 -> True) ) (StdPictureDef.PenBack _x_1_0 -> case _x_1 (StdPictureDef.PenBack _x_2_0 -> True) ) (StdPictureDef.PenFont _x_1_0 -> case _x_1 (StdPictureDef.PenFont _x_2_0 -> True) ) (_ -> False)
+flextextcontrol.penUpdate_73 !p_0 pen_1 = StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{flextextcontrol.==_28}>)) (<{StdList.++}> p_0 pen_1)
+flextextcontrol.addFlexPens !_x_0 !ps_1 = case _x_0 (_predefined._Nil -> ps_1) (_predefined._Cons _x_1_0 r_1_1 -> case _x_1_0 (_Tuple2 i_2_0 p_2_1 -> let _x_3_0 = StdReceiver.syncSend2 i_2_0 flextextcontrol.FlexPenGet ps_1, _x_3_1 = select _x_3_0::_Tuple2 0, pen_3_2 = select _x_3_1::_Tuple2 1 in case (Data.Maybe.isNothing pen_3_2) (True -> flextextcontrol.addFlexPens r_1_1 (select _x_3_0::_Tuple2 1)) (False -> flextextcontrol.setFlexPens r_1_1 (select (StdReceiver.syncSend2 i_2_0 (flextextcontrol.FlexPenSet (flextextcontrol.penUpdate_73 p_2_1 (select (Data.Maybe.fromJust pen_3_2)::_Tuple1 0))) (select _x_3_0::_Tuple2 1))::_Tuple2 1)) ) ) 
+flextextcontrol.getSizeAtt !_x_0 = case _x_0 (_predefined._Nil -> Data.Maybe.Nothing) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (StdControlDef.ControlViewSize s_2_0 -> Data.Maybe.Just s_2_0) (StdControlDef.ControlOuterSize s_2_0 -> Data.Maybe.Just s_2_0) (_ -> flextextcontrol.getSizeAtt _x_1_1)) 
+flextextcontrol.getWidthAtt !_x_0 = case _x_0 (_predefined._Nil -> Data.Maybe.Nothing) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (StdControlDef.ControlWidth w_2_0 -> Data.Maybe.Just w_2_0) (_ -> flextextcontrol.getWidthAtt _x_1_1)) 
+flextextcontrol.getIdAtt !_x_0 = case _x_0 (_predefined._Nil -> Data.Maybe.Nothing) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (StdControlDef.ControlId i_2_0 -> Data.Maybe.Just i_2_0) (_ -> flextextcontrol.getIdAtt _x_1_1)) 
+flextextcontrol.getPenAtt !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons _x_1_0 rest_1_1 -> case _x_1_0 (StdControlDef.ControlPen p_2_0 -> p_2_0) (_ -> flextextcontrol.getPenAtt rest_1_1)) 
+<{flextextcontrol.m`_19}> m_0 ms_1 !_x_2 = case _x_2 (_Tuple2 _x_1_0 ps_1_1 -> case _x_1_0 (_Tuple2 ls_2_0 gs_2_1 -> let _x_3_0 = m_0 ms_1 (_Tuple2 gs_2_1 ps_1_1) in _Tuple2 (_Tuple2 ls_2_0 (select _x_3_0::_Tuple2 0)) (select _x_3_0::_Tuple2 1)) ) 
+flextextcontrol.filterFlexAtts !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons _x_1_0 rest_1_1 -> case _x_1_0 (StdControlDef.ControlResize r_2_0 -> _predefined._Cons (StdControlDef.ControlResize r_2_0) (flextextcontrol.filterFlexAtts rest_1_1)) (StdControlDef.ControlTip t_2_0 -> _predefined._Cons (StdControlDef.ControlTip t_2_0) (flextextcontrol.filterFlexAtts rest_1_1)) (StdControlDef.ControlPos p_2_0 -> _predefined._Cons (StdControlDef.ControlPos p_2_0) (flextextcontrol.filterFlexAtts rest_1_1)) (StdControlDef.ControlPen p_2_0 -> _predefined._Cons (StdControlDef.ControlPen p_2_0) (flextextcontrol.filterFlexAtts rest_1_1)) (StdControlDef.ControlMouse f_2_0 s_2_1 m_2_2 -> _predefined._Cons (StdControlDef.ControlMouse f_2_0 s_2_1 (<{flextextcontrol.m`_19}> m_2_2)) (flextextcontrol.filterFlexAtts rest_1_1)) (_ -> flextextcontrol.filterFlexAtts rest_1_1)) 
+flextextcontrol.filterPenAtt !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons _x_1_0 rest_1_1 -> case _x_1_0 (StdControlDef.ControlPen p_2_0 -> _predefined._Cons (StdControlDef.ControlPen p_2_0) _predefined._Nil) (_ -> flextextcontrol.filterPenAtt rest_1_1)) 
+<{flextextcontrol.c;174;38_21}> text_0 !i_1::I !g_s_2::I = case (StdBool.not (<{StdInt.<_17}> g_s_2 i_1)) (True -> _predefined._Cons (<{StdString.+++_11}> (<{StdString.%_10}> text_0 (_Tuple2 0 i_1)) "...") (<{flextextcontrol.c;174;38_21}> text_0 (<{StdInt.+_6}> i_1 StdInt.one_11) g_s_2)) (False -> _predefined._Nil) 
+flextextcontrol.power_22 !text_0 = StdList.reverse (<{flextextcontrol.c;174;38_21}> text_0 -1 (<{StdInt.-_7}> (_SystemArray.size_20 text_0) 1))
+flextextcontrol.anon_20::B !<{_v<_0}> cwidth_1 e_2 = select <{_v<_0}>::<{StdOverloaded.<;}> 0 cwidth_1 (select e_2::_Tuple2 1)
+flextextcontrol.anon_74::B !cwidth_0::I !e_1 = <{StdInt.<_17}> cwidth_0 (select e_1::_Tuple2 1)
+flextextcontrol.drawFB !text_0 !cwidth_1::I !picture_2 = let _x_1_0::I = StdPicture.getPenFontStringWidth text_0 picture_2, twidth_1_1 = select _x_1_0::_Tuple2 0 in case (StdBool.not (<{StdInt.<_17}> cwidth_1 twidth_1_1)) (True -> StdPicture.movePenPos_47 (update StdIOBasic.zero_11::StdIOBasic._Vector2 [0:<{StdInt.-_7}> cwidth_1 twidth_1_1]) (StdPicture.draw_61 text_0 (select _x_1_0::_Tuple2 1))) (False -> let texts_3_0 = flextextcontrol.power_22 text_0, picture_3_1 = select _x_1_0::_Tuple2 1, _x_3_2 = StdPicture.getPenFontStringWidths texts_3_0 picture_3_1, widths_3_3 = select _x_3_2::_Tuple2 0, textl_3_4 = StdList.dropWhile (flextextcontrol.anon_74 cwidth_1) (StdList.zip2 texts_3_0 widths_3_3) in case (StdList.isEmpty textl_3_4) (True -> StdPicture.movePenPos_47 (update StdIOBasic.zero_11::StdIOBasic._Vector2 [0:cwidth_1]) (select _x_3_2::_Tuple2 1)) (False -> let _x_5_0 = StdList.hd textl_3_4 in StdPicture.movePenPos_47 (update StdIOBasic.zero_11::StdIOBasic._Vector2 [0:<{StdInt.-_7}> cwidth_1 (select _x_5_0::_Tuple2 1)]) (StdPicture.draw_61 (select _x_5_0::_Tuple2 0) (select _x_3_2::_Tuple2 1))) ) 
+flextextcontrol.detw_24 s_0 pic_1 = let _x_1_0 = StdPicture.getPenFontStringWidth s_0 pic_1 in _Tuple2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+flextextcontrol.deth_25 atts_0 ps_1 = let _x_1_0 = StdControl.controlSize (<{StdControlClass.Controls;}> StdControlClass.controlToHandles_30 StdControlClass.getControlType_31) (StdControlDef.TextControl "" (flextextcontrol.filterPenAtt atts_0)) True Data.Maybe.Nothing Data.Maybe.Nothing Data.Maybe.Nothing ps_1 in _Tuple2 (select (select _x_1_0::_Tuple2 0)::StdIOBasic._Size 1) (select _x_1_0::_Tuple2 1)
+flextextcontrol.look_23 !lmargin_0::I !rmargin_1::I !text_2 !pen_3 sel_4 !_x_5 !pic_6 = case _x_5 (StdIOCommon._UpdateState oldFrame_1_0 newFrame_1_1 updArea_1_2 -> let _x_2_0 = StdPicture.getPenFontMetrics (StdPicture.unfill_103 newFrame_1_1 (StdPicture.setPenAttributes pen_3 pic_6)), met_2_1 = select _x_2_0::_Tuple2 0 in flextextcontrol.drawFB text_2 (<{StdInt.-_7}> (<{StdInt.-_7}> (<{StdInt.-_7}> (select (select newFrame_1_1::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 0) (select (select newFrame_1_1::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 0)) lmargin_0) rmargin_1) (StdPicture.setPenPos (StdIOBasic._Point2 lmargin_0 (<{StdInt.+_6}> (select met_2_1::StdPictureDef._FontMetrics 2) (select met_2_1::StdPictureDef._FontMetrics 0))) (select _x_2_0::_Tuple2 1))) 
+flextextcontrol.look_27 lmargin_0::I rmargin_1::I !ls_2 = case ls_2 (flextextcontrol._FlexLS text_1_0 pen_1_1 -> _Tuple2 (flextextcontrol.look_23 lmargin_0 rmargin_1 text_1_0 pen_1_1) ls_2) 
+flextextcontrol.recfun_26 lmargin_0::I rmargin_1::I c_2 !_x_3 !_x_4 = case _x_3 (flextextcontrol.FlexTextSet ft_1_0 -> case _x_4 (_Tuple2 _x_2_0 ps_2_1 -> case _x_2_0 (_Tuple2 ls_3_0 gs_3_1 -> let _x_4_0 = flextextcontrol.look_27 lmargin_0 rmargin_1 (update ls_3_0::flextextcontrol._FlexLS [0:ft_1_0]) in _Tuple2 (flextextcontrol.FlexTextOK ft_1_0) (_Tuple2 (_Tuple2 (select _x_4_0::_Tuple2 1) gs_3_1) (StdPSt.appPIO (StdControl.setControlLooks (_predefined._Cons (_Tuple3 c_2 True (_Tuple2 True (select _x_4_0::_Tuple2 0))) _predefined._Nil)) ps_2_1))) ) ) (flextextcontrol.FlexTextGet -> case _x_4 (_Tuple2 _x_2_0 ps_2_1 -> case _x_2_0 (_Tuple2 ls_3_0 gs_3_1 -> case ls_3_0 (flextextcontrol._FlexLS ft_4_0 pn_4_1 -> _Tuple2 (flextextcontrol.FlexTextOK ft_4_0) (_Tuple2 (_Tuple2 ls_3_0 gs_3_1) ps_2_1)) ) ) ) (flextextcontrol.FlexPenSet pn_1_0 -> case _x_4 (_Tuple2 _x_2_0 ps_2_1 -> case _x_2_0 (_Tuple2 ls_3_0 gs_3_1 -> let _x_4_0 = flextextcontrol.look_27 lmargin_0 rmargin_1 (update ls_3_0::flextextcontrol._FlexLS [1:pn_1_0]) in _Tuple2 (flextextcontrol.FlexPenOK pn_1_0) (_Tuple2 (_Tuple2 (select _x_4_0::_Tuple2 1) gs_3_1) (StdPSt.appPIO (StdControl.setControlLooks (_predefined._Cons (_Tuple3 c_2 True (_Tuple2 True (select _x_4_0::_Tuple2 0))) _predefined._Nil)) ps_2_1))) ) ) (flextextcontrol.FlexPenGet -> case _x_4 (_Tuple2 _x_2_0 ps_2_1 -> case _x_2_0 (_Tuple2 ls_3_0 gs_3_1 -> case ls_3_0 (flextextcontrol._FlexLS ft_4_0 pn_4_1 -> _Tuple2 (flextextcontrol.FlexPenOK pn_4_1) (_Tuple2 (_Tuple2 ls_3_0 gs_3_1) ps_2_1)) ) ) ) 
+flextextcontrol.controlToHandles_4 !_x_0 !ps_1 = case _x_0 (flextextcontrol.FlexText text_1_0 ft_1_1 atts_1_2 -> let Controls_2_0 = <{StdControlClass.Controls;}> StdControlClass.controlToHandles_18 StdControlClass.getControlType_19, Controls_2_1 = <{StdControlClass.Controls;}> StdControlReceiver.controlToHandles_2 StdControlReceiver.getControlType_3, lmargin_2_2 = 5, rmargin_2_3 = 5, _x_2_4 = flextextcontrol.look_27 lmargin_2_2 rmargin_2_3 (flextextcontrol._FlexLS text_1_0 (flextextcontrol.getPenAtt atts_1_2)), wAtt_2_5 = flextextcontrol.getWidthAtt atts_1_2, _x_2_6 = <{flextextcontrol._c;68;22_78}> wAtt_2_5 ps_1 sAtt_2_7 text_1_0, sAtt_2_7 = flextextcontrol.getSizeAtt atts_1_2, _x_2_8 = <{flextextcontrol._c;75;22_76}> sAtt_2_7 atts_1_2 ps_2_14, iAtt_2_9 = flextextcontrol.getIdAtt atts_1_2, cid_2_10 = <{flextextcontrol._if;81;17_75}> (Data.Maybe.isNothing iAtt_2_9) cid_2_13 iAtt_2_9, ps_2_11::I = select _x_2_8::_Tuple2 1, _x_2_12::I = StdPSt.accPIO StdId.openId_7 ps_2_11, cid_2_13 = select _x_2_12::_Tuple2 0, ps_2_14 = select _x_2_6::_Tuple2 1 in StdControlClass.controlToHandles_0 (<{StdControlClass.Controls;}> (StdControlClass.controlToHandles_8 Controls_2_0 Controls_2_1) (StdControlClass.getControlType_9 Controls_2_0 Controls_2_1)) (StdIOBasic._AddLS (select _x_2_4::_Tuple2 1) (<{StdIOBasic.:+:}> (StdControlDef.CustomControl (StdIOBasic._Size (select _x_2_6::_Tuple2 0) (select _x_2_8::_Tuple2 0)) (select _x_2_4::_Tuple2 0) (_predefined._Cons (StdControlDef.ControlId cid_2_10) (flextextcontrol.filterFlexAtts atts_1_2))) (StdReceiverDef.Receiver2 ft_1_1 (flextextcontrol.recfun_26 lmargin_2_2 rmargin_2_3 cid_2_10) _predefined._Nil))) (select _x_2_12::_Tuple2 1)) 
+<{flextextcontrol._c;68;22_78}> !wAtt_0 ps_1 sAtt_2 text_3 = case wAtt_0 (Data.Maybe.Just _x_1_0 -> case _x_1_0 (StdControlDef.PixelWidth p_2_0 -> _Tuple2 p_2_0 ps_1) (StdControlDef.TextWidth s_2_0 -> StdPSt.accPIO (StdPSt.accScreenPicture_13 (flextextcontrol.detw_24 s_2_0)) ps_1) (StdControlDef.ContentWidth s_2_0 -> StdPSt.accPIO (StdPSt.accScreenPicture_13 (flextextcontrol.detw_24 s_2_0)) ps_1) ) (Data.Maybe.Nothing -> <{flextextcontrol._c;72;32_77}> sAtt_2 text_3 ps_1) 
+<{flextextcontrol._c;72;32_77}> !sAtt_0 text_1 ps_2 = case sAtt_0 (Data.Maybe.Nothing -> StdPSt.accPIO (StdPSt.accScreenPicture_13 (flextextcontrol.detw_24 text_1)) ps_2) (Data.Maybe.Just _x_1_0 -> case _x_1_0 (StdIOBasic._Size w_2_0 h_2_1 -> _Tuple2 w_2_0 ps_2) ) 
+<{flextextcontrol._c;75;22_76}> !sAtt_0 atts_1 ps_2 = case sAtt_0 (Data.Maybe.Nothing -> flextextcontrol.deth_25 atts_1 ps_2) (Data.Maybe.Just _x_1_0 -> case _x_1_0 (StdIOBasic._Size w_2_0 h_2_1 -> _Tuple2 h_2_1 ps_2) ) 
+<{flextextcontrol._if;81;17_75}> !_x_0::B cid_1 iAtt_2 = case _x_0 (True -> cid_1) (_ -> Data.Maybe.fromJust iAtt_2)
+flextextcontrol.getControlType_5 _x_0 = "FlexText"
+<{flextextcontrol.TD;FlexText}> _x_0::B = _predefined._Nil
+<{flextextcontrol.TD;FlexId}> _x_0::B = _predefined._Nil
+<{flextextcontrol.TD;FlexMessage}> _x_0::B = _predefined._Nil
+<{flextextcontrol.TD;FlexPen}> _x_0::B = _predefined._Nil
+<{flextextcontrol.TD;FlexReply}> _x_0::B = _predefined._Nil
+<{flextextcontrol.TD;FlexLS}> _x_0::B = _predefined._Nil
+
+:: flextextcontrol.FlexText = flextextcontrol.FlexText a1 a2 a3
+:: flextextcontrol.FlexMessage = flextextcontrol.FlexTextSet a1 | flextextcontrol.FlexTextGet | flextextcontrol.FlexPenSet a1 | flextextcontrol.FlexPenGet
+:: flextextcontrol.FlexReply = flextextcontrol.FlexTextOK a1 | flextextcontrol.FlexPenOK a1
+
+|| Converted Records
+:: flextextcontrol._FlexLS = {!flextextcontrol.ft, !flextextcontrol.pn}
+
+:: <{flextextcontrol.gEq_s;}> = {!flextextcontrol.gEq_s}
+
+:: <{flextextcontrol.gEq_ss;}> = {!flextextcontrol.gEq_ss}
+
+:: <{flextextcontrol.gEq_sss;}> = {!flextextcontrol.gEq_sss}
+
+:: <{flextextcontrol.gEq_ssss;}> = {!flextextcontrol.gEq_ssss}
+
+:: <{flextextcontrol.gEq_sssss;}> = {!flextextcontrol.gEq_sssss}
+
+:: <{flextextcontrol.gEq_ssssss;}> = {!flextextcontrol.gEq_ssssss}
+
+:: <{flextextcontrol.gEq_sssssss;}> = {!flextextcontrol.gEq_sssssss}
+
+:: <{flextextcontrol.gEq_ssssssss;}> = {!flextextcontrol.gEq_ssssssss}
+
+:: <{flextextcontrol.gEq_sssssssss;}> = {!flextextcontrol.gEq_sssssssss}
+
+:: <{flextextcontrol.bimap_s;}> = {flextextcontrol.bimap_s}
+
+:: <{flextextcontrol.bimap_ss;}> = {flextextcontrol.bimap_ss}
+
+:: <{flextextcontrol.bimap_sss;}> = {flextextcontrol.bimap_sss}
+

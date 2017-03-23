@@ -1,0 +1,110 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "world" "20161223204044"
+.module m_world "world" "20161223204044"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.export e_world_sstoreWorld
+.export e_world_eastoreWorld
+.descexp e_world_dstoreWorld e_world_nstoreWorld e_world_lstoreWorld 2 0 "storeWorld"
+.a 2 e_world_eastoreWorld
+.o 2 0
+e_world_lstoreWorld
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_world_eastoreWorld
+.n 2 e_world_dstoreWorld e_world_eastoreWorld
+.o 1 0
+e_world_nstoreWorld
+	push_node _cycle_in_spine 2
+.o 3 0
+e_world_eastoreWorld
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.o 2 1 i
+e_world_sstoreWorld
+.o 2 1 i
+s2
+	fillI_b	0 1
+	pop_b	1
+	pop_a	1
+
+.d 1 0
+	rtn
+.export e_world_sloadWorld
+.descexp e_world_dloadWorld e_world_nloadWorld e_world_lloadWorld 1 0 "loadWorld"
+.o 2 0
+e_world_lloadWorld
+	pop_a 1
+.d 1 0
+	jsr ea1
+.o 0 1 i
+	buildI_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_world_dloadWorld
+.o 1 0
+e_world_nloadWorld
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea1
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea1
+	jsr_eval 0
+.o 1 0
+e_world_sloadWorld
+.o 1 0
+s1
+	pushI_a	0
+	pop_a	1
+
+.d 0 1 i
+	rtn

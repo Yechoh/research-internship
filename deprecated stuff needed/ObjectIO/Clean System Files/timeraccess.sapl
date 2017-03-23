@@ -1,0 +1,36 @@
+|| ?module? timeraccess
+
+
+timeraccess.timeraccessFatalError !function_0 !error_1 = commondef.fatalError function_0 "timeraccess" error_1
+<{timeraccess.bindTimerElementIds`_4}> !pid_0 !timerid_1 !_x_2 !rt_3 !it_4 = case _x_2 (timerhandle.TimerReceiverHandle itemH_1_0 -> case itemH_1_0 (timerhandle._TimerReceiverHandle trH_2_0 tReceiverAtts_2_1 -> let rid_3_0 = select trH_2_0::receiverhandle._ReceiverHandle 0, _x_3_1 = id.memberIdTable rid_3_0 it_4 in case (select _x_3_1::_Tuple2 0) (True -> <{_Tuple4!15}> False (timerhandle.TimerReceiverHandle itemH_1_0) rt_3 (select _x_3_1::_Tuple2 1)) (False -> let _x_5_0 = receivertable.getReceiverTableEntry rid_3_0 rt_3 in case (Data.Maybe.isJust (select _x_5_0::_Tuple2 0)) (True -> timeraccess.timeraccessFatalError "bindTimerElementIds" "inconsistency detected between IdTable and ReceiverTable") (False -> <{_Tuple4!15}> True (timerhandle.TimerReceiverHandle itemH_1_0) (select (receivertable.addReceiverToReceiverTable (receivertable._ReceiverTableEntry (receivertable._RecLoc pid_0 device.TimerDevice timerid_1 rid_3_0) (select trH_2_0::receiverhandle._ReceiverHandle 2) 0) (select _x_5_0::_Tuple2 1))::_Tuple2 1) (select (id.addIdToIdTable rid_3_0 (id._IdParent pid_0 device.TimerDevice timerid_1) (select _x_3_1::_Tuple2 1))::_Tuple2 1)) ) ) ) (timerhandle.TimerListLSHandle itemHs_1_0 -> let _x_2_0 = timeraccess.bindTimerElementIds pid_0 timerid_1 itemHs_1_0 rt_3 it_4 in <{_Tuple4!15}> (select _x_2_0::_Tuple4 0) (timerhandle.TimerListLSHandle (select _x_2_0::_Tuple4 1)) (select _x_2_0::_Tuple4 2) (select _x_2_0::_Tuple4 3)) (timerhandle.TimerElimLSHandle itemHs_1_0 -> let _x_2_0 = timeraccess.bindTimerElementIds pid_0 timerid_1 itemHs_1_0 rt_3 it_4 in <{_Tuple4!15}> (select _x_2_0::_Tuple4 0) (timerhandle.TimerElimLSHandle (select _x_2_0::_Tuple4 1)) (select _x_2_0::_Tuple4 2) (select _x_2_0::_Tuple4 3)) (timerhandle.TimerIntroLSHandle t_1_0 -> case t_1_0 (timerhandle._TimerIntroLSHandle t_2_0 t_2_1 -> let _x_3_0 = timeraccess.bindTimerElementIds pid_0 timerid_1 t_2_1 rt_3 it_4 in <{_Tuple4!15}> (select _x_3_0::_Tuple4 0) (timerhandle.TimerIntroLSHandle (update t_1_0::timerhandle._TimerIntroLSHandle [1:select _x_3_0::_Tuple4 1])) (select _x_3_0::_Tuple4 2) (select _x_3_0::_Tuple4 3)) ) (timerhandle.TimerExtendLSHandle tExH_1_0 -> case tExH_1_0 (timerhandle._TimerExtendLSHandle tExtendLS_2_0 tExtend_2_1 -> let _x_3_0 = timeraccess.bindTimerElementIds pid_0 timerid_1 tExtend_2_1 rt_3 it_4 in <{_Tuple4!15}> (select _x_3_0::_Tuple4 0) (timerhandle.TimerExtendLSHandle (update tExH_1_0::timerhandle._TimerExtendLSHandle [1:select _x_3_0::_Tuple4 1])) (select _x_3_0::_Tuple4 2) (select _x_3_0::_Tuple4 3)) ) (timerhandle.TimerChangeLSHandle tChH_1_0 -> case tChH_1_0 (timerhandle._TimerChangeLSHandle tChangeLS_2_0 tChange_2_1 -> let _x_3_0 = timeraccess.bindTimerElementIds pid_0 timerid_1 tChange_2_1 rt_3 it_4 in <{_Tuple4!15}> (select _x_3_0::_Tuple4 0) (timerhandle.TimerChangeLSHandle (update tChH_1_0::timerhandle._TimerChangeLSHandle [1:select _x_3_0::_Tuple4 1])) (select _x_3_0::_Tuple4 2) (select _x_3_0::_Tuple4 3)) ) 
+timeraccess.bindTimerElementIds !pid_0 !timerid_1 !_x_2 !rt_3 !it_4 = case _x_2 (_predefined._Cons itemH_1_0 itemHs_1_1 -> let _x_2_0::B = <{timeraccess.bindTimerElementIds`_4}> pid_0 timerid_1 itemH_1_0 rt_3 it_4, ok_2_1 = select _x_2_0::_Tuple4 0 in case (StdBool.not ok_2_1) (True -> <{_Tuple4!15}> ok_2_1 (_predefined._Cons (select _x_2_0::_Tuple4 1) itemHs_1_1) (select _x_2_0::_Tuple4 2) (select _x_2_0::_Tuple4 3)) (False -> let _x_4_0 = timeraccess.bindTimerElementIds pid_0 timerid_1 itemHs_1_1 (select _x_2_0::_Tuple4 2) (select _x_2_0::_Tuple4 3) in <{_Tuple4!15}> (select _x_4_0::_Tuple4 0) (_predefined._Cons (select _x_2_0::_Tuple4 1) (select _x_4_0::_Tuple4 1)) (select _x_4_0::_Tuple4 2) (select _x_4_0::_Tuple4 3)) ) (_predefined._Nil -> <{_Tuple4!15}> True _predefined._Nil rt_3 it_4) 
+<{timeraccess.unbindTimerElementIds`_5}> pid_0 !_x_1 !_x_2 = case _x_1 (timerhandle.TimerReceiverHandle _x_1_0 -> case _x_1_0 (timerhandle._TimerReceiverHandle _x_2_0 tReceiverAtts_2_1 -> case _x_2_0 (receiverhandle._ReceiverHandle r_3_0 rASMQ_3_1 rSelect_3_2 rOneWay_3_3 rFun_3_4 r_3_5 rConnected_3_6 -> case _x_2 (_Tuple3 tt_4_0 rt_4_1 idtable_4_2 -> <{_Tuple3!7}> (select (timertable.removeTimerFromTimerTable (timertable._TimerLoc pid_0 device.TimerDevice r_3_0 r_3_0) tt_4_0)::_Tuple2 1) (select (receivertable.removeReceiverFromReceiverTable r_3_0 rt_4_1)::_Tuple2 1) (select (id.removeIdFromIdTable r_3_0 idtable_4_2)::_Tuple2 1)) ) ) ) (timerhandle.TimerListLSHandle tList_1_0 -> commondef.stateMap2 (<{timeraccess.unbindTimerElementIds`_5}> pid_0) tList_1_0 _x_2) (timerhandle.TimerElimLSHandle tElim_1_0 -> commondef.stateMap2 (<{timeraccess.unbindTimerElementIds`_5}> pid_0) tElim_1_0 _x_2) (timerhandle.TimerIntroLSHandle _x_1_0 -> case _x_1_0 (timerhandle._TimerIntroLSHandle t_2_0 t_2_1 -> commondef.stateMap2 (<{timeraccess.unbindTimerElementIds`_5}> pid_0) t_2_1 _x_2) ) (timerhandle.TimerExtendLSHandle _x_1_0 -> case _x_1_0 (timerhandle._TimerExtendLSHandle tExtendLS_2_0 tExtend_2_1 -> commondef.stateMap2 (<{timeraccess.unbindTimerElementIds`_5}> pid_0) tExtend_2_1 _x_2) ) (timerhandle.TimerChangeLSHandle _x_1_0 -> case _x_1_0 (timerhandle._TimerChangeLSHandle tChangeLS_2_0 tChange_2_1 -> commondef.stateMap2 (<{timeraccess.unbindTimerElementIds`_5}> pid_0) tChange_2_1 _x_2) ) 
+timeraccess.unbindTimerElementIds !pid_0 !itemHs_1 !tables_2 = commondef.stateMap2 (<{timeraccess.unbindTimerElementIds`_5}> pid_0) itemHs_1 tables_2
+timeraccess.identifyTimerStateHandle !id_0 !tlsH_1 = case tlsH_1 (timerhandle.TimerLSHandle _x_1_0 -> case _x_1_0 (timerhandle._TimerLSHandle tState_2_0 _x_2_1 -> case _x_2_1 (timerhandle._TimerHandle t_3_0 tSelect_3_1 tPeriod_3_2 tFun_3_3 t_3_4 -> <{_Tuple2!3}> (<{id.==_27}> id_0 t_3_0) tlsH_1) ) ) 
+
+
+|| Converted Records
+:: <{timeraccess.gEq_s;}> = {!timeraccess.gEq_s}
+
+:: <{timeraccess.gEq_ss;}> = {!timeraccess.gEq_ss}
+
+:: <{timeraccess.gEq_sss;}> = {!timeraccess.gEq_sss}
+
+:: <{timeraccess.gEq_ssss;}> = {!timeraccess.gEq_ssss}
+
+:: <{timeraccess.gEq_sssss;}> = {!timeraccess.gEq_sssss}
+
+:: <{timeraccess.gEq_ssssss;}> = {!timeraccess.gEq_ssssss}
+
+:: <{timeraccess.gEq_sssssss;}> = {!timeraccess.gEq_sssssss}
+
+:: <{timeraccess.gEq_ssssssss;}> = {!timeraccess.gEq_ssssssss}
+
+:: <{timeraccess.gEq_sssssssss;}> = {!timeraccess.gEq_sssssssss}
+
+:: <{timeraccess.bimap_s;}> = {timeraccess.bimap_s}
+
+:: <{timeraccess.bimap_ss;}> = {timeraccess.bimap_ss}
+
+:: <{timeraccess.bimap_sss;}> = {timeraccess.bimap_sss}
+

@@ -1,0 +1,44 @@
+|| ?module? EdState
+
+
+EdState.initEditorState !km_0 = EdState._EditorState Table.tableNew km_0
+EdState.findReceiver !window_0 !es_1 = case es_1 (EdState._EditorState windows_1_0 keyMapping_1_1 -> let matches_2_0 = Table.tableLookup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{id.==_27}>)) window_0 windows_1_0 in case (StdList.isEmpty matches_2_0) (True -> <{_Tuple2!3}> Data.Maybe.Nothing es_1) (False -> <{_Tuple2!3}> (Data.Maybe.Just (StdList.hd matches_2_0)) es_1) ) 
+EdState.addReceiver window_0 edit_1 !editorState_2 = case editorState_2 (EdState._EditorState windows_1_0 keyMapping_1_1 -> update editorState_2::EdState._EditorState [0:Table.tableInsert (_Tuple2 window_0 edit_1) windows_1_0]) 
+EdState.removeReceiver window_0 !editorState_1 = case editorState_1 (EdState._EditorState windows_1_0 keyMapping_1_1 -> update editorState_1::EdState._EditorState [0:Table.tableRemove (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{id.==_27}>)) window_0 windows_1_0]) 
+EdState.getKeyMapping !_x_0 = case _x_0 (EdState._EditorState windows_1_0 keyMapping_1_1 -> keyMapping_1_1) 
+EdState.setKeyMapping keyMapping_0 !editorState_1 = update editorState_1::EdState._EditorState [1:keyMapping_0]
+EdState.getEditorState_6 !_vEditor_0 !ps_1 = StdPSt.accPLoc (select _vEditor_0::<{EdState.Editor;}> 0) ps_1
+EdState.setEditorState_7 !_vEditor_0 !es_1 !ps_2 = StdPSt.appPLoc (select _vEditor_0::<{EdState.Editor;}> 1 es_1) ps_2
+<{EdState.TD;EditorState}> _x_0::B = _predefined._Nil
+<{EdState.TD;Editor;}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: EdState._EditorState = {EdState.windows, EdState.keyMapping}
+
+:: <{EdState.Editor;}> = {!EdState.getEditorState, !EdState.setEditorState}
+
+:: <{EdState.gEq_s;}> = {!EdState.gEq_s}
+
+:: <{EdState.gEq_ss;}> = {!EdState.gEq_ss}
+
+:: <{EdState.gEq_sss;}> = {!EdState.gEq_sss}
+
+:: <{EdState.gEq_ssss;}> = {!EdState.gEq_ssss}
+
+:: <{EdState.gEq_sssss;}> = {!EdState.gEq_sssss}
+
+:: <{EdState.gEq_ssssss;}> = {!EdState.gEq_ssssss}
+
+:: <{EdState.gEq_sssssss;}> = {!EdState.gEq_sssssss}
+
+:: <{EdState.gEq_ssssssss;}> = {!EdState.gEq_ssssssss}
+
+:: <{EdState.gEq_sssssssss;}> = {!EdState.gEq_sssssssss}
+
+:: <{EdState.bimap_s;}> = {EdState.bimap_s}
+
+:: <{EdState.bimap_ss;}> = {EdState.bimap_ss}
+
+:: <{EdState.bimap_sss;}> = {EdState.bimap_sss}
+

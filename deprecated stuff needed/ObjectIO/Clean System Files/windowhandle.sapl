@@ -1,0 +1,163 @@
+|| ?module? windowhandle
+
+
+windowhandle.isCustomisedControl::B !_x_0 = case _x_0 (windowhandle.IsCustomButtonControl -> True) (windowhandle.IsCustomControl -> True) (_ -> False)
+windowhandle.isRecursiveControl::B !_x_0 = case _x_0 (windowhandle.IsCompoundControl -> True) (windowhandle.IsLayoutControl -> True) (_ -> False)
+windowhandle.wElementHandleToControlState !wH_0 = wH_0
+windowhandle.controlStateToWElementHandle !wH_0 = wH_0
+<{windowhandle.==_4}>::B !wids_0 !<{wids`_1}> = case (<{StdInt.==_16}> (select wids_0::windowhandle._WIDS 1) (select <{wids`_1}>::windowhandle._WIDS 1)) (True -> <{id.==_27}> (select wids_0::windowhandle._WIDS 0) (select <{wids`_1}>::windowhandle._WIDS 0)) (False -> False) 
+<{windowhandle.==_5}>::B !_x_0 !mode_1 = case _x_0 (windowhandle.Modal -> <{windowhandle._c;239;28_91}> mode_1) (windowhandle.Modeless -> <{windowhandle._c;242;28_92}> mode_1) 
+<{windowhandle._c;242;28_92}>::B !mode_0 = case mode_0 (windowhandle.Modeless -> True) (_ -> False)
+<{windowhandle._c;239;28_91}>::B !mode_0 = case mode_0 (windowhandle.Modal -> True) (_ -> False)
+<{windowhandle.==_6}>::B !_x_0 !kind_1 = case _x_0 (windowhandle.IsWindow -> <{windowhandle._c;246;32_93}> kind_1) (windowhandle.IsDialog -> <{windowhandle._c;249;32_94}> kind_1) (windowhandle.IsGameWindow -> <{windowhandle._c;252;32_95}> kind_1) 
+<{windowhandle._c;252;32_95}>::B !kind_0 = case kind_0 (windowhandle.IsGameWindow -> True) (_ -> False)
+<{windowhandle._c;249;32_94}>::B !kind_0 = case kind_0 (windowhandle.IsDialog -> True) (_ -> False)
+<{windowhandle._c;246;32_93}>::B !kind_0 = case kind_0 (windowhandle.IsWindow -> True) (_ -> False)
+<{windowhandle.==_7}>::B !_x_0 !info_1 = case _x_0 (windowhandle.LayoutFix -> <{windowhandle._c;256;33_96}> info_1) (windowhandle.LayoutFun i_1_0 _x_1_1 -> <{windowhandle._c;259;33_97}> info_1 i_1_0) (windowhandle.LayoutFrame -> <{windowhandle._c;262;33_98}> info_1) 
+<{windowhandle._c;262;33_98}>::B !info_0 = case info_0 (windowhandle.LayoutFrame -> True) (_ -> False)
+<{windowhandle._c;259;33_97}>::B !info_0 i_1::I = case info_0 (windowhandle.LayoutFun j_1_0 _x_1_1 -> <{StdInt.==_16}> i_1 j_1_0) (_ -> False)
+<{windowhandle._c;256;33_96}>::B !info_0 = case info_0 (windowhandle.LayoutFix -> True) (_ -> False)
+<{windowhandle.==_8}>::B !_x_0 !kind_1 = case _x_0 (windowhandle.IsButtonControl -> <{windowhandle._c;266;40_99}> kind_1) (windowhandle.IsCheckControl -> <{windowhandle._c;269;40_100}> kind_1) (windowhandle.IsCompoundControl -> <{windowhandle._c;272;40_101}> kind_1) (windowhandle.IsCustomButtonControl -> <{windowhandle._c;275;40_102}> kind_1) (windowhandle.IsCustomControl -> <{windowhandle._c;278;40_103}> kind_1) (windowhandle.IsEditControl -> <{windowhandle._c;281;40_104}> kind_1) (windowhandle.IsLayoutControl -> <{windowhandle._c;284;44_105}> kind_1) (windowhandle.IsPopUpControl -> <{windowhandle._c;287;40_106}> kind_1) (windowhandle.IsRadioControl -> <{windowhandle._c;290;40_107}> kind_1) (windowhandle.IsSliderControl -> <{windowhandle._c;293;40_108}> kind_1) (windowhandle.IsTextControl -> <{windowhandle._c;296;40_109}> kind_1) (windowhandle.IsOtherControl type1_1_0 -> <{windowhandle._c;299;40_110}> kind_1 type1_1_0) 
+<{windowhandle._c;299;40_110}>::B !kind_0 type1_1 = case kind_0 (windowhandle.IsOtherControl type2_1_0 -> <{StdString.==_2}> type1_1 type2_1_0) (_ -> False)
+<{windowhandle._c;296;40_109}>::B !kind_0 = case kind_0 (windowhandle.IsTextControl -> True) (_ -> False)
+<{windowhandle._c;293;40_108}>::B !kind_0 = case kind_0 (windowhandle.IsSliderControl -> True) (_ -> False)
+<{windowhandle._c;290;40_107}>::B !kind_0 = case kind_0 (windowhandle.IsRadioControl -> True) (_ -> False)
+<{windowhandle._c;287;40_106}>::B !kind_0 = case kind_0 (windowhandle.IsPopUpControl -> True) (_ -> False)
+<{windowhandle._c;284;44_105}>::B !kind_0 = case kind_0 (windowhandle.IsLayoutControl -> True) (_ -> False)
+<{windowhandle._c;281;40_104}>::B !kind_0 = case kind_0 (windowhandle.IsEditControl -> True) (_ -> False)
+<{windowhandle._c;278;40_103}>::B !kind_0 = case kind_0 (windowhandle.IsCustomControl -> True) (_ -> False)
+<{windowhandle._c;275;40_102}>::B !kind_0 = case kind_0 (windowhandle.IsCustomButtonControl -> True) (_ -> False)
+<{windowhandle._c;272;40_101}>::B !kind_0 = case kind_0 (windowhandle.IsCompoundControl -> True) (_ -> False)
+<{windowhandle._c;269;40_100}>::B !kind_0 = case kind_0 (windowhandle.IsCheckControl -> True) (_ -> False)
+<{windowhandle._c;266;40_99}>::B !kind_0 = case kind_0 (windowhandle.IsButtonControl -> True) (_ -> False)
+windowhandle.toString_9 !_x_0 = case _x_0 (windowhandle.IsButtonControl -> "IsButtonControl") (windowhandle.IsCheckControl -> "IsCheckControl") (windowhandle.IsCompoundControl -> "IsCompoundControl") (windowhandle.IsCustomButtonControl -> "IsCustomButtonControl") (windowhandle.IsCustomControl -> "IsCustomControl") (windowhandle.IsEditControl -> "IsEditControl") (windowhandle.IsLayoutControl -> "IsLayoutControl") (windowhandle.IsPopUpControl -> "IsPopUpControl") (windowhandle.IsRadioControl -> "IsRadioControl") (windowhandle.IsSliderControl -> "IsSliderControl") (windowhandle.IsTextControl -> "IsTextControl") (windowhandle.IsOtherControl type_1_0 -> <{StdString.+++_11}> "(IsOtherControl " (<{StdString.+++_11}> type_1_0 ")")) 
+<{windowhandle.TD;CursorInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;ControlState}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WindowHandles}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;FinalModalLS}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WindowStateHandle}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WIDS}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WindowLSHandle}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WindowHandle}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WindowMode}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WindowKind}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;LookInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WindowInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WindowData}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;GameWindowData}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;DDPtr}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;ScrollInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;ClipState}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WElementHandle}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WExtendLSHandle}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WChangeLSHandle}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WItemHandle}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;LayoutInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;WItemInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;RadioInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;RadioItemInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;CheckInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;CheckItemInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;PopUpInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;PopUpEditInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;SliderInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;TextInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;EditInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;ButtonInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;CustomButtonInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;CustomInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;CompoundInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;CompoundLookInfo}> _x_0::B = _predefined._Nil
+<{windowhandle.TD;ControlKind}> _x_0::B = _predefined._Nil
+
+:: windowhandle.WindowMode = windowhandle.Modal | windowhandle.Modeless
+:: windowhandle.WindowKind = windowhandle.IsWindow | windowhandle.IsDialog | windowhandle.IsGameWindow
+:: windowhandle.WindowInfo = windowhandle.WindowInfo !a1 | windowhandle.GameWindowInfo !a1 | windowhandle.NoWindowInfo
+:: windowhandle.WElementHandle = windowhandle.WItemHandle a1 | windowhandle.WListLSHandle a1 | windowhandle.WExtendLSHandle a1 | windowhandle.WChangeLSHandle a1
+:: windowhandle.LayoutInfo = windowhandle.LayoutFix | windowhandle.LayoutFun a1 a2 | windowhandle.LayoutFrame
+:: windowhandle.WItemInfo = windowhandle.ButtonInfo a1 | windowhandle.CheckInfo a1 | windowhandle.CompoundInfo a1 | windowhandle.CustomButtonInfo a1 | windowhandle.CustomInfo a1 | windowhandle.EditInfo a1 | windowhandle.PopUpInfo a1 | windowhandle.RadioInfo a1 | windowhandle.ReceiverInfo a1 | windowhandle.SliderInfo a1 | windowhandle.TextInfo a1 | windowhandle.NoWItemInfo
+:: windowhandle.ControlKind = windowhandle.IsButtonControl | windowhandle.IsCheckControl | windowhandle.IsCompoundControl | windowhandle.IsCustomButtonControl | windowhandle.IsCustomControl | windowhandle.IsEditControl | windowhandle.IsLayoutControl | windowhandle.IsPopUpControl | windowhandle.IsRadioControl | windowhandle.IsSliderControl | windowhandle.IsTextControl | windowhandle.IsOtherControl a1
+
+|| Converted Records
+:: windowhandle._CursorInfo = {!windowhandle.cInfoChanged::B, !windowhandle.cLocalRgn, !windowhandle.cMouseWasInRgn::B, !windowhandle.cLocalShape, !windowhandle.cGlobalSet::B, !windowhandle.cGlobalShape}
+
+:: windowhandle._WindowHandles = {windowhandle.whsWindows, !windowhandle.whsCursorInfo, !windowhandle.whsNrWindowBound, !windowhandle.whsModal::B, !windowhandle.whsFinalModalLS}
+
+:: windowhandle._FinalModalLS = {!windowhandle.fmWIDS, windowhandle.fmLS}
+
+:: windowhandle._WindowStateHandle = {!windowhandle.wshIds, windowhandle.wshHandle}
+
+:: windowhandle._WIDS = {windowhandle.wId, !windowhandle.wPtr, !windowhandle.wActive::B}
+
+:: windowhandle._WindowLSHandle = {windowhandle.wlsState, windowhandle.wlsHandle}
+
+:: windowhandle._WindowHandle = {!windowhandle.whMode, !windowhandle.whKind, !windowhandle.whTitle, windowhandle.whItemNrs, !windowhandle.whKeyFocus, !windowhandle.whWindowInfo, windowhandle.whItems, !windowhandle.whShow::B, !windowhandle.whSelect::B, !windowhandle.whAtts, !windowhandle.whDefaultId, !windowhandle.whCancelId, !windowhandle.whSize, !windowhandle.whClosing::B}
+
+:: windowhandle._LookInfo = {!windowhandle.lookFun, !windowhandle.lookPen, !windowhandle.lookSysUpdate::B}
+
+:: windowhandle._WindowData = {!windowhandle.windowDomain, !windowhandle.windowOrigin, !windowhandle.windowHScroll, !windowhandle.windowVScroll, !windowhandle.windowLook, !windowhandle.windowClip}
+
+:: windowhandle._GameWindowData = {!windowhandle.gamewindowDDPtr, !windowhandle.gamewindowSize, !windowhandle.gamewindowCDepth::I, !windowhandle.gamewindowFullScreen::B}
+
+:: windowhandle._ScrollInfo = {!windowhandle.scrollFunction, !windowhandle.scrollItemPos, !windowhandle.scrollItemSize, !windowhandle.scrollItemPtr}
+
+:: windowhandle._ClipState = {!windowhandle.clipRgn, !windowhandle.clipOk::B}
+
+:: windowhandle._WExtendLSHandle = {windowhandle.wExtendLS, windowhandle.wExtendItems}
+
+:: windowhandle._WChangeLSHandle = {windowhandle.wChangeLS, windowhandle.wChangeItems}
+
+:: windowhandle._WItemHandle = {windowhandle.wItemId, windowhandle.wItemNr::I, windowhandle.wItemKind, windowhandle.wItemShow::B, windowhandle.wItemSelect::B, windowhandle.wItemInfo, windowhandle.wItemAtts, windowhandle.wItems, windowhandle.wItemVirtual::B, windowhandle.wItemPos, windowhandle.wItemSize, windowhandle.wItemPtr, windowhandle.wItemLayoutInfo}
+
+:: windowhandle._RadioInfo = {windowhandle.radioItems, windowhandle.radioLayout, windowhandle.radioIndex::I}
+
+:: windowhandle._RadioItemInfo = {windowhandle.radioItem, !windowhandle.radioItemPos, windowhandle.radioItemSize, windowhandle.radioItemPtr}
+
+:: windowhandle._CheckInfo = {windowhandle.checkItems, windowhandle.checkLayout}
+
+:: windowhandle._CheckItemInfo = {windowhandle.checkItem, !windowhandle.checkItemPos, windowhandle.checkItemSize, windowhandle.checkItemPtr}
+
+:: windowhandle._PopUpInfo = {windowhandle.popUpInfoItems, windowhandle.popUpInfoIndex, windowhandle.popUpInfoEdit}
+
+:: windowhandle._PopUpEditInfo = {windowhandle.popUpEditText, windowhandle.popUpEditPtr}
+
+:: windowhandle._SliderInfo = {windowhandle.sliderInfoDir, windowhandle.sliderInfoLength::I, windowhandle.sliderInfoState, windowhandle.sliderInfoAction}
+
+:: windowhandle._TextInfo = {!windowhandle.textInfoText}
+
+:: windowhandle._EditInfo = {!windowhandle.editInfoText, windowhandle.editInfoWidth::I, windowhandle.editInfoNrLines}
+
+:: windowhandle._ButtonInfo = {!windowhandle.buttonInfoText}
+
+:: windowhandle._CustomButtonInfo = {windowhandle.cButtonInfoLook}
+
+:: windowhandle._CustomInfo = {windowhandle.customInfoLook}
+
+:: windowhandle._CompoundInfo = {windowhandle.compoundDomain, windowhandle.compoundOrigin, windowhandle.compoundHScroll, windowhandle.compoundVScroll, windowhandle.compoundLookInfo}
+
+:: windowhandle._CompoundLookInfo = {windowhandle.compoundLook, windowhandle.compoundClip}
+
+:: <{windowhandle.gEq_s;}> = {!windowhandle.gEq_s}
+
+:: <{windowhandle.gEq_ss;}> = {!windowhandle.gEq_ss}
+
+:: <{windowhandle.gEq_sss;}> = {!windowhandle.gEq_sss}
+
+:: <{windowhandle.gEq_ssss;}> = {!windowhandle.gEq_ssss}
+
+:: <{windowhandle.gEq_sssss;}> = {!windowhandle.gEq_sssss}
+
+:: <{windowhandle.gEq_ssssss;}> = {!windowhandle.gEq_ssssss}
+
+:: <{windowhandle.gEq_sssssss;}> = {!windowhandle.gEq_sssssss}
+
+:: <{windowhandle.gEq_ssssssss;}> = {!windowhandle.gEq_ssssssss}
+
+:: <{windowhandle.gEq_sssssssss;}> = {!windowhandle.gEq_sssssssss}
+
+:: <{windowhandle.bimap_s;}> = {windowhandle.bimap_s}
+
+:: <{windowhandle.bimap_ss;}> = {windowhandle.bimap_ss}
+
+:: <{windowhandle.bimap_sss;}> = {windowhandle.bimap_sss}
+

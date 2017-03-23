@@ -1,0 +1,120 @@
+|| ?module? StdParsComb
+
+
+StdParsComb.anon_53 !ac_0 = ac_0
+StdParsComb.anon_52 x_0 xc_1 ac_2 ss_3 = _predefined._Cons (_Tuple2 ss_3 x_0) (xc_1 ac_2)
+StdParsComb.begin !p_0 = p_0 StdParsComb.anon_52 StdParsComb.anon_53 _predefined._Nil
+StdParsComb.anon_44 sc_0 !xc_1 ac_2 ss_3 = xc_1 ac_2
+StdParsComb.fail = StdParsComb.anon_44
+StdParsComb.anon_45 x_0 !sc_1 = sc_1 x_0
+StdParsComb.yield x_0 = StdParsComb.anon_45 x_0
+StdParsComb.p_48 !<{_v==_0}> s_1 sc_2 xc_3 ac_4 !_x_5 = case _x_5 (_predefined._Cons x_1_0 ss_1_1 -> case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 x_1_0 s_1) (True -> sc_2 s_1 xc_3 ac_4 ss_1_1) ) (_ -> xc_3 ac_4)
+StdParsComb.symbol !<{_v==_0}> s_1 = StdParsComb.p_48 <{_v==_0}> s_1
+StdParsComb.p_49 !<{_v==_0}> !t_1 sc_2 xc_3 ac_4 ss_5 = let _x_1_0 = StdList.splitAt (StdList.length_47 t_1) ss_5 in case (<{StdList.==_45}> <{_v==_0}> t_1 (select _x_1_0::_Tuple2 0)) (True -> sc_2 t_1 xc_3 ac_4 (select _x_1_0::_Tuple2 1)) (False -> xc_3 ac_4) 
+StdParsComb.token !<{_v==_0}> t_1 = StdParsComb.p_49 <{_v==_0}> t_1
+StdParsComb.p_50 f_0 sc_1 xc_2 ac_3 !_x_4 = case _x_4 (_predefined._Cons s_1_0 ss_1_1 -> case (f_0 s_1_0) (True -> sc_1 s_1_0 xc_2 ac_3 ss_1_1) ) (_ -> xc_2 ac_3)
+StdParsComb.satisfy f_0 = StdParsComb.p_50 f_0
+StdParsComb.p_51 sc_0 xc_1 ac_2 !_x_3 = case _x_3 (_predefined._Nil -> sc_0 42 xc_1 ac_2 _predefined._Nil) (_ -> xc_1 ac_2)
+StdParsComb.eof = StdParsComb.p_51
+StdParsComb.anon_54 !ac2_0 = ac2_0
+StdParsComb.anon_55 !p1_0 p2_1 sc_2 xc_3 ac_4 ss_5 = p1_0 sc_2 StdParsComb.anon_54 (p2_1 sc_2 xc_3 ac_4 ss_5) ss_5
+<{StdParsComb.<|>}> p1_0 p2_1 = StdParsComb.anon_55 p1_0 p2_1
+StdParsComb.anon_59 !p2_0 sc_1 t_2 = p2_0 t_2 sc_1
+StdParsComb.anon_60 p2_0 !p1_1 sc_2 = p1_1 (StdParsComb.anon_59 p2_0 sc_2)
+<{StdParsComb.<&>}> p1_0 p2_1 = StdParsComb.anon_60 p2_1 p1_0
+StdParsComb.anon_98 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+StdParsComb.anon_71 !p_0 f_1 sc_2 = p_0 (StdParsComb.anon_98 sc_2 f_1)
+<{StdParsComb.<@}> p_0 f_1 = StdParsComb.anon_71 p_0 f_1
+StdParsComb.anon_76 !sc_0 l_1 xc_2 ss_3 ac3_4 = sc_0 (StdList.reverse l_1) xc_2 ac3_4 ss_3
+StdParsComb.anon_74 !ac_0 = ac_0
+StdParsComb.anon_75 p_0 l_1 sc_2 r_3 xc2_4 = StdParsComb.clp_77 p_0 (_predefined._Cons r_3 l_1) sc_2 StdParsComb.anon_74
+StdParsComb.clp_77 !p_0 l_1 sc_2 xc_3 ac_4 ss_5 = p_0 (StdParsComb.anon_75 p_0 l_1 sc_2) (StdParsComb.anon_76 sc_2 l_1 xc_3 ss_5) ac_4 ss_5
+StdParsComb.ClistP p_0 l_1 = StdParsComb.clp_77 p_0 l_1
+<{StdParsComb.<*>}> p_0 = StdParsComb.ClistP p_0 _predefined._Nil
+StdParsComb.anon_78 p_0 r_1 = StdParsComb.ClistP p_0 (_predefined._Cons r_1 _predefined._Nil)
+<{StdParsComb.<+>}> p_0 = <{StdParsComb.<&>}> p_0 (StdParsComb.anon_78 p_0)
+StdParsComb.anon_61 !u_0 _x_1 = u_0
+StdParsComb.anon_62 p2_0 u_1 = <{StdParsComb.<@}> p2_0 (StdParsComb.anon_61 u_1)
+<{StdParsComb.<&}> p1_0 p2_1 = <{StdParsComb.<&>}> p1_0 (StdParsComb.anon_62 p2_1)
+StdParsComb.anon_63 !p2_0 _x_1 = p2_0
+<{StdParsComb.&>}> p1_0 p2_1 = <{StdParsComb.<&>}> p1_0 (StdParsComb.anon_63 p2_1)
+StdParsComb.anon_64 h_0 t_1 = _predefined._Cons h_0 t_1
+StdParsComb.anon_65 p2_0 h_1 = <{StdParsComb.<@}> p2_0 (StdParsComb.anon_64 h_1)
+<{StdParsComb.<:&>}> p1_0 p2_1 = <{StdParsComb.<&>}> p1_0 (StdParsComb.anon_65 p2_1)
+StdParsComb.anon_66 !l_0 m_1 = <{StdList.++}> l_0 m_1
+StdParsComb.anon_67 p2_0 l_1 = <{StdParsComb.<@}> p2_0 (StdParsComb.anon_66 l_1)
+<{StdParsComb.<++>}> p1_0 p2_1 = <{StdParsComb.<&>}> p1_0 (StdParsComb.anon_67 p2_1)
+StdParsComb.anon_57 !p2_0 sc_1 xc_2 ss_3 ac3_4 = p2_0 sc_1 xc_2 ac3_4 ss_3
+StdParsComb.anon_56 !sc_0 xc_1 x_2 xc2_3 = sc_0 x_2 xc_1
+StdParsComb.anon_58 p2_0 !p1_1 sc_2 xc_3 ac_4 ss_5 = p1_1 (StdParsComb.anon_56 sc_2 xc_3) (StdParsComb.anon_57 p2_0 sc_2 xc_3 ss_5) ac_4 ss_5
+<{StdParsComb.<!>}> p1_0 p2_1 = StdParsComb.anon_58 p2_1 p1_0
+StdParsComb.anon_68 !ac_0 = ac_0
+StdParsComb.anon_69 !p2_0 sc_1 t_2 ac2_3 = p2_0 t_2 sc_1 StdParsComb.anon_68
+StdParsComb.anon_70 p2_0 !p1_1 sc_2 = p1_1 (StdParsComb.anon_69 p2_0 sc_2)
+<{StdParsComb.<!&>}> p1_0 p2_1 = StdParsComb.anon_70 p2_1 p1_0
+StdParsComb.anon_79 r_0 rs_1 = _predefined._Cons r_0 rs_1
+StdParsComb.anon_72 r_0 rs_1 = _predefined._Cons r_0 rs_1
+StdParsComb.anon_73 p_0 r_1 = <{StdParsComb.<@}> (<{StdParsComb.<*?>}> p_0) (StdParsComb.anon_72 r_1)
+<{StdParsComb.<*?>}> p_0 = <{StdParsComb.<|>}> (<{StdParsComb.<&>}> p_0 (StdParsComb.anon_73 p_0)) (StdParsComb.yield _predefined._Nil)
+StdParsComb.anon_80 p_0 r_1 = <{StdParsComb.<@}> (<{StdParsComb.<*?>}> p_0) (StdParsComb.anon_79 r_1)
+<{StdParsComb.<+?>}> p_0 = <{StdParsComb.<&>}> p_0 (StdParsComb.anon_80 p_0)
+StdParsComb.anon_46 !ac_0 = ac_0
+StdParsComb.anon_47 !p_0 sc_1 xc_2 ac_3 = p_0 sc_1 StdParsComb.anon_46 ac_3
+StdParsComb.cut p_0 = StdParsComb.anon_47 p_0
+StdParsComb.anon_81 r_0 = _predefined._Cons r_0 _predefined._Nil
+<{StdParsComb.<?>}> p_0 = <{StdParsComb.<!>}> (<{StdParsComb.<@}> p_0 StdParsComb.anon_81) (StdParsComb.yield _predefined._Nil)
+StdParsComb.anon_82 !f_0 r_1 = f_0 r_1
+<{StdParsComb.<?@>}> p_0 f_1 u_2 = <{StdParsComb.<!>}> (<{StdParsComb.<@}> p_0 (StdParsComb.anon_82 f_1)) (StdParsComb.yield u_2)
+StdParsComb.anon_83 r_0 = _predefined._Cons r_0 _predefined._Nil
+<{StdParsComb.<??>}> p_0 = <{StdParsComb.<|>}> (<{StdParsComb.<@}> p_0 StdParsComb.anon_83) (StdParsComb.yield _predefined._Nil)
+StdParsComb.anon_84 !f_0 r_1 = f_0 r_1
+<{StdParsComb.<??@>}> p_0 f_1 u_2 = <{StdParsComb.<|>}> (<{StdParsComb.<@}> p_0 (StdParsComb.anon_84 f_1)) (StdParsComb.yield u_2)
+StdParsComb.anon_85 !f_0 sc_1 r_2 xc2_3 ac2_4 ss2_5 = case (f_0 r_2) (True -> sc_1 r_2 xc2_3 ac2_4 ss2_5) (False -> xc2_3 ac2_4) 
+StdParsComb.anon_86 f_0 !p_1 sc_2 = p_1 (StdParsComb.anon_85 f_0 sc_2)
+<{StdParsComb.>?<}> p_0 f_1 = StdParsComb.anon_86 f_1 p_0
+StdParsComb.digit = <{StdParsComb.<@}> (StdParsComb.satisfy StdChar.isDigit) StdChar.digitToInt
+StdParsComb.foldl_100 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> StdParsComb.foldl_100 op_0 (op_0 r_1 a_1_0) x_1_1) 
+StdParsComb.foldl_99 op_0 r_1 !l_2 = StdParsComb.foldl_100 op_0 r_1 l_2
+StdParsComb.anon_87::I !x_0::I !y_1::I = <{StdInt.+_6}> (<{StdInt.*_9}> x_0 10) y_1
+StdParsComb.foldl_103::I !r_0::I !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> StdParsComb.foldl_103 (StdParsComb.anon_87 r_0 a_1_0) x_1_1) 
+StdParsComb.foldl_102::I !r_0::I !l_1 = StdParsComb.foldl_103 r_0 l_1
+StdParsComb.nat = <{StdParsComb.<@}> (<{StdParsComb.<+>}> StdParsComb.digit) (StdParsComb.foldl_102 0)
+StdParsComb.anon_88 _x_0 = <{StdParsComb.<@}> StdParsComb.nat <{StdInt.~_15}>
+StdParsComb.p_105 s_0::C sc_1 xc_2 ac_3 !_x_4 = case _x_4 (_predefined._Cons x_1_0 ss_1_1 -> case (<{StdChar.==_18}> x_1_0 s_0) (True -> sc_1 s_0 xc_2 ac_3 ss_1_1) ) (_ -> xc_2 ac_3)
+StdParsComb.symbol_104 s_0::C = StdParsComb.p_105 s_0
+<{StdParsComb.<!&>_106}> s_0::C p2_1 = StdParsComb.anon_70 p2_1 (StdParsComb.symbol_104 s_0)
+<{StdParsComb.<!>_107}> s_0::C p2_1 p2_2 = StdParsComb.anon_58 p2_2 (<{StdParsComb.<!&>_106}> s_0 p2_1)
+StdParsComb.int = <{StdParsComb.<!>_107}> '-' StdParsComb.anon_88 StdParsComb.nat
+StdParsComb.anon_89 !_vtoChar_0 c_1 r_2 = StdList.toString_49 _vtoChar_0 (_predefined._Cons c_1 r_2)
+StdParsComb.anon_108 c_0::C r_1 = StdList.toString_79 (_predefined._Cons c_0 r_1)
+StdParsComb.anon_90 c_0::C = <{StdParsComb.<@}> (<{StdParsComb.<*>}> (StdParsComb.satisfy StdChar.isAlphanum)) (StdParsComb.anon_108 c_0)
+StdParsComb.identifier = <{StdParsComb.<&>}> (StdParsComb.satisfy StdChar.isAlpha) StdParsComb.anon_90
+StdParsComb.anon_91 !p_0 sc_1 xc_2 ac_3 ss_4 = p_0 sc_1 xc_2 ac_3 (StdList.dropWhile StdChar.isSpace ss_4)
+StdParsComb.sp p_0 = StdParsComb.anon_91 p_0
+StdParsComb.sp_109 s_0::C = StdParsComb.anon_91 (StdParsComb.symbol_104 s_0)
+StdParsComb.spsymbol s_0::C = StdParsComb.sp_109 s_0
+StdParsComb.p_111 !t_0 sc_1 xc_2 ac_3 ss_4 = let _x_1_0 = StdList.splitAt (StdList.length_47 t_0) ss_4 in case (<{StdList.==_84}> t_0 (select _x_1_0::_Tuple2 0)) (True -> sc_1 t_0 xc_2 ac_3 (select _x_1_0::_Tuple2 1)) (False -> xc_2 ac_3) 
+StdParsComb.token_110 t_0 = StdParsComb.p_111 t_0
+StdParsComb.sp_112 t_0 = StdParsComb.anon_91 (StdParsComb.token_110 t_0)
+StdParsComb.sptoken t_0 = StdParsComb.sp_112 t_0
+StdParsComb.parseSequence p1_0 p2_1 = <{StdParsComb.<:&>}> p1_0 (<{StdParsComb.<*>}> (<{StdParsComb.&>}> p2_1 p1_0))
+StdParsComb.anon_92 p1_0 p2_1 x_2 op_3 y_4 = StdParsComb.chainl_94 p1_0 p2_1 (op_3 x_2 y_4)
+StdParsComb.anon_93 p2_0 p1_1 x_2 op_3 = <{StdParsComb.<&>}> p1_1 (StdParsComb.anon_92 p1_1 p2_0 x_2 op_3)
+StdParsComb.chainl_94 p1_0 p2_1 x_2 = <{StdParsComb.<!>}> (<{StdParsComb.<&>}> p2_1 (StdParsComb.anon_93 p2_1 p1_0 x_2)) (StdParsComb.yield x_2)
+StdParsComb.parseChainLeft p1_0 p2_1 = <{StdParsComb.<&>}> p1_0 (StdParsComb.chainl_94 p1_0 p2_1)
+StdParsComb.anon_95 p1_0 p2_1 x_2 op_3 y_4 = <{StdParsComb.<@}> (StdParsComb.chainr_97 p1_0 p2_1 y_4) (op_3 x_2)
+StdParsComb.anon_96 p2_0 p1_1 x_2 op_3 = <{StdParsComb.<&>}> p1_1 (StdParsComb.anon_95 p1_1 p2_0 x_2 op_3)
+StdParsComb.chainr_97 p1_0 p2_1 x_2 = <{StdParsComb.<!>}> (<{StdParsComb.<&>}> p2_1 (StdParsComb.anon_96 p2_1 p1_0 x_2)) (StdParsComb.yield x_2)
+StdParsComb.parseChainRight p1_0 p2_1 = <{StdParsComb.<&>}> p1_0 (StdParsComb.chainr_97 p1_0 p2_1)
+StdParsComb.foldl_101 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> StdParsComb.foldl_101 op_0 (op_0 r_1 a_1_0) x_1_1) 
+StdParsComb.foldl_113 r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> StdParsComb.foldl_113 (<{StdParsComb.<!>}> r_0 a_1_0) x_1_1) 
+StdParsComb.choice !l_0 = StdParsComb.foldl_113 StdParsComb.fail l_0
+<{StdParsComb.TD;Parser}> _x_0::B = _predefined._Nil
+<{StdParsComb.TD;ParsResult}> _x_0::B = _predefined._Nil
+<{StdParsComb.TD;CParser}> _x_0::B = _predefined._Nil
+<{StdParsComb.TD;SucCont}> _x_0::B = _predefined._Nil
+<{StdParsComb.TD;XorCont}> _x_0::B = _predefined._Nil
+<{StdParsComb.TD;AltCont}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records

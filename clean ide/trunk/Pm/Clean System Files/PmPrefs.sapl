@@ -1,0 +1,292 @@
+|| ?module? PmPrefs
+
+
+PmPrefs.twBack = StdPictureDef.RGB (StdPictureDef._RGBColour 215 255 255)
+PmPrefs.darker_65::I !c_0::I = <{StdInt./_10}> (<{StdInt.*_9}> c_0 95) 100
+PmPrefs.darkerColour !_x_0 = case _x_0 (StdPictureDef.RGB rgb_1_0 -> case rgb_1_0 (StdPictureDef._RGBColour r_2_0 g_2_1 b_2_2 -> StdPictureDef.RGB (update rgb_1_0::StdPictureDef._RGBColour [0:PmPrefs.darker_65 r_2_0,1:PmPrefs.darker_65 g_2_1,2:PmPrefs.darker_65 b_2_2])) ) (_ -> _x_0)
+PmPrefs.twTabs = StdPictureDef.RGB (StdPictureDef._RGBColour 215 0 0)
+PmPrefs.twComm = StdPictureDef.RGB (StdPictureDef._RGBColour 0 0 215)
+PmPrefs.twStri = StdPictureDef.RGB (StdPictureDef._RGBColour 0 175 0)
+PmPrefs.twChar = StdPictureDef.RGB (StdPictureDef._RGBColour 185 0 255)
+PmPrefs.twSyntaxColours = EdMonad._SyntaxColours StdPictureDef.Black PmPrefs.twBack (PmPrefs.darkerColour PmPrefs.twBack) PmPrefs.twTabs PmPrefs.twComm PmPrefs.twStri StdPictureDef.Magenta PmPrefs.twChar StdPictureDef.Black StdPictureDef.Black
+PmPrefs.emptyTypPrefs = PmPrefs._TypPrefs StdPictureDef.NonProportionalFontDef (StdIOBasic._Vector2 30 30) (StdIOBasic._Size 800 300) PmPrefs.twSyntaxColours
+PmPrefs.cwBack = StdPictureDef.RGB (StdPictureDef._RGBColour 244 215 244)
+PmPrefs.cwComm = StdPictureDef.RGB (StdPictureDef._RGBColour 0 0 215)
+PmPrefs.cwStri = StdPictureDef.RGB (StdPictureDef._RGBColour 0 215 0)
+PmPrefs.cwSyntaxColours = EdMonad._SyntaxColours StdPictureDef.Black PmPrefs.cwBack (PmPrefs.darkerColour PmPrefs.cwBack) PmPrefs.twTabs PmPrefs.cwComm PmPrefs.cwStri StdPictureDef.Magenta PmPrefs.twChar StdPictureDef.Black StdPictureDef.Black
+PmPrefs.emptyConPrefs = PmPrefs._ConPrefs StdPictureDef.NonProportionalFontDef (StdIOBasic._Vector2 30 30) (StdIOBasic._Size 800 300) PmPrefs.cwSyntaxColours
+PmPrefs.ewBack = StdPictureDef.RGB (StdPictureDef._RGBColour 255 215 255)
+PmPrefs.emptyErrPrefs = PmPrefs._ErrPrefs (StdIOBasic._Vector2 300 300) (StdIOBasic._Size 500 300) (select StdPictureDef.SansSerifFontDef::StdPictureDef._FontDef 0) (select StdPictureDef.SansSerifFontDef::StdPictureDef._FontDef 2) StdPictureDef.Black PmPrefs.ewBack True True True
+PmPrefs.swBack = StdPictureDef.RGB (StdPictureDef._RGBColour 143 219 255)
+PmPrefs.emptySrcPrefs = PmPrefs._SrcPrefs (StdIOBasic._Vector2 250 250) (StdIOBasic._Size 300 200) (select StdPictureDef.SansSerifFontDef::StdPictureDef._FontDef 0) (select StdPictureDef.SansSerifFontDef::StdPictureDef._FontDef 2) StdPictureDef.Black PmPrefs.swBack
+PmPrefs.pwTopc = StdPictureDef.RGB (StdPictureDef._RGBColour 215 255 229)
+PmPrefs.pwFore = StdPictureDef.RGB (StdPictureDef._RGBColour 109 0 0)
+PmPrefs.pwBack = StdPictureDef.RGB (StdPictureDef._RGBColour 210 210 179)
+PmPrefs.emptyPrjPrefs = PmPrefs._PrjPrefs (StdIOBasic._Vector2 0 0) (StdIOBasic._Size 200 400) PmPrefs.pwTopc PmPrefs.pwFore PmPrefs.pwBack StdPictureDef.SansSerifFontDef True
+PmPrefs.scBack = StdPictureDef.RGB (StdPictureDef._RGBColour 215 255 215)
+PmPrefs.scTabs = StdPictureDef.RGB (StdPictureDef._RGBColour 195 0 0)
+PmPrefs.scComm = StdPictureDef.RGB (StdPictureDef._RGBColour 0 0 195)
+PmPrefs.scStri = StdPictureDef.RGB (StdPictureDef._RGBColour 0 155 0)
+PmPrefs.scChar = StdPictureDef.RGB (StdPictureDef._RGBColour 155 0 155)
+PmPrefs.scKeyw = StdPictureDef.RGB (StdPictureDef._RGBColour 127 0 127)
+PmPrefs.scSyntaxColours = EdMonad._SyntaxColours StdPictureDef.Black PmPrefs.scBack (PmPrefs.darkerColour PmPrefs.scBack) PmPrefs.scTabs PmPrefs.scComm PmPrefs.scStri PmPrefs.scChar PmPrefs.scKeyw StdPictureDef.Black StdPictureDef.Black
+PmPrefs.dmBack = StdPictureDef.RGB (StdPictureDef._RGBColour 255 215 215)
+PmPrefs.dmType = StdPictureDef.RGB (StdPictureDef._RGBColour 195 0 0)
+PmPrefs.dmDecl = StdPictureDef.RGB (StdPictureDef._RGBColour 195 0 0)
+PmPrefs.dmSyntaxColours = EdMonad._SyntaxColours StdPictureDef.Black PmPrefs.dmBack (PmPrefs.darkerColour PmPrefs.dmBack) PmPrefs.scTabs PmPrefs.scComm PmPrefs.scStri PmPrefs.scChar PmPrefs.scKeyw PmPrefs.dmType PmPrefs.dmDecl
+PmPrefs.imBack = StdPictureDef.RGB (StdPictureDef._RGBColour 255 255 215)
+PmPrefs.imType = StdPictureDef.RGB (StdPictureDef._RGBColour 195 0 0)
+PmPrefs.imDecl = StdPictureDef.RGB (StdPictureDef._RGBColour 195 0 0)
+PmPrefs.imSyntaxColours = EdMonad._SyntaxColours StdPictureDef.Black PmPrefs.imBack (PmPrefs.darkerColour PmPrefs.imBack) PmPrefs.scTabs PmPrefs.scComm PmPrefs.scStri PmPrefs.scChar PmPrefs.scKeyw PmPrefs.imType PmPrefs.imDecl
+PmPrefs.emptyRegPrefs = PmPrefs._RegPrefs _predefined._Nil "ShowTimeProfile.exe" "{Application}\\Tools\\Time Profiler 2.0\\" "ShowHeapProfile.exe" "{Application}\\Tools\\Heap Profiler 2.0\\" "Sparkle.exe" "{Application}\\Tools\\Sparkle 0.0.3a\\" "VisualEditor.exe" "{Application}\\Tools\\Visual Editor\\"
+PmPrefs.emptyPrefs = PmPrefs._Prefs <{_predefined._!Nil!}> <{_predefined._!Nil!}> <{_predefined._!Nil!}> PmPrefs.emptyTypPrefs PmPrefs.emptyConPrefs PmPrefs.emptyErrPrefs PmPrefs.emptySrcPrefs PmPrefs.emptyPrjPrefs StdPictureDef.NonProportionalFontDef (_Tuple5 4 True False False True) 0 PmCompilerOptions.DefaultCompilerOptions PmTypes.DefCodeGenOptions PmTypes.DefaultLinkOptions PmTypes.DefApplicationOptions PmPrefs.scSyntaxColours PmPrefs.dmSyntaxColours PmPrefs.imSyntaxColours <{_predefined._!Nil!}> <{_predefined._!Nil!}> False True False False (PmPrefs.LeaveAlone UtilNewlinesFile.NewlineConventionNone) PmPrefs.emptyRegPrefs
+PmPrefs.anon_139 !v_0 !a_1 = update a_1::PmPrefs._Prefs [0:v_0]
+PmPrefs.anon_138 !a_0 = select a_0::PmPrefs._Prefs 0
+PmPrefs.PathOption !_vtoString_0 !_vfromString_1 = UtilOptions._OptionsTableEntry "Path" (UtilOptions.SimpleWithStringConversion _vtoString_0 _vfromString_1 PmPath.convert_path_separators) StdFunc.id StdFunc.const
+PmPrefs.anon_137 !v_0 !a_1 = update a_1::PmPrefs._Prefs [1:v_0]
+PmPrefs.anon_136 !a_0 = select a_0::PmPrefs._Prefs 1
+PmPrefs.anon_135 !v_0 !a_1 = update a_1::PmPrefs._Prefs [2:v_0]
+PmPrefs.anon_134 !a_0 = select a_0::PmPrefs._Prefs 2
+PmPrefs.anon_133 !v_0 !a_1 = update a_1::PmPrefs._Prefs [3:update (select a_1::PmPrefs._Prefs 3)::PmPrefs._TypPrefs [0:v_0]]
+PmPrefs.anon_132 !a_0 = select (select a_0::PmPrefs._Prefs 3)::PmPrefs._TypPrefs 0
+PmPrefs.anon_199 !v_0 !a_1 = update a_1::StdPictureDef._FontDef [0:v_0]
+PmPrefs.anon_198 !a_0 = select a_0::StdPictureDef._FontDef 0
+PmPrefs.anon_197 !v_0 !a_1 = update a_1::StdPictureDef._FontDef [1:UtilStrictLists.StrictListToList v_0]
+PmPrefs.anon_196 !a_0 = UtilStrictLists.ListToStrictList (select a_0::StdPictureDef._FontDef 1)
+PmPrefs.StyleOption !_vtoString_0 !_vfromString_1 = UtilOptions._OptionsTableEntry "Style" (UtilOptions.Simple _vtoString_0 _vfromString_1) StdFunc.id StdFunc.const
+PmPrefs.anon_195 !v_0::I !a_1 = update a_1::StdPictureDef._FontDef [2:v_0]
+PmPrefs.anon_194::I !a_0 = select a_0::StdPictureDef._FontDef 2
+PmPrefs.fromString_234::I !s_0 = StdInt.toInt_23 s_0
+PmPrefs.StyleOption_278 !_vfromString_0 = UtilOptions._OptionsTableEntry "Style" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) _vfromString_0) StdFunc.id StdFunc.const
+PmPrefs.StyleOption_279 = UtilOptions._OptionsTableEntry "Style" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) StdFunc.id StdFunc.const
+PmPrefs.FontOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 3) 2 (UtilOptions._OptionsTableEntry "Size" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_5) (<{StdOverloaded.fromString;}> PmPrefs.fromString_234)) PmPrefs.anon_194 PmPrefs.anon_195)) 1 (UtilOptions._OptionsTableEntry "Styles" (UtilOptions.List PmPrefs.StyleOption_279 "") PmPrefs.anon_196 PmPrefs.anon_197)) 0 (UtilOptions._OptionsTableEntry "Name" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_198 PmPrefs.anon_199)
+PmPrefs.anon_131 !v_0 !a_1 = update a_1::PmPrefs._Prefs [3:update (select a_1::PmPrefs._Prefs 3)::PmPrefs._TypPrefs [1:v_0]]
+PmPrefs.anon_130 !a_0 = select (select a_0::PmPrefs._Prefs 3)::PmPrefs._TypPrefs 1
+PmPrefs.anon_203 !v_0::I !a_1 = update a_1::StdIOBasic._Vector2 [0:v_0]
+PmPrefs.anon_202::I !a_0 = select a_0::StdIOBasic._Vector2 0
+PmPrefs.anon_201 !v_0::I !a_1 = update a_1::StdIOBasic._Vector2 [1:v_0]
+PmPrefs.anon_200::I !a_0 = select a_0::StdIOBasic._Vector2 1
+PmPrefs.VectOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 2) 1 (UtilOptions._OptionsTableEntry "VY" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_5) (<{StdOverloaded.fromString;}> PmPrefs.fromString_234)) PmPrefs.anon_200 PmPrefs.anon_201)) 0 (UtilOptions._OptionsTableEntry "VX" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_5) (<{StdOverloaded.fromString;}> PmPrefs.fromString_234)) PmPrefs.anon_202 PmPrefs.anon_203)
+PmPrefs.anon_129 !v_0 !a_1 = update a_1::PmPrefs._Prefs [3:update (select a_1::PmPrefs._Prefs 3)::PmPrefs._TypPrefs [2:v_0]]
+PmPrefs.anon_128 !a_0 = select (select a_0::PmPrefs._Prefs 3)::PmPrefs._TypPrefs 2
+PmPrefs.anon_207 !v_0::I !a_1 = update a_1::StdIOBasic._Size [0:v_0]
+PmPrefs.anon_206::I !a_0 = select a_0::StdIOBasic._Size 0
+PmPrefs.anon_205 !v_0::I !a_1 = update a_1::StdIOBasic._Size [1:v_0]
+PmPrefs.anon_204::I !a_0 = select a_0::StdIOBasic._Size 1
+PmPrefs.SizeOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 2) 1 (UtilOptions._OptionsTableEntry "H" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_5) (<{StdOverloaded.fromString;}> PmPrefs.fromString_234)) PmPrefs.anon_204 PmPrefs.anon_205)) 0 (UtilOptions._OptionsTableEntry "W" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_5) (<{StdOverloaded.fromString;}> PmPrefs.fromString_234)) PmPrefs.anon_206 PmPrefs.anon_207)
+PmPrefs.anon_127 !v_0 !a_1 = update a_1::PmPrefs._Prefs [3:update (select a_1::PmPrefs._Prefs 3)::PmPrefs._TypPrefs [3:v_0]]
+PmPrefs.anon_126 !a_0 = select (select a_0::PmPrefs._Prefs 3)::PmPrefs._TypPrefs 3
+PmPrefs.anon_227 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [0:v_0]
+PmPrefs.anon_226 !a_0 = select a_0::EdMonad._SyntaxColours 0
+PmPrefs.anon_225 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [1:v_0]
+PmPrefs.anon_224 !a_0 = select a_0::EdMonad._SyntaxColours 1
+PmPrefs.anon_223 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [2:v_0]
+PmPrefs.anon_222 !a_0 = select a_0::EdMonad._SyntaxColours 2
+PmPrefs.anon_221 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [3:v_0]
+PmPrefs.anon_220 !a_0 = select a_0::EdMonad._SyntaxColours 3
+PmPrefs.anon_219 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [4:v_0]
+PmPrefs.anon_218 !a_0 = select a_0::EdMonad._SyntaxColours 4
+PmPrefs.anon_217 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [5:v_0]
+PmPrefs.anon_216 !a_0 = select a_0::EdMonad._SyntaxColours 5
+PmPrefs.anon_215 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [6:v_0]
+PmPrefs.anon_214 !a_0 = select a_0::EdMonad._SyntaxColours 6
+PmPrefs.anon_213 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [7:v_0]
+PmPrefs.anon_212 !a_0 = select a_0::EdMonad._SyntaxColours 7
+PmPrefs.anon_211 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [8:v_0]
+PmPrefs.anon_210 !a_0 = select a_0::EdMonad._SyntaxColours 8
+PmPrefs.anon_209 !v_0 !a_1 = update a_1::EdMonad._SyntaxColours [9:v_0]
+PmPrefs.anon_208 !a_0 = select a_0::EdMonad._SyntaxColours 9
+PmPrefs.SyncOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 10) 9 (UtilOptions._OptionsTableEntry "col_decl" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_208 PmPrefs.anon_209)) 8 (UtilOptions._OptionsTableEntry "col_type" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_210 PmPrefs.anon_211)) 7 (UtilOptions._OptionsTableEntry "col_keyw" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_212 PmPrefs.anon_213)) 6 (UtilOptions._OptionsTableEntry "col_char" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_214 PmPrefs.anon_215)) 5 (UtilOptions._OptionsTableEntry "col_stri" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_216 PmPrefs.anon_217)) 4 (UtilOptions._OptionsTableEntry "col_comm" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_218 PmPrefs.anon_219)) 3 (UtilOptions._OptionsTableEntry "col_tabs" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_220 PmPrefs.anon_221)) 2 (UtilOptions._OptionsTableEntry "col_margin" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_222 PmPrefs.anon_223)) 1 (UtilOptions._OptionsTableEntry "col_back" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_224 PmPrefs.anon_225)) 0 (UtilOptions._OptionsTableEntry "col_text" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_226 PmPrefs.anon_227)
+PmPrefs.anon_125 !v_0 !a_1 = update a_1::PmPrefs._Prefs [4:update (select a_1::PmPrefs._Prefs 4)::PmPrefs._ConPrefs [0:v_0]]
+PmPrefs.anon_124 !a_0 = select (select a_0::PmPrefs._Prefs 4)::PmPrefs._ConPrefs 0
+PmPrefs.anon_123 !v_0 !a_1 = update a_1::PmPrefs._Prefs [4:update (select a_1::PmPrefs._Prefs 4)::PmPrefs._ConPrefs [1:v_0]]
+PmPrefs.anon_122 !a_0 = select (select a_0::PmPrefs._Prefs 4)::PmPrefs._ConPrefs 1
+PmPrefs.anon_121 !v_0 !a_1 = update a_1::PmPrefs._Prefs [4:update (select a_1::PmPrefs._Prefs 4)::PmPrefs._ConPrefs [2:v_0]]
+PmPrefs.anon_120 !a_0 = select (select a_0::PmPrefs._Prefs 4)::PmPrefs._ConPrefs 2
+PmPrefs.anon_119 !v_0 !a_1 = update a_1::PmPrefs._Prefs [4:update (select a_1::PmPrefs._Prefs 4)::PmPrefs._ConPrefs [3:v_0]]
+PmPrefs.anon_118 !a_0 = select (select a_0::PmPrefs._Prefs 4)::PmPrefs._ConPrefs 3
+PmPrefs.anon_117 !v_0 !a_1 = update a_1::PmPrefs._Prefs [5:v_0]
+PmPrefs.anon_116 !a_0 = select a_0::PmPrefs._Prefs 5
+PmPrefs.anon_181 !v_0 !a_1 = update a_1::PmPrefs._ErrPrefs [0:v_0]
+PmPrefs.anon_180 !a_0 = select a_0::PmPrefs._ErrPrefs 0
+PmPrefs.anon_179 !v_0 !a_1 = update a_1::PmPrefs._ErrPrefs [1:v_0]
+PmPrefs.anon_178 !a_0 = select a_0::PmPrefs._ErrPrefs 1
+PmPrefs.anon_177 !v_0 !a_1 = update a_1::PmPrefs._ErrPrefs [2:v_0]
+PmPrefs.anon_176 !a_0 = select a_0::PmPrefs._ErrPrefs 2
+PmPrefs.anon_175 !v_0::I !a_1 = update a_1::PmPrefs._ErrPrefs [3:v_0]
+PmPrefs.anon_174::I !a_0 = select a_0::PmPrefs._ErrPrefs 3
+PmPrefs.anon_173 !v_0 !a_1 = update a_1::PmPrefs._ErrPrefs [4:v_0]
+PmPrefs.anon_172 !a_0 = select a_0::PmPrefs._ErrPrefs 4
+PmPrefs.anon_171 !v_0 !a_1 = update a_1::PmPrefs._ErrPrefs [5:v_0]
+PmPrefs.anon_170 !a_0 = select a_0::PmPrefs._ErrPrefs 5
+PmPrefs.anon_169 !v_0 !a_1 = update a_1::PmPrefs._ErrPrefs [6:<{PmPrefs._if;471;76_282}> (<{StdString.==_2}> v_0 "1")]
+<{PmPrefs._if;471;76_282}>::B !_x_0::B = case _x_0 (True -> True) (_ -> False)
+PmPrefs.anon_168 !a_0 = case (select a_0::PmPrefs._ErrPrefs 6) (True -> "1") (False -> "0") 
+PmPrefs.anon_167 !v_0 !a_1 = update a_1::PmPrefs._ErrPrefs [7:<{PmPrefs._if;472;76_283}> (<{StdString.==_2}> v_0 "1")]
+<{PmPrefs._if;472;76_283}>::B !_x_0::B = case _x_0 (True -> True) (_ -> False)
+PmPrefs.anon_166 !a_0 = case (select a_0::PmPrefs._ErrPrefs 7) (True -> "1") (False -> "0") 
+PmPrefs.anon_165 !v_0 !a_1 = update a_1::PmPrefs._ErrPrefs [8:<{PmPrefs._if;473;76_284}> (<{StdString.==_2}> v_0 "1")]
+<{PmPrefs._if;473;76_284}>::B !_x_0::B = case _x_0 (True -> True) (_ -> False)
+PmPrefs.anon_164 !a_0 = case (select a_0::PmPrefs._ErrPrefs 8) (True -> "1") (False -> "0") 
+PmPrefs.ErrPrefsOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 9) 8 (UtilOptions._OptionsTableEntry "EWInf" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_164 PmPrefs.anon_165)) 7 (UtilOptions._OptionsTableEntry "EWWrn" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_166 PmPrefs.anon_167)) 6 (UtilOptions._OptionsTableEntry "EWErr" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_168 PmPrefs.anon_169)) 5 (UtilOptions._OptionsTableEntry "EWBak" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_170 PmPrefs.anon_171)) 4 (UtilOptions._OptionsTableEntry "EWFor" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_172 PmPrefs.anon_173)) 3 (UtilOptions._OptionsTableEntry "EWFSz" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_5) (<{StdOverloaded.fromString;}> PmPrefs.fromString_234)) PmPrefs.anon_174 PmPrefs.anon_175)) 2 (UtilOptions._OptionsTableEntry "EWFNm" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_176 PmPrefs.anon_177)) 1 (UtilOptions._OptionsTableEntry "EWSiz" (UtilOptions.Group PmPrefs.SizeOptionsTable) PmPrefs.anon_178 PmPrefs.anon_179)) 0 (UtilOptions._OptionsTableEntry "EWPos" (UtilOptions.Group PmPrefs.VectOptionsTable) PmPrefs.anon_180 PmPrefs.anon_181)
+PmPrefs.anon_115 !v_0 !a_1 = update a_1::PmPrefs._Prefs [6:v_0]
+PmPrefs.anon_114 !a_0 = select a_0::PmPrefs._Prefs 6
+PmPrefs.anon_193 !v_0 !a_1 = update a_1::PmPrefs._SrcPrefs [0:v_0]
+PmPrefs.anon_192 !a_0 = select a_0::PmPrefs._SrcPrefs 0
+PmPrefs.anon_191 !v_0 !a_1 = update a_1::PmPrefs._SrcPrefs [1:v_0]
+PmPrefs.anon_190 !a_0 = select a_0::PmPrefs._SrcPrefs 1
+PmPrefs.anon_189 !v_0 !a_1 = update a_1::PmPrefs._SrcPrefs [2:v_0]
+PmPrefs.anon_188 !a_0 = select a_0::PmPrefs._SrcPrefs 2
+PmPrefs.anon_187 !v_0::I !a_1 = update a_1::PmPrefs._SrcPrefs [3:v_0]
+PmPrefs.anon_186::I !a_0 = select a_0::PmPrefs._SrcPrefs 3
+PmPrefs.anon_185 !v_0 !a_1 = update a_1::PmPrefs._SrcPrefs [4:v_0]
+PmPrefs.anon_184 !a_0 = select a_0::PmPrefs._SrcPrefs 4
+PmPrefs.anon_183 !v_0 !a_1 = update a_1::PmPrefs._SrcPrefs [5:v_0]
+PmPrefs.anon_182 !a_0 = select a_0::PmPrefs._SrcPrefs 5
+PmPrefs.SrcPrefsOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 6) 5 (UtilOptions._OptionsTableEntry "EWBak" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_182 PmPrefs.anon_183)) 4 (UtilOptions._OptionsTableEntry "EWFor" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_184 PmPrefs.anon_185)) 3 (UtilOptions._OptionsTableEntry "EWFSz" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_5) (<{StdOverloaded.fromString;}> PmPrefs.fromString_234)) PmPrefs.anon_186 PmPrefs.anon_187)) 2 (UtilOptions._OptionsTableEntry "EWFNm" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_188 PmPrefs.anon_189)) 1 (UtilOptions._OptionsTableEntry "EWSiz" (UtilOptions.Group PmPrefs.SizeOptionsTable) PmPrefs.anon_190 PmPrefs.anon_191)) 0 (UtilOptions._OptionsTableEntry "EWPos" (UtilOptions.Group PmPrefs.VectOptionsTable) PmPrefs.anon_192 PmPrefs.anon_193)
+PmPrefs.anon_113 !v_0 !a_1 = update a_1::PmPrefs._Prefs [7:update (select a_1::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs [0:v_0]]
+PmPrefs.anon_112 !a_0 = select (select a_0::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs 0
+PmPrefs.anon_111 !v_0 !a_1 = update a_1::PmPrefs._Prefs [7:update (select a_1::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs [1:v_0]]
+PmPrefs.anon_110 !a_0 = select (select a_0::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs 1
+PmPrefs.anon_109 !v_0 !a_1 = update a_1::PmPrefs._Prefs [7:update (select a_1::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs [2:v_0]]
+PmPrefs.anon_108 !a_0 = select (select a_0::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs 2
+PmPrefs.anon_107 !v_0 !a_1 = update a_1::PmPrefs._Prefs [7:update (select a_1::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs [3:v_0]]
+PmPrefs.anon_106 !a_0 = select (select a_0::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs 3
+PmPrefs.anon_105 !v_0 !a_1 = update a_1::PmPrefs._Prefs [7:update (select a_1::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs [4:v_0]]
+PmPrefs.anon_104 !a_0 = select (select a_0::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs 4
+PmPrefs.anon_103 !v_0 !a_1 = update a_1::PmPrefs._Prefs [7:update (select a_1::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs [5:v_0]]
+PmPrefs.anon_102 !a_0 = select (select a_0::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs 5
+PmPrefs.anon_101 !v_0 !a_1 = update a_1::PmPrefs._Prefs [7:update (select a_1::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs [6:<{PmPrefs._if;398;100_285}> (<{StdString.==_2}> v_0 "1")]]
+<{PmPrefs._if;398;100_285}>::B !_x_0::B = case _x_0 (True -> True) (_ -> False)
+PmPrefs.anon_100 !a_0 = case (select (select a_0::PmPrefs._Prefs 7)::PmPrefs._PrjPrefs 6) (True -> "1") (False -> "0") 
+PmPrefs.anon_99 !v_0 !a_1 = update a_1::PmPrefs._Prefs [8:v_0]
+PmPrefs.anon_98 !a_0 = select a_0::PmPrefs._Prefs 8
+PmPrefs.anon_97 !v_0 !a_1 = update a_1::PmPrefs._Prefs [9:v_0]
+PmPrefs.anon_96 !a_0 = select a_0::PmPrefs._Prefs 9
+PmPrefs.anon_95 !v_0::I !a_1 = update a_1::PmPrefs._Prefs [10:v_0]
+PmPrefs.anon_94::I !a_0 = select a_0::PmPrefs._Prefs 10
+PmPrefs.anon_93 !v_0 !a_1 = update a_1::PmPrefs._Prefs [11:v_0]
+PmPrefs.anon_92 !a_0 = select a_0::PmPrefs._Prefs 11
+PmPrefs.anon_91 !v_0 !a_1 = update a_1::PmPrefs._Prefs [12:v_0]
+PmPrefs.anon_90 !a_0 = select a_0::PmPrefs._Prefs 12
+PmPrefs.anon_89 !v_0 !a_1 = update a_1::PmPrefs._Prefs [13:v_0]
+PmPrefs.anon_88 !a_0 = select a_0::PmPrefs._Prefs 13
+PmPrefs.anon_87 !v_0 !a_1 = update a_1::PmPrefs._Prefs [14:v_0]
+PmPrefs.anon_86 !a_0 = select a_0::PmPrefs._Prefs 14
+PmPrefs.anon_85 !v_0 !a_1 = update a_1::PmPrefs._Prefs [15:v_0]
+PmPrefs.anon_84 !a_0 = select a_0::PmPrefs._Prefs 15
+PmPrefs.anon_83 !v_0 !a_1 = update a_1::PmPrefs._Prefs [16:v_0]
+PmPrefs.anon_82 !a_0 = select a_0::PmPrefs._Prefs 16
+PmPrefs.anon_81 !v_0 !a_1 = update a_1::PmPrefs._Prefs [17:v_0]
+PmPrefs.anon_80 !a_0 = select a_0::PmPrefs._Prefs 17
+PmPrefs.anon_79 !v_0 !a_1 = update a_1::PmPrefs._Prefs [18:v_0]
+PmPrefs.anon_78 !a_0 = select a_0::PmPrefs._Prefs 18
+PmPrefs.anon_77 !v_0 !a_1 = update a_1::PmPrefs._Prefs [19:v_0]
+PmPrefs.anon_76 !a_0 = select a_0::PmPrefs._Prefs 19
+PmPrefs.anon_75 !v_0 !a_1 = update a_1::PmPrefs._Prefs [20:<{PmPrefs._if;411;92_286}> (<{StdString.==_2}> v_0 "1")]
+<{PmPrefs._if;411;92_286}>::B !_x_0::B = case _x_0 (True -> True) (_ -> False)
+PmPrefs.anon_74 !a_0 = case (select a_0::PmPrefs._Prefs 20) (True -> "1") (False -> "0") 
+PmPrefs.anon_73 !v_0 !a_1 = update a_1::PmPrefs._Prefs [21:<{PmPrefs._if;412;92_287}> (<{StdString.==_2}> v_0 "1")]
+<{PmPrefs._if;412;92_287}>::B !_x_0::B = case _x_0 (True -> True) (_ -> False)
+PmPrefs.anon_72 !a_0 = case (select a_0::PmPrefs._Prefs 21) (True -> "1") (False -> "0") 
+PmPrefs.anon_71 !v_0 !a_1 = update a_1::PmPrefs._Prefs [22:<{PmPrefs._if;414;86_288}> (<{StdString.==_2}> v_0 "1")]
+<{PmPrefs._if;414;86_288}>::B !_x_0::B = case _x_0 (True -> True) (_ -> False)
+PmPrefs.anon_70 !a_0 = case (select a_0::PmPrefs._Prefs 22) (True -> "1") (False -> "0") 
+PmPrefs.anon_69 !v_0 !a_1 = update a_1::PmPrefs._Prefs [23:<{PmPrefs._if;415;104_289}> (<{StdString.==_2}> v_0 "1")]
+<{PmPrefs._if;415;104_289}>::B !_x_0::B = case _x_0 (True -> True) (_ -> False)
+PmPrefs.anon_68 !a_0 = case (select a_0::PmPrefs._Prefs 23) (True -> "1") (False -> "0") 
+PmPrefs.readNLH_141 !v_0 !a_1 = <{PmPrefs._c;431;11_290}> v_0 a_1
+<{PmPrefs._c;431;11_290}> !v_0 !a_1 = case v_0 ("L0" -> update a_1::PmPrefs._Prefs [24:PmPrefs.LeaveAlone UtilNewlinesFile.NewlineConventionNone]) ("L1" -> update a_1::PmPrefs._Prefs [24:PmPrefs.LeaveAlone UtilNewlinesFile.NewlineConventionMac]) ("L2" -> update a_1::PmPrefs._Prefs [24:PmPrefs.LeaveAlone UtilNewlinesFile.NewlineConventionUnix]) ("L3" -> update a_1::PmPrefs._Prefs [24:PmPrefs.LeaveAlone UtilNewlinesFile.NewlineConventionDos]) ("A0" -> update a_1::PmPrefs._Prefs [24:PmPrefs.AlwaysUse UtilNewlinesFile.NewlineConventionNone]) ("A1" -> update a_1::PmPrefs._Prefs [24:PmPrefs.AlwaysUse UtilNewlinesFile.NewlineConventionMac]) ("A2" -> update a_1::PmPrefs._Prefs [24:PmPrefs.AlwaysUse UtilNewlinesFile.NewlineConventionUnix]) ("A3" -> update a_1::PmPrefs._Prefs [24:PmPrefs.AlwaysUse UtilNewlinesFile.NewlineConventionDos]) (_ -> update a_1::PmPrefs._Prefs [24:PmPrefs.LeaveAlone UtilNewlinesFile.NewlineConventionNone])
+PmPrefs.writeNLH_140 !_x_0 = case _x_0 (PmPrefs._Prefs pmp_pth_1_0 pmp_lnk_1_1 pmp_obj_1_2 typ_prefs_1_3 con_prefs_1_4 err_prefs_1_5 src_prefs_1_6 prj_prefs_1_7 edwinfont_1_8 edwintabs_1_9 edwinmargin_1_10 compopts_1_11 cgenopts_1_12 linkopts_1_13 applopts_1_14 syncols_1_15 defcols_1_16 impcols_1_17 proj_hist_1_18 file_hist_1_19 switch_close_1_20 show_toolbar_1_21 be_verbose_1_22 altgr_workaround_1_23 newline_handling_1_24 reg_prefs_1_25 -> <{PmPrefs._c;421;11_291}> newline_handling_1_24) 
+<{PmPrefs._c;421;11_291}> !newline_handling_0 = case newline_handling_0 (PmPrefs.LeaveAlone _x_1_0 -> case _x_1_0 (UtilNewlinesFile.NewlineConventionNone -> "L0") (UtilNewlinesFile.NewlineConventionMac -> "L1") (UtilNewlinesFile.NewlineConventionUnix -> "L2") (UtilNewlinesFile.NewlineConventionDos -> "L3") ) (PmPrefs.AlwaysUse _x_1_0 -> case _x_1_0 (UtilNewlinesFile.NewlineConventionNone -> "A0") (UtilNewlinesFile.NewlineConventionMac -> "A1") (UtilNewlinesFile.NewlineConventionUnix -> "A2") (UtilNewlinesFile.NewlineConventionDos -> "A3") ) 
+PmPrefs.anon_67 !v_0 !a_1 = update a_1::PmPrefs._Prefs [25:v_0]
+PmPrefs.anon_66 !a_0 = select a_0::PmPrefs._Prefs 25
+PmPrefs.anon_159 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [0:UtilStrictLists.StrictListToList v_0]
+PmPrefs.anon_158 !a_0 = UtilStrictLists.ListToStrictList (select a_0::PmPrefs._RegPrefs 0)
+PmPrefs.anon_163 v_0 !_x_1 = case _x_1 (_Tuple2 a_1_0 b_1_1 -> _Tuple2 v_0 b_1_1) 
+PmPrefs.anon_162 !_x_0 = case _x_0 (_Tuple2 a_1_0 _x_1_1 -> a_1_0) 
+PmPrefs.anon_161 v_0 !_x_1 = case _x_1 (_Tuple2 a_1_0 b_1_1 -> _Tuple2 a_1_0 v_0) 
+PmPrefs.anon_160 !_x_0 = case _x_0 (_Tuple2 _x_1_0 a_1_1 -> a_1_1) 
+PmPrefs.FlagsOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 2) 1 (UtilOptions._OptionsTableEntry "fPath" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_160 PmPrefs.anon_161)) 0 (UtilOptions._OptionsTableEntry "fName" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_162 PmPrefs.anon_163)
+PmPrefs.FlagOption = UtilOptions._OptionsTableEntry "Flags" (UtilOptions.Group PmPrefs.FlagsOptionsTable) StdFunc.id StdFunc.const
+PmPrefs.anon_157 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [1:v_0]
+PmPrefs.anon_156 !a_0 = select a_0::PmPrefs._RegPrefs 1
+PmPrefs.anon_155 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [2:v_0]
+PmPrefs.anon_154 !a_0 = select a_0::PmPrefs._RegPrefs 2
+PmPrefs.anon_153 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [3:v_0]
+PmPrefs.anon_152 !a_0 = select a_0::PmPrefs._RegPrefs 3
+PmPrefs.anon_151 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [4:v_0]
+PmPrefs.anon_150 !a_0 = select a_0::PmPrefs._RegPrefs 4
+PmPrefs.anon_149 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [5:v_0]
+PmPrefs.anon_148 !a_0 = select a_0::PmPrefs._RegPrefs 5
+PmPrefs.anon_147 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [6:v_0]
+PmPrefs.anon_146 !a_0 = select a_0::PmPrefs._RegPrefs 6
+PmPrefs.anon_145 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [7:v_0]
+PmPrefs.anon_144 !a_0 = select a_0::PmPrefs._RegPrefs 7
+PmPrefs.anon_143 !v_0 !a_1 = update a_1::PmPrefs._RegPrefs [8:v_0]
+PmPrefs.anon_142 !a_0 = select a_0::PmPrefs._RegPrefs 8
+PmPrefs.RegPrefsOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 9) 8 (UtilOptions._OptionsTableEntry "VisedPath" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_142 PmPrefs.anon_143)) 7 (UtilOptions._OptionsTableEntry "VisedName" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_144 PmPrefs.anon_145)) 6 (UtilOptions._OptionsTableEntry "ProofPath" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_146 PmPrefs.anon_147)) 5 (UtilOptions._OptionsTableEntry "ProofName" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_148 PmPrefs.anon_149)) 4 (UtilOptions._OptionsTableEntry "HeappPath" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_150 PmPrefs.anon_151)) 3 (UtilOptions._OptionsTableEntry "HeappName" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_152 PmPrefs.anon_153)) 2 (UtilOptions._OptionsTableEntry "TimepPath" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_154 PmPrefs.anon_155)) 1 (UtilOptions._OptionsTableEntry "TimepName" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_156 PmPrefs.anon_157)) 0 (UtilOptions._OptionsTableEntry "ClideFlags" (UtilOptions.List PmPrefs.FlagOption (_Tuple2 "" "")) PmPrefs.anon_158 PmPrefs.anon_159)
+PmPrefs.booltriple_228 !_x_0::B !_x_1::B !_x_2::B !_x_3::B = case _x_0 (True -> case _x_1 (True -> case _x_2 (True -> case _x_3 (True -> "0") (False -> "1") ) (False -> case _x_3 (True -> "2") (False -> "3") ) ) (False -> case _x_2 (True -> case _x_3 (True -> "4") (False -> "5") ) (False -> case _x_3 (True -> "6") (False -> "7") ) ) ) (False -> case _x_1 (True -> case _x_2 (True -> case _x_3 (True -> "8") (False -> "9") ) (False -> case _x_3 (True -> "A") (False -> "B") ) ) (False -> case _x_2 (True -> case _x_3 (True -> "C") (False -> "D") ) (False -> case _x_3 (True -> "E") (False -> "F") ) ) ) 
+PmPrefs.toString_232 !_x_0 = case _x_0 (_Tuple5 i_1_0 a_1_1 b_1_2 c_1_3 d_1_4 -> <{StdString.+++_11}> (PmPrefs.booltriple_228 a_1_1 b_1_2 c_1_3 d_1_4) (StdString.toString_5 i_1_0)) 
+PmPrefs.booltriple_229 !_x_0::C = case _x_0 ('0' -> _Tuple4 True True True True) ('1' -> _Tuple4 True True True False) ('2' -> _Tuple4 True True False True) ('3' -> _Tuple4 True True False False) ('4' -> _Tuple4 True False True True) ('5' -> _Tuple4 True False True False) ('6' -> _Tuple4 True False False True) ('7' -> _Tuple4 True False False False) ('8' -> _Tuple4 False True True True) ('9' -> _Tuple4 False True True False) ('A' -> _Tuple4 False True False True) ('B' -> _Tuple4 False True False False) ('C' -> _Tuple4 False False True True) ('D' -> _Tuple4 False False True False) ('E' -> _Tuple4 False False False True) (_ -> _Tuple4 False False False False)
+PmPrefs.fromString_233 !s_0 = case (<{StdInt.==_16}> (_SystemArray.size_20 s_0) 0) (True -> _Tuple5 0 False False False False) (False -> let _x_2_0 = PmPrefs.booltriple_229 (_SystemArray.select_19 s_0 0) in _Tuple5 (StdInt.toInt_23 (<{StdString.%_10}> s_0 (_Tuple2 1 (<{StdInt.-_7}> (_SystemArray.size_20 s_0) 1)))) (select _x_2_0::_Tuple4 0) (select _x_2_0::_Tuple4 1) (select _x_2_0::_Tuple4 2) (select _x_2_0::_Tuple4 3)) 
+PmPrefs.PathOption_280 !_vfromString_0 = UtilOptions._OptionsTableEntry "Path" (UtilOptions.SimpleWithStringConversion (<{StdOverloaded.toString;}> StdString.toString_9) _vfromString_0 PmPath.convert_path_separators) StdFunc.id StdFunc.const
+PmPrefs.PathOption_281 = UtilOptions._OptionsTableEntry "Path" (UtilOptions.SimpleWithStringConversion (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4) PmPath.convert_path_separators) StdFunc.id StdFunc.const
+PmPrefs.PrefsOptionsTable = _SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray.update_5 (_SystemArray._createArray_0 38) 37 (UtilOptions._OptionsTableEntry "RegPrefs" (UtilOptions.Group PmPrefs.RegPrefsOptionsTable) PmPrefs.anon_66 PmPrefs.anon_67)) 36 (UtilOptions._OptionsTableEntry "NewlineHandling" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.writeNLH_140 PmPrefs.readNLH_141)) 35 (UtilOptions._OptionsTableEntry "AltGrWorkaround" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_68 PmPrefs.anon_69)) 34 (UtilOptions._OptionsTableEntry "BeVerbose" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_70 PmPrefs.anon_71)) 33 (UtilOptions._OptionsTableEntry "ShowToolbar" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_72 PmPrefs.anon_73)) 32 (UtilOptions._OptionsTableEntry "SwitchClose" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_74 PmPrefs.anon_75)) 31 (UtilOptions._OptionsTableEntry "FileHist" (UtilOptions.List PmPrefs.PathOption_281 "") PmPrefs.anon_76 PmPrefs.anon_77)) 30 (UtilOptions._OptionsTableEntry "ProjHist" (UtilOptions.List PmPrefs.PathOption_281 "") PmPrefs.anon_78 PmPrefs.anon_79)) 29 (UtilOptions._OptionsTableEntry "ImpCl" (UtilOptions.Group PmPrefs.SyncOptionsTable) PmPrefs.anon_80 PmPrefs.anon_81)) 28 (UtilOptions._OptionsTableEntry "DefCl" (UtilOptions.Group PmPrefs.SyncOptionsTable) PmPrefs.anon_82 PmPrefs.anon_83)) 27 (UtilOptions._OptionsTableEntry "SynCl" (UtilOptions.Group PmPrefs.SyncOptionsTable) PmPrefs.anon_84 PmPrefs.anon_85)) 26 (UtilOptions._OptionsTableEntry "AppOp" (UtilOptions.Group PmFiles.ApplicationOptionsTable) PmPrefs.anon_86 PmPrefs.anon_87)) 25 (UtilOptions._OptionsTableEntry "LnkOp" (UtilOptions.Group PmFiles.LinkOptionsTable) PmPrefs.anon_88 PmPrefs.anon_89)) 24 (UtilOptions._OptionsTableEntry "GenOp" (UtilOptions.Group PmFiles.CodeGenOptionsTable) PmPrefs.anon_90 PmPrefs.anon_91)) 23 (UtilOptions._OptionsTableEntry "ComOp" (UtilOptions.Group PmFiles.CompilerOptionsTable) PmPrefs.anon_92 PmPrefs.anon_93)) 22 (UtilOptions._OptionsTableEntry "EdMargin" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_5) (<{StdOverloaded.fromString;}> PmPrefs.fromString_234)) PmPrefs.anon_94 PmPrefs.anon_95)) 21 (UtilOptions._OptionsTableEntry "EdTab" (UtilOptions.Simple (<{StdOverloaded.toString;}> PmPrefs.toString_232) (<{StdOverloaded.fromString;}> PmPrefs.fromString_233)) PmPrefs.anon_96 PmPrefs.anon_97)) 20 (UtilOptions._OptionsTableEntry "EdFnt" (UtilOptions.Group PmPrefs.FontOptionsTable) PmPrefs.anon_98 PmPrefs.anon_99)) 19 (UtilOptions._OptionsTableEntry "PWDcl" (UtilOptions.Simple (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdOverloaded.fromString;}> StdString.fromString_4)) PmPrefs.anon_100 PmPrefs.anon_101)) 18 (UtilOptions._OptionsTableEntry "PWFnt" (UtilOptions.Group PmPrefs.FontOptionsTable) PmPrefs.anon_102 PmPrefs.anon_103)) 17 (UtilOptions._OptionsTableEntry "PWBak" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_104 PmPrefs.anon_105)) 16 (UtilOptions._OptionsTableEntry "PWFor" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_106 PmPrefs.anon_107)) 15 (UtilOptions._OptionsTableEntry "PWTop" (UtilOptions.Simple (<{StdOverloaded.toString;}> colourclip.toString_0) (<{StdOverloaded.fromString;}> colourclip.fromString_1)) PmPrefs.anon_108 PmPrefs.anon_109)) 14 (UtilOptions._OptionsTableEntry "PWSiz" (UtilOptions.Group PmPrefs.SizeOptionsTable) PmPrefs.anon_110 PmPrefs.anon_111)) 13 (UtilOptions._OptionsTableEntry "PWPos" (UtilOptions.Group PmPrefs.VectOptionsTable) PmPrefs.anon_112 PmPrefs.anon_113)) 12 (UtilOptions._OptionsTableEntry "SWPrefs" (UtilOptions.Group PmPrefs.SrcPrefsOptionsTable) PmPrefs.anon_114 PmPrefs.anon_115)) 11 (UtilOptions._OptionsTableEntry "EWPrefs" (UtilOptions.Group PmPrefs.ErrPrefsOptionsTable) PmPrefs.anon_116 PmPrefs.anon_117)) 10 (UtilOptions._OptionsTableEntry "CWSync" (UtilOptions.Group PmPrefs.SyncOptionsTable) PmPrefs.anon_118 PmPrefs.anon_119)) 9 (UtilOptions._OptionsTableEntry "CWSiz" (UtilOptions.Group PmPrefs.SizeOptionsTable) PmPrefs.anon_120 PmPrefs.anon_121)) 8 (UtilOptions._OptionsTableEntry "CWPos" (UtilOptions.Group PmPrefs.VectOptionsTable) PmPrefs.anon_122 PmPrefs.anon_123)) 7 (UtilOptions._OptionsTableEntry "CWFnt" (UtilOptions.Group PmPrefs.FontOptionsTable) PmPrefs.anon_124 PmPrefs.anon_125)) 6 (UtilOptions._OptionsTableEntry "TWSync" (UtilOptions.Group PmPrefs.SyncOptionsTable) PmPrefs.anon_126 PmPrefs.anon_127)) 5 (UtilOptions._OptionsTableEntry "TWSiz" (UtilOptions.Group PmPrefs.SizeOptionsTable) PmPrefs.anon_128 PmPrefs.anon_129)) 4 (UtilOptions._OptionsTableEntry "TWPos" (UtilOptions.Group PmPrefs.VectOptionsTable) PmPrefs.anon_130 PmPrefs.anon_131)) 3 (UtilOptions._OptionsTableEntry "TWFnt" (UtilOptions.Group PmPrefs.FontOptionsTable) PmPrefs.anon_132 PmPrefs.anon_133)) 2 (UtilOptions._OptionsTableEntry "PmpObjcs" (UtilOptions.List PmPrefs.PathOption_281 "") PmPrefs.anon_134 PmPrefs.anon_135)) 1 (UtilOptions._OptionsTableEntry "PmpLinks" (UtilOptions.List PmPrefs.PathOption_281 "") PmPrefs.anon_136 PmPrefs.anon_137)) 0 (UtilOptions._OptionsTableEntry "PmpPaths" (UtilOptions.List PmPrefs.PathOption_281 "") PmPrefs.anon_138 PmPrefs.anon_139)
+PmPrefs.ReadTable !options_0 = UtilOptions.GetOptions PmPrefs.PrefsOptionsTable options_0 PmPrefs.emptyPrefs
+PmPrefs.ReadPrefsFile !prefsPath_0 !ps_1 = let _x_1_0 = StdFile.fopen_27 prefsPath_0 3 ps_1 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> <{_Tuple2!2}> (_Tuple3 PmPrefs.emptyPrefs False (<{StdString.+++_11}> "The file \"" (<{StdString.+++_11}> prefsPath_0 "\" could not be opened."))) (select _x_1_0::_Tuple3 2)) (False -> let file_3_0 = select _x_1_0::_Tuple3 1, _x_3_1 = UtilOptions.ReadVersion file_3_0, version_3_2 = select _x_3_1::_Tuple2 0 in case (StdBool.not (<{StdString.==_2}> version_3_2 "1.0")) (True -> <{_Tuple2!2}> (_Tuple3 PmPrefs.emptyPrefs False (<{StdString.+++_11}> "The file \"" (<{StdString.+++_11}> prefsPath_0 (<{StdString.+++_11}> "\" has the wrong version." (<{StdString.+++_11}> version_3_2 "<<<"))))) (select (StdFile.fclose_26 (select _x_3_1::_Tuple2 1) (select _x_1_0::_Tuple3 2))::_Tuple2 1)) (False -> let !_x_5_0 = UtilOptions.ReadOptionsFile (select _x_3_1::_Tuple2 1), !prefs_5_1 = PmPrefs.ReadTable (select _x_5_0::_Tuple2 0), !_x_5_2 = StdFile.fclose_26 (select _x_5_0::_Tuple2 1) (select _x_1_0::_Tuple3 2) in case (StdBool.not (select _x_5_2::_Tuple2 0)) (True -> <{_Tuple2!2}> (_Tuple3 prefs_5_1 True (<{StdString.+++_11}> "The file \"" (<{StdString.+++_11}> prefsPath_0 "\" clould not be closed."))) (select _x_5_2::_Tuple2 1)) (False -> <{_Tuple2!2}> (_Tuple3 prefs_5_1 True "") (select _x_5_2::_Tuple2 1)) ) ) 
+PmPrefs.WriteTable !prefs_0 = UtilOptions.PutOptions PmPrefs.PrefsOptionsTable prefs_0
+PmPrefs.SavePrefsFile !prefsPath_0 !prefs_1 !files_2 = let !_x_1_0 = StdFile.fopen_27 prefsPath_0 1 files_2 in case (StdBool.not (select _x_1_0::_Tuple3 0)) (True -> <{_Tuple2!3}> False (select _x_1_0::_Tuple3 2)) (False -> let !options_3_0 = PmPrefs.WriteTable prefs_1, !file_3_1 = UtilOptions.WriteOptionsFile "1.0" options_3_0 (select _x_1_0::_Tuple3 1) in StdFile.fclose_26 file_3_1 (select _x_1_0::_Tuple3 2)) 
+PmPrefs.savePrefs !_vFileEnv_0 !prefspath_1 prefs_2 env_3 = let _x_1_0 = select _vFileEnv_0::<{StdFile.FileEnv;}> 0 (PmPrefs.SavePrefsFile prefspath_1 prefs_2) env_3 in case (StdBool.not (select _x_1_0::_Tuple2 0)) (True -> select _x_1_0::_Tuple2 1) (False -> select _x_1_0::_Tuple2 1) 
+PmPrefs.openPrefs !_vFileEnv_0 !prefspath_1 !env_2 = let _x_1_0 = select _vFileEnv_0::<{StdFile.FileEnv;}> 0 (PmPrefs.ReadPrefsFile prefspath_1) env_2, _x_1_1 = select _x_1_0::_Tuple2 0 in case (StdBool.not (select _x_1_1::_Tuple3 1)) (True -> <{_Tuple2!3}> PmPrefs.emptyPrefs (PmPrefs.savePrefs _vFileEnv_0 prefspath_1 PmPrefs.emptyPrefs (select _x_1_0::_Tuple2 1))) (False -> <{_Tuple2!3}> (select _x_1_1::_Tuple3 0) (select _x_1_0::_Tuple2 1)) 
+PmPrefs.ewSyntaxColours = EdMonad._SyntaxColours StdPictureDef.Black PmPrefs.twBack (PmPrefs.darkerColour PmPrefs.twBack) PmPrefs.twTabs PmPrefs.twComm PmPrefs.twStri StdPictureDef.Magenta PmPrefs.twChar StdPictureDef.Black StdPictureDef.Black
+<{PmPrefs.TD;ErrPrefs}> _x_0::B = _predefined._Nil
+<{PmPrefs.TD;SrcPrefs}> _x_0::B = _predefined._Nil
+<{PmPrefs.TD;TypPrefs}> _x_0::B = _predefined._Nil
+<{PmPrefs.TD;ConPrefs}> _x_0::B = _predefined._Nil
+<{PmPrefs.TD;PrjPrefs}> _x_0::B = _predefined._Nil
+<{PmPrefs.TD;Prefs}> _x_0::B = _predefined._Nil
+<{PmPrefs.TD;RegPrefs}> _x_0::B = _predefined._Nil
+<{PmPrefs.TD;NewlinePrefs}> _x_0::B = _predefined._Nil
+
+:: PmPrefs.NewlinePrefs = PmPrefs.LeaveAlone a1 | PmPrefs.AlwaysUse a1
+
+|| Converted Records
+:: PmPrefs._ErrPrefs = {!PmPrefs.err_pos, !PmPrefs.err_siz, !PmPrefs.err_fname, !PmPrefs.err_fsize::I, !PmPrefs.err_forc, !PmPrefs.err_bacc, !PmPrefs.err_err::B, !PmPrefs.err_wrn::B, !PmPrefs.err_inf::B}
+
+:: PmPrefs._SrcPrefs = {!PmPrefs.src_pos, !PmPrefs.src_siz, !PmPrefs.src_fname, !PmPrefs.src_fsize::I, !PmPrefs.src_forc, !PmPrefs.src_bacc}
+
+:: PmPrefs._TypPrefs = {!PmPrefs.typewinfont, !PmPrefs.typewinpos, !PmPrefs.typewinsiz, !PmPrefs.typewinsync}
+
+:: PmPrefs._ConPrefs = {!PmPrefs.conswinfont, !PmPrefs.conswinpos, !PmPrefs.conswinsiz, !PmPrefs.conswinsync}
+
+:: PmPrefs._PrjPrefs = {!PmPrefs.proj_pos, !PmPrefs.proj_siz, !PmPrefs.proj_topc, !PmPrefs.proj_forc, !PmPrefs.proj_bacc, !PmPrefs.proj_font, !PmPrefs.proj_shft::B}
+
+:: PmPrefs._Prefs = {!PmPrefs.pmp_pth, !PmPrefs.pmp_lnk, !PmPrefs.pmp_obj, !PmPrefs.typ_prefs, !PmPrefs.con_prefs, !PmPrefs.err_prefs, !PmPrefs.src_prefs, !PmPrefs.prj_prefs, !PmPrefs.edwinfont, !PmPrefs.edwintabs, !PmPrefs.edwinmargin::I, !PmPrefs.compopts, !PmPrefs.cgenopts, !PmPrefs.linkopts, !PmPrefs.applopts, !PmPrefs.syncols, !PmPrefs.defcols, !PmPrefs.impcols, !PmPrefs.proj_hist, !PmPrefs.file_hist, !PmPrefs.switch_close::B, !PmPrefs.show_toolbar::B, !PmPrefs.be_verbose::B, !PmPrefs.altgr_workaround::B, !PmPrefs.newline_handling, !PmPrefs.reg_prefs}
+
+:: PmPrefs._RegPrefs = {!PmPrefs.rp_flags, !PmPrefs.tp_name, !PmPrefs.tp_path, !PmPrefs.hp_name, !PmPrefs.hp_path, !PmPrefs.pr_name, !PmPrefs.pr_path, !PmPrefs.ve_name, !PmPrefs.ve_path}
+
+:: <{PmPrefs.gEq_s;}> = {!PmPrefs.gEq_s}
+
+:: <{PmPrefs.gEq_ss;}> = {!PmPrefs.gEq_ss}
+
+:: <{PmPrefs.gEq_sss;}> = {!PmPrefs.gEq_sss}
+
+:: <{PmPrefs.gEq_ssss;}> = {!PmPrefs.gEq_ssss}
+
+:: <{PmPrefs.gEq_sssss;}> = {!PmPrefs.gEq_sssss}
+
+:: <{PmPrefs.gEq_ssssss;}> = {!PmPrefs.gEq_ssssss}
+
+:: <{PmPrefs.gEq_sssssss;}> = {!PmPrefs.gEq_sssssss}
+
+:: <{PmPrefs.gEq_ssssssss;}> = {!PmPrefs.gEq_ssssssss}
+
+:: <{PmPrefs.gEq_sssssssss;}> = {!PmPrefs.gEq_sssssssss}
+
+:: <{PmPrefs.bimap_s;}> = {PmPrefs.bimap_s}
+
+:: <{PmPrefs.bimap_ss;}> = {PmPrefs.bimap_ss}
+
+:: <{PmPrefs.bimap_sss;}> = {PmPrefs.bimap_sss}
+

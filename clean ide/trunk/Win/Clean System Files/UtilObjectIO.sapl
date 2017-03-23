@@ -1,0 +1,70 @@
+|| ?module? UtilObjectIO
+
+
+UtilObjectIO.handleOSEvent !osEvent_0 !pState_1 = select (scheduler.handleOneEventForDevices (deviceevents.ScheduleOSEvent osEvent_0 _predefined._Nil) pState_1)::_Tuple3 2
+UtilObjectIO.callback !handleOSEvent_0 !cci_1 !state_2 !tb_3::I = <{_Tuple3!7}> clCrossCall_12.return0Cci (handleOSEvent_0 cci_1 state_2) tb_3
+UtilObjectIO.osfileselectFatalError !function_0 !error_1 = commondef.fatalError function_0 "osaltfileselect" error_1
+UtilObjectIO.getinputfilename_30 !_x_0 !tb_1::I = case _x_0 (clCrossCall_12._CrossCallInfo _x_1_0 ok_1_1 ptr_1_2 p3_1_3 p4_1_4 p5_1_5 p6_1_6 -> case _x_1_0 (12 -> case (<{StdInt.==_16}> ok_1_1 0) (True -> <{_Tuple3!7}> False "" tb_1) (False -> let _x_4_0 = clCCall_12.winGetCStringAndFree ptr_1_2 tb_1 in <{_Tuple3!7}> True (select _x_4_0::_Tuple2 0) (select _x_4_0::_Tuple2 1)) ) (1 -> <{_Tuple3!7}> False "" tb_1) (_ -> UtilObjectIO.osfileselectFatalError "osSelectinputfile" (<{StdString.+++_11}> "unexpected ccMsg field of return CrossCallInfo (" (<{StdString.+++_11}> (StdString.toString_5 _x_1_0) ")")))) 
+UtilObjectIO.osSelectinputfile !handleOSEvent_0 !state_1 !tb_2::I = let _x_1_0 = clCrossCall_12.issueCleanRequest (UtilObjectIO.callback handleOSEvent_0) (clCrossCall_12._CrossCallInfo 1478 0 0 0 0 0 0) state_1 tb_2, _x_1_1 = UtilObjectIO.getinputfilename_30 (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 2) in <{_Tuple4!15}> (select _x_1_1::_Tuple3 0) (select _x_1_1::_Tuple3 1) (select _x_1_0::_Tuple3 1) (select _x_1_1::_Tuple3 2)
+<{UtilObjectIO.selectInputFile`}> !pState_0 = let _x_1_0 = StdPSt.accPIO iostate.getIOToolbox pState_0, pState_1_1 = select _x_1_0::_Tuple2 1, tb_1_2::I = select _x_1_0::_Tuple2 0, tb_1_3::I = osfileselect.osInitialiseFileSelectors tb_1_2, _x_1_4 = UtilObjectIO.osSelectinputfile UtilObjectIO.handleOSEvent pState_1_1 tb_1_3, name_1_5 = select _x_1_4::_Tuple4 1 in <{_Tuple2!3}> (<{UtilObjectIO._if;165;8_116}> (select _x_1_4::_Tuple4 0) name_1_5) (StdPSt.appPIO (iostate.setIOToolbox (select _x_1_4::_Tuple4 3)) (select _x_1_4::_Tuple4 2))
+<{UtilObjectIO._if;165;8_116}> !_x_0::B name_1 = case _x_0 (True -> Data.Maybe.Just name_1) (_ -> Data.Maybe.Nothing)
+UtilObjectIO.getoutputfilename_31 !_x_0 !tb_1::I = case _x_0 (clCrossCall_12._CrossCallInfo _x_1_0 ok_1_1 ptr_1_2 p3_1_3 p4_1_4 p5_1_5 p6_1_6 -> case _x_1_0 (12 -> case (<{StdInt.==_16}> ok_1_1 0) (True -> <{_Tuple3!7}> False "" tb_1) (False -> let _x_4_0 = clCCall_12.winGetCStringAndFree ptr_1_2 tb_1 in <{_Tuple3!7}> True (select _x_4_0::_Tuple2 0) (select _x_4_0::_Tuple2 1)) ) (1 -> <{_Tuple3!7}> False "" tb_1) (_ -> UtilObjectIO.osfileselectFatalError "osSelectoutputfile" (<{StdString.+++_11}> "unexpected ccMsg field of return CrossCallInfo (" (<{StdString.+++_11}> (StdString.toString_5 _x_1_0) ")")))) 
+UtilObjectIO.osSelectoutputfile !handleOSEvent_0 !state_1 !prompt_2 !filename_3 !ok_4 !tb_5::I = let _x_1_0 = clCCall_12.winMakeCString prompt_2 tb_5, promptptr_1_1 = select _x_1_0::_Tuple2 0, _x_1_2::I = clCCall_12.winMakeCString filename_3 (select _x_1_0::_Tuple2 1), filenameptr_1_3 = select _x_1_2::_Tuple2 0, _x_1_4::I = clCCall_12.winMakeCString ok_4 (select _x_1_2::_Tuple2 1), okptr_1_5 = select _x_1_4::_Tuple2 0, _x_1_6::I = clCrossCall_12.issueCleanRequest (UtilObjectIO.callback handleOSEvent_0) (clCrossCall_12._CrossCallInfo 1479 promptptr_1_1 filenameptr_1_3 okptr_1_5 0 0 0) state_1 (select _x_1_4::_Tuple2 1), _x_1_7 = UtilObjectIO.getoutputfilename_31 (select _x_1_6::_Tuple3 0) (clCCall_12.winReleaseCString okptr_1_5 (clCCall_12.winReleaseCString filenameptr_1_3 (clCCall_12.winReleaseCString promptptr_1_1 (select _x_1_6::_Tuple3 2)))) in <{_Tuple4!15}> (select _x_1_7::_Tuple3 0) (select _x_1_7::_Tuple3 1) (select _x_1_6::_Tuple3 1) (select _x_1_7::_Tuple3 2)
+<{UtilObjectIO.selectOutputFile`}> !prompt_0 !filename_1 !ok_2 !pState_3 = let _x_1_0 = StdPSt.accPIO iostate.getIOToolbox pState_3, pState_1_1 = select _x_1_0::_Tuple2 1, tb_1_2::I = select _x_1_0::_Tuple2 0, tb_1_3::I = osfileselect.osInitialiseFileSelectors tb_1_2, _x_1_4 = UtilObjectIO.osSelectoutputfile UtilObjectIO.handleOSEvent pState_1_1 prompt_0 filename_1 ok_2 tb_1_3, name_1_5 = select _x_1_4::_Tuple4 1 in <{_Tuple2!3}> (<{UtilObjectIO._if;173;8_117}> (select _x_1_4::_Tuple4 0) name_1_5) (StdPSt.appPIO (iostate.setIOToolbox (select _x_1_4::_Tuple4 3)) (select _x_1_4::_Tuple4 2))
+<{UtilObjectIO._if;173;8_117}> !_x_0::B name_1 = case _x_0 (True -> Data.Maybe.Just name_1) (_ -> Data.Maybe.Nothing)
+UtilObjectIO.WinGetModulePath = error "no AnyCodeExpr"
+UtilObjectIO.LastColon !s_0 !i_1::I = case (StdBool.not (<{StdInt.<_17}> 0 i_1)) (True -> <{_Tuple2!3}> False 0) (False -> case (<{StdChar.==_18}> StdSystem.dirseparator (_SystemArray.select_19 s_0 i_1)) (True -> <{_Tuple2!3}> True i_1) (False -> UtilObjectIO.LastColon s_0 (<{StdInt.-_7}> i_1 StdInt.one_11)) ) 
+UtilObjectIO.RemoveFileName !path_0 = let last_1_0 = <{StdInt.-_7}> (_SystemArray.size_20 path_0) StdInt.one_11, _x_1_1::I = UtilObjectIO.LastColon path_0 last_1_0 in case (select _x_1_1::_Tuple2 0) (True -> <{StdString.%_10}> path_0 (_Tuple2 0 (<{StdInt.-_7}> (select _x_1_1::_Tuple2 1) StdInt.one_11))) (False -> path_0) 
+UtilObjectIO.find_last_backslash_in_string !_vArray_0 !i_1::I s_2 = case (<{StdInt.<_17}> i_1 0) (True -> _Tuple2 False -1) (False -> case (<{StdChar.==_18}> (select _vArray_0::<{_SystemArray.Array;}> 3 s_2 i_1) '\\') (True -> _Tuple2 True i_1) (False -> UtilObjectIO.find_last_backslash_in_string _vArray_0 (<{StdInt.-_7}> i_1 1) s_2) ) 
+UtilObjectIO.FindFirstFile_::I !file_name_0 !find_data_1 = error "no AnyCodeExpr"
+UtilObjectIO.FindFirstFile !file_name_0 = let find_data_1_0 = _SystemArray.createArray_17 318 '\0' in <{_Tuple2!3}> (UtilObjectIO.FindFirstFile_ file_name_0 find_data_1_0) find_data_1_0
+UtilObjectIO.FindClose::I !handle_0::I = error "no AnyCodeExpr"
+UtilObjectIO.find_first_file_and_close !file_name_0 = let _x_1_0::I = UtilObjectIO.FindFirstFile file_name_0, handle_1_1 = select _x_1_0::_Tuple2 0 in case (StdBool.not (<{StdInt.==_16}> handle_1_1 -1)) (True -> let r_3_0::I = UtilObjectIO.FindClose handle_1_1 in case (<{StdInt.==_16}> r_3_0 r_3_0) (True -> <{_Tuple2!3}> True (select _x_1_0::_Tuple2 1)) (False -> <{_Tuple2!3}> False (select _x_1_0::_Tuple2 1)) ) (False -> <{_Tuple2!3}> False "") 
+UtilObjectIO.find_null_char_in_string::I !i_0::I !s_1 = case (case (<{StdInt.<_17}> i_0 (_SystemArray.size_20 s_1)) (True -> StdBool.not (<{StdChar.==_18}> (_SystemArray.select_19 s_1 i_0) '\0')) (False -> False) ) (True -> UtilObjectIO.find_null_char_in_string (<{StdInt.+_6}> i_0 1) s_1) (False -> i_0) 
+UtilObjectIO.find_data_file_name !find_data_0 = <{StdString.%_10}> find_data_0 (_Tuple2 44 (<{StdInt.-_7}> (UtilObjectIO.find_null_char_in_string 44 find_data_0) 1))
+UtilObjectIO.find_last_backslash_in_string_115 !i_0::I s_1 = case (<{StdInt.<_17}> i_0 0) (True -> _Tuple2 False -1) (False -> case (<{StdChar.==_18}> (_SystemArray.select_19 s_1 i_0) '\\') (True -> _Tuple2 True i_0) (False -> UtilObjectIO.find_last_backslash_in_string_115 (<{StdInt.-_7}> i_0 1) s_1) ) 
+UtilObjectIO.expand_8_3_names_in_path !path_and_file_name_0 = let _x_1_0 = UtilObjectIO.find_last_backslash_in_string_115 (<{StdInt.-_7}> (_SystemArray.size_20 path_and_file_name_0) 1) path_and_file_name_0 in case (StdBool.not (select _x_1_0::_Tuple2 0)) (True -> path_and_file_name_0) (False -> let back_slash_index_3_0 = select _x_1_0::_Tuple2 1, path_3_1 = UtilObjectIO.expand_8_3_names_in_path (<{StdString.%_10}> path_and_file_name_0 (_Tuple2 0 (<{StdInt.-_7}> back_slash_index_3_0 1))), file_name_3_2 = <{StdString.%_10}> path_and_file_name_0 (_Tuple2 (<{StdInt.+_6}> back_slash_index_3_0 1) (<{StdInt.-_7}> (_SystemArray.size_20 path_and_file_name_0) 1)), path_and_file_name_3_3 = <{StdString.+++_11}> path_3_1 (<{StdString.+++_11}> "\\" file_name_3_2), _x_3_4::I = UtilObjectIO.find_first_file_and_close (<{StdString.+++_11}> path_and_file_name_3_3 "\0") in case (select _x_3_4::_Tuple2 0) (True -> <{StdString.+++_11}> path_3_1 (<{StdString.+++_11}> "\\" (UtilObjectIO.find_data_file_name (select _x_3_4::_Tuple2 1)))) (False -> path_and_file_name_3_3) ) 
+UtilObjectIO.global =: let !path_name_1_0 = UtilObjectIO.expand_8_3_names_in_path (UtilObjectIO.RemoveFileName UtilObjectIO.WinGetModulePath) in _SystemArray.update_77 (_SystemArray._createArray_72 1) 0 (Data.Maybe.Just path_name_1_0)
+UtilObjectIO.getinputfilename_32 !_x_0 !tb_1::I = case _x_0 (clCrossCall_12._CrossCallInfo _x_1_0 ok_1_1 ptr_1_2 p3_1_3 p4_1_4 p5_1_5 p6_1_6 -> case _x_1_0 (12 -> case (<{StdInt.==_16}> ok_1_1 0) (True -> <{_Tuple3!7}> False "" tb_1) (False -> let _x_4_0 = clCCall_12.winGetCStringAndFree ptr_1_2 tb_1 in <{_Tuple3!7}> True (select _x_4_0::_Tuple2 0) (select _x_4_0::_Tuple2 1)) ) (1 -> <{_Tuple3!7}> False "" tb_1) (_ -> UtilObjectIO.osfileselectFatalError "osSelectdirectory" (<{StdString.+++_11}> "unexpected ccMsg field of return CrossCallInfo (" (<{StdString.+++_11}> (StdString.toString_5 _x_1_0) ")")))) 
+UtilObjectIO.osSelectdirectory !handleOSEvent_0 !state_1 !initial_2 !tb_3::I = let _x_1_0::I = <{UtilObjectIO._c;242;27_119}> initial_2 tb_3, initialptr_1_1 = select _x_1_0::_Tuple2 0, tb_1_2 = select _x_1_0::_Tuple2 1, _x_1_3::I = clCrossCall_12.issueCleanRequest (UtilObjectIO.callback handleOSEvent_0) (clCrossCall_12._CrossCallInfo 1475 initialptr_1_1 0 0 0 0 0) state_1 tb_1_2, _x_1_4::I = UtilObjectIO.getinputfilename_32 (select _x_1_3::_Tuple3 0) (<{UtilObjectIO._c;246;27_118}> initialptr_1_1 tb_1_5), tb_1_5 = select _x_1_3::_Tuple3 2 in <{_Tuple4!15}> (select _x_1_4::_Tuple3 0) (select _x_1_4::_Tuple3 1) (select _x_1_3::_Tuple3 1) (select _x_1_4::_Tuple3 2)
+<{UtilObjectIO._c;242;27_119}> !initial_0 tb_1::I = case initial_0 (Data.Maybe.Just initial_1_0 -> clCCall_12.winMakeCString initial_1_0 tb_1) (Data.Maybe.Nothing -> _Tuple2 0 tb_1) 
+<{UtilObjectIO._c;246;27_118}>::I !initialptr_0::I !tb_1::I = case initialptr_0 (0 -> tb_1) (_ -> clCCall_12.winReleaseCString initialptr_0 tb_1)
+UtilObjectIO.selectDirectory_29 !initial_0 !pState_1 = let _x_1_0 = StdPSt.accPIO iostate.getIOToolbox pState_1, pState_1_1 = select _x_1_0::_Tuple2 1, tb_1_2::I = select _x_1_0::_Tuple2 0, tb_1_3::I = osfileselect.osInitialiseFileSelectors tb_1_2, _x_1_4 = UtilObjectIO.osSelectdirectory UtilObjectIO.handleOSEvent pState_1_1 initial_0 tb_1_3, name_1_5 = select _x_1_4::_Tuple4 1 in <{_Tuple2!3}> (<{UtilObjectIO._if;191;12_120}> (select _x_1_4::_Tuple4 0) name_1_5) (StdPSt.appPIO (iostate.setIOToolbox (select _x_1_4::_Tuple4 3)) (select _x_1_4::_Tuple4 2))
+<{UtilObjectIO._if;191;12_120}> !_x_0::B name_1 = case _x_0 (True -> Data.Maybe.Just name_1) (_ -> Data.Maybe.Nothing)
+UtilObjectIO.update_maybe_string !ms_0 !ar_1 = error "no AnyCodeExpr"
+<{UtilObjectIO.selectDirectory`}> !env_0 = let initial_1_0 = _SystemArray.select_75 UtilObjectIO.global 0, _x_1_1 = UtilObjectIO.selectDirectory_29 initial_1_0 env_0, result_1_2 = select _x_1_1::_Tuple2 0 in <{_Tuple2!3}> (select (<{UtilObjectIO._c;180;20_121}> result_1_2)::_Tuple2 0) (select _x_1_1::_Tuple2 1)
+<{UtilObjectIO._c;180;20_121}> !result_0 = case result_0 (Data.Maybe.Nothing -> _Tuple2 result_0 UtilObjectIO.global) (Data.Maybe.Just _x_1_0 -> UtilObjectIO.update_maybe_string result_0 UtilObjectIO.global) 
+UtilObjectIO.osIgnoreCallback !_x_0 !tb_1::I = <{_Tuple2!3}> clCrossCall_12.return0Cci tb_1
+UtilObjectIO.osShellDefault !file_0 !tb_1::I = let _x_1_0 = clCCall_12.winMakeCString file_0 tb_1, cstr_1_1::I = select _x_1_0::_Tuple2 0, _x_1_2 = clCrossCall_12.issueCleanRequest2 UtilObjectIO.osIgnoreCallback (clCrossCall_12._CrossCallInfo 1476 0 cstr_1_1 0 0 0 0) (select _x_1_0::_Tuple2 1) in <{_Tuple2!3}> (select (select _x_1_2::_Tuple2 0)::clCrossCall_12._CrossCallInfo 1) (clCCall_12.winReleaseCString cstr_1_1 (select _x_1_2::_Tuple2 1))
+UtilObjectIO.ShellDefault !file_0 !ps_1 = StdPSt.accPIO (iostate.accIOToolbox (UtilObjectIO.osShellDefault file_0)) ps_1
+UtilObjectIO.GetSysColor::I !n_0::I = error "no AnyCodeExpr"
+UtilObjectIO.GetDialogBackgroundColour !ps_0 = let col_1_0::I = UtilObjectIO.GetSysColor 15 in <{_Tuple2!3}> (StdPictureDef.RGB (StdPictureDef._RGBColour (StdInt.bitand col_1_0 255) (<{StdInt.>>}> (StdInt.bitand col_1_0 65280) 8) (<{StdInt.>>}> (StdInt.bitand col_1_0 16711680) 16))) ps_0
+UtilObjectIO.isWindow !w_0 ps_1 = let _x_1_0 = StdPSt.accPIO StdWindow.getWindowsStack ps_1 in _Tuple2 (StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{id.==_27}>)) w_0 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1)
+UtilObjectIO.ShellExecute !_x_0::I !_x_1::I !_x_2 !_x_3::I !_x_4::I !_x_5::I !_x_6::I = error "no AnyCodeExpr"
+
+
+|| Converted Records
+:: <{UtilObjectIO.gEq_s;}> = {!UtilObjectIO.gEq_s}
+
+:: <{UtilObjectIO.gEq_ss;}> = {!UtilObjectIO.gEq_ss}
+
+:: <{UtilObjectIO.gEq_sss;}> = {!UtilObjectIO.gEq_sss}
+
+:: <{UtilObjectIO.gEq_ssss;}> = {!UtilObjectIO.gEq_ssss}
+
+:: <{UtilObjectIO.gEq_sssss;}> = {!UtilObjectIO.gEq_sssss}
+
+:: <{UtilObjectIO.gEq_ssssss;}> = {!UtilObjectIO.gEq_ssssss}
+
+:: <{UtilObjectIO.gEq_sssssss;}> = {!UtilObjectIO.gEq_sssssss}
+
+:: <{UtilObjectIO.gEq_ssssssss;}> = {!UtilObjectIO.gEq_ssssssss}
+
+:: <{UtilObjectIO.gEq_sssssssss;}> = {!UtilObjectIO.gEq_sssssssss}
+
+:: <{UtilObjectIO.bimap_s;}> = {UtilObjectIO.bimap_s}
+
+:: <{UtilObjectIO.bimap_ss;}> = {UtilObjectIO.bimap_ss}
+
+:: <{UtilObjectIO.bimap_sss;}> = {UtilObjectIO.bimap_sss}
+

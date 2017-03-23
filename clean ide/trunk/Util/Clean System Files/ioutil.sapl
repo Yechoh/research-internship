@@ -1,0 +1,69 @@
+|| ?module? ioutil
+
+
+ioutil.accScreenPicture_21 !f_0 !ps_1 = StdPSt.accPIO (StdPSt.accScreenPicture_13 f_0) ps_1
+ioutil.safeOpenFont !fdef_0 !ps_1 = let _x_1_0 = ioutil.accScreenPicture_21 (StdPicture.openFont fdef_0) ps_1, _x_1_1 = select _x_1_0::_Tuple2 0 in case (StdBool.not (select _x_1_1::_Tuple2 0)) (True -> ioutil.accScreenPicture_21 StdPicture.openDefaultFont (select _x_1_0::_Tuple2 1)) (False -> _Tuple2 (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1)) 
+ioutil.safeOpenFixedFont !fdef_0 !pict_1 = let _x_1_0 = StdPicture.openFont fdef_0 pict_1, _x_1_1 = select _x_1_0::_Tuple2 0, ok_1_2 = select _x_1_1::_Tuple2 0, _x_1_3 = <{ioutil._c;52;25_76}> ok_1_2 fnt_1_6 pict_1_5 <{fdef`_1_7}>, _x_1_4 = select _x_1_3::_Tuple2 0, pict_1_5::B = select _x_1_0::_Tuple2 1, fnt_1_6 = select _x_1_1::_Tuple2 1, <{fdef`_1_7}> = StdPictureDef.NonProportionalFontDef in case (StdBool.not (select _x_1_4::_Tuple2 0)) (True -> StdPicture.openDefaultFont (select _x_1_3::_Tuple2 1)) (False -> _Tuple2 (select _x_1_4::_Tuple2 1) (select _x_1_3::_Tuple2 1)) 
+<{ioutil._c;52;25_76}> !ok_0::B fnt_1 pict_2 <{fdef`_3}> = case ok_0 (True -> _Tuple2 (_Tuple2 ok_0 fnt_1) pict_2) (False -> StdPicture.openFont <{fdef`_3}> pict_2) 
+<{ioutil.altScrollFunction`_24}>::I !direction_0 !d_1::I !_x_2 !_x_3 !move_4 = case _x_2 (StdIOBasic._Rectangle corner1_1_0 corner2_1_1 -> case _x_3 (StdIOCommon._SliderState sliderMin_2_0 sliderMax_2_1 x_2_2 -> <{ioutil._c;17;11_79}> move_4 x_2_2 d_1 direction_0 corner2_1_1 corner1_1_0) ) 
+<{ioutil._c;17;11_79}>::I !move_0 x_1::I d_2::I direction_3 corner2_4 corner1_5 = case move_0 (StdIOCommon.SliderIncSmall -> <{StdInt.+_6}> x_1 (StdInt.abs_13 d_2)) (StdIOCommon.SliderDecSmall -> <{StdInt.-_7}> x_1 (StdInt.abs_13 d_2)) (StdIOCommon.SliderIncLarge -> <{StdInt.+_6}> x_1 (<{ioutil._if;14;27_77}> (<{StdIOCommon.==_35}> direction_3 StdIOCommon.Horizontal) corner2_4 corner1_5 d_2)) (StdIOCommon.SliderDecLarge -> <{StdInt.-_7}> x_1 (<{ioutil._if;14;27_78}> (<{StdIOCommon.==_35}> direction_3 StdIOCommon.Horizontal) corner2_4 corner1_5 d_2)) (StdIOCommon.SliderThumb x_1_0 -> x_1_0) 
+<{ioutil._if;14;27_78}>::I !_x_0::B !corner2_1 !corner1_2 !d_3::I = case _x_0 (True -> StdInt.abs_13 (<{StdInt.-_7}> (<{StdInt.-_7}> (select corner2_1::StdIOBasic._Point2 0) (select corner1_2::StdIOBasic._Point2 0)) (StdInt.abs_13 d_3))) (_ -> StdInt.abs_13 (<{StdInt.-_7}> (<{StdInt.-_7}> (select corner2_1::StdIOBasic._Point2 1) (select corner1_2::StdIOBasic._Point2 1)) (StdInt.abs_13 d_3)))
+<{ioutil._if;14;27_77}>::I !_x_0::B !corner2_1 !corner1_2 !d_3::I = case _x_0 (True -> StdInt.abs_13 (<{StdInt.-_7}> (<{StdInt.-_7}> (select corner2_1::StdIOBasic._Point2 0) (select corner1_2::StdIOBasic._Point2 0)) (StdInt.abs_13 d_3))) (_ -> StdInt.abs_13 (<{StdInt.-_7}> (<{StdInt.-_7}> (select corner2_1::StdIOBasic._Point2 1) (select corner1_2::StdIOBasic._Point2 1)) (StdInt.abs_13 d_3)))
+ioutil.altScrollFunction !direction_0 !d_1::I = <{ioutil.altScrollFunction`_24}> direction_0 d_1
+ioutil.align_26 !<{_v/_0}> !<{_v*_1}> d_2 x_3 = select <{_v*_1}>::<{StdOverloaded.*;}> 0 (select <{_v/_0}>::<{StdOverloaded./;}> 0 x_3 d_2) d_2
+ioutil.align_74::I !<{_v*_0}> d_1::I x_2::I = select <{_v*_0}>::<{StdOverloaded.*;}> 0 (<{StdInt./_10}> x_2 d_1) d_1
+ioutil.align_75::I !d_0::I !x_1::I = <{StdInt.*_9}> (<{StdInt./_10}> x_1 d_0) d_0
+<{ioutil.alignScrollFunction`_25}>::I d_0::I !direction_1 !d_2::I !_x_3 !_x_4 !move_5 = case _x_3 (StdIOBasic._Rectangle corner1_1_0 corner2_1_1 -> case _x_4 (StdIOCommon._SliderState sliderMin_2_0 m_2_1 x_2_2 -> <{ioutil._c;34;11_82}> move_5 x_2_2 d_2 m_2_1 d_0 direction_1 corner2_1_1 corner1_1_0) ) 
+<{ioutil._c;34;11_82}>::I !move_0 x_1::I d_2::I m_3::I d_4::I direction_5 corner2_6 corner1_7 = case move_0 (StdIOCommon.SliderIncSmall -> let d_2_0::I = StdInt.abs_13 d_2, <{x`_2_1}>::I = <{StdInt.+_6}> x_1 d_2_0 in case (<{StdInt.<_17}> m_3 <{x`_2_1}>) (True -> m_3) (False -> ioutil.align_75 d_4 <{x`_2_1}>) ) (StdIOCommon.SliderDecSmall -> ioutil.align_75 d_4 (<{StdInt.-_7}> x_1 (StdInt.abs_13 d_2))) (StdIOCommon.SliderIncLarge -> ioutil.align_75 d_4 (<{StdInt.+_6}> x_1 (<{ioutil._if;31;27_80}> (<{StdIOCommon.==_35}> direction_5 StdIOCommon.Horizontal) corner2_6 corner1_7 d_2))) (StdIOCommon.SliderDecLarge -> ioutil.align_75 d_4 (<{StdInt.-_7}> x_1 (<{ioutil._if;31;27_81}> (<{StdIOCommon.==_35}> direction_5 StdIOCommon.Horizontal) corner2_6 corner1_7 d_2))) (StdIOCommon.SliderThumb x_1_0 -> case (<{StdInt.==_16}> x_1_0 m_3) (True -> x_1_0) (False -> ioutil.align_75 d_4 x_1_0) ) 
+<{ioutil._if;31;27_81}>::I !_x_0::B !corner2_1 !corner1_2 !d_3::I = case _x_0 (True -> StdInt.abs_13 (<{StdInt.-_7}> (<{StdInt.-_7}> (select corner2_1::StdIOBasic._Point2 0) (select corner1_2::StdIOBasic._Point2 0)) (StdInt.abs_13 d_3))) (_ -> StdInt.abs_13 (<{StdInt.-_7}> (<{StdInt.-_7}> (select corner2_1::StdIOBasic._Point2 1) (select corner1_2::StdIOBasic._Point2 1)) (StdInt.abs_13 d_3)))
+<{ioutil._if;31;27_80}>::I !_x_0::B !corner2_1 !corner1_2 !d_3::I = case _x_0 (True -> StdInt.abs_13 (<{StdInt.-_7}> (<{StdInt.-_7}> (select corner2_1::StdIOBasic._Point2 0) (select corner1_2::StdIOBasic._Point2 0)) (StdInt.abs_13 d_3))) (_ -> StdInt.abs_13 (<{StdInt.-_7}> (<{StdInt.-_7}> (select corner2_1::StdIOBasic._Point2 1) (select corner1_2::StdIOBasic._Point2 1)) (StdInt.abs_13 d_3)))
+ioutil.alignScrollFunction !direction_0 !d_1::I = <{ioutil.alignScrollFunction`_25}> d_1 direction_0 d_1
+ioutil.filterfun_27::B !_x_0 = case _x_0 (StdIOCommon.SpecialKey key_1_0 _x_1_1 _x_1_2 -> case _x_1_1 (StdIOCommon.KeyDown _x_2_0 -> case _x_2_0 (False -> case (<{oskey.==_32}> key_1_0 oskey.enterKey) (True -> True) (False -> <{oskey.==_32}> key_1_0 oskey.returnKey) ) ) ) (_ -> False)
+ioutil.filterReturnKeys = ioutil.filterfun_27
+ioutil.filter_28::B !_x_0 = case _x_0 (StdIOCommon.SpecialKey key_1_0 _x_1_1 mods_1_2 -> case _x_1_1 (StdIOCommon.KeyUp -> case (<{oskey.==_32}> key_1_0 oskey.escapeKey) (True -> <{StdIOCommon.==_30}> mods_1_2 (StdIOCommon._Modifiers False False False False False)) (False -> False) ) ) (_ -> False)
+ioutil.escFilter = ioutil.filter_28
+ioutil.toMark !_x_0::B = case _x_0 (True -> StdIOCommon.Mark) (False -> StdIOCommon.NoMark) 
+ioutil.toSelect !_x_0::B = case _x_0 (True -> StdIOCommon.Able) (False -> StdIOCommon.Unable) 
+ioutil.noPS f_0 !_x_1 = case _x_1 (_Tuple2 ls_1_0 ps_1_1 -> _Tuple2 (f_0 ls_1_0) ps_1_1) 
+ioutil.drawLeft !_vtoString_0 !point_1 info_2 !picture_3 = StdPicture.drawAt_62 point_1 (select _vtoString_0::<{StdOverloaded.toString;}> 0 info_2) picture_3
+ioutil.drawCenter !_vtoString_0 !_x_1 info_2 !picture_3 = case _x_1 (StdIOBasic._Point2 x_1_0 y_1_1 -> let text_2_0 = select _vtoString_0::<{StdOverloaded.toString;}> 0 info_2, _x_2_1 = StdPicture.getPenFontStringWidth text_2_0 picture_3 in StdPicture.drawAt_62 (StdIOBasic._Point2 (<{StdInt.-_7}> x_1_0 (<{StdInt./_10}> (select _x_2_1::_Tuple2 0) 2)) y_1_1) text_2_0 (select _x_2_1::_Tuple2 1)) 
+ioutil.drawRight !_vtoString_0 !_x_1 info_2 !picture_3 = case _x_1 (StdIOBasic._Point2 x_1_0 y_1_1 -> let text_2_0 = select _vtoString_0::<{StdOverloaded.toString;}> 0 info_2, _x_2_1 = StdPicture.getPenFontStringWidth text_2_0 picture_3 in StdPicture.drawAt_62 (StdIOBasic._Point2 (<{StdInt.-_7}> x_1_0 (select _x_2_1::_Tuple2 0)) y_1_1) text_2_0 (select _x_2_1::_Tuple2 1)) 
+ioutil.setCheckControlItem !id_0 idx_1::I !_x_2::B !io_3 = case _x_2 (True -> StdControl.markCheckControlItems id_0 (_predefined._Cons idx_1 _predefined._Nil) io_3) (False -> StdControl.unmarkCheckControlItems id_0 (_predefined._Cons idx_1 _predefined._Nil) io_3) 
+ioutil.zip3 !_x_0 _x_1 _x_2 = case _x_0 (_predefined._Cons a_1_0 as_1_1 -> case _x_1 (_predefined._Cons b_2_0 bs_2_1 -> case _x_2 (_predefined._Cons c_3_0 cs_3_1 -> _predefined._Cons (_Tuple3 a_1_0 b_2_0 c_3_0) (ioutil.zip3 as_1_1 bs_2_1 cs_3_1)) ) ) (_ -> _predefined._Nil)
+ioutil.getPenAttributeFont !_x_0 = case _x_0 (_predefined._Nil -> StdPictureDef.SansSerifFontDef) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (StdPictureDef.PenFont f_2_0 -> StdPicture.getFontDef f_2_0) (_ -> ioutil.getPenAttributeFont _x_1_1)) 
+ioutil.getPenAttributeColour !_x_0 = case _x_0 (_predefined._Nil -> StdPictureDef.Black) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (StdPictureDef.PenColour c_2_0 -> c_2_0) (_ -> ioutil.getPenAttributeColour _x_1_1)) 
+ioutil.getPenAttributeBack !_x_0 = case _x_0 (_predefined._Nil -> StdPictureDef.White) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (StdPictureDef.PenBack c_2_0 -> c_2_0) (_ -> ioutil.getPenAttributeBack _x_1_1)) 
+ioutil.seqmap f_0 !_x_1 !e_2 = case _x_1 (_predefined._Nil -> e_2) (_predefined._Cons h_1_0 t_1_1 -> let !e_2_0 = f_0 h_1_0 e_2 in ioutil.seqmap f_0 t_1_1 e_2_0) 
+ioutil.lisFixedWidth !fontname_0 !env_1 = let _x_1_0::B = StdPicture.openFont (StdPictureDef._FontDef fontname_0 _predefined._Nil 12) env_1, _x_1_1 = select _x_1_0::_Tuple2 0, ok_1_2 = select _x_1_1::_Tuple2 0 in case (StdBool.not ok_1_2) (True -> <{_Tuple2!3}> ok_1_2 (select _x_1_0::_Tuple2 1)) (False -> let _x_3_0 = StdPicture.getFontCharWidths (select _x_1_1::_Tuple2 1) (_predefined._Cons 'M' (_predefined._Cons 'i' _predefined._Nil)) (select _x_1_0::_Tuple2 1), _x_3_1 = select _x_3_0::_Tuple2 0 in <{_Tuple2!3}> (<{StdInt.==_16}> (select _x_3_1::_Tuple2 0) (select (select _x_3_1::_Tuple2 1)::_Tuple2 0)) (select _x_3_0::_Tuple2 1)) 
+ioutil.lfilter !_x_0 !_x_1 = case _x_0 (_predefined._Cons _x_1_0 r_1_1 -> case _x_1_0 (True -> case _x_1 (_predefined._Cons a_3_0 x_3_1 -> _predefined._Cons a_3_0 (ioutil.lfilter r_1_1 x_3_1)) ) (_ -> case _x_1 (_predefined._Cons _x_2_0 x_2_1 -> ioutil.lfilter r_1_1 x_2_1) )) (_ -> _predefined._Nil)
+ioutil.toS_29 !_x_0 = case _x_0 (_predefined._Nil -> "") (_predefined._Cons s_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> s_1_0) (_ -> <{StdString.+++_11}> s_1_0 (<{StdString.+++_11}> ", " (ioutil.toS_29 _x_1_1)))) 
+ioutil.toString_20 !_x_0 = case _x_0 (StdPictureDef._FontDef fName_1_0 fStyles_1_1 fSize_1_2 -> <{StdString.+++_11}> "<fName: " (<{StdString.+++_11}> fName_1_0 (<{StdString.+++_11}> ",fSize: " (<{StdString.+++_11}> (StdString.toString_5 fSize_1_2) (<{StdString.+++_11}> ",fStyles: " (<{StdString.+++_11}> (ioutil.toS_29 fStyles_1_1) ">")))))) 
+ioutil.accFiles_22 !f_0 !e_1 = f_0 e_1
+ioutil.appFiles_23 !f_0 !e_1 = f_0 e_1
+
+
+|| Converted Records
+:: <{ioutil.gEq_s;}> = {!ioutil.gEq_s}
+
+:: <{ioutil.gEq_ss;}> = {!ioutil.gEq_ss}
+
+:: <{ioutil.gEq_sss;}> = {!ioutil.gEq_sss}
+
+:: <{ioutil.gEq_ssss;}> = {!ioutil.gEq_ssss}
+
+:: <{ioutil.gEq_sssss;}> = {!ioutil.gEq_sssss}
+
+:: <{ioutil.gEq_ssssss;}> = {!ioutil.gEq_ssssss}
+
+:: <{ioutil.gEq_sssssss;}> = {!ioutil.gEq_sssssss}
+
+:: <{ioutil.gEq_ssssssss;}> = {!ioutil.gEq_ssssssss}
+
+:: <{ioutil.gEq_sssssssss;}> = {!ioutil.gEq_sssssssss}
+
+:: <{ioutil.bimap_s;}> = {ioutil.bimap_s}
+
+:: <{ioutil.bimap_ss;}> = {ioutil.bimap_ss}
+
+:: <{ioutil.bimap_sss;}> = {ioutil.bimap_sss}
+

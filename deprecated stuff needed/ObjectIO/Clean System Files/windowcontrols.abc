@@ -1,0 +1,7921 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "controlcreate" "20161223204042"
+.depend "windowdraw" "20161223204044"
+.depend "windowdispose" "20161223204044"
+.depend "windowclipstate" "20161223204044"
+.depend "relayout" "20161223204043"
+.depend "controlrelayout" "20161223204042"
+.depend "windowupdate" "20161223204044"
+.depend "controllayout" "20161223204042"
+.depend "windowaccess" "20161223204044"
+.depend "oswindow" "20161223204044"
+.depend "wstate" "20161223204044"
+.depend "StdControlAttribute" "20161223204043"
+.depend "StdMisc" "20170313110416"
+.depend "roundrobin" "20161223204043"
+.depend "processstack" "20161223204043"
+.depend "timerhandle" "20161223204044"
+.depend "processhandle" "20161223204043"
+.depend "osmenu" "20161223204044"
+.depend "StdMenuDef" "20161223204043"
+.depend "menuhandle" "20161223204042"
+.depend "devicesystemstate" "20161223204042"
+.depend "keyfocus" "20161223204042"
+.depend "commondef" "20161223204042"
+.depend "receiverhandle" "20161223204043"
+.depend "StdWindowDef" "20161223204044"
+.depend "StdControlDef" "20161223204043"
+.depend "windowhandle" "20161223204044"
+.depend "StdTimerDef" "20161223204043"
+.depend "timertable" "20161223204044"
+.depend "semidynamic" "20161223204043"
+.depend "receivertable" "20161223204043"
+.depend "receivermessage" "20161223204043"
+.depend "deviceevents" "20170206121016"
+.depend "devicefunctions" "20161223204042"
+.depend "ossystem" "20161223204044"
+.depend "osguishare" "20161223204044"
+.depend "ostime" "20161223204044"
+.depend "clCrossCall_12" "20161223204044"
+.depend "osevent" "20161223204044"
+.depend "ostoolbar" "20161223204044"
+.depend "menuCrossCall_12" "20161223204044"
+.depend "osdocumentinterface" "20161223204044"
+.depend "osactivaterequests" "20161223204044"
+.depend "iostate" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "StdIOCommon" "20161223204043"
+.depend "StdTuple" "20170313110416"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdReal" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdList" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "windowcontrols" "20161223204044"
+.module m_windowcontrols "windowcontrols" "20161223204044"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod controlcreate
+.implab e_controlcreate_screateControls
+.implab e_controlcreate_screateCompoundControls
+.implab e_controlcreate_screateRecursiveControls
+.impmod windowdraw
+.implab e_windowdraw_sdrawwindowlook
+.impmod windowdispose
+.implab e_windowdispose_sdisposeWItemHandle
+.impmod windowclipstate
+.implab e_windowclipstate_sforceValidWindowClipState
+.impdesc e_windowclipstate_dinvalidateWindowClipState
+.implab e_windowclipstate_ninvalidateWindowClipState
+.implab e_windowclipstate_sinvalidateCompoundClipState
+.impmod controlrelayout
+.implab e_controlrelayout_srelayoutControls
+.impmod windowupdate
+.implab e_windowupdate_supdatewindowbackgrounds
+.impmod controllayout
+.implab e_controllayout_slayoutControls
+.impmod windowaccess
+.implab e_windowaccess_sidentifyMaybeId
+.implab e_windowaccess_sgetWindowHMargins
+.implab e_windowaccess_sgetWindowVMargins
+.implab e_windowaccess_sgetWindowItemSpaces
+.impdesc e_windowaccess_dgenWElementItemNrs
+.implab e_windowaccess_ngenWElementItemNrs
+.impmod oswindow
+.implab e_oswindow_sosGetWindowContentRect
+.implab e_oswindow_sosScrollbarsAreVisible
+.implab e_oswindow_sosInvalidateWindowRect
+.implab e_oswindow_sosValidateWindowRect
+.impmod wstate
+.implab e_wstate_sgetWElementHandles`
+.impmod StdControlAttribute
+.impdesc e_StdControlAttribute_disControlPos
+.impmod StdMisc
+.impdesc e_StdMisc_dundef
+.implab e_StdMisc_nundef _
+.impmod commondef
+.impdesc e_commondef_drectToRectangle
+.implab e_commondef_nrectToRectangle
+.implab e_commondef_sposSizeToRect
+.implab e_commondef_sposSizeToRectangle
+.implab e_commondef_ssizeToRect
+.implab e_commondef_sfatalError
+.implab e_commondef_suisEmpty
+.implab e_commondef_ssplit
+.implab e_commondef_sremove
+.implab e_commondef_screplace
+.implab e_commondef_sremoveCheck
+.implab e_commondef_sulength
+.implab e_commondef_stoTuple;72
+.impmod StdControlDef
+.impdesc e_StdControlDef_dControlPos
+.impmod windowhandle
+.implab e_windowhandle_sisRecursiveControl
+.implab e_windowhandle_s==;6
+.implab e_windowhandle_s==;8
+.impdesc e_windowhandle_rWindowStateHandle
+.impdesc e_windowhandle_rWindowLSHandle
+.impdesc e_windowhandle_rWindowHandle
+.impdesc e_windowhandle_tWindowHandle
+.implab e_windowhandle_cWindowHandle
+.impdesc e_windowhandle_dWindowData.windowOrigin
+.implab e_windowhandle_nWindowData.windowOrigin
+.impdesc e_windowhandle_rWExtendLSHandle
+.impdesc e_windowhandle_rWChangeLSHandle
+.impdesc e_windowhandle_rWItemHandle
+.impdesc e_windowhandle_dIsDialog
+.impdesc e_windowhandle_kWindowInfo
+.impdesc e_windowhandle_dWItemHandle
+.impdesc e_windowhandle_dWListLSHandle
+.impdesc e_windowhandle_dWExtendLSHandle
+.impdesc e_windowhandle_dWChangeLSHandle
+.impdesc e_windowhandle_dIsCompoundControl
+.impdesc e_windowhandle_dIsLayoutControl
+.impmod id
+.impdesc e_id_d==;27
+.implab e_id_s==;27
+.impmod StdIOBasic
+.implab e_StdIOBasic_smovePoint
+.implab e_StdIOBasic_szero;11
+.implab e_StdIOBasic_szero;15
+.impdesc e_StdIOBasic_dzero;21
+.implab e_StdIOBasic_szero;21
+.implab e_StdIOBasic_nzero;21
+.impdesc e_StdIOBasic_rSize
+.impmod StdIOCommon
+.implab e_StdIOCommon_srectangleToUpdateState
+.impdesc e_StdIOCommon_dLeftOf
+.impdesc e_StdIOCommon_dRightTo
+.impdesc e_StdIOCommon_dAbove
+.impdesc e_StdIOCommon_dBelow
+.impmod StdFunc
+.impdesc e_StdFunc_did
+.impmod Data.Maybe
+.implab e_Data.Maybe_sisNothing
+.implab e_Data.Maybe_sisJust
+.impdesc e_Data.Maybe_dfromJust
+.implab e_Data.Maybe_nfromJust _
+.impdesc e_Data.Maybe_dJust
+.impmod StdInt
+.implab e_StdInt_s-;7
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod StdClass
+.impdesc e_StdClass_rEq;
+.impmod StdList
+.impdesc e_StdList_d++
+.implab e_StdList_s++
+.implab e_StdList_n++ e_StdList_ea++
+.implab e_StdList_sisEmpty
+.implab e_StdList_sremoveMember
+.impmod StdOverloaded
+.impdesc e_StdOverloaded_r==;
+.export e_windowcontrols_ssetcontrolpositions
+.descexp e_windowcontrols_dsetcontrolpositions e_windowcontrols_nsetcontrolpositions e_windowcontrols_lsetcontrolpositions 4 0 "setcontrolpositions"
+.a 0 a6
+.o 2 0
+e_windowcontrols_lsetcontrolpositions
+	repl_args 3 3
+.o 4 0
+a6
+.d 4 0
+	jsr ea6
+.o 2 2 bi
+	buildI_b 1
+	build_r e_windowhandle_rWindowStateHandle 2 0 1 0
+	buildB_b 0
+	buildh _Tuple 3
+	updatepop_a 0 2
+	pop_b 2
+.d 1 0
+	rtn
+.n 4 e_windowcontrols_dsetcontrolpositions
+.o 1 0
+e_windowcontrols_nsetcontrolpositions
+	push_node _cycle_in_spine 4
+.d 4 0
+	jsr ea6
+.o 2 2 bi
+	buildI_b 1
+	build_r e_windowhandle_rWindowStateHandle 2 0 1 0
+	buildB_b 0
+	fillh _Tuple 3 5
+	pop_a 2
+	pop_b 2
+.d 1 0
+	rtn
+.o 4 0
+ea6
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 3
+	push_r_args 2 2 0
+	push_r_args 2 1 10
+	update_a 2 6
+	update_a 1 5
+	update_a 0 3
+	pop_a 3
+.o 4 11 iiiiiiiiiii
+e_windowcontrols_ssetcontrolpositions
+.o 4 11 iiiiiiiiiii
+s6
+	jmp case.1
+case.1
+	jsr_eval 3
+	eq_desc e_Data.Maybe_dJust 1 3
+	jmp_true case.3
+	jmp case.2
+case.3
+	push_args 3 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	jsr_eval 0
+	push_r_args_u 0 11 3
+	update_a 8 9
+	update_a 7 8
+	update_b 1 2
+	update_b 0 1
+	update_a 6 7
+	update_a 5 6
+	update_a 1 5
+	pop_a 5
+	pop_b 1
+	push_a 2
+	jsr_eval 0
+	push_a 10
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 2 0
+	jsr s26
+.o 1 1 b
+	push_b 0
+	notB
+	jmp_false else.4
+	push_a 0
+	fill2_r e_windowhandle_rWindowHandle 11 3 8 000000010000000
+	push_a 7
+	push_r_args 9 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 13
+	push_a 13
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 13
+	pushB FALSE
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 1 15
+	updatepop_b 0 14
+.d 2 2 bi
+	rtn
+else.4
+	push_r_args_b 11 1 2 1 1
+	push_a 6
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s90
+.o 1 6 iiiibb
+	push_b 5
+	push_b 5
+	push_r_args 5 0 2
+.d 0 2 ii
+	jsr e_commondef_stoTuple;72
+.o 0 2 ii
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_a 8
+.d 1 18 iiiiiiiiiiiiiiiibb
+	jsr e_oswindow_sosScrollbarsAreVisible
+.o 0 2 bb
+.impmod ossystem
+.impdesc e_ossystem_rOSWindowMetrics
+	build_r e_ossystem_rOSWindowMetrics 1 10 8 12
+	push_b 0
+	updatepop_b 0 1
+.d 1 1 b
+	jsr s55
+.o 0 1 i
+	push_r_args_b 5 0 2 2 1
+	subI
+	build_r e_ossystem_rOSWindowMetrics 1 10 8 12
+	push_b 1
+.d 1 1 b
+	jsr s54
+.o 0 1 i
+	push_r_args_b 5 0 2 1 1
+	subI
+	push_b 1
+	push_b 1
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	push_b 27
+	push_a 1
+	push_b 14
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr e_wstate_sgetWElementHandles`
+.o 2 1 i
+	push_a 4
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_a 10
+	push_a 5
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowHMargins
+.o 0 2 ii
+	push_a 4
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_a 10
+	push_a 5
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowVMargins
+.o 0 2 ii
+	push_a 1
+	push_a 11
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 12
+	pop_a 1
+.d 2 0
+	jsr s27
+.o 2 0
+	pop_a 1
+	buildh _Nil 0
+.impmod ostypes
+.impdesc e_ostypes_rOSRect
+	build_r e_ostypes_rOSRect 0 4 0 12
+	build e_commondef_drectToRectangle 1 e_commondef_nrectToRectangle
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Tuple 2
+	buildh _Cons 2
+.d 0 0
+	jsr e_StdIOBasic_szero;15
+.o 0 2 ii
+	push_b 3
+	push_b 3
+	push_b 14
+	subI
+	subI
+	push_b 6
+	push_b 6
+	push_b 14
+	subI
+	subI
+	push_a 5
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_a 11
+	push_a 6
+	buildh _Nil 0
+	update_a 0 9
+	pop_a 1
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowItemSpaces
+.o 0 2 ii
+	push_b 10
+	push_b 8
+	push_b 8
+	push_b 12
+	push_b 12
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_a 10
+	push_b 20
+	update_b 15 21
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 0 20
+	pop_b 1
+	update_b 20 25
+	update_b 19 24
+	update_b 18 23
+	update_b 17 22
+	update_b 16 21
+	update_b 15 20
+	update_b 14 19
+	update_b 13 18
+	update_b 12 17
+	update_b 11 16
+	update_b 10 15
+	update_b 9 14
+	update_b 8 13
+	update_b 7 12
+	update_b 6 11
+	update_b 5 10
+	update_b 4 9
+	update_b 3 8
+	update_b 2 7
+	update_b 1 6
+	updatepop_b 0 5
+.d 3 21 iiiiiiiiiiiiiiiiiiiii
+	jsr e_controllayout_slayoutControls
+.o 1 3 iii
+	push_r_args 7 11 3
+	push_a 11
+	push_a 11
+	update_a 1 12
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 11 10
+	update_a 0 11
+	pop_a 1
+	update_a 11 6
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 5
+	push_b 20
+	pushB TRUE
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_a 20
+	push_b 15
+	update_b 13 16
+	update_b 14 13
+	update_b 15 14
+	update_b 0 15
+	pop_b 1
+	update_b 15 18
+	update_b 14 17
+	update_b 13 16
+	update_b 12 15
+	update_b 11 14
+	update_b 10 13
+	update_b 9 12
+	update_b 8 11
+	update_b 7 10
+	update_b 6 9
+	update_b 5 8
+	update_b 4 7
+	update_b 3 6
+	update_b 2 5
+	update_b 1 4
+	updatepop_b 0 3
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 19
+	pop_a 1
+.d 12 16 iiiiiiiiiibibbbi
+	jsr e_windowclipstate_sforceValidWindowClipState
+.o 11 4 bbbi
+	build_r e_ossystem_rOSWindowMetrics 1 10 19 21
+	buildh e_windowhandle_dIsDialog 0
+	push_a 15
+	buildh _Nil 0
+	update_a 0 17
+	pop_a 1
+.d 2 0
+	jsr e_windowhandle_s==;6
+.o 0 1 b
+	push_b 4
+	push_b 4
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_b 4
+	push_b 4
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_b 14
+	push_b 14
+	push_a 24
+	push_b 24
+	push_a 12
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_b 7
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 7 11
+	update_b 6 10
+	update_b 5 9
+	update_b 4 8
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+	update_a 24 27
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 13 8 biiibbbi
+	jsr s91
+.o 11 4 bbbi
+	push_a 6
+	jsr_eval 0
+.d 0 0
+	jsr e_StdIOBasic_szero;11
+.o 0 2 ii
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+.d 0 0
+	jsr e_StdIOBasic_szero;11
+.o 0 2 ii
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_a 12
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 36
+	push_b 38
+	pushB FALSE
+	push_a 14
+	push_b 37
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_a 19
+	push_b 30
+	update_b 15 31
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 21 20
+	update_b 22 21
+	update_b 23 22
+	update_b 24 23
+	update_b 25 24
+	update_b 26 25
+	update_b 27 26
+	update_b 28 27
+	update_b 29 28
+	update_b 30 29
+	update_b 0 30
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 17
+	update_a 0 16
+	pop_a 1
+.d 4 31 iiiiiiiiiiibbbiiiiiiiiiiiiiiiii
+	jsr e_controlrelayout_srelayoutControls
+.o 1 2 ii
+	push_a 0
+	push_b 4
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_b 4
+	push_b 4
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 6
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_r_args 30 1 2
+	push_b 6
+	push_b 6
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_a 29
+	push_b 16
+	update_b 12 17
+	update_b 13 12
+	update_b 14 13
+	update_b 15 14
+	update_b 16 15
+	update_b 0 16
+	pop_b 1
+	update_b 16 18
+	update_b 15 17
+	update_b 14 16
+	update_b 13 15
+	update_b 12 14
+	update_b 11 13
+	update_b 10 12
+	update_b 9 11
+	update_b 8 10
+	update_b 7 9
+	update_b 6 8
+	update_b 5 7
+	update_b 4 6
+	update_b 3 5
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 29 31
+	update_a 27 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+.d 13 17 iiiiiiiiiiiibbbbi
+	jsr e_windowupdate_supdatewindowbackgrounds
+.o 11 4 bbbi
+	push_r_args 11 0 2
+	buildh _Nil 0
+	update_a 0 12
+	pop_a 1
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	push_b 7
+	push_b 26
+	push_b 5
+	update_b 2 6
+	update_b 3 2
+	update_b 4 3
+	update_b 5 4
+	update_b 0 5
+	pop_b 1
+.d 0 6 iiiiii
+	jsr e_oswindow_sosValidateWindowRect
+.o 0 1 i
+	build_r e_windowhandle_rWindowHandle 11 3 0 1
+	push_r_args 13 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 15
+	push_a 15
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	pushB TRUE
+	update_a 1 16
+	updatepop_a 0 15
+	update_b 1 37
+	updatepop_b 0 36
+.d 2 2 bi
+	rtn
+case.2
+	buildAC "unexpected window placeholder argument"
+	buildAC "setcontrolpositions"
+	update_a 1 5
+	updatepop_a 0 4
+	pop_b 11
+.d 2 0
+	jsr s7
+.o 1 0
+	repl_args 3 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 2
+	push_r_args 1 2 0
+	pushB_a 2
+	update_a 1 4
+	update_a 0 3
+	pop_a 3
+.d 2 2 bi
+	rtn
+.o 1 1 b
+s55
+	eqB_b TRUE 0
+	jmp_true case.5
+	jmp case.6
+case.5
+	push_r_args_b 0 1 10 9 1
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.6
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 1 1 b
+s54
+	eqB_b TRUE 0
+	jmp_true case.7
+	jmp case.8
+case.7
+	push_r_args_b 0 1 10 10 1
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.8
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 14 0
+s24
+	push_a 1
+	jsr_eval 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.9
+	push_a 3
+	jsr_eval 0
+.d 1 0
+	jsr e_windowhandle_sisRecursiveControl
+.o 0 1 b
+	jmp_false else.10
+	push_a 8
+	jsr_eval 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s27
+.o 2 0
+	push_a 1
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 13
+	update_a 13 28
+	update_a 12 27
+	update_a 11 26
+	update_a 10 25
+	update_a 9 24
+	update_a 8 23
+	update_a 7 22
+	update_a 6 21
+	update_a 5 20
+	update_a 4 19
+	update_a 3 18
+	update_a 2 17
+	update_a 1 16
+	updatepop_a 0 15
+.d 14 0
+	rtn
+else.10
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	update_a 13 27
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 14 0
+	rtn
+else.9
+	push_a 3
+	jsr_eval 0
+.d 1 0
+	jsr e_windowhandle_sisRecursiveControl
+.o 0 1 b
+	jmp_false else.11
+	build _ 0 e_StdMisc_nundef
+	push_a 2
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	buildh d35 1
+	push_a 2
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_commondef_sremove
+.o 2 1 b
+	push_b 0
+	jmp_false else.12
+	buildh e_windowhandle_dIsCompoundControl 0
+	push_a 5
+.d 2 0
+	jsr e_windowhandle_s==;8
+.o 0 1 b
+	jmp_false else.12
+	push_a 9
+	jsr_eval 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s27
+.o 2 0
+	push_a 9
+	push_a 3
+	push_b 0
+	build_u _ 2 1 n50
+	push_a 2
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 14
+	update_a 14 15
+	update_a 0 14
+	pop_a 1
+	update_a 13 6
+	update_a 14 7
+	update_a 12 14
+	update_a 11 13
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	update_a 13 28
+	update_a 12 27
+	update_a 11 26
+	update_a 10 25
+	update_a 9 24
+	update_a 8 23
+	update_a 7 22
+	update_a 6 21
+	update_a 5 20
+	update_a 4 19
+	update_a 3 18
+	update_a 2 17
+	update_a 1 16
+	updatepop_a 0 15
+.d 13 0
+	jsr e_windowclipstate_sinvalidateCompoundClipState
+.o 13 0
+	push_a 13
+	update_a 13 14
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 14 0
+	rtn
+else.12
+	push_a 9
+	jsr_eval 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s27
+.o 2 0
+	push_a 9
+	push_a 3
+	push_b 0
+	build_u _ 2 1 n51
+	push_a 2
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 14
+	update_a 14 15
+	update_a 0 14
+	pop_a 1
+	update_a 13 6
+	update_a 14 7
+	update_a 12 14
+	update_a 11 13
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 13
+	update_a 13 29
+	update_a 12 28
+	update_a 11 27
+	update_a 10 26
+	update_a 9 25
+	update_a 8 24
+	update_a 7 23
+	update_a 6 22
+	update_a 5 21
+	update_a 4 20
+	update_a 3 19
+	update_a 2 18
+	update_a 1 17
+	updatepop_a 0 16
+	pop_b 1
+.d 14 0
+	rtn
+else.11
+	build _ 0 e_StdMisc_nundef
+	push_a 2
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	buildh d35 1
+	push_a 2
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_commondef_sremove
+.o 2 1 b
+	push_a 8
+	push_a 1
+	push_b 0
+	build_u _ 2 1 n52
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	update_a 13 6
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 14
+	update_a 13 28
+	update_a 12 27
+	update_a 11 26
+	update_a 10 25
+	update_a 9 24
+	update_a 8 23
+	update_a 7 22
+	update_a 6 21
+	update_a 5 20
+	update_a 4 19
+	update_a 3 18
+	update_a 2 17
+	update_a 1 16
+	updatepop_a 0 15
+	pop_b 1
+.d 14 0
+	rtn
+.o 2 0
+s25
+	pushD_a 1
+	eqD_b e_windowhandle_dWItemHandle 1
+	jmp_true case.14
+	eqD_b e_windowhandle_dWListLSHandle 1
+	jmp_true case.15
+	eqD_b e_windowhandle_dWExtendLSHandle 1
+	jmp_true case.16
+	jmp case.17
+case.14
+	pop_b 1
+	push_args_u 1 1 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 13 0
+	push_a 14
+	update_a 13 15
+	update_a 12 14
+	update_a 11 13
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 14 0
+	jsr s24
+.o 14 0
+	build_r e_windowhandle_rWItemHandle 13 0 1 0
+	fill1 e_windowhandle_dWItemHandle 1 15 01
+	push_a 14
+	push_a 1
+	update_a 1 16
+	updatepop_a 0 15
+.d 2 0
+	rtn
+case.15
+	pop_b 1
+	push_args_u 1 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s27
+.o 2 0
+	push_a 1
+	fill1 e_windowhandle_dWListLSHandle 1 3 01
+	push_a 2
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+case.16
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s27
+.o 2 0
+	push_a 1
+	fill1_r e_windowhandle_rWExtendLSHandle 2 0 3 001
+	push_a 2
+	fill1 e_windowhandle_dWExtendLSHandle 1 4 01
+	push_a 3
+	push_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+case.17
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s27
+.o 2 0
+	push_a 1
+	fill1_r e_windowhandle_rWChangeLSHandle 2 0 3 001
+	push_a 2
+	fill1 e_windowhandle_dWChangeLSHandle 1 4 01
+	push_a 3
+	push_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+.o 2 0
+s27
+	eq_desc _Nil 0 1
+	jmp_true case.18
+	jmp case.19
+case.18
+	buildh _Nil 0
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+case.19
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 2
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	jmp_false else.20
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_a 3
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+else.20
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	update_a 3 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s25
+.o 2 0
+	push_a 2
+	jsr_eval 0
+	push_a 1
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s27
+.o 2 0
+	push_a 1
+	push_a 3
+	buildh _Cons 2
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n52
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 b
+ea52
+	jsr_eval 1
+.o 3 1 b
+s52
+	eqB_b TRUE 0
+	jmp_true case.21
+	jmp case.22
+case.21
+	push_a 0
+	build d_S.2 -1 n_S.2
+	buildh e_StdControlDef_dControlPos 1
+	buildh e_StdControlAttribute_disControlPos 0
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	pop_b 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_commondef_screplace
+.o 1 1 b
+	pop_b 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.22
+	pop_b 1
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n51
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 b
+ea51
+	jsr_eval 1
+.o 3 1 b
+s51
+	eqB_b TRUE 0
+	jmp_true case.23
+	jmp case.24
+case.23
+	push_a 0
+	build d_S.2 -1 n_S.2
+	buildh e_StdControlDef_dControlPos 1
+	buildh e_StdControlAttribute_disControlPos 0
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	pop_b 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_commondef_screplace
+.o 1 1 b
+	pop_b 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.24
+	pop_b 1
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n50
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 b
+ea50
+	jsr_eval 1
+.o 3 1 b
+s50
+	eqB_b TRUE 0
+	jmp_true case.25
+	jmp case.26
+case.25
+	push_a 0
+	build d_S.2 -1 n_S.2
+	buildh e_StdControlDef_dControlPos 1
+	buildh e_StdControlAttribute_disControlPos 0
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	pop_b 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_commondef_screplace
+.o 1 1 b
+	pop_b 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.26
+	pop_b 1
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+.desc d35 _hnf l35 2 0 "<lambda>[line:15];13;77"
+.a 0 a35
+.o 2 0
+l35
+	repl_args 1 1
+.o 2 0
+a35
+.d 2 0
+	jsr ea35
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea35
+	push_a 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 0
+	jsr_eval 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+s35
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s32
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jmp e_id_s==;27
+.o 2 0
+s32
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.o 2 0
+s26
+	create
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s22
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s23
+.o 2 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	rtn
+.o 2 0
+s21
+	pushD_a 1
+	eqD_b e_windowhandle_dWItemHandle 1
+	jmp_true case.27
+	eqD_b e_windowhandle_dWListLSHandle 1
+	jmp_true case.28
+	eqD_b e_windowhandle_dWExtendLSHandle 1
+	jmp_true case.29
+	jmp case.30
+case.27
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 13 13
+	update_a 7 12
+	update_a 0 11
+	pop_a 11
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	create
+	push_a 5
+	push_a 3
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 8
+	pop_a 1
+.d 3 1 b
+	jsr s49
+.o 1 0
+	update_a 4 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s23
+.o 2 0
+	push_a 1
+	fill2_r e_windowhandle_rWItemHandle 13 0 3 00000000100000
+	push_a 2
+	fill1 e_windowhandle_dWItemHandle 1 4 01
+	push_a 3
+	push_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+case.28
+	pop_b 1
+	push_args_u 1 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s23
+.o 2 0
+	push_a 1
+	fill1 e_windowhandle_dWListLSHandle 1 3 01
+	push_a 2
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+case.29
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s23
+.o 2 0
+	push_a 1
+	fill1_r e_windowhandle_rWExtendLSHandle 2 0 3 001
+	push_a 2
+	fill1 e_windowhandle_dWExtendLSHandle 1 4 01
+	push_a 3
+	push_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+case.30
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s23
+.o 2 0
+	push_a 1
+	fill1_r e_windowhandle_rWChangeLSHandle 2 0 3 001
+	push_a 2
+	fill1 e_windowhandle_dWChangeLSHandle 1 4 01
+	push_a 3
+	push_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+.o 2 0
+s23
+	eq_desc _Nil 0 1
+	jmp_true case.31
+	jmp case.32
+case.31
+	buildh _Nil 0
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+case.32
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 2
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	jmp_false else.33
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_a 3
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+else.33
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	update_a 3 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s21
+.o 2 0
+	push_a 2
+	jsr_eval 0
+	push_a 1
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s23
+.o 2 0
+	push_a 1
+	push_a 3
+	buildh _Cons 2
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.o 3 1 b
+s49
+	eqB_b TRUE 0
+	jmp_true case.34
+	jmp case.35
+case.34
+	push_a 0
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	buildh e_id_d==;27 0
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 1
+.d 4 0
+	jmp e_StdList_sremoveMember
+case.35
+	pop_b 1
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+.n 1 _ ea22
+.o 1 0
+n22
+	push_node _cycle_in_spine 1
+.o 2 0
+ea22
+	jsr_eval 0
+.o 2 0
+s22
+	eq_desc _Cons 2 0
+	jmp_true case.36
+	jmp case.37
+case.36
+	repl_args 2 2
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	update_a 0 1
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 4
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp s48
+case.37
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 4 0
+s48
+	pushD_a 0
+	eqD_b e_StdIOCommon_dLeftOf 1
+	jmp_true case.38
+	eqD_b e_StdIOCommon_dRightTo 1
+	jmp_true case.39
+	eqD_b e_StdIOCommon_dAbove 1
+	jmp_true case.40
+	eqD_b e_StdIOCommon_dBelow 1
+	jmp_true case.41
+	pop_b 1
+	jmp case.42
+case.38
+	pop_b 1
+	repl_args 1 1
+	push_a 2
+	build _ 1 n22
+	push_a 2
+	buildh _Cons 2
+	push_a 1
+	fillh _Cons 2 5
+	pop_a 3
+.d 1 0
+	rtn
+case.39
+	pop_b 1
+	repl_args 1 1
+	push_a 2
+	build _ 1 n22
+	push_a 2
+	buildh _Cons 2
+	push_a 1
+	fillh _Cons 2 5
+	pop_a 3
+.d 1 0
+	rtn
+case.40
+	pop_b 1
+	repl_args 1 1
+	push_a 2
+	build _ 1 n22
+	push_a 2
+	buildh _Cons 2
+	push_a 1
+	fillh _Cons 2 5
+	pop_a 3
+.d 1 0
+	rtn
+case.41
+	pop_b 1
+	repl_args 1 1
+	push_a 2
+	build _ 1 n22
+	push_a 2
+	buildh _Cons 2
+	push_a 1
+	fillh _Cons 2 5
+	pop_a 3
+.d 1 0
+	rtn
+case.42
+	push_a 2
+	build _ 1 n22
+	push_a 2
+	fillh _Cons 2 5
+	pop_a 3
+.d 1 0
+	rtn
+.export e_windowcontrols_scloseallcontrols
+.descexp e_windowcontrols_dcloseallcontrols e_windowcontrols_ncloseallcontrols e_windowcontrols_lcloseallcontrols 2 0 "closeallcontrols"
+.a 0 a5
+.o 2 0
+e_windowcontrols_lcloseallcontrols
+	repl_args 1 1
+.o 2 0
+a5
+.d 2 0
+	jsr ea5
+.o 5 1 i
+	buildI_b 0
+	build_r e_windowhandle_rWindowStateHandle 2 0 4 0
+	push_a 4
+	push_a 4
+	push_a 4
+	buildh _Tuple 5
+	updatepop_a 0 5
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_windowcontrols_dcloseallcontrols
+.o 1 0
+e_windowcontrols_ncloseallcontrols
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea5
+.o 5 1 i
+	buildI_b 0
+	build_r e_windowhandle_rWindowStateHandle 2 0 4 0
+	push_a 4
+	push_a 4
+	push_a 4
+	fillh _Tuple 5 10
+	pop_a 5
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea5
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 1
+	repl_r_args 2 0
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.o 2 1 i
+e_windowcontrols_scloseallcontrols
+.o 2 1 i
+s5
+	jmp case.43
+case.43
+	push_r_args_u 0 1 2
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+	jsr_eval 1
+	eq_desc e_Data.Maybe_dJust 1 1
+	jmp_true case.45
+	pop_b 1
+	jmp case.44
+case.45
+	push_args 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	jsr_eval 0
+	push_r_args_u 0 11 3
+	update_a 6 10
+	update_a 3 9
+	pop_a 9
+	pop_b 3
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 4
+	update_a 0 3
+	pop_a 1
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_b 3
+	push_b 3
+	push_b 3
+	update_b 2 4
+	update_b 3 2
+	update_b 0 3
+	pop_b 1
+	update_b 3 5
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 4 iiii
+	jsr s19
+.o 4 1 i
+	buildh _Nil 0
+	push_a 4
+	fill2_r e_windowhandle_rWindowHandle 11 3 6 000010010000000
+	push_a 4
+	build e_windowclipstate_dinvalidateWindowClipState 1 e_windowclipstate_ninvalidateWindowClipState
+	push_r_args 6 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 8
+	push_a 8
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 0
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+	updatepop_b 0 1
+.d 5 1 i
+	rtn
+case.44
+	buildAC "unexpected window placeholder argument"
+	buildAC "closeallcontrols"
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 1
+.d 2 0
+	jsr s7
+.o 1 0
+	repl_args 5 5
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 4
+	push_r_args 3 2 0
+	update_a 1 6
+	update_a 0 5
+	pop_a 2
+.d 5 1 i
+	rtn
+.o 14 4 iiii
+s17
+	push_a 2
+	jsr_eval 0
+.d 1 0
+	jsr e_windowhandle_sisRecursiveControl
+.o 0 1 b
+	jmp_false else.46
+	push_a 9
+	jsr_eval 0
+	repl_r_args 0 2
+	push_b 4
+	push_b 4
+	push_b 3
+	update_b 2 4
+	update_b 0 2
+	update_b 3 0
+	update_b 1 3
+	update_b 0 1
+	pop_b 1
+.d 0 4 iiii
+	jsr e_StdIOBasic_smovePoint
+.o 0 2 ii
+	push_a 7
+	jsr_eval 0
+	push_b 5
+	push_a 14
+	push_b 2
+	push_b 2
+	push_b 5
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 2 4 iiii
+	jsr s19
+.o 4 1 i
+	buildh _Nil 0
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 0
+	push_b 6
+	push_b 6
+	push_b 6
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 27 30
+	update_a 16 29
+	update_a 15 28
+	update_a 14 27
+	update_a 13 26
+	update_a 12 25
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+.d 13 4 iiii
+	jsr e_windowdispose_sdisposeWItemHandle
+.o 16 1 i
+	push_a 20
+	jsr_eval 0
+	repl_r_args 0 2
+	push_b 4
+	push_b 4
+	update_a 19 20
+	update_a 18 19
+	update_a 17 18
+	update_a 16 17
+	update_a 2 16
+	update_a 1 15
+	update_a 0 14
+	pop_a 14
+.d 0 4 iiii
+	jsr e_commondef_sposSizeToRect
+.o 0 4 iiii
+	push_b 4
+	push_b 8
+	push_b 5
+	update_b 2 6
+	update_b 3 2
+	update_b 4 3
+	update_b 5 4
+	update_b 0 5
+	pop_b 1
+	update_b 5 12
+	update_b 4 11
+	update_b 3 10
+	update_b 2 9
+	update_b 1 8
+	updatepop_b 0 7
+.d 0 6 iiiiii
+	jsr e_oswindow_sosInvalidateWindowRect
+.o 0 1 i
+	push_a 5
+	push_a 3
+	buildh d31 2
+	create
+	push_a 6
+	push_a 4
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 9
+	update_a 0 7
+	update_a 0 10
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	create
+	push_a 6
+	push_a 4
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 9
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	push_a 9
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 4 1 i
+	rtn
+else.46
+	push_b 3
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_b 3
+	push_b 3
+	push_b 3
+	update_a 23 25
+	update_a 22 24
+	update_a 14 23
+	update_a 12 22
+	update_a 11 21
+	update_a 10 20
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 13 4 iiii
+	jsr e_windowdispose_sdisposeWItemHandle
+.o 16 1 i
+	push_a 18
+	jsr_eval 0
+	repl_r_args 0 2
+	push_a 17
+	jsr_eval 0
+	repl_r_args 0 2
+	push_b 7
+	push_b 7
+	push_b 3
+	update_b 2 4
+	update_b 0 2
+	update_b 3 0
+	update_b 1 3
+	update_b 0 1
+	pop_b 1
+	update_a 16 18
+	update_a 2 17
+	update_a 1 16
+	update_a 0 15
+	pop_a 15
+.d 0 4 iiii
+	jsr e_StdIOBasic_smovePoint
+.o 0 2 ii
+.d 0 4 iiii
+	jsr e_commondef_sposSizeToRect
+.o 0 4 iiii
+	push_b 4
+	push_b 6
+	push_b 5
+	update_b 2 6
+	update_b 3 2
+	update_b 4 3
+	update_b 5 4
+	update_b 0 5
+	pop_b 1
+	update_b 5 10
+	update_b 4 9
+	update_b 3 8
+	update_b 2 7
+	update_b 1 6
+	updatepop_b 0 5
+.d 0 6 iiiiii
+	jsr e_oswindow_sosInvalidateWindowRect
+.o 0 1 i
+	push_a 4
+	push_a 4
+	buildh _Cons 2
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 1 i
+	rtn
+.o 2 4 iiii
+s18
+	pushD_a 0
+	eqD_b e_windowhandle_dWItemHandle 1
+	jmp_true case.47
+	eqD_b e_windowhandle_dWListLSHandle 1
+	jmp_true case.48
+	eqD_b e_windowhandle_dWExtendLSHandle 1
+	jmp_true case.49
+	jmp case.50
+case.47
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 13 0
+	push_b 3
+	push_a 14
+	push_b 3
+	push_b 3
+	push_b 3
+	push_a 13
+	update_a 1 14
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 11 10
+	update_a 12 11
+	update_a 13 12
+	update_a 0 13
+	pop_a 1
+	update_a 13 15
+	update_a 12 14
+	update_a 11 13
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+.d 14 4 iiii
+	jmp s17
+case.48
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	push_b 3
+	push_a 2
+	push_b 3
+	push_b 3
+	push_b 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+.d 2 4 iiii
+	jmp s19
+case.49
+	pop_b 1
+	repl_args 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_b 3
+	push_a 3
+	push_b 3
+	push_b 3
+	push_b 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+.d 2 4 iiii
+	jmp s19
+case.50
+	pop_b 1
+	repl_args 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_b 3
+	push_a 3
+	push_b 3
+	push_b 3
+	push_b 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+.d 2 4 iiii
+	jmp s19
+.o 2 4 iiii
+s19
+	eq_desc _Nil 0 0
+	jmp_true case.51
+	jmp case.52
+case.51
+	buildh e_StdFunc_did 0
+	buildh _Nil 0
+	buildh _Nil 0
+	push_b 3
+	push_a 4
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 4
+.d 4 1 i
+	rtn
+case.52
+	repl_args 2 2
+	push_a 0
+	jsr_eval 0
+	push_b 3
+	push_a 3
+	push_b 3
+	push_b 3
+	push_b 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 4 iiii
+	jsr s18
+.o 4 1 i
+	push_a 4
+	jsr_eval 0
+	push_b 0
+	push_a 4
+	push_b 4
+	push_b 4
+	push_b 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_b 3 8
+	update_b 2 7
+	update_b 1 6
+	updatepop_b 0 5
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 7
+	pop_a 1
+.d 2 4 iiii
+	jsr s19
+.o 4 1 i
+	push_a 6
+	push_a 3
+	buildh d30 2
+	create
+	push_a 3
+	push_a 8
+	buildh _Nil 0
+	update_a 0 10
+	update_a 0 6
+	update_a 0 7
+	update_a 0 11
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	create
+	push_a 3
+	push_a 8
+	buildh _Nil 0
+	update_a 0 10
+	update_a 0 6
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	push_b 0
+	push_a 6
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 1
+.d 4 1 i
+	rtn
+.desc d31 _hnf l31 3 0 "<lambda>[line:15];13;30"
+.a 0 ea31
+.o 2 0
+l31
+	repl_args 2 2
+.o 3 0
+ea31
+.o 3 0
+s31
+	push_a 2
+	push_a 2
+	build e_system_dAP 2 e_system_nAP
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.desc d30 _hnf l30 3 0 "<lambda>[line:15];13;29"
+.a 0 ea30
+.o 2 0
+l30
+	repl_args 2 2
+.o 3 0
+ea30
+.o 3 0
+s30
+	push_a 2
+	push_a 2
+	build e_system_dAP 2 e_system_nAP
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.export e_windowcontrols_sclosecontrols
+.descexp e_windowcontrols_dclosecontrols e_windowcontrols_nclosecontrols e_windowcontrols_lclosecontrols 5 0 "closecontrols"
+.a 0 a4
+.o 2 0
+e_windowcontrols_lclosecontrols
+	repl_args 4 4
+.o 5 0
+a4
+.d 5 0
+	jsr ea4
+.o 5 1 i
+	buildI_b 0
+	build_r e_windowhandle_rWindowStateHandle 2 0 4 0
+	push_a 4
+	push_a 4
+	push_a 4
+	buildh _Tuple 5
+	updatepop_a 0 5
+	pop_b 1
+.d 1 0
+	rtn
+.n 5 e_windowcontrols_dclosecontrols
+.o 1 0
+e_windowcontrols_nclosecontrols
+	push_node _cycle_in_spine 5
+.d 5 0
+	jsr ea4
+.o 5 1 i
+	buildI_b 0
+	build_r e_windowhandle_rWindowStateHandle 2 0 4 0
+	push_a 4
+	push_a 4
+	push_a 4
+	fillh _Tuple 5 10
+	pop_a 5
+	pop_b 1
+.d 1 0
+	rtn
+.o 5 0
+ea4
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 4
+	push_r_args 3 2 0
+	pushB_a 4
+	push_r_args 2 1 10
+	update_a 2 7
+	update_a 1 6
+	update_a 4 5
+	update_a 0 4
+	pop_a 4
+.o 4 12 iiiiiiiiiibi
+e_windowcontrols_sclosecontrols
+.o 4 12 iiiiiiiiiibi
+s4
+	jmp case.53
+case.53
+	push_r_args 2 1 2
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+	jsr_eval 3
+	eq_desc e_Data.Maybe_dJust 1 3
+	jmp_true case.55
+	pop_b 1
+	jmp case.54
+case.55
+	push_args 3 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	jsr_eval 0
+	push_r_args_u 0 11 3
+	update_a 8 9
+	update_a 7 8
+	update_b 1 2
+	update_b 0 1
+	update_a 6 7
+	update_a 5 6
+	update_a 3 5
+	update_a 1 4
+	pop_a 4
+	pop_b 1
+	push_b 13
+	notB
+	jmp_false else.56
+	push_a 3
+	jsr_eval 0
+	pop_b 2
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 4
+	update_a 0 8
+	update_a 0 11
+	update_a 0 2
+	update_a 0 6
+	update_a 0 7
+	pop_a 1
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_b 14
+	push_a 2
+	push_a 12
+	push_b 3
+	push_b 3
+	update_b 2 4
+	update_b 3 2
+	update_b 0 3
+	pop_b 1
+	update_b 3 16
+	update_b 2 15
+	update_b 1 14
+	updatepop_b 0 13
+	update_a 11 13
+	update_a 10 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 5
+	push_a 5
+	fill2_r e_windowhandle_rWindowHandle 11 3 8 000010010000000
+	push_a 6
+	build e_windowclipstate_dinvalidateWindowClipState 1 e_windowclipstate_ninvalidateWindowClipState
+	push_r_args 8 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 10
+	push_a 10
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 0
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+	updatepop_b 0 1
+.d 5 1 i
+	rtn
+else.56
+	push_a 3
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_b 16
+	push_a 2
+	push_a 12
+	push_b 5
+	push_b 3
+	update_b 2 4
+	update_b 3 2
+	update_b 0 3
+	pop_b 1
+	update_a 5 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 12
+	pop_a 1
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 10
+	push_a 8
+	buildh _Nil 0
+	update_a 0 10
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s89
+.o 1 6 iiiibb
+	push_b 5
+	push_b 5
+	push_r_args 11 0 2
+.d 0 2 ii
+	jsr e_commondef_stoTuple;72
+.o 0 2 ii
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_a 14
+.d 1 18 iiiiiiiiiiiiiiiibb
+	jsr e_oswindow_sosScrollbarsAreVisible
+.o 0 2 bb
+	build_r e_ossystem_rOSWindowMetrics 1 10 14 12
+	push_b 0
+	updatepop_b 0 1
+.d 1 1 b
+	jsr s46
+.o 0 1 i
+	push_r_args_b 11 0 2 2 1
+	subI
+	build_r e_ossystem_rOSWindowMetrics 1 10 14 12
+	push_b 1
+.d 1 1 b
+	jsr s45
+.o 0 1 i
+	push_r_args_b 11 0 2 1 1
+	subI
+	push_b 1
+	push_b 1
+	buildh _Nil 0
+	update_a 0 12
+	pop_a 1
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	push_b 13
+	push_a 6
+	push_b 17
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 1 2 ii
+	jsr e_wstate_sgetWElementHandles`
+.o 2 1 i
+	push_a 11
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_a 17
+	push_a 11
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowHMargins
+.o 0 2 ii
+	push_a 11
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_b 29
+	push_a 17
+	push_a 11
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowVMargins
+.o 0 2 ii
+	buildh _Nil 0
+	build_r e_ostypes_rOSRect 0 4 0 12
+	build e_commondef_drectToRectangle 1 e_commondef_nrectToRectangle
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 0 0
+	jsr e_StdIOBasic_szero;15
+.o 0 2 ii
+	push_b 3
+	push_b 3
+	push_b 14
+	subI
+	subI
+	push_b 6
+	push_b 6
+	push_b 14
+	subI
+	subI
+	push_a 12
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_a 18
+	push_a 12
+	buildh _Nil 0
+	update_a 0 14
+	update_a 0 16
+	pop_a 1
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowItemSpaces
+.o 0 2 ii
+	push_b 10
+	push_a 2
+	push_b 8
+	push_b 8
+	push_b 12
+	push_b 12
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_b 42
+	push_a 18
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	push_b 20
+	update_b 15 21
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 0 20
+	pop_b 1
+	update_b 20 25
+	update_b 19 24
+	update_b 18 23
+	update_b 17 22
+	update_b 16 21
+	update_b 15 20
+	update_b 14 19
+	update_b 13 18
+	update_b 12 17
+	update_b 11 16
+	update_b 10 15
+	update_b 9 14
+	update_b 8 13
+	update_b 7 12
+	update_b 6 11
+	update_b 5 10
+	update_b 4 9
+	update_b 3 8
+	update_b 2 7
+	update_b 1 6
+	updatepop_b 0 5
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 21 iiiiiiiiiiiiiiiiiiiii
+	jsr e_controllayout_slayoutControls
+.o 1 3 iii
+	push_r_args 13 11 3
+	push_a 11
+	push_a 18
+	push_a 12
+	update_a 2 13
+	update_a 4 2
+	update_a 6 4
+	update_a 8 6
+	update_a 10 8
+	update_a 12 10
+	update_a 1 12
+	update_a 3 1
+	update_a 5 3
+	update_a 7 5
+	update_a 9 7
+	update_a 11 9
+	update_a 0 11
+	pop_a 1
+	update_a 11 3
+	update_a 12 6
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_b 5
+	push_b 23
+	pushB TRUE
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_b 35
+	push_a 26
+	push_b 15
+	update_b 13 16
+	update_b 14 13
+	update_b 15 14
+	update_b 0 15
+	pop_b 1
+	update_b 15 18
+	update_b 14 17
+	update_b 13 16
+	update_b 12 15
+	update_b 11 14
+	update_b 10 13
+	update_b 9 12
+	update_b 8 11
+	update_b 7 10
+	update_b 6 9
+	update_b 5 8
+	update_b 4 7
+	update_b 3 6
+	update_b 2 5
+	update_b 1 4
+	updatepop_b 0 3
+	update_a 16 22
+	update_a 15 21
+	update_a 14 20
+	update_a 13 19
+	update_a 11 18
+	update_a 10 17
+	update_a 9 16
+	update_a 8 15
+	update_a 7 14
+	update_a 6 13
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+	buildh _Nil 0
+	update_a 0 19
+	pop_a 1
+.d 12 16 iiiiiiiiiibibbbi
+	jsr e_windowclipstate_sforceValidWindowClipState
+.o 11 4 bbbi
+	push_a 6
+	jsr_eval 0
+.d 0 0
+	jsr e_StdIOBasic_szero;11
+.o 0 2 ii
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+.d 0 0
+	jsr e_StdIOBasic_szero;11
+.o 0 2 ii
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_a 12
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 35
+	push_b 37
+	pushB FALSE
+	push_a 17
+	push_b 40
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_b 51
+	push_a 22
+	push_b 30
+	update_b 15 31
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 21 20
+	update_b 22 21
+	update_b 23 22
+	update_b 24 23
+	update_b 25 24
+	update_b 26 25
+	update_b 27 26
+	update_b 28 27
+	update_b 29 28
+	update_b 30 29
+	update_b 0 30
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 20
+	update_a 0 16
+	pop_a 1
+.d 4 31 iiiiiiiiiiibbbiiiiiiiiiiiiiiiii
+	jsr e_controlrelayout_srelayoutControls
+.o 1 2 ii
+	push_a 0
+	push_b 4
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_b 4
+	push_b 4
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 6
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_r_args 33 1 2
+	push_b 6
+	push_b 6
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_b 39
+	push_a 32
+	push_b 16
+	update_b 12 17
+	update_b 13 12
+	update_b 14 13
+	update_b 15 14
+	update_b 16 15
+	update_b 0 16
+	pop_b 1
+	update_b 16 18
+	update_b 15 17
+	update_b 14 16
+	update_b 13 15
+	update_b 12 14
+	update_b 11 13
+	update_b 10 12
+	update_b 9 11
+	update_b 8 10
+	update_b 7 9
+	update_b 6 8
+	update_b 5 7
+	update_b 4 6
+	update_b 3 5
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 28 31
+	update_a 27 30
+	update_a 26 29
+	update_a 12 28
+	update_a 11 27
+	update_a 10 26
+	update_a 9 25
+	update_a 8 24
+	update_a 7 23
+	update_a 6 22
+	update_a 5 21
+	update_a 4 20
+	update_a 3 19
+	update_a 2 18
+	update_a 1 17
+	updatepop_a 0 16
+	buildh _Nil 0
+	update_a 0 18
+	pop_a 1
+.d 13 17 iiiiiiiiiiiibbbbi
+	jsr e_windowupdate_supdatewindowbackgrounds
+.o 11 4 bbbi
+	build_r e_windowhandle_rWindowHandle 11 3 0 0
+	push_r_args 15 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 19
+	push_a 19
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 3
+	push_a 15
+	push_a 15
+	push_a 15
+	update_a 4 23
+	update_a 3 22
+	update_a 2 21
+	update_a 1 20
+	updatepop_a 0 19
+	updatepop_b 0 37
+.d 5 1 i
+	rtn
+case.54
+	buildAC "unexpected window placeholder argument"
+	buildAC "closecontrols"
+	update_a 1 5
+	updatepop_a 0 4
+	pop_b 12
+.d 2 0
+	jsr s7
+.o 1 0
+	repl_args 5 5
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 4
+	push_r_args 3 2 0
+	update_a 1 6
+	update_a 0 5
+	pop_a 2
+.d 5 1 i
+	rtn
+.o 1 1 b
+s46
+	eqB_b TRUE 0
+	jmp_true case.57
+	jmp case.58
+case.57
+	push_r_args_b 0 1 10 9 1
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.58
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 1 1 b
+s45
+	eqB_b TRUE 0
+	jmp_true case.59
+	jmp case.60
+case.59
+	push_r_args_b 0 1 10 10 1
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.60
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 15 4 iiii
+s14
+	push_a 4
+	jsr_eval 0
+.d 1 0
+	jsr e_windowhandle_sisRecursiveControl
+.o 0 1 b
+	jmp_false else.61
+	push_a 2
+	jsr_eval 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s88
+.o 1 1 b
+	push_b 0
+	notB
+	jmp_false else.62
+	buildh e_windowhandle_dIsCompoundControl 0
+	push_a 5
+.d 2 0
+	jsr e_windowhandle_s==;8
+.o 0 1 b
+	jmp_false else.63
+	push_a 9
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	push_a 13
+	jsr_eval 0
+	repl_r_args 0 2
+	push_b 5
+	push_b 5
+	push_b 3
+	update_b 2 4
+	update_b 0 2
+	update_b 3 0
+	update_b 1 3
+	update_b 0 1
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 0 4 iiii
+	jsr e_StdIOBasic_smovePoint
+.o 0 2 ii
+	push_b 6
+	push_a 3
+	push_b 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_b 3
+	update_b 2 4
+	update_b 3 2
+	update_b 0 3
+	pop_b 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 5
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_a 17 31
+	update_a 16 30
+	update_a 15 29
+	update_a 14 28
+	update_a 13 27
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 13 0
+	jsr e_windowclipstate_sinvalidateCompoundClipState
+.o 13 0
+	push_b 0
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_b 2
+	update_a 17 22
+	update_a 16 21
+	update_a 15 20
+	update_a 14 19
+	update_a 13 18
+	update_a 12 17
+	update_a 11 16
+	update_a 10 15
+	update_a 9 14
+	update_a 8 13
+	update_a 7 12
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	update_b 1 7
+	updatepop_b 0 6
+.d 18 2 bi
+	rtn
+else.63
+	push_a 9
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	push_a 13
+	jsr_eval 0
+	repl_r_args 0 2
+	push_b 5
+	push_b 5
+	push_b 3
+	update_b 2 4
+	update_b 0 2
+	update_b 3 0
+	update_b 1 3
+	update_b 0 1
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 0 4 iiii
+	jsr e_StdIOBasic_smovePoint
+.o 0 2 ii
+	push_b 6
+	push_a 3
+	push_b 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_b 3
+	update_b 2 4
+	update_b 3 2
+	update_b 0 3
+	pop_b 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 5
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 0
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_b 2
+	update_a 17 36
+	update_a 16 35
+	update_a 15 34
+	update_a 14 33
+	update_a 13 32
+	update_a 12 31
+	update_a 11 30
+	update_a 10 29
+	update_a 9 28
+	update_a 8 27
+	update_a 7 26
+	update_a 6 25
+	update_a 5 24
+	update_a 4 23
+	update_a 3 22
+	update_a 2 21
+	update_a 1 20
+	updatepop_a 0 19
+	update_b 1 7
+	updatepop_b 0 6
+.d 18 2 bi
+	rtn
+else.62
+	push_a 11
+	jsr_eval 0
+	repl_r_args 0 2
+	push_b 5
+	push_b 5
+	push_b 3
+	update_b 2 4
+	update_b 0 2
+	update_b 3 0
+	update_b 1 3
+	update_b 0 1
+	pop_b 1
+.d 0 4 iiii
+	jsr e_StdIOBasic_smovePoint
+.o 0 2 ii
+	push_a 9
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	push_b 6
+	push_a 3
+	push_b 2
+	push_b 2
+	push_b 6
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 5
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 0
+	push_b 7
+	push_b 7
+	push_b 7
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 29 31
+	update_a 17 30
+	update_a 16 29
+	update_a 15 28
+	update_a 14 27
+	update_a 13 26
+	update_a 12 25
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+.d 13 4 iiii
+	jsr e_windowdispose_sdisposeWItemHandle
+.o 16 1 i
+	push_a 21
+	jsr_eval 0
+	repl_r_args 0 2
+	push_b 4
+	push_b 4
+	buildh _Nil 0
+	update_a 0 22
+	pop_a 1
+.d 0 4 iiii
+	jsr e_commondef_sposSizeToRect
+.o 0 4 iiii
+	push_b 4
+	push_b 9
+	push_b 5
+	update_b 2 6
+	update_b 3 2
+	update_b 4 3
+	update_b 5 4
+	update_b 0 5
+	pop_b 1
+	update_b 5 8
+	update_b 4 7
+	update_b 3 6
+	update_b 2 5
+	update_b 1 4
+	updatepop_b 0 3
+.d 0 6 iiiiii
+	jsr e_oswindow_sosInvalidateWindowRect
+.o 0 1 i
+	push_a 18
+	push_a 3
+	buildh d29 2
+	create
+	push_a 19
+	push_a 4
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 22
+	update_a 0 7
+	update_a 0 23
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	create
+	push_a 19
+	push_a 4
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 22
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 36
+	push_a 36
+	push_b 1
+	push_a 17
+	update_a 15 18
+	update_a 12 15
+	update_a 9 12
+	update_a 6 9
+	update_a 3 6
+	update_a 0 3
+	update_a 17 0
+	update_a 14 17
+	update_a 11 14
+	update_a 8 11
+	update_a 5 8
+	update_a 2 5
+	update_a 0 2
+	update_a 16 0
+	update_a 13 16
+	update_a 10 13
+	update_a 7 10
+	update_a 4 7
+	update_a 1 4
+	update_a 0 1
+	pop_a 1
+	update_a 17 39
+	update_a 16 38
+	update_a 15 37
+	update_a 14 36
+	update_a 13 35
+	update_a 12 34
+	update_a 11 33
+	update_a 10 32
+	update_a 9 31
+	update_a 8 30
+	update_a 7 29
+	update_a 6 28
+	update_a 5 27
+	update_a 4 26
+	update_a 3 25
+	update_a 2 24
+	update_a 1 23
+	updatepop_a 0 22
+	update_b 1 6
+	updatepop_b 0 5
+.d 18 2 bi
+	rtn
+else.61
+	push_a 2
+	jsr_eval 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s87
+.o 1 1 b
+	push_b 0
+	notB
+	jmp_false else.64
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh e_StdFunc_did 0
+	buildh _Nil 0
+	buildh _Nil 0
+	push_b 4
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_a 19
+	push_b 1
+	push_a 17
+	update_a 13 18
+	update_a 8 13
+	update_a 3 8
+	update_a 16 3
+	update_a 11 16
+	update_a 6 11
+	update_a 1 6
+	update_a 14 1
+	update_a 9 14
+	update_a 4 9
+	update_a 17 4
+	update_a 12 17
+	update_a 7 12
+	update_a 2 7
+	update_a 15 2
+	update_a 10 15
+	update_a 5 10
+	update_a 0 5
+	pop_a 1
+	update_a 17 32
+	update_a 16 31
+	update_a 15 30
+	update_a 14 29
+	update_a 13 28
+	update_a 12 27
+	update_a 11 26
+	update_a 10 25
+	update_a 9 24
+	update_a 8 23
+	update_a 7 22
+	update_a 6 21
+	update_a 5 20
+	update_a 4 19
+	update_a 3 18
+	update_a 2 17
+	update_a 1 16
+	updatepop_a 0 15
+	update_b 1 6
+	updatepop_b 0 5
+.d 18 2 bi
+	rtn
+else.64
+	push_b 4
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_b 4
+	push_b 4
+	push_b 4
+	update_a 25 27
+	update_a 24 26
+	update_a 16 25
+	update_a 14 24
+	update_a 13 23
+	update_a 12 22
+	update_a 11 21
+	update_a 10 20
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 13 4 iiii
+	jsr e_windowdispose_sdisposeWItemHandle
+.o 16 1 i
+	push_a 20
+	jsr_eval 0
+	repl_r_args 0 2
+	push_a 19
+	jsr_eval 0
+	repl_r_args 0 2
+	push_b 8
+	push_b 8
+	push_b 3
+	update_b 2 4
+	update_b 0 2
+	update_b 3 0
+	update_b 1 3
+	update_b 0 1
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 20
+	update_a 0 21
+	pop_a 1
+.d 0 4 iiii
+	jsr e_StdIOBasic_smovePoint
+.o 0 2 ii
+.d 0 4 iiii
+	jsr e_commondef_sposSizeToRect
+.o 0 4 iiii
+	push_b 4
+	push_b 7
+	push_b 5
+	update_b 2 6
+	update_b 3 2
+	update_b 4 3
+	update_b 5 4
+	update_b 0 5
+	pop_b 1
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 0 6 iiiiii
+	jsr e_oswindow_sosInvalidateWindowRect
+.o 0 1 i
+	push_a 17
+	push_a 19
+	buildh _Cons 2
+	push_a 17
+	jsr_eval 0
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_b 1
+	push_a 17
+	update_a 16 18
+	update_a 14 16
+	update_a 12 14
+	update_a 10 12
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 17 4
+	update_a 15 17
+	update_a 13 15
+	update_a 11 13
+	update_a 9 11
+	update_a 7 9
+	update_a 5 7
+	update_a 0 5
+	pop_a 1
+	update_a 17 38
+	update_a 16 37
+	update_a 15 36
+	update_a 14 35
+	update_a 13 34
+	update_a 12 33
+	update_a 11 32
+	update_a 10 31
+	update_a 9 30
+	update_a 8 29
+	update_a 7 28
+	update_a 6 27
+	update_a 5 26
+	update_a 4 25
+	update_a 3 24
+	update_a 2 23
+	update_a 1 22
+	updatepop_a 0 21
+	update_b 1 6
+	updatepop_b 0 5
+.d 18 2 bi
+	rtn
+.o 3 4 iiii
+s15
+	pushD_a 2
+	eqD_b e_windowhandle_dWItemHandle 1
+	jmp_true case.65
+	eqD_b e_windowhandle_dWListLSHandle 1
+	jmp_true case.66
+	eqD_b e_windowhandle_dWExtendLSHandle 1
+	jmp_true case.67
+	jmp case.68
+case.65
+	pop_b 1
+	push_args_u 2 1 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 13 0
+	push_b 3
+	push_a 15
+	push_a 15
+	push_b 3
+	push_b 3
+	push_b 3
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+	update_a 14 17
+	update_a 13 16
+	update_a 12 15
+	update_a 11 14
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 15 4 iiii
+	jsr s14
+.o 18 2 bi
+	build_r e_windowhandle_rWItemHandle 13 0 5 0
+	fill1 e_windowhandle_dWItemHandle 1 19 01
+	push_a 18
+	push_b 1
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_b 1
+	update_a 5 24
+	update_a 4 23
+	update_a 3 22
+	update_a 2 21
+	update_a 1 20
+	updatepop_a 0 19
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 bi
+	rtn
+case.66
+	pop_b 1
+	push_args_u 2 1 1
+	push_a 0
+	jsr_eval 0
+	push_b 3
+	push_a 3
+	push_a 3
+	push_b 3
+	push_b 3
+	push_b 3
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+.d 1 0
+	jsr e_commondef_suisEmpty
+.o 1 1 b
+	push_a 0
+	fill1 e_windowhandle_dWListLSHandle 1 8 01
+	push_a 7
+	push_b 1
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_b 1
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 bi
+	rtn
+case.67
+	pop_b 1
+	push_args_u 2 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_b 3
+	push_a 4
+	push_a 4
+	push_b 3
+	push_b 3
+	push_b 3
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+	update_a 4 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+.d 1 0
+	jsr e_commondef_suisEmpty
+.o 1 1 b
+	push_a 0
+	fill1_r e_windowhandle_rWExtendLSHandle 2 0 8 001
+	push_a 7
+	fill1 e_windowhandle_dWExtendLSHandle 1 9 01
+	push_a 8
+	push_b 1
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_b 1
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 bi
+	rtn
+case.68
+	pop_b 1
+	push_args_u 2 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_b 3
+	push_a 4
+	push_a 4
+	push_b 3
+	push_b 3
+	push_b 3
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+	update_a 4 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+.d 1 0
+	jsr e_commondef_suisEmpty
+.o 1 1 b
+	push_a 0
+	fill1_r e_windowhandle_rWChangeLSHandle 2 0 8 001
+	push_a 7
+	fill1 e_windowhandle_dWChangeLSHandle 1 9 01
+	push_a 8
+	push_b 1
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_b 1
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 bi
+	rtn
+.o 3 4 iiii
+s16
+	eq_desc _Nil 0 2
+	jmp_true case.69
+	jmp case.70
+case.69
+	buildh _Nil 0
+	push_a 2
+	jsr_eval 0
+	buildh e_StdFunc_did 0
+	buildh _Nil 0
+	buildh _Nil 0
+	push_b 3
+	push_a 5
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 4
+.d 6 1 i
+	rtn
+case.70
+	push_args 2 2 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	push_a 2
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	jmp_false else.71
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_a 4
+	jsr_eval 0
+	buildh e_StdFunc_did 0
+	buildh _Nil 0
+	buildh _Nil 0
+	push_b 3
+	push_a 7
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	updatepop_b 0 4
+.d 6 1 i
+	rtn
+else.71
+	push_a 0
+	jsr_eval 0
+	push_b 3
+	push_a 4
+	push_a 4
+	push_b 3
+	push_b 3
+	push_b 3
+	update_a 4 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 4 iiii
+	jsr s15
+.o 6 2 bi
+	push_b 0
+	jmp_false else.72
+	push_a 6
+	jsr_eval 0
+	push_b 1
+	push_a 5
+	push_a 5
+	push_b 5
+	push_b 5
+	push_b 5
+	update_b 3 9
+	update_b 2 8
+	update_b 1 7
+	updatepop_b 0 6
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 8
+	push_a 3
+	buildh d28 2
+	create
+	push_a 3
+	push_a 10
+	buildh _Nil 0
+	update_a 0 12
+	update_a 0 6
+	update_a 0 7
+	update_a 0 13
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	create
+	push_a 3
+	push_a 10
+	buildh _Nil 0
+	update_a 0 12
+	update_a 0 6
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	push_b 0
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 5
+	update_a 3 6
+	update_a 0 3
+	update_a 5 0
+	update_a 2 5
+	update_a 0 2
+	update_a 4 0
+	update_a 1 4
+	update_a 0 1
+	pop_a 1
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 1
+.d 6 1 i
+	rtn
+else.72
+	push_a 6
+	jsr_eval 0
+	push_b 1
+	push_a 5
+	push_a 5
+	push_b 5
+	push_b 5
+	push_b 5
+	update_b 3 9
+	update_b 2 8
+	update_b 1 7
+	updatepop_b 0 6
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 8
+	update_a 0 10
+	pop_a 1
+.d 3 4 iiii
+	jsr s16
+.o 6 1 i
+	push_a 5
+	push_a 12
+	buildh _Cons 2
+	push_a 9
+	push_a 4
+	buildh d28 2
+	create
+	push_a 4
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	update_a 0 7
+	update_a 0 8
+	update_a 0 14
+	update_a 0 17
+	update_a 0 11
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	create
+	push_a 4
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	update_a 0 7
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	push_b 0
+	push_a 8
+	push_a 8
+	push_a 4
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	updatepop_b 0 1
+.d 6 1 i
+	rtn
+.desc d29 _hnf l29 3 0 "<lambda>[line:15];13;28"
+.a 0 ea29
+.o 2 0
+l29
+	repl_args 2 2
+.o 3 0
+ea29
+.o 3 0
+s29
+	push_a 2
+	push_a 2
+	build e_system_dAP 2 e_system_nAP
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.desc d28 _hnf l28 3 0 "<lambda>[line:15];13;27"
+.a 0 ea28
+.o 2 0
+l28
+	repl_args 2 2
+.o 3 0
+ea28
+	jsr_eval 0
+.o 3 0
+s28
+	push_a 2
+	push_a 2
+	build e_system_dAP 2 e_system_nAP
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.export e_windowcontrols_sopenrecursivecontrols
+.descexp e_windowcontrols_dopenrecursivecontrols e_windowcontrols_nopenrecursivecontrols e_windowcontrols_lopenrecursivecontrols 7 0 "openrecursivecontrols"
+.a 0 a3
+.o 2 0
+e_windowcontrols_lopenrecursivecontrols
+	repl_args 6 6
+.o 7 0
+a3
+.d 7 0
+	jsr ea3
+.o 2 2 bi
+	buildI_b 1
+	build_r e_windowhandle_rWindowStateHandle 2 0 1 0
+	buildB_b 0
+	buildh _Tuple 3
+	updatepop_a 0 2
+	pop_b 2
+.d 1 0
+	rtn
+.n 7 e_windowcontrols_dopenrecursivecontrols
+.o 1 0
+e_windowcontrols_nopenrecursivecontrols
+	push_node _cycle_in_spine 7
+.d 7 0
+	jsr ea3
+.o 2 2 bi
+	buildI_b 1
+	build_r e_windowhandle_rWindowStateHandle 2 0 1 0
+	buildB_b 0
+	fillh _Tuple 3 5
+	pop_a 2
+	pop_b 2
+.d 1 0
+	rtn
+.o 7 0
+ea3
+	jsr_eval 6
+	jsr_eval 5
+	jsr_eval 4
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 6
+	push_r_args 5 2 0
+	push_r_args 3 1 10
+	update_a 2 9
+	update_a 1 8
+	update_a 0 4
+	pop_a 3
+.o 7 11 iiiiiiiiiii
+e_windowcontrols_sopenrecursivecontrols
+.o 7 11 iiiiiiiiiii
+s3
+	jmp case.73
+case.73
+	jsr_eval 6
+	eq_desc e_Data.Maybe_dJust 1 6
+	jmp_true case.75
+	jmp case.74
+case.75
+	push_args 6 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	jsr_eval 0
+	push_r_args_u 0 11 3
+	update_b 1 2
+	update_b 0 1
+	update_a 3 4
+	update_a 1 3
+	pop_a 3
+	pop_b 1
+	push_a 3
+	jsr_eval 0
+	push_a 2
+	push_a 16
+	push_a 16
+	push_a 16
+	update_a 7 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 17
+	update_a 0 18
+	pop_a 1
+.d 5 0
+	jsr s13
+.o 4 2 bi
+	push_b 0
+	notB
+	jmp_false else.76
+	push_a 3
+	fill2_r e_windowhandle_rWindowHandle 11 3 11 000000010000000
+	push_a 10
+	push_r_args 12 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 19
+	push_a 19
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 14
+	pushB FALSE
+	update_a 1 20
+	updatepop_a 0 19
+	update_b 1 16
+	updatepop_b 0 15
+.d 2 2 bi
+	rtn
+else.76
+	push_r_args_b 17 1 2 1 1
+	push_a 9
+	push_a 6
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s86
+.o 1 6 iiiibb
+	push_b 5
+	push_b 5
+	push_r_args 8 0 2
+.d 0 2 ii
+	jsr e_commondef_stoTuple;72
+.o 0 2 ii
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_a 12
+.d 1 18 iiiiiiiiiiiiiiiibb
+	jsr e_oswindow_sosScrollbarsAreVisible
+.o 0 2 bb
+	build_r e_ossystem_rOSWindowMetrics 1 10 12 13
+	push_b 0
+	updatepop_b 0 1
+.d 1 1 b
+	jsr s41
+.o 0 1 i
+	push_r_args_b 8 0 2 2 1
+	subI
+	build_r e_ossystem_rOSWindowMetrics 1 10 12 13
+	push_b 1
+.d 1 1 b
+	jsr s40
+.o 0 1 i
+	push_r_args_b 8 0 2 1 1
+	subI
+	push_b 1
+	push_b 1
+	buildh _Nil 0
+	update_a 0 9
+	pop_a 1
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	push_b 28
+	push_a 2
+	push_b 14
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 1 2 ii
+	jsr e_wstate_sgetWElementHandles`
+.o 2 1 i
+	push_a 7
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_a 15
+	push_a 7
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowHMargins
+.o 0 2 ii
+	push_a 7
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_a 15
+	push_a 7
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowVMargins
+.o 0 2 ii
+	buildh _Nil 0
+	build_r e_ostypes_rOSRect 0 4 0 12
+	build e_commondef_drectToRectangle 1 e_commondef_nrectToRectangle
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 0 0
+	jsr e_StdIOBasic_szero;15
+.o 0 2 ii
+	push_b 3
+	push_b 3
+	push_b 14
+	subI
+	subI
+	push_b 6
+	push_b 6
+	push_b 14
+	subI
+	subI
+	push_a 8
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_a 16
+	push_a 8
+	buildh _Nil 0
+	update_a 0 10
+	update_a 0 12
+	pop_a 1
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowItemSpaces
+.o 0 2 ii
+	push_b 10
+	push_a 2
+	push_b 8
+	push_b 8
+	push_b 12
+	push_b 12
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_a 16
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	push_b 20
+	update_b 15 21
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 0 20
+	pop_b 1
+	update_b 20 25
+	update_b 19 24
+	update_b 18 23
+	update_b 17 22
+	update_b 16 21
+	update_b 15 20
+	update_b 14 19
+	update_b 13 18
+	update_b 12 17
+	update_b 11 16
+	update_b 10 15
+	update_b 9 14
+	update_b 8 13
+	update_b 7 12
+	update_b 6 11
+	update_b 5 10
+	update_b 4 9
+	update_b 3 8
+	update_b 2 7
+	update_b 1 6
+	updatepop_b 0 5
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 21 iiiiiiiiiiiiiiiiiiiii
+	jsr e_controllayout_slayoutControls
+.o 1 3 iii
+	push_b 2
+	push_a 0
+	push_b 17
+	push_b 22
+	push_a 9
+	push_a 9
+	push_b 21
+	push_a 17
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_a 17
+	update_b 13 16
+	update_b 12 15
+	update_b 11 14
+	update_b 10 13
+	update_b 9 12
+	update_b 8 11
+	update_b 7 10
+	update_b 6 9
+	update_b 5 8
+	update_b 4 7
+	update_b 3 6
+	update_b 2 5
+	update_b 1 4
+	updatepop_b 0 3
+	update_a 7 11
+	update_a 6 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	buildh _Nil 0
+	update_a 0 15
+	update_a 0 9
+	pop_a 1
+.d 5 14 iiiiiiiiiiibii
+	jsr e_controlcreate_screateRecursiveControls
+.o 1 1 i
+	push_r_args 6 11 3
+	push_a 11
+	push_a 14
+	push_a 12
+	update_a 2 13
+	update_a 4 2
+	update_a 6 4
+	update_a 8 6
+	update_a 10 8
+	update_a 12 10
+	update_a 1 12
+	update_a 3 1
+	update_a 5 3
+	update_a 7 5
+	update_a 9 7
+	update_a 11 9
+	update_a 0 11
+	pop_a 1
+	update_a 11 3
+	update_a 12 6
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_b 3
+	push_b 18
+	pushB TRUE
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_a 20
+	push_b 15
+	update_b 13 16
+	update_b 14 13
+	update_b 15 14
+	update_b 0 15
+	pop_b 1
+	update_b 15 16
+	update_b 14 15
+	update_b 13 14
+	update_b 12 13
+	update_b 11 12
+	update_b 10 11
+	update_b 9 10
+	update_b 8 9
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 15 18
+	update_a 13 17
+	update_a 11 16
+	update_a 10 15
+	update_a 9 14
+	update_a 8 13
+	update_a 7 12
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 12 16 iiiiiiiiiibibbbi
+	jsr e_windowclipstate_sforceValidWindowClipState
+.o 11 4 bbbi
+	push_a 6
+	jsr_eval 0
+.d 0 0
+	jsr e_StdIOBasic_szero;11
+.o 0 2 ii
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+.d 0 0
+	jsr e_StdIOBasic_szero;11
+.o 0 2 ii
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_a 12
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 37
+	push_b 39
+	pushB FALSE
+	push_a 14
+	push_b 37
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_a 18
+	push_b 30
+	update_b 15 31
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 21 20
+	update_b 22 21
+	update_b 23 22
+	update_b 24 23
+	update_b 25 24
+	update_b 26 25
+	update_b 27 26
+	update_b 28 27
+	update_b 29 28
+	update_b 30 29
+	update_b 0 30
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 17
+	update_a 0 16
+	pop_a 1
+.d 4 31 iiiiiiiiiiibbbiiiiiiiiiiiiiiiii
+	jsr e_controlrelayout_srelayoutControls
+.o 1 2 ii
+	push_a 0
+	push_b 4
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_b 4
+	push_b 4
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 6
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_r_args 31 1 2
+	push_b 6
+	push_b 6
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_a 28
+	push_b 16
+	update_b 12 17
+	update_b 13 12
+	update_b 14 13
+	update_b 15 14
+	update_b 16 15
+	update_b 0 16
+	pop_b 1
+	update_b 16 18
+	update_b 15 17
+	update_b 14 16
+	update_b 13 15
+	update_b 12 14
+	update_b 11 13
+	update_b 10 12
+	update_b 9 11
+	update_b 8 10
+	update_b 7 9
+	update_b 6 8
+	update_b 5 7
+	update_b 4 6
+	update_b 3 5
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 27 32
+	update_a 12 31
+	update_a 11 30
+	update_a 10 29
+	update_a 9 28
+	update_a 8 27
+	update_a 7 26
+	update_a 6 25
+	update_a 5 24
+	update_a 4 23
+	update_a 3 22
+	update_a 2 21
+	update_a 1 20
+	updatepop_a 0 19
+.d 13 17 iiiiiiiiiiiibbbbi
+	jsr e_windowupdate_supdatewindowbackgrounds
+.o 11 4 bbbi
+	build_r e_windowhandle_rWindowHandle 11 3 0 0
+	push_r_args 12 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 14
+	push_a 14
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 3
+	pushB TRUE
+	update_a 1 15
+	updatepop_a 0 14
+	update_b 1 38
+	updatepop_b 0 37
+.d 2 2 bi
+	rtn
+case.74
+	buildAC "unexpected window placeholder argument"
+	buildAC "openrecursivecontrols"
+	update_a 1 8
+	updatepop_a 0 7
+	pop_b 11
+.d 2 0
+	jsr s7
+.o 1 0
+	repl_args 3 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 2
+	push_r_args 1 2 0
+	pushB_a 2
+	update_a 1 4
+	update_a 0 3
+	pop_a 3
+.d 2 2 bi
+	rtn
+.o 1 1 b
+s41
+	eqB_b TRUE 0
+	jmp_true case.77
+	jmp case.78
+case.77
+	push_r_args_b 0 1 10 9 1
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.78
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 1 1 b
+s40
+	eqB_b TRUE 0
+	jmp_true case.79
+	jmp case.80
+case.79
+	push_r_args_b 0 1 10 10 1
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.80
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 17 0
+s11
+	push_a 6
+	jsr_eval 0
+.d 1 0
+	jsr e_windowhandle_sisRecursiveControl
+.o 0 1 b
+	notB
+	jmp_false else.81
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	pushI 0
+	pushB FALSE
+	update_a 15 32
+	update_a 14 31
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+.d 16 2 bi
+	rtn
+else.81
+	push_a 4
+	jsr_eval 0
+	push_a 1
+.d 2 0
+	jsr e_windowaccess_sidentifyMaybeId
+.o 0 1 b
+	notB
+	jmp_false else.82
+	push_a 11
+	jsr_eval 0
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jsr s13
+.o 4 2 bi
+	push_b 0
+	jmp_false else.83
+	buildh e_windowhandle_dIsCompoundControl 0
+	push_a 7
+.d 2 0
+	jsr e_windowhandle_s==;8
+.o 0 1 b
+	jmp_false else.83
+	push_a 3
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_a 15 29
+	update_a 14 28
+	update_a 13 27
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 13 0
+	jsr e_windowclipstate_sinvalidateCompoundClipState
+.o 13 0
+	push_a 15
+	push_a 15
+	push_a 15
+	push_b 1
+	push_b 1
+	update_a 15 18
+	update_a 14 17
+	update_a 13 16
+	update_a 12 15
+	update_a 11 14
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	update_b 1 3
+	updatepop_b 0 2
+.d 16 2 bi
+	rtn
+else.83
+	push_a 3
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 15
+	push_a 15
+	push_a 15
+	push_b 1
+	push_b 1
+	update_a 15 32
+	update_a 14 31
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+	update_b 1 3
+	updatepop_b 0 2
+.d 16 2 bi
+	rtn
+else.82
+	buildh e_windowhandle_dIsCompoundControl 0
+	push_a 7
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_windowhandle_s==;8
+.o 0 1 b
+	jmp_false else.85
+	push_a 10
+	jsr_eval 0
+.d 1 0
+	jsr e_commondef_sulength
+.o 1 1 i
+	push_a 2
+	push_a 4
+	build e_windowaccess_dgenWElementItemNrs 2 e_windowaccess_ngenWElementItemNrs
+	buildh _Nil 0
+	push_a 1
+	build d_S.2 -1 n_S.2
+	push_a 4
+	build_r e_windowhandle_rWChangeLSHandle 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_windowhandle_dWChangeLSHandle 1
+	buildh _Cons 2
+	push_a 2
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+.d 13 0
+	jsr e_windowclipstate_sinvalidateCompoundClipState
+.o 13 0
+	push_a 13
+	build d_S.1 -1 n_S.1
+	buildh _Nil 0
+	build _ 0 e_StdMisc_nundef
+	push_b 0
+	pushB TRUE
+	update_a 15 16
+	update_a 14 15
+	update_a 13 14
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 16 2 bi
+	rtn
+else.85
+	push_a 10
+	jsr_eval 0
+.d 1 0
+	jsr e_commondef_sulength
+.o 1 1 i
+	push_a 2
+	push_a 4
+	build e_windowaccess_dgenWElementItemNrs 2 e_windowaccess_ngenWElementItemNrs
+	buildh _Nil 0
+	push_a 1
+	build d_S.2 -1 n_S.2
+	push_a 4
+	build_r e_windowhandle_rWChangeLSHandle 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_windowhandle_dWChangeLSHandle 1
+	buildh _Cons 2
+	push_a 2
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 13
+	build d_S.1 -1 n_S.1
+	buildh _Nil 0
+	build _ 0 e_StdMisc_nundef
+	push_b 0
+	pushB TRUE
+	update_a 15 33
+	update_a 14 32
+	update_a 13 31
+	update_a 12 30
+	update_a 11 29
+	update_a 10 28
+	update_a 9 27
+	update_a 8 26
+	update_a 7 25
+	update_a 6 24
+	update_a 5 23
+	update_a 4 22
+	update_a 3 21
+	update_a 2 20
+	update_a 1 19
+	updatepop_a 0 18
+	update_b 1 2
+	updatepop_b 0 1
+.d 16 2 bi
+	rtn
+.o 5 0
+s12
+	pushD_a 4
+	eqD_b e_windowhandle_dWItemHandle 1
+	jmp_true case.86
+	eqD_b e_windowhandle_dWListLSHandle 1
+	jmp_true case.87
+	eqD_b e_windowhandle_dWExtendLSHandle 1
+	jmp_true case.88
+	jmp case.89
+case.86
+	pop_b 1
+	push_args_u 4 1 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 13 0
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	update_a 16 21
+	update_a 15 20
+	update_a 14 19
+	update_a 13 18
+	update_a 12 17
+	update_a 11 16
+	update_a 10 15
+	update_a 9 14
+	update_a 8 13
+	update_a 7 12
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 17 0
+	jsr s11
+.o 16 2 bi
+	build_r e_windowhandle_rWItemHandle 13 0 3 0
+	fill1 e_windowhandle_dWItemHandle 1 17 01
+	push_a 16
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+case.87
+	pop_b 1
+	push_args_u 4 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s13
+.o 4 2 bi
+	push_a 3
+	fill1 e_windowhandle_dWListLSHandle 1 5 01
+	push_a 4
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+case.88
+	pop_b 1
+	push_args_u 4 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 6 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s13
+.o 4 2 bi
+	push_a 3
+	fill1_r e_windowhandle_rWExtendLSHandle 2 0 5 001
+	push_a 4
+	fill1 e_windowhandle_dWExtendLSHandle 1 6 01
+	push_a 5
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+case.89
+	pop_b 1
+	push_args_u 4 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 6 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s13
+.o 4 2 bi
+	push_a 3
+	fill1_r e_windowhandle_rWChangeLSHandle 2 0 5 001
+	push_a 4
+	fill1 e_windowhandle_dWChangeLSHandle 1 6 01
+	push_a 5
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+.o 5 0
+s13
+	eq_desc _Nil 0 4
+	jmp_true case.90
+	jmp case.91
+case.90
+	buildh _Nil 0
+	push_a 4
+	push_a 4
+	push_a 4
+	pushI 0
+	pushB FALSE
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 2 bi
+	rtn
+case.91
+	push_args 4 2 2
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 7 11
+	update_a 6 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s12
+.o 4 2 bi
+	push_b 0
+	jmp_false else.92
+	push_a 4
+	push_a 4
+	buildh _Cons 2
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+else.92
+	push_a 4
+	jsr_eval 0
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 9
+	update_a 8 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s13
+.o 4 2 bi
+	push_a 3
+	push_a 5
+	buildh _Cons 2
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	update_b 1 5
+	updatepop_b 0 4
+.d 4 2 bi
+	rtn
+.export e_windowcontrols_sopencompoundcontrols
+.descexp e_windowcontrols_dopencompoundcontrols e_windowcontrols_nopencompoundcontrols e_windowcontrols_lopencompoundcontrols 7 0 "opencompoundcontrols"
+.a 0 a2
+.o 2 0
+e_windowcontrols_lopencompoundcontrols
+	repl_args 6 6
+.o 7 0
+a2
+.d 7 0
+	jsr ea2
+.o 2 2 bi
+	buildI_b 1
+	build_r e_windowhandle_rWindowStateHandle 2 0 1 0
+	buildB_b 0
+	buildh _Tuple 3
+	updatepop_a 0 2
+	pop_b 2
+.d 1 0
+	rtn
+.n 7 e_windowcontrols_dopencompoundcontrols
+.o 1 0
+e_windowcontrols_nopencompoundcontrols
+	push_node _cycle_in_spine 7
+.d 7 0
+	jsr ea2
+.o 2 2 bi
+	buildI_b 1
+	build_r e_windowhandle_rWindowStateHandle 2 0 1 0
+	buildB_b 0
+	fillh _Tuple 3 5
+	pop_a 2
+	pop_b 2
+.d 1 0
+	rtn
+.o 7 0
+ea2
+	jsr_eval 6
+	jsr_eval 5
+	jsr_eval 4
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 6
+	push_r_args 5 2 0
+	push_r_args 3 1 10
+	update_a 2 9
+	update_a 1 8
+	update_a 0 4
+	pop_a 3
+.o 7 11 iiiiiiiiiii
+e_windowcontrols_sopencompoundcontrols
+.o 7 11 iiiiiiiiiii
+s2
+	jmp case.93
+case.93
+	jsr_eval 6
+	eq_desc e_Data.Maybe_dJust 1 6
+	jmp_true case.95
+	jmp case.94
+case.95
+	push_args 6 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	jsr_eval 0
+	push_r_args_u 0 11 3
+	update_b 1 2
+	update_b 0 1
+	update_a 3 4
+	update_a 1 3
+	pop_a 3
+	pop_b 1
+	push_a 3
+	jsr_eval 0
+	push_a 2
+	push_a 16
+	push_a 16
+	push_a 16
+	update_a 7 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 17
+	update_a 0 18
+	pop_a 1
+.d 5 0
+	jsr s10
+.o 4 2 bi
+	push_b 0
+	notB
+	jmp_false else.96
+	push_a 3
+	fill2_r e_windowhandle_rWindowHandle 11 3 11 000000010000000
+	push_a 10
+	push_r_args 12 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 19
+	push_a 19
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 14
+	pushB FALSE
+	update_a 1 20
+	updatepop_a 0 19
+	update_b 1 16
+	updatepop_b 0 15
+.d 2 2 bi
+	rtn
+else.96
+	push_r_args_b 17 1 2 1 1
+	push_a 9
+	push_a 6
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s85
+.o 1 6 iiiibb
+	push_b 5
+	push_b 5
+	push_r_args 8 0 2
+.d 0 2 ii
+	jsr e_commondef_stoTuple;72
+.o 0 2 ii
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_a 12
+.d 1 18 iiiiiiiiiiiiiiiibb
+	jsr e_oswindow_sosScrollbarsAreVisible
+.o 0 2 bb
+	build_r e_ossystem_rOSWindowMetrics 1 10 12 13
+	push_b 0
+	updatepop_b 0 1
+.d 1 1 b
+	jsr s38
+.o 0 1 i
+	push_r_args_b 8 0 2 2 1
+	subI
+	build_r e_ossystem_rOSWindowMetrics 1 10 12 13
+	push_b 1
+.d 1 1 b
+	jsr s37
+.o 0 1 i
+	push_r_args_b 8 0 2 1 1
+	subI
+	push_b 1
+	push_b 1
+	buildh _Nil 0
+	update_a 0 9
+	pop_a 1
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	push_b 28
+	push_a 2
+	push_b 14
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 1 2 ii
+	jsr e_wstate_sgetWElementHandles`
+.o 2 1 i
+	push_a 7
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_b 28
+	push_a 15
+	push_a 7
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowHMargins
+.o 0 2 ii
+	push_a 7
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_b 30
+	push_a 15
+	push_a 7
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowVMargins
+.o 0 2 ii
+	buildh _Nil 0
+	build_r e_ostypes_rOSRect 0 4 0 12
+	build e_commondef_drectToRectangle 1 e_commondef_nrectToRectangle
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 0 0
+	jsr e_StdIOBasic_szero;15
+.o 0 2 ii
+	push_b 3
+	push_b 3
+	push_b 14
+	subI
+	subI
+	push_b 6
+	push_b 6
+	push_b 14
+	subI
+	subI
+	push_a 8
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_b 36
+	push_a 16
+	push_a 8
+	buildh _Nil 0
+	update_a 0 10
+	update_a 0 12
+	pop_a 1
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowItemSpaces
+.o 0 2 ii
+	push_b 10
+	push_a 2
+	push_b 8
+	push_b 8
+	push_b 12
+	push_b 12
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_b 43
+	push_a 16
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	push_b 20
+	update_b 15 21
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 0 20
+	pop_b 1
+	update_b 20 25
+	update_b 19 24
+	update_b 18 23
+	update_b 17 22
+	update_b 16 21
+	update_b 15 20
+	update_b 14 19
+	update_b 13 18
+	update_b 12 17
+	update_b 11 16
+	update_b 10 15
+	update_b 9 14
+	update_b 8 13
+	update_b 7 12
+	update_b 6 11
+	update_b 5 10
+	update_b 4 9
+	update_b 3 8
+	update_b 2 7
+	update_b 1 6
+	updatepop_b 0 5
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 21 iiiiiiiiiiiiiiiiiiiii
+	jsr e_controllayout_slayoutControls
+.o 1 3 iii
+	push_b 2
+	push_a 0
+	push_b 17
+	push_b 22
+	push_a 9
+	push_a 9
+	push_b 21
+	push_a 17
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_a 17
+	update_b 13 16
+	update_b 12 15
+	update_b 11 14
+	update_b 10 13
+	update_b 9 12
+	update_b 8 11
+	update_b 7 10
+	update_b 6 9
+	update_b 5 8
+	update_b 4 7
+	update_b 3 6
+	update_b 2 5
+	update_b 1 4
+	updatepop_b 0 3
+	update_a 7 11
+	update_a 6 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	buildh _Nil 0
+	update_a 0 15
+	update_a 0 9
+	pop_a 1
+.d 5 14 iiiiiiiiiiibii
+	jsr e_controlcreate_screateCompoundControls
+.o 1 1 i
+	push_r_args 6 11 3
+	push_a 11
+	push_a 14
+	push_a 12
+	update_a 2 13
+	update_a 4 2
+	update_a 6 4
+	update_a 8 6
+	update_a 10 8
+	update_a 12 10
+	update_a 1 12
+	update_a 3 1
+	update_a 5 3
+	update_a 7 5
+	update_a 9 7
+	update_a 11 9
+	update_a 0 11
+	pop_a 1
+	update_a 11 3
+	update_a 12 6
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_b 3
+	push_b 18
+	pushB TRUE
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_a 20
+	push_b 15
+	update_b 13 16
+	update_b 14 13
+	update_b 15 14
+	update_b 0 15
+	pop_b 1
+	update_b 15 16
+	update_b 14 15
+	update_b 13 14
+	update_b 12 13
+	update_b 11 12
+	update_b 10 11
+	update_b 9 10
+	update_b 8 9
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 15 18
+	update_a 13 17
+	update_a 11 16
+	update_a 10 15
+	update_a 9 14
+	update_a 8 13
+	update_a 7 12
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 12 16 iiiiiiiiiibibbbi
+	jsr e_windowclipstate_sforceValidWindowClipState
+.o 11 4 bbbi
+	push_a 6
+	jsr_eval 0
+.d 0 0
+	jsr e_StdIOBasic_szero;11
+.o 0 2 ii
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+.d 0 0
+	jsr e_StdIOBasic_szero;11
+.o 0 2 ii
+.d 0 0
+	jsr e_StdIOBasic_szero;21
+.o 0 2 ii
+	push_a 12
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 19
+	push_b 37
+	push_b 39
+	pushB FALSE
+	push_a 14
+	push_b 37
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_b 52
+	push_a 18
+	push_b 30
+	update_b 15 31
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 21 20
+	update_b 22 21
+	update_b 23 22
+	update_b 24 23
+	update_b 25 24
+	update_b 26 25
+	update_b 27 26
+	update_b 28 27
+	update_b 29 28
+	update_b 30 29
+	update_b 0 30
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 17
+	update_a 0 16
+	pop_a 1
+.d 4 31 iiiiiiiiiiibbbiiiiiiiiiiiiiiiii
+	jsr e_controlrelayout_srelayoutControls
+.o 1 2 ii
+	push_a 0
+	push_b 4
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_b 4
+	push_b 4
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 6
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_r_args 31 1 2
+	push_b 6
+	push_b 6
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_b 40
+	push_a 28
+	push_b 16
+	update_b 12 17
+	update_b 13 12
+	update_b 14 13
+	update_b 15 14
+	update_b 16 15
+	update_b 0 16
+	pop_b 1
+	update_b 16 18
+	update_b 15 17
+	update_b 14 16
+	update_b 13 15
+	update_b 12 14
+	update_b 11 13
+	update_b 10 12
+	update_b 9 11
+	update_b 8 10
+	update_b 7 9
+	update_b 6 8
+	update_b 5 7
+	update_b 4 6
+	update_b 3 5
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 27 32
+	update_a 12 31
+	update_a 11 30
+	update_a 10 29
+	update_a 9 28
+	update_a 8 27
+	update_a 7 26
+	update_a 6 25
+	update_a 5 24
+	update_a 4 23
+	update_a 3 22
+	update_a 2 21
+	update_a 1 20
+	updatepop_a 0 19
+.d 13 17 iiiiiiiiiiiibbbbi
+	jsr e_windowupdate_supdatewindowbackgrounds
+.o 11 4 bbbi
+	build_r e_windowhandle_rWindowHandle 11 3 0 0
+	push_r_args 12 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 14
+	push_a 14
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 3
+	pushB TRUE
+	update_a 1 15
+	updatepop_a 0 14
+	update_b 1 38
+	updatepop_b 0 37
+.d 2 2 bi
+	rtn
+case.94
+	buildAC "unexpected window placeholder argument"
+	buildAC "opencompoundcontrols"
+	update_a 1 8
+	updatepop_a 0 7
+	pop_b 11
+.d 2 0
+	jsr s7
+.o 1 0
+	repl_args 3 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 2
+	push_r_args 1 2 0
+	pushB_a 2
+	update_a 1 4
+	update_a 0 3
+	pop_a 3
+.d 2 2 bi
+	rtn
+.o 1 1 b
+s38
+	eqB_b TRUE 0
+	jmp_true case.97
+	jmp case.98
+case.97
+	push_r_args_b 0 1 10 9 1
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.98
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 1 1 b
+s37
+	eqB_b TRUE 0
+	jmp_true case.99
+	jmp case.100
+case.99
+	push_r_args_b 0 1 10 10 1
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.100
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 17 0
+s8
+	push_a 6
+	jsr_eval 0
+.d 1 0
+	jsr e_windowhandle_sisRecursiveControl
+.o 0 1 b
+	notB
+	jmp_false else.101
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	pushI 0
+	pushB FALSE
+	update_a 15 32
+	update_a 14 31
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+.d 16 2 bi
+	rtn
+else.101
+	buildh e_windowhandle_dIsLayoutControl 0
+	push_a 7
+.d 2 0
+	jsr e_windowhandle_s==;8
+.o 0 1 b
+	jmp_false else.102
+	push_a 11
+	jsr_eval 0
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jsr s10
+.o 4 2 bi
+	push_a 3
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 15
+	push_a 15
+	push_a 15
+	push_b 1
+	push_b 1
+	update_a 15 32
+	update_a 14 31
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+	update_b 1 3
+	updatepop_b 0 2
+.d 16 2 bi
+	rtn
+else.102
+	push_a 4
+	jsr_eval 0
+	push_a 1
+.d 2 0
+	jsr e_windowaccess_sidentifyMaybeId
+.o 0 1 b
+	notB
+	jmp_false else.103
+	push_a 11
+	jsr_eval 0
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jsr s10
+.o 4 2 bi
+	push_b 0
+	jmp_false else.104
+	push_a 3
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_a 15 29
+	update_a 14 28
+	update_a 13 27
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 13 0
+	jsr e_windowclipstate_sinvalidateCompoundClipState
+.o 13 0
+	push_a 15
+	push_a 15
+	push_a 15
+	push_b 1
+	push_b 1
+	update_a 15 18
+	update_a 14 17
+	update_a 13 16
+	update_a 12 15
+	update_a 11 14
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	update_b 1 3
+	updatepop_b 0 2
+.d 16 2 bi
+	rtn
+else.104
+	push_a 3
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 15
+	push_a 15
+	push_a 15
+	push_b 1
+	push_b 1
+	update_a 15 32
+	update_a 14 31
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+	update_b 1 3
+	updatepop_b 0 2
+.d 16 2 bi
+	rtn
+else.103
+	push_a 11
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_commondef_sulength
+.o 1 1 i
+	push_a 2
+	push_a 4
+	build e_windowaccess_dgenWElementItemNrs 2 e_windowaccess_ngenWElementItemNrs
+	buildh _Nil 0
+	push_a 1
+	build d_S.2 -1 n_S.2
+	push_a 4
+	build_r e_windowhandle_rWChangeLSHandle 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_windowhandle_dWChangeLSHandle 1
+	buildh _Cons 2
+	push_a 2
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	update_a 13 7
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+.d 13 0
+	jsr e_windowclipstate_sinvalidateCompoundClipState
+.o 13 0
+	push_a 13
+	build d_S.1 -1 n_S.1
+	buildh _Nil 0
+	build _ 0 e_StdMisc_nundef
+	push_b 0
+	pushB TRUE
+	update_a 15 16
+	update_a 14 15
+	update_a 13 14
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 16 2 bi
+	rtn
+.o 5 0
+s9
+	pushD_a 4
+	eqD_b e_windowhandle_dWItemHandle 1
+	jmp_true case.105
+	eqD_b e_windowhandle_dWListLSHandle 1
+	jmp_true case.106
+	eqD_b e_windowhandle_dWExtendLSHandle 1
+	jmp_true case.107
+	jmp case.108
+case.105
+	pop_b 1
+	push_args_u 4 1 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 13 0
+	push_a 17
+	push_a 17
+	push_a 17
+	push_a 17
+	update_a 16 21
+	update_a 15 20
+	update_a 14 19
+	update_a 13 18
+	update_a 12 17
+	update_a 11 16
+	update_a 10 15
+	update_a 9 14
+	update_a 8 13
+	update_a 7 12
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 17 0
+	jsr s8
+.o 16 2 bi
+	build_r e_windowhandle_rWItemHandle 13 0 3 0
+	fill1 e_windowhandle_dWItemHandle 1 17 01
+	push_a 16
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+case.106
+	pop_b 1
+	push_args_u 4 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s10
+.o 4 2 bi
+	push_a 3
+	fill1 e_windowhandle_dWListLSHandle 1 5 01
+	push_a 4
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+case.107
+	pop_b 1
+	push_args_u 4 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 6 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s10
+.o 4 2 bi
+	push_a 3
+	fill1_r e_windowhandle_rWExtendLSHandle 2 0 5 001
+	push_a 4
+	fill1 e_windowhandle_dWExtendLSHandle 1 6 01
+	push_a 5
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+case.108
+	pop_b 1
+	push_args_u 4 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 6 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s10
+.o 4 2 bi
+	push_a 3
+	fill1_r e_windowhandle_rWChangeLSHandle 2 0 5 001
+	push_a 4
+	fill1 e_windowhandle_dWChangeLSHandle 1 6 01
+	push_a 5
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+.o 5 0
+s10
+	eq_desc _Nil 0 4
+	jmp_true case.109
+	jmp case.110
+case.109
+	buildh _Nil 0
+	push_a 4
+	push_a 4
+	push_a 4
+	pushI 0
+	pushB FALSE
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 2 bi
+	rtn
+case.110
+	push_args 4 2 2
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 7 11
+	update_a 6 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s9
+.o 4 2 bi
+	push_b 0
+	jmp_false else.111
+	push_a 4
+	push_a 4
+	buildh _Cons 2
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 3
+	updatepop_b 0 2
+.d 4 2 bi
+	rtn
+else.111
+	push_a 4
+	jsr_eval 0
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 9
+	update_a 8 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jsr s10
+.o 4 2 bi
+	push_a 3
+	push_a 5
+	buildh _Cons 2
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 1
+	push_b 1
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	update_b 1 5
+	updatepop_b 0 4
+.d 4 2 bi
+	rtn
+.export e_windowcontrols_sopencontrols
+.descexp e_windowcontrols_dopencontrols e_windowcontrols_nopencontrols e_windowcontrols_lopencontrols 5 0 "opencontrols"
+.a 0 a1
+.o 2 0
+e_windowcontrols_lopencontrols
+	repl_args 4 4
+.o 5 0
+a1
+.d 5 0
+	jsr ea1
+.o 2 1 i
+	buildI_b 0
+	build_r e_windowhandle_rWindowStateHandle 2 0 1 0
+	buildh _Tuple 2
+	updatepop_a 0 2
+	pop_b 1
+.d 1 0
+	rtn
+.n 5 e_windowcontrols_dopencontrols
+.o 1 0
+e_windowcontrols_nopencontrols
+	push_node _cycle_in_spine 5
+.d 5 0
+	jsr ea1
+.o 2 1 i
+	buildI_b 0
+	build_r e_windowhandle_rWindowStateHandle 2 0 1 0
+	fillh _Tuple 2 4
+	pop_a 2
+	pop_b 1
+.d 1 0
+	rtn
+.o 5 0
+ea1
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 0
+	pushI_a 4
+	push_r_args 3 2 0
+	push_r_args 2 1 10
+	update_a 2 7
+	update_a 1 6
+	update_a 0 3
+	pop_a 3
+.o 5 11 iiiiiiiiiii
+e_windowcontrols_sopencontrols
+.o 5 11 iiiiiiiiiii
+s1
+	jmp case.112
+case.112
+	jsr_eval 4
+	eq_desc e_Data.Maybe_dJust 1 4
+	jmp_true case.114
+	jmp case.113
+case.114
+	push_args 4 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	jsr_eval 0
+	push_r_args_u 0 11 3
+	update_b 1 2
+	update_a 3 4
+	update_a 1 3
+	pop_a 3
+	pop_b 2
+	push_a 12
+	push_a 2
+	build e_windowaccess_dgenWElementItemNrs 2 e_windowaccess_ngenWElementItemNrs
+	push_a 4
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 4
+	update_a 0 15
+	pop_a 1
+.d 1 0
+	jsr e_commondef_sulength
+.o 1 1 i
+	push_a 6
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+	push_b 11
+	push_a 13
+	push_a 4
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowHMargins
+.o 0 2 ii
+	push_a 6
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 13
+	push_a 13
+	push_a 4
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowVMargins
+.o 0 2 ii
+	push_a 9
+	push_a 5
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s84
+.o 1 6 bbiiii
+	push_r_args 7 0 2
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	push_b 5
+	push_b 5
+	push_r_args 7 0 2
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 0 2 ii
+	jsr e_commondef_stoTuple;72
+.o 0 2 ii
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 13
+	push_b 33
+	push_b 33
+	push_b 33
+	push_b 33
+	push_b 33
+	push_b 33
+	push_b 33
+	push_b 33
+	push_b 33
+	push_b 33
+	push_a 10
+.d 1 18 iiiiiiiiiiiiiiiibb
+	jsr e_oswindow_sosScrollbarsAreVisible
+.o 0 2 bb
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_a 10
+	update_b 15 17
+	update_b 14 16
+	update_b 13 15
+	update_b 12 14
+	update_b 11 13
+	update_b 10 12
+	update_b 9 11
+	update_b 8 10
+	update_b 7 9
+	update_b 6 8
+	update_b 5 7
+	update_b 4 6
+	update_b 3 5
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 16 iiiiiiiiiibbiiii
+	jsr e_oswindow_sosGetWindowContentRect
+.o 0 4 iiii
+	buildh _Nil 0
+	push_a 3
+	build d_S.2 -1 n_S.2
+	push_a 13
+	build_r e_windowhandle_rWChangeLSHandle 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_windowhandle_dWChangeLSHandle 1
+	buildh _Cons 2
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 14
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	buildh _Nil 0
+	build_r e_ostypes_rOSRect 0 4 0 4
+	build e_commondef_drectToRectangle 1 e_commondef_nrectToRectangle
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 0 0
+	jsr e_StdIOBasic_szero;15
+.o 0 2 ii
+	push_b 11
+	push_b 11
+	push_b 7
+	subI
+	subI
+	push_b 14
+	push_b 14
+	push_b 7
+	subI
+	subI
+	push_a 5
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_b 27
+	push_a 12
+	push_a 6
+	buildh _Nil 0
+	update_a 0 8
+	update_a 0 9
+	pop_a 1
+.d 3 10 iiiiiiiiii
+	jsr e_windowaccess_sgetWindowItemSpaces
+.o 0 2 ii
+	push_b 30
+	push_b 16
+	push_b 16
+	push_b 20
+	push_b 20
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_b 34
+	push_a 11
+	push_b 20
+	update_b 15 21
+	update_b 16 15
+	update_b 17 16
+	update_b 18 17
+	update_b 19 18
+	update_b 20 19
+	update_b 0 20
+	pop_b 1
+	update_b 20 24
+	update_b 19 23
+	update_b 18 22
+	update_b 17 21
+	update_b 16 20
+	update_b 15 19
+	update_b 14 18
+	update_b 13 17
+	update_b 12 16
+	update_b 11 15
+	update_b 10 14
+	update_b 9 13
+	update_b 8 12
+	update_b 7 11
+	update_b 6 10
+	update_b 5 9
+	update_b 4 8
+	update_b 3 7
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+	update_a 4 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 21 iiiiiiiiiiiiiiiiiiiii
+	jsr e_controllayout_slayoutControls
+.o 1 3 iii
+	push_a 0
+	push_b 11
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 1 i
+	jsr e_commondef_ssplit
+.o 2 0
+	push_r_args_b 11 1 2 1 1
+	push_b 1
+	push_a 1
+	push_b 12
+	push_a 5
+	push_a 5
+	push_b 23
+	push_b 23
+	push_b 23
+	push_b 23
+	push_b 23
+	push_b 23
+	push_b 23
+	push_b 23
+	push_b 23
+	push_b 23
+	push_a 11
+	push_b 12
+	update_b 12 13
+	update_b 0 12
+	pop_b 1
+	update_b 12 13
+	update_b 11 12
+	update_b 10 11
+	update_b 9 10
+	update_b 8 9
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 11 14
+	update_a 10 13
+	update_a 6 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 4 13 iiiiiiiiiibii
+	jsr e_controlcreate_screateControls
+.o 1 1 i
+	push_a 0
+	push_a 2
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 3
+	build d_S.1 -1 n_S.1
+	fill2_r e_windowhandle_rWindowHandle 11 3 5 000010010000000
+	push_a 3
+	build e_windowclipstate_dinvalidateWindowClipState 1 e_windowclipstate_ninvalidateWindowClipState
+	push_r_args 5 2 0
+	update_a 2 1
+	build_r e_windowhandle_rWindowLSHandle 2 0 0 0
+	updatepop_a 0 3
+	buildh e_Data.Maybe_dJust 1
+	push_a 7
+	push_a 7
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 0
+	update_a 1 8
+	updatepop_a 0 7
+	updatepop_b 0 22
+.d 2 1 i
+	rtn
+case.113
+	buildAC "unexpected window placeholder argument"
+	buildAC "opencontrols"
+	update_a 1 6
+	updatepop_a 0 5
+	pop_b 11
+.d 2 0
+	jsr s7
+.o 1 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 1
+	repl_r_args 2 0
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 1 i
+	rtn
+.o 2 0
+s7
+	push_a 1
+	buildAC "windowcontrols"
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp e_commondef_sfatalError
+.o 2 0
+s84
+	eq_desc e_windowhandle_kWindowInfo 0 0
+	jmp_true case.115
+	jmp case.116
+case.115
+	repl_args 6 6
+	push_r_args 0 0 4
+	push_a 3
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_a 2
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_a 1
+	updatepop_a 0 7
+.d 1 6 bbiiii
+	rtn
+case.116
+	push_r_args 1 0 2
+	pop_a 2
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	build e_StdIOBasic_dzero;21 0 e_StdIOBasic_nzero;21
+	pushB FALSE
+	pushB FALSE
+.d 1 6 bbiiii
+	rtn
+.o 2 0
+s85
+	eq_desc e_windowhandle_kWindowInfo 0 0
+	jmp_true case.117
+	jmp case.118
+case.117
+	repl_args 6 6
+	push_a 3
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_a 2
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_r_args 0 0 4
+	push_a 1
+	updatepop_a 0 7
+.d 1 6 iiiibb
+	rtn
+case.118
+	push_r_args 1 0 2
+	pop_a 2
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	build e_StdIOBasic_dzero;21 0 e_StdIOBasic_nzero;21
+	pushB FALSE
+	pushB FALSE
+	push_b 5
+	update_b 2 6
+	update_b 4 2
+	update_b 0 4
+	update_b 5 0
+	update_b 1 5
+	update_b 3 1
+	update_b 0 3
+	pop_b 1
+.d 1 6 iiiibb
+	rtn
+.o 2 0
+s86
+	eq_desc e_windowhandle_kWindowInfo 0 0
+	jmp_true case.119
+	jmp case.120
+case.119
+	repl_args 6 6
+	push_a 3
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_a 2
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_r_args 0 0 4
+	push_a 1
+	updatepop_a 0 7
+.d 1 6 iiiibb
+	rtn
+case.120
+	push_r_args 1 0 2
+	pop_a 2
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	build e_StdIOBasic_dzero;21 0 e_StdIOBasic_nzero;21
+	pushB FALSE
+	pushB FALSE
+	push_b 5
+	update_b 2 6
+	update_b 4 2
+	update_b 0 4
+	update_b 5 0
+	update_b 1 5
+	update_b 3 1
+	update_b 0 3
+	pop_b 1
+.d 1 6 iiiibb
+	rtn
+.o 2 0
+s87
+	eq_desc e_Data.Maybe_dJust 1 0
+	jmp_true case.121
+	jmp case.122
+case.121
+	repl_args 1 1
+	buildh e_id_d==;27 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp e_commondef_sremoveCheck
+case.122
+	push_a 1
+	pushB FALSE
+	updatepop_a 0 2
+.d 1 1 b
+	rtn
+.o 2 0
+s88
+	eq_desc e_Data.Maybe_dJust 1 0
+	jmp_true case.123
+	jmp case.124
+case.123
+	repl_args 1 1
+	buildh e_id_d==;27 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp e_commondef_sremoveCheck
+case.124
+	push_a 1
+	pushB FALSE
+	updatepop_a 0 2
+.d 1 1 b
+	rtn
+.o 2 0
+s89
+	eq_desc e_windowhandle_kWindowInfo 0 0
+	jmp_true case.125
+	jmp case.126
+case.125
+	repl_args 6 6
+	push_a 3
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_a 2
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_r_args 0 0 4
+	push_a 1
+	updatepop_a 0 7
+.d 1 6 iiiibb
+	rtn
+case.126
+	push_r_args 1 0 2
+	pop_a 2
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	build e_StdIOBasic_dzero;21 0 e_StdIOBasic_nzero;21
+	pushB FALSE
+	pushB FALSE
+	push_b 5
+	update_b 2 6
+	update_b 4 2
+	update_b 0 4
+	update_b 5 0
+	update_b 1 5
+	update_b 3 1
+	update_b 0 3
+	pop_b 1
+.d 1 6 iiiibb
+	rtn
+.o 2 0
+s90
+	eq_desc e_windowhandle_kWindowInfo 0 0
+	jmp_true case.127
+	jmp case.128
+case.127
+	repl_args 6 6
+	push_a 3
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_a 2
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_r_args 0 0 4
+	push_a 1
+	updatepop_a 0 7
+.d 1 6 iiiibb
+	rtn
+case.128
+	push_r_args 1 0 2
+	pop_a 2
+.d 0 2 ii
+	jsr e_commondef_ssizeToRect
+.o 0 4 iiii
+	build e_StdIOBasic_dzero;21 0 e_StdIOBasic_nzero;21
+	pushB FALSE
+	pushB FALSE
+	push_b 5
+	update_b 2 6
+	update_b 4 2
+	update_b 0 4
+	update_b 5 0
+	update_b 1 5
+	update_b 3 1
+	update_b 0 3
+	pop_b 1
+.d 1 6 iiiibb
+	rtn
+.o 13 8 biiibbbi
+s91
+	eqB_b TRUE 0
+	jmp_true case.129
+	jmp case.130
+case.129
+	build_r e_windowhandle_rWindowHandle 11 3 2 4
+	buildI_b 7
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 14
+	updatepop_a 0 13
+	pop_b 8
+.d 2 0
+	jsr s92
+.o 2 0
+	pushI_a 1
+	push_r_args 0 11 3
+	update_a 10 12
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	update_a 9 11
+	update_a 7 9
+	update_a 5 7
+	update_a 3 5
+	update_a 1 3
+	pop_a 2
+.d 11 4 bbbi
+	rtn
+case.130
+	push_b 3
+	push_b 3
+	push_a 1
+	jsr_eval 0
+	repl_r_args 0 2
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 0 1
+	pop_a 1
+.d 0 4 iiii
+	jsr e_commondef_sposSizeToRectangle
+.o 2 0
+.d 2 0
+	jsr e_StdIOCommon_srectangleToUpdateState
+.o 3 0
+	buildh e_StdFunc_did 0
+	push_r_args 4 1 10
+	push_b 16
+	push_b 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_b 16
+	push_b 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_b 14
+	push_a 15
+	update_a 11 16
+	update_a 6 11
+	update_a 1 6
+	update_a 12 1
+	update_a 7 12
+	update_a 2 7
+	update_a 13 2
+	update_a 8 13
+	update_a 3 8
+	update_a 14 3
+	update_a 9 14
+	update_a 4 9
+	update_a 15 4
+	update_a 10 15
+	update_a 5 10
+	update_a 0 5
+	pop_a 1
+	push_b 14
+	update_b 5 15
+	update_b 10 5
+	update_b 0 10
+	update_b 14 0
+	update_b 4 14
+	update_b 9 4
+	update_b 0 9
+	update_b 13 0
+	update_b 3 13
+	update_b 8 3
+	update_b 0 8
+	update_b 12 0
+	update_b 2 12
+	update_b 7 2
+	update_b 0 7
+	update_b 11 0
+	update_b 1 11
+	update_b 6 1
+	update_b 0 6
+	pop_b 1
+	update_a 15 27
+	update_a 14 26
+	update_a 13 25
+	update_a 12 24
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 14 21
+	update_b 13 20
+	update_b 12 19
+	update_b 11 18
+	update_b 10 17
+	update_b 9 16
+	update_b 8 15
+	update_b 7 14
+	update_b 6 13
+	update_b 5 12
+	update_b 4 11
+	update_b 3 10
+	update_b 2 9
+	update_b 1 8
+	updatepop_b 0 7
+.d 16 15 iiiiiiiiiiibbbi
+	jmp e_windowdraw_sdrawwindowlook
+.o 2 0
+s92
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn

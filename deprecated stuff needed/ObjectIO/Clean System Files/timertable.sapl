@@ -1,0 +1,58 @@
+|| ?module? timertable
+
+
+timertable.initialTimerTable = _predefined._Nil
+<{timertable.==_15}>::B !tt1_0 !tt2_1 = case (<{systemid.==_5}> (select tt1_0::timertable._TimerLoc 0) (select tt2_1::timertable._TimerLoc 0)) (True -> case (<{device.==_2}> (select tt1_0::timertable._TimerLoc 1) (select tt2_1::timertable._TimerLoc 1)) (True -> case (<{id.==_27}> (select tt1_0::timertable._TimerLoc 2) (select tt2_1::timertable._TimerLoc 2)) (True -> <{id.==_27}> (select tt1_0::timertable._TimerLoc 3) (select tt2_1::timertable._TimerLoc 3)) (False -> False) ) (False -> False) ) (False -> False) 
+timertable.identifyTimerTableEntry::B !loc_0 !tte_1 = case tte_1 (timertable._TimerTableEntry tte_1_0 tteElapse_1_1 tteLoc_1_2 -> <{timertable.==_15}> loc_0 tteLoc_1_2) 
+timertable.add_11 !loc_0 !interval_1::I !_x_2 = case _x_2 (_predefined._Cons tte_1_0 ttes_1_1 -> case (timertable.identifyTimerTableEntry loc_0 tte_1_0) (True -> <{_Tuple2!3}> False (_predefined._Cons tte_1_0 ttes_1_1)) (False -> let _x_3_0 = timertable.add_11 loc_0 interval_1 ttes_1_1 in <{_Tuple2!3}> (select _x_3_0::_Tuple2 0) (_predefined._Cons tte_1_0 (select _x_3_0::_Tuple2 1))) ) (_predefined._Nil -> <{_Tuple2!3}> True (_predefined._Cons (timertable._TimerTableEntry interval_1 interval_1 loc_0) _predefined._Nil)) 
+timertable.addTimerToTimerTable !loc_0 !interval_1::I !timers_2 = let x_1_0::I = 0 in timertable.add_11 loc_0 (<{timertable._c;51;16_60}> (<{StdInt.<_17}> x_1_0 interval_1) interval_1 x_1_0) timers_2
+<{timertable._c;51;16_60}>::I !_x_0::B interval_1::I x_2::I = case _x_0 (True -> interval_1) (_ -> x_2)
+timertable.removeTimerFromTimerTable !loc_0 !timers_1 = let _x_1_0 = commondef.remove (timertable.identifyTimerTableEntry loc_0) StdMisc.undef timers_1 in <{_Tuple2!3}> (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 2)
+timertable.set_12 !loc_0 !interval_1::I !_x_2 = case _x_2 (_predefined._Cons tte_1_0 ttes_1_1 -> case (timertable.identifyTimerTableEntry loc_0 tte_1_0) (True -> <{_Tuple2!3}> True (_predefined._Cons (<{timertable._if;81;21_61}> (<{StdInt.==_16}> interval_1 0) tte_1_0 interval_1) ttes_1_1)) (False -> let _x_3_0 = timertable.set_12 loc_0 interval_1 ttes_1_1 in <{_Tuple2!3}> (select _x_3_0::_Tuple2 0) (_predefined._Cons tte_1_0 (select _x_3_0::_Tuple2 1))) ) (_predefined._Nil -> <{_Tuple2!3}> False _predefined._Nil) 
+<{timertable._if;81;21_61}> !_x_0::B !tte_1 !interval_2::I = case _x_0 (True -> update tte_1::timertable._TimerTableEntry [0:interval_2,1:0]) (_ -> update tte_1::timertable._TimerTableEntry [0:interval_2])
+timertable.setIntervalInTimerTable !loc_0 !interval_1::I !timers_2 = let x_1_0::I = 0 in timertable.set_12 loc_0 (<{timertable._c;51;16_62}> (<{StdInt.<_17}> x_1_0 interval_1) interval_1 x_1_0) timers_2
+<{timertable._c;51;16_62}>::I !_x_0::B interval_1::I x_2::I = case _x_0 (True -> interval_1) (_ -> x_2)
+timertable.shiftTimes_13 !dt_0::I !_x_1 = case _x_1 (_predefined._Cons tte_1_0 ttes_1_1 -> case tte_1_0 (timertable._TimerTableEntry tte_2_0 tteElapse_2_1 tteLoc_2_2 -> case (<{StdInt.==_16}> tte_2_0 0) (True -> let !ttes_4_0 = timertable.shiftTimes_13 dt_0 ttes_1_1 in _predefined._Cons tte_1_0 ttes_4_0) (False -> let !tte_4_0 = update tte_1_0::timertable._TimerTableEntry [1:<{StdInt.-_7}> tteElapse_2_1 dt_0], !ttes_4_1 = timertable.shiftTimes_13 dt_0 ttes_1_1 in _predefined._Cons tte_4_0 ttes_4_1) ) ) (_predefined._Nil -> _predefined._Nil) 
+timertable.shiftTimeInTimerTable !dt_0::I !timers_1 = case (StdBool.not (<{StdInt.<_17}> 0 dt_0)) (True -> timers_1) (False -> timertable.shiftTimes_13 dt_0 timers_1) 
+timertable.getActiveTimerInTimerTable !_x_0 = case _x_0 (_predefined._Cons tte_1_0 ttes_1_1 -> case tte_1_0 (timertable._TimerTableEntry tte_2_0 tteElapse_2_1 tteLoc_2_2 -> case (StdBool.not (<{StdInt.<_17}> 0 tteElapse_2_1)) (True -> let !nrTime_4_0::I = <{timertable._if;120;31_63}> (<{StdInt.==_16}> tte_2_0 0) tteElapse_2_1 tte_2_0, !tEvent_4_1 = timertable._TimerEvent tteLoc_2_2 nrTime_4_0, !<{tte`_4_2}> = update tte_1_0::timertable._TimerTableEntry [1:<{StdInt.+_6}> tteElapse_2_1 (<{StdInt.*_9}> nrTime_4_0 tte_2_0)] in <{_Tuple2!3}> (Data.Maybe.Just tEvent_4_1) (<{StdList.++}> ttes_1_1 (_predefined._Cons <{tte`_4_2}> _predefined._Nil))) (False -> let _x_4_0 = timertable.getActiveTimerInTimerTable ttes_1_1 in <{_Tuple2!3}> (select _x_4_0::_Tuple2 0) (_predefined._Cons tte_1_0 (select _x_4_0::_Tuple2 1))) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing _predefined._Nil)
+<{timertable._if;120;31_63}>::I !_x_0::B tteElapse_1::I tte_2::I = case _x_0 (True -> 1) (_ -> <{StdInt.+_6}> (<{StdInt./_10}> (StdInt.abs_13 tteElapse_1) tte_2) 1)
+timertable.getSleepTime_14 !sleep_0::I !_x_1 = case _x_1 (_predefined._Cons tte_1_0 ttes_1_1 -> case tte_1_0 (timertable._TimerTableEntry tte_2_0 tteElapse_2_1 tteLoc_2_2 -> case (StdBool.not (<{StdInt.<_17}> 0 tteElapse_2_1)) (True -> <{_Tuple3!7}> (<{StdInt.==_16}> tte_2_0 0) 0 (_predefined._Cons tte_1_0 ttes_1_1)) (False -> let _x_4_0 = timertable.getSleepTime_14 (<{timertable._c;48;16_64}> (<{StdInt.<_17}> sleep_0 tteElapse_2_1) sleep_0 tteElapse_2_1) ttes_1_1 in <{_Tuple3!7}> (select _x_4_0::_Tuple3 0) (select _x_4_0::_Tuple3 1) (_predefined._Cons tte_1_0 (select _x_4_0::_Tuple3 2))) ) ) (_predefined._Nil -> <{_Tuple3!7}> False sleep_0 _predefined._Nil) 
+<{timertable._c;48;16_64}>::I !_x_0::B sleep_1::I tteElapse_2::I = case _x_0 (True -> sleep_1) (_ -> tteElapse_2)
+timertable.getTimeIntervalFromTimerTable !_x_0 = case _x_0 (_predefined._Nil -> <{_Tuple2!3}> Data.Maybe.Nothing _predefined._Nil) (_ -> let !_x_1_0 = timertable.getSleepTime_14 (<{StdInt.-_7}> (<{StdInt.^_12}> 2 31) 1) _x_0 in <{_Tuple2!3}> (Data.Maybe.Just (_Tuple2 (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 1))) (select _x_1_0::_Tuple3 2))
+<{timertable.TD;TimerTable}> _x_0::B = _predefined._Nil
+<{timertable.TD;TimerLoc}> _x_0::B = _predefined._Nil
+<{timertable.TD;TimerEvent}> _x_0::B = _predefined._Nil
+<{timertable.TD;TimerTableEntry}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: timertable._TimerLoc = {!timertable.tlIOId, !timertable.tlDevice, !timertable.tlParentId, !timertable.tlTimerId}
+
+:: timertable._TimerEvent = {!timertable.teLoc, !timertable.teNrInterval}
+
+:: timertable._TimerTableEntry = {!timertable.tteInterval::I, !timertable.tteElapse::I, !timertable.tteLoc}
+
+:: <{timertable.gEq_s;}> = {!timertable.gEq_s}
+
+:: <{timertable.gEq_ss;}> = {!timertable.gEq_ss}
+
+:: <{timertable.gEq_sss;}> = {!timertable.gEq_sss}
+
+:: <{timertable.gEq_ssss;}> = {!timertable.gEq_ssss}
+
+:: <{timertable.gEq_sssss;}> = {!timertable.gEq_sssss}
+
+:: <{timertable.gEq_ssssss;}> = {!timertable.gEq_ssssss}
+
+:: <{timertable.gEq_sssssss;}> = {!timertable.gEq_sssssss}
+
+:: <{timertable.gEq_ssssssss;}> = {!timertable.gEq_ssssssss}
+
+:: <{timertable.gEq_sssssssss;}> = {!timertable.gEq_sssssssss}
+
+:: <{timertable.bimap_s;}> = {timertable.bimap_s}
+
+:: <{timertable.bimap_ss;}> = {timertable.bimap_ss}
+
+:: <{timertable.bimap_sss;}> = {timertable.bimap_sss}
+

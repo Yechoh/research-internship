@@ -1,0 +1,41 @@
+|| ?module? StdTime
+
+
+StdTime.wait !nrTicks_0::I x_1 = case (StdBool.not (<{StdInt.<_17}> 0 nrTicks_0)) (True -> x_1) (False -> let !_x_2_0 = ostime.osWait nrTicks_0 x_1 0 in select _x_2_0::_Tuple2 0) 
+StdTime.intPlusTick !i_0::I !t_1 = ostick.pack_tick (<{StdInt.+_6}> i_0 (ostick.unpack_tick t_1))
+StdTime.tickDifference::I !t1_0 !t2_1 = <{StdInt.-_7}> (ostick.unpack_tick t1_0) (ostick.unpack_tick t2_1)
+<{StdTime.<_3}>::B !t1_0 !t2_1 = <{StdInt.<_17}> 0 (<{StdInt.-_7}> (ostick.unpack_tick t2_1) (ostick.unpack_tick t1_0))
+StdTime.getBlinkInterval_4 !world_0 = case (<{StdInt.==_16}> 1000 1000) (True -> <{_Tuple2!3}> (select (ostime.osGetBlinkInterval 0)::_Tuple2 0) world_0) (False -> <{_Tuple2!3}> (<{StdInt.*_9}> (StdInt.toInt_22 (<{StdReal./_5}> (StdReal.toReal_13 (select (ostime.osGetBlinkInterval 0)::_Tuple2 0)) 1000.0)) 1000) world_0) 
+StdTime.getCurrentDate_5 !world_0 = let _x_1_0 = select (ostime.osGetCurrentDate 0)::_Tuple2 0 in <{_Tuple2!3}> (StdLibMisc._Date (select _x_1_0::_Tuple4 0) (select _x_1_0::_Tuple4 1) (select _x_1_0::_Tuple4 2) (select _x_1_0::_Tuple4 3)) world_0
+StdTime.getCurrentTick_6 !world_0 = ostick.os_getcurrenttick world_0
+StdTime.getCurrentTime_7 !world_0 = let _x_1_0 = select (ostime.osGetCurrentTime 0)::_Tuple2 0 in <{_Tuple2!3}> (StdLibMisc._Time (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 1) (select _x_1_0::_Tuple3 2)) world_0
+<{StdTime.TD;TimeEnv;}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: <{StdTime.TimeEnv;}> = {!StdTime.getBlinkInterval, !StdTime.getCurrentDate, !StdTime.getCurrentTick, !StdTime.getCurrentTime}
+
+:: <{StdTime.gEq_s;}> = {!StdTime.gEq_s}
+
+:: <{StdTime.gEq_ss;}> = {!StdTime.gEq_ss}
+
+:: <{StdTime.gEq_sss;}> = {!StdTime.gEq_sss}
+
+:: <{StdTime.gEq_ssss;}> = {!StdTime.gEq_ssss}
+
+:: <{StdTime.gEq_sssss;}> = {!StdTime.gEq_sssss}
+
+:: <{StdTime.gEq_ssssss;}> = {!StdTime.gEq_ssssss}
+
+:: <{StdTime.gEq_sssssss;}> = {!StdTime.gEq_sssssss}
+
+:: <{StdTime.gEq_ssssssss;}> = {!StdTime.gEq_ssssssss}
+
+:: <{StdTime.gEq_sssssssss;}> = {!StdTime.gEq_sssssssss}
+
+:: <{StdTime.bimap_s;}> = {StdTime.bimap_s}
+
+:: <{StdTime.bimap_ss;}> = {StdTime.bimap_ss}
+
+:: <{StdTime.bimap_sss;}> = {StdTime.bimap_sss}
+

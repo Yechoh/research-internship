@@ -1,0 +1,44 @@
+|| ?module? EdVisualLineNr
+
+
+EdVisualLineNr.drawRight_5 !_vtoString_0 !charWidth_1::I !v_2 n_3 !p_4 = case v_2 (StdIOBasic._Point2 x_1_0 y_1_1 -> let n_2_0 = select _vtoString_0::<{StdOverloaded.toString;}> 0 n_3 in StdPicture.drawAt_62 (update v_2::StdIOBasic._Point2 [0:<{StdInt.-_7}> x_1_0 (<{StdInt.*_9}> (_SystemArray.size_20 n_2_0) charWidth_1)]) n_2_0 p_4) 
+EdVisualLineNr.drawLines_4 !<{_v<_0}> !_vtoString_1 !_vone_2 !<{_v+_3}> charWidth_4::I lineHeight_5::I y_6::I n_7 m_8 !picture_9 = case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 m_8 n_7) (True -> picture_9) (False -> EdVisualLineNr.drawLines_4 <{_v<_0}> _vtoString_1 _vone_2 <{_v+_3}> charWidth_4 lineHeight_5 (<{StdInt.+_6}> y_6 lineHeight_5) (select <{_v+_3}>::<{StdOverloaded.+;}> 0 n_7 (select _vone_2::<{StdOverloaded.one;}> 0)) m_8 (EdVisualLineNr.drawRight_5 _vtoString_1 charWidth_4 (StdIOBasic._Point2 -5 y_6) n_7 picture_9)) 
+EdVisualLineNr.computeBaseLine::I !lineNr_0::I !_x_1 = case _x_1 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> <{StdInt.+_6}> (<{StdInt.+_6}> (<{StdInt.*_9}> lineNr_0 lineHeight_1_1) (select metrics_1_2::StdPictureDef._FontMetrics 0)) (select metrics_1_2::StdPictureDef._FontMetrics 2)) 
+EdVisualLineNr.drawLines_49 !_vtoString_0 !_vone_1 !<{_v+_2}> charWidth_3::I lineHeight_4::I y_5::I !n_6::I !m_7::I !picture_8 = case (<{StdInt.<_17}> m_7 n_6) (True -> picture_8) (False -> EdVisualLineNr.drawLines_49 _vtoString_0 _vone_1 <{_v+_2}> charWidth_3 lineHeight_4 (<{StdInt.+_6}> y_5 lineHeight_4) (select <{_v+_2}>::<{StdOverloaded.+;}> 0 n_6 (select _vone_1::<{StdOverloaded.one;}> 0)) m_7 (EdVisualLineNr.drawRight_5 _vtoString_0 charWidth_3 (StdIOBasic._Point2 -5 y_5) n_6 picture_8)) 
+EdVisualLineNr.drawRight_51 !charWidth_0::I !v_1 !n_2::I !p_3 = case v_1 (StdIOBasic._Point2 x_1_0 y_1_1 -> let n_2_0 = StdString.toString_5 n_2 in StdPicture.drawAt_62 (update v_1::StdIOBasic._Point2 [0:<{StdInt.-_7}> x_1_0 (<{StdInt.*_9}> (_SystemArray.size_20 n_2_0) charWidth_0)]) n_2_0 p_3) 
+EdVisualLineNr.drawLines_50 !_vone_0 !<{_v+_1}> charWidth_2::I lineHeight_3::I y_4::I !n_5::I !m_6::I !picture_7 = case (<{StdInt.<_17}> m_6 n_5) (True -> picture_7) (False -> EdVisualLineNr.drawLines_50 _vone_0 <{_v+_1}> charWidth_2 lineHeight_3 (<{StdInt.+_6}> y_4 lineHeight_3) (select <{_v+_1}>::<{StdOverloaded.+;}> 0 n_5 (select _vone_0::<{StdOverloaded.one;}> 0)) m_6 (EdVisualLineNr.drawRight_51 charWidth_2 (StdIOBasic._Point2 -5 y_4) n_5 picture_7)) 
+EdVisualLineNr.drawLines_52 !<{_v+_0}> charWidth_1::I lineHeight_2::I y_3::I !n_4::I !m_5::I !picture_6 = case (<{StdInt.<_17}> m_5 n_4) (True -> picture_6) (False -> EdVisualLineNr.drawLines_52 <{_v+_0}> charWidth_1 lineHeight_2 (<{StdInt.+_6}> y_3 lineHeight_2) (select <{_v+_0}>::<{StdOverloaded.+;}> 0 n_4 StdInt.one_11) m_5 (EdVisualLineNr.drawRight_51 charWidth_1 (StdIOBasic._Point2 -5 y_3) n_4 picture_6)) 
+EdVisualLineNr.drawLines_53 charWidth_0::I lineHeight_1::I y_2::I !n_3::I !m_4::I !picture_5 = case (<{StdInt.<_17}> m_4 n_3) (True -> picture_5) (False -> EdVisualLineNr.drawLines_53 charWidth_0 lineHeight_1 (<{StdInt.+_6}> y_2 lineHeight_1) (<{StdInt.+_6}> n_3 StdInt.one_11) m_4 (EdVisualLineNr.drawRight_51 charWidth_0 (StdIOBasic._Point2 -5 y_2) n_3 picture_5)) 
+EdVisualLineNr.drawLineNrs !lineNr1_0::I !lineNr2_1::I !font_2 !picture_3 = case font_2 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdVisualLineNr.drawLines_53 charWidth_1_4 lineHeight_1_1 (EdVisualLineNr.computeBaseLine lineNr1_0 font_2) (<{StdInt.+_6}> lineNr1_0 StdInt.one_11) (<{StdInt.+_6}> lineNr2_1 StdInt.one_11) picture_3) 
+EdVisualLineNr.vUpdate text_0 !fontinfo_1 !rectangle_2 = case fontinfo_1 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> case rectangle_2 (StdIOBasic._Rectangle corner1_2_0 corner2_2_1 -> case corner1_2_0 (StdIOBasic._Point2 x1_3_0 y1_3_1 -> case corner2_2_1 (StdIOBasic._Point2 x2_4_0 y2_4_1 -> let x_5_0 = 0, r_5_1::I = <{EdVisualLineNr._c;48;16_56}> (<{StdInt.<_17}> x_5_0 x2_4_0) x_5_0 x2_4_0, x_5_2::I = -100, y_5_3::I = <{EdVisualLineNr._c;51;16_55}> (<{StdInt.<_17}> x_5_2 x1_3_0) x1_3_0 x_5_2, <{rectangle`_5_4}>::I = StdIOBasic._Rectangle (StdIOBasic._Point2 (<{EdVisualLineNr._c;48;16_54}> (<{StdInt.<_17}> r_5_1 y_5_3) r_5_1 y_5_3) y1_3_1) (StdIOBasic._Point2 r_5_1 y2_4_1) in StdPicture.appClipPicture (StdPicture.toRegion_49 <{rectangle`_5_4}>) (StdFunc.seq (_predefined._Cons (StdPicture.setPenColour StdPictureDef.LightGrey) (_predefined._Cons (StdPicture.setPenFont thefont_1_0) (_predefined._Cons (StdPicture.fill_101 <{rectangle`_5_4}>) (_predefined._Cons (StdPicture.setPenColour StdPictureDef.Black) (_predefined._Cons (EdVisualLineNr.drawLineNrs (EdLineText.validateLineNr (<{StdInt./_10}> y1_3_1 lineHeight_1_1) text_0) (EdLineText.validateLineNr (<{StdInt./_10}> y2_4_1 lineHeight_1_1) text_0) fontinfo_1) _predefined._Nil))))))) ) ) ) 
+<{EdVisualLineNr._c;48;16_56}>::I !_x_0::B x_1::I x2_2::I = case _x_0 (True -> x_1) (_ -> x2_2)
+<{EdVisualLineNr._c;51;16_55}>::I !_x_0::B x1_1::I x_2::I = case _x_0 (True -> x1_1) (_ -> x_2)
+<{EdVisualLineNr._c;48;16_54}>::I !_x_0::B r_1::I y_2::I = case _x_0 (True -> r_1) (_ -> y_2)
+EdVisualLineNr.vDrawLineNrs !fontinfo_0 !text_1 !frame_2 !rectangles_3 = ioutil.seqmap (EdVisualLineNr.vUpdate text_1 fontinfo_0) rectangles_3
+
+
+|| Converted Records
+:: <{EdVisualLineNr.gEq_s;}> = {!EdVisualLineNr.gEq_s}
+
+:: <{EdVisualLineNr.gEq_ss;}> = {!EdVisualLineNr.gEq_ss}
+
+:: <{EdVisualLineNr.gEq_sss;}> = {!EdVisualLineNr.gEq_sss}
+
+:: <{EdVisualLineNr.gEq_ssss;}> = {!EdVisualLineNr.gEq_ssss}
+
+:: <{EdVisualLineNr.gEq_sssss;}> = {!EdVisualLineNr.gEq_sssss}
+
+:: <{EdVisualLineNr.gEq_ssssss;}> = {!EdVisualLineNr.gEq_ssssss}
+
+:: <{EdVisualLineNr.gEq_sssssss;}> = {!EdVisualLineNr.gEq_sssssss}
+
+:: <{EdVisualLineNr.gEq_ssssssss;}> = {!EdVisualLineNr.gEq_ssssssss}
+
+:: <{EdVisualLineNr.gEq_sssssssss;}> = {!EdVisualLineNr.gEq_sssssssss}
+
+:: <{EdVisualLineNr.bimap_s;}> = {EdVisualLineNr.bimap_s}
+
+:: <{EdVisualLineNr.bimap_ss;}> = {EdVisualLineNr.bimap_ss}
+
+:: <{EdVisualLineNr.bimap_sss;}> = {EdVisualLineNr.bimap_sss}
+

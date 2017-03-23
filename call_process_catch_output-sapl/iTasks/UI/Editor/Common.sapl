@@ -1,0 +1,203 @@
+|| ?module? iTasks.UI.Editor.Common
+
+
+iTasks.UI.Editor.Common.genUI_3 _x_0 _x_1 vst_2 = _Tuple2 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ui iTasks.UI.Definition.UIEmpty) iTasks.UI.Editor.newFieldMask)) vst_2
+iTasks.UI.Editor.Common.onEdit_4 _x_0 _x_1 val_2 mask_3 vst_4 = _Tuple3 (Data.Error.Ok (_Tuple2 iTasks.UI.Definition.NoChange mask_3)) val_2 vst_4
+iTasks.UI.Editor.Common.onRefresh_5 _x_0 _x_1 val_2 mask_3 vst_4 = _Tuple3 (Data.Error.Ok (_Tuple2 iTasks.UI.Definition.NoChange mask_3)) val_2 vst_4
+iTasks.UI.Editor.Common.emptyEditor = iTasks.UI.Editor._Editor iTasks.UI.Editor.Common.genUI_3 iTasks.UI.Editor.Common.onEdit_4 iTasks.UI.Editor.Common.onRefresh_5
+iTasks.UI.Editor.Common.genChildUIs_8 itemEditor_0 dp_1 _x_2::I !_x_3 us_4 vst_5 = case _x_3 (_predefined._Nil -> _Tuple2 (Data.Error.Ok (StdList.unzip (StdList.reverse us_4))) vst_5) (_predefined._Cons c_1_0 cs_1_1 -> <{iTasks.UI.Editor.Common._c;33;42_402}> (select itemEditor_0::iTasks.UI.Editor._Editor 0 (<{StdList.++}> dp_1 (_predefined._Cons _x_2 _predefined._Nil)) c_1_0 vst_5) itemEditor_0 dp_1 _x_2 cs_1_1 us_4) 
+<{iTasks.UI.Editor.Common._c;33;42_402}> !_x_0 itemEditor_1 dp_2 _x_3::I cs_4 us_5 = case _x_0 (_Tuple2 _x_1_0 vst_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 u_3_0 m_3_1 -> iTasks.UI.Editor.Common.genChildUIs_8 itemEditor_1 dp_2 (<{StdInt.+_6}> _x_3 1) cs_4 (_predefined._Cons (_Tuple2 u_3_0 m_3_1) us_5) vst_1_1) ) (Data.Error.Error e_2_0 -> _Tuple2 (Data.Error.Error e_2_0) vst_1_1) ) 
+iTasks.UI.Editor.Common.listItemUI_17 !_vtoString_0 reorder_1::B remove_2::B task_3 dp_4 num_5::I idx_6::I id_7 item_8 = iTasks.UI.Definition.uiac iTasks.UI.Definition.UIContainer (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.halignAttr iTasks.UI.Definition.AlignRight) (_predefined._Cons (iTasks.UI.Definition.heightAttr iTasks.UI.Definition.WrapSize) (_predefined._Cons (iTasks.UI.Definition.directionAttr iTasks.UI.Definition.Horizontal) _predefined._Nil)))) (<{iTasks.UI.Editor.Common._if;52;34_406}> (iTasks.UI.Editor.Common._f403_403 reorder_1 remove_2) item_8 reorder_1 idx_6 task_3 dp_4 _vtoString_0 id_7 num_5 remove_2)
+<{iTasks.UI.Editor.Common._if;52;34_406}> !_x_0::B item_1 reorder_2::B idx_3::I task_4 dp_5 _vtoString_6 id_7 num_8::I remove_9::B = case _x_0 (True -> <{StdList.++}> (_predefined._Cons item_1 _predefined._Nil) (<{StdList.++}> (<{iTasks.UI.Editor.Common._if;44;24_404}> reorder_2 idx_3 task_4 dp_5 _vtoString_6 id_7 num_8) (<{iTasks.UI.Editor.Common._if;48;32_405}> remove_9 task_4 dp_5 _vtoString_6 id_7))) (_ -> _predefined._Cons item_1 _predefined._Nil)
+<{iTasks.UI.Editor.Common._if;48;32_405}> !remove_0::B task_1 dp_2 _vtoString_3 id_4 = case remove_0 (True -> _predefined._Cons (iTasks.UI.Definition.uia iTasks.UI.Definition.UIButton (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.iconClsAttr "icon-remove") (_predefined._Cons (iTasks.UI.Definition.editAttrs task_1 (iTasks.UI.Editor.editorId dp_2) (Data.Maybe.Just (Text.JSON.JSONString (<{StdString.+++_11}> "rem_" (select _vtoString_3::<{StdOverloaded.toString;}> 0 id_4))))) _predefined._Nil)))) _predefined._Nil) (_ -> _predefined._Nil)
+<{iTasks.UI.Editor.Common._if;44;24_404}> !reorder_0::B idx_1::I task_2 dp_3 _vtoString_4 id_5 num_6::I = case reorder_0 (True -> _predefined._Cons (iTasks.UI.Definition.uia iTasks.UI.Definition.UIButton (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.iconClsAttr "icon-up") (_predefined._Cons (iTasks.UI.Definition.enabledAttr (StdBool.not (<{StdInt.==_16}> idx_1 0))) (_predefined._Cons (iTasks.UI.Definition.editAttrs task_2 (iTasks.UI.Editor.editorId dp_3) (Data.Maybe.Just (Text.JSON.JSONString (<{StdString.+++_11}> "mup_" (select _vtoString_4::<{StdOverloaded.toString;}> 0 id_5))))) _predefined._Nil))))) (_predefined._Cons (iTasks.UI.Definition.uia iTasks.UI.Definition.UIButton (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.iconClsAttr "icon-down") (_predefined._Cons (iTasks.UI.Definition.enabledAttr (StdBool.not (<{StdInt.==_16}> idx_1 (<{StdInt.-_7}> num_6 1)))) (_predefined._Cons (iTasks.UI.Definition.editAttrs task_2 (iTasks.UI.Editor.editorId dp_3) (Data.Maybe.Just (Text.JSON.JSONString (<{StdString.+++_11}> "mdn_" (select _vtoString_4::<{StdOverloaded.toString;}> 0 id_5))))) _predefined._Nil))))) _predefined._Nil)) (_ -> _predefined._Nil)
+iTasks.UI.Editor.Common._f403_403::B !reorder_0::B remove_1::B = case reorder_0 (True -> True) (_ -> remove_1)
+iTasks.UI.Editor.Common.listItemUI_394 reorder_0::B remove_1::B task_2 dp_3 num_4::I idx_5::I id_6::I item_7 = iTasks.UI.Definition.uiac iTasks.UI.Definition.UIContainer (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.halignAttr iTasks.UI.Definition.AlignRight) (_predefined._Cons (iTasks.UI.Definition.heightAttr iTasks.UI.Definition.WrapSize) (_predefined._Cons (iTasks.UI.Definition.directionAttr iTasks.UI.Definition.Horizontal) _predefined._Nil)))) (<{iTasks.UI.Editor.Common._if;52;34_410}> (iTasks.UI.Editor.Common._f407_407 reorder_0 remove_1) item_7 reorder_0 idx_5 task_2 dp_3 id_6 num_4 remove_1)
+<{iTasks.UI.Editor.Common._if;52;34_410}> !_x_0::B item_1 reorder_2::B idx_3::I task_4 dp_5 id_6::I num_7::I remove_8::B = case _x_0 (True -> <{StdList.++}> (_predefined._Cons item_1 _predefined._Nil) (<{StdList.++}> (<{iTasks.UI.Editor.Common._if;44;24_408}> reorder_2 idx_3 task_4 dp_5 id_6 num_7) (<{iTasks.UI.Editor.Common._if;48;32_409}> remove_8 task_4 dp_5 id_6))) (_ -> _predefined._Cons item_1 _predefined._Nil)
+<{iTasks.UI.Editor.Common._if;48;32_409}> !remove_0::B task_1 dp_2 id_3::I = case remove_0 (True -> _predefined._Cons (iTasks.UI.Definition.uia iTasks.UI.Definition.UIButton (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.iconClsAttr "icon-remove") (_predefined._Cons (iTasks.UI.Definition.editAttrs task_1 (iTasks.UI.Editor.editorId dp_2) (Data.Maybe.Just (Text.JSON.JSONString (<{StdString.+++_11}> "rem_" (StdString.toString_5 id_3))))) _predefined._Nil)))) _predefined._Nil) (_ -> _predefined._Nil)
+<{iTasks.UI.Editor.Common._if;44;24_408}> !reorder_0::B idx_1::I task_2 dp_3 id_4::I num_5::I = case reorder_0 (True -> _predefined._Cons (iTasks.UI.Definition.uia iTasks.UI.Definition.UIButton (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.iconClsAttr "icon-up") (_predefined._Cons (iTasks.UI.Definition.enabledAttr (StdBool.not (<{StdInt.==_16}> idx_1 0))) (_predefined._Cons (iTasks.UI.Definition.editAttrs task_2 (iTasks.UI.Editor.editorId dp_3) (Data.Maybe.Just (Text.JSON.JSONString (<{StdString.+++_11}> "mup_" (StdString.toString_5 id_4))))) _predefined._Nil))))) (_predefined._Cons (iTasks.UI.Definition.uia iTasks.UI.Definition.UIButton (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.iconClsAttr "icon-down") (_predefined._Cons (iTasks.UI.Definition.enabledAttr (StdBool.not (<{StdInt.==_16}> idx_1 (<{StdInt.-_7}> num_5 1)))) (_predefined._Cons (iTasks.UI.Definition.editAttrs task_2 (iTasks.UI.Editor.editorId dp_3) (Data.Maybe.Just (Text.JSON.JSONString (<{StdString.+++_11}> "mdn_" (StdString.toString_5 id_4))))) _predefined._Nil))))) _predefined._Nil)) (_ -> _predefined._Nil)
+iTasks.UI.Editor.Common._f407_407::B !reorder_0::B remove_1::B = case reorder_0 (True -> True) (_ -> remove_1)
+<{iTasks.UI.Editor.Common.c;26;131_6}> !_vlength_0 reorder_1::B remove_2::B task_3 dp_4 val_5 !g_l_6 idx_7::I = <{iTasks.UI.Editor.Common.g_c1;26;122_411}> g_l_6 reorder_1 remove_2 task_3 dp_4 _vlength_0 val_5 idx_7
+<{iTasks.UI.Editor.Common.g_c1;26;122_411}> !g_l_0 reorder_1::B remove_2::B task_3 dp_4 _vlength_5 val_6 idx_7::I = case g_l_0 (_predefined._Cons dx_1_0 g_t_1_1 -> _predefined._Cons (iTasks.UI.Editor.Common.listItemUI_394 reorder_1 remove_2 task_3 dp_4 (select _vlength_5::<{StdOverloaded.length;}> 0 val_6) idx_7 idx_7 dx_1_0) (<{iTasks.UI.Editor.Common.c;26;131_6}> _vlength_5 reorder_1 remove_2 task_3 dp_4 val_6 g_t_1_1 (<{StdInt.+_6}> idx_7 StdInt.one_11))) (_ -> _predefined._Nil)
+iTasks.UI.Editor.Common.anon_7 val_0 f_1 = _predefined._Cons (iTasks.UI.Definition.uia iTasks.UI.Definition.UITextView (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.widthAttr iTasks.UI.Definition.FlexSize) (_predefined._Cons (iTasks.UI.Definition.valueAttr (Text.JSON.JSONString (f_1 val_0))) _predefined._Nil)))) _predefined._Nil
+iTasks.UI.Editor.Common.addItemControl_9 add_0 count_1 task_2 dp_3 val_4 = iTasks.UI.Definition.uiac iTasks.UI.Definition.UIContainer (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.halignAttr iTasks.UI.Definition.AlignRight) (_predefined._Cons (iTasks.UI.Definition.heightAttr iTasks.UI.Definition.WrapSize) (_predefined._Cons (iTasks.UI.Definition.directionAttr iTasks.UI.Definition.Horizontal) _predefined._Nil)))) (<{StdList.++}> (Data.Maybe.maybe _predefined._Nil (iTasks.UI.Editor.Common.anon_7 val_4) count_1) (<{iTasks.UI.Editor.Common._if;39;27_412}> (Data.Maybe.isJust add_0) task_2 dp_3))
+<{iTasks.UI.Editor.Common._if;39;27_412}> !_x_0::B task_1 dp_2 = case _x_0 (True -> _predefined._Cons (iTasks.UI.Definition.uia iTasks.UI.Definition.UIButton (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.iconClsAttr "icon-add") (_predefined._Cons (iTasks.UI.Definition.editAttrs task_1 (iTasks.UI.Editor.editorId dp_2) (Data.Maybe.Just (Text.JSON.JSONString "add"))) _predefined._Nil)))) _predefined._Nil) (_ -> _predefined._Nil)
+iTasks.UI.Editor.Common.JSONEncode_s_112 !_vJSONEncode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONEncode__List_17 (select _vJSONEncode_s_0::<{iTasks.UI.Editor.Common.JSONEncode_s;}> 0) x1_1 x2_2
+<{iTasks.UI.Editor.Common.c;26;131_395}> reorder_0::B remove_1::B task_2 dp_3 val_4 !g_l_5 idx_6::I = <{iTasks.UI.Editor.Common.g_c1;26;122_413}> g_l_5 reorder_0 remove_1 task_2 dp_3 val_4 idx_6
+<{iTasks.UI.Editor.Common.g_c1;26;122_413}> !g_l_0 reorder_1::B remove_2::B task_3 dp_4 val_5 idx_6::I = case g_l_0 (_predefined._Cons dx_1_0 g_t_1_1 -> _predefined._Cons (iTasks.UI.Editor.Common.listItemUI_394 reorder_1 remove_2 task_3 dp_4 (StdList.length_47 val_5) idx_6 idx_6 dx_1_0) (<{iTasks.UI.Editor.Common.c;26;131_395}> reorder_1 remove_2 task_3 dp_4 val_5 g_t_1_1 (<{StdInt.+_6}> idx_6 StdInt.one_11))) (_ -> _predefined._Nil)
+iTasks.UI.Editor.Common.JSONEncode_s_396 !x1_0::B !x2_1 = Text.JSON.JSONEncode__List_17 Text.JSON.JSONEncode_Int_11 x1_0 x2_1
+iTasks.UI.Editor.Common.genUI_16 itemEditor_0 count_1 add_2 remove_3::B reorder_4::B dp_5 !val_6 !vst_7 = case vst_7 (iTasks.UI.Editor._VSt task_1_0 mode_1_1 optional_1_2 selectedCons_1_3 iworld_1_4 -> <{iTasks.UI.Editor.Common._c;23;43_422}> (iTasks.UI.Editor.Common.genChildUIs_8 itemEditor_0 dp_5 0 val_6 _predefined._Nil vst_7) mode_1_1 add_2 remove_3 reorder_4 task_1_0 dp_5 val_6 count_1) 
+<{iTasks.UI.Editor.Common._c;23;43_422}> !_x_0 mode_1 add_2 remove_3::B reorder_4::B task_5 dp_6 val_7 count_8 = case _x_0 (_Tuple2 _x_1_0 vst_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 items_3_0 masks_3_1 -> _Tuple2 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.uic iTasks.UI.Definition.UIContainer (<{iTasks.UI.Editor.Common._if;28;23_421}> (iTasks.UI.Editor.Common._f416_416 (StdBool.not (<{iTasks.UI.Editor.Common._c;28;40_414}> mode_1)) add_2) mode_1 remove_3 reorder_4 task_5 dp_6 val_7 items_3_0 add_2 count_8)) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask masks_3_1 (Text.JSON.toJSON (<{iTasks.UI.Editor.Common.JSONEncode_s;}> iTasks.UI.Editor.Common.JSONEncode_s_396) (StdList.indexList val_7)))))) vst_1_1) ) (Data.Error.Error e_2_0 -> _Tuple2 (Data.Error.Error e_2_0) vst_1_1) ) 
+<{iTasks.UI.Editor.Common._if;28;23_421}> !_x_0::B !mode_1 remove_2::B reorder_3::B task_4 dp_5 val_6 !items_7 add_8 count_9 = case _x_0 (True -> <{StdList.++}> (<{iTasks.UI.Editor.Common._if;26;23_419}> (iTasks.UI.Editor.Common._f418_418 (StdBool.not (<{iTasks.UI.Editor.Common._c;26;40_417}> mode_1)) remove_2 reorder_3) reorder_3 remove_2 task_4 dp_5 val_6 items_7) (_predefined._Cons (iTasks.UI.Editor.Common.addItemControl_9 add_8 count_9 task_4 dp_5 val_6) _predefined._Nil)) (_ -> case (case (StdBool.not (<{iTasks.UI.Editor.Common._c;26;40_420}> mode_1)) (True -> case remove_2 (True -> True) (False -> reorder_3) ) (False -> False) ) (True -> <{iTasks.UI.Editor.Common.c;26;131_395}> reorder_3 remove_2 task_4 dp_5 val_6 items_7 0) (False -> items_7) )
+<{iTasks.UI.Editor.Common._c;26;40_420}>::B !_x_0 = case _x_0 (iTasks.UI.Editor.View -> True) (_ -> False)
+<{iTasks.UI.Editor.Common._if;26;23_419}> !_x_0::B reorder_1::B remove_2::B task_3 dp_4 val_5 !items_6 = case _x_0 (True -> <{iTasks.UI.Editor.Common.c;26;131_395}> reorder_1 remove_2 task_3 dp_4 val_5 items_6 0) (_ -> items_6)
+iTasks.UI.Editor.Common._f418_418::B !_x_0::B remove_1::B reorder_2::B = case _x_0 (True -> case remove_1 (True -> True) (False -> reorder_2) ) (_ -> False)
+<{iTasks.UI.Editor.Common._c;26;40_417}>::B !_x_0 = case _x_0 (iTasks.UI.Editor.View -> True) (_ -> False)
+iTasks.UI.Editor.Common._f416_416::B !_x_0::B add_1 = case _x_0 (True -> <{iTasks.UI.Editor.Common._c;28;61_415}> add_1) (_ -> False)
+<{iTasks.UI.Editor.Common._c;28;61_415}>::B !_x_0 = case _x_0 (Data.Maybe.Just _x_1_0 -> True) (_ -> False)
+<{iTasks.UI.Editor.Common._c;28;40_414}>::B !_x_0 = case _x_0 (iTasks.UI.Editor.View -> True) (_ -> False)
+<{iTasks.UI.Editor.Common.itemIndex`_15}>::I !<{_v==_0}> _x_1::I _x_2 !_x_3 = case _x_3 (_predefined._Nil -> -1) (_predefined._Cons x_1_0 xs_1_1 -> case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 _x_2 x_1_0) (True -> _x_1) (False -> <{iTasks.UI.Editor.Common.itemIndex`_15}> <{_v==_0}> (<{StdInt.+_6}> _x_1 1) _x_2 xs_1_1) ) 
+iTasks.UI.Editor.Common.itemIndex_21::I !<{_v==_0}> id_1 !ids_2 = <{iTasks.UI.Editor.Common.itemIndex`_15}> <{_v==_0}> 0 id_1 ids_2
+iTasks.UI.Editor.Common.toggle_13 idx_0::I value_1::B = iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 idx_0 (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI (_predefined._Cons (iTasks.UI.Definition.SetAttribute "enabled" (Text.JSON.JSONBool value_1)) _predefined._Nil) _predefined._Nil))) _predefined._Nil))
+iTasks.UI.Editor.Common.swap_12 !_x_0 _x_1::I = case _x_0 (_predefined._Nil -> _predefined._Nil) (_ -> case (<{StdInt.==_16}> _x_1 0) (True -> _x_0) (False -> case (StdBool.not (<{StdInt.<_17}> _x_1 (StdList.length_47 _x_0))) (True -> _x_0) (False -> StdList.updateAt (<{StdInt.-_7}> _x_1 1) (<{StdList.!!}> _x_0 _x_1) (StdList.updateAt _x_1 (<{StdList.!!}> _x_0 (<{StdInt.-_7}> _x_1 1)) _x_0)) ) )
+iTasks.UI.Editor.Common.anon_10 !_vlength_0 nitems_1 f_2 = _predefined._Cons (_Tuple2 (select _vlength_0::<{StdOverloaded.length;}> 0 nitems_1) (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 0 (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI (_predefined._Cons (iTasks.UI.Definition.SetAttribute "value" (Text.JSON.JSONString (f_2 nitems_1))) _predefined._Nil) _predefined._Nil))) _predefined._Nil)))) _predefined._Nil
+iTasks.UI.Editor.Common.nextId_20::I !_x_0 = case _x_0 (_predefined._Nil -> 0) (_ -> <{StdInt.+_6}> (StdOrdList.maxList_15 _x_0) 1)
+iTasks.UI.Editor.Common.anon_11 ni_0::I nitems_1 f_2 = _predefined._Cons (_Tuple2 (<{StdInt.+_6}> ni_0 1) (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 0 (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI (_predefined._Cons (iTasks.UI.Definition.SetAttribute "value" (Text.JSON.JSONString (f_2 nitems_1))) _predefined._Nil) _predefined._Nil))) _predefined._Nil)))) _predefined._Nil
+iTasks.UI.Editor.Common.childChange_14 i_0::I !_x_1 = case _x_1 (iTasks.UI.Definition.NoChange -> iTasks.UI.Definition.NoChange) (_ -> iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 i_0 (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 0 (iTasks.UI.Definition.ChangeChild _x_1)) _predefined._Nil)))) _predefined._Nil))
+iTasks.UI.Editor.Common.JSONDecode_s_151 !_vJSONDecode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONDecode__List_44 (select _vJSONDecode_s_0::<{iTasks.UI.Editor.Common.JSONDecode_s;}> 0) x1_1 x2_2
+iTasks.UI.Editor.Common.JSONDecode_s_397 !x1_0::B !x2_1 = Text.JSON.JSONDecode__List_44 Text.JSON.JSONDecode_Int_35 x1_0 x2_1
+<{iTasks.UI.Editor.Common.itemIndex`_399}>::I _x_0::I _x_1::I !_x_2 = case _x_2 (_predefined._Nil -> -1) (_predefined._Cons x_1_0 xs_1_1 -> case (<{StdInt.==_16}> _x_1 x_1_0) (True -> _x_0) (False -> <{iTasks.UI.Editor.Common.itemIndex`_399}> (<{StdInt.+_6}> _x_0 1) _x_1 xs_1_1) ) 
+iTasks.UI.Editor.Common.itemIndex_398::I id_0::I !ids_1 = <{iTasks.UI.Editor.Common.itemIndex`_399}> 0 id_0 ids_1
+iTasks.UI.Editor.Common.anon_400 nitems_0 f_1 = _predefined._Cons (_Tuple2 (StdList.length_47 nitems_0) (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 0 (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI (_predefined._Cons (iTasks.UI.Definition.SetAttribute "value" (Text.JSON.JSONString (f_1 nitems_0))) _predefined._Nil) _predefined._Nil))) _predefined._Nil)))) _predefined._Nil
+iTasks.UI.Editor.Common.onEdit_18 itemEditor_0 add_1 count_2 remove_3::B reorder_4::B dp_5 !_x_6 items_7 !_x_8 vst_9 = case _x_6 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (_predefined._Nil -> case _x_1_1 (Text.JSON.JSONString e_3_0 -> case _x_8 (iTasks.UI.Editor.CompoundMask _x_4_0 -> case _x_4_0 (iTasks.UI.Editor._CompoundMask masks_5_0 state_5_1 -> case vst_9 (iTasks.UI.Editor._VSt task_6_0 mode_6_1 optional_6_2 selectedCons_6_3 iworld_6_4 -> let _x_7_0 = Text.split_12 "_" e_3_0, op_7_1 = select _x_7_0::_Tuple2 0 in case (case (<{StdString.==_2}> op_7_1 "mup") (True -> reorder_4) (False -> False) ) (True -> let _x_9_0::I = select _x_7_0::_Tuple2 1, id_9_1::I = select _x_9_0::_Tuple2 0, id_9_2 = StdInt.toInt_23 id_9_1, ids_9_3::I = Data.Maybe.fromMaybe _predefined._Nil (Text.JSON.fromJSON (<{iTasks.UI.Editor.Common.JSONDecode_s;}> iTasks.UI.Editor.Common.JSONDecode_s_397) state_5_1), index_9_4 = iTasks.UI.Editor.Common.itemIndex_398 id_9_2 ids_9_3, num_9_5 = StdList.length_47 items_7 in case (case (<{StdInt.<_17}> index_9_4 1) (True -> True) (False -> StdBool.not (<{StdInt.<_17}> index_9_4 num_9_5)) ) (True -> _Tuple3 (Data.Error.Error "List move-up out of bounds") items_7 vst_9) (False -> _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ChangeUI _predefined._Nil (<{StdList.++}> (<{iTasks.UI.Editor.Common._if;63;30_423}> (<{StdInt.==_16}> index_9_4 1) index_9_4) (<{StdList.++}> (<{iTasks.UI.Editor.Common._if;64;30_424}> (<{StdInt.==_16}> index_9_4 (<{StdInt.-_7}> num_9_5 1)) index_9_4) (_predefined._Cons (_Tuple2 index_9_4 (iTasks.UI.Definition.MoveChild (<{StdInt.-_7}> index_9_4 1))) _predefined._Nil)))) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (iTasks.UI.Editor.Common.swap_12 masks_5_0 index_9_4) (Text.JSON.toJSON (<{iTasks.UI.Editor.Common.JSONEncode_s;}> iTasks.UI.Editor.Common.JSONEncode_s_396) (iTasks.UI.Editor.Common.swap_12 ids_9_3 index_9_4)))))) (iTasks.UI.Editor.Common.swap_12 items_7 index_9_4) vst_9) ) (False -> case (case (<{StdString.==_2}> op_7_1 "mdn") (True -> reorder_4) (False -> False) ) (True -> let _x_10_0::I = select _x_7_0::_Tuple2 1, id_10_1 = select _x_10_0::_Tuple2 0, id_10_2::I = StdInt.toInt_23 id_10_1, ids_10_3 = Data.Maybe.fromMaybe _predefined._Nil (Text.JSON.fromJSON (<{iTasks.UI.Editor.Common.JSONDecode_s;}> iTasks.UI.Editor.Common.JSONDecode_s_397) state_5_1), index_10_4 = iTasks.UI.Editor.Common.itemIndex_398 id_10_2 ids_10_3 in case (case (<{StdInt.<_17}> index_10_4 0) (True -> True) (False -> <{StdInt.<_17}> (<{StdInt.-_7}> (StdList.length_47 items_7) 2) index_10_4) ) (True -> _Tuple3 (Data.Error.Error "List move-down out of bounds") items_7 vst_9) (False -> _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ChangeUI _predefined._Nil (<{StdList.++}> (<{iTasks.UI.Editor.Common._if;69;30_425}> (<{StdInt.==_16}> index_10_4 0) index_10_4) (<{StdList.++}> (<{iTasks.UI.Editor.Common._if;70;30_426}> (<{StdInt.==_16}> index_10_4 (<{StdInt.-_7}> (StdList.length_47 items_7) 2)) index_10_4) (_predefined._Cons (_Tuple2 index_10_4 (iTasks.UI.Definition.MoveChild (<{StdInt.+_6}> index_10_4 1))) _predefined._Nil)))) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (iTasks.UI.Editor.Common.swap_12 masks_5_0 (<{StdInt.+_6}> index_10_4 1)) (Text.JSON.toJSON (<{iTasks.UI.Editor.Common.JSONEncode_s;}> iTasks.UI.Editor.Common.JSONEncode_s_396) (iTasks.UI.Editor.Common.swap_12 ids_10_3 (<{StdInt.+_6}> index_10_4 1))))))) (iTasks.UI.Editor.Common.swap_12 items_7 (<{StdInt.+_6}> index_10_4 1)) vst_9) ) (False -> case (case (<{StdString.==_2}> op_7_1 "rem") (True -> remove_3) (False -> False) ) (True -> let _x_11_0::I = select _x_7_0::_Tuple2 1, id_11_1::I = select _x_11_0::_Tuple2 0, id_11_2 = StdInt.toInt_23 id_11_1, ids_11_3::I = Data.Maybe.fromMaybe _predefined._Nil (Text.JSON.fromJSON (<{iTasks.UI.Editor.Common.JSONDecode_s;}> iTasks.UI.Editor.Common.JSONDecode_s_397) state_5_1), index_11_4 = iTasks.UI.Editor.Common.itemIndex_398 id_11_2 ids_11_3, num_11_5 = StdList.length_47 items_7 in case (case (<{StdInt.<_17}> index_11_4 0) (True -> True) (False -> StdBool.not (<{StdInt.<_17}> index_11_4 num_11_5)) ) (True -> _Tuple3 (Data.Error.Error "List remove out of bounds") items_7 vst_9) (False -> let nitems_13_0 = StdList.removeAt index_11_4 items_7 in _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ChangeUI _predefined._Nil (<{StdList.++}> (<{iTasks.UI.Editor.Common._if;77;30_428}> (iTasks.UI.Editor.Common._f427_427 (<{StdInt.==_16}> index_11_4 0) num_11_5) index_11_4) (<{StdList.++}> (<{iTasks.UI.Editor.Common._if;78;30_430}> (iTasks.UI.Editor.Common._f429_429 (<{StdInt.==_16}> index_11_4 (<{StdInt.-_7}> num_11_5 1)) index_11_4) index_11_4) (<{StdList.++}> (_predefined._Cons (_Tuple2 index_11_4 iTasks.UI.Definition.RemoveChild) _predefined._Nil) (Data.Maybe.maybe _predefined._Nil (iTasks.UI.Editor.Common.anon_400 nitems_13_0) count_2))))) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (StdList.removeAt index_11_4 masks_5_0) (Text.JSON.toJSON (<{iTasks.UI.Editor.Common.JSONEncode_s;}> iTasks.UI.Editor.Common.JSONEncode_s_396) (StdList.removeAt index_11_4 ids_11_3)))))) nitems_13_0 vst_9) ) (False -> case (case (<{StdString.==_2}> op_7_1 "add") (True -> <{iTasks.UI.Editor.Common._c;81;40_432}> add_1) (False -> False) ) (True -> let ids_12_0 = Data.Maybe.fromMaybe _predefined._Nil (Text.JSON.fromJSON (<{iTasks.UI.Editor.Common.JSONDecode_s;}> iTasks.UI.Editor.Common.JSONDecode_s_397) state_5_1), nid_12_1 = iTasks.UI.Editor.Common.nextId_20 ids_12_0, f_12_2::I = Data.Maybe.fromJust add_1, nx_12_3 = f_12_2 items_7 in <{iTasks.UI.Editor.Common._c;86;15_435}> (select itemEditor_0::iTasks.UI.Editor._Editor 0 (<{StdList.++}> dp_5 (_predefined._Cons nid_12_1 _predefined._Nil)) nx_12_3 vst_9) items_7 nx_12_3 reorder_4 remove_3 task_6_0 dp_5 nid_12_1 count_2 masks_5_0 ids_12_0 state_5_1 vst_9) (False -> <{iTasks.UI.Editor.Common._g;81;_431}> masks_5_0 state_5_1 items_7 vst_9) ) ) ) ) ) ) ) ) (_predefined._Cons id_2_0 tp_2_1 -> case _x_8 (iTasks.UI.Editor.CompoundMask _x_3_0 -> case _x_3_0 (iTasks.UI.Editor._CompoundMask masks_4_0 state_4_1 -> let ids_5_0::I = Data.Maybe.fromMaybe _predefined._Nil (Text.JSON.fromJSON (<{iTasks.UI.Editor.Common.JSONDecode_s;}> iTasks.UI.Editor.Common.JSONDecode_s_397) state_4_1), index_5_1 = iTasks.UI.Editor.Common.itemIndex_398 id_2_0 ids_5_0 in case (case (<{StdInt.<_17}> index_5_1 0) (True -> True) (False -> StdBool.not (<{StdInt.<_17}> index_5_1 (StdList.length_47 items_7))) ) (True -> _Tuple3 (Data.Error.Error (<{StdString.+++_11}> "List edit out of bounds (index:" (<{StdString.+++_11}> (StdString.toString_5 index_5_1) (<{StdString.+++_11}> ", list length: " (<{StdString.+++_11}> (StdString.toString_5 (StdList.length_47 items_7)) ")"))))) items_7 vst_9) (False -> <{iTasks.UI.Editor.Common._c;114;15_436}> (select itemEditor_0::iTasks.UI.Editor._Editor 1 (<{StdList.++}> dp_5 (_predefined._Cons id_2_0 _predefined._Nil)) (_Tuple2 tp_2_1 _x_1_1) (<{StdList.!!}> items_7 index_5_1) (<{StdList.!!}> masks_4_0 index_5_1) vst_9) items_7 index_5_1 masks_4_0 state_4_1) ) ) ) ) 
+<{iTasks.UI.Editor.Common._c;114;15_436}> !_x_0 items_1 index_2::I masks_3 state_4 = case _x_0 (_Tuple3 _x_1_0 nx_1_1 vst_1_2 -> case _x_1_0 (Data.Error.Error e_2_0 -> _Tuple3 (Data.Error.Error e_2_0) items_1 vst_1_2) (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 change_3_0 nm_3_1 -> _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Editor.Common.childChange_14 index_2 change_3_0) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (StdList.updateAt index_2 nm_3_1 masks_3) state_4)))) (StdList.updateAt index_2 nx_1_1 items_1) vst_1_2) ) ) 
+<{iTasks.UI.Editor.Common._c;86;15_435}> !_x_0 items_1 nx_2 reorder_3::B remove_4::B task_5 dp_6 nid_7::I count_8 masks_9 ids_10 state_11 vst_12 = case _x_0 (_Tuple2 _x_1_0 vst_1_1 -> case _x_1_0 (Data.Error.Error e_2_0 -> _Tuple3 (Data.Error.Error e_2_0) items_1 vst_1_1) (Data.Error.Ok _x_2_0 -> iTasks.UI.Editor.Common._f434_434 _x_2_0 items_1 nx_2 reorder_3 remove_4 task_5 dp_6 nid_7 count_8 masks_9 ids_10 vst_1_1 state_11 vst_12) ) 
+iTasks.UI.Editor.Common._f434_434 !_x_0 items_1 nx_2 reorder_3::B remove_4::B task_5 dp_6 nid_7::I count_8 masks_9 ids_10 vst_11 state_12 vst_13 = case _x_0 (_Tuple2 ui_1_0 nm_1_1 -> let num_2_0 = StdList.length_47 items_1, nitems_2_1::I = <{StdList.++}> items_1 (_predefined._Cons nx_2 _predefined._Nil) in _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ChangeUI _predefined._Nil (<{StdList.++}> (_predefined._Cons (_Tuple2 num_2_0 (iTasks.UI.Definition.InsertChild (iTasks.UI.Editor.Common.listItemUI_394 reorder_3 remove_4 task_5 dp_6 (<{StdInt.+_6}> num_2_0 1) num_2_0 nid_7 ui_1_0))) _predefined._Nil) (<{StdList.++}> (Data.Maybe.maybe _predefined._Nil (iTasks.UI.Editor.Common.anon_11 num_2_0 nitems_2_1) count_8) (<{iTasks.UI.Editor.Common._if;94;34_433}> (<{StdInt.<_17}> 0 num_2_0) num_2_0)))) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (<{StdList.++}> masks_9 (_predefined._Cons nm_1_1 _predefined._Nil)) (Text.JSON.toJSON (<{iTasks.UI.Editor.Common.JSONEncode_s;}> iTasks.UI.Editor.Common.JSONEncode_s_396) (<{StdList.++}> ids_10 (_predefined._Cons nid_7 _predefined._Nil))))))) nitems_2_1 vst_11) (_ -> <{iTasks.UI.Editor.Common._g;81;_431}> masks_9 state_12 items_1 vst_13)
+<{iTasks.UI.Editor.Common._if;94;34_433}> !_x_0::B num_1::I = case _x_0 (True -> _predefined._Cons (_Tuple2 (<{StdInt.-_7}> num_1 1) (iTasks.UI.Editor.Common.toggle_13 2 True)) _predefined._Nil) (_ -> _predefined._Nil)
+<{iTasks.UI.Editor.Common._c;81;40_432}>::B !_x_0 = case _x_0 (Data.Maybe.Just _x_1_0 -> True) (_ -> False)
+<{iTasks.UI.Editor.Common._g;81;_431}> masks_0 state_1 items_2 vst_3 = _Tuple3 (Data.Error.Ok (_Tuple2 iTasks.UI.Definition.NoChange (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask masks_0 (Text.JSON.toJSON (<{iTasks.UI.Editor.Common.JSONEncode_s;}> iTasks.UI.Editor.Common.JSONEncode_s_396) (Data.Maybe.fromMaybe _predefined._Nil (Text.JSON.fromJSON (<{iTasks.UI.Editor.Common.JSONDecode_s;}> iTasks.UI.Editor.Common.JSONDecode_s_397) state_1))))))) items_2 vst_3
+<{iTasks.UI.Editor.Common._if;78;30_430}> !_x_0::B index_1::I = case _x_0 (True -> _predefined._Cons (_Tuple2 (<{StdInt.-_7}> index_1 1) (iTasks.UI.Editor.Common.toggle_13 2 False)) _predefined._Nil) (_ -> _predefined._Nil)
+iTasks.UI.Editor.Common._f429_429::B !_x_0::B index_1::I = case _x_0 (True -> <{StdInt.<_17}> 0 index_1) (_ -> False)
+<{iTasks.UI.Editor.Common._if;77;30_428}> !_x_0::B index_1::I = case _x_0 (True -> _predefined._Cons (_Tuple2 (<{StdInt.+_6}> index_1 1) (iTasks.UI.Editor.Common.toggle_13 1 False)) _predefined._Nil) (_ -> _predefined._Nil)
+iTasks.UI.Editor.Common._f427_427::B !_x_0::B num_1::I = case _x_0 (True -> <{StdInt.<_17}> 1 num_1) (_ -> False)
+<{iTasks.UI.Editor.Common._if;70;30_426}> !_x_0::B index_1::I = case _x_0 (True -> _predefined._Cons (_Tuple2 index_1 (iTasks.UI.Editor.Common.toggle_13 2 False)) (_predefined._Cons (_Tuple2 (<{StdInt.+_6}> index_1 1) (iTasks.UI.Editor.Common.toggle_13 2 True)) _predefined._Nil)) (_ -> _predefined._Nil)
+<{iTasks.UI.Editor.Common._if;69;30_425}> !_x_0::B index_1::I = case _x_0 (True -> _predefined._Cons (_Tuple2 index_1 (iTasks.UI.Editor.Common.toggle_13 1 True)) (_predefined._Cons (_Tuple2 (<{StdInt.+_6}> index_1 1) (iTasks.UI.Editor.Common.toggle_13 1 False)) _predefined._Nil)) (_ -> _predefined._Nil)
+<{iTasks.UI.Editor.Common._if;64;30_424}> !_x_0::B index_1::I = case _x_0 (True -> _predefined._Cons (_Tuple2 index_1 (iTasks.UI.Editor.Common.toggle_13 2 True)) (_predefined._Cons (_Tuple2 (<{StdInt.-_7}> index_1 1) (iTasks.UI.Editor.Common.toggle_13 2 False)) _predefined._Nil)) (_ -> _predefined._Nil)
+<{iTasks.UI.Editor.Common._if;63;30_423}> !_x_0::B index_1::I = case _x_0 (True -> _predefined._Cons (_Tuple2 index_1 (iTasks.UI.Editor.Common.toggle_13 1 False)) (_predefined._Cons (_Tuple2 (<{StdInt.-_7}> index_1 1) (iTasks.UI.Editor.Common.toggle_13 1 True)) _predefined._Nil)) (_ -> _predefined._Nil)
+iTasks.UI.Editor.Common.gEq_s_25::B !_vgEq_s_0 x1_1 x2_2 = GenEq.gEq__List_16 (select _vgEq_s_0::<{iTasks.UI.Editor.Common.gEq_s;}> 0) x1_1 x2_2
+iTasks.UI.Editor.Common.gEq_s_401::B x1_0 x2_1 = GenEq.gEq__List_16 iTasks.API.Core.Types.gEq_JSONNode_199 x1_0 x2_1
+iTasks.UI.Editor.Common.onRefresh_19 itemEditor_0 count_1 add_2 remove_3::B reorder_4::B jsonenc_5 dp_6 new_7 old_8 mask_9 vst_10 = case (<{GenEq.===}> (<{iTasks.UI.Editor.Common.gEq_s;}> iTasks.UI.Editor.Common.gEq_s_401) (Text.JSON.JSONEncode__List_17 jsonenc_5 False new_7) (Text.JSON.JSONEncode__List_17 jsonenc_5 False old_8)) (True -> _Tuple3 (Data.Error.Ok (_Tuple2 iTasks.UI.Definition.NoChange mask_9)) old_8 vst_10) (False -> <{iTasks.UI.Editor.Common._c;128;15_437}> (iTasks.UI.Editor.Common.genUI_16 itemEditor_0 count_1 add_2 remove_3 reorder_4 dp_6 new_7 vst_10) new_7 old_8) 
+<{iTasks.UI.Editor.Common._c;128;15_437}> !_x_0 new_1 old_2 = case _x_0 (_Tuple2 _x_1_0 vst_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 ui_3_0 mask_3_1 -> _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ReplaceUI ui_3_0) mask_3_1)) new_1 vst_1_1) ) (Data.Error.Error e_2_0 -> _Tuple3 (Data.Error.Error e_2_0) old_2 vst_1_1) ) 
+iTasks.UI.Editor.Common.listEditor_ jsonenc_0 add_1 remove_2::B reorder_3::B count_4 itemEditor_5 = iTasks.UI.Editor._Editor (iTasks.UI.Editor.Common.genUI_16 itemEditor_5 count_4 add_1 remove_2 reorder_3) (iTasks.UI.Editor.Common.onEdit_18 itemEditor_5 add_1 count_4 remove_2 reorder_3) (iTasks.UI.Editor.Common.onRefresh_19 itemEditor_5 count_4 add_1 remove_2 reorder_3 jsonenc_0)
+iTasks.UI.Editor.Common.listEditor !<{_vJSONEncode*_0}> add_1 remove_2::B reorder_3::B count_4 itemEditor_5 = iTasks.UI.Editor.Common.listEditor_ (select <{_vJSONEncode*_0}>::<{iTasks.UI.Editor.Common.JSONEncode_s;}> 0) add_1 remove_2 reorder_3 count_4 itemEditor_5
+
+
+|| Converted Records
+:: <{iTasks.UI.Editor.Common.gEq_s;}> = {!iTasks.UI.Editor.Common.gEq_s}
+
+:: <{iTasks.UI.Editor.Common.gEq_ss;}> = {!iTasks.UI.Editor.Common.gEq_ss}
+
+:: <{iTasks.UI.Editor.Common.gEq_sss;}> = {!iTasks.UI.Editor.Common.gEq_sss}
+
+:: <{iTasks.UI.Editor.Common.gEq_ssss;}> = {!iTasks.UI.Editor.Common.gEq_ssss}
+
+:: <{iTasks.UI.Editor.Common.gEq_sssss;}> = {!iTasks.UI.Editor.Common.gEq_sssss}
+
+:: <{iTasks.UI.Editor.Common.gEq_ssssss;}> = {!iTasks.UI.Editor.Common.gEq_ssssss}
+
+:: <{iTasks.UI.Editor.Common.gEq_sssssss;}> = {!iTasks.UI.Editor.Common.gEq_sssssss}
+
+:: <{iTasks.UI.Editor.Common.gEq_ssssssss;}> = {!iTasks.UI.Editor.Common.gEq_ssssssss}
+
+:: <{iTasks.UI.Editor.Common.gEq_sssssssss;}> = {!iTasks.UI.Editor.Common.gEq_sssssssss}
+
+:: <{iTasks.UI.Editor.Common.bimap_s;}> = {iTasks.UI.Editor.Common.bimap_s}
+
+:: <{iTasks.UI.Editor.Common.bimap_ss;}> = {iTasks.UI.Editor.Common.bimap_ss}
+
+:: <{iTasks.UI.Editor.Common.bimap_sss;}> = {iTasks.UI.Editor.Common.bimap_sss}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_s;}> = {!iTasks.UI.Editor.Common.JSONEncode_s}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_ss;}> = {!iTasks.UI.Editor.Common.JSONEncode_ss}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_sss;}> = {!iTasks.UI.Editor.Common.JSONEncode_sss}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_s;}> = {!iTasks.UI.Editor.Common.JSONDecode_s}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_ss;}> = {!iTasks.UI.Editor.Common.JSONDecode_ss}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_sss;}> = {!iTasks.UI.Editor.Common.JSONDecode_sss}
+
+:: <{iTasks.UI.Editor.Common.gDefault_s;}> = {iTasks.UI.Editor.Common.gDefault_s}
+
+:: <{iTasks.UI.Editor.Common.gDefault_ss;}> = {iTasks.UI.Editor.Common.gDefault_ss}
+
+:: <{iTasks.UI.Editor.Common.gDefault_sss;}> = {iTasks.UI.Editor.Common.gDefault_sss}
+
+:: <{iTasks.UI.Editor.Common.gText_s;}> = {!iTasks.UI.Editor.Common.gText_s}
+
+:: <{iTasks.UI.Editor.Common.gText_ss;}> = {!iTasks.UI.Editor.Common.gText_ss}
+
+:: <{iTasks.UI.Editor.Common.gText_sss;}> = {!iTasks.UI.Editor.Common.gText_sss}
+
+:: <{iTasks.UI.Editor.Common.gEditor_s;}> = {iTasks.UI.Editor.Common.gEditor_s}
+
+:: <{iTasks.UI.Editor.Common.gEditor_ss;}> = {iTasks.UI.Editor.Common.gEditor_ss}
+
+:: <{iTasks.UI.Editor.Common.gEditor_sss;}> = {iTasks.UI.Editor.Common.gEditor_sss}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_ssss;}> = {!iTasks.UI.Editor.Common.JSONEncode_ssss}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_ssss;}> = {!iTasks.UI.Editor.Common.JSONDecode_ssss}
+
+:: <{iTasks.UI.Editor.Common.gDefault_ssss;}> = {iTasks.UI.Editor.Common.gDefault_ssss}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_sssss;}> = {!iTasks.UI.Editor.Common.JSONEncode_sssss}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_ssssss;}> = {!iTasks.UI.Editor.Common.JSONEncode_ssssss}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_sssssss;}> = {!iTasks.UI.Editor.Common.JSONEncode_sssssss}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_ssssssss;}> = {!iTasks.UI.Editor.Common.JSONEncode_ssssssss}
+
+:: <{iTasks.UI.Editor.Common.JSONEncode_sssssssss;}> = {!iTasks.UI.Editor.Common.JSONEncode_sssssssss}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_sssss;}> = {!iTasks.UI.Editor.Common.JSONDecode_sssss}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_ssssss;}> = {!iTasks.UI.Editor.Common.JSONDecode_ssssss}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_sssssss;}> = {!iTasks.UI.Editor.Common.JSONDecode_sssssss}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_ssssssss;}> = {!iTasks.UI.Editor.Common.JSONDecode_ssssssss}
+
+:: <{iTasks.UI.Editor.Common.JSONDecode_sssssssss;}> = {!iTasks.UI.Editor.Common.JSONDecode_sssssssss}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_s;}> = {!iTasks.UI.Editor.Common.gLexOrd_s}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_ss;}> = {!iTasks.UI.Editor.Common.gLexOrd_ss}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_sss;}> = {!iTasks.UI.Editor.Common.gLexOrd_sss}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_ssss;}> = {!iTasks.UI.Editor.Common.gLexOrd_ssss}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_sssss;}> = {!iTasks.UI.Editor.Common.gLexOrd_sssss}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_ssssss;}> = {!iTasks.UI.Editor.Common.gLexOrd_ssssss}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_sssssss;}> = {!iTasks.UI.Editor.Common.gLexOrd_sssssss}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_ssssssss;}> = {!iTasks.UI.Editor.Common.gLexOrd_ssssssss}
+
+:: <{iTasks.UI.Editor.Common.gLexOrd_sssssssss;}> = {!iTasks.UI.Editor.Common.gLexOrd_sssssssss}
+
+:: <{iTasks.UI.Editor.Common.gText_ssss;}> = {!iTasks.UI.Editor.Common.gText_ssss}
+
+:: <{iTasks.UI.Editor.Common.gText_sssss;}> = {!iTasks.UI.Editor.Common.gText_sssss}
+
+:: <{iTasks.UI.Editor.Common.gText_ssssss;}> = {!iTasks.UI.Editor.Common.gText_ssssss}
+
+:: <{iTasks.UI.Editor.Common.gText_sssssss;}> = {!iTasks.UI.Editor.Common.gText_sssssss}
+
+:: <{iTasks.UI.Editor.Common.gText_ssssssss;}> = {!iTasks.UI.Editor.Common.gText_ssssssss}
+
+:: <{iTasks.UI.Editor.Common.gText_sssssssss;}> = {!iTasks.UI.Editor.Common.gText_sssssssss}
+
+:: <{iTasks.UI.Editor.Common.gDefault_sssss;}> = {iTasks.UI.Editor.Common.gDefault_sssss}
+
+:: <{iTasks.UI.Editor.Common.gDefault_ssssss;}> = {iTasks.UI.Editor.Common.gDefault_ssssss}
+
+:: <{iTasks.UI.Editor.Common.gDefault_sssssss;}> = {iTasks.UI.Editor.Common.gDefault_sssssss}
+
+:: <{iTasks.UI.Editor.Common.gDefault_ssssssss;}> = {iTasks.UI.Editor.Common.gDefault_ssssssss}
+
+:: <{iTasks.UI.Editor.Common.gDefault_sssssssss;}> = {iTasks.UI.Editor.Common.gDefault_sssssssss}
+
+:: <{iTasks.UI.Editor.Common.gEditor_ssss;}> = {iTasks.UI.Editor.Common.gEditor_ssss}
+
+:: <{iTasks.UI.Editor.Common.gEditor_sssss;}> = {iTasks.UI.Editor.Common.gEditor_sssss}
+
+:: <{iTasks.UI.Editor.Common.gEditor_ssssss;}> = {iTasks.UI.Editor.Common.gEditor_ssssss}
+
+:: <{iTasks.UI.Editor.Common.gEditor_sssssss;}> = {iTasks.UI.Editor.Common.gEditor_sssssss}
+

@@ -1,0 +1,37 @@
+|| ?module? textcharstream
+
+
+textcharstream.eos_0 !tcs_0 = case tcs_0 (textcharstream._TextCharStream tcs_txt_1_0 tcs_col_1_1 tcs_sav_1_2 -> case tcs_txt_1_0 (StrictList.SNil -> <{_Tuple2!3}> True tcs_0) (StrictList.SCons _x_2_0 rot_2_1 -> case _x_2_0 ("" -> textcharstream.eos_0 (update tcs_0::textcharstream._TextCharStream [0:rot_2_1])) (_ -> case (<{StdInt.==_16}> (_SystemArray.size_20 _x_2_0) tcs_col_1_1) (True -> textcharstream.eos_0 (update tcs_0::textcharstream._TextCharStream [0:rot_2_1,1:0])) (False -> <{_Tuple2!3}> False tcs_0) )) ) 
+textcharstream.getChar_1 !tcs_0 = case tcs_0 (textcharstream._TextCharStream tcs_txt_1_0 tcs_col_1_1 tcs_sav_1_2 -> case tcs_txt_1_0 (StrictList.SNil -> <{_Tuple3!7}> False '\f' tcs_0) (StrictList.SCons _x_2_0 rot_2_1 -> case _x_2_0 ("" -> textcharstream.getChar_1 (update tcs_0::textcharstream._TextCharStream [0:rot_2_1])) (_ -> case (<{StdInt.==_16}> (_SystemArray.size_20 _x_2_0) tcs_col_1_1) (True -> textcharstream.getChar_1 (update tcs_0::textcharstream._TextCharStream [0:rot_2_1,1:0])) (False -> <{_Tuple3!7}> True (_SystemArray.select_19 _x_2_0 tcs_col_1_1) (update tcs_0::textcharstream._TextCharStream [1:<{StdInt.+_6}> tcs_col_1_1 StdInt.one_11])) )) ) 
+textcharstream.restorePos_2 !tcs_0 = case tcs_0 (textcharstream._TextCharStream tcs_txt_1_0 tcs_col_1_1 tcs_sav_1_2 -> case tcs_sav_1_2 (_Tuple2 sav_txt_2_0 sav_col_2_1 -> update tcs_0::textcharstream._TextCharStream [0:sav_txt_2_0,1:sav_col_2_1]) ) 
+textcharstream.savePos_3 !tcs_0 = case tcs_0 (textcharstream._TextCharStream tcs_txt_1_0 tcs_col_1_1 tcs_sav_1_2 -> update tcs_0::textcharstream._TextCharStream [2:_Tuple2 tcs_txt_1_0 tcs_col_1_1]) 
+<{textcharstream.TD;TextCharStream}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: textcharstream._TextCharStream = {!textcharstream.tcs_txt, !textcharstream.tcs_col::I, !textcharstream.tcs_sav}
+
+:: <{textcharstream.gEq_s;}> = {!textcharstream.gEq_s}
+
+:: <{textcharstream.gEq_ss;}> = {!textcharstream.gEq_ss}
+
+:: <{textcharstream.gEq_sss;}> = {!textcharstream.gEq_sss}
+
+:: <{textcharstream.gEq_ssss;}> = {!textcharstream.gEq_ssss}
+
+:: <{textcharstream.gEq_sssss;}> = {!textcharstream.gEq_sssss}
+
+:: <{textcharstream.gEq_ssssss;}> = {!textcharstream.gEq_ssssss}
+
+:: <{textcharstream.gEq_sssssss;}> = {!textcharstream.gEq_sssssss}
+
+:: <{textcharstream.gEq_ssssssss;}> = {!textcharstream.gEq_ssssssss}
+
+:: <{textcharstream.gEq_sssssssss;}> = {!textcharstream.gEq_sssssssss}
+
+:: <{textcharstream.bimap_s;}> = {textcharstream.bimap_s}
+
+:: <{textcharstream.bimap_ss;}> = {textcharstream.bimap_ss}
+
+:: <{textcharstream.bimap_sss;}> = {textcharstream.bimap_sss}
+

@@ -1,0 +1,209 @@
+|| ?module? iTasks._Framework.Engine
+
+
+iTasks._Framework.Engine.anon_39 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+iTasks._Framework.Engine.anon_38 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+iTasks._Framework.Engine.anon_37 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+iTasks._Framework.Engine.fst_36 !tuple_0 = select tuple_0::_Tuple2 0
+<{iTasks._Framework.Engine.c;235;38_33}> !g_l_0 = <{iTasks._Framework.Engine.g_c1;235;43_419}> g_l_0
+<{iTasks._Framework.Engine.g_c1;235;43_419}> !g_l_0 = case g_l_0 (_predefined._Cons f_1_0 g_t_1_1 -> case (<{StdString.==_2}> (System.FilePath.takeExtension f_1_0) "bat") (True -> _predefined._Cons f_1_0 (<{iTasks._Framework.Engine.c;235;38_33}> g_t_1_1)) (False -> <{iTasks._Framework.Engine.c;235;38_33}> g_t_1_1) ) (_ -> _predefined._Nil)
+iTasks._Framework.Engine.cmpFileTime_34::B !_x_0 !_x_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_1 (Data.Error.Ok _x_2_0 -> case _x_2_0 (System.File._FileInfo directory_3_0 creationTime_3_1 x_3_2 lastAccessedTime_3_3 sizeHigh_3_4 sizeLow_3_5 -> case _x_1 (_Tuple2 _x_4_0 _x_4_1 -> case _x_4_1 (Data.Error.Ok _x_5_0 -> case _x_5_0 (System.File._FileInfo directory_6_0 creationTime_6_1 y_6_2 lastAccessedTime_6_3 sizeHigh_6_4 sizeLow_6_5 -> <{System.Time.<_16}> (System.Time.mkTime y_6_2) (System.Time.mkTime x_3_2)) ) ) ) ) ) 
+iTasks._Framework.Engine.anon_412 !g_0 x_1 = StdList.hd (g_0 x_1)
+iTasks._Framework.Engine.anon_413 !g_0 x_1 = iTasks._Framework.Engine.fst_36 (g_0 x_1)
+iTasks._Framework.Engine.anon_414 _x_0 !x_1 = StdList.hd (StdOrdList.sortBy _x_0 x_1)
+iTasks._Framework.Engine.anon_415 _x_0 !x_1 = iTasks._Framework.Engine.fst_36 (iTasks._Framework.Engine.anon_414 _x_0 x_1)
+iTasks._Framework.Engine.determineAppPath !world_0 = let _x_1_0 = System.CommandLine.getCommandLine world_0, _x_1_1 = select _x_1_0::_Tuple2 0, arg_1_2 = select _x_1_1::_Tuple2 0 in case (StdBool.not (<{StdString.==_2}> (System.FilePath.dropDirectory arg_1_2) "ConsoleClient.exe")) (True -> iTasks._Framework.Util.toCanonicalPath arg_1_2 (select _x_1_0::_Tuple2 1)) (False -> let world_3_0 = select _x_1_0::_Tuple2 1, _x_3_1 = System.Directory.getCurrentDirectory world_3_0, res_3_2 = select _x_3_1::_Tuple2 0 in case (Data.Error.isError res_3_2) (True -> StdMisc.abort "Cannot get current directory.") (False -> let currentDirectory_5_0 = Data.Error.fromOk res_3_2, world_5_1 = select _x_3_1::_Tuple2 1, _x_5_2 = System.Directory.readDirectory currentDirectory_5_0 world_5_1, res_5_3 = select _x_5_2::_Tuple2 0 in case (Data.Error.isError res_5_3) (True -> StdMisc.abort "Cannot read current directory.") (False -> let batchfiles_7_0 = <{iTasks._Framework.Engine.c;235;38_33}> (Data.Error.fromOk res_5_3) in case (StdList.isEmpty batchfiles_7_0) (True -> StdMisc.abort "No dynamic linker batch file found.") (False -> let world_9_0 = select _x_5_2::_Tuple2 1, _x_9_1 = StdFunc.seqList (StdList.map System.File.getFileInfo batchfiles_7_0) world_9_0, infos_9_2 = select _x_9_1::_Tuple2 0 in case (StdList.any Data.Error.isError infos_9_2) (True -> StdMisc.abort "Cannot get file information.") (False -> <{_Tuple2!3}> (<{System.FilePath.</>}> currentDirectory_5_0 (iTasks._Framework.Engine.anon_415 iTasks._Framework.Engine.cmpFileTime_34 (StdList.zip2 batchfiles_7_0 infos_9_2))) (select _x_9_1::_Tuple2 1)) ) ) ) ) 
+iTasks._Framework.Engine.anon_416 !g_0 x_1 = System.FilePath.dropExtension (g_0 x_1)
+iTasks._Framework.Engine.anon_417 !x_0 = System.FilePath.dropExtension (System.FilePath.dropDirectory x_0)
+iTasks._Framework.Engine.determineAppName !world_0 = let _x_1_0 = iTasks._Framework.Engine.determineAppPath world_0 in <{_Tuple2!3}> (iTasks._Framework.Engine.anon_417 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1)
+iTasks._Framework.Engine.infoline_23 !app_0 = _predefined._Cons (<{StdString.+++_11}> "*** " (<{StdString.+++_11}> app_0 " HTTP server ***")) (_predefined._Cons "" _predefined._Nil)
+iTasks._Framework.Engine.anon_20 !s_0 !c_1 = StdFile.fwrites (<{StdString.+++_11}> s_0 "\n") c_1
+iTasks._Framework.Engine.show !lines_0 !world_1 = let _x_1_0 = StdFile.stdio_33 world_1 in select (StdFile.fclose_30 (Data.Func.seqSt iTasks._Framework.Engine.anon_20 lines_0 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1))::_Tuple2 1
+iTasks._Framework.Engine.isInteger_21::B !v_0 = StdList.and (StdList.map StdChar.isDigit (StdList.fromString_78 v_0))
+iTasks._Framework.Engine.intOpt_25 !key_0 !_x_1 = case _x_1 (_predefined._Nil -> Data.Maybe.Nothing) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> Data.Maybe.Nothing) (_predefined._Cons v_2_0 r_2_1 -> case (case (<{StdString.==_2}> _x_1_0 key_0) (True -> iTasks._Framework.Engine.isInteger_21 v_2_0) (False -> False) ) (True -> Data.Maybe.Just (StdInt.toInt_23 v_2_0)) (False -> iTasks._Framework.Engine.intOpt_25 key_0 (_predefined._Cons v_2_0 r_2_1)) ) ) 
+iTasks._Framework.Engine.boolOpt_24::B !key_0 !opts_1 = StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) key_0 opts_1
+iTasks._Framework.Engine.stringOpt_26 !key_0 !_x_1 = case _x_1 (_predefined._Nil -> Data.Maybe.Nothing) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> Data.Maybe.Nothing) (_predefined._Cons v_2_0 r_2_1 -> case (<{StdString.==_2}> _x_1_0 key_0) (True -> Data.Maybe.Just v_2_0) (False -> iTasks._Framework.Engine.stringOpt_26 key_0 (_predefined._Cons v_2_0 r_2_1)) ) ) 
+iTasks._Framework.Engine.instructions_22 = _predefined._Cons "Available commandline options:" (_predefined._Cons " -help             : Show this message and exit" (_predefined._Cons " -webpublic <path> : Use <path> to point to the folder that contain the application's static web content" (_predefined._Cons " -store <path> 	 : Use <path> as data store location" (_predefined._Cons " -sapl <path> 	 : Use <path> to point to the folders that hold the sapl version of the application" (_predefined._Cons (<{StdString.+++_11}> " -port <port>      : Set port number (default " (<{StdString.+++_11}> (StdString.toString_5 80) ")")) (_predefined._Cons (<{StdString.+++_11}> " -keepalive <time> : Set connection keepalive time in seconds (default " (<{StdString.+++_11}> (StdString.toString_5 300) ")")) (_predefined._Cons "" _predefined._Nil)))))))
+iTasks._Framework.Engine.running_27 !port_0::I = _predefined._Cons (<{StdString.+++_11}> "Running at http://localhost" (<{iTasks._Framework.Engine._if;117;56_420}> (<{StdInt.==_16}> port_0 80) port_0)) _predefined._Nil
+<{iTasks._Framework.Engine._if;117;56_420}> !_x_0::B port_1::I = case _x_0 (True -> "/") (_ -> <{StdString.+++_11}> ":" (<{StdString.+++_11}> (StdString.toString_5 port_1) "/"))
+<{iTasks._Framework.Engine.c;129;77_29}> !g_l_0 = <{iTasks._Framework.Engine.g_c1;129;98_422}> g_l_0
+<{iTasks._Framework.Engine.g_c1;129;98_422}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{iTasks._Framework.Engine.g_c2;129;98_421}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{iTasks._Framework.Engine.g_c2;129;98_421}> !g_h_0 g_t_1 = case g_h_0 (_Tuple4 instanceNo_1_0 _x_1_1 _x_1_2 _x_1_3 -> _predefined._Cons (_Tuple2 instanceNo_1_0 "Persistent first refresh") (<{iTasks._Framework.Engine.c;129;77_29}> g_t_1)) (_ -> <{iTasks._Framework.Engine.c;129;77_29}> g_t_1)
+iTasks._Framework.Engine.queueAllPersistent !iworld_0 = let _x_1_0 = iTasks._Framework.SDS.read (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.Engine.gEditor_s;}> iTasks._Framework.TaskStore.gEditor_InstanceFilter_37) (<{iTasks._Framework.Engine.gText_s;}> iTasks._Framework.TaskStore.gText_InstanceFilter_38) (<{iTasks._Framework.Engine.JSONEncode_s;}> iTasks._Framework.TaskStore.JSONEncode_InstanceFilter_39) (<{iTasks._Framework.Engine.JSONDecode_s;}> iTasks._Framework.TaskStore.JSONDecode_InstanceFilter_40) (<{iTasks._Framework.Engine.gDefault_s;}> iTasks._Framework.TaskStore.gDefault_InstanceFilter_41) (<{iTasks._Framework.Engine.gEq_s;}> iTasks._Framework.TaskStore.gEq_InstanceFilter_42) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks._Framework.TaskStore.TD;InstanceFilter}>))) (update (iTasks._Framework.Generic.Defaults.defaultValue (<{iTasks._Framework.Engine.gDefault_s;}> iTasks._Framework.TaskStore.gDefault_InstanceFilter_41))::iTasks._Framework.TaskStore._InstanceFilter [2:Data.Maybe.Just False]) iTasks._Framework.TaskStore.filteredInstanceIndex) iworld_0, iworld_1_1 = select _x_1_0::_Tuple2 1 in <{iTasks._Framework.Engine._c;128;7_423}> (select _x_1_0::_Tuple2 0) iworld_1_1
+<{iTasks._Framework.Engine._c;128;7_423}> !_x_0 !iworld_1 = case _x_0 (Data.Error.Ok index_1_0 -> iTasks._Framework.TaskStore.queueRefresh (<{iTasks._Framework.Engine.c;129;77_29}> index_1_0) iworld_1) (_ -> iworld_1)
+iTasks._Framework.Engine.timeout_28 !iworld_0 = <{iTasks._Framework.Engine._c;120;22_424}> (iTasks._Framework.SDS.read iTasks._Framework.TaskStore.taskEvents iworld_0)
+<{iTasks._Framework.Engine._c;120;22_424}> !_x_0 = case _x_0 (_Tuple2 _x_1_0 iworld_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (Data.Queue.Queue _x_3_0 _x_3_1 -> case _x_3_0 (_predefined._Nil -> case _x_3_1 (_predefined._Nil -> <{_Tuple2!3}> (Data.Maybe.Just 10) iworld_1_1) ) ) (_ -> <{_Tuple2!3}> (Data.Maybe.Just 0) iworld_1_1)) (Data.Error.Error _x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just 500) iworld_1_1) ) 
+iTasks._Framework.Engine.updateClocks !iworld_0 = case iworld_0 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> let _x_2_0 = System.Time.time world_1_12, world_2_1 = select _x_2_0::_Tuple2 1, _x_2_2 = iTasks._Framework.Util.currentLocalDateTimeWorld world_2_1, local_2_3 = select _x_2_2::_Tuple2 0, localDate_2_4 = iTasks.API.Core.Types.toDate local_2_3, _x_2_5 = <{iTasks._Framework.Engine._if;144;22_425}> (<{iTasks.API.Core.Types.==_29}> localDate_2_4 (select clocks_1_2::iTasks._Framework.IWorld._SystemClocks 1)) iworld_2_10 localDate_2_4, mbe_2_6 = select _x_2_5::_Tuple2 0, world_2_7 = select _x_2_2::_Tuple2 1, _x_2_8 = iTasks._Framework.Util.currentUTCDateTimeWorld world_2_7, world_2_9 = select _x_2_8::_Tuple2 1, iworld_2_10 = update iworld_0::iTasks._Framework.IWorld._IWorld [12:world_2_9] in case (<{iTasks._Framework.Engine._c;145;21_426}> mbe_2_6) (True -> <{_Tuple2!3}> mbe_2_6 (select _x_2_5::_Tuple2 1)) (False -> let localTime_4_0 = iTasks.API.Core.Types.toTime local_2_3, _x_4_1 = <{iTasks._Framework.Engine._if;146;22_427}> (<{iTasks.API.Core.Types.==_30}> localTime_4_0 (select clocks_1_2::iTasks._Framework.IWorld._SystemClocks 2)) iworld_4_3 localTime_4_0, mbe_4_2 = select _x_4_1::_Tuple2 0, iworld_4_3 = select _x_2_5::_Tuple2 1 in case (<{iTasks._Framework.Engine._c;147;21_428}> mbe_4_2) (True -> <{_Tuple2!3}> mbe_4_2 (select _x_4_1::_Tuple2 1)) (False -> let utc_6_0 = select _x_2_8::_Tuple2 0, utcDate_6_1 = iTasks.API.Core.Types.toDate utc_6_0, _x_6_2 = <{iTasks._Framework.Engine._if;148;22_429}> (<{iTasks.API.Core.Types.==_29}> utcDate_6_1 (select clocks_1_2::iTasks._Framework.IWorld._SystemClocks 3)) iworld_6_4 utcDate_6_1, mbe_6_3 = select _x_6_2::_Tuple2 0, iworld_6_4 = select _x_4_1::_Tuple2 1 in case (<{iTasks._Framework.Engine._c;149;21_430}> mbe_6_3) (True -> <{_Tuple2!3}> mbe_6_3 (select _x_6_2::_Tuple2 1)) (False -> let utcTime_8_0 = iTasks.API.Core.Types.toTime utc_6_0, _x_8_1 = <{iTasks._Framework.Engine._if;150;22_431}> (<{iTasks.API.Core.Types.==_30}> utcTime_8_0 (select clocks_1_2::iTasks._Framework.IWorld._SystemClocks 4)) iworld_8_3 utcTime_8_0, mbe_8_2 = select _x_8_1::_Tuple2 0, iworld_8_3 = select _x_6_2::_Tuple2 1 in case (<{iTasks._Framework.Engine._c;151;21_432}> mbe_8_2) (True -> <{_Tuple2!3}> mbe_8_2 (select _x_8_1::_Tuple2 1)) (False -> let timestamp_10_0 = select _x_2_0::_Tuple2 0, _x_10_1 = <{iTasks._Framework.Engine._if;152;22_433}> (<{System.Time.==_15}> timestamp_10_0 (select clocks_1_2::iTasks._Framework.IWorld._SystemClocks 0)) iworld_10_3 timestamp_10_0, mbe_10_2 = select _x_10_1::_Tuple2 0, iworld_10_3 = select _x_8_1::_Tuple2 1 in case (<{iTasks._Framework.Engine._c;153;21_434}> mbe_10_2) (True -> <{_Tuple2!3}> mbe_10_2 (select _x_10_1::_Tuple2 1)) (False -> <{_Tuple2!3}> (Data.Error.Ok _predefined._Unit) (select _x_10_1::_Tuple2 1)) ) ) ) ) ) 
+<{iTasks._Framework.Engine._c;153;21_434}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+<{iTasks._Framework.Engine._if;152;22_433}> !_x_0::B iworld_1 timestamp_2 = case _x_0 (True -> _Tuple2 (Data.Error.Ok _predefined._Unit) iworld_1) (_ -> iTasks._Framework.SDS.write timestamp_2 iTasks._Framework.IWorld.iworldTimestamp iworld_1)
+<{iTasks._Framework.Engine._c;151;21_432}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+<{iTasks._Framework.Engine._if;150;22_431}> !_x_0::B iworld_1 utcTime_2 = case _x_0 (True -> _Tuple2 (Data.Error.Ok _predefined._Unit) iworld_1) (_ -> iTasks._Framework.SDS.write utcTime_2 iTasks._Framework.IWorld.iworldUTCTime iworld_1)
+<{iTasks._Framework.Engine._c;149;21_430}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+<{iTasks._Framework.Engine._if;148;22_429}> !_x_0::B iworld_1 utcDate_2 = case _x_0 (True -> _Tuple2 (Data.Error.Ok _predefined._Unit) iworld_1) (_ -> iTasks._Framework.SDS.write utcDate_2 iTasks._Framework.IWorld.iworldUTCDate iworld_1)
+<{iTasks._Framework.Engine._c;147;21_428}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+<{iTasks._Framework.Engine._if;146;22_427}> !_x_0::B iworld_1 localTime_2 = case _x_0 (True -> _Tuple2 (Data.Error.Ok _predefined._Unit) iworld_1) (_ -> iTasks._Framework.SDS.write localTime_2 iTasks._Framework.IWorld.iworldLocalTime iworld_1)
+<{iTasks._Framework.Engine._c;145;21_426}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+<{iTasks._Framework.Engine._if;144;22_425}> !_x_0::B iworld_1 localDate_2 = case _x_0 (True -> _Tuple2 (Data.Error.Ok _predefined._Unit) iworld_1) (_ -> iTasks._Framework.SDS.write localDate_2 iTasks._Framework.IWorld.iworldLocalDate iworld_1)
+iTasks._Framework.Engine.foldr_35 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> op_0 a_1_0 (iTasks._Framework.Engine.foldr_35 op_0 r_1 x_1_1)) 
+iTasks._Framework.Engine.removeIfOutdated_30 !_x_0 !iworld_1 = case _x_0 (_Tuple4 instanceNo_1_0 _x_1_1 _x_1_2 _x_1_3 -> case iworld_1 (iTasks._Framework.IWorld._IWorld server_2_0 config_2_1 clocks_2_2 current_2_3 random_2_4 sdsNotifyRequests_2_5 memoryShares_2_6 cachedShares_2_7 exposedShares_2_8 jsCompilerState_2_9 ioTasks_2_10 ioStates_2_11 world_2_12 resources_2_13 onClient_2_14 shutdown_2_15 -> case clocks_2_2 (iTasks._Framework.IWorld._SystemClocks timestamp_3_0 localDate_3_1 localTime_3_2 utcDate_3_3 utcTime_3_4 -> <{iTasks._Framework.Engine._c;165;11_435}> (iTasks._Framework.SDS.read (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.Engine.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor_Int_7) (<{iTasks._Framework.Engine.gText_s;}> iTasks._Framework.Generic.Visualization.gText_Int_11) (<{iTasks._Framework.Engine.JSONEncode_s;}> Text.JSON.JSONEncode_Int_11) (<{iTasks._Framework.Engine.JSONDecode_s;}> Text.JSON.JSONDecode_Int_35) (<{iTasks._Framework.Engine.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault_Int_8) (<{iTasks._Framework.Engine.gEq_s;}> GenEq.gEq_Int_2) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Int))) instanceNo_1_0 iTasks._Framework.TaskStore.taskInstanceIO) iworld_1) localDate_3_1 localTime_3_2 instanceNo_1_0) ) ) 
+<{iTasks._Framework.Engine._c;165;11_435}> !_x_0 localDate_1 localTime_2 instanceNo_3::I = case _x_0 (_Tuple2 _x_1_0 iworld_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (Data.Maybe.Just _x_3_0 -> case _x_3_0 (_Tuple2 client_4_0 time_4_1 -> case (<{StdInt.<_17}> 600 (<{StdInt.-_7}> (select (iTasks._Framework.Util.datetimeToTimestamp (iTasks.API.Core.Types.toDateTime localDate_1 localTime_2))::_Tuple1 0) (select (iTasks._Framework.Util.datetimeToTimestamp time_4_1)::_Tuple1 0))) (True -> select (iTasks._Framework.SDS.write Data.Maybe.Nothing (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.Engine.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor_Int_7) (<{iTasks._Framework.Engine.gText_s;}> iTasks._Framework.Generic.Visualization.gText_Int_11) (<{iTasks._Framework.Engine.JSONEncode_s;}> Text.JSON.JSONEncode_Int_11) (<{iTasks._Framework.Engine.JSONDecode_s;}> Text.JSON.JSONDecode_Int_35) (<{iTasks._Framework.Engine.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault_Int_8) (<{iTasks._Framework.Engine.gEq_s;}> GenEq.gEq_Int_2) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Int))) instanceNo_3 iTasks._Framework.TaskStore.taskInstanceIO) (select (iTasks._Framework.TaskStore.deleteTaskInstance instanceNo_3 iworld_1_1)::_Tuple2 1))::_Tuple2 1) (False -> iworld_1_1) ) ) (Data.Maybe.Nothing -> iworld_1_1) ) (Data.Error.Error e_2_0 -> iworld_1_1) ) 
+iTasks._Framework.Engine.foldr_418 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Engine.removeIfOutdated_30 a_1_0 (iTasks._Framework.Engine.foldr_418 r_0 x_1_1)) 
+iTasks._Framework.Engine.removeOutdatedSessions !iworld_0 = let _x_1_0 = iTasks._Framework.SDS.read (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.Engine.gEditor_s;}> iTasks._Framework.TaskStore.gEditor_InstanceFilter_37) (<{iTasks._Framework.Engine.gText_s;}> iTasks._Framework.TaskStore.gText_InstanceFilter_38) (<{iTasks._Framework.Engine.JSONEncode_s;}> iTasks._Framework.TaskStore.JSONEncode_InstanceFilter_39) (<{iTasks._Framework.Engine.JSONDecode_s;}> iTasks._Framework.TaskStore.JSONDecode_InstanceFilter_40) (<{iTasks._Framework.Engine.gDefault_s;}> iTasks._Framework.TaskStore.gDefault_InstanceFilter_41) (<{iTasks._Framework.Engine.gEq_s;}> iTasks._Framework.TaskStore.gEq_InstanceFilter_42) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks._Framework.TaskStore.TD;InstanceFilter}>))) (update (iTasks._Framework.Generic.Defaults.defaultValue (<{iTasks._Framework.Engine.gDefault_s;}> iTasks._Framework.TaskStore.gDefault_InstanceFilter_41))::iTasks._Framework.TaskStore._InstanceFilter [2:Data.Maybe.Just True]) iTasks._Framework.TaskStore.filteredInstanceIndex) iworld_0, iworld_1_1 = select _x_1_0::_Tuple2 1 in <{iTasks._Framework.Engine._c;159;7_436}> (select _x_1_0::_Tuple2 0) iworld_1_1
+<{iTasks._Framework.Engine._c;159;7_436}> !_x_0 !iworld_1 = case _x_0 (Data.Error.Ok index_1_0 -> <{_Tuple2!3}> (Data.Error.Ok _predefined._Unit) (iTasks._Framework.Engine.foldr_418 iworld_1 index_1_0)) (Data.Error.Error e_1_0 -> <{_Tuple2!3}> (Data.Error.Error e_1_0) iworld_1) 
+<{iTasks._Framework.Engine.c;193;104_31}> !g_l_0 = <{iTasks._Framework.Engine.g_c1;193;127_438}> g_l_0
+<{iTasks._Framework.Engine.g_c1;193;127_438}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{iTasks._Framework.Engine.g_c2;193;127_437}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{iTasks._Framework.Engine.g_c2;193;127_437}> !g_h_0 g_t_1 = case g_h_0 (iTasks._Framework.Engine._PublishedTask url_1_0 task_1_1 -> _predefined._Cons url_1_0 (<{iTasks._Framework.Engine.c;193;104_31}> g_t_1)) (_ -> <{iTasks._Framework.Engine.c;193;104_31}> g_t_1)
+iTasks._Framework.Engine.engine !_vPublishable_0 publishable_1 = let published_1_0 = select _vPublishable_0::<{iTasks._Framework.Engine.Publishable;}> 0 publishable_1 in _predefined._Cons (iTasks._Framework.WebService.taskUIService published_1_0) (_predefined._Cons iTasks._Framework.WebService.documentService (_predefined._Cons iTasks._Framework.SDSService.sdsService (_predefined._Cons (iTasks._Framework.WebService.staticResourceService (<{iTasks._Framework.Engine.c;193;104_31}> published_1_0)) _predefined._Nil)))
+iTasks._Framework.Engine.startEngineWithOptions !_vPublishable_0 publishable_1 !options_2 !world_3 = case options_2 (iTasks._Framework.Engine._ServerOptions appName_1_0 appPath_1_1 serverPort_1_2 keepalive_1_3 webDirPath_1_4 storeDirPath_1_5 saplDirPath_1_6 -> let world_2_0 = iTasks._Framework.Engine.show (iTasks._Framework.Engine.running_27 serverPort_1_2) world_3, iworld_2_1 = iTasks._Framework.IWorld.createIWorld appName_1_0 appPath_1_1 webDirPath_1_4 storeDirPath_1_5 saplDirPath_1_6 world_2_0, _x_2_2 = iTasks._Framework.IWorld.initJSCompilerState iworld_2_1, res_2_3 = select _x_2_2::_Tuple2 0 in case (<{iTasks._Framework.Engine._c;107;21_439}> res_2_3) (True -> iTasks._Framework.Engine.show (_predefined._Cons (<{StdString.+++_11}> "Fatal error: " (Data.Error.fromError res_2_3)) _predefined._Nil) (iTasks._Framework.IWorld.destroyIWorld (select _x_2_2::_Tuple2 1))) (False -> iTasks._Framework.IWorld.destroyIWorld (iTasks._Framework.TaskServer.serve serverPort_1_2 (iTasks._Framework.WebService.httpServer (_SystemDynamic.TypeApp (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Data.Map.TD;Map}>)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Int))) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Data.Queue.TD;Queue}>)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.UI.Definition.TD;UIChange}>)))) (_SystemDynamic.TypeApp (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Data.Map.TD;Map}>)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Int))) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Data.Queue.TD;Queue}>)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.UI.Definition.TD;UIChange}>)))) serverPort_1_2 keepalive_1_3 (iTasks._Framework.Engine.engine _vPublishable_0 publishable_1) iTasks._Framework.TaskStore.allUIChanges) (_predefined._Cons (iTasks._Framework.Task.BackgroundTask iTasks._Framework.Engine.removeOutdatedSessions) (_predefined._Cons (iTasks._Framework.Task.BackgroundTask iTasks._Framework.Engine.updateClocks) (_predefined._Cons (iTasks._Framework.Task.BackgroundTask (iTasks._Framework.TaskEval.processEvents 5)) _predefined._Nil))) iTasks._Framework.Engine.timeout_28 (iTasks._Framework.Engine.queueAllPersistent (select _x_2_2::_Tuple2 1)))) ) 
+<{iTasks._Framework.Engine._c;107;21_439}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+iTasks._Framework.Engine.startEngine !_vPublishable_0 publishable_1 !world_2 = let _x_1_0 = System.CommandLine.getCommandLine world_2, opts_1_1 = select _x_1_0::_Tuple2 0 in case (iTasks._Framework.Engine.boolOpt_24 "-help" opts_1_1) (True -> let _x_3_0 = iTasks._Framework.Engine.determineAppName (select _x_1_0::_Tuple2 1) in iTasks._Framework.Engine.show iTasks._Framework.Engine.instructions_22 (iTasks._Framework.Engine.show (iTasks._Framework.Engine.infoline_23 (select _x_3_0::_Tuple2 0)) (select (iTasks._Framework.Engine.determineAppPath (select _x_3_0::_Tuple2 1))::_Tuple2 1))) (False -> let _x_3_0 = iTasks._Framework.Engine.determineAppName (select _x_1_0::_Tuple2 1), appName_3_1 = select _x_3_0::_Tuple2 0, _x_3_2 = iTasks._Framework.Engine.determineAppPath (select _x_3_0::_Tuple2 1) in iTasks._Framework.Engine.startEngineWithOptions _vPublishable_0 publishable_1 (iTasks._Framework.Engine._ServerOptions appName_3_1 (select _x_3_2::_Tuple2 0) (Data.Maybe.fromMaybe 80 (iTasks._Framework.Engine.intOpt_25 "-port" opts_1_1)) (Data.Maybe.fromMaybe 300 (iTasks._Framework.Engine.intOpt_25 "-keepalive" opts_1_1)) (iTasks._Framework.Engine.stringOpt_26 "-webpublic" opts_1_1) (iTasks._Framework.Engine.stringOpt_26 "-store" opts_1_1) (iTasks._Framework.Engine.stringOpt_26 "-sapl" opts_1_1)) (iTasks._Framework.Engine.show (iTasks._Framework.Engine.infoline_23 appName_3_1) (select _x_3_2::_Tuple2 1))) 
+iTasks._Framework.Engine.anon_32 !taskf_0 req_1 = iTasks.UI.Layout.tune_17 (iTasks.UI.Layout.ApplyLayout iTasks.UI.Layout.Default.defaultSessionLayout) (taskf_0 req_1)
+iTasks._Framework.Engine.withFinalSessionLayout !_viTask_0 taskf_1 = iTasks._Framework.Engine.anon_32 taskf_1
+iTasks._Framework.Engine.publish !_viTask_0 url_1 task_2 = iTasks._Framework.Engine._PublishedTask url_1 (iTasks._Framework.Engine.TaskWrapper _viTask_0 (iTasks._Framework.Engine.withFinalSessionLayout _viTask_0 task_2))
+iTasks._Framework.Engine.publishWithoutLayout !_viTask_0 url_1 task_2 = iTasks._Framework.Engine._PublishedTask url_1 (iTasks._Framework.Engine.TaskWrapper _viTask_0 task_2)
+iTasks._Framework.Engine.background !iworld_0 = select (iTasks._Framework.Engine.removeOutdatedSessions (select (iTasks._Framework.TaskEval.processEvents 5 iworld_0)::_Tuple2 1))::_Tuple2 1
+iTasks._Framework.Engine.publishAll_6 !_viTask_0 !task_1 = _predefined._Cons (iTasks._Framework.Engine.publish _viTask_0 "/" (StdFunc.const task_1)) _predefined._Nil
+iTasks._Framework.Engine.publishAll_7 !_viTask_0 !task_1 = _predefined._Cons (iTasks._Framework.Engine.publish _viTask_0 "/" task_1) _predefined._Nil
+iTasks._Framework.Engine.publishAll_8 !list_0 = list_0
+<{iTasks._Framework.Engine.TD;PublishedTask}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Engine.TD;ServerOptions}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Engine.TD;TaskWrapper}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Engine.TD;Publishable;}> _x_0::B = _predefined._Nil
+
+:: iTasks._Framework.Engine.TaskWrapper = iTasks._Framework.Engine.TaskWrapper a1 a2
+
+|| Converted Records
+:: iTasks._Framework.Engine._PublishedTask = {iTasks._Framework.Engine.url, iTasks._Framework.Engine.task}
+
+:: iTasks._Framework.Engine._ServerOptions = {iTasks._Framework.Engine.appName, iTasks._Framework.Engine.appPath, iTasks._Framework.Engine.serverPort::I, iTasks._Framework.Engine.keepalive::I, iTasks._Framework.Engine.webDirPath, iTasks._Framework.Engine.storeDirPath, iTasks._Framework.Engine.saplDirPath}
+
+:: <{iTasks._Framework.Engine.Publishable;}> = {!iTasks._Framework.Engine.publishAll}
+
+:: <{iTasks._Framework.Engine.gEq_s;}> = {!iTasks._Framework.Engine.gEq_s}
+
+:: <{iTasks._Framework.Engine.gEq_ss;}> = {!iTasks._Framework.Engine.gEq_ss}
+
+:: <{iTasks._Framework.Engine.gEq_sss;}> = {!iTasks._Framework.Engine.gEq_sss}
+
+:: <{iTasks._Framework.Engine.gEq_ssss;}> = {!iTasks._Framework.Engine.gEq_ssss}
+
+:: <{iTasks._Framework.Engine.gEq_sssss;}> = {!iTasks._Framework.Engine.gEq_sssss}
+
+:: <{iTasks._Framework.Engine.gEq_ssssss;}> = {!iTasks._Framework.Engine.gEq_ssssss}
+
+:: <{iTasks._Framework.Engine.gEq_sssssss;}> = {!iTasks._Framework.Engine.gEq_sssssss}
+
+:: <{iTasks._Framework.Engine.gEq_ssssssss;}> = {!iTasks._Framework.Engine.gEq_ssssssss}
+
+:: <{iTasks._Framework.Engine.gEq_sssssssss;}> = {!iTasks._Framework.Engine.gEq_sssssssss}
+
+:: <{iTasks._Framework.Engine.bimap_s;}> = {iTasks._Framework.Engine.bimap_s}
+
+:: <{iTasks._Framework.Engine.bimap_ss;}> = {iTasks._Framework.Engine.bimap_ss}
+
+:: <{iTasks._Framework.Engine.bimap_sss;}> = {iTasks._Framework.Engine.bimap_sss}
+
+:: <{iTasks._Framework.Engine.JSONEncode_s;}> = {!iTasks._Framework.Engine.JSONEncode_s}
+
+:: <{iTasks._Framework.Engine.JSONEncode_ss;}> = {!iTasks._Framework.Engine.JSONEncode_ss}
+
+:: <{iTasks._Framework.Engine.JSONEncode_sss;}> = {!iTasks._Framework.Engine.JSONEncode_sss}
+
+:: <{iTasks._Framework.Engine.JSONDecode_s;}> = {!iTasks._Framework.Engine.JSONDecode_s}
+
+:: <{iTasks._Framework.Engine.JSONDecode_ss;}> = {!iTasks._Framework.Engine.JSONDecode_ss}
+
+:: <{iTasks._Framework.Engine.JSONDecode_sss;}> = {!iTasks._Framework.Engine.JSONDecode_sss}
+
+:: <{iTasks._Framework.Engine.gDefault_s;}> = {iTasks._Framework.Engine.gDefault_s}
+
+:: <{iTasks._Framework.Engine.gDefault_ss;}> = {iTasks._Framework.Engine.gDefault_ss}
+
+:: <{iTasks._Framework.Engine.gDefault_sss;}> = {iTasks._Framework.Engine.gDefault_sss}
+
+:: <{iTasks._Framework.Engine.gText_s;}> = {!iTasks._Framework.Engine.gText_s}
+
+:: <{iTasks._Framework.Engine.gText_ss;}> = {!iTasks._Framework.Engine.gText_ss}
+
+:: <{iTasks._Framework.Engine.gText_sss;}> = {!iTasks._Framework.Engine.gText_sss}
+
+:: <{iTasks._Framework.Engine.gEditor_s;}> = {iTasks._Framework.Engine.gEditor_s}
+
+:: <{iTasks._Framework.Engine.gEditor_ss;}> = {iTasks._Framework.Engine.gEditor_ss}
+
+:: <{iTasks._Framework.Engine.gEditor_sss;}> = {iTasks._Framework.Engine.gEditor_sss}
+
+:: <{iTasks._Framework.Engine.JSONEncode_ssss;}> = {!iTasks._Framework.Engine.JSONEncode_ssss}
+
+:: <{iTasks._Framework.Engine.JSONDecode_ssss;}> = {!iTasks._Framework.Engine.JSONDecode_ssss}
+
+:: <{iTasks._Framework.Engine.gDefault_ssss;}> = {iTasks._Framework.Engine.gDefault_ssss}
+
+:: <{iTasks._Framework.Engine.JSONEncode_sssss;}> = {!iTasks._Framework.Engine.JSONEncode_sssss}
+
+:: <{iTasks._Framework.Engine.JSONEncode_ssssss;}> = {!iTasks._Framework.Engine.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.Engine.JSONEncode_sssssss;}> = {!iTasks._Framework.Engine.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.Engine.JSONEncode_ssssssss;}> = {!iTasks._Framework.Engine.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.Engine.JSONEncode_sssssssss;}> = {!iTasks._Framework.Engine.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.Engine.JSONDecode_sssss;}> = {!iTasks._Framework.Engine.JSONDecode_sssss}
+
+:: <{iTasks._Framework.Engine.JSONDecode_ssssss;}> = {!iTasks._Framework.Engine.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.Engine.JSONDecode_sssssss;}> = {!iTasks._Framework.Engine.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.Engine.JSONDecode_ssssssss;}> = {!iTasks._Framework.Engine.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.Engine.JSONDecode_sssssssss;}> = {!iTasks._Framework.Engine.JSONDecode_sssssssss}
+
+:: <{iTasks._Framework.Engine.gLexOrd_s;}> = {!iTasks._Framework.Engine.gLexOrd_s}
+
+:: <{iTasks._Framework.Engine.gLexOrd_ss;}> = {!iTasks._Framework.Engine.gLexOrd_ss}
+
+:: <{iTasks._Framework.Engine.gLexOrd_sss;}> = {!iTasks._Framework.Engine.gLexOrd_sss}
+
+:: <{iTasks._Framework.Engine.gLexOrd_ssss;}> = {!iTasks._Framework.Engine.gLexOrd_ssss}
+
+:: <{iTasks._Framework.Engine.gLexOrd_sssss;}> = {!iTasks._Framework.Engine.gLexOrd_sssss}
+
+:: <{iTasks._Framework.Engine.gLexOrd_ssssss;}> = {!iTasks._Framework.Engine.gLexOrd_ssssss}
+
+:: <{iTasks._Framework.Engine.gLexOrd_sssssss;}> = {!iTasks._Framework.Engine.gLexOrd_sssssss}
+
+:: <{iTasks._Framework.Engine.gLexOrd_ssssssss;}> = {!iTasks._Framework.Engine.gLexOrd_ssssssss}
+
+:: <{iTasks._Framework.Engine.gLexOrd_sssssssss;}> = {!iTasks._Framework.Engine.gLexOrd_sssssssss}
+
+:: <{iTasks._Framework.Engine.gText_ssss;}> = {!iTasks._Framework.Engine.gText_ssss}
+
+:: <{iTasks._Framework.Engine.gText_sssss;}> = {!iTasks._Framework.Engine.gText_sssss}
+
+:: <{iTasks._Framework.Engine.gText_ssssss;}> = {!iTasks._Framework.Engine.gText_ssssss}
+
+:: <{iTasks._Framework.Engine.gText_sssssss;}> = {!iTasks._Framework.Engine.gText_sssssss}
+
+:: <{iTasks._Framework.Engine.gText_ssssssss;}> = {!iTasks._Framework.Engine.gText_ssssssss}
+
+:: <{iTasks._Framework.Engine.gText_sssssssss;}> = {!iTasks._Framework.Engine.gText_sssssssss}
+
+:: <{iTasks._Framework.Engine.gDefault_sssss;}> = {iTasks._Framework.Engine.gDefault_sssss}
+
+:: <{iTasks._Framework.Engine.gDefault_ssssss;}> = {iTasks._Framework.Engine.gDefault_ssssss}
+
+:: <{iTasks._Framework.Engine.gDefault_sssssss;}> = {iTasks._Framework.Engine.gDefault_sssssss}
+
+:: <{iTasks._Framework.Engine.gDefault_ssssssss;}> = {iTasks._Framework.Engine.gDefault_ssssssss}
+
+:: <{iTasks._Framework.Engine.gDefault_sssssssss;}> = {iTasks._Framework.Engine.gDefault_sssssssss}
+
+:: <{iTasks._Framework.Engine.gEditor_ssss;}> = {iTasks._Framework.Engine.gEditor_ssss}
+
+:: <{iTasks._Framework.Engine.gEditor_sssss;}> = {iTasks._Framework.Engine.gEditor_sssss}
+
+:: <{iTasks._Framework.Engine.gEditor_ssssss;}> = {iTasks._Framework.Engine.gEditor_ssssss}
+
+:: <{iTasks._Framework.Engine.gEditor_sssssss;}> = {iTasks._Framework.Engine.gEditor_sssssss}
+

@@ -1,0 +1,279 @@
+|| ?module? EdMonad
+
+
+EdMonad.DefaultSyntaxColours = EdMonad._SyntaxColours StdPictureDef.Black StdPictureDef.White StdPictureDef.White StdPictureDef.Red StdPictureDef.Blue StdPictureDef.Green StdPictureDef.Magenta StdPictureDef.Grey StdPictureDef.Black StdPictureDef.Black
+EdMonad.computeFontInfo !font_0 !_x_1 !marginWidth_2::I !syncols_3 !pstate_4 = case _x_1 (_Tuple5 tabSize_1_0 autoTab_1_1 showTabs_1_2 _x_1_3 showSynCol_1_4 -> let _x_2_0 = StdPSt.accPIO (StdPSt.accScreenPicture_13 (StdPicture.getFontMetrics font_0)) pstate_4, metrics_2_1 = select _x_2_0::_Tuple2 0, _x_2_2 = StdPSt.accPIO (StdPSt.accScreenPicture_13 (StdPicture.getFontStringWidth font_0 "M")) (select _x_2_0::_Tuple2 1) in _Tuple2 (EdMonad._FontInfo font_0 (<{StdInt.+_6}> (<{StdInt.+_6}> (select metrics_2_1::StdPictureDef._FontMetrics 0) (select metrics_2_1::StdPictureDef._FontMetrics 1)) (select metrics_2_1::StdPictureDef._FontMetrics 2)) metrics_2_1 tabSize_1_0 (select _x_2_2::_Tuple2 0) marginWidth_2 autoTab_1_1 showTabs_1_2 showSynCol_1_4 syncols_3) (select _x_2_2::_Tuple2 1)) 
+EdMonad.emptyUndoInfo = EdMonad._UndoInfo EdMonad.None "" EdMonad.NoInfo
+EdMonad.initEditState !window_0 !eUndo_1 !pathName_2 !font_3 !tabs_4 !margin_5::I !syncols_6 !pstate_7 = case tabs_4 (_Tuple5 _x_1_0 _x_1_1 _x_1_2 linenos_1_3 showSynCol_1_4 -> let _x_2_0 = StdId.openId_13 pstate_7, _x_2_1 = EdMonad.computeFontInfo font_3 tabs_4 margin_5 syncols_6 (select _x_2_0::_Tuple2 1) in _Tuple2 (EdMonad._EditState EdLineText.newText pathName_2 window_0 (select _x_2_0::_Tuple2 0) StdIOBasic.zero_21 (select _x_2_1::_Tuple2 0) (<{EdMonad._CursorInfo`}> (EdPosition._Position 0 0) 0 True) (EdMonad._SelectInfo EdSelection.emptySelection EdMonad.SelectChars) EdMonad.emptyUndoInfo False eUndo_1 linenos_1_3 UtilNewlinesFile.NewlineConventionNone Data.Maybe.Nothing False) (select _x_2_1::_Tuple2 1)) 
+<{EdMonad.appEnv`_70}> envFun_0 !_x_1 = case _x_1 (_Tuple2 editState_1_0 env_1_1 -> _Tuple2 StateMonad.nothing (_Tuple2 editState_1_0 (envFun_0 env_1_1))) 
+EdMonad.appEnv envFun_0 = <{EdMonad.appEnv`_70}> envFun_0
+<{EdMonad.accEnv`_71}> envFun_0 !_x_1 = case _x_1 (_Tuple2 editState_1_0 env_1_1 -> let _x_2_0 = envFun_0 env_1_1 in _Tuple2 (select _x_2_0::_Tuple2 0) (_Tuple2 editState_1_0 (select _x_2_0::_Tuple2 1))) 
+EdMonad.accEnv envFun_0 = <{EdMonad.accEnv`_71}> envFun_0
+EdMonad.noResult !ma_0 state_1 = select (ma_0 state_1)::_Tuple2 1
+EdMonad.onlyEnv !ma_0 state_1 = select (select (ma_0 state_1)::_Tuple2 1)::_Tuple2 1
+EdMonad.anon_125 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_124 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_72 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_124 menusel_1_13) 
+<{EdMonad.getEditState`_69}> !_x_0 = case _x_0 (_Tuple2 editState_1_0 env_1_1 -> _Tuple2 editState_1_0 (_Tuple2 editState_1_0 env_1_1)) 
+EdMonad.getEditState = <{EdMonad.getEditState`_69}>
+EdMonad.anon_230 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_72 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getMenuSelection = EdMonad.anon_230 EdMonad.getEditState
+EdMonad.update_73 !menusel_0 !editState_1 = update editState_1::EdMonad._EditState [13:menusel_0]
+<{EdMonad.updateEditState`_95}> !editStateFun_0 !_x_1 = case _x_1 (_Tuple2 editState_1_0 pstate_1_1 -> let !editState_2_0 = editStateFun_0 editState_1_0 in _Tuple2 StateMonad.nothing (_Tuple2 editState_2_0 pstate_1_1)) 
+EdMonad.updateEditState editStateFun_0 = <{EdMonad.updateEditState`_95}> editStateFun_0
+EdMonad.setMenuSelection menusel_0 = EdMonad.updateEditState (EdMonad.update_73 menusel_0)
+EdMonad.anon_127 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_126 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_113 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_126 undo_1_8) 
+EdMonad.anon_231 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_113 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getUndoInfo = EdMonad.anon_231 EdMonad.getEditState
+EdMonad.anon_132 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_131 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.update_115 !undo_0 !editState_1 = update editState_1::EdMonad._EditState [8:undo_0]
+EdMonad.anon_130 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+EdMonad.anon_129 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+EdMonad.anon_128 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+EdMonad.anon_234 !_x_0 !g_1 x_2 = StdMenuElement.enableMenuElements _x_0 (g_1 x_2)
+EdMonad.anon_233 !_x_0 !g_1 x_2 = StdMenuElement.enableMenuElements _x_0 (g_1 x_2)
+EdMonad.anon_232 !_x_0 !g_1 x_2 = StdMenuElement.disableMenuElements _x_0 (g_1 x_2)
+EdMonad.anon_237 !_x_0 !_x_1 !x_2 = StdMenuElement.enableMenuElements _x_0 (StdMenuElement.setMenuElementTitles _x_1 x_2)
+EdMonad.anon_236 !_x_0 !_x_1 !x_2 = StdMenuElement.enableMenuElements _x_0 (StdMenuElement.setMenuElementTitles _x_1 x_2)
+EdMonad.anon_235 !_x_0 !_x_1 !x_2 = StdMenuElement.disableMenuElements _x_0 (StdMenuElement.setMenuElementTitles _x_1 x_2)
+EdMonad.mfun_116 !undo_0 r_1 = <{EdMonad._c;553;19_268}> (select undo_0::EdMonad._UndoInfo 0) r_1 undo_0
+<{EdMonad._c;553;19_268}> !_x_0 r_1 undo_2 = case _x_0 (EdMonad.None -> EdMonad.anon_235 (_predefined._Cons r_1 _predefined._Nil) (_predefined._Cons (_Tuple2 r_1 "Undo") _predefined._Nil)) (EdMonad.Undo -> EdMonad.anon_236 (_predefined._Cons r_1 _predefined._Nil) (_predefined._Cons (_Tuple2 r_1 (<{StdString.+++_11}> "Undo" (select undo_2::EdMonad._UndoInfo 1))) _predefined._Nil)) (EdMonad.Redo -> EdMonad.anon_237 (_predefined._Cons r_1 _predefined._Nil) (_predefined._Cons (_Tuple2 r_1 (<{StdString.+++_11}> "Redo" (select undo_2::EdMonad._UndoInfo 1))) _predefined._Nil)) 
+EdMonad.anon_114 undo_0 !_x_1 = case _x_1 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_131 (EdMonad.appEnv (StdPSt.appPIO (EdMonad.mfun_116 undo_0 undoe_1_10))) (EdMonad.updateEditState (EdMonad.update_115 undo_0))) 
+EdMonad.anon_238 !ma_0 !undo_1 state_2 = let _x_1_0 = ma_0 state_2 in EdMonad.anon_114 undo_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.setUndoInfo undo_0 = EdMonad.anon_238 EdMonad.getEditState undo_0
+EdMonad.anon_134 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_133 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_65 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_133 lineNumbers_1_11) 
+EdMonad.anon_239 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_65 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getLineNumbers = EdMonad.anon_239 EdMonad.getEditState
+EdMonad.anon_138 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_137 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.anon_136 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_135 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+EdMonad.anon_240 !f_0 _x_1 _x_2 x_3 = f_0 (StdWindow.setWindowViewDomain _x_1 _x_2 x_3)
+EdMonad.anon_66 linenumbers_0::B window_1 !viewDomain_2 = case viewDomain_2 (StdIOBasic._Rectangle c1_1_0 corner2_1_1 -> case c1_1_0 (StdIOBasic._Point2 x_2_0 y_2_1 -> EdMonad.appEnv (StdPSt.appPIO (EdMonad.anon_240 (<{EdMonad._if;149;21_269}> linenumbers_0 window_1 x_2_0) window_1 viewDomain_2))) ) 
+<{EdMonad._if;149;21_269}> !linenumbers_0::B window_1 x_2::I = case linenumbers_0 (True -> StdWindow.moveWindowViewFrame window_1 (update StdIOBasic.zero_11::StdIOBasic._Vector2 [0:x_2])) (_ -> StdFunc.id)
+EdMonad.anon_241 !ma_0 linenumbers_1::B window_2 state_3 = let _x_1_0 = ma_0 state_3 in EdMonad.anon_66 linenumbers_1 window_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_67 linenumbers_0::B !_x_1 = case _x_1 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_241 EdVisualText.computeViewDomain linenumbers_0 window_1_2) 
+EdMonad.update_68 !linenumbers_0::B !editState_1 = update editState_1::EdMonad._EditState [11:linenumbers_0]
+EdMonad.anon_242 ma_0 mb_1 !f_2 state_3 = let _x_1_0 = EdMonad.anon_137 ma_0 mb_1 state_3 in f_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_243 ma_0 !mb_1 linenumbers_2::B state_3 = let _x_1_0 = EdMonad.anon_137 ma_0 mb_1 state_3 in EdMonad.anon_67 linenumbers_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.setLineNumbers !linenumbers_0::B = EdMonad.anon_243 (EdMonad.updateEditState (EdMonad.update_68 linenumbers_0)) EdMonad.getEditState linenumbers_0
+EdMonad.anon_140 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_139 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_74 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_139 newlineConv_1_12) 
+EdMonad.anon_244 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_74 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getNewlineConvention = EdMonad.anon_244 EdMonad.getEditState
+EdMonad.update_75 !newlineConv_0 !editState_1 = update editState_1::EdMonad._EditState [12:newlineConv_0]
+EdMonad.setNewlineConvention newlineConv_0 = EdMonad.updateEditState (EdMonad.update_75 newlineConv_0)
+EdMonad.anon_142 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_141 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_76 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_141 readOnly_1_14) 
+EdMonad.anon_245 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_76 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getReadOnly = EdMonad.anon_245 EdMonad.getEditState
+EdMonad.update_77 !readOnly_0::B !editState_1 = update editState_1::EdMonad._EditState [14:readOnly_0]
+EdMonad.setReadOnly readOnly_0::B = EdMonad.updateEditState (EdMonad.update_77 readOnly_0)
+EdMonad.anon_144 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_143 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_78 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_143 text_1_0) 
+EdMonad.anon_246 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_78 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getText = EdMonad.anon_246 EdMonad.getEditState
+EdMonad.anon_149 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.anon_148 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_147 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_96 window_0 editState_1 = EdMonad.appEnv (StdPSt.appPIO (StdWindow.setWindowLook window_0 False (_Tuple2 True (EdLook.editWindowLook editState_1))))
+EdMonad.anon_247 !ma_0 window_1 state_2 = let _x_1_0 = ma_0 state_2 in EdMonad.anon_96 window_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_97 window_0 = EdMonad.anon_247 EdMonad.getEditState window_0
+EdMonad.anon_146 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_145 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_92 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_145 window_1_2) 
+EdMonad.anon_248 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_92 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getWindowId = EdMonad.anon_248 EdMonad.getEditState
+EdMonad.anon_249 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_97 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.updateLook = EdMonad.anon_249 EdMonad.getWindowId
+EdMonad.update_79 !text_0 !editState_1 = update editState_1::EdMonad._EditState [0:text_0]
+EdMonad.setText !text_0 = EdMonad.anon_149 (EdMonad.updateEditState (EdMonad.update_79 text_0)) EdMonad.updateLook
+EdMonad.anon_151 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_150 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_87 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 _x_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> case _x_1_6 (<{EdMonad._CursorInfo`}> position_2_0 virtualX_2_1 visible_2_2 -> EdMonad.anon_150 virtualX_2_1) ) 
+EdMonad.anon_250 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_87 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getVirtualX = EdMonad.anon_250 EdMonad.getEditState
+EdMonad.update_88 !virtualX_0::I !editState_1 = case editState_1 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> update editState_1::EdMonad._EditState [6:update cursor_1_6::<{EdMonad._CursorInfo`}> [1:virtualX_0]]) 
+EdMonad.setVirtualX virtualX_0::I = EdMonad.updateEditState (EdMonad.update_88 virtualX_0)
+EdMonad.anon_153 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_152 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_80 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_152 font_1_5) 
+EdMonad.anon_251 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_80 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getFontInfo = EdMonad.anon_251 EdMonad.getEditState
+EdMonad.update_81 !font_0 !editState_1 = update editState_1::EdMonad._EditState [5:font_0]
+EdMonad.setFontInfo font_0 = EdMonad.updateEditState (EdMonad.update_81 font_0)
+EdMonad.anon_154 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.update_82 !fontFun_0 !editState_1 = update editState_1::EdMonad._EditState [5:fontFun_0 (select editState_1::EdMonad._EditState 5)]
+EdMonad.appFontInfo fontFun_0 = EdMonad.anon_154 (EdMonad.updateEditState (EdMonad.update_82 fontFun_0)) EdMonad.updateLook
+EdMonad.anon_156 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_155 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_83 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_155 (select cursor_1_6::<{EdMonad._CursorInfo`}> 2)) 
+EdMonad.anon_252 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_83 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getCursorVisibility = EdMonad.anon_252 EdMonad.getEditState
+EdMonad.anon_157 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.update_84 !visible_0::B !editState_1 = case editState_1 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> update editState_1::EdMonad._EditState [6:update cursor_1_6::<{EdMonad._CursorInfo`}> [2:visible_0]]) 
+EdMonad.setCursorVisibility visible_0::B = EdMonad.anon_157 (EdMonad.updateEditState (EdMonad.update_84 visible_0)) EdMonad.updateLook
+EdMonad.anon_159 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_158 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_85 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 _x_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> case _x_1_7 (EdMonad._SelectInfo selection_2_0 selectMode_2_1 -> EdMonad.anon_158 selection_2_0) ) 
+EdMonad.anon_253 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_85 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getSelection = EdMonad.anon_253 EdMonad.getEditState
+EdMonad.anon_160 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.update_86 !selection_0 !editState_1 = case editState_1 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> update editState_1::EdMonad._EditState [7:update select_1_7::EdMonad._SelectInfo [0:selection_0]]) 
+EdMonad.setSelection selection_0 = EdMonad.anon_160 (EdMonad.updateEditState (EdMonad.update_86 selection_0)) EdMonad.updateLook
+EdMonad.anon_162 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_161 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_89 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 _x_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> case _x_1_7 (EdMonad._SelectInfo selection_2_0 selectMode_2_1 -> EdMonad.anon_161 selectMode_2_1) ) 
+EdMonad.anon_254 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_89 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getSelectMode = EdMonad.anon_254 EdMonad.getEditState
+EdMonad.update_90 !selectMode_0 !editState_1 = case editState_1 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> update editState_1::EdMonad._EditState [7:update select_1_7::EdMonad._SelectInfo [1:selectMode_0]]) 
+EdMonad.setSelectMode selectMode_0 = EdMonad.updateEditState (EdMonad.update_90 selectMode_0)
+EdMonad.anon_164 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_163 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_98 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_163 pathName_1_1) 
+EdMonad.anon_255 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_98 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getPathName = EdMonad.anon_255 EdMonad.getEditState
+EdMonad.update_99 !path_0 !editState_1 = update editState_1::EdMonad._EditState [1:path_0]
+EdMonad.setPathName path_0 = EdMonad.updateEditState (EdMonad.update_99 path_0)
+EdMonad.anon_166 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_165 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_100 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_165 needSave_1_9) 
+EdMonad.anon_256 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_100 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getNeedSave = EdMonad.anon_256 EdMonad.getEditState
+EdMonad.anon_176 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_175 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_174 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_173 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_172 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.anon_171 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_170 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.anon_169 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_168 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+<{EdMonad.==_43}>::B !_x_0 !_x_1 = case _x_0 (EdMonad.None -> case _x_1 (EdMonad.None -> True) ) (EdMonad.Undo -> case _x_1 (EdMonad.Undo -> True) ) (EdMonad.Redo -> case _x_1 (EdMonad.Redo -> True) ) (_ -> False)
+EdMonad.fix_112 !ui_0 = case ui_0 (EdMonad._UndoInfo state_1_0 action_1_1 uninfo_1_2 -> update ui_0::EdMonad._UndoInfo [2:<{EdMonad._c;528;18_270}> uninfo_1_2 state_1_0]) 
+<{EdMonad._c;528;18_270}> !uninfo_0 state_1 = case uninfo_0 (EdMonad.NoInfo -> EdMonad.NoInfo) (EdMonad.CopyInfo x_1_0 y_1_1 -> EdMonad.CopyInfo x_1_0 y_1_1) (EdMonad.CutInfo a_1_0 b_1_1 c_1_2 d_1_3 e_1_4 ns_1_5 -> EdMonad.CutInfo a_1_0 b_1_1 c_1_2 d_1_3 e_1_4 True) (EdMonad.ClearInfo a_1_0 b_1_1 c_1_2 ns_1_3 -> EdMonad.ClearInfo a_1_0 b_1_1 c_1_2 True) (EdMonad.PasteInfo a_1_0 b_1_1 c_1_2 d_1_3 ns_1_4 -> EdMonad.PasteInfo a_1_0 b_1_1 c_1_2 d_1_3 True) (EdMonad.InsertInfo a_1_0 ir_1_1 -> EdMonad.InsertInfo a_1_0 (update ir_1_1::EdMonad._IRState [5:True])) (EdMonad.RemoveInfo a_1_0 ir_1_1 -> EdMonad.RemoveInfo a_1_0 (update ir_1_1::EdMonad._IRState [5:True])) (EdMonad.ReplaceAllInfo nfrag_1_0 osel_1_1 nsel_1_2 ul_1_3 ns_1_4 -> EdMonad.ReplaceAllInfo nfrag_1_0 osel_1_1 nsel_1_2 ul_1_3 True) (EdMonad.UndoneInfo or_1_0 nr_1_1 -> EdMonad.UndoneInfo (update or_1_0::EdMonad._IRState [5:<{EdMonad.==_43}> state_1 EdMonad.Undo]) (update nr_1_1::EdMonad._IRState [5:<{EdMonad.==_43}> state_1 EdMonad.Redo])) 
+EdMonad.undoupdate_111 !editState_0 = case editState_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> update editState_0::EdMonad._EditState [8:EdMonad.fix_112 undo_1_8]) 
+EdMonad.update_109 !need_0::B !editState_1 = update editState_1::EdMonad._EditState [9:need_0]
+EdMonad.anon_105 need_0::B needfixundo_1::B window_2 windowName_3 wasModified_4 = EdMonad.anon_170 (<{EdMonad._if;35;40_272}> (EdMonad._f271_271 (Data.Maybe.isJust wasModified_4) wasModified_4 need_0) window_2 windowName_3 need_0) (<{EdMonad._if;35;40_273}> needfixundo_1)
+<{EdMonad._if;35;40_273}> !needfixundo_0::B = case needfixundo_0 (True -> EdMonad.updateEditState EdMonad.undoupdate_111) (_ -> EdMonad.anon_169 StateMonad.nothing)
+<{EdMonad._if;35;40_272}> !_x_0::B window_1 windowName_2 need_3::B = case _x_0 (True -> EdMonad.anon_168 (EdMonad.appEnv (StdPSt.appPIO (PlatformObjectIO.setWindowModified window_1 windowName_2 need_3))) (EdMonad.updateEditState (EdMonad.update_109 need_3))) (_ -> EdMonad.updateEditState (EdMonad.update_109 need_3))
+EdMonad._f271_271::B !_x_0::B wasModified_1 need_2::B = case _x_0 (True -> StdBool.not (<{StdBool.==_3}> (Data.Maybe.fromJust wasModified_1) need_2)) (_ -> False)
+EdMonad.needsetwin_110::B !<{_v==_0}> !_x_1 _x_2 = case _x_1 (Data.Maybe.Nothing -> True) (Data.Maybe.Just oldtitle_1_0 -> StdBool.not (select <{_v==_0}>::<{StdOverloaded.==;}> 0 oldtitle_1_0 _x_2)) 
+EdMonad.FindLastChar_102 !c_0::C !s_1 !i_2::I = case (StdBool.not (<{StdInt.<_17}> 0 i_2)) (True -> <{_Tuple2!3}> False 0) (False -> case (<{StdChar.==_18}> c_0 (_SystemArray.select_19 s_1 i_2)) (True -> <{_Tuple2!3}> True i_2) (False -> EdMonad.FindLastChar_102 c_0 s_1 (<{StdInt.-_7}> i_2 StdInt.one_11)) ) 
+EdMonad.RemovePath_101 !path_0 = let last_1_0 = <{StdInt.-_7}> (_SystemArray.size_20 path_0) StdInt.one_11, _x_1_1::I = EdMonad.FindLastChar_102 StdSystem.dirseparator path_0 last_1_0 in case (select _x_1_1::_Tuple2 0) (True -> <{StdString.%_10}> path_0 (_Tuple2 (<{StdInt.+_6}> (select _x_1_1::_Tuple2 1) StdInt.one_11) last_1_0)) (False -> path_0) 
+EdMonad.pathNameToWindowTitle !pathName_0 = <{StdString.+++_11}> (EdMonad.RemovePath_101 pathName_0) (<{StdString.+++_11}> " - " pathName_0)
+EdMonad.FindLastChar_104 !c_0::C !s_1 !i_2::I = case (StdBool.not (<{StdInt.<_17}> 0 i_2)) (True -> <{_Tuple2!3}> False 0) (False -> case (<{StdChar.==_18}> c_0 (_SystemArray.select_19 s_1 i_2)) (True -> <{_Tuple2!3}> True i_2) (False -> EdMonad.FindLastChar_104 c_0 s_1 (<{StdInt.-_7}> i_2 StdInt.one_11)) ) 
+EdMonad.RemovePath_103 !path_0 = let last_1_0 = <{StdInt.-_7}> (_SystemArray.size_20 path_0) StdInt.one_11, _x_1_1::I = EdMonad.FindLastChar_104 StdSystem.dirseparator path_0 last_1_0 in case (select _x_1_1::_Tuple2 0) (True -> <{StdString.%_10}> path_0 (_Tuple2 (<{StdInt.+_6}> (select _x_1_1::_Tuple2 1) StdInt.one_11) last_1_0)) (False -> path_0) 
+<{EdMonad.pathNameToWindowTitle`}> !pathName_0 = <{StdString.+++_11}> "[" (<{StdString.+++_11}> (EdMonad.RemovePath_103 pathName_0) (<{StdString.+++_11}> "] - " pathName_0))
+EdMonad.needsetwin_257::B !_x_0 _x_1 = case _x_0 (Data.Maybe.Nothing -> True) (Data.Maybe.Just oldtitle_1_0 -> StdBool.not (<{StdString.==_2}> oldtitle_1_0 _x_1)) 
+EdMonad.anon_258 ma_0 mb_1 !f_2 state_3 = let _x_1_0 = EdMonad.anon_172 ma_0 mb_1 state_3 in f_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_259 ma_0 mb_1 need_2::B !needfixundo_3::B window_4 windowName_5 state_6 = let _x_1_0 = EdMonad.anon_172 ma_0 mb_1 state_6 in EdMonad.anon_105 need_2 needfixundo_3 window_4 windowName_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_106 need_0::B needfixundo_1::B readOnly_2::B pathName_3 window_4 oldTitle_5 = let windowTitle_1_0 = <{EdMonad._if;488;34_275}> need_0 windowName_1_1, windowName_1_1 = <{EdMonad._if;486;24_274}> readOnly_2 pathName_3 in EdMonad.anon_259 (<{EdMonad._if;35;40_276}> (EdMonad.needsetwin_257 oldTitle_5 windowTitle_1_0) window_4 windowTitle_1_0) (EdMonad.accEnv (StdPSt.accPIO (PlatformObjectIO.getWindowModified window_4))) need_0 needfixundo_1 window_4 windowName_1_1
+<{EdMonad._if;35;40_276}> !_x_0::B window_1 windowTitle_2 = case _x_0 (True -> EdMonad.appEnv (StdPSt.appPIO (StdWindow.setWindowTitle window_1 windowTitle_2))) (_ -> EdMonad.anon_171 StateMonad.nothing)
+<{EdMonad._if;488;34_275}> !need_0::B !windowName_1 = case need_0 (True -> <{StdString.+++_11}> "*" windowName_1) (_ -> windowName_1)
+<{EdMonad._if;486;24_274}> !readOnly_0::B = case readOnly_0 (True -> <{EdMonad.pathNameToWindowTitle`}>) (_ -> EdMonad.pathNameToWindowTitle)
+EdMonad.anon_260 ma_0 need_1::B !needfixundo_2::B readOnly_3::B pathName_4 window_5 state_6 = let _x_1_0 = ma_0 state_6 in EdMonad.anon_106 need_1 needfixundo_2 readOnly_3 pathName_4 window_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_107 need_0::B needfixundo_1::B readOnly_2::B !_x_3 = case _x_3 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_260 (EdMonad.accEnv (StdPSt.accPIO (StdWindow.getWindowTitle window_1_2))) need_0 needfixundo_1 readOnly_2 pathName_1_1 window_1_2) 
+EdMonad.anon_261 !ma_0 need_1::B !needfixundo_2::B readOnly_3::B state_4 = let _x_1_0 = ma_0 state_4 in EdMonad.anon_107 need_1 needfixundo_2 readOnly_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_108 need_0::B needfixundo_1::B readOnly_2::B = EdMonad.anon_261 EdMonad.getEditState need_0 needfixundo_1 readOnly_2
+EdMonad.anon_262 !ma_0 need_1::B !needfixundo_2::B state_3 = let _x_1_0 = ma_0 state_3 in EdMonad.anon_108 need_1 needfixundo_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.setNeedSave need_0::B = EdMonad.anon_262 EdMonad.getReadOnly need_0 (StdBool.not need_0)
+EdMonad.anon_178 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_177 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_91 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 _x_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> case _x_1_5 (EdMonad._FontInfo thefont_2_0 lineHeight_2_1 metrics_2_2 tabSize_2_3 charWidth_2_4 marginWidth_2_5 autoTab_2_6 showTabs_2_7 showSyntax_2_8 syntaxColours_2_9 -> EdMonad.anon_177 lineHeight_2_1) ) 
+EdMonad.anon_263 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_91 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getCursorHeight = EdMonad.anon_263 EdMonad.getEditState
+EdMonad.update_93 !font_0 !editState_1 = update editState_1::EdMonad._EditState [5:font_0]
+EdMonad.monad_94 font_0 !_x_1 = case _x_1 (_Tuple2 editState_1_0 pState_1_1 -> let _x_2_0 = EdMonad.getFontInfo (_Tuple2 editState_1_0 pState_1_1), _x_2_1 = select _x_2_0::_Tuple2 0, _x_2_2 = select _x_2_0::_Tuple2 1, _x_2_3 = EdMonad.getLineNumbers (_Tuple2 (select _x_2_2::_Tuple2 0) (select _x_2_2::_Tuple2 1)), _x_2_4 = select _x_2_3::_Tuple2 1, _x_2_5 = EdMonad.accEnv (EdMonad.computeFontInfo font_0 (_Tuple5 (select _x_2_1::EdMonad._FontInfo 3) (select _x_2_1::EdMonad._FontInfo 6) (select _x_2_1::EdMonad._FontInfo 7) (select _x_2_3::_Tuple2 0) (select _x_2_1::EdMonad._FontInfo 8)) (select _x_2_1::EdMonad._FontInfo 5) (select _x_2_1::EdMonad._FontInfo 9)) (_Tuple2 (select _x_2_4::_Tuple2 0) (select _x_2_4::_Tuple2 1)), _x_2_6 = select _x_2_5::_Tuple2 1, _x_2_7 = select (EdMonad.updateEditState (EdMonad.update_93 (select _x_2_5::_Tuple2 0)) (_Tuple2 (select _x_2_6::_Tuple2 0) (select _x_2_6::_Tuple2 1)))::_Tuple2 1, _x_2_8 = select (EdMonad.updateLook (_Tuple2 (select _x_2_7::_Tuple2 0) (select _x_2_7::_Tuple2 1)))::_Tuple2 1, _x_2_9 = select (EdVisualText.vResetViewDomain (_Tuple2 (select _x_2_8::_Tuple2 0) (select _x_2_8::_Tuple2 1)))::_Tuple2 1 in _Tuple2 StdMisc.undef (_Tuple2 (select _x_2_9::_Tuple2 0) (select _x_2_9::_Tuple2 1))) 
+EdMonad.setFont font_0 = EdMonad.monad_94 font_0
+EdMonad.anon_180 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_179 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_117 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_179 timer_1_3) 
+EdMonad.anon_264 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_117 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getTimerId = EdMonad.anon_264 EdMonad.getEditState
+EdMonad.anon_182 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_181 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_118 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> EdMonad.anon_181 toolPt_1_4) 
+EdMonad.anon_265 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_118 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getToolPt = EdMonad.anon_265 EdMonad.getEditState
+EdMonad.update_119 !toolPt_0 !editState_1 = update editState_1::EdMonad._EditState [4:toolPt_0]
+EdMonad.setToolPt toolPt_0 = EdMonad.updateEditState (EdMonad.update_119 toolPt_0)
+EdMonad.anon_184 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.anon_183 x_0 state_1 = _Tuple2 x_0 state_1
+EdMonad.anon_120 !_x_0 = case _x_0 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 _x_1_6 _x_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> case _x_1_6 (<{EdMonad._CursorInfo`}> position_2_0 virtualX_2_1 visible_2_2 -> case _x_1_7 (EdMonad._SelectInfo selection_3_0 selectMode_3_1 -> EdMonad.anon_183 (EdMonad._IRState text_1_0 selection_3_0 selectMode_3_1 virtualX_2_1 visible_2_2 needSave_1_9)) ) ) 
+EdMonad.anon_266 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMonad.anon_120 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMonad.getState = EdMonad.anon_266 EdMonad.getEditState
+EdMonad.anon_186 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.anon_185 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMonad.update_121 !selectMode_0 !selection_1 !visible_2::B !virtualX_3::I !text_4 !editState_5 = case editState_5 (EdMonad._EditState text_1_0 pathName_1_1 window_1_2 timer_1_3 toolPt_1_4 font_1_5 cursor_1_6 select_1_7 undo_1_8 needSave_1_9 undoe_1_10 lineNumbers_1_11 newlineConv_1_12 menusel_1_13 readOnly_1_14 -> update editState_5::EdMonad._EditState [0:text_4,6:update cursor_1_6::<{EdMonad._CursorInfo`}> [1:virtualX_3,2:visible_2],7:update select_1_7::EdMonad._SelectInfo [0:selection_1,1:selectMode_0]]) 
+EdMonad.anon_267 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdMonad.anon_185 ma_0 mb_1 state_3)::_Tuple2 1)
+EdMonad.setState state_0 = EdMonad.anon_267 (EdMonad.updateEditState (EdMonad.update_121 (select state_0::EdMonad._IRState 2) (select state_0::EdMonad._IRState 1) (select state_0::EdMonad._IRState 4) (select state_0::EdMonad._IRState 3) (select state_0::EdMonad._IRState 0))) EdMonad.updateLook (EdMonad.setNeedSave (select state_0::EdMonad._IRState 5))
+EdMonad.toPosString !_x_0 = case _x_0 (EdPosition._Position col_1_0 row_1_1 -> <{StdString.+++_11}> "{ col = " (<{StdString.+++_11}> (StdString.toString_5 col_1_0) (<{StdString.+++_11}> ", row = " (<{StdString.+++_11}> (StdString.toString_5 row_1_1) "}")))) 
+EdMonad.toSelString !_x_0 = case _x_0 (EdSelection._Selection start_1_0 end_1_1 -> <{StdString.+++_11}> "{ start = " (<{StdString.+++_11}> (EdMonad.toPosString start_1_0) (<{StdString.+++_11}> ", end = " (<{StdString.+++_11}> (EdMonad.toPosString end_1_1) "}")))) 
+EdMonad.toString_44 !_x_0 = case _x_0 (EdMonad.NoInfo -> "N") (EdMonad.CopyInfo oclip_1_0 nclip_1_1 -> "C ") (EdMonad.CutInfo oclip_1_0 nclip_1_1 frag_1_2 pos_1_3 sel_1_4 ns_1_5 -> "X ") (EdMonad.PasteInfo ofrag_1_0 frag_1_1 sel_1_2 pos_1_3 ns_1_4 -> <{StdString.+++_11}> "V " (<{StdString.+++_11}> (EdLineText.stringsToString ofrag_1_0) (<{StdString.+++_11}> ":::" (<{StdString.+++_11}> (EdLineText.stringsToString frag_1_1) (<{StdString.+++_11}> ":::" (<{StdString.+++_11}> (EdMonad.toSelString sel_1_2) (<{StdString.+++_11}> ":::" (<{StdString.+++_11}> (EdMonad.toPosString pos_1_3) "]]]")))))))) (_ -> "? ")
+EdMonad.toString_45 !_x_0 = case _x_0 (EdMonad.None -> "None") (EdMonad.Undo -> "Undo") (EdMonad.Redo -> "Redo") 
+<{EdMonad.TD;TabSize}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;NewTabSize}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;EditState}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;SelectInfo}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;SelectMode}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;FontInfo}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;SyntaxColours}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;UndoInfo}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;UndoState}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;IRState}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;ActionInfo}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;EditMonad}> _x_0::B = _predefined._Nil
+<{EdMonad.TD;CursorInfo`}> _x_0::B = _predefined._Nil
+
+:: EdMonad.SelectMode = EdMonad.SelectWords a1 | EdMonad.SelectLines a1 | EdMonad.SelectChars
+:: EdMonad.UndoState = EdMonad.None | EdMonad.Undo | EdMonad.Redo
+:: EdMonad.ActionInfo = EdMonad.NoInfo | EdMonad.CopyInfo !a1 !a2 | EdMonad.CutInfo !a1 !a2 !a3 !a4 !a5 !a6::B | EdMonad.ClearInfo !a1 !a2 !a3 !a4::B | EdMonad.PasteInfo !a1 !a2 !a3 !a4 !a5::B | EdMonad.InsertInfo !a1::B !a2 | EdMonad.RemoveInfo !a1::B !a2 | EdMonad.ReplaceAllInfo !a1 !a2 !a3 !a4 !a5::B | EdMonad.UndoneInfo !a1 !a2
+
+|| Converted Records
+:: EdMonad._EditState = {!EdMonad.text, !EdMonad.pathName, !EdMonad.windowId, !EdMonad.timerId, !EdMonad.toolPt, !EdMonad.fontInfo, !EdMonad.cursorInfo, !EdMonad.selectInfo, !EdMonad.undoInfo, !EdMonad.needSave::B, !EdMonad.undoeId, !EdMonad.lineNumbers::B, !EdMonad.newlineConv, !EdMonad.menusel, !EdMonad.readOnly::B}
+
+:: EdMonad._SelectInfo = {!EdMonad.selection, !EdMonad.selectMode}
+
+:: EdMonad._FontInfo = {!EdMonad.thefont, !EdMonad.lineHeight::I, !EdMonad.metrics, !EdMonad.tabSize, !EdMonad.charWidth::I, !EdMonad.marginWidth::I, !EdMonad.autoTab::B, !EdMonad.showTabs::B, !EdMonad.showSyntax::B, !EdMonad.syntaxColours}
+
+:: EdMonad._SyntaxColours = {!EdMonad.textColour, !EdMonad.backgroundColour, !EdMonad.marginColour, !EdMonad.tabColour, !EdMonad.commentColour, !EdMonad.stringColour, !EdMonad.charColour, !EdMonad.keywordColour, !EdMonad.typedefColour, !EdMonad.typedeclColour}
+
+:: EdMonad._UndoInfo = {!EdMonad.state, !EdMonad.action, !EdMonad.uninfo}
+
+:: EdMonad._IRState = {!EdMonad.txt, !EdMonad.sel, !EdMonad.mod, !EdMonad.vix::I, !EdMonad.vis::B, !EdMonad.ns::B}
+
+:: <{EdMonad._CursorInfo`}> = {!EdMonad.position, !EdMonad.virtualX::I, !EdMonad.visible::B}
+
+:: <{EdMonad.gEq_s;}> = {!EdMonad.gEq_s}
+
+:: <{EdMonad.gEq_ss;}> = {!EdMonad.gEq_ss}
+
+:: <{EdMonad.gEq_sss;}> = {!EdMonad.gEq_sss}
+
+:: <{EdMonad.gEq_ssss;}> = {!EdMonad.gEq_ssss}
+
+:: <{EdMonad.gEq_sssss;}> = {!EdMonad.gEq_sssss}
+
+:: <{EdMonad.gEq_ssssss;}> = {!EdMonad.gEq_ssssss}
+
+:: <{EdMonad.gEq_sssssss;}> = {!EdMonad.gEq_sssssss}
+
+:: <{EdMonad.gEq_ssssssss;}> = {!EdMonad.gEq_ssssssss}
+
+:: <{EdMonad.gEq_sssssssss;}> = {!EdMonad.gEq_sssssssss}
+
+:: <{EdMonad.bimap_s;}> = {EdMonad.bimap_s}
+
+:: <{EdMonad.bimap_ss;}> = {EdMonad.bimap_ss}
+
+:: <{EdMonad.bimap_sss;}> = {EdMonad.bimap_sss}
+

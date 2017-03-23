@@ -1,0 +1,223 @@
+|| ?module? iTasks._Framework.Task
+
+
+iTasks._Framework.Task.defaultTonicOpts = iTasks._Framework.Task._TonicOpts Data.Maybe.Nothing Data.Maybe.Nothing False "" "" (iTasks.API.Core.Types.TaskId 0 0) _predefined._Nil (Data.CircularStack.newStack 1024)
+iTasks._Framework.Task.mkEvalOpts = iTasks._Framework.Task._TaskEvalOpts False iTasks._Framework.Task.defaultTonicOpts
+iTasks._Framework.Task.toRefresh !_x_0 = case _x_0 (iTasks._Framework.Task.EditEvent _x_1_0 _x_1_1 _x_1_2 -> iTasks._Framework.Task.RefreshEvent "Converted from Edit") (iTasks._Framework.Task.ActionEvent _x_1_0 _x_1_1 -> iTasks._Framework.Task.RefreshEvent "Converted from Action") (iTasks._Framework.Task.FocusEvent _x_1_0 -> iTasks._Framework.Task.RefreshEvent "Converted from Focus") (iTasks._Framework.Task.RefreshEvent reason_1_0 -> iTasks._Framework.Task.RefreshEvent reason_1_0) (iTasks._Framework.Task.ResetEvent -> iTasks._Framework.Task.RefreshEvent "Converted from Reset") 
+iTasks._Framework.Task.exception !_vTC_0 !_vtoString_1 !e_2 = <{_Tuple2!3}> (_SystemDynamic._DynamicTemp e_2 (_SystemDynamic._normalise (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) _vTC_0 (_SystemDynamic._initial_unification_environment 1 0)) (_SystemDynamic.TypeVar 0))) (select _vtoString_1::<{StdOverloaded.toString;}> 0 e_2)
+iTasks._Framework.Task.extendCallTrace !task_0 !repOpts_1 = case repOpts_1 (iTasks._Framework.Task._TaskEvalOpts noU_1_0 tonicOpts_1_1 -> case tonicOpts_1_1 (iTasks._Framework.Task._TonicOpts inAssignNode_2_0 inParallel_2_1 captureParallel_2_2 currBlueprintModuleName_2_3 currBlueprintFuncName_2_4 currBlueprintTask_2_5 currBlueprintExpr_2_6 xs_2_7 -> <{iTasks._Framework.Task._c;74;5_413}> (Data.CircularStack.peek xs_2_7) task_0 repOpts_1) ) 
+<{iTasks._Framework.Task._c;74;5_413}> !_x_0 task_1 !repOpts_2 = case _x_0 (Data.Maybe.Just topTask_1_0 -> case (<{iTasks.API.Core.Types.==_47}> task_1 topTask_1_0) (True -> repOpts_2) ) (_ -> update repOpts_2::iTasks._Framework.Task._TaskEvalOpts [1:update (select repOpts_2::iTasks._Framework.Task._TaskEvalOpts 1)::iTasks._Framework.Task._TonicOpts [7:Data.CircularStack.push task_1 (select (select repOpts_2::iTasks._Framework.Task._TaskEvalOpts 1)::iTasks._Framework.Task._TonicOpts 7)]])
+<{iTasks._Framework.Task.onConnect`_27}> !_vTC_0 !_vTC_1 !_vTC_2 !onConnect_3 host_4 !_x_5 env_6 = iTasks._Framework.Task._f417_417 _x_5 _vTC_0 _vTC_1 _vTC_2 onConnect_3 host_4 env_6
+iTasks._Framework.Task._f417_417 !_x_0 !a_ij_1 !a_ij_2 !a_ij_3 !onConnect_4 host_5 env_6 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 1) a_ij_1 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 2) a_ij_2 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) a_ij_3 (_SystemDynamic._initial_unification_environment 3 0)))) type_1_1 (_SystemDynamic.TypeVar 0), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in case unify_bool_2_1 (True -> <{iTasks._Framework.Task._c;83;37_416}> (onConnect_4 host_5 value_1_0) result_2_0 env_6) ) 
+<{iTasks._Framework.Task._c;83;37_416}> !_x_0 result_1 env_2 = case _x_0 (_Tuple4 _x_1_0 mbw_1_1 out_1_2 close_1_3 -> case _x_1_0 (Data.Error.Ok l_2_0 -> <{iTasks._Framework.Task._c;84;35_414}> mbw_1_1 result_1 l_2_0 out_1_2 close_1_3 env_2) (Data.Error.Error e_2_0 -> <{iTasks._Framework.Task._c;87;38_415}> mbw_1_1 e_2_0 result_1 out_1_2 close_1_3 env_2) ) 
+<{iTasks._Framework.Task._c;87;38_415}> !mbw_0 e_1 result_2 out_3 close_4 env_5 = case mbw_0 (Data.Maybe.Just w_1_0 -> _Tuple5 (Data.Error.Error e_1) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise (select result_2::_Tuple2 1) (_SystemDynamic.TypeVar 2)))) out_3 close_4 env_5) (Data.Maybe.Nothing -> _Tuple5 (Data.Error.Error e_1) Data.Maybe.Nothing out_3 close_4 env_5) 
+<{iTasks._Framework.Task._c;84;35_414}> !mbw_0 result_1 l_2 out_3 close_4 env_5 = case mbw_0 (Data.Maybe.Just w_1_0 -> let unify_subst_2_0 = select result_1::_Tuple2 1 in _Tuple5 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 1)))) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 2)))) out_3 close_4 env_5) (Data.Maybe.Nothing -> _Tuple5 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise (select result_1::_Tuple2 1) (_SystemDynamic.TypeVar 1)))) Data.Maybe.Nothing out_3 close_4 env_5) 
+<{iTasks._Framework.Task.whileConnected`_28}> !_vTC_0 !_vTC_1 !_vTC_2 !whileConnected_3 mb_4 !_x_5 !_x_6 env_7 = iTasks._Framework.Task._f423_423 _x_5 _vTC_0 _vTC_1 _vTC_2 _x_6 whileConnected_3 mb_4 env_7
+iTasks._Framework.Task._f423_423 !_x_0 !a_ij_1 !a_ij_2 !a_ij_3 !_x_4 !whileConnected_5 mb_6 env_7 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) a_ij_1 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 2) a_ij_2 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 1) a_ij_3 (_SystemDynamic._initial_unification_environment 3 0)))) type_1_1 (_SystemDynamic.TypeVar 0), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in iTasks._Framework.Task._f422_422 unify_bool_2_1 _x_4 result_2_0 whileConnected_5 mb_6 value_1_0 env_7) 
+iTasks._Framework.Task._f422_422 !unify_bool_0 !_x_1 !result_2 !whileConnected_3 mb_4 value_5 env_6 = case unify_bool_0 (True -> iTasks._Framework.Task._f421_421 _x_1 result_2 whileConnected_3 mb_4 value_5 env_6) 
+iTasks._Framework.Task._f421_421 !_x_0 !result_1 !whileConnected_2 mb_3 value_4 env_5 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (select result_1::_Tuple2 1) type_1_1 (_SystemDynamic.TypeVar 1), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in case unify_bool_2_1 (True -> <{iTasks._Framework.Task._c;91;52_420}> (whileConnected_2 mb_3 value_4 value_1_0) result_2_0 env_5) ) 
+<{iTasks._Framework.Task._c;91;52_420}> !_x_0 result_1 env_2 = case _x_0 (_Tuple4 _x_1_0 mbw_1_1 out_1_2 close_1_3 -> case _x_1_0 (Data.Error.Ok l_2_0 -> <{iTasks._Framework.Task._c;92;35_418}> mbw_1_1 result_1 l_2_0 out_1_2 close_1_3 env_2) (Data.Error.Error e_2_0 -> <{iTasks._Framework.Task._c;95;38_419}> mbw_1_1 e_2_0 result_1 out_1_2 close_1_3 env_2) ) 
+<{iTasks._Framework.Task._c;95;38_419}> !mbw_0 e_1 result_2 out_3 close_4 env_5 = case mbw_0 (Data.Maybe.Just w_1_0 -> _Tuple5 (Data.Error.Error e_1) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise (select result_2::_Tuple2 1) (_SystemDynamic.TypeVar 2)))) out_3 close_4 env_5) (Data.Maybe.Nothing -> _Tuple5 (Data.Error.Error e_1) Data.Maybe.Nothing out_3 close_4 env_5) 
+<{iTasks._Framework.Task._c;92;35_418}> !mbw_0 result_1 l_2 out_3 close_4 env_5 = case mbw_0 (Data.Maybe.Just w_1_0 -> let unify_subst_2_0 = select result_1::_Tuple2 1 in _Tuple5 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 0)))) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 2)))) out_3 close_4 env_5) (Data.Maybe.Nothing -> _Tuple5 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise (select result_1::_Tuple2 1) (_SystemDynamic.TypeVar 0)))) Data.Maybe.Nothing out_3 close_4 env_5) 
+<{iTasks._Framework.Task.onDisconnect`_29}> !_vTC_0 !_vTC_1 !_vTC_2 !onDisconnect_3 !_x_4 !_x_5 env_6 = iTasks._Framework.Task._f429_429 _x_4 _vTC_0 _vTC_1 _vTC_2 _x_5 onDisconnect_3 env_6
+iTasks._Framework.Task._f429_429 !_x_0 !a_ij_1 !a_ij_2 !a_ij_3 !_x_4 !onDisconnect_5 env_6 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) a_ij_1 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 2) a_ij_2 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 1) a_ij_3 (_SystemDynamic._initial_unification_environment 3 0)))) type_1_1 (_SystemDynamic.TypeVar 0), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in iTasks._Framework.Task._f428_428 unify_bool_2_1 _x_4 result_2_0 onDisconnect_5 value_1_0 env_6) 
+iTasks._Framework.Task._f428_428 !unify_bool_0 !_x_1 !result_2 !onDisconnect_3 value_4 env_5 = case unify_bool_0 (True -> iTasks._Framework.Task._f427_427 _x_1 result_2 onDisconnect_3 value_4 env_5) 
+iTasks._Framework.Task._f427_427 !_x_0 !result_1 !onDisconnect_2 value_3 env_4 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (select result_1::_Tuple2 1) type_1_1 (_SystemDynamic.TypeVar 1), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in case unify_bool_2_1 (True -> <{iTasks._Framework.Task._c;99;45_426}> (onDisconnect_2 value_3 value_1_0) result_2_0 env_4) ) 
+<{iTasks._Framework.Task._c;99;45_426}> !_x_0 result_1 env_2 = case _x_0 (_Tuple2 _x_1_0 mbw_1_1 -> case _x_1_0 (Data.Error.Ok l_2_0 -> <{iTasks._Framework.Task._c;100;23_424}> mbw_1_1 result_1 l_2_0 env_2) (Data.Error.Error e_2_0 -> <{iTasks._Framework.Task._c;103;26_425}> mbw_1_1 e_2_0 result_1 env_2) ) 
+<{iTasks._Framework.Task._c;103;26_425}> !mbw_0 e_1 result_2 env_3 = case mbw_0 (Data.Maybe.Just w_1_0 -> _Tuple3 (Data.Error.Error e_1) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise (select result_2::_Tuple2 1) (_SystemDynamic.TypeVar 2)))) env_3) (Data.Maybe.Nothing -> _Tuple3 (Data.Error.Error e_1) Data.Maybe.Nothing env_3) 
+<{iTasks._Framework.Task._c;100;23_424}> !mbw_0 result_1 l_2 env_3 = case mbw_0 (Data.Maybe.Just w_1_0 -> let unify_subst_2_0 = select result_1::_Tuple2 1 in _Tuple3 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 0)))) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 2)))) env_3) (Data.Maybe.Nothing -> _Tuple3 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise (select result_1::_Tuple2 1) (_SystemDynamic.TypeVar 0)))) Data.Maybe.Nothing env_3) 
+iTasks._Framework.Task.wrapConnectionTask !_vTC_0 !_vTC_1 !_vTC_2 !_x_3 !sds_4 = case _x_3 (iTasks._Framework.Task._ConnectionHandlers onConnect_1_0 whileConnected_1_1 onDisconnect_1_2 -> iTasks._Framework.Task.ConnectionTask (iTasks._Framework.Task._ConnectionHandlersIWorld (<{iTasks._Framework.Task.onConnect`_27}> _vTC_0 _vTC_2 _vTC_1 onConnect_1_0) (<{iTasks._Framework.Task.whileConnected`_28}> _vTC_0 _vTC_2 _vTC_1 whileConnected_1_1) (<{iTasks._Framework.Task.onDisconnect`_29}> _vTC_0 _vTC_2 _vTC_1 onDisconnect_1_2)) (iTasks.API.Common.SDSCombinators.toDynamic (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.Task.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{iTasks._Framework.Task.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{iTasks._Framework.Task.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{iTasks._Framework.Task.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{iTasks._Framework.Task.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{iTasks._Framework.Task.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) _vTC_1 _vTC_2 sds_4)) 
+<{iTasks._Framework.Task.onConnect`_30}> !_vTC_0 !_vTC_1 !_vTC_2 !onConnect_3 host_4 !_x_5 env_6 = iTasks._Framework.Task._f433_433 _x_5 _vTC_0 _vTC_1 _vTC_2 onConnect_3 host_4 env_6
+iTasks._Framework.Task._f433_433 !_x_0 !a_ij_1 !a_ij_2 !a_ij_3 !onConnect_4 host_5 env_6 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 1) a_ij_1 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 2) a_ij_2 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) a_ij_3 (_SystemDynamic._initial_unification_environment 3 0)))) type_1_1 (_SystemDynamic.TypeVar 0), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in case unify_bool_2_1 (True -> <{iTasks._Framework.Task._c;111;37_432}> (onConnect_4 host_5 value_1_0 env_6) result_2_0) ) 
+<{iTasks._Framework.Task._c;111;37_432}> !_x_0 result_1 = case _x_0 (_Tuple5 _x_1_0 mbw_1_1 out_1_2 close_1_3 env_1_4 -> case _x_1_0 (Data.Error.Ok l_2_0 -> <{iTasks._Framework.Task._c;112;40_430}> mbw_1_1 result_1 l_2_0 out_1_2 close_1_3 env_1_4) (Data.Error.Error e_2_0 -> <{iTasks._Framework.Task._c;115;43_431}> mbw_1_1 e_2_0 result_1 out_1_2 close_1_3 env_1_4) ) 
+<{iTasks._Framework.Task._c;115;43_431}> !mbw_0 e_1 result_2 out_3 close_4 env_5 = case mbw_0 (Data.Maybe.Just w_1_0 -> _Tuple5 (Data.Error.Error e_1) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise (select result_2::_Tuple2 1) (_SystemDynamic.TypeVar 2)))) out_3 close_4 env_5) (Data.Maybe.Nothing -> _Tuple5 (Data.Error.Error e_1) Data.Maybe.Nothing out_3 close_4 env_5) 
+<{iTasks._Framework.Task._c;112;40_430}> !mbw_0 result_1 l_2 out_3 close_4 env_5 = case mbw_0 (Data.Maybe.Just w_1_0 -> let unify_subst_2_0 = select result_1::_Tuple2 1 in _Tuple5 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 1)))) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 2)))) out_3 close_4 env_5) (Data.Maybe.Nothing -> _Tuple5 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise (select result_1::_Tuple2 1) (_SystemDynamic.TypeVar 1)))) Data.Maybe.Nothing out_3 close_4 env_5) 
+<{iTasks._Framework.Task.whileConnected`_31}> !_vTC_0 !_vTC_1 !_vTC_2 !whileConnected_3 mb_4 !_x_5 !_x_6 env_7 = iTasks._Framework.Task._f439_439 _x_5 _vTC_0 _vTC_1 _vTC_2 _x_6 whileConnected_3 mb_4 env_7
+iTasks._Framework.Task._f439_439 !_x_0 !a_ij_1 !a_ij_2 !a_ij_3 !_x_4 !whileConnected_5 mb_6 env_7 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) a_ij_1 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 2) a_ij_2 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 1) a_ij_3 (_SystemDynamic._initial_unification_environment 3 0)))) type_1_1 (_SystemDynamic.TypeVar 0), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in iTasks._Framework.Task._f438_438 unify_bool_2_1 _x_4 result_2_0 whileConnected_5 mb_6 value_1_0 env_7) 
+iTasks._Framework.Task._f438_438 !unify_bool_0 !_x_1 !result_2 !whileConnected_3 mb_4 value_5 env_6 = case unify_bool_0 (True -> iTasks._Framework.Task._f437_437 _x_1 result_2 whileConnected_3 mb_4 value_5 env_6) 
+iTasks._Framework.Task._f437_437 !_x_0 !result_1 !whileConnected_2 mb_3 value_4 env_5 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (select result_1::_Tuple2 1) type_1_1 (_SystemDynamic.TypeVar 1), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in case unify_bool_2_1 (True -> <{iTasks._Framework.Task._c;119;52_436}> (whileConnected_2 mb_3 value_4 value_1_0 env_5) result_2_0) ) 
+<{iTasks._Framework.Task._c;119;52_436}> !_x_0 result_1 = case _x_0 (_Tuple5 _x_1_0 mbw_1_1 out_1_2 close_1_3 env_1_4 -> case _x_1_0 (Data.Error.Ok l_2_0 -> <{iTasks._Framework.Task._c;120;40_434}> mbw_1_1 result_1 l_2_0 out_1_2 close_1_3 env_1_4) (Data.Error.Error e_2_0 -> <{iTasks._Framework.Task._c;123;43_435}> mbw_1_1 e_2_0 result_1 out_1_2 close_1_3 env_1_4) ) 
+<{iTasks._Framework.Task._c;123;43_435}> !mbw_0 e_1 result_2 out_3 close_4 env_5 = case mbw_0 (Data.Maybe.Just w_1_0 -> _Tuple5 (Data.Error.Error e_1) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise (select result_2::_Tuple2 1) (_SystemDynamic.TypeVar 2)))) out_3 close_4 env_5) (Data.Maybe.Nothing -> _Tuple5 (Data.Error.Error e_1) Data.Maybe.Nothing out_3 close_4 env_5) 
+<{iTasks._Framework.Task._c;120;40_434}> !mbw_0 result_1 l_2 out_3 close_4 env_5 = case mbw_0 (Data.Maybe.Just w_1_0 -> let unify_subst_2_0 = select result_1::_Tuple2 1 in _Tuple5 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 0)))) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 2)))) out_3 close_4 env_5) (Data.Maybe.Nothing -> _Tuple5 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise (select result_1::_Tuple2 1) (_SystemDynamic.TypeVar 0)))) Data.Maybe.Nothing out_3 close_4 env_5) 
+<{iTasks._Framework.Task.onDisconnect`_32}> !_vTC_0 !_vTC_1 !_vTC_2 !onDisconnect_3 !_x_4 !_x_5 env_6 = iTasks._Framework.Task._f445_445 _x_4 _vTC_0 _vTC_1 _vTC_2 _x_5 onDisconnect_3 env_6
+iTasks._Framework.Task._f445_445 !_x_0 !a_ij_1 !a_ij_2 !a_ij_3 !_x_4 !onDisconnect_5 env_6 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) a_ij_1 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 2) a_ij_2 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 1) a_ij_3 (_SystemDynamic._initial_unification_environment 3 0)))) type_1_1 (_SystemDynamic.TypeVar 0), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in iTasks._Framework.Task._f444_444 unify_bool_2_1 _x_4 result_2_0 onDisconnect_5 value_1_0 env_6) 
+iTasks._Framework.Task._f444_444 !unify_bool_0 !_x_1 !result_2 !onDisconnect_3 value_4 env_5 = case unify_bool_0 (True -> iTasks._Framework.Task._f443_443 _x_1 result_2 onDisconnect_3 value_4 env_5) 
+iTasks._Framework.Task._f443_443 !_x_0 !result_1 !onDisconnect_2 value_3 env_4 = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (select result_1::_Tuple2 1) type_1_1 (_SystemDynamic.TypeVar 1), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in case unify_bool_2_1 (True -> <{iTasks._Framework.Task._c;127;45_442}> (onDisconnect_2 value_3 value_1_0 env_4) result_2_0) ) 
+<{iTasks._Framework.Task._c;127;45_442}> !_x_0 result_1 = case _x_0 (_Tuple3 _x_1_0 mbw_1_1 env_1_2 -> case _x_1_0 (Data.Error.Ok l_2_0 -> <{iTasks._Framework.Task._c;128;28_440}> mbw_1_1 result_1 l_2_0 env_1_2) (Data.Error.Error e_2_0 -> <{iTasks._Framework.Task._c;131;31_441}> mbw_1_1 e_2_0 result_1 env_1_2) ) 
+<{iTasks._Framework.Task._c;131;31_441}> !mbw_0 e_1 result_2 env_3 = case mbw_0 (Data.Maybe.Just w_1_0 -> _Tuple3 (Data.Error.Error e_1) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise (select result_2::_Tuple2 1) (_SystemDynamic.TypeVar 2)))) env_3) (Data.Maybe.Nothing -> _Tuple3 (Data.Error.Error e_1) Data.Maybe.Nothing env_3) 
+<{iTasks._Framework.Task._c;128;28_440}> !mbw_0 result_1 l_2 env_3 = case mbw_0 (Data.Maybe.Just w_1_0 -> let unify_subst_2_0 = select result_1::_Tuple2 1 in _Tuple3 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 0)))) (Data.Maybe.Just (_SystemDynamic._DynamicTemp w_1_0 (_SystemDynamic._normalise unify_subst_2_0 (_SystemDynamic.TypeVar 2)))) env_3) (Data.Maybe.Nothing -> _Tuple3 (Data.Error.Ok (_SystemDynamic._DynamicTemp l_2 (_SystemDynamic._normalise (select result_1::_Tuple2 1) (_SystemDynamic.TypeVar 0)))) Data.Maybe.Nothing env_3) 
+iTasks._Framework.Task.wrapIWorldConnectionTask !_vTC_0 !_vTC_1 !_vTC_2 !_x_3 !sds_4 = case _x_3 (iTasks._Framework.Task._ConnectionHandlersIWorld onConnect_1_0 whileConnected_1_1 onDisconnect_1_2 -> iTasks._Framework.Task.ConnectionTask (iTasks._Framework.Task._ConnectionHandlersIWorld (<{iTasks._Framework.Task.onConnect`_30}> _vTC_0 _vTC_2 _vTC_1 onConnect_1_0) (<{iTasks._Framework.Task.whileConnected`_31}> _vTC_0 _vTC_2 _vTC_1 whileConnected_1_1) (<{iTasks._Framework.Task.onDisconnect`_32}> _vTC_0 _vTC_2 _vTC_1 onDisconnect_1_2)) (iTasks.API.Common.SDSCombinators.toDynamic (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.Task.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{iTasks._Framework.Task.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{iTasks._Framework.Task.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{iTasks._Framework.Task.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{iTasks._Framework.Task.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{iTasks._Framework.Task.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) _vTC_1 _vTC_2 sds_4)) 
+iTasks._Framework.Task.rep_34 !_x_0 = case _x_0 (iTasks._Framework.Task.ResetEvent -> iTasks.UI.Definition.ReplaceUI (iTasks.UI.Definition.ui iTasks.UI.Definition.UIEmpty)) (_ -> iTasks.UI.Definition.NoChange)
+iTasks._Framework.Task.make_dynamic !_vTC_0 v_1 = _SystemDynamic._DynamicTemp v_1 (_SystemDynamic._normalise (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) _vTC_0 (_SystemDynamic._initial_unification_environment 1 0)) (_SystemDynamic.TypeVar 0))
+iTasks._Framework.Task.fromJSONOfDeferredJSON !_vTC_0 !<{_vJSONDecode*_1}> !_x_2 = case _x_2 (iTasks._Framework.TaskState.DeferredJSON _vTC_1_0 _vJSONEncode*_1_1 v_1_2 -> iTasks._Framework.Task._f447_447 (iTasks._Framework.Task.make_dynamic _vTC_1_0 v_1_2) _vTC_0 _x_2 <{_vJSONDecode*_1}>) (_ -> iTasks._Framework.Task._f446_446 _x_2 <{_vJSONDecode*_1}>)
+iTasks._Framework.Task._f447_447 !_x_0 a_ij_1 _x_2 <{_vJSONDecode*_3}> = case _x_0 (_SystemDynamic._DynamicTemp value_1_0 type_1_1 -> let !result_2_0 = _SystemDynamic._unify (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) a_ij_1 (_SystemDynamic._initial_unification_environment 1 0)) type_1_1 (_SystemDynamic.TypeVar 0), !unify_bool_2_1 = select result_2_0::_Tuple2 0 in case unify_bool_2_1 (True -> Data.Maybe.Just value_1_0) ) (_ -> iTasks._Framework.Task._f446_446 _x_2 <{_vJSONDecode*_3}>)
+iTasks._Framework.Task._f446_446 !_x_0 !<{_vJSONDecode*_1}> = case _x_0 (iTasks._Framework.TaskState.DeferredJSONNode json_1_0 -> Text.JSON.fromJSON <{_vJSONDecode*_1}> json_1_0) 
+iTasks._Framework.Task.exception_412 !_vTC_0 !e_1 = <{_Tuple2!3}> (_SystemDynamic._DynamicTemp e_1 (_SystemDynamic._normalise (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) _vTC_0 (_SystemDynamic._initial_unification_environment 1 0)) (_SystemDynamic.TypeVar 0))) (StdString.toString_9 e_1)
+iTasks._Framework.Task.evalOnce_33 !_vTC_0 !<{_vJSONEncode*_1}> !<{_vJSONDecode*_2}> f_3 event_4 repOpts_5 !_x_6 iworld_7 = case _x_6 (iTasks._Framework.TaskState.TCInit task_1_0 ts_1_1 -> <{iTasks._Framework.Task._c;138;58_448}> (f_3 task_1_0 iworld_7) ts_1_1 event_4 task_1_0 _vTC_0 <{_vJSONEncode*_1}>) (iTasks._Framework.TaskState.TCStable task_1_0 ts_1_1 enc_1_2 -> <{iTasks._Framework.Task._c;142;71_449}> (iTasks._Framework.Task.fromJSONOfDeferredJSON _vTC_0 <{_vJSONDecode*_2}> enc_1_2) ts_1_1 event_4 _x_6 iworld_7) (iTasks._Framework.TaskState.TCDestroy _x_1_0 -> _Tuple2 iTasks._Framework.Task.DestroyedResult iworld_7) 
+<{iTasks._Framework.Task._c;142;71_449}> !_x_0 ts_1::I event_2 _x_3 iworld_4 = case _x_0 (Data.Maybe.Just a_1_0 -> _Tuple2 (iTasks._Framework.Task.ValueResult (iTasks.API.Core.Types.Value a_1_0 True) (iTasks._Framework.Task._TaskEvalInfo ts_1 _predefined._Nil False) (iTasks._Framework.Task.rep_34 event_2) _x_3) iworld_4) (Data.Maybe.Nothing -> _Tuple2 (iTasks._Framework.Task.ExceptionResult (iTasks._Framework.Task.exception_412 (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) "Corrupt task result")) iworld_4) 
+<{iTasks._Framework.Task._c;138;58_448}> !_x_0 ts_1::I event_2 task_3 _vTC_4 <{_vJSONEncode*_5}> = case _x_0 (_Tuple2 _x_1_0 iworld_1_1 -> case _x_1_0 (Data.Error.Ok a_2_0 -> _Tuple2 (iTasks._Framework.Task.ValueResult (iTasks.API.Core.Types.Value a_2_0 True) (iTasks._Framework.Task._TaskEvalInfo ts_1 _predefined._Nil False) (iTasks._Framework.Task.rep_34 event_2) (iTasks._Framework.TaskState.TCStable task_3 ts_1 (iTasks._Framework.TaskState.DeferredJSON _vTC_4 <{_vJSONEncode*_5}> a_2_0))) iworld_1_1) (Data.Error.Error e_2_0 -> _Tuple2 (iTasks._Framework.Task.ExceptionResult e_2_0) iworld_1_1) ) 
+iTasks._Framework.Task.mkInstantTask !_viTask_0 iworldfun_1 = iTasks._Framework.Task.Task (iTasks._Framework.Task.evalOnce_33 (select _viTask_0::<{iTasks._Framework.Generic.iTask;}> 6) (select _viTask_0::<{iTasks._Framework.Generic.iTask;}> 2) (select _viTask_0::<{iTasks._Framework.Generic.iTask;}> 3) iworldfun_1)
+iTasks._Framework.Task.JSONEncode_Task_8 _x_0 !_x_1::B !tt_2 = _predefined._Cons (iTasks._Framework.Serialization.dynamicJSONEncode tt_2) _predefined._Nil
+iTasks._Framework.Task.JSONDecode_Task_9 _x_0 !_x_1::B !_x_2 = case _x_2 (_predefined._Cons tt_1_0 c_1_1 -> <{_Tuple2!3}> (iTasks._Framework.Serialization.dynamicJSONDecode tt_1_0) c_1_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing _x_2)
+iTasks._Framework.Task.anon_35 !error_0 !_x_1 = StdMisc.abort error_0
+iTasks._Framework.Task.gDefault_Task_10 gDefx_0 = iTasks._Framework.Task.Task (iTasks._Framework.Task.anon_35 "Creating default task functions is impossible")
+iTasks._Framework.Task.gText_Task_11 _x_0 !_x_1 _x_2 = _predefined._Cons "<Task>" _predefined._Nil
+iTasks._Framework.Task.gEditor_Task_12 _x_0 _x_1 _x_2 _x_3 _x_4 = iTasks.UI.Editor.Common.emptyEditor
+iTasks._Framework.Task.gEq_Task_13::B _x_0 _x_1 _x_2 = True
+<{iTasks._Framework.Task.TD;Task}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;Event}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;TaskResult}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;TaskException}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;TaskEvalOpts}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;TonicOpts}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;TaskEvalInfo}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;ConnectionTask}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;ConnectionHandlers}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;ConnectionHandlersIWorld}> _x_0::B = _predefined._Nil
+<{iTasks._Framework.Task.TD;BackgroundTask}> _x_0::B = _predefined._Nil
+
+:: iTasks._Framework.Task.Task = iTasks._Framework.Task.Task !a1
+:: iTasks._Framework.Task.Event = iTasks._Framework.Task.EditEvent !a1 !a2 !a3 | iTasks._Framework.Task.ActionEvent !a1 !a2 | iTasks._Framework.Task.FocusEvent !a1 | iTasks._Framework.Task.RefreshEvent !a1 | iTasks._Framework.Task.ResetEvent
+:: iTasks._Framework.Task.TaskResult = iTasks._Framework.Task.ValueResult !a1 !a2 !a3 !a4 | iTasks._Framework.Task.ExceptionResult !a1 | iTasks._Framework.Task.DestroyedResult
+:: iTasks._Framework.Task.ConnectionTask = iTasks._Framework.Task.ConnectionTask !a1 !a2
+:: iTasks._Framework.Task.BackgroundTask = iTasks._Framework.Task.BackgroundTask !a1
+
+|| Converted Records
+:: iTasks._Framework.Task._TaskEvalOpts = {iTasks._Framework.Task.noUI::B, iTasks._Framework.Task.tonicOpts}
+
+:: iTasks._Framework.Task._TonicOpts = {iTasks._Framework.Task.inAssignNode, iTasks._Framework.Task.inParallel, iTasks._Framework.Task.captureParallel::B, iTasks._Framework.Task.currBlueprintModuleName, iTasks._Framework.Task.currBlueprintFuncName, iTasks._Framework.Task.currBlueprintTaskId, iTasks._Framework.Task.currBlueprintExprId, iTasks._Framework.Task.callTrace}
+
+:: iTasks._Framework.Task._TaskEvalInfo = {!iTasks._Framework.Task.lastEvent, !iTasks._Framework.Task.removedTasks, !iTasks._Framework.Task.refreshSensitive::B}
+
+:: iTasks._Framework.Task._ConnectionHandlers = {!iTasks._Framework.Task.onConnect, !iTasks._Framework.Task.whileConnected, !iTasks._Framework.Task.onDisconnect}
+
+:: iTasks._Framework.Task._ConnectionHandlersIWorld = {!iTasks._Framework.Task.onConnect, !iTasks._Framework.Task.whileConnected, !iTasks._Framework.Task.onDisconnect}
+
+:: <{iTasks._Framework.Task.gEq_s;}> = {!iTasks._Framework.Task.gEq_s}
+
+:: <{iTasks._Framework.Task.gEq_ss;}> = {!iTasks._Framework.Task.gEq_ss}
+
+:: <{iTasks._Framework.Task.gEq_sss;}> = {!iTasks._Framework.Task.gEq_sss}
+
+:: <{iTasks._Framework.Task.gEq_ssss;}> = {!iTasks._Framework.Task.gEq_ssss}
+
+:: <{iTasks._Framework.Task.gEq_sssss;}> = {!iTasks._Framework.Task.gEq_sssss}
+
+:: <{iTasks._Framework.Task.gEq_ssssss;}> = {!iTasks._Framework.Task.gEq_ssssss}
+
+:: <{iTasks._Framework.Task.gEq_sssssss;}> = {!iTasks._Framework.Task.gEq_sssssss}
+
+:: <{iTasks._Framework.Task.gEq_ssssssss;}> = {!iTasks._Framework.Task.gEq_ssssssss}
+
+:: <{iTasks._Framework.Task.gEq_sssssssss;}> = {!iTasks._Framework.Task.gEq_sssssssss}
+
+:: <{iTasks._Framework.Task.bimap_s;}> = {iTasks._Framework.Task.bimap_s}
+
+:: <{iTasks._Framework.Task.bimap_ss;}> = {iTasks._Framework.Task.bimap_ss}
+
+:: <{iTasks._Framework.Task.bimap_sss;}> = {iTasks._Framework.Task.bimap_sss}
+
+:: <{iTasks._Framework.Task.JSONEncode_s;}> = {!iTasks._Framework.Task.JSONEncode_s}
+
+:: <{iTasks._Framework.Task.JSONEncode_ss;}> = {!iTasks._Framework.Task.JSONEncode_ss}
+
+:: <{iTasks._Framework.Task.JSONEncode_sss;}> = {!iTasks._Framework.Task.JSONEncode_sss}
+
+:: <{iTasks._Framework.Task.JSONDecode_s;}> = {!iTasks._Framework.Task.JSONDecode_s}
+
+:: <{iTasks._Framework.Task.JSONDecode_ss;}> = {!iTasks._Framework.Task.JSONDecode_ss}
+
+:: <{iTasks._Framework.Task.JSONDecode_sss;}> = {!iTasks._Framework.Task.JSONDecode_sss}
+
+:: <{iTasks._Framework.Task.gDefault_s;}> = {iTasks._Framework.Task.gDefault_s}
+
+:: <{iTasks._Framework.Task.gDefault_ss;}> = {iTasks._Framework.Task.gDefault_ss}
+
+:: <{iTasks._Framework.Task.gDefault_sss;}> = {iTasks._Framework.Task.gDefault_sss}
+
+:: <{iTasks._Framework.Task.gText_s;}> = {!iTasks._Framework.Task.gText_s}
+
+:: <{iTasks._Framework.Task.gText_ss;}> = {!iTasks._Framework.Task.gText_ss}
+
+:: <{iTasks._Framework.Task.gText_sss;}> = {!iTasks._Framework.Task.gText_sss}
+
+:: <{iTasks._Framework.Task.gEditor_s;}> = {iTasks._Framework.Task.gEditor_s}
+
+:: <{iTasks._Framework.Task.gEditor_ss;}> = {iTasks._Framework.Task.gEditor_ss}
+
+:: <{iTasks._Framework.Task.gEditor_sss;}> = {iTasks._Framework.Task.gEditor_sss}
+
+:: <{iTasks._Framework.Task.JSONEncode_ssss;}> = {!iTasks._Framework.Task.JSONEncode_ssss}
+
+:: <{iTasks._Framework.Task.JSONDecode_ssss;}> = {!iTasks._Framework.Task.JSONDecode_ssss}
+
+:: <{iTasks._Framework.Task.gDefault_ssss;}> = {iTasks._Framework.Task.gDefault_ssss}
+
+:: <{iTasks._Framework.Task.JSONEncode_sssss;}> = {!iTasks._Framework.Task.JSONEncode_sssss}
+
+:: <{iTasks._Framework.Task.JSONEncode_ssssss;}> = {!iTasks._Framework.Task.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.Task.JSONEncode_sssssss;}> = {!iTasks._Framework.Task.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.Task.JSONEncode_ssssssss;}> = {!iTasks._Framework.Task.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.Task.JSONEncode_sssssssss;}> = {!iTasks._Framework.Task.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.Task.JSONDecode_sssss;}> = {!iTasks._Framework.Task.JSONDecode_sssss}
+
+:: <{iTasks._Framework.Task.JSONDecode_ssssss;}> = {!iTasks._Framework.Task.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.Task.JSONDecode_sssssss;}> = {!iTasks._Framework.Task.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.Task.JSONDecode_ssssssss;}> = {!iTasks._Framework.Task.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.Task.JSONDecode_sssssssss;}> = {!iTasks._Framework.Task.JSONDecode_sssssssss}
+
+:: <{iTasks._Framework.Task.gLexOrd_s;}> = {!iTasks._Framework.Task.gLexOrd_s}
+
+:: <{iTasks._Framework.Task.gLexOrd_ss;}> = {!iTasks._Framework.Task.gLexOrd_ss}
+
+:: <{iTasks._Framework.Task.gLexOrd_sss;}> = {!iTasks._Framework.Task.gLexOrd_sss}
+
+:: <{iTasks._Framework.Task.gLexOrd_ssss;}> = {!iTasks._Framework.Task.gLexOrd_ssss}
+
+:: <{iTasks._Framework.Task.gLexOrd_sssss;}> = {!iTasks._Framework.Task.gLexOrd_sssss}
+
+:: <{iTasks._Framework.Task.gLexOrd_ssssss;}> = {!iTasks._Framework.Task.gLexOrd_ssssss}
+
+:: <{iTasks._Framework.Task.gLexOrd_sssssss;}> = {!iTasks._Framework.Task.gLexOrd_sssssss}
+
+:: <{iTasks._Framework.Task.gLexOrd_ssssssss;}> = {!iTasks._Framework.Task.gLexOrd_ssssssss}
+
+:: <{iTasks._Framework.Task.gLexOrd_sssssssss;}> = {!iTasks._Framework.Task.gLexOrd_sssssssss}
+
+:: <{iTasks._Framework.Task.gText_ssss;}> = {!iTasks._Framework.Task.gText_ssss}
+
+:: <{iTasks._Framework.Task.gText_sssss;}> = {!iTasks._Framework.Task.gText_sssss}
+
+:: <{iTasks._Framework.Task.gText_ssssss;}> = {!iTasks._Framework.Task.gText_ssssss}
+
+:: <{iTasks._Framework.Task.gText_sssssss;}> = {!iTasks._Framework.Task.gText_sssssss}
+
+:: <{iTasks._Framework.Task.gText_ssssssss;}> = {!iTasks._Framework.Task.gText_ssssssss}
+
+:: <{iTasks._Framework.Task.gText_sssssssss;}> = {!iTasks._Framework.Task.gText_sssssssss}
+
+:: <{iTasks._Framework.Task.gDefault_sssss;}> = {iTasks._Framework.Task.gDefault_sssss}
+
+:: <{iTasks._Framework.Task.gDefault_ssssss;}> = {iTasks._Framework.Task.gDefault_ssssss}
+
+:: <{iTasks._Framework.Task.gDefault_sssssss;}> = {iTasks._Framework.Task.gDefault_sssssss}
+
+:: <{iTasks._Framework.Task.gDefault_ssssssss;}> = {iTasks._Framework.Task.gDefault_ssssssss}
+
+:: <{iTasks._Framework.Task.gDefault_sssssssss;}> = {iTasks._Framework.Task.gDefault_sssssssss}
+
+:: <{iTasks._Framework.Task.gEditor_ssss;}> = {iTasks._Framework.Task.gEditor_ssss}
+
+:: <{iTasks._Framework.Task.gEditor_sssss;}> = {iTasks._Framework.Task.gEditor_sssss}
+
+:: <{iTasks._Framework.Task.gEditor_ssssss;}> = {iTasks._Framework.Task.gEditor_ssssss}
+
+:: <{iTasks._Framework.Task.gEditor_sssssss;}> = {iTasks._Framework.Task.gEditor_sssssss}
+

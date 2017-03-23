@@ -1,0 +1,677 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdMisc" "20170313110416"
+.depend "StdReceiverDef" "20161223204043"
+.depend "StdReceiver" "20161223204043"
+.depend "EdText" "20170206122647"
+.depend "StateMonad" "20170123155353"
+.depend "StdClipboard" "20161223204043"
+.depend "EdMonad" "20170206122647"
+.depend "syncol" "20170123155351"
+.depend "StrictList" "20170123155353"
+.depend "EdLineText" "20170123155351"
+.depend "EdPosition" "20170123155351"
+.depend "EdSelection" "20170123155352"
+.depend "StdId" "20161223204043"
+.depend "roundrobin" "20161223204043"
+.depend "processstack" "20161223204043"
+.depend "timerhandle" "20161223204044"
+.depend "processhandle" "20161223204043"
+.depend "osmenu" "20161223204044"
+.depend "StdMenuDef" "20161223204043"
+.depend "menuhandle" "20161223204042"
+.depend "devicesystemstate" "20161223204042"
+.depend "keyfocus" "20161223204042"
+.depend "commondef" "20161223204042"
+.depend "receiverhandle" "20161223204043"
+.depend "StdWindowDef" "20161223204044"
+.depend "StdControlDef" "20161223204043"
+.depend "windowhandle" "20161223204044"
+.depend "StdTimerDef" "20161223204043"
+.depend "timertable" "20161223204044"
+.depend "semidynamic" "20161223204043"
+.depend "receivertable" "20161223204043"
+.depend "receivermessage" "20161223204043"
+.depend "deviceevents" "20170206121016"
+.depend "devicefunctions" "20161223204042"
+.depend "ossystem" "20161223204044"
+.depend "osguishare" "20161223204044"
+.depend "ostime" "20161223204044"
+.depend "clCrossCall_12" "20161223204044"
+.depend "osevent" "20161223204044"
+.depend "ostoolbar" "20161223204044"
+.depend "menuCrossCall_12" "20161223204044"
+.depend "osdocumentinterface" "20161223204044"
+.depend "osactivaterequests" "20161223204044"
+.depend "iostate" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "StdIOCommon" "20161223204043"
+.depend "StdPSt" "20161223204043"
+.depend "UtilNewlinesFile" "20170123155356"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "EdMessage" "20170123155351"
+.module m_EdMessage "EdMessage" "20170123155352"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdMisc
+.implab e_StdMisc_sabort
+.impmod StdReceiverDef
+.impdesc e_StdReceiverDef_dReceiver2
+.impmod StdReceiver
+.impdesc e_StdReceiver_dsyncSend2
+.implab e_StdReceiver_ssyncSend2
+.implab e_StdReceiver_nsyncSend2
+.impmod Data.Maybe
+.implab e_Data.Maybe_sisNothing
+.impdesc e_Data.Maybe_disJust
+.implab e_Data.Maybe_nisJust
+.implab e_Data.Maybe_sfromJust
+.desc d41 _hnf _add_arg 1 0 "MsgState"
+.desc d42 _hnf _hnf 0 0 "MsgGet"
+.desc d43 _hnf _hnf 0 0 "MsgOk"
+.export e_EdMessage_sTD;EditAction
+.export e_EdMessage_eaTD;EditAction
+.descexp e_EdMessage_dTD;EditAction e_EdMessage_nTD;EditAction e_EdMessage_lTD;EditAction 1 0 "TD;EditAction"
+.o 2 0
+e_EdMessage_lTD;EditAction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdMessage_eaTD;EditAction
+.n 1 e_EdMessage_dTD;EditAction e_EdMessage_eaTD;EditAction
+.o 1 0
+e_EdMessage_nTD;EditAction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdMessage_eaTD;EditAction
+.o 2 0
+e_EdMessage_sTD;EditAction
+.o 2 0
+s7
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdMessage_sTD;Message
+.export e_EdMessage_eaTD;Message
+.descexp e_EdMessage_dTD;Message e_EdMessage_nTD;Message e_EdMessage_lTD;Message 1 0 "TD;Message"
+.o 2 0
+e_EdMessage_lTD;Message
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdMessage_eaTD;Message
+.n 1 e_EdMessage_dTD;Message e_EdMessage_eaTD;Message
+.o 1 0
+e_EdMessage_nTD;Message
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdMessage_eaTD;Message
+.o 2 0
+e_EdMessage_sTD;Message
+.o 2 0
+s6
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdMessage_sTD;EditId
+.export e_EdMessage_eaTD;EditId
+.descexp e_EdMessage_dTD;EditId e_EdMessage_nTD;EditId e_EdMessage_lTD;EditId 1 0 "TD;EditId"
+.o 2 0
+e_EdMessage_lTD;EditId
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdMessage_eaTD;EditId
+.n 1 e_EdMessage_dTD;EditId e_EdMessage_eaTD;EditId
+.o 1 0
+e_EdMessage_nTD;EditId
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdMessage_eaTD;EditId
+.o 2 0
+e_EdMessage_sTD;EditId
+.o 2 0
+s5
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdMessage_sappEditState
+.descexp e_EdMessage_dappEditState e_EdMessage_nappEditState e_EdMessage_lappEditState 3 0 "appEditState"
+.a 0 a4
+.o 2 0
+e_EdMessage_lappEditState
+	repl_args 2 2
+.o 3 0
+a4
+.d 3 0
+	jsr ea4
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 3 e_EdMessage_dappEditState
+.o 1 0
+e_EdMessage_nappEditState
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea4
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+ea4
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 2 2 0
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+.o 4 0
+e_EdMessage_sappEditState
+.o 4 0
+s4
+.impmod iostate
+.impdesc e_iostate_rPSt
+	build_r e_iostate_rPSt 2 0 2 0
+	push_a 1
+	build _ 2 n9
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	buildh _Tuple 2
+	push_a 3
+	update_a 3 6
+	update_a 1 5
+	updatepop_a 0 4
+	jsr_ap 1
+	push_arg 0 2 2
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	push_a 2
+	push_a 2
+	push_a 2
+	push_a 7
+	update_a 7 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr s10
+.o 2 0
+	build_r e_iostate_rPSt 2 0 0 0
+	push_arg 3 2 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.o 4 0
+s10
+	push_a 1
+	buildh d41 1
+	push_a 4
+	push_a 4
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr e_StdReceiver_ssyncSend2
+.o 4 0
+	push_a 1
+	push_a 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.1
+	buildAC "setEditState (EdMessage.icl): no response"
+	updatepop_a 0 3
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	repl_r_args 2 0
+.d 2 0
+	rtn
+else.1
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s13
+.o 3 0
+s13
+	eq_desc d43 0 0
+	jmp_true case.2
+	jmp case.3
+case.2
+	pop_a 1
+.d 2 0
+	rtn
+case.3
+	buildAC "setEditState (EdMessage.icl): unknown response"
+	updatepop_a 0 3
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	repl_r_args 2 0
+.d 2 0
+	rtn
+.n 2 _
+.o 1 0
+n9
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea9
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea9
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+s9
+	buildh d42 0
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jsr e_StdReceiver_ssyncSend2
+.o 4 0
+	push_a 1
+	push_a 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.4
+	buildAC "getEditState (EdMessage.icl): no response"
+	updatepop_a 0 3
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	repl_args 2 2
+.d 2 0
+	rtn
+else.4
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 1
+	buildh _Nil 0
+	update_a 0 3
+	update_a 0 4
+	update_a 0 5
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s12
+.o 2 0
+s12
+	eq_desc d41 1 0
+	jmp_true case.5
+	jmp case.6
+case.5
+	repl_args 1 1
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+case.6
+	buildAC "getEditState (EdMessage.icl): unknown response"
+	updatepop_a 0 2
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	repl_args 2 2
+.d 2 0
+	rtn
+.export e_EdMessage_shasEditState
+.descexp e_EdMessage_dhasEditState e_EdMessage_nhasEditState e_EdMessage_lhasEditState 2 0 "hasEditState"
+.a 0 a3
+.o 2 0
+e_EdMessage_lhasEditState
+	repl_args 1 1
+.o 2 0
+a3
+.d 2 0
+	jsr ea3
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 2 e_EdMessage_dhasEditState
+.o 1 0
+e_EdMessage_nhasEditState
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea3
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea3
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+e_EdMessage_shasEditState
+.o 3 0
+s3
+	build_r e_iostate_rPSt 2 0 1 0
+	buildh d42 0
+	push_a 2
+	build e_StdReceiver_dsyncSend2 3 e_StdReceiver_nsyncSend2
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	build d_S.2 -1 n_S.2
+	build e_Data.Maybe_disJust 1 e_Data.Maybe_nisJust
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+.export e_EdMessage_sopenEditReceiver
+.export e_EdMessage_eaopenEditReceiver
+.descexp e_EdMessage_dopenEditReceiver e_EdMessage_nopenEditReceiver e_EdMessage_lopenEditReceiver 1 0 "openEditReceiver"
+.o 2 0
+e_EdMessage_lopenEditReceiver
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdMessage_eaopenEditReceiver
+.n 1 e_EdMessage_dopenEditReceiver e_EdMessage_eaopenEditReceiver
+.o 1 0
+e_EdMessage_nopenEditReceiver
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdMessage_eaopenEditReceiver
+	jsr_eval 0
+.o 2 0
+e_EdMessage_sopenEditReceiver
+.o 2 0
+s2
+	buildh _Nil 0
+	buildh d8 0
+	push_a 2
+	fillh e_StdReceiverDef_dReceiver2 3 4
+	pop_a 1
+.d 1 0
+	rtn
+.desc d8 _hnf l8 2 0 "receive"
+.a 0 a8
+.o 2 0
+l8
+	repl_args 1 1
+.o 2 0
+a8
+.d 2 0
+	jsr ea8
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 2 0
+ea8
+	push_a 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+s8
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s11
+.o 3 0
+s11
+	pushD_a 0
+	eqD_b d42 0
+	jmp_true case.7
+	eqD_b d41 1
+	jmp_true case.8
+	pop_b 1
+	jmp case.9
+case.7
+	pop_b 1
+	push_a 2
+	push_a 2
+	buildh _Tuple 2
+	push_a 2
+	buildh d41 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+case.8
+	pop_b 1
+	repl_args 1 1
+	push_a 2
+	push_a 1
+	buildh _Tuple 2
+	buildh d43 0
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+case.9
+	buildAC "receive (EdMessage.icl): unknown message type"
+	updatepop_a 0 3
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	repl_args 2 2
+.d 2 0
+	rtn
+.export e_EdMessage_sopenEditId
+.descexp e_EdMessage_dopenEditId e_EdMessage_nopenEditId e_EdMessage_lopenEditId 2 0 "openEditId"
+.a 0 a1
+.o 2 0
+e_EdMessage_lopenEditId
+	repl_args 1 1
+.o 2 0
+a1
+.d 2 0
+	jsr ea1
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 2 e_EdMessage_dopenEditId
+.o 1 0
+e_EdMessage_nopenEditId
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea1
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea1
+	jsr_eval 0
+	repl_r_args 6 0
+.o 7 0
+e_EdMessage_sopenEditId
+.o 7 0
+s1
+	push_a 2
+	push_a 7
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 8
+	updatepop_a 0 7
+	jsr_ap 1
+	repl_args 2 2
+.d 2 0
+	rtn

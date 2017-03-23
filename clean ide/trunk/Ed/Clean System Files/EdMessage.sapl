@@ -1,0 +1,44 @@
+|| ?module? EdMessage
+
+
+EdMessage.openEditId !_v_0 pstate_1 = select _v_0::<{StdId.Ids;}> 2 pstate_1
+EdMessage.receive !message_0 !_x_1 = case _x_1 (_Tuple2 editState_1_0 pstate_1_1 -> <{EdMessage._c;32;5_53}> message_0 editState_1_0 pstate_1_1) 
+<{EdMessage._c;32;5_53}> !message_0 editState_1 pstate_2 = case message_0 (EdMessage.MsgGet -> _Tuple2 (EdMessage.MsgState editState_1) (_Tuple2 editState_1 pstate_2)) (EdMessage.MsgState newEditState_1_0 -> _Tuple2 EdMessage.MsgOk (_Tuple2 newEditState_1_0 pstate_2)) (_ -> StdMisc.abort "receive (EdMessage.icl): unknown message type")
+EdMessage.openEditReceiver !edit_0 = StdReceiverDef.Receiver2 edit_0 EdMessage.receive _predefined._Nil
+EdMessage.hasEditState !edit_0 !pstate_1 = let _x_1_0 = StdReceiver.syncSend2 edit_0 EdMessage.MsgGet pstate_1 in _Tuple2 (Data.Maybe.isJust (select (select _x_1_0::_Tuple2 0)::_Tuple2 1)) (select _x_1_0::_Tuple2 1)
+EdMessage.getEditState !edit_0 !pstate_1 = let _x_1_0 = StdReceiver.syncSend2 edit_0 EdMessage.MsgGet pstate_1, _x_1_1 = select _x_1_0::_Tuple2 0, maybeResp_1_2 = select _x_1_1::_Tuple2 1 in case (Data.Maybe.isNothing maybeResp_1_2) (True -> StdMisc.abort "getEditState (EdMessage.icl): no response") (False -> let pstate_3_0 = select _x_1_0::_Tuple2 1 in <{EdMessage._c;60;7_54}> (Data.Maybe.fromJust maybeResp_1_2) pstate_3_0) 
+<{EdMessage._c;60;7_54}> !_x_0 pstate_1 = case _x_0 (EdMessage.MsgState editState_1_0 -> _Tuple2 editState_1_0 pstate_1) (_ -> StdMisc.abort "getEditState (EdMessage.icl): unknown response")
+EdMessage.setEditState !edit_0 !editState_1 !pstate_2 = let _x_1_0 = StdReceiver.syncSend2 edit_0 (EdMessage.MsgState editState_1) pstate_2, _x_1_1 = select _x_1_0::_Tuple2 0, maybeResp_1_2 = select _x_1_1::_Tuple2 1 in case (Data.Maybe.isNothing maybeResp_1_2) (True -> StdMisc.abort "setEditState (EdMessage.icl): no response") (False -> let pstate_3_0 = select _x_1_0::_Tuple2 1 in <{EdMessage._c;70;7_55}> (Data.Maybe.fromJust maybeResp_1_2) pstate_3_0) 
+<{EdMessage._c;70;7_55}> !_x_0 !pstate_1 = case _x_0 (EdMessage.MsgOk -> pstate_1) (_ -> StdMisc.abort "setEditState (EdMessage.icl): unknown response")
+EdMessage.appEditState !edit_0 !monad_1 !pState_2 = let !pState_1_0 = EdMessage.setEditState edit_0 (select _x_1_3::_Tuple2 0) (select _x_1_3::_Tuple2 1), _x_1_1 = EdMessage.getEditState edit_0 pState_2, _x_1_2 = monad_1 (_Tuple2 (select _x_1_1::_Tuple2 0) (select _x_1_1::_Tuple2 1)), _x_1_3 = select _x_1_2::_Tuple2 1 in _Tuple2 (select _x_1_2::_Tuple2 0) pState_1_0
+<{EdMessage.TD;EditId}> _x_0::B = _predefined._Nil
+<{EdMessage.TD;Message}> _x_0::B = _predefined._Nil
+<{EdMessage.TD;EditAction}> _x_0::B = _predefined._Nil
+
+:: EdMessage.Message = EdMessage.MsgState a1 | EdMessage.MsgGet | EdMessage.MsgOk
+
+|| Converted Records
+:: <{EdMessage.gEq_s;}> = {!EdMessage.gEq_s}
+
+:: <{EdMessage.gEq_ss;}> = {!EdMessage.gEq_ss}
+
+:: <{EdMessage.gEq_sss;}> = {!EdMessage.gEq_sss}
+
+:: <{EdMessage.gEq_ssss;}> = {!EdMessage.gEq_ssss}
+
+:: <{EdMessage.gEq_sssss;}> = {!EdMessage.gEq_sssss}
+
+:: <{EdMessage.gEq_ssssss;}> = {!EdMessage.gEq_ssssss}
+
+:: <{EdMessage.gEq_sssssss;}> = {!EdMessage.gEq_sssssss}
+
+:: <{EdMessage.gEq_ssssssss;}> = {!EdMessage.gEq_ssssssss}
+
+:: <{EdMessage.gEq_sssssssss;}> = {!EdMessage.gEq_sssssssss}
+
+:: <{EdMessage.bimap_s;}> = {EdMessage.bimap_s}
+
+:: <{EdMessage.bimap_ss;}> = {EdMessage.bimap_ss}
+
+:: <{EdMessage.bimap_sss;}> = {EdMessage.bimap_sss}
+

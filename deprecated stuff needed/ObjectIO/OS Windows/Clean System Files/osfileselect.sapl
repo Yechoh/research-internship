@@ -1,0 +1,39 @@
+|| ?module? osfileselect
+
+
+osfileselect.osInitialiseFileSelectors::I !_x_0::I = error "no AnyCodeExpr"
+osfileselect.callback !handleOSEvent_0 !cci_1 !state_2 !tb_3::I = <{_Tuple3!7}> clCrossCall_12.return0Cci (handleOSEvent_0 cci_1 state_2) tb_3
+osfileselect.osfileselectFatalError !function_0 !error_1 = commondef.fatalError function_0 "osfileselect" error_1
+osfileselect.getinputfilename_6 !_x_0 !tb_1::I = case _x_0 (clCrossCall_12._CrossCallInfo _x_1_0 ok_1_1 ptr_1_2 p3_1_3 p4_1_4 p5_1_5 p6_1_6 -> case _x_1_0 (12 -> case (<{StdInt.==_16}> ok_1_1 0) (True -> <{_Tuple3!7}> False "" tb_1) (False -> let _x_4_0 = clCCall_12.winGetCStringAndFree ptr_1_2 tb_1 in <{_Tuple3!7}> True (select _x_4_0::_Tuple2 0) (select _x_4_0::_Tuple2 1)) ) (1 -> <{_Tuple3!7}> False "" tb_1) (_ -> osfileselect.osfileselectFatalError "osSelectinputfile" (<{StdString.+++_11}> "unexpected ccMsg field of return CrossCallInfo (" (<{StdString.+++_11}> (StdString.toString_5 _x_1_0) ")")))) 
+osfileselect.osSelectinputfile !handleOSEvent_0 !state_1 !tb_2::I = let _x_1_0 = clCrossCall_12.issueCleanRequest (osfileselect.callback handleOSEvent_0) (clCrossCall_12._CrossCallInfo 1800 0 0 0 0 0 0) state_1 tb_2, _x_1_1 = osfileselect.getinputfilename_6 (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 2) in <{_Tuple4!15}> (select _x_1_1::_Tuple3 0) (select _x_1_1::_Tuple3 1) (select _x_1_0::_Tuple3 1) (select _x_1_1::_Tuple3 2)
+osfileselect.getoutputfilename_7 !_x_0 !tb_1::I = case _x_0 (clCrossCall_12._CrossCallInfo _x_1_0 ok_1_1 ptr_1_2 p3_1_3 p4_1_4 p5_1_5 p6_1_6 -> case _x_1_0 (12 -> case (<{StdInt.==_16}> ok_1_1 0) (True -> <{_Tuple3!7}> False "" tb_1) (False -> let _x_4_0 = clCCall_12.winGetCStringAndFree ptr_1_2 tb_1 in <{_Tuple3!7}> True (select _x_4_0::_Tuple2 0) (select _x_4_0::_Tuple2 1)) ) (1 -> <{_Tuple3!7}> False "" tb_1) (_ -> osfileselect.osfileselectFatalError "osSelectoutputfile" (<{StdString.+++_11}> "unexpected ccMsg field of return CrossCallInfo (" (<{StdString.+++_11}> (StdString.toString_5 _x_1_0) ")")))) 
+osfileselect.osSelectoutputfile !handleOSEvent_0 !state_1 !prompt_2 !filename_3 !tb_4::I = let _x_1_0 = clCCall_12.winMakeCString prompt_2 tb_4, promptptr_1_1 = select _x_1_0::_Tuple2 0, _x_1_2::I = clCCall_12.winMakeCString filename_3 (select _x_1_0::_Tuple2 1), filenameptr_1_3 = select _x_1_2::_Tuple2 0, _x_1_4::I = clCrossCall_12.issueCleanRequest (osfileselect.callback handleOSEvent_0) (clCrossCall_12._CrossCallInfo 1801 promptptr_1_1 filenameptr_1_3 0 0 0 0) state_1 (select _x_1_2::_Tuple2 1), _x_1_5 = osfileselect.getoutputfilename_7 (select _x_1_4::_Tuple3 0) (clCCall_12.winReleaseCString filenameptr_1_3 (clCCall_12.winReleaseCString promptptr_1_1 (select _x_1_4::_Tuple3 2))) in <{_Tuple4!15}> (select _x_1_5::_Tuple3 0) (select _x_1_5::_Tuple3 1) (select _x_1_4::_Tuple3 1) (select _x_1_5::_Tuple3 2)
+osfileselect.getinputfilename_8 !_x_0 !tb_1::I = case _x_0 (clCrossCall_12._CrossCallInfo _x_1_0 ok_1_1 ptr_1_2 p3_1_3 p4_1_4 p5_1_5 p6_1_6 -> case _x_1_0 (12 -> case (<{StdInt.==_16}> ok_1_1 0) (True -> <{_Tuple3!7}> False "" tb_1) (False -> let _x_4_0 = clCCall_12.winGetCStringAndFree ptr_1_2 tb_1 in <{_Tuple3!7}> True (select _x_4_0::_Tuple2 0) (select _x_4_0::_Tuple2 1)) ) (1 -> <{_Tuple3!7}> False "" tb_1) (_ -> osfileselect.osfileselectFatalError "osSelectdirectory" (<{StdString.+++_11}> "unexpected ccMsg field of return CrossCallInfo (" (<{StdString.+++_11}> (StdString.toString_5 _x_1_0) ")")))) 
+osfileselect.osSelectdirectory !handleOSEvent_0 !state_1 !tb_2::I = let _x_1_0 = clCrossCall_12.issueCleanRequest (osfileselect.callback handleOSEvent_0) (clCrossCall_12._CrossCallInfo 1802 0 0 0 0 0 0) state_1 tb_2, _x_1_1 = osfileselect.getinputfilename_8 (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 2) in <{_Tuple4!15}> (select _x_1_1::_Tuple3 0) (select _x_1_1::_Tuple3 1) (select _x_1_0::_Tuple3 1) (select _x_1_1::_Tuple3 2)
+
+
+|| Converted Records
+:: <{osfileselect.gEq_s;}> = {!osfileselect.gEq_s}
+
+:: <{osfileselect.gEq_ss;}> = {!osfileselect.gEq_ss}
+
+:: <{osfileselect.gEq_sss;}> = {!osfileselect.gEq_sss}
+
+:: <{osfileselect.gEq_ssss;}> = {!osfileselect.gEq_ssss}
+
+:: <{osfileselect.gEq_sssss;}> = {!osfileselect.gEq_sssss}
+
+:: <{osfileselect.gEq_ssssss;}> = {!osfileselect.gEq_ssssss}
+
+:: <{osfileselect.gEq_sssssss;}> = {!osfileselect.gEq_sssssss}
+
+:: <{osfileselect.gEq_ssssssss;}> = {!osfileselect.gEq_ssssssss}
+
+:: <{osfileselect.gEq_sssssssss;}> = {!osfileselect.gEq_sssssssss}
+
+:: <{osfileselect.bimap_s;}> = {osfileselect.bimap_s}
+
+:: <{osfileselect.bimap_ss;}> = {osfileselect.bimap_ss}
+
+:: <{osfileselect.bimap_sss;}> = {osfileselect.bimap_sss}
+

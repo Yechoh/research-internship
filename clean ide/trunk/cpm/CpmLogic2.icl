@@ -75,6 +75,7 @@ compile pn world
       Ok pwd   -> buildProject cleanhome pwd pn world
       Error e  -> abort "Failed to read current directory"
 
+//cpm.exe project Test create
 createProject :: String *World -> *World
 createProject mainmodule world = mkMainAndProject world
   where

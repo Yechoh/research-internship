@@ -1,0 +1,80 @@
+|| ?module? deviceevents
+
+
+deviceevents.getMsgEventRecLoc !_x_0 = case _x_0 (deviceevents.QASyncMessage _x_1_0 -> case _x_1_0 (receivermessage._QASyncMessage qasmRecLoc_2_0 qasmMsg_2_1 -> qasmRecLoc_2_0) ) (deviceevents.ASyncMessage _x_1_0 -> case _x_1_0 (receivermessage._ASyncMessage asmRecLoc_2_0 -> asmRecLoc_2_0) ) (deviceevents.SyncMessage _x_1_0 -> case _x_1_0 (receivermessage._SyncMessage smRecLoc_2_0 smMsg_2_1 smResp_2_2 smError_2_3 -> smRecLoc_2_0) ) 
+<{deviceevents.TD;MsgEvent}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;SchedulerEvent}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;DeviceEvent}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;MenuTraceInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;ToolbarSelectInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;CompoundScrollActionInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;ControlKeyFocusInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;ControlKeyboardActionInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;ControlMouseActionInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;ControlSelectInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;ControlSliderInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;WindowKeyboardActionInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;WindowMouseActionInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;WindowScrollActionInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;WindowSizeActionInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;UpdateInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;ControlUpdateInfo}> _x_0::B = _predefined._Nil
+<{deviceevents.TD;OpenFilesInfo}> _x_0::B = _predefined._Nil
+
+:: deviceevents.MsgEvent = deviceevents.QASyncMessage !a1 | deviceevents.ASyncMessage !a1 | deviceevents.SyncMessage !a1
+:: deviceevents.SchedulerEvent = deviceevents.ScheduleOSEvent !a1 !a2 | deviceevents.ScheduleMsgEvent !a1 | deviceevents.ScheduleTimerEvent !a1
+:: deviceevents.DeviceEvent = deviceevents.MenuTraceEvent !a1 | deviceevents.ToolbarSelection !a1 | deviceevents.ReceiverEvent !a1 | deviceevents.InternetEvent !a1 | deviceevents.ConsoleQuitEvent | deviceevents.ConsoleOutEvent !a1 | deviceevents.ConsoleErrEvent !a1 | deviceevents.TimerEvent !a1 | deviceevents.CompoundScrollAction !a1 | deviceevents.ControlGetKeyFocus !a1 | deviceevents.ControlKeyboardAction !a1 | deviceevents.ControlLooseKeyFocus !a1 | deviceevents.ControlMouseAction !a1 | deviceevents.ControlSelection !a1 | deviceevents.ControlSliderAction !a1 | deviceevents.WindowActivation !a1 | deviceevents.WindowCANCEL !a1 | deviceevents.WindowDeactivation !a1 | deviceevents.WindowInitialise !a1 | deviceevents.WindowKeyboardAction !a1 | deviceevents.WindowMouseAction !a1 | deviceevents.WindowOK !a1 | deviceevents.WindowRequestClose !a1 | deviceevents.WindowScrollAction !a1 | deviceevents.WindowSizeAction !a1 | deviceevents.WindowUpdate !a1 | deviceevents.ProcessRequestClose | deviceevents.ProcessRequestOpenFiles !a1 | deviceevents.ProcessRequestClipboardChanged
+
+|| Converted Records
+:: deviceevents._MenuTraceInfo = {!deviceevents.mtId, !deviceevents.mtParents, !deviceevents.mtItemNr::I, !deviceevents.mtModifiers}
+
+:: deviceevents._ToolbarSelectInfo = {!deviceevents.tbsItemNr::I}
+
+:: deviceevents._CompoundScrollActionInfo = {!deviceevents.csaWIDS, !deviceevents.csaItemNr::I, !deviceevents.csaItemPtr, !deviceevents.csaSliderMove, !deviceevents.csaDirection}
+
+:: deviceevents._ControlKeyFocusInfo = {!deviceevents.ckfWIDS, !deviceevents.ckfItemNr::I, !deviceevents.ckfItemPtr}
+
+:: deviceevents._ControlKeyboardActionInfo = {!deviceevents.ckWIDS, !deviceevents.ckItemNr::I, !deviceevents.ckItemPtr, !deviceevents.ckKeyboardState}
+
+:: deviceevents._ControlMouseActionInfo = {!deviceevents.cmWIDS, !deviceevents.cmItemNr::I, !deviceevents.cmItemPtr, !deviceevents.cmMouseState}
+
+:: deviceevents._ControlSelectInfo = {!deviceevents.csWIDS, !deviceevents.csItemNr::I, !deviceevents.csItemPtr, !deviceevents.csMoreData::I, !deviceevents.csModifiers}
+
+:: deviceevents._ControlSliderInfo = {!deviceevents.cslWIDS, !deviceevents.cslItemNr::I, !deviceevents.cslItemPtr, !deviceevents.cslSliderMove}
+
+:: deviceevents._WindowKeyboardActionInfo = {!deviceevents.wkWIDS, !deviceevents.wkKeyboardState}
+
+:: deviceevents._WindowMouseActionInfo = {!deviceevents.wmWIDS, !deviceevents.wmMouseState}
+
+:: deviceevents._WindowScrollActionInfo = {!deviceevents.wsaWIDS, !deviceevents.wsaSliderMove, !deviceevents.wsaDirection}
+
+:: deviceevents._WindowSizeActionInfo = {!deviceevents.wsWIDS, !deviceevents.wsSize, !deviceevents.wsUpdateAll::B}
+
+:: deviceevents._UpdateInfo = {!deviceevents.updWIDS, !deviceevents.updWindowArea, !deviceevents.updControls, !deviceevents.updGContext}
+
+:: deviceevents._ControlUpdateInfo = {!deviceevents.cuItemNr::I, !deviceevents.cuItemPtr, !deviceevents.cuArea}
+
+:: <{deviceevents.gEq_s;}> = {!deviceevents.gEq_s}
+
+:: <{deviceevents.gEq_ss;}> = {!deviceevents.gEq_ss}
+
+:: <{deviceevents.gEq_sss;}> = {!deviceevents.gEq_sss}
+
+:: <{deviceevents.gEq_ssss;}> = {!deviceevents.gEq_ssss}
+
+:: <{deviceevents.gEq_sssss;}> = {!deviceevents.gEq_sssss}
+
+:: <{deviceevents.gEq_ssssss;}> = {!deviceevents.gEq_ssssss}
+
+:: <{deviceevents.gEq_sssssss;}> = {!deviceevents.gEq_sssssss}
+
+:: <{deviceevents.gEq_ssssssss;}> = {!deviceevents.gEq_ssssssss}
+
+:: <{deviceevents.gEq_sssssssss;}> = {!deviceevents.gEq_sssssssss}
+
+:: <{deviceevents.bimap_s;}> = {deviceevents.bimap_s}
+
+:: <{deviceevents.bimap_ss;}> = {deviceevents.bimap_ss}
+
+:: <{deviceevents.bimap_sss;}> = {deviceevents.bimap_sss}
+

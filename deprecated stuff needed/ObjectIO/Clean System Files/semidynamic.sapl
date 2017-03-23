@@ -1,0 +1,44 @@
+|| ?module? semidynamic
+
+
+semidynamic.openDynamic !did_0 x_1 = semidynamic._SemiDynamic x_1 did_0
+semidynamic.matchDynamic::B !did_0 !_x_1 = case _x_1 (semidynamic._SemiDynamic value_1_0 id_1_1 -> <{id.==_27}> did_0 id_1_1) 
+semidynamic.readDynamic !did_0 !_x_1 = case _x_1 (semidynamic._SemiDynamic value_1_0 id_1_1 -> case (<{id.==_27}> did_0 id_1_1) (True -> Data.Maybe.Just (cast.cast value_1_0)) (False -> Data.Maybe.Nothing) ) 
+semidynamic.getDynamic !did_0 !_x_1 = case _x_1 (semidynamic._SemiDynamic value_1_0 id_1_1 -> case (<{id.==_27}> did_0 id_1_1) (True -> Data.Maybe.Just (cast.cast value_1_0)) (False -> Data.Maybe.Nothing) ) 
+semidynamic.semidynamicFatalError !function_0 !error_1 = commondef.fatalError function_0 "semidynamic" error_1
+semidynamic.setDynamic !did_0 x_1 !sd_2 = case sd_2 (semidynamic._SemiDynamic value_1_0 id_1_1 -> case (<{id.==_27}> did_0 id_1_1) (True -> update sd_2::semidynamic._SemiDynamic [0:x_1]) (False -> semidynamic.semidynamicFatalError "setDynamic" "SemiDynamic did not match argument Id") ) 
+semidynamic.rIdtoDId !rid_0 = id.rIdtoId rid_0
+semidynamic.r2IdtoDId !r2id_0 = id.r2IdtoId r2id_0
+<{semidynamic.r2IdtoDId`}> !r2id_0 = id.r2IdtoId r2id_0
+semidynamic.dIdtoId !did_0 = did_0
+<{semidynamic.TD;SemiDynamic}> _x_0::B = _predefined._Nil
+<{semidynamic.TD;DId}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: semidynamic._SemiDynamic = {semidynamic.value, semidynamic.id}
+
+:: <{semidynamic.gEq_s;}> = {!semidynamic.gEq_s}
+
+:: <{semidynamic.gEq_ss;}> = {!semidynamic.gEq_ss}
+
+:: <{semidynamic.gEq_sss;}> = {!semidynamic.gEq_sss}
+
+:: <{semidynamic.gEq_ssss;}> = {!semidynamic.gEq_ssss}
+
+:: <{semidynamic.gEq_sssss;}> = {!semidynamic.gEq_sssss}
+
+:: <{semidynamic.gEq_ssssss;}> = {!semidynamic.gEq_ssssss}
+
+:: <{semidynamic.gEq_sssssss;}> = {!semidynamic.gEq_sssssss}
+
+:: <{semidynamic.gEq_ssssssss;}> = {!semidynamic.gEq_ssssssss}
+
+:: <{semidynamic.gEq_sssssssss;}> = {!semidynamic.gEq_sssssssss}
+
+:: <{semidynamic.bimap_s;}> = {semidynamic.bimap_s}
+
+:: <{semidynamic.bimap_ss;}> = {semidynamic.bimap_ss}
+
+:: <{semidynamic.bimap_sss;}> = {semidynamic.bimap_sss}
+

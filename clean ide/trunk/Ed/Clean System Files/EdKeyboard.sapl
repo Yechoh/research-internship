@@ -1,0 +1,63 @@
+|| ?module? EdKeyboard
+
+
+EdKeyboard.anon_31 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdKeyboard.anon_30 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_29 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_28 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_27 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_26 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_22 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdKeyboard.f_25 !_vArray_0 !<{_v%_1}> s_2 !m_3::I !i_4::I = case (StdBool.not (<{StdInt.<_17}> i_4 m_3)) (True -> s_2) (False -> let c_2_0::C = select _vArray_0::<{_SystemArray.Array;}> 3 s_2 i_4 in case (case (<{StdChar.==_18}> c_2_0 '\t') (True -> True) (False -> <{StdChar.==_18}> c_2_0 ' ') ) (True -> EdKeyboard.f_25 _vArray_0 <{_v%_1}> s_2 m_3 (<{StdInt.+_6}> i_4 StdInt.one_11)) (False -> select <{_v%_1}>::<{StdOverloaded.%;}> 0 s_2 (_Tuple2 0 (<{StdInt.-_7}> i_4 StdInt.one_11))) ) 
+EdKeyboard.f_81 !<{_v%_0}> !s_1 !m_2::I !i_3::I = case (StdBool.not (<{StdInt.<_17}> i_3 m_2)) (True -> s_1) (False -> let c_2_0::C = _SystemArray.select_19 s_1 i_3 in case (case (<{StdChar.==_18}> c_2_0 '\t') (True -> True) (False -> <{StdChar.==_18}> c_2_0 ' ') ) (True -> EdKeyboard.f_81 <{_v%_0}> s_1 m_2 (<{StdInt.+_6}> i_3 StdInt.one_11)) (False -> select <{_v%_0}>::<{StdOverloaded.%;}> 0 s_1 (_Tuple2 0 (<{StdInt.-_7}> i_3 StdInt.one_11))) ) 
+EdKeyboard.f_82 !s_0 !m_1::I !i_2::I = case (StdBool.not (<{StdInt.<_17}> i_2 m_1)) (True -> s_0) (False -> let c_2_0::C = _SystemArray.select_19 s_0 i_2 in case (case (<{StdChar.==_18}> c_2_0 '\t') (True -> True) (False -> <{StdChar.==_18}> c_2_0 ' ') ) (True -> EdKeyboard.f_82 s_0 m_1 (<{StdInt.+_6}> i_2 StdInt.one_11)) (False -> <{StdString.%_10}> s_0 (_Tuple2 0 (<{StdInt.-_7}> i_2 StdInt.one_11))) ) 
+EdKeyboard.stripfront_24 !s_0 = EdKeyboard.f_82 s_0 (_SystemArray.size_20 s_0) 0
+EdKeyboard.anon_23 text_0 !_x_1 = case _x_1 (EdSelection._Selection start_1_0 end_1_1 -> EdAction.performAction (EdActionType.Insert (StrictList.SCons "" (StrictList.SCons (EdKeyboard.stripfront_24 (<{StdString.%_10}> (select (EdLineText.getLine (select start_1_0::EdPosition._Position 1) text_0)::_Tuple2 0) (_Tuple2 0 (<{StdInt.-_7}> (select start_1_0::EdPosition._Position 0) StdInt.one_11)))) StrictList.SNil)))) 
+EdKeyboard.anon_83 !ma_0 text_1 state_2 = let _x_1_0 = ma_0 state_2 in EdKeyboard.anon_23 text_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdKeyboard.anon_21 text_0 = EdKeyboard.anon_83 EdMonad.getSelection text_0
+EdKeyboard.anon_20 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdKeyboard.anon_84 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdKeyboard.anon_21 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdKeyboard.keyDown_3 keyMapping_0 autoTab_1::B !keyboardState_2 = case keyboardState_2 (StdIOCommon.SpecialKey key_1_0 _x_1_1 _x_1_2 -> case (case (<{oskey.==_32}> key_1_0 oskey.enterKey) (True -> True) (False -> <{oskey.==_32}> key_1_0 oskey.returnKey) ) (True -> case autoTab_1 (True -> EdKeyboard.anon_84 EdMonad.getText) (False -> EdAction.performAction (EdActionType.Insert (StrictList.SCons "" (StrictList.SCons "" StrictList.SNil)))) ) (False -> let maybeAction_3_0 = EdKeyMapping.findAction keyboardState_2 keyMapping_0 in StateMonad.onlyIf (StdBool.not (Data.Maybe.isNothing maybeAction_3_0)) (EdAction.performAction (Data.Maybe.fromJust maybeAction_3_0))) ) (StdIOCommon.CharKey char_1_0 _x_1_1 -> let asciiCode_2_0::I = StdInt.toInt_20 char_1_0 in case (case (case (StdBool.not (<{StdInt.<_17}> asciiCode_2_0 32)) (True -> True) (False -> <{StdInt.==_16}> asciiCode_2_0 (StdInt.toInt_20 '\t')) ) (True -> StdBool.not (<{StdInt.==_16}> asciiCode_2_0 127)) (False -> False) ) (True -> EdAction.performAction (EdActionType.Insert (StrictList.SCons (StdString.toString_6 char_1_0) StrictList.SNil))) (False -> EdKeyboard.anon_26 StateMonad.nothing) ) (StdIOCommon.KeyLost -> EdKeyboard.anon_27 StateMonad.nothing) 
+EdKeyboard.keyboard_4 keyMapping_0 _x_1::B !_x_2 = case _x_2 (StdIOCommon.SpecialKey _x_1_0 _x_1_1 _x_1_2 -> case _x_1_1 (StdIOCommon.KeyUp -> EdKeyboard.anon_28 StateMonad.nothing) ) (StdIOCommon.CharKey _x_1_0 _x_1_1 -> case _x_1_1 (StdIOCommon.KeyUp -> EdKeyboard.anon_29 StateMonad.nothing) ) (StdIOCommon.KeyLost -> EdKeyboard.anon_30 StateMonad.nothing) (_ -> EdKeyboard.keyDown_3 keyMapping_0 _x_1 _x_2)
+EdKeyboard.anon_2 keyMapping_0 !keyboardState_1 !_x_2 = case _x_2 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdKeyboard.keyboard_4 keyMapping_0 autoTab_1_6 keyboardState_1) 
+EdKeyboard.anon_85 !ma_0 keyMapping_1 !keyboardState_2 state_3 = let _x_1_0 = ma_0 state_3 in EdKeyboard.anon_2 keyMapping_1 keyboardState_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdKeyboard.editWindowKeyboard keyMapping_0 keyboardState_1 !state_2 = EdMonad.noResult (EdKeyboard.anon_85 EdMonad.getFontInfo keyMapping_0 keyboardState_1) state_2
+EdKeyboard.anon_37 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdKeyboard.anon_36 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_35 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_34 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_33 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.anon_32 x_0 state_1 = _Tuple2 x_0 state_1
+EdKeyboard.isSafe_7::B !_x_0 = case _x_0 (Data.Maybe.Nothing -> False) (Data.Maybe.Just _x_1_0 -> case _x_1_0 (EdActionType.Insert _x_2_0 -> False) (EdActionType.Remove _x_2_0 -> False) ) (_ -> True)
+EdKeyboard.keyDown_6 keyMapping_0 !keyboardState_1 = case keyboardState_1 (StdIOCommon.SpecialKey key_1_0 _x_1_1 _x_1_2 -> case (<{oskey.==_32}> key_1_0 oskey.enterKey) (True -> EdKeyboard.anon_32 StateMonad.nothing) (False -> let maybeAction_3_0 = EdKeyMapping.findAction keyboardState_1 keyMapping_0 in StateMonad.onlyIf (EdKeyboard.isSafe_7 maybeAction_3_0) (EdAction.performAction (Data.Maybe.fromJust maybeAction_3_0))) ) (_ -> EdKeyboard.anon_33 StateMonad.nothing)
+EdKeyboard.keyboard_8 keyMapping_0 _x_1 !_x_2 = case _x_2 (StdIOCommon.SpecialKey _x_1_0 _x_1_1 _x_1_2 -> case _x_1_1 (StdIOCommon.KeyUp -> EdKeyboard.anon_34 StateMonad.nothing) ) (StdIOCommon.CharKey _x_1_0 _x_1_1 -> EdKeyboard.anon_35 StateMonad.nothing) (StdIOCommon.KeyLost -> EdKeyboard.anon_36 StateMonad.nothing) (_ -> EdKeyboard.keyDown_6 keyMapping_0 _x_2)
+EdKeyboard.anon_5 keyMapping_0 !keyboardState_1 !_x_2 = case _x_2 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdKeyboard.keyboard_8 keyMapping_0 autoTab_1_6 keyboardState_1) 
+EdKeyboard.anon_86 !ma_0 keyMapping_1 !keyboardState_2 state_3 = let _x_1_0 = ma_0 state_3 in EdKeyboard.anon_5 keyMapping_1 keyboardState_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdKeyboard.noeditWindowKeyboard keyMapping_0 keyboardState_1 state_2 = EdMonad.noResult (EdKeyboard.anon_86 EdMonad.getFontInfo keyMapping_0 keyboardState_1) state_2
+
+
+|| Converted Records
+:: <{EdKeyboard.gEq_s;}> = {!EdKeyboard.gEq_s}
+
+:: <{EdKeyboard.gEq_ss;}> = {!EdKeyboard.gEq_ss}
+
+:: <{EdKeyboard.gEq_sss;}> = {!EdKeyboard.gEq_sss}
+
+:: <{EdKeyboard.gEq_ssss;}> = {!EdKeyboard.gEq_ssss}
+
+:: <{EdKeyboard.gEq_sssss;}> = {!EdKeyboard.gEq_sssss}
+
+:: <{EdKeyboard.gEq_ssssss;}> = {!EdKeyboard.gEq_ssssss}
+
+:: <{EdKeyboard.gEq_sssssss;}> = {!EdKeyboard.gEq_sssssss}
+
+:: <{EdKeyboard.gEq_ssssssss;}> = {!EdKeyboard.gEq_ssssssss}
+
+:: <{EdKeyboard.gEq_sssssssss;}> = {!EdKeyboard.gEq_sssssssss}
+
+:: <{EdKeyboard.bimap_s;}> = {EdKeyboard.bimap_s}
+
+:: <{EdKeyboard.bimap_ss;}> = {EdKeyboard.bimap_ss}
+
+:: <{EdKeyboard.bimap_sss;}> = {EdKeyboard.bimap_sss}
+

@@ -1,0 +1,42 @@
+|| ?module? messwin
+
+
+messwin.checkDialogExistence id_0 io_1 = let _x_1_0 = StdWindow.getDialogsStack io_1 in _Tuple2 (StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{id.==_27}>)) id_0 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1)
+messwin.level3_5::B !_x_0 = case _x_0 (messwin.Level3 _x_1_0 -> True) (_ -> False)
+messwin.texts_7 info_0 text1_1 text2_2 = let _x_1_0 = <{messwin._c;64;30_51}> info_0 in StdControlDef.LayoutControl (StdIOBasic.ListLS (_predefined._Cons (StdControlDef.TextControl (select _x_1_0::_Tuple3 0) (_predefined._Cons (StdControlDef.ControlWidth (StdControlDef.PixelWidth 250)) (_predefined._Cons (StdControlDef.ControlPos (_Tuple2 StdIOCommon.Left StdIOCommon.zero_32)) (_predefined._Cons (StdControlDef.ControlId text1_1) _predefined._Nil)))) (_predefined._Cons (StdControlDef.TextControl (select _x_1_0::_Tuple3 1) (_predefined._Cons (StdControlDef.ControlWidth (StdControlDef.PixelWidth 250)) (_predefined._Cons (StdControlDef.ControlPos (_Tuple2 StdIOCommon.Left StdIOCommon.zero_32)) (_predefined._Cons (StdControlDef.ControlId text2_2) _predefined._Nil)))) _predefined._Nil))) (_predefined._Cons (StdControlDef.ControlHMargin 0 0) (_predefined._Cons (StdControlDef.ControlVMargin 0 0) (_predefined._Cons (StdControlDef.ControlItemSpace 3 3) _predefined._Nil)))
+<{messwin._c;64;30_51}> !info_0 = case info_0 (messwin.Level1 s_1_0 -> _Tuple3 s_1_0 "" _predefined._Nil) (messwin.Level2 s_1_0 -> _Tuple3 "" s_1_0 _predefined._Nil) (messwin.Level3 l_1_0 -> _Tuple3 "" "" l_1_0) 
+messwin.l3fun_6 !l_0 !ps_1 = errwin.updateErrorWindow l_0 ps_1
+messwin.showInfoInteractive !info_0 !ps_1 = let !_x_1_0 = IdeState.getInterrupt ps_1, !_x_1_1 = IdeState.getInterText (select _x_1_0::_Tuple2 1), _x_1_2 = select _x_1_0::_Tuple2 0, dlog_1_3 = select _x_1_2::_Tuple2 0, ps_1_4 = select _x_1_1::_Tuple2 1, _x_1_5 = StdPSt.accPIO (messwin.checkDialogExistence dlog_1_3) ps_1_4 in case (case (StdBool.not (select _x_1_5::_Tuple2 0)) (True -> StdBool.not (messwin.level3_5 info_0)) (False -> False) ) (True -> let !ok_3_0 = StdControlDef.ButtonControl "Cancel" (_predefined._Cons (StdControlDef.ControlId button_3_7) (_predefined._Cons (StdControlDef.ControlPos (_Tuple2 StdIOCommon.Right StdIOCommon.zero_32)) (_predefined._Cons (StdControlDef.ControlFunction (StdIOBasic.noLS (StdWindow.closeWindow dlog_1_3))) _predefined._Nil))), !content_3_1 = <{StdIOBasic.:+:}> (messwin.texts_7 info_0 (select _x_3_8::_Tuple3 0) (select _x_3_8::_Tuple3 1)) ok_3_0, !_x_3_2 = StdWindow.openDialog_57 (<{StdControlClass.Controls;}> (StdControlClass.controlToHandles_8 Controls_3_4 Controls_3_5) (StdControlClass.getControlType_9 Controls_3_4 Controls_3_5)) StdIOBasic.Void (StdWindowDef.Dialog "Messages" content_3_1 (_predefined._Cons (StdWindowDef.WindowId dlog_1_3) (_predefined._Cons (StdWindowDef.WindowPos (_Tuple2 StdIOCommon.Fix (StdIOCommon.OffsetVector (StdIOBasic._Vector2 200 200)))) (_predefined._Cons (StdWindowDef.WindowClose (StdIOBasic.noLS (StdWindow.closeWindow dlog_1_3))) (_predefined._Cons (StdWindowDef.WindowOk button_3_7) (_predefined._Cons (StdWindowDef.WindowCancel button_3_7) _predefined._Nil)))))) (select _x_3_6::_Tuple2 1), Controls_3_3 = <{StdControlClass.Controls;}> (StdControlClass.controlToHandles_4 (<{StdControlClass.Controls;}> StdControlClass.controlToHandles_30 StdControlClass.getControlType_31)) (StdControlClass.getControlType_5 (<{StdControlClass.Controls;}> StdControlClass.controlToHandles_30 StdControlClass.getControlType_31)), Controls_3_4 = <{StdControlClass.Controls;}> (StdControlClass.controlToHandles_22 Controls_3_3) (StdControlClass.getControlType_23 Controls_3_3), Controls_3_5 = <{StdControlClass.Controls;}> StdControlClass.controlToHandles_10 StdControlClass.getControlType_11, _x_3_6 = StdId.openId_13 (select _x_1_5::_Tuple2 1), button_3_7 = select _x_3_6::_Tuple2 0, _x_3_8 = select _x_1_1::_Tuple2 0 in case (<{StdIOCommon.==_42}> (select _x_3_2::_Tuple2 0) StdIOCommon.NoError) (True -> select _x_3_2::_Tuple2 1) (False -> select _x_3_2::_Tuple2 1) ) (False -> let !ps_3_0 = <{messwin._c;51;13_52}> info_0 _x_1_1 ps_3_1, ps_3_1 = select _x_1_5::_Tuple2 1 in ps_3_0) 
+<{messwin._c;51;13_52}> !info_0 _x_1 !ps_2 = case info_0 (messwin.Level1 txt_1_0 -> let _x_2_0 = select _x_1::_Tuple2 0 in StdPSt.appPIO (StdControl.setControlTexts (_predefined._Cons (_Tuple2 (select _x_2_0::_Tuple3 0) txt_1_0) (_predefined._Cons (_Tuple2 (select _x_2_0::_Tuple3 1) "") _predefined._Nil))) ps_2) (messwin.Level2 txt_1_0 -> StdPSt.appPIO (StdControl.setControlTexts (_predefined._Cons (_Tuple2 (select (select _x_1::_Tuple2 0)::_Tuple3 1) txt_1_0) _predefined._Nil)) ps_2) (messwin.Level3 l_1_0 -> messwin.l3fun_6 l_1_0 ps_2) 
+messwin.showInfo !info_0 !ps_1 = let _x_1_0 = IdeState.getInteract ps_1 in case (StdBool.not (select _x_1_0::_Tuple2 0)) (True -> let ps_3_0 = select _x_1_0::_Tuple2 1 in <{messwin._c;22;11_53}> info_0 ps_3_0) (False -> messwin.showInfoInteractive info_0 (select _x_1_0::_Tuple2 1)) 
+<{messwin._c;22;11_53}> !info_0 ps_1 = case info_0 (messwin.Level1 s_1_0 -> IdeState.writeLog s_1_0 ps_1) (messwin.Level2 s_1_0 -> IdeState.writeLog s_1_0 ps_1) (messwin.Level3 s_1_0 -> StdFunc.seq (StdList.map IdeState.writeLog s_1_0) ps_1) 
+messwin.closeInfo !ps_0 = let _x_1_0 = IdeState.getInterrupt ps_0 in StdWindow.closeWindow (select (select _x_1_0::_Tuple2 0)::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+<{messwin.TD;InfoMessage}> _x_0::B = _predefined._Nil
+
+:: messwin.InfoMessage = messwin.Level1 a1 | messwin.Level2 a1 | messwin.Level3 a1
+
+|| Converted Records
+:: <{messwin.gEq_s;}> = {!messwin.gEq_s}
+
+:: <{messwin.gEq_ss;}> = {!messwin.gEq_ss}
+
+:: <{messwin.gEq_sss;}> = {!messwin.gEq_sss}
+
+:: <{messwin.gEq_ssss;}> = {!messwin.gEq_ssss}
+
+:: <{messwin.gEq_sssss;}> = {!messwin.gEq_sssss}
+
+:: <{messwin.gEq_ssssss;}> = {!messwin.gEq_ssssss}
+
+:: <{messwin.gEq_sssssss;}> = {!messwin.gEq_sssssss}
+
+:: <{messwin.gEq_ssssssss;}> = {!messwin.gEq_ssssssss}
+
+:: <{messwin.gEq_sssssssss;}> = {!messwin.gEq_sssssssss}
+
+:: <{messwin.bimap_s;}> = {messwin.bimap_s}
+
+:: <{messwin.bimap_ss;}> = {messwin.bimap_ss}
+
+:: <{messwin.bimap_sss;}> = {messwin.bimap_sss}
+

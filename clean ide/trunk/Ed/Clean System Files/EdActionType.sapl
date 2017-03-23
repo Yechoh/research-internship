@@ -1,0 +1,56 @@
+|| ?module? EdActionType
+
+
+<{EdActionType.c;93;24_13}> !g_l_0 = <{EdActionType.g_c1;93;36_64}> g_l_0
+<{EdActionType.g_c1;93;36_64}> !g_l_0 = case g_l_0 (_predefined._Cons movement_1_0 g_t_1_1 -> _predefined._Cons (EdActionType.Remove movement_1_0) (<{EdActionType.c;93;24_13}> g_t_1_1)) (_ -> _predefined._Nil)
+<{EdActionType.c;92;24_12}> !g_l_0 = <{EdActionType.g_c1;92;36_65}> g_l_0
+<{EdActionType.g_c1;92;36_65}> !g_l_0 = case g_l_0 (_predefined._Cons movement_1_0 g_t_1_1 -> _predefined._Cons (EdActionType.Scroll movement_1_0) (<{EdActionType.c;92;24_12}> g_t_1_1)) (_ -> _predefined._Nil)
+<{EdActionType.c;91;24_11}> !g_l_0 = <{EdActionType.g_c1;91;36_66}> g_l_0
+<{EdActionType.g_c1;91;36_66}> !g_l_0 = case g_l_0 (_predefined._Cons movement_1_0 g_t_1_1 -> _predefined._Cons (EdActionType.Select movement_1_0) (<{EdActionType.c;91;24_11}> g_t_1_1)) (_ -> _predefined._Nil)
+<{EdActionType.c;90;28_10}> !g_l_0 = <{EdActionType.g_c1;90;40_67}> g_l_0
+<{EdActionType.g_c1;90;40_67}> !g_l_0 = case g_l_0 (_predefined._Cons movement_1_0 g_t_1_1 -> _predefined._Cons (EdActionType.Move movement_1_0) (<{EdActionType.c;90;28_10}> g_t_1_1)) (_ -> _predefined._Nil)
+EdActionType.allActions = <{StdList.++}> (<{EdActionType.c;90;28_10}> EdMovement.allMovements) (<{StdList.++}> (<{EdActionType.c;91;24_11}> EdMovement.allMovements) (<{StdList.++}> (<{EdActionType.c;92;24_12}> (_predefined._Cons EdMovement.PageUp (_predefined._Cons EdMovement.PageDown (_predefined._Cons EdMovement.StartOfText (_predefined._Cons EdMovement.EndOfText _predefined._Nil))))) (<{EdActionType.c;93;24_13}> (_predefined._Cons EdMovement.CharLeft (_predefined._Cons EdMovement.CharRight (_predefined._Cons EdMovement.WordLeft (_predefined._Cons EdMovement.WordRight (_predefined._Cons EdMovement.StartOfLine (_predefined._Cons EdMovement.EndOfLine _predefined._Nil)))))))))
+EdActionType.tosafe !_x_0 = case _x_0 ("" -> "$@") (_ -> case (<{StdChar.==_18}> (_SystemArray.select_19 _x_0 0) '$') (True -> <{StdString.+++_11}> "$!" (<{StdString.%_10}> (EdActionType.tosafe _x_0) (_Tuple2 1 (<{StdInt.-_7}> (_SystemArray.size_20 _x_0) 1)))) (False -> <{StdString.+++_11}> (<{StdString.%_10}> _x_0 (_Tuple2 0 0)) (<{StdString.%_10}> (EdActionType.tosafe _x_0) (_Tuple2 1 (<{StdInt.-_7}> (_SystemArray.size_20 _x_0) 1)))) )
+EdActionType.toStr !_x_0 = case _x_0 (StrictList.SNil -> "") (StrictList.SCons t_1_0 ts_1_1 -> <{StdString.+++_11}> (EdActionType.tosafe t_1_0) (EdActionType.toStr ts_1_1)) 
+EdActionType.hasprefix_9 !_vArray_0 !<{_v%_1}> !<{_v==_2}> p_3 s_4 = let x_1_0::I = <{StdInt.-_7}> (select _vArray_0::<{_SystemArray.Array;}> 4 p_3) 1 in case (select <{_v==_2}>::<{StdOverloaded.==;}> 0 p_3 (select <{_v%_1}>::<{StdOverloaded.%;}> 0 s_4 (_Tuple2 0 x_1_0))) (True -> _Tuple2 True (select <{_v%_1}>::<{StdOverloaded.%;}> 0 s_4 (_Tuple2 (<{StdInt.+_6}> x_1_0 1) (<{StdInt.-_7}> (select _vArray_0::<{_SystemArray.Array;}> 4 s_4) 1)))) (False -> _Tuple2 False s_4) 
+EdActionType.hasprefix_58 !<{_v%_0}> !<{_v==_1}> p_2 s_3 = let x_1_0::I = <{StdInt.-_7}> (_SystemArray.size_20 p_2) 1 in case (select <{_v==_1}>::<{StdOverloaded.==;}> 0 p_2 (select <{_v%_0}>::<{StdOverloaded.%;}> 0 s_3 (_Tuple2 0 x_1_0))) (True -> _Tuple2 True (select <{_v%_0}>::<{StdOverloaded.%;}> 0 s_3 (_Tuple2 (<{StdInt.+_6}> x_1_0 1) (<{StdInt.-_7}> (_SystemArray.size_20 s_3) 1)))) (False -> _Tuple2 False s_3) 
+EdActionType.hasprefix_59 !<{_v==_0}> p_1 s_2 = let x_1_0::I = <{StdInt.-_7}> (_SystemArray.size_20 p_1) 1 in case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 p_1 (<{StdString.%_10}> s_2 (_Tuple2 0 x_1_0))) (True -> _Tuple2 True (<{StdString.%_10}> s_2 (_Tuple2 (<{StdInt.+_6}> x_1_0 1) (<{StdInt.-_7}> (_SystemArray.size_20 s_2) 1)))) (False -> _Tuple2 False s_2) 
+EdActionType.hasprefix_60 !p_0 !s_1 = let x_1_0::I = <{StdInt.-_7}> (_SystemArray.size_20 p_0) 1 in case (<{StdString.==_2}> p_0 (<{StdString.%_10}> s_1 (_Tuple2 0 x_1_0))) (True -> _Tuple2 True (<{StdString.%_10}> s_1 (_Tuple2 (<{StdInt.+_6}> x_1_0 1) (<{StdInt.-_7}> (_SystemArray.size_20 s_1) 1)))) (False -> _Tuple2 False s_1) 
+EdActionType.fromsafe !s_0 = let _x_1_0 = EdActionType.hasprefix_60 "$!" s_0 in case (select _x_1_0::_Tuple2 0) (True -> let _x_3_0 = EdActionType.fromsafe (select _x_1_0::_Tuple2 1) in _Tuple2 (<{StdString.+++_11}> "$" (select _x_3_0::_Tuple2 0)) (select _x_3_0::_Tuple2 1)) (False -> let s_3_0 = select _x_1_0::_Tuple2 1, _x_3_1 = EdActionType.hasprefix_60 "$@" s_3_0 in case (select _x_3_1::_Tuple2 0) (True -> _Tuple2 "" (select _x_3_1::_Tuple2 1)) (False -> let s_5_0 = select _x_3_1::_Tuple2 1, _x_5_1 = EdActionType.fromsafe (<{StdString.%_10}> s_5_0 (_Tuple2 1 (<{StdInt.-_7}> (_SystemArray.size_20 s_5_0) 1))) in _Tuple2 (<{StdString.+++_11}> (<{StdString.%_10}> s_5_0 (_Tuple2 0 0)) (select _x_5_1::_Tuple2 0)) (select _x_5_1::_Tuple2 1)) ) 
+EdActionType.fromStr !_x_0 = case _x_0 ("" -> StrictList.SNil) (_ -> let _x_1_0 = EdActionType.fromsafe _x_0 in StrictList.SCons (select _x_1_0::_Tuple2 0) (EdActionType.fromStr (select _x_1_0::_Tuple2 1)))
+EdActionType.toString_1 !_x_0 = case _x_0 (EdActionType.Move movement_1_0 -> <{StdString.+++_11}> "Move to " (EdMovement.toString_5 movement_1_0)) (EdActionType.Scroll movement_1_0 -> <{StdString.+++_11}> "Scroll to " (EdMovement.toString_5 movement_1_0)) (EdActionType.Select movement_1_0 -> <{StdString.+++_11}> "Select to " (EdMovement.toString_5 movement_1_0)) (EdActionType.Remove movement_1_0 -> <{StdString.+++_11}> "Remove to " (EdMovement.toString_5 movement_1_0)) (EdActionType.Insert fragment_1_0 -> <{StdString.+++_11}> "Insert " (EdActionType.toStr fragment_1_0)) (_ -> "toString (EdAction.icl): unknown action")
+EdActionType.hasprefix_14 !_vArray_0 !<{_v%_1}> !<{_v==_2}> p_3 s_4 = let x_1_0::I = <{StdInt.-_7}> (select _vArray_0::<{_SystemArray.Array;}> 4 p_3) 1 in case (select <{_v==_2}>::<{StdOverloaded.==;}> 0 p_3 (select <{_v%_1}>::<{StdOverloaded.%;}> 0 s_4 (_Tuple2 0 x_1_0))) (True -> _Tuple2 True (select <{_v%_1}>::<{StdOverloaded.%;}> 0 s_4 (_Tuple2 (<{StdInt.+_6}> x_1_0 1) (<{StdInt.-_7}> (select _vArray_0::<{_SystemArray.Array;}> 4 s_4) 1)))) (False -> _Tuple2 False s_4) 
+EdActionType.hasprefix_61 !<{_v%_0}> !<{_v==_1}> p_2 s_3 = let x_1_0::I = <{StdInt.-_7}> (_SystemArray.size_20 p_2) 1 in case (select <{_v==_1}>::<{StdOverloaded.==;}> 0 p_2 (select <{_v%_0}>::<{StdOverloaded.%;}> 0 s_3 (_Tuple2 0 x_1_0))) (True -> _Tuple2 True (select <{_v%_0}>::<{StdOverloaded.%;}> 0 s_3 (_Tuple2 (<{StdInt.+_6}> x_1_0 1) (<{StdInt.-_7}> (_SystemArray.size_20 s_3) 1)))) (False -> _Tuple2 False s_3) 
+EdActionType.hasprefix_62 !<{_v==_0}> p_1 s_2 = let x_1_0::I = <{StdInt.-_7}> (_SystemArray.size_20 p_1) 1 in case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 p_1 (<{StdString.%_10}> s_2 (_Tuple2 0 x_1_0))) (True -> _Tuple2 True (<{StdString.%_10}> s_2 (_Tuple2 (<{StdInt.+_6}> x_1_0 1) (<{StdInt.-_7}> (_SystemArray.size_20 s_2) 1)))) (False -> _Tuple2 False s_2) 
+EdActionType.hasprefix_63 !p_0 !s_1 = let x_1_0::I = <{StdInt.-_7}> (_SystemArray.size_20 p_0) 1 in case (<{StdString.==_2}> p_0 (<{StdString.%_10}> s_1 (_Tuple2 0 x_1_0))) (True -> _Tuple2 True (<{StdString.%_10}> s_1 (_Tuple2 (<{StdInt.+_6}> x_1_0 1) (<{StdInt.-_7}> (_SystemArray.size_20 s_1) 1)))) (False -> _Tuple2 False s_1) 
+EdActionType.fromString_2 !s_0 = let _x_1_0 = EdActionType.hasprefix_63 "Move to " s_0 in case (select _x_1_0::_Tuple2 0) (True -> EdActionType.Move (EdMovement.fromString_6 (select _x_1_0::_Tuple2 1))) (False -> let s_3_0 = select _x_1_0::_Tuple2 1, _x_3_1 = EdActionType.hasprefix_63 "Scroll to " s_3_0 in case (select _x_3_1::_Tuple2 0) (True -> EdActionType.Scroll (EdMovement.fromString_6 (select _x_3_1::_Tuple2 1))) (False -> let s_5_0 = select _x_3_1::_Tuple2 1, _x_5_1 = EdActionType.hasprefix_63 "Select to " s_5_0 in case (select _x_5_1::_Tuple2 0) (True -> EdActionType.Select (EdMovement.fromString_6 (select _x_5_1::_Tuple2 1))) (False -> let s_7_0 = select _x_5_1::_Tuple2 1, _x_7_1 = EdActionType.hasprefix_63 "Remove to " s_7_0 in case (select _x_7_1::_Tuple2 0) (True -> EdActionType.Remove (EdMovement.fromString_6 (select _x_7_1::_Tuple2 1))) (False -> let s_9_0 = select _x_7_1::_Tuple2 1, _x_9_1 = EdActionType.hasprefix_63 "Insert " s_9_0 in case (select _x_9_1::_Tuple2 0) (True -> EdActionType.Insert (EdActionType.fromStr (select _x_9_1::_Tuple2 1))) (False -> EdActionType.Scroll EdMovement.StartOfText) ) ) ) ) 
+<{EdActionType.==_3}>::B !_x_0 !_x_1 = case _x_0 (EdActionType.Move movement_1_0 -> case _x_1 (EdActionType.Move movement`_2_0 -> <{EdMovement.==_4}> movement_1_0 <{movement`_2_0}>) ) (EdActionType.Scroll movement_1_0 -> case _x_1 (EdActionType.Scroll movement`_2_0 -> <{EdMovement.==_4}> movement_1_0 <{movement`_2_0}>) ) (EdActionType.Select movement_1_0 -> case _x_1 (EdActionType.Select movement`_2_0 -> <{EdMovement.==_4}> movement_1_0 <{movement`_2_0}>) ) (EdActionType.Remove movement_1_0 -> case _x_1 (EdActionType.Remove movement`_2_0 -> <{EdMovement.==_4}> movement_1_0 <{movement`_2_0}>) ) (EdActionType.Insert text_1_0 -> case _x_1 (EdActionType.Insert text`_2_0 -> <{StrictList.==_16}> (<{StdOverloaded.==;}> <{StdString.==_2}>) text_1_0 <{text`_2_0}>) ) (_ -> False)
+<{EdActionType.TD;Action}> _x_0::B = _predefined._Nil
+
+:: EdActionType.Action = EdActionType.Move a1 | EdActionType.Insert a1 | EdActionType.Scroll a1 | EdActionType.Select a1 | EdActionType.Remove a1
+
+|| Converted Records
+:: <{EdActionType.gEq_s;}> = {!EdActionType.gEq_s}
+
+:: <{EdActionType.gEq_ss;}> = {!EdActionType.gEq_ss}
+
+:: <{EdActionType.gEq_sss;}> = {!EdActionType.gEq_sss}
+
+:: <{EdActionType.gEq_ssss;}> = {!EdActionType.gEq_ssss}
+
+:: <{EdActionType.gEq_sssss;}> = {!EdActionType.gEq_sssss}
+
+:: <{EdActionType.gEq_ssssss;}> = {!EdActionType.gEq_ssssss}
+
+:: <{EdActionType.gEq_sssssss;}> = {!EdActionType.gEq_sssssss}
+
+:: <{EdActionType.gEq_ssssssss;}> = {!EdActionType.gEq_ssssssss}
+
+:: <{EdActionType.gEq_sssssssss;}> = {!EdActionType.gEq_sssssssss}
+
+:: <{EdActionType.bimap_s;}> = {EdActionType.bimap_s}
+
+:: <{EdActionType.bimap_ss;}> = {EdActionType.bimap_ss}
+
+:: <{EdActionType.bimap_sss;}> = {EdActionType.bimap_sss}
+

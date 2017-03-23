@@ -1,0 +1,79 @@
+|| ?module? EdCommon
+
+
+EdCommon.anon_23 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_22 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_21 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_20 x_0 state_1 = _Tuple2 x_0 state_1
+EdCommon.anon_19 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdCommon.changed_8::B !<{_v==_0}> !_x_1 _x_2 = case _x_1 (Data.Maybe.Nothing -> case _x_2 (Data.Maybe.Nothing -> False) ) (Data.Maybe.Just strl_1_0 -> case _x_2 (Data.Maybe.Just strr_2_0 -> StdBool.not (select <{_v==_0}>::<{StdOverloaded.==;}> 0 strl_1_0 strr_2_0)) ) (_ -> True)
+EdCommon.handlefrag_10 !_x_0 m_1 = case _x_0 (Data.Maybe.Just str_1_0 -> EdMonad.appEnv (StdPSt.appPIO (StdMenuElement.setMenuElementTitles (_predefined._Cons (_Tuple2 (select m_1::IdeState._MenuIds 5) (<{StdString.+++_11}> "Open " (PmPath.MakeDefPathname str_1_0))) (_predefined._Cons (_Tuple2 (select m_1::IdeState._MenuIds 6) (<{StdString.+++_11}> "Open " (PmPath.MakeImpPathname str_1_0))) _predefined._Nil))))) (_ -> EdMonad.appEnv (StdPSt.appPIO (StdMenuElement.setMenuElementTitles (_predefined._Cons (_Tuple2 (select m_1::IdeState._MenuIds 5) "Open Definition...") (_predefined._Cons (_Tuple2 (select m_1::IdeState._MenuIds 6) "Open Implementation...") _predefined._Nil)))))
+EdCommon.changed_77::B !_x_0 _x_1 = case _x_0 (Data.Maybe.Nothing -> case _x_1 (Data.Maybe.Nothing -> False) ) (Data.Maybe.Just strl_1_0 -> case _x_1 (Data.Maybe.Just strr_2_0 -> StdBool.not (<{StdString.==_2}> strl_1_0 strr_2_0)) ) (_ -> True)
+EdCommon.fragaction_4 !mselold_0 m_1 mselnew_2 = case (EdCommon.changed_77 mselold_0 mselnew_2) (True -> EdCommon.anon_19 (EdCommon.handlefrag_10 mselnew_2 m_1) (EdMonad.setMenuSelection mselnew_2)) (False -> EdCommon.anon_20 StateMonad.nothing) 
+EdCommon.dofrag_9 !_x_0 = case _x_0 (StrictList.SCons str_1_0 _x_1_1 -> case _x_1_1 (StrictList.SNil -> case (PmParse.CleanModId str_1_0) (True -> Data.Maybe.Just str_1_0) (False -> Data.Maybe.Nothing) ) ) (_ -> Data.Maybe.Nothing)
+EdCommon.anon_5 newSelection_0 text_1 !mselold_2 m_3 = EdCommon.fragaction_4 mselold_2 m_3 (EdCommon.dofrag_9 (select (EdText.getTextFragment (EdSelection.orderSelection newSelection_0) text_1)::_Tuple2 0))
+EdCommon.anon_78 ma_0 newSelection_1 text_2 !mselold_3 state_4 = let _x_1_0 = ma_0 state_4 in EdCommon.anon_5 newSelection_1 text_2 mselold_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_6 newSelection_0 text_1 mselold_2 = EdCommon.anon_78 (EdMonad.accEnv IdeState.getMenuIds) newSelection_0 text_1 mselold_2
+EdCommon.anon_79 !ma_0 newSelection_1 text_2 state_3 = let _x_1_0 = ma_0 state_3 in EdCommon.anon_6 newSelection_1 text_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_7 newSelection_0 text_1 = EdCommon.anon_79 EdMonad.getMenuSelection newSelection_0 text_1
+EdCommon.anon_80 ma_0 newSelection_1 state_2 = let _x_1_0 = ma_0 state_2 in EdCommon.anon_7 newSelection_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.mChangeSelectionTo newSelection_0 = EdCommon.anon_80 EdMonad.getText newSelection_0
+EdCommon.anon_25 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_24 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdCommon.anon_11 m_0 = EdCommon.anon_24 (EdMonad.appEnv (StdPSt.appPIO (StdMenuElement.setMenuElementTitles (_predefined._Cons (_Tuple2 (select m_0::IdeState._MenuIds 5) "Open Definition...") (_predefined._Cons (_Tuple2 (select m_0::IdeState._MenuIds 6) "Open Implementation...") _predefined._Nil))))) (EdMonad.setMenuSelection Data.Maybe.Nothing)
+EdCommon.anon_81 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdCommon.anon_11 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.mRemoveSelection = EdCommon.anon_81 (EdMonad.accEnv IdeState.getMenuIds)
+EdCommon.anon_33 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_32 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_31 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_30 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_29 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdCommon.anon_28 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdCommon.anon_27 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_26 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_12 shiftDown_0::B pathname_1 string_2 fbi_3 twi_4 window_5 = EdMonad.appEnv (search.sr_find_def_imp_sel False string_2 pathname_1 (update fbi_3::fbi._FindBoxInfo [6:<{EdCommon._if;75;26_90}> shiftDown_0,7:<{EdCommon._if;76;26_91}> (typewin.isTypeWindow window_5 twi_4)]))
+<{EdCommon._if;76;26_91}> !_x_0::B = case _x_0 (True -> fbi.SearchPaths) (_ -> fbi.SearchImports)
+<{EdCommon._if;75;26_90}> !shiftDown_0::B = case shiftDown_0 (True -> PmParse.Implementation) (_ -> PmParse.Definition)
+EdCommon.anon_82 ma_0 shiftDown_1::B pathname_2 string_3 fbi_4 twi_5 state_6 = let _x_1_0 = ma_0 state_6 in EdCommon.anon_12 shiftDown_1 pathname_2 string_3 fbi_4 twi_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_13 shiftDown_0::B pathname_1 string_2 fbi_3 twi_4 = EdCommon.anon_82 EdMonad.getWindowId shiftDown_0 pathname_1 string_2 fbi_3 twi_4
+EdCommon.anon_83 ma_0 shiftDown_1::B pathname_2 string_3 fbi_4 state_5 = let _x_1_0 = ma_0 state_5 in EdCommon.anon_13 shiftDown_1 pathname_2 string_3 fbi_4 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_14 shiftDown_0::B pathname_1 string_2 fbi_3 = EdCommon.anon_83 (EdMonad.accEnv (StdPSt.accPLoc IdeState.getTypeWinInfo_70)) shiftDown_0 pathname_1 string_2 fbi_3
+EdCommon.anon_84 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdCommon.anon_28 ma_0 mb_1 state_3)::_Tuple2 1)
+EdCommon.anon_85 ma_0 mb_1 mb_2 !f_3 state_4 = let _x_1_0 = EdCommon.anon_84 ma_0 mb_1 mb_2 state_4 in f_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_86 ma_0 mb_1 mb_2 shiftDown_3::B pathname_4 string_5 state_6 = let _x_1_0 = EdCommon.anon_84 ma_0 mb_1 mb_2 state_6 in EdCommon.anon_14 shiftDown_3 pathname_4 string_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_15 shiftDown_0::B selection_1 pathname_2 text_3 = EdCommon.anon_86 (EdVisualCursor.vChangeSelectionTo selection_1) (EdMonad.setSelectMode (EdMonad.SelectWords selection_1)) (EdMonad.accEnv IdeState.getFBI) shiftDown_0 pathname_2 (<{EdCommon._c;64;31_92}> (select (EdText.getTextFragment (EdSelection.orderSelection selection_1) text_3)::_Tuple2 0))
+<{EdCommon._c;64;31_92}> !_x_0 = case _x_0 (StrictList.SCons string_1_0 _x_1_1 -> case _x_1_1 (StrictList.SNil -> string_1_0) ) (_ -> "")
+EdCommon.anon_87 ma_0 shiftDown_1::B selection_2 pathname_3 state_4 = let _x_1_0 = ma_0 state_4 in EdCommon.anon_15 shiftDown_1 selection_2 pathname_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_16 shiftDown_0::B selection_1 pathname_2 = EdCommon.anon_87 EdMonad.getText shiftDown_0 selection_1 pathname_2
+EdCommon.anon_88 ma_0 shiftDown_1::B selection_2 state_3 = let _x_1_0 = ma_0 state_3 in EdCommon.anon_16 shiftDown_1 selection_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.anon_17 shiftDown_0::B selection_1 = EdCommon.anon_88 EdMonad.getPathName shiftDown_0 selection_1
+EdCommon.anon_89 ma_0 shiftDown_1::B state_2 = let _x_1_0 = ma_0 state_2 in EdCommon.anon_17 shiftDown_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdCommon.controlDoubleClick !shiftDown_0::B !position_1 = EdCommon.anon_89 (EdMovement.selectWordAt position_1) shiftDown_0
+<{EdCommon.TD;PLocState}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: <{EdCommon.gEq_s;}> = {!EdCommon.gEq_s}
+
+:: <{EdCommon.gEq_ss;}> = {!EdCommon.gEq_ss}
+
+:: <{EdCommon.gEq_sss;}> = {!EdCommon.gEq_sss}
+
+:: <{EdCommon.gEq_ssss;}> = {!EdCommon.gEq_ssss}
+
+:: <{EdCommon.gEq_sssss;}> = {!EdCommon.gEq_sssss}
+
+:: <{EdCommon.gEq_ssssss;}> = {!EdCommon.gEq_ssssss}
+
+:: <{EdCommon.gEq_sssssss;}> = {!EdCommon.gEq_sssssss}
+
+:: <{EdCommon.gEq_ssssssss;}> = {!EdCommon.gEq_ssssssss}
+
+:: <{EdCommon.gEq_sssssssss;}> = {!EdCommon.gEq_sssssssss}
+
+:: <{EdCommon.bimap_s;}> = {EdCommon.bimap_s}
+
+:: <{EdCommon.bimap_ss;}> = {EdCommon.bimap_ss}
+
+:: <{EdCommon.bimap_sss;}> = {EdCommon.bimap_sss}
+

@@ -1,0 +1,870 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "StateMonad" "20170123155353"
+.module m_StateMonad "StateMonad" "20170123155354"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.export e_StateMonad_sTD;StateM
+.export e_StateMonad_eaTD;StateM
+.descexp e_StateMonad_dTD;StateM e_StateMonad_nTD;StateM e_StateMonad_lTD;StateM 1 0 "TD;StateM"
+.o 2 0
+e_StateMonad_lTD;StateM
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StateMonad_eaTD;StateM
+.n 1 e_StateMonad_dTD;StateM e_StateMonad_eaTD;StateM
+.o 1 0
+e_StateMonad_nTD;StateM
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StateMonad_eaTD;StateM
+.o 2 0
+e_StateMonad_sTD;StateM
+.o 2 0
+s9
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StateMonad_sonlyIf
+.export e_StateMonad_eaonlyIf
+.descexp e_StateMonad_donlyIf e_StateMonad_nonlyIf e_StateMonad_lonlyIf 2 0 "onlyIf"
+.a 2 e_StateMonad_eaonlyIf
+.o 2 0
+e_StateMonad_lonlyIf
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StateMonad_eaonlyIf
+.n 2 e_StateMonad_donlyIf e_StateMonad_eaonlyIf
+.o 1 0
+e_StateMonad_nonlyIf
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StateMonad_eaonlyIf
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 2 1 b
+e_StateMonad_sonlyIf
+.o 2 1 b
+s8
+	push_b 0
+	jmp_false else.1
+	pop_b 1
+	jmp_eval_upd
+else.1
+	build e_StateMonad_dnothing 0 e_StateMonad_nnothing
+	fillh d36 1 2
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.desc d36 _hnf l36 2 0 "<lambda>[line:11];14;46"
+.a 0 a36
+.o 2 0
+l36
+	repl_args 1 1
+.o 2 0
+a36
+.o 2 0
+ea36
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.export e_StateMonad_snothing
+.descexp e_StateMonad_dnothing e_StateMonad_nnothing e_StateMonad_lnothing 0 0 "nothing"
+.o 1 0
+e_StateMonad_lnothing
+	halt
+.n 0 e_StateMonad_dnothing _
+.o 1 0
+e_StateMonad_nnothing
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea7
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 0 0
+ea7
+.o 0 0
+e_StateMonad_snothing
+.o 0 0
+s7
+.d 0 0
+	jmp s7
+.o 4 0
+s44
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s48
+.desc d43 _hnf l43 4 0 "<lambda>[line:15];18;53"
+.a 0 a43
+.o 2 0
+l43
+	repl_args 3 3
+.o 4 0
+a43
+.d 4 0
+	jsr ea43
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea43
+	jsr_eval 0
+.o 4 0
+s43
+	push_a 3
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	push_a 3
+	push_a 3
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 1 b
+	jmp s49
+.export e_StateMonad_smWhile
+.export e_StateMonad_eamWhile
+.descexp e_StateMonad_dmWhile e_StateMonad_nmWhile e_StateMonad_lmWhile 2 0 "mWhile"
+.a 2 e_StateMonad_eamWhile
+.o 2 0
+e_StateMonad_lmWhile
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StateMonad_eamWhile
+.n 2 e_StateMonad_dmWhile e_StateMonad_eamWhile
+.o 1 0
+e_StateMonad_nmWhile
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StateMonad_eamWhile
+.o 3 0
+e_StateMonad_smWhile
+.o 3 0
+s6
+	push_a 1
+	push_a 1
+	push_a 2
+	fillh d43 3 5
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+s45
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s50
+.o 2 0
+s31
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s34
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.export e_StateMonad_smmap
+.export e_StateMonad_eammap
+.descexp e_StateMonad_dmmap e_StateMonad_nmmap e_StateMonad_lmmap 2 0 "mmap"
+.a 2 e_StateMonad_eammap
+.o 2 0
+e_StateMonad_lmmap
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StateMonad_eammap
+.n 2 e_StateMonad_dmmap e_StateMonad_eammap
+.o 1 0
+e_StateMonad_nmmap
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StateMonad_eammap
+.o 3 0
+e_StateMonad_smmap
+.o 3 0
+s5
+	push_a 0
+	push_a 2
+	fillh d42 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.desc d42 _hnf l42 3 0 "<lambda>[line:15];18;52"
+.a 0 a42
+.o 2 0
+l42
+	repl_args 2 2
+.o 3 0
+a42
+.d 3 0
+	jsr ea42
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+ea42
+.o 3 0
+s42
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s51
+.o 2 0
+s29
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.desc d40 _hnf l40 3 0 "<lambda>[line:15];18;50"
+.a 0 a40
+.o 2 0
+l40
+	repl_args 2 2
+.o 3 0
+a40
+.d 3 0
+	jsr ea40
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+ea40
+.o 3 0
+s40
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s52
+.export e_StateMonad_ssequence
+.export e_StateMonad_easequence
+.descexp e_StateMonad_dsequence e_StateMonad_nsequence e_StateMonad_lsequence 1 0 "sequence"
+.o 2 0
+e_StateMonad_lsequence
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StateMonad_easequence
+.n 1 e_StateMonad_dsequence e_StateMonad_easequence
+.o 1 0
+e_StateMonad_nsequence
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StateMonad_easequence
+	jsr_eval 0
+.o 2 0
+e_StateMonad_ssequence
+.o 2 0
+s4
+	eq_desc _Nil 0 0
+	jmp_true case.2
+	jmp case.3
+case.2
+	buildh _Nil 0
+	fillh d26 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.3
+	repl_args 2 2
+	push_a 1
+	push_a 1
+	fillh d40 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+s41
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s53
+.o 2 0
+s25
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.desc d26 _hnf l26 2 0 "<lambda>[line:11];14;35"
+.a 0 a26
+.o 2 0
+l26
+	repl_args 1 1
+.o 2 0
+a26
+.o 2 0
+ea26
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.export e_StateMonad_srunState
+.descexp e_StateMonad_drunState e_StateMonad_nrunState e_StateMonad_lrunState 2 0 "runState"
+.a 0 a3
+.o 2 0
+e_StateMonad_lrunState
+	repl_args 1 1
+.o 2 0
+a3
+.d 2 0
+	jsr ea3
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 2 e_StateMonad_drunState
+.o 1 0
+e_StateMonad_nrunState
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea3
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea3
+	jsr_eval 1
+.o 2 0
+e_StateMonad_srunState
+.o 2 0
+s3
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 1
+	repl_args 2 2
+.d 2 0
+	rtn
+.export e_StateMonad_smfoldr
+.export e_StateMonad_eamfoldr
+.descexp e_StateMonad_dmfoldr e_StateMonad_nmfoldr e_StateMonad_lmfoldr 3 0 "mfoldr"
+.a 3 e_StateMonad_eamfoldr
+.o 2 0
+e_StateMonad_lmfoldr
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.d 4 0
+	jmp e_StateMonad_eamfoldr
+.n 3 e_StateMonad_dmfoldr e_StateMonad_eamfoldr
+.o 1 0
+e_StateMonad_nmfoldr
+	push_node _cycle_in_spine 3
+.o 4 0
+e_StateMonad_eamfoldr
+	jsr_eval 2
+.o 4 0
+e_StateMonad_smfoldr
+.o 4 0
+s2
+	eq_desc _Nil 0 2
+	jmp_true case.4
+	jmp case.5
+case.4
+	push_a 1
+	fillh d23 1 4
+	pop_a 3
+.d 1 0
+	rtn
+case.5
+	push_args 2 2 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	push_a 1
+	push_a 4
+	push_a 4
+	build e_StateMonad_dmfoldr 3 e_StateMonad_nmfoldr
+	push_a 1
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d39 3 8
+	pop_a 5
+.d 1 0
+	rtn
+.desc d39 _hnf l39 4 0 "<lambda>[line:15];18;49"
+.a 0 ea39
+.o 2 0
+l39
+	repl_args 3 3
+.o 4 0
+ea39
+	jsr_eval 1
+.o 4 0
+s39
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 8
+	update_a 0 5
+	update_a 0 6
+	update_a 0 9
+	pop_a 1
+.d 3 0
+	jsr s12
+.o 1 0
+	update_a 1 6
+	updatepop_a 0 5
+	jmp_ap 1
+.o 3 0
+s12
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 2
+.desc d23 _hnf l23 2 0 "<lambda>[line:11];14;32"
+.a 0 a23
+.o 2 0
+l23
+	repl_args 1 1
+.o 2 0
+a23
+.o 2 0
+ea23
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.desc d37 _hnf l37 4 0 "<lambda>[line:15];18;47"
+.a 0 a37
+.o 2 0
+l37
+	repl_args 3 3
+.o 4 0
+a37
+.d 4 0
+	jsr ea37
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea37
+.o 4 0
+s37
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s54
+.export e_StateMonad_smapl
+.export e_StateMonad_eamapl
+.descexp e_StateMonad_dmapl e_StateMonad_nmapl e_StateMonad_lmapl 2 0 "mapl"
+.a 2 e_StateMonad_eamapl
+.o 2 0
+e_StateMonad_lmapl
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StateMonad_eamapl
+.n 2 e_StateMonad_dmapl e_StateMonad_eamapl
+.o 1 0
+e_StateMonad_nmapl
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StateMonad_eamapl
+	jsr_eval 1
+.o 3 0
+e_StateMonad_smapl
+.o 3 0
+s1
+	eq_desc _Nil 0 1
+	jmp_true case.6
+	jmp case.7
+case.6
+	buildh _Nil 0
+	fillh d20 1 3
+	pop_a 2
+.d 1 0
+	rtn
+case.7
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	push_a 3
+	build e_system_dAP 2 e_system_nAP
+	push_a 2
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d37 3 7
+	pop_a 4
+.d 1 0
+	rtn
+.o 3 0
+s38
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s55
+.o 2 0
+s19
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.desc d20 _hnf l20 2 0 "<lambda>[line:11];14;29"
+.a 0 a20
+.o 2 0
+l20
+	repl_args 1 1
+.o 2 0
+a20
+.o 2 0
+ea20
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+s48
+	push_a 1
+	push_a 1
+	build e_StateMonad_dmWhile 2 e_StateMonad_nmWhile
+	push_a 4
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s45
+.o 3 1 b
+s49
+	push_b 0
+	jmp_false else.8
+	push_a 2
+	push_a 2
+	push_a 2
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 4 0
+	jmp s44
+else.8
+	buildh _Nil 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	jmp s34
+.o 3 0
+s50
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s31
+.o 3 0
+s51
+	push_a 1
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s29
+.o 3 0
+s52
+	push_a 0
+	build e_StateMonad_dsequence 1 e_StateMonad_nsequence
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s41
+.o 3 0
+s53
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s25
+.o 4 0
+s54
+	push_a 1
+	push_a 1
+	build e_StateMonad_dmapl 2 e_StateMonad_nmapl
+	push_a 4
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s38
+.o 3 0
+s55
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s19

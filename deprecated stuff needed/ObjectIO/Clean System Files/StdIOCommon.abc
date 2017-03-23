@@ -1,0 +1,5586 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdArray" "20170313110416"
+.depend "commondef" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "_SystemArray" "20170313110416"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdReal" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdList" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "StdIOCommon" "20161223204043"
+.module m_StdIOCommon "StdIOCommon" "20161223204043"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod commondef
+.implab e_commondef_sstateMap2
+.impmod id
+.implab e_id_s==;27
+.implab e_id_stoString;30
+.impmod oskey
+.implab e_oskey_s==;32
+.impdesc e_oskey_dtoString;33
+.implab e_oskey_ntoString;33
+.impmod StdPicture
+.impdesc e_StdPicture_dunfill;103
+.implab e_StdPicture_sunfill;103
+.impmod StdIOBasic
+.implab e_StdIOBasic_srectangleSize
+.implab e_StdIOBasic_s==;18
+.implab e_StdIOBasic_szero;21
+.impdesc e_StdIOBasic_dtoString;24
+.implab e_StdIOBasic_ntoString;24
+.impdesc e_StdIOBasic_dtoString;27
+.implab e_StdIOBasic_stoString;27
+.impdesc e_StdIOBasic_rPoint2
+.impdesc e_StdIOBasic_rRectangle
+.impmod StdString
+.implab e_StdString_s==;2
+.impdesc e_StdString_dtoString;5
+.implab e_StdString_stoString;5
+.implab e_StdString_ntoString;5
+.implab e_StdString_stoString;6
+.implab e_StdString_stoString;9
+.implab e_StdString_s+++;11
+.impmod Data.Maybe
+.impdesc e_Data.Maybe_dNothing
+.impdesc e_Data.Maybe_dJust
+.impmod StdChar
+.implab e_StdChar_s==;18
+.impmod StdInt
+.implab e_StdInt_s+;6
+.implab e_StdInt_s-;7
+.implab e_StdInt_s*;9
+.implab e_StdInt_s/;10
+.implab e_StdInt_s^;12
+.implab e_StdInt_sabs;13
+.implab e_StdInt_s==;16
+.implab e_StdInt_stoInt;20
+.impmod StdBool
+.implab e_StdBool_snot
+.implab e_StdBool_s==;3
+.implab e_StdBool_sfromBool;6
+.impmod StdList
+.implab e_StdList_sflatten
+.impdesc e_StdList_dmap
+.implab e_StdList_smap
+.implab e_StdList_nmap e_StdList_eamap
+.implab e_StdList_szip2
+.export e_StdIOCommon_dAble
+.desc0 e_StdIOCommon_dAble 0 "Able"
+.export e_StdIOCommon_dUnable
+.desc0 e_StdIOCommon_dUnable 1 "Unable"
+.export e_StdIOCommon_dMark
+.desc0 e_StdIOCommon_dMark 0 "Mark"
+.export e_StdIOCommon_dNoMark
+.desc0 e_StdIOCommon_dNoMark 1 "NoMark"
+.export e_StdIOCommon_dCharKey
+.desc e_StdIOCommon_dCharKey _hnf _add_arg 2 0 "CharKey"
+.export e_StdIOCommon_dSpecialKey
+.desc e_StdIOCommon_dSpecialKey _hnf _add_arg 3 0 "SpecialKey"
+.export e_StdIOCommon_dKeyLost
+.desc e_StdIOCommon_dKeyLost _hnf _hnf 0 0 "KeyLost"
+.export e_StdIOCommon_dKeyDown
+.desc e_StdIOCommon_dKeyDown _hnf _add_arg 1 0 "KeyDown"
+.export e_StdIOCommon_dKeyUp
+.desc e_StdIOCommon_dKeyUp _hnf _hnf 0 0 "KeyUp"
+.export e_StdIOCommon_dIsCharKey
+.desc e_StdIOCommon_dIsCharKey _hnf _add_arg 1 0 "IsCharKey"
+.export e_StdIOCommon_dIsSpecialKey
+.desc e_StdIOCommon_dIsSpecialKey _hnf _add_arg 1 0 "IsSpecialKey"
+.export e_StdIOCommon_dMouseMove
+.desc e_StdIOCommon_dMouseMove _hnf _add_arg 2 0 "MouseMove"
+.export e_StdIOCommon_dMouseDown
+.desc e_StdIOCommon_dMouseDown _hnf _add_arg 3 0 "MouseDown"
+.export e_StdIOCommon_dMouseDrag
+.desc e_StdIOCommon_dMouseDrag _hnf _add_arg 2 0 "MouseDrag"
+.export e_StdIOCommon_dMouseUp
+.desc e_StdIOCommon_dMouseUp _hnf _add_arg 2 0 "MouseUp"
+.export e_StdIOCommon_dMouseLost
+.desc e_StdIOCommon_dMouseLost _hnf _hnf 0 0 "MouseLost"
+.export e_StdIOCommon_dButtonStillUp
+.desc0 e_StdIOCommon_dButtonStillUp 0 "ButtonStillUp"
+.export e_StdIOCommon_dButtonDown
+.desc0 e_StdIOCommon_dButtonDown 1 "ButtonDown"
+.export e_StdIOCommon_dButtonDoubleDown
+.desc0 e_StdIOCommon_dButtonDoubleDown 2 "ButtonDoubleDown"
+.export e_StdIOCommon_dButtonTripleDown
+.desc0 e_StdIOCommon_dButtonTripleDown 3 "ButtonTripleDown"
+.export e_StdIOCommon_dButtonStillDown
+.desc0 e_StdIOCommon_dButtonStillDown 4 "ButtonStillDown"
+.export e_StdIOCommon_dButtonUp
+.desc0 e_StdIOCommon_dButtonUp 5 "ButtonUp"
+.export e_StdIOCommon_rSliderState
+.record e_StdIOCommon_rSliderState iii 0 3 "SliderState"
+.descexp e_StdIOCommon_tSliderState e_StdIOCommon_cSliderState _hnf 3 1 "SliderState"
+.n 3 e_StdIOCommon_tSliderState
+.o 1 0
+e_StdIOCommon_cSliderState
+	push_node _cycle_in_spine 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 2
+	pushI_a 1
+	pushI_a 0
+	pop_a 3
+.impmod StdIOCommon
+.impdesc e_StdIOCommon_rSliderState
+	fill_r e_StdIOCommon_rSliderState 0 3 0 0 0
+	pop_b 3
+.d 1 0
+	rtn
+.export e_StdIOCommon_dSliderState.sliderMin
+.export e_StdIOCommon_nSliderState.sliderMin
+.descs e_StdIOCommon_dSliderState.sliderMin e_StdIOCommon_nSliderState.sliderMin INT 1 0 "SliderState.sliderMin"
+.n -3 e_StdIOCommon_dSliderState.sliderMin
+.o 1 0
+e_StdIOCommon_nSliderState.sliderMin
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 0 3 1 1
+	pop_a 1
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dSliderState.sliderMax
+.export e_StdIOCommon_nSliderState.sliderMax
+.descs e_StdIOCommon_dSliderState.sliderMax e_StdIOCommon_nSliderState.sliderMax INT 3 0 "SliderState.sliderMax"
+.n -3 e_StdIOCommon_dSliderState.sliderMax
+.o 1 0
+e_StdIOCommon_nSliderState.sliderMax
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 0 3 2 1
+	pop_a 1
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dSliderState.sliderThumb
+.export e_StdIOCommon_nSliderState.sliderThumb
+.descs e_StdIOCommon_dSliderState.sliderThumb e_StdIOCommon_nSliderState.sliderThumb INT 4 0 "SliderState.sliderThumb"
+.n -3 e_StdIOCommon_dSliderState.sliderThumb
+.o 1 0
+e_StdIOCommon_nSliderState.sliderThumb
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 0 3 3 1
+	pop_a 1
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_rUpdateState
+.record e_StdIOCommon_rUpdateState aaa 3 0 "UpdateState"
+.descexp e_StdIOCommon_tUpdateState e_StdIOCommon_cUpdateState _hnf 3 1 "UpdateState"
+.n 3 e_StdIOCommon_tUpdateState
+.o 1 0
+e_StdIOCommon_cUpdateState
+	push_node _cycle_in_spine 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+.impdesc e_StdIOCommon_rUpdateState
+	fill_r e_StdIOCommon_rUpdateState 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.export e_StdIOCommon_dUpdateState.oldFrame
+.export e_StdIOCommon_nUpdateState.oldFrame
+.descs e_StdIOCommon_dUpdateState.oldFrame e_StdIOCommon_nUpdateState.oldFrame _ 1 0 "UpdateState.oldFrame"
+.n -4 e_StdIOCommon_dUpdateState.oldFrame
+.o 1 0
+e_StdIOCommon_nUpdateState.oldFrame
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	repl_r_args_a 3 0 1 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dUpdateState.newFrame
+.export e_StdIOCommon_nUpdateState.newFrame
+.descs e_StdIOCommon_dUpdateState.newFrame e_StdIOCommon_nUpdateState.newFrame _ 3 0 "UpdateState.newFrame"
+.n -4 e_StdIOCommon_dUpdateState.newFrame
+.o 1 0
+e_StdIOCommon_nUpdateState.newFrame
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	repl_r_args_a 3 0 2 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dUpdateState.updArea
+.export e_StdIOCommon_nUpdateState.updArea
+.export e_StdIOCommon_eaUpdateState.updArea
+.descs e_StdIOCommon_dUpdateState.updArea e_StdIOCommon_nUpdateState.updArea _ 4 0 "UpdateState.updArea"
+.n -4 e_StdIOCommon_dUpdateState.updArea e_StdIOCommon_eaUpdateState.updArea
+.o 1 0
+e_StdIOCommon_nUpdateState.updArea
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaUpdateState.updArea
+	jsr_eval 0
+	repl_r_args_a 3 0 3 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_rModifiers
+.record e_StdIOCommon_rModifiers bbbbb 0 5 "Modifiers"
+.descexp e_StdIOCommon_tModifiers e_StdIOCommon_cModifiers _hnf 5 1 "Modifiers"
+.n 5 e_StdIOCommon_tModifiers
+.o 1 0
+e_StdIOCommon_cModifiers
+	push_node _cycle_in_spine 5
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushB_a 4
+	pushB_a 3
+	pushB_a 2
+	pushB_a 1
+	pushB_a 0
+	pop_a 5
+.impdesc e_StdIOCommon_rModifiers
+	fill_r e_StdIOCommon_rModifiers 0 5 0 0 0
+	pop_b 5
+.d 1 0
+	rtn
+.export e_StdIOCommon_dModifiers.shiftDown
+.export e_StdIOCommon_nModifiers.shiftDown
+.descs e_StdIOCommon_dModifiers.shiftDown e_StdIOCommon_nModifiers.shiftDown BOOL 1 0 "Modifiers.shiftDown"
+.n -3 e_StdIOCommon_dModifiers.shiftDown
+.o 1 0
+e_StdIOCommon_nModifiers.shiftDown
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 0 5 1 1
+	pop_a 1
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dModifiers.optionDown
+.export e_StdIOCommon_nModifiers.optionDown
+.descs e_StdIOCommon_dModifiers.optionDown e_StdIOCommon_nModifiers.optionDown BOOL 3 0 "Modifiers.optionDown"
+.n -3 e_StdIOCommon_dModifiers.optionDown
+.o 1 0
+e_StdIOCommon_nModifiers.optionDown
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 0 5 2 1
+	pop_a 1
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dModifiers.commandDown
+.export e_StdIOCommon_nModifiers.commandDown
+.descs e_StdIOCommon_dModifiers.commandDown e_StdIOCommon_nModifiers.commandDown BOOL 4 0 "Modifiers.commandDown"
+.n -3 e_StdIOCommon_dModifiers.commandDown
+.o 1 0
+e_StdIOCommon_nModifiers.commandDown
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 0 5 3 1
+	pop_a 1
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dModifiers.controlDown
+.export e_StdIOCommon_nModifiers.controlDown
+.descs e_StdIOCommon_dModifiers.controlDown e_StdIOCommon_nModifiers.controlDown BOOL 5 0 "Modifiers.controlDown"
+.n -3 e_StdIOCommon_dModifiers.controlDown
+.o 1 0
+e_StdIOCommon_nModifiers.controlDown
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 0 5 4 1
+	pop_a 1
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dModifiers.altDown
+.export e_StdIOCommon_nModifiers.altDown
+.descs e_StdIOCommon_dModifiers.altDown e_StdIOCommon_nModifiers.altDown BOOL 6 0 "Modifiers.altDown"
+.n -3 e_StdIOCommon_dModifiers.altDown
+.o 1 0
+e_StdIOCommon_nModifiers.altDown
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 0 5 5 1
+	pop_a 1
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dFix
+.desc e_StdIOCommon_dFix _hnf _hnf 0 0 "Fix"
+.export e_StdIOCommon_dLeftTop
+.desc e_StdIOCommon_dLeftTop _hnf _hnf 0 0 "LeftTop"
+.export e_StdIOCommon_dRightTop
+.desc e_StdIOCommon_dRightTop _hnf _hnf 0 0 "RightTop"
+.export e_StdIOCommon_dLeftBottom
+.desc e_StdIOCommon_dLeftBottom _hnf _hnf 0 0 "LeftBottom"
+.export e_StdIOCommon_dRightBottom
+.desc e_StdIOCommon_dRightBottom _hnf _hnf 0 0 "RightBottom"
+.export e_StdIOCommon_dLeft
+.desc e_StdIOCommon_dLeft _hnf _hnf 0 0 "Left"
+.export e_StdIOCommon_dCenter
+.desc e_StdIOCommon_dCenter _hnf _hnf 0 0 "Center"
+.export e_StdIOCommon_dRight
+.desc e_StdIOCommon_dRight _hnf _hnf 0 0 "Right"
+.export e_StdIOCommon_dLeftOf
+.desc e_StdIOCommon_dLeftOf _hnf _add_arg 1 0 "LeftOf"
+.export e_StdIOCommon_dRightTo
+.desc e_StdIOCommon_dRightTo _hnf _add_arg 1 0 "RightTo"
+.export e_StdIOCommon_dAbove
+.desc e_StdIOCommon_dAbove _hnf _add_arg 1 0 "Above"
+.export e_StdIOCommon_dBelow
+.desc e_StdIOCommon_dBelow _hnf _add_arg 1 0 "Below"
+.export e_StdIOCommon_dLeftOfPrev
+.desc e_StdIOCommon_dLeftOfPrev _hnf _hnf 0 0 "LeftOfPrev"
+.export e_StdIOCommon_dRightToPrev
+.desc e_StdIOCommon_dRightToPrev _hnf _hnf 0 0 "RightToPrev"
+.export e_StdIOCommon_dAbovePrev
+.desc e_StdIOCommon_dAbovePrev _hnf _hnf 0 0 "AbovePrev"
+.export e_StdIOCommon_dBelowPrev
+.desc e_StdIOCommon_dBelowPrev _hnf _hnf 0 0 "BelowPrev"
+.export e_StdIOCommon_dNoOffset
+.desc e_StdIOCommon_dNoOffset _hnf _hnf 0 0 "NoOffset"
+.export e_StdIOCommon_dOffsetVector
+.desc e_StdIOCommon_dOffsetVector _hnf _add_arg 1 0 "OffsetVector"
+.export e_StdIOCommon_dOffsetAlign
+.desc e_StdIOCommon_dOffsetAlign _hnf _add_arg 1 0 "OffsetAlign"
+.export e_StdIOCommon_dOffsetFun
+.desc e_StdIOCommon_dOffsetFun _hnf _add_arg 2 0 "OffsetFun"
+.export e_StdIOCommon_dAlignLeft
+.desc0 e_StdIOCommon_dAlignLeft 0 "AlignLeft"
+.export e_StdIOCommon_dAlignRight
+.desc0 e_StdIOCommon_dAlignRight 1 "AlignRight"
+.export e_StdIOCommon_dAlignCenter
+.desc0 e_StdIOCommon_dAlignCenter 2 "AlignCenter"
+.export e_StdIOCommon_dAlignTop
+.desc0 e_StdIOCommon_dAlignTop 3 "AlignTop"
+.export e_StdIOCommon_dAlignBottom
+.desc0 e_StdIOCommon_dAlignBottom 4 "AlignBottom"
+.export e_StdIOCommon_dHorizontal
+.desc0 e_StdIOCommon_dHorizontal 0 "Horizontal"
+.export e_StdIOCommon_dVertical
+.desc0 e_StdIOCommon_dVertical 1 "Vertical"
+.export e_StdIOCommon_dStandardCursor
+.desc0 e_StdIOCommon_dStandardCursor 0 "StandardCursor"
+.export e_StdIOCommon_dBusyCursor
+.desc0 e_StdIOCommon_dBusyCursor 1 "BusyCursor"
+.export e_StdIOCommon_dIBeamCursor
+.desc0 e_StdIOCommon_dIBeamCursor 2 "IBeamCursor"
+.export e_StdIOCommon_dCrossCursor
+.desc0 e_StdIOCommon_dCrossCursor 3 "CrossCursor"
+.export e_StdIOCommon_dFatCrossCursor
+.desc0 e_StdIOCommon_dFatCrossCursor 4 "FatCrossCursor"
+.export e_StdIOCommon_dArrowCursor
+.desc0 e_StdIOCommon_dArrowCursor 5 "ArrowCursor"
+.export e_StdIOCommon_dHiddenCursor
+.desc0 e_StdIOCommon_dHiddenCursor 6 "HiddenCursor"
+.export e_StdIOCommon_dNDI
+.desc0 e_StdIOCommon_dNDI 0 "NDI"
+.export e_StdIOCommon_dSDI
+.desc0 e_StdIOCommon_dSDI 1 "SDI"
+.export e_StdIOCommon_dMDI
+.desc0 e_StdIOCommon_dMDI 2 "MDI"
+.export e_StdIOCommon_dProcessActivate
+.desc e_StdIOCommon_dProcessActivate _hnf _add_arg 1 0 "ProcessActivate"
+.export e_StdIOCommon_dProcessDeactivate
+.desc e_StdIOCommon_dProcessDeactivate _hnf _add_arg 1 0 "ProcessDeactivate"
+.export e_StdIOCommon_dProcessClose
+.desc e_StdIOCommon_dProcessClose _hnf _add_arg 1 0 "ProcessClose"
+.export e_StdIOCommon_dProcessOpenFiles
+.desc e_StdIOCommon_dProcessOpenFiles _hnf _add_arg 1 0 "ProcessOpenFiles"
+.export e_StdIOCommon_dProcessClipboardChanged
+.desc e_StdIOCommon_dProcessClipboardChanged _hnf _add_arg 1 0 "ProcessClipboardChanged"
+.export e_StdIOCommon_dProcessWindowPos
+.desc e_StdIOCommon_dProcessWindowPos _hnf _add_arg 1 0 "ProcessWindowPos"
+.export e_StdIOCommon_dProcessWindowSize
+.desc e_StdIOCommon_dProcessWindowSize _hnf _add_arg 1 0 "ProcessWindowSize"
+.export e_StdIOCommon_dProcessWindowResize
+.desc e_StdIOCommon_dProcessWindowResize _hnf _add_arg 1 0 "ProcessWindowResize"
+.export e_StdIOCommon_dProcessToolbar
+.desc e_StdIOCommon_dProcessToolbar _hnf _add_arg 1 0 "ProcessToolbar"
+.export e_StdIOCommon_dProcessNoWindowMenu
+.desc e_StdIOCommon_dProcessNoWindowMenu _hnf _hnf 0 0 "ProcessNoWindowMenu"
+.export e_StdIOCommon_dToolbarItem
+.desc e_StdIOCommon_dToolbarItem _hnf _add_arg 3 0 "ToolbarItem"
+.export e_StdIOCommon_dToolbarSeparator
+.desc e_StdIOCommon_dToolbarSeparator _hnf _hnf 0 0 "ToolbarSeparator"
+.export e_StdIOCommon_dSliderIncSmall
+.desc e_StdIOCommon_dSliderIncSmall _hnf _hnf 0 0 "SliderIncSmall"
+.export e_StdIOCommon_dSliderDecSmall
+.desc e_StdIOCommon_dSliderDecSmall _hnf _hnf 0 0 "SliderDecSmall"
+.export e_StdIOCommon_dSliderIncLarge
+.desc e_StdIOCommon_dSliderIncLarge _hnf _hnf 0 0 "SliderIncLarge"
+.export e_StdIOCommon_dSliderDecLarge
+.desc e_StdIOCommon_dSliderDecLarge _hnf _hnf 0 0 "SliderDecLarge"
+.export e_StdIOCommon_dSliderThumb
+.desc e_StdIOCommon_dSliderThumb _hnf _add_arg 1 0 "SliderThumb"
+.export e_StdIOCommon_eaOtherError
+.descexp e_StdIOCommon_dOtherError e_StdIOCommon_nOtherError e_StdIOCommon_lOtherError 1 0 "OtherError"
+.o 2 0
+e_StdIOCommon_lOtherError
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaOtherError
+.n 1 e_StdIOCommon_dOtherError e_StdIOCommon_eaOtherError
+.o 1 0
+e_StdIOCommon_nOtherError
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaOtherError
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+	fill_r e_StdIOCommon_kOtherError 1 0 1 0 0
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_dNoError
+.desc e_StdIOCommon_dNoError _hnf _hnf 0 0 "NoError"
+.export e_StdIOCommon_dErrorViolateDI
+.desc e_StdIOCommon_dErrorViolateDI _hnf _hnf 0 0 "ErrorViolateDI"
+.export e_StdIOCommon_dErrorIdsInUse
+.desc e_StdIOCommon_dErrorIdsInUse _hnf _hnf 0 0 "ErrorIdsInUse"
+.export e_StdIOCommon_dErrorUnknownObject
+.desc e_StdIOCommon_dErrorUnknownObject _hnf _hnf 0 0 "ErrorUnknownObject"
+.export e_StdIOCommon_dErrorNotifierOpen
+.desc e_StdIOCommon_dErrorNotifierOpen _hnf _hnf 0 0 "ErrorNotifierOpen"
+.export e_StdIOCommon_kOtherError
+.record e_StdIOCommon_kOtherError da 1 0 "OtherError"
+.export e_StdIOCommon_sTD;OkBool
+.export e_StdIOCommon_eaTD;OkBool
+.descexp e_StdIOCommon_dTD;OkBool e_StdIOCommon_nTD;OkBool e_StdIOCommon_lTD;OkBool 1 0 "TD;OkBool"
+.o 2 0
+e_StdIOCommon_lTD;OkBool
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;OkBool
+.n 1 e_StdIOCommon_dTD;OkBool e_StdIOCommon_eaTD;OkBool
+.o 1 0
+e_StdIOCommon_nTD;OkBool
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;OkBool
+.o 2 0
+e_StdIOCommon_sTD;OkBool
+.o 2 0
+s82
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ErrorReport
+.export e_StdIOCommon_eaTD;ErrorReport
+.descexp e_StdIOCommon_dTD;ErrorReport e_StdIOCommon_nTD;ErrorReport e_StdIOCommon_lTD;ErrorReport 1 0 "TD;ErrorReport"
+.o 2 0
+e_StdIOCommon_lTD;ErrorReport
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ErrorReport
+.n 1 e_StdIOCommon_dTD;ErrorReport e_StdIOCommon_eaTD;ErrorReport
+.o 1 0
+e_StdIOCommon_nTD;ErrorReport
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ErrorReport
+.o 2 0
+e_StdIOCommon_sTD;ErrorReport
+.o 2 0
+s81
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;Look
+.export e_StdIOCommon_eaTD;Look
+.descexp e_StdIOCommon_dTD;Look e_StdIOCommon_nTD;Look e_StdIOCommon_lTD;Look 1 0 "TD;Look"
+.o 2 0
+e_StdIOCommon_lTD;Look
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;Look
+.n 1 e_StdIOCommon_dTD;Look e_StdIOCommon_eaTD;Look
+.o 1 0
+e_StdIOCommon_nTD;Look
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;Look
+.o 2 0
+e_StdIOCommon_sTD;Look
+.o 2 0
+s80
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ScrollFunction
+.export e_StdIOCommon_eaTD;ScrollFunction
+.descexp e_StdIOCommon_dTD;ScrollFunction e_StdIOCommon_nTD;ScrollFunction e_StdIOCommon_lTD;ScrollFunction 1 0 "TD;ScrollFunction"
+.o 2 0
+e_StdIOCommon_lTD;ScrollFunction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ScrollFunction
+.n 1 e_StdIOCommon_dTD;ScrollFunction e_StdIOCommon_eaTD;ScrollFunction
+.o 1 0
+e_StdIOCommon_nTD;ScrollFunction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ScrollFunction
+.o 2 0
+e_StdIOCommon_sTD;ScrollFunction
+.o 2 0
+s79
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;SliderMove
+.export e_StdIOCommon_eaTD;SliderMove
+.descexp e_StdIOCommon_dTD;SliderMove e_StdIOCommon_nTD;SliderMove e_StdIOCommon_lTD;SliderMove 1 0 "TD;SliderMove"
+.o 2 0
+e_StdIOCommon_lTD;SliderMove
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;SliderMove
+.n 1 e_StdIOCommon_dTD;SliderMove e_StdIOCommon_eaTD;SliderMove
+.o 1 0
+e_StdIOCommon_nTD;SliderMove
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;SliderMove
+.o 2 0
+e_StdIOCommon_sTD;SliderMove
+.o 2 0
+s78
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;SliderAction
+.export e_StdIOCommon_eaTD;SliderAction
+.descexp e_StdIOCommon_dTD;SliderAction e_StdIOCommon_nTD;SliderAction e_StdIOCommon_lTD;SliderAction 1 0 "TD;SliderAction"
+.o 2 0
+e_StdIOCommon_lTD;SliderAction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;SliderAction
+.n 1 e_StdIOCommon_dTD;SliderAction e_StdIOCommon_eaTD;SliderAction
+.o 1 0
+e_StdIOCommon_nTD;SliderAction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;SliderAction
+.o 2 0
+e_StdIOCommon_sTD;SliderAction
+.o 2 0
+s77
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;KeyboardFunction
+.export e_StdIOCommon_eaTD;KeyboardFunction
+.descexp e_StdIOCommon_dTD;KeyboardFunction e_StdIOCommon_nTD;KeyboardFunction e_StdIOCommon_lTD;KeyboardFunction 1 0 "TD;KeyboardFunction"
+.o 2 0
+e_StdIOCommon_lTD;KeyboardFunction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;KeyboardFunction
+.n 1 e_StdIOCommon_dTD;KeyboardFunction e_StdIOCommon_eaTD;KeyboardFunction
+.o 1 0
+e_StdIOCommon_nTD;KeyboardFunction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;KeyboardFunction
+.o 2 0
+e_StdIOCommon_sTD;KeyboardFunction
+.o 2 0
+s76
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;MouseFunction
+.export e_StdIOCommon_eaTD;MouseFunction
+.descexp e_StdIOCommon_dTD;MouseFunction e_StdIOCommon_nTD;MouseFunction e_StdIOCommon_lTD;MouseFunction 1 0 "TD;MouseFunction"
+.o 2 0
+e_StdIOCommon_lTD;MouseFunction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;MouseFunction
+.n 1 e_StdIOCommon_dTD;MouseFunction e_StdIOCommon_eaTD;MouseFunction
+.o 1 0
+e_StdIOCommon_nTD;MouseFunction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;MouseFunction
+.o 2 0
+e_StdIOCommon_sTD;MouseFunction
+.o 2 0
+s75
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ModifiersFunction
+.export e_StdIOCommon_eaTD;ModifiersFunction
+.descexp e_StdIOCommon_dTD;ModifiersFunction e_StdIOCommon_nTD;ModifiersFunction e_StdIOCommon_lTD;ModifiersFunction 1 0 "TD;ModifiersFunction"
+.o 2 0
+e_StdIOCommon_lTD;ModifiersFunction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ModifiersFunction
+.n 1 e_StdIOCommon_dTD;ModifiersFunction e_StdIOCommon_eaTD;ModifiersFunction
+.o 1 0
+e_StdIOCommon_nTD;ModifiersFunction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ModifiersFunction
+.o 2 0
+e_StdIOCommon_sTD;ModifiersFunction
+.o 2 0
+s74
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ToolbarItem
+.export e_StdIOCommon_eaTD;ToolbarItem
+.descexp e_StdIOCommon_dTD;ToolbarItem e_StdIOCommon_nTD;ToolbarItem e_StdIOCommon_lTD;ToolbarItem 1 0 "TD;ToolbarItem"
+.o 2 0
+e_StdIOCommon_lTD;ToolbarItem
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ToolbarItem
+.n 1 e_StdIOCommon_dTD;ToolbarItem e_StdIOCommon_eaTD;ToolbarItem
+.o 1 0
+e_StdIOCommon_nTD;ToolbarItem
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ToolbarItem
+.o 2 0
+e_StdIOCommon_sTD;ToolbarItem
+.o 2 0
+s73
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ProcessOpenFilesFunction
+.export e_StdIOCommon_eaTD;ProcessOpenFilesFunction
+.descexp e_StdIOCommon_dTD;ProcessOpenFilesFunction e_StdIOCommon_nTD;ProcessOpenFilesFunction e_StdIOCommon_lTD;ProcessOpenFilesFunction 1 0 "TD;ProcessOpenFilesFunction"
+.o 2 0
+e_StdIOCommon_lTD;ProcessOpenFilesFunction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ProcessOpenFilesFunction
+.n 1 e_StdIOCommon_dTD;ProcessOpenFilesFunction e_StdIOCommon_eaTD;ProcessOpenFilesFunction
+.o 1 0
+e_StdIOCommon_nTD;ProcessOpenFilesFunction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ProcessOpenFilesFunction
+.o 2 0
+e_StdIOCommon_sTD;ProcessOpenFilesFunction
+.o 2 0
+s72
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ProcessWindowResizeFunction
+.export e_StdIOCommon_eaTD;ProcessWindowResizeFunction
+.descexp e_StdIOCommon_dTD;ProcessWindowResizeFunction e_StdIOCommon_nTD;ProcessWindowResizeFunction e_StdIOCommon_lTD;ProcessWindowResizeFunction 1 0 "TD;ProcessWindowResizeFunction"
+.o 2 0
+e_StdIOCommon_lTD;ProcessWindowResizeFunction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ProcessWindowResizeFunction
+.n 1 e_StdIOCommon_dTD;ProcessWindowResizeFunction e_StdIOCommon_eaTD;ProcessWindowResizeFunction
+.o 1 0
+e_StdIOCommon_nTD;ProcessWindowResizeFunction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ProcessWindowResizeFunction
+.o 2 0
+e_StdIOCommon_sTD;ProcessWindowResizeFunction
+.o 2 0
+s71
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ProcessAttribute
+.export e_StdIOCommon_eaTD;ProcessAttribute
+.descexp e_StdIOCommon_dTD;ProcessAttribute e_StdIOCommon_nTD;ProcessAttribute e_StdIOCommon_lTD;ProcessAttribute 1 0 "TD;ProcessAttribute"
+.o 2 0
+e_StdIOCommon_lTD;ProcessAttribute
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ProcessAttribute
+.n 1 e_StdIOCommon_dTD;ProcessAttribute e_StdIOCommon_eaTD;ProcessAttribute
+.o 1 0
+e_StdIOCommon_nTD;ProcessAttribute
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ProcessAttribute
+.o 2 0
+e_StdIOCommon_sTD;ProcessAttribute
+.o 2 0
+s70
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;DocumentInterface
+.export e_StdIOCommon_eaTD;DocumentInterface
+.descexp e_StdIOCommon_dTD;DocumentInterface e_StdIOCommon_nTD;DocumentInterface e_StdIOCommon_lTD;DocumentInterface 1 0 "TD;DocumentInterface"
+.o 2 0
+e_StdIOCommon_lTD;DocumentInterface
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;DocumentInterface
+.n 1 e_StdIOCommon_dTD;DocumentInterface e_StdIOCommon_eaTD;DocumentInterface
+.o 1 0
+e_StdIOCommon_nTD;DocumentInterface
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;DocumentInterface
+.o 2 0
+e_StdIOCommon_sTD;DocumentInterface
+.o 2 0
+s69
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;CursorShape
+.export e_StdIOCommon_eaTD;CursorShape
+.descexp e_StdIOCommon_dTD;CursorShape e_StdIOCommon_nTD;CursorShape e_StdIOCommon_lTD;CursorShape 1 0 "TD;CursorShape"
+.o 2 0
+e_StdIOCommon_lTD;CursorShape
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;CursorShape
+.n 1 e_StdIOCommon_dTD;CursorShape e_StdIOCommon_eaTD;CursorShape
+.o 1 0
+e_StdIOCommon_nTD;CursorShape
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;CursorShape
+.o 2 0
+e_StdIOCommon_sTD;CursorShape
+.o 2 0
+s68
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;Direction
+.export e_StdIOCommon_eaTD;Direction
+.descexp e_StdIOCommon_dTD;Direction e_StdIOCommon_nTD;Direction e_StdIOCommon_lTD;Direction 1 0 "TD;Direction"
+.o 2 0
+e_StdIOCommon_lTD;Direction
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;Direction
+.n 1 e_StdIOCommon_dTD;Direction e_StdIOCommon_eaTD;Direction
+.o 1 0
+e_StdIOCommon_nTD;Direction
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;Direction
+.o 2 0
+e_StdIOCommon_sTD;Direction
+.o 2 0
+s67
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;OffsetFun
+.export e_StdIOCommon_eaTD;OffsetFun
+.descexp e_StdIOCommon_dTD;OffsetFun e_StdIOCommon_nTD;OffsetFun e_StdIOCommon_lTD;OffsetFun 1 0 "TD;OffsetFun"
+.o 2 0
+e_StdIOCommon_lTD;OffsetFun
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;OffsetFun
+.n 1 e_StdIOCommon_dTD;OffsetFun e_StdIOCommon_eaTD;OffsetFun
+.o 1 0
+e_StdIOCommon_nTD;OffsetFun
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;OffsetFun
+.o 2 0
+e_StdIOCommon_sTD;OffsetFun
+.o 2 0
+s66
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ParentIndex
+.export e_StdIOCommon_eaTD;ParentIndex
+.descexp e_StdIOCommon_dTD;ParentIndex e_StdIOCommon_nTD;ParentIndex e_StdIOCommon_lTD;ParentIndex 1 0 "TD;ParentIndex"
+.o 2 0
+e_StdIOCommon_lTD;ParentIndex
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ParentIndex
+.n 1 e_StdIOCommon_dTD;ParentIndex e_StdIOCommon_eaTD;ParentIndex
+.o 1 0
+e_StdIOCommon_nTD;ParentIndex
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ParentIndex
+.o 2 0
+e_StdIOCommon_sTD;ParentIndex
+.o 2 0
+s65
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;Alignment
+.export e_StdIOCommon_eaTD;Alignment
+.descexp e_StdIOCommon_dTD;Alignment e_StdIOCommon_nTD;Alignment e_StdIOCommon_lTD;Alignment 1 0 "TD;Alignment"
+.o 2 0
+e_StdIOCommon_lTD;Alignment
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;Alignment
+.n 1 e_StdIOCommon_dTD;Alignment e_StdIOCommon_eaTD;Alignment
+.o 1 0
+e_StdIOCommon_nTD;Alignment
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;Alignment
+.o 2 0
+e_StdIOCommon_sTD;Alignment
+.o 2 0
+s64
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ItemOffset
+.export e_StdIOCommon_eaTD;ItemOffset
+.descexp e_StdIOCommon_dTD;ItemOffset e_StdIOCommon_nTD;ItemOffset e_StdIOCommon_lTD;ItemOffset 1 0 "TD;ItemOffset"
+.o 2 0
+e_StdIOCommon_lTD;ItemOffset
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ItemOffset
+.n 1 e_StdIOCommon_dTD;ItemOffset e_StdIOCommon_eaTD;ItemOffset
+.o 1 0
+e_StdIOCommon_nTD;ItemOffset
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ItemOffset
+.o 2 0
+e_StdIOCommon_sTD;ItemOffset
+.o 2 0
+s63
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ItemLoc
+.export e_StdIOCommon_eaTD;ItemLoc
+.descexp e_StdIOCommon_dTD;ItemLoc e_StdIOCommon_nTD;ItemLoc e_StdIOCommon_lTD;ItemLoc 1 0 "TD;ItemLoc"
+.o 2 0
+e_StdIOCommon_lTD;ItemLoc
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ItemLoc
+.n 1 e_StdIOCommon_dTD;ItemLoc e_StdIOCommon_eaTD;ItemLoc
+.o 1 0
+e_StdIOCommon_nTD;ItemLoc
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ItemLoc
+.o 2 0
+e_StdIOCommon_sTD;ItemLoc
+.o 2 0
+s62
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ItemPos
+.export e_StdIOCommon_eaTD;ItemPos
+.descexp e_StdIOCommon_dTD;ItemPos e_StdIOCommon_nTD;ItemPos e_StdIOCommon_lTD;ItemPos 1 0 "TD;ItemPos"
+.o 2 0
+e_StdIOCommon_lTD;ItemPos
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ItemPos
+.n 1 e_StdIOCommon_dTD;ItemPos e_StdIOCommon_eaTD;ItemPos
+.o 1 0
+e_StdIOCommon_nTD;ItemPos
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ItemPos
+.o 2 0
+e_StdIOCommon_sTD;ItemPos
+.o 2 0
+s61
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;Modifiers
+.export e_StdIOCommon_eaTD;Modifiers
+.descexp e_StdIOCommon_dTD;Modifiers e_StdIOCommon_nTD;Modifiers e_StdIOCommon_lTD;Modifiers 1 0 "TD;Modifiers"
+.o 2 0
+e_StdIOCommon_lTD;Modifiers
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;Modifiers
+.n 1 e_StdIOCommon_dTD;Modifiers e_StdIOCommon_eaTD;Modifiers
+.o 1 0
+e_StdIOCommon_nTD;Modifiers
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;Modifiers
+.o 2 0
+e_StdIOCommon_sTD;Modifiers
+.o 2 0
+s60
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;UpdateArea
+.export e_StdIOCommon_eaTD;UpdateArea
+.descexp e_StdIOCommon_dTD;UpdateArea e_StdIOCommon_nTD;UpdateArea e_StdIOCommon_lTD;UpdateArea 1 0 "TD;UpdateArea"
+.o 2 0
+e_StdIOCommon_lTD;UpdateArea
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;UpdateArea
+.n 1 e_StdIOCommon_dTD;UpdateArea e_StdIOCommon_eaTD;UpdateArea
+.o 1 0
+e_StdIOCommon_nTD;UpdateArea
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;UpdateArea
+.o 2 0
+e_StdIOCommon_sTD;UpdateArea
+.o 2 0
+s59
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ViewFrame
+.export e_StdIOCommon_eaTD;ViewFrame
+.descexp e_StdIOCommon_dTD;ViewFrame e_StdIOCommon_nTD;ViewFrame e_StdIOCommon_lTD;ViewFrame 1 0 "TD;ViewFrame"
+.o 2 0
+e_StdIOCommon_lTD;ViewFrame
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ViewFrame
+.n 1 e_StdIOCommon_dTD;ViewFrame e_StdIOCommon_eaTD;ViewFrame
+.o 1 0
+e_StdIOCommon_nTD;ViewFrame
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ViewFrame
+.o 2 0
+e_StdIOCommon_sTD;ViewFrame
+.o 2 0
+s58
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ViewDomain
+.export e_StdIOCommon_eaTD;ViewDomain
+.descexp e_StdIOCommon_dTD;ViewDomain e_StdIOCommon_nTD;ViewDomain e_StdIOCommon_lTD;ViewDomain 1 0 "TD;ViewDomain"
+.o 2 0
+e_StdIOCommon_lTD;ViewDomain
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ViewDomain
+.n 1 e_StdIOCommon_dTD;ViewDomain e_StdIOCommon_eaTD;ViewDomain
+.o 1 0
+e_StdIOCommon_nTD;ViewDomain
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ViewDomain
+.o 2 0
+e_StdIOCommon_sTD;ViewDomain
+.o 2 0
+s57
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;UpdateState
+.export e_StdIOCommon_eaTD;UpdateState
+.descexp e_StdIOCommon_dTD;UpdateState e_StdIOCommon_nTD;UpdateState e_StdIOCommon_lTD;UpdateState 1 0 "TD;UpdateState"
+.o 2 0
+e_StdIOCommon_lTD;UpdateState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;UpdateState
+.n 1 e_StdIOCommon_dTD;UpdateState e_StdIOCommon_eaTD;UpdateState
+.o 1 0
+e_StdIOCommon_nTD;UpdateState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;UpdateState
+.o 2 0
+e_StdIOCommon_sTD;UpdateState
+.o 2 0
+s56
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;SliderState
+.export e_StdIOCommon_eaTD;SliderState
+.descexp e_StdIOCommon_dTD;SliderState e_StdIOCommon_nTD;SliderState e_StdIOCommon_lTD;SliderState 1 0 "TD;SliderState"
+.o 2 0
+e_StdIOCommon_lTD;SliderState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;SliderState
+.n 1 e_StdIOCommon_dTD;SliderState e_StdIOCommon_eaTD;SliderState
+.o 1 0
+e_StdIOCommon_nTD;SliderState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;SliderState
+.o 2 0
+e_StdIOCommon_sTD;SliderState
+.o 2 0
+s55
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;MouseStateFilter
+.export e_StdIOCommon_eaTD;MouseStateFilter
+.descexp e_StdIOCommon_dTD;MouseStateFilter e_StdIOCommon_nTD;MouseStateFilter e_StdIOCommon_lTD;MouseStateFilter 1 0 "TD;MouseStateFilter"
+.o 2 0
+e_StdIOCommon_lTD;MouseStateFilter
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;MouseStateFilter
+.n 1 e_StdIOCommon_dTD;MouseStateFilter e_StdIOCommon_eaTD;MouseStateFilter
+.o 1 0
+e_StdIOCommon_nTD;MouseStateFilter
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;MouseStateFilter
+.o 2 0
+e_StdIOCommon_sTD;MouseStateFilter
+.o 2 0
+s54
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;ButtonState
+.export e_StdIOCommon_eaTD;ButtonState
+.descexp e_StdIOCommon_dTD;ButtonState e_StdIOCommon_nTD;ButtonState e_StdIOCommon_lTD;ButtonState 1 0 "TD;ButtonState"
+.o 2 0
+e_StdIOCommon_lTD;ButtonState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;ButtonState
+.n 1 e_StdIOCommon_dTD;ButtonState e_StdIOCommon_eaTD;ButtonState
+.o 1 0
+e_StdIOCommon_nTD;ButtonState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;ButtonState
+.o 2 0
+e_StdIOCommon_sTD;ButtonState
+.o 2 0
+s53
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;MouseState
+.export e_StdIOCommon_eaTD;MouseState
+.descexp e_StdIOCommon_dTD;MouseState e_StdIOCommon_nTD;MouseState e_StdIOCommon_lTD;MouseState 1 0 "TD;MouseState"
+.o 2 0
+e_StdIOCommon_lTD;MouseState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;MouseState
+.n 1 e_StdIOCommon_dTD;MouseState e_StdIOCommon_eaTD;MouseState
+.o 1 0
+e_StdIOCommon_nTD;MouseState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;MouseState
+.o 2 0
+e_StdIOCommon_sTD;MouseState
+.o 2 0
+s52
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;KeyboardStateFilter
+.export e_StdIOCommon_eaTD;KeyboardStateFilter
+.descexp e_StdIOCommon_dTD;KeyboardStateFilter e_StdIOCommon_nTD;KeyboardStateFilter e_StdIOCommon_lTD;KeyboardStateFilter 1 0 "TD;KeyboardStateFilter"
+.o 2 0
+e_StdIOCommon_lTD;KeyboardStateFilter
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;KeyboardStateFilter
+.n 1 e_StdIOCommon_dTD;KeyboardStateFilter e_StdIOCommon_eaTD;KeyboardStateFilter
+.o 1 0
+e_StdIOCommon_nTD;KeyboardStateFilter
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;KeyboardStateFilter
+.o 2 0
+e_StdIOCommon_sTD;KeyboardStateFilter
+.o 2 0
+s51
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;Key
+.export e_StdIOCommon_eaTD;Key
+.descexp e_StdIOCommon_dTD;Key e_StdIOCommon_nTD;Key e_StdIOCommon_lTD;Key 1 0 "TD;Key"
+.o 2 0
+e_StdIOCommon_lTD;Key
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;Key
+.n 1 e_StdIOCommon_dTD;Key e_StdIOCommon_eaTD;Key
+.o 1 0
+e_StdIOCommon_nTD;Key
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;Key
+.o 2 0
+e_StdIOCommon_sTD;Key
+.o 2 0
+s50
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;IsRepeatKey
+.export e_StdIOCommon_eaTD;IsRepeatKey
+.descexp e_StdIOCommon_dTD;IsRepeatKey e_StdIOCommon_nTD;IsRepeatKey e_StdIOCommon_lTD;IsRepeatKey 1 0 "TD;IsRepeatKey"
+.o 2 0
+e_StdIOCommon_lTD;IsRepeatKey
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;IsRepeatKey
+.n 1 e_StdIOCommon_dTD;IsRepeatKey e_StdIOCommon_eaTD;IsRepeatKey
+.o 1 0
+e_StdIOCommon_nTD;IsRepeatKey
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;IsRepeatKey
+.o 2 0
+e_StdIOCommon_sTD;IsRepeatKey
+.o 2 0
+s49
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;KeyState
+.export e_StdIOCommon_eaTD;KeyState
+.descexp e_StdIOCommon_dTD;KeyState e_StdIOCommon_nTD;KeyState e_StdIOCommon_lTD;KeyState 1 0 "TD;KeyState"
+.o 2 0
+e_StdIOCommon_lTD;KeyState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;KeyState
+.n 1 e_StdIOCommon_dTD;KeyState e_StdIOCommon_eaTD;KeyState
+.o 1 0
+e_StdIOCommon_nTD;KeyState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;KeyState
+.o 2 0
+e_StdIOCommon_sTD;KeyState
+.o 2 0
+s48
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;KeyboardState
+.export e_StdIOCommon_eaTD;KeyboardState
+.descexp e_StdIOCommon_dTD;KeyboardState e_StdIOCommon_nTD;KeyboardState e_StdIOCommon_lTD;KeyboardState 1 0 "TD;KeyboardState"
+.o 2 0
+e_StdIOCommon_lTD;KeyboardState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;KeyboardState
+.n 1 e_StdIOCommon_dTD;KeyboardState e_StdIOCommon_eaTD;KeyboardState
+.o 1 0
+e_StdIOCommon_nTD;KeyboardState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;KeyboardState
+.o 2 0
+e_StdIOCommon_sTD;KeyboardState
+.o 2 0
+s47
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;MarkState
+.export e_StdIOCommon_eaTD;MarkState
+.descexp e_StdIOCommon_dTD;MarkState e_StdIOCommon_nTD;MarkState e_StdIOCommon_lTD;MarkState 1 0 "TD;MarkState"
+.o 2 0
+e_StdIOCommon_lTD;MarkState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;MarkState
+.n 1 e_StdIOCommon_dTD;MarkState e_StdIOCommon_eaTD;MarkState
+.o 1 0
+e_StdIOCommon_nTD;MarkState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;MarkState
+.o 2 0
+e_StdIOCommon_sTD;MarkState
+.o 2 0
+s46
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sTD;SelectState
+.export e_StdIOCommon_eaTD;SelectState
+.descexp e_StdIOCommon_dTD;SelectState e_StdIOCommon_nTD;SelectState e_StdIOCommon_lTD;SelectState 1 0 "TD;SelectState"
+.o 2 0
+e_StdIOCommon_lTD;SelectState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eaTD;SelectState
+.n 1 e_StdIOCommon_dTD;SelectState e_StdIOCommon_eaTD;SelectState
+.o 1 0
+e_StdIOCommon_nTD;SelectState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eaTD;SelectState
+.o 2 0
+e_StdIOCommon_sTD;SelectState
+.o 2 0
+s45
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_stoString;43
+.descexp e_StdIOCommon_dtoString;43 e_StdIOCommon_ntoString;43 e_StdIOCommon_ltoString;43 1 0 "toString;43"
+.o 2 0
+e_StdIOCommon_ltoString;43
+	pop_a 1
+.d 1 0
+	jsr ea44
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;43
+.o 1 0
+e_StdIOCommon_ntoString;43
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea44
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea44
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;43
+.o 1 0
+s44
+	pushD_a 0
+	eqD_b e_StdIOCommon_dNoError 0
+	jmp_true case.1
+	eqD_b e_StdIOCommon_dErrorViolateDI 0
+	jmp_true case.2
+	eqD_b e_StdIOCommon_dErrorIdsInUse 0
+	jmp_true case.3
+	eqD_b e_StdIOCommon_dErrorUnknownObject 0
+	jmp_true case.4
+	eqD_b e_StdIOCommon_dErrorNotifierOpen 0
+	jmp_true case.5
+	jmp case.6
+case.1
+	pop_b 1
+	pop_a 1
+	buildAC "NoError"
+.d 1 0
+	rtn
+case.2
+	pop_b 1
+	pop_a 1
+	buildAC "ErrorViolateDI"
+.d 1 0
+	rtn
+case.3
+	pop_b 1
+	pop_a 1
+	buildAC "ErrorIdsInUse"
+.d 1 0
+	rtn
+case.4
+	pop_b 1
+	pop_a 1
+	buildAC "ErrorUnknownObject"
+.d 1 0
+	rtn
+case.5
+	pop_b 1
+	pop_a 1
+	buildAC "ErrorNotifierOpen"
+.d 1 0
+	rtn
+case.6
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	no_op
+	buildAC "OtherError "
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+.export e_StdIOCommon_s==;42
+.descexp e_StdIOCommon_d==;42 e_StdIOCommon_n==;42 e_StdIOCommon_l==;42 2 0 "==;42"
+.a 0 a43
+.o 2 0
+e_StdIOCommon_l==;42
+	repl_args 1 1
+.o 2 0
+a43
+.d 2 0
+	jsr ea43
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;42
+.o 1 0
+e_StdIOCommon_n==;42
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea43
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea43
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;42
+.o 2 0
+s43
+	pushD_a 0
+	eqD_b e_StdIOCommon_dNoError 0
+	jmp_true case.7
+	eqD_b e_StdIOCommon_dErrorViolateDI 0
+	jmp_true case.8
+	eqD_b e_StdIOCommon_dErrorIdsInUse 0
+	jmp_true case.9
+	eqD_b e_StdIOCommon_dErrorUnknownObject 0
+	jmp_true case.10
+	eqD_b e_StdIOCommon_dErrorNotifierOpen 0
+	jmp_true case.11
+	jmp case.12
+case.7
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dNoError 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.8
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dErrorViolateDI 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.9
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dErrorIdsInUse 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.10
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dErrorUnknownObject 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.11
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dErrorNotifierOpen 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.12
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s148
+.o 2 0
+s148
+	eq_desc e_StdIOCommon_kOtherError 0 0
+	jmp_true case.13
+	jmp case.14
+case.13
+	repl_args 1 1
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+.d 0 1 b
+	rtn
+case.14
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_stoString;41
+.descexp e_StdIOCommon_dtoString;41 e_StdIOCommon_ntoString;41 e_StdIOCommon_ltoString;41 1 0 "toString;41"
+.o 2 0
+e_StdIOCommon_ltoString;41
+	pop_a 1
+.d 1 0
+	jsr ea42
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;41
+.o 1 0
+e_StdIOCommon_ntoString;41
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea42
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea42
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;41
+.o 1 0
+s42
+	pushD_a 0
+	eqD_b e_StdIOCommon_dSliderIncSmall 0
+	jmp_true case.15
+	eqD_b e_StdIOCommon_dSliderDecSmall 0
+	jmp_true case.16
+	eqD_b e_StdIOCommon_dSliderIncLarge 0
+	jmp_true case.17
+	eqD_b e_StdIOCommon_dSliderDecLarge 0
+	jmp_true case.18
+	jmp case.19
+case.15
+	pop_b 1
+	pop_a 1
+	buildAC "SliderIncSmall"
+.d 1 0
+	rtn
+case.16
+	pop_b 1
+	pop_a 1
+	buildAC "SliderDecSmall"
+.d 1 0
+	rtn
+case.17
+	pop_b 1
+	pop_a 1
+	buildAC "SliderIncLarge"
+.d 1 0
+	rtn
+case.18
+	pop_b 1
+	pop_a 1
+	buildAC "SliderDecLarge"
+.d 1 0
+	rtn
+case.19
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+	buildAC "SliderThumb "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+.export e_StdIOCommon_stoString;40
+.descexp e_StdIOCommon_dtoString;40 e_StdIOCommon_ntoString;40 e_StdIOCommon_ltoString;40 1 0 "toString;40"
+.o 2 0
+e_StdIOCommon_ltoString;40
+	pop_a 1
+.d 1 0
+	jsr ea41
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;40
+.o 1 0
+e_StdIOCommon_ntoString;40
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea41
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea41
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;40
+.o 1 0
+s41
+	pushD_a 0
+	eqD_b e_StdIOCommon_dNDI 0
+	jmp_true case.20
+	eqD_b e_StdIOCommon_dSDI 0
+	jmp_true case.21
+	jmp case.22
+case.20
+	pop_b 1
+	pop_a 1
+	buildAC "NDI"
+.d 1 0
+	rtn
+case.21
+	pop_b 1
+	pop_a 1
+	buildAC "SDI"
+.d 1 0
+	rtn
+case.22
+	pop_b 1
+	pop_a 1
+	buildAC "MDI"
+.d 1 0
+	rtn
+.export e_StdIOCommon_s==;39
+.descexp e_StdIOCommon_d==;39 e_StdIOCommon_n==;39 e_StdIOCommon_l==;39 2 0 "==;39"
+.a 0 a40
+.o 2 0
+e_StdIOCommon_l==;39
+	repl_args 1 1
+.o 2 0
+a40
+.d 2 0
+	jsr ea40
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;39
+.o 1 0
+e_StdIOCommon_n==;39
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea40
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea40
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;39
+.o 2 0
+s40
+	pushD_a 0
+	eqD_b e_StdIOCommon_dNDI 0
+	jmp_true case.23
+	eqD_b e_StdIOCommon_dSDI 0
+	jmp_true case.24
+	jmp case.25
+case.23
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dNDI 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.24
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dSDI 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.25
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dMDI 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_stoString;38
+.descexp e_StdIOCommon_dtoString;38 e_StdIOCommon_ntoString;38 e_StdIOCommon_ltoString;38 1 0 "toString;38"
+.o 2 0
+e_StdIOCommon_ltoString;38
+	pop_a 1
+.d 1 0
+	jsr ea39
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;38
+.o 1 0
+e_StdIOCommon_ntoString;38
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea39
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea39
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;38
+.o 1 0
+s39
+	pushD_a 0
+	eqD_b e_StdIOCommon_dStandardCursor 0
+	jmp_true case.26
+	eqD_b e_StdIOCommon_dBusyCursor 0
+	jmp_true case.27
+	eqD_b e_StdIOCommon_dIBeamCursor 0
+	jmp_true case.28
+	eqD_b e_StdIOCommon_dCrossCursor 0
+	jmp_true case.29
+	eqD_b e_StdIOCommon_dFatCrossCursor 0
+	jmp_true case.30
+	eqD_b e_StdIOCommon_dArrowCursor 0
+	jmp_true case.31
+	jmp case.32
+case.26
+	pop_b 1
+	pop_a 1
+	buildAC "StandardCursor"
+.d 1 0
+	rtn
+case.27
+	pop_b 1
+	pop_a 1
+	buildAC "BusyCursor"
+.d 1 0
+	rtn
+case.28
+	pop_b 1
+	pop_a 1
+	buildAC "IBeamCursor"
+.d 1 0
+	rtn
+case.29
+	pop_b 1
+	pop_a 1
+	buildAC "CrossCursor"
+.d 1 0
+	rtn
+case.30
+	pop_b 1
+	pop_a 1
+	buildAC "FatCrossCursor"
+.d 1 0
+	rtn
+case.31
+	pop_b 1
+	pop_a 1
+	buildAC "ArrowCursor"
+.d 1 0
+	rtn
+case.32
+	pop_b 1
+	pop_a 1
+	buildAC "HiddenCursor"
+.d 1 0
+	rtn
+.export e_StdIOCommon_s==;37
+.descexp e_StdIOCommon_d==;37 e_StdIOCommon_n==;37 e_StdIOCommon_l==;37 2 0 "==;37"
+.a 0 a38
+.o 2 0
+e_StdIOCommon_l==;37
+	repl_args 1 1
+.o 2 0
+a38
+.d 2 0
+	jsr ea38
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;37
+.o 1 0
+e_StdIOCommon_n==;37
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea38
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea38
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;37
+.o 2 0
+s38
+	pushD_a 0
+	eqD_b e_StdIOCommon_dStandardCursor 0
+	jmp_true case.33
+	eqD_b e_StdIOCommon_dBusyCursor 0
+	jmp_true case.34
+	eqD_b e_StdIOCommon_dIBeamCursor 0
+	jmp_true case.35
+	eqD_b e_StdIOCommon_dCrossCursor 0
+	jmp_true case.36
+	eqD_b e_StdIOCommon_dFatCrossCursor 0
+	jmp_true case.37
+	eqD_b e_StdIOCommon_dArrowCursor 0
+	jmp_true case.38
+	jmp case.39
+case.33
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dStandardCursor 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.34
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dBusyCursor 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.35
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dIBeamCursor 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.36
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dCrossCursor 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.37
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dFatCrossCursor 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.38
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dArrowCursor 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.39
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dHiddenCursor 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_stoString;36
+.descexp e_StdIOCommon_dtoString;36 e_StdIOCommon_ntoString;36 e_StdIOCommon_ltoString;36 1 0 "toString;36"
+.o 2 0
+e_StdIOCommon_ltoString;36
+	pop_a 1
+.d 1 0
+	jsr ea37
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;36
+.o 1 0
+e_StdIOCommon_ntoString;36
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea37
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea37
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;36
+.o 1 0
+s37
+	eq_desc e_StdIOCommon_dHorizontal 0 0
+	jmp_true case.40
+	jmp case.41
+case.40
+	pop_a 1
+	buildAC "Horizontal"
+.d 1 0
+	rtn
+case.41
+	pop_a 1
+	buildAC "Vertical"
+.d 1 0
+	rtn
+.export e_StdIOCommon_stoString;34
+.descexp e_StdIOCommon_dtoString;34 e_StdIOCommon_ntoString;34 e_StdIOCommon_ltoString;34 1 0 "toString;34"
+.o 2 0
+e_StdIOCommon_ltoString;34
+	pop_a 1
+.d 1 0
+	jsr ea35
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;34
+.o 1 0
+e_StdIOCommon_ntoString;34
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea35
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea35
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;34
+.o 1 0
+s35
+	pushD_a 0
+	eqD_b e_StdIOCommon_dFix 0
+	jmp_true case.42
+	eqD_b e_StdIOCommon_dLeftTop 0
+	jmp_true case.43
+	eqD_b e_StdIOCommon_dRightTop 0
+	jmp_true case.44
+	eqD_b e_StdIOCommon_dLeftBottom 0
+	jmp_true case.45
+	eqD_b e_StdIOCommon_dRightBottom 0
+	jmp_true case.46
+	eqD_b e_StdIOCommon_dLeft 0
+	jmp_true case.47
+	eqD_b e_StdIOCommon_dCenter 0
+	jmp_true case.48
+	eqD_b e_StdIOCommon_dRight 0
+	jmp_true case.49
+	eqD_b e_StdIOCommon_dLeftOf 1
+	jmp_true case.50
+	eqD_b e_StdIOCommon_dRightTo 1
+	jmp_true case.51
+	eqD_b e_StdIOCommon_dAbove 1
+	jmp_true case.52
+	eqD_b e_StdIOCommon_dBelow 1
+	jmp_true case.53
+	eqD_b e_StdIOCommon_dLeftOfPrev 0
+	jmp_true case.54
+	eqD_b e_StdIOCommon_dRightToPrev 0
+	jmp_true case.55
+	eqD_b e_StdIOCommon_dAbovePrev 0
+	jmp_true case.56
+	jmp case.57
+case.42
+	pop_b 1
+	pop_a 1
+	buildAC "Fix"
+.d 1 0
+	rtn
+case.43
+	pop_b 1
+	pop_a 1
+	buildAC "LeftTop"
+.d 1 0
+	rtn
+case.44
+	pop_b 1
+	pop_a 1
+	buildAC "RightTop"
+.d 1 0
+	rtn
+case.45
+	pop_b 1
+	pop_a 1
+	buildAC "LeftBottom"
+.d 1 0
+	rtn
+case.46
+	pop_b 1
+	pop_a 1
+	buildAC "RightBottom"
+.d 1 0
+	rtn
+case.47
+	pop_b 1
+	pop_a 1
+	buildAC "Left"
+.d 1 0
+	rtn
+case.48
+	pop_b 1
+	pop_a 1
+	buildAC "Center"
+.d 1 0
+	rtn
+case.49
+	pop_b 1
+	pop_a 1
+	buildAC "Right"
+.d 1 0
+	rtn
+case.50
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_id_stoString;30
+.o 1 0
+	buildAC "LeftOf "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.51
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_id_stoString;30
+.o 1 0
+	buildAC "RightTo "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.52
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_id_stoString;30
+.o 1 0
+	buildAC "Above "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.53
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_id_stoString;30
+.o 1 0
+	buildAC "Below "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.54
+	pop_b 1
+	pop_a 1
+	buildAC "LeftOfPrev"
+.d 1 0
+	rtn
+case.55
+	pop_b 1
+	pop_a 1
+	buildAC "RightToPrev"
+.d 1 0
+	rtn
+case.56
+	pop_b 1
+	pop_a 1
+	buildAC "AbovePrev"
+.d 1 0
+	rtn
+case.57
+	pop_b 1
+	pop_a 1
+	buildAC "BelowPrev"
+.d 1 0
+	rtn
+.export e_StdIOCommon_s==;33
+.descexp e_StdIOCommon_d==;33 e_StdIOCommon_n==;33 e_StdIOCommon_l==;33 2 0 "==;33"
+.a 0 a34
+.o 2 0
+e_StdIOCommon_l==;33
+	repl_args 1 1
+.o 2 0
+a34
+.d 2 0
+	jsr ea34
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;33
+.o 1 0
+e_StdIOCommon_n==;33
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea34
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea34
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;33
+.o 2 0
+s34
+	pushD_a 0
+	eqD_b e_StdIOCommon_dFix 0
+	jmp_true case.58
+	eqD_b e_StdIOCommon_dLeftTop 0
+	jmp_true case.59
+	eqD_b e_StdIOCommon_dRightTop 0
+	jmp_true case.60
+	eqD_b e_StdIOCommon_dLeftBottom 0
+	jmp_true case.61
+	eqD_b e_StdIOCommon_dRightBottom 0
+	jmp_true case.62
+	eqD_b e_StdIOCommon_dLeft 0
+	jmp_true case.63
+	eqD_b e_StdIOCommon_dCenter 0
+	jmp_true case.64
+	eqD_b e_StdIOCommon_dRight 0
+	jmp_true case.65
+	eqD_b e_StdIOCommon_dLeftOf 1
+	jmp_true case.66
+	eqD_b e_StdIOCommon_dRightTo 1
+	jmp_true case.67
+	eqD_b e_StdIOCommon_dAbove 1
+	jmp_true case.68
+	eqD_b e_StdIOCommon_dBelow 1
+	jmp_true case.69
+	eqD_b e_StdIOCommon_dLeftOfPrev 0
+	jmp_true case.70
+	eqD_b e_StdIOCommon_dRightToPrev 0
+	jmp_true case.71
+	eqD_b e_StdIOCommon_dAbovePrev 0
+	jmp_true case.72
+	jmp case.73
+case.58
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dFix 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.59
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dLeftTop 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.60
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dRightTop 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.61
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dLeftBottom 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.62
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dRightBottom 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.63
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dLeft 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.64
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dCenter 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.65
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dRight 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.66
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s125
+case.67
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s126
+case.68
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s127
+case.69
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s128
+case.70
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dLeftOfPrev 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.71
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dRightToPrev 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.72
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dAbovePrev 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.73
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dBelowPrev 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.o 2 0
+s128
+	eq_desc e_StdIOCommon_dBelow 1 0
+	jmp_true case.74
+	jmp case.75
+case.74
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp e_id_s==;27
+case.75
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 2 0
+s127
+	eq_desc e_StdIOCommon_dAbove 1 0
+	jmp_true case.76
+	jmp case.77
+case.76
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp e_id_s==;27
+case.77
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 2 0
+s126
+	eq_desc e_StdIOCommon_dRightTo 1 0
+	jmp_true case.78
+	jmp case.79
+case.78
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp e_id_s==;27
+case.79
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 2 0
+s125
+	eq_desc e_StdIOCommon_dLeftOf 1 0
+	jmp_true case.80
+	jmp case.81
+case.80
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp e_id_s==;27
+case.81
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_szero;32
+.export e_StdIOCommon_eazero;32
+.descexp e_StdIOCommon_dzero;32 e_StdIOCommon_nzero;32 e_StdIOCommon_lzero;32 0 0 "zero;32"
+.o 1 0
+e_StdIOCommon_lzero;32
+	halt
+.n 0 e_StdIOCommon_dzero;32 e_StdIOCommon_eazero;32
+.o 1 0
+e_StdIOCommon_nzero;32
+	push_node _cycle_in_spine 0
+.o 1 0
+e_StdIOCommon_eazero;32
+.o 1 0
+e_StdIOCommon_szero;32
+.o 1 0
+s33
+	fillh e_StdIOCommon_dNoOffset 0 0
+.d 1 0
+	rtn
+.export e_StdIOCommon_stoString;29
+.descexp e_StdIOCommon_dtoString;29 e_StdIOCommon_ntoString;29 e_StdIOCommon_ltoString;29 1 0 "toString;29"
+.o 2 0
+e_StdIOCommon_ltoString;29
+	pop_a 1
+.d 1 0
+	jsr ea30
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;29
+.o 1 0
+e_StdIOCommon_ntoString;29
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea30
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea30
+	jsr_eval 0
+	repl_r_args 3 0
+.o 3 0
+e_StdIOCommon_stoString;29
+.o 3 0
+s30
+	buildh _Nil 0
+	buildh e_StdIOBasic_dtoString;27 0
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_StdList_dmap 2 e_StdList_nmap
+	build _ 1 n290
+	buildh _Cons 2
+	push_a 2
+	build _ 1 n289
+	buildh _Cons 2
+	push_a 1
+	build _ 1 n288
+	buildh _Cons 2
+	buildAC ","
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s87
+.o 1 0
+.d 1 0
+	jmp s83
+.n 1 _ ea290
+.o 1 0
+n290
+	push_node _cycle_in_spine 1
+.o 2 0
+ea290
+.o 2 0
+s290
+	push_a 0
+	jsr_eval 0
+	buildAC ","
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s87
+.o 1 0
+.d 1 0
+	jsr s85
+.o 1 0
+	buildAC "updArea="
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.n 1 _ ea289
+.o 1 0
+n289
+	push_node _cycle_in_spine 1
+.o 2 0
+ea289
+.o 2 0
+s289
+	push_r_args 0 2 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_StdIOBasic_stoString;27
+.o 1 0
+	buildAC "newFrame="
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.n 1 _ ea288
+.o 1 0
+n288
+	push_node _cycle_in_spine 1
+.o 2 0
+ea288
+.o 2 0
+s288
+	push_r_args 0 2 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_StdIOBasic_stoString;27
+.o 1 0
+	buildAC "oldFrame="
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_stoString;28
+.descexp e_StdIOCommon_dtoString;28 e_StdIOCommon_ntoString;28 e_StdIOCommon_ltoString;28 1 0 "toString;28"
+.o 2 0
+e_StdIOCommon_ltoString;28
+	pop_a 1
+.d 1 0
+	jsr ea29
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;28
+.o 1 0
+e_StdIOCommon_ntoString;28
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea29
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea29
+	jsr_eval 0
+	repl_r_args 0 3
+.o 0 3 iii
+e_StdIOCommon_stoString;28
+.o 0 3 iii
+s29
+	buildh _Nil 0
+	buildI_b 1
+	buildh _Cons 2
+	buildI_b 2
+	buildh _Cons 2
+	buildI_b 0
+	buildh _Cons 2
+	buildh _Nil 0
+	buildAC "sliderMax"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC "sliderThumb"
+	buildh ARRAY 1
+	buildh _Cons 2
+	buildAC "sliderMin"
+	buildh ARRAY 1
+	buildh _Cons 2
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	pop_b 3
+.d 3 0
+	jsr e_StdList_szip2
+.o 1 0
+	buildh d90 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdList_smap
+.o 1 0
+	buildAC ","
+.d 2 0
+	jsr s87
+.o 1 0
+.d 1 0
+	jmp s83
+.desc d90 _hnf l90 1 0 "recordFieldtoString;138"
+.o 2 0
+l90
+	pop_a 1
+.d 1 0
+	jsr ea90
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.o 1 0
+ea90
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 1
+	push_array 0
+	update_a 0 2
+	pop_a 2
+.o 1 1 i
+s90
+	push_b 0
+	updatepop_b 0 1
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+	buildAC "="
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.export e_StdIOCommon_s==;27
+.descexp e_StdIOCommon_d==;27 e_StdIOCommon_n==;27 e_StdIOCommon_l==;27 2 0 "==;27"
+.a 0 a28
+.o 2 0
+e_StdIOCommon_l==;27
+	repl_args 1 1
+.o 2 0
+a28
+.d 2 0
+	jsr ea28
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;27
+.o 1 0
+e_StdIOCommon_n==;27
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea28
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea28
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 0 3
+	repl_r_args 0 3
+	pop_a 1
+.o 0 6 iiiiii
+e_StdIOCommon_s==;27
+.o 0 6 iiiiii
+s28
+	push_b 3
+	push_b 1
+	eqI
+	jmp_false else.82
+	push_b 4
+	push_b 2
+	eqI
+	jmp_false else.83
+	push_b 5
+	push_b 3
+	update_b 1 7
+	updatepop_b 0 6
+	eqI
+.d 0 1 b
+	rtn
+else.83
+	pop_b 6
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.82
+	pop_b 6
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_stoString;26
+.descexp e_StdIOCommon_dtoString;26 e_StdIOCommon_ntoString;26 e_StdIOCommon_ltoString;26 1 0 "toString;26"
+.o 2 0
+e_StdIOCommon_ltoString;26
+	pop_a 1
+.d 1 0
+	jsr ea27
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;26
+.o 1 0
+e_StdIOCommon_ntoString;26
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea27
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea27
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;26
+.o 1 0
+s27
+	pushD_a 0
+	eqD_b e_StdIOCommon_dButtonStillUp 0
+	jmp_true case.84
+	eqD_b e_StdIOCommon_dButtonDown 0
+	jmp_true case.85
+	eqD_b e_StdIOCommon_dButtonDoubleDown 0
+	jmp_true case.86
+	eqD_b e_StdIOCommon_dButtonTripleDown 0
+	jmp_true case.87
+	eqD_b e_StdIOCommon_dButtonStillDown 0
+	jmp_true case.88
+	jmp case.89
+case.84
+	pop_b 1
+	pop_a 1
+	buildAC "ButtonStillUp"
+.d 1 0
+	rtn
+case.85
+	pop_b 1
+	pop_a 1
+	buildAC "ButtonDown"
+.d 1 0
+	rtn
+case.86
+	pop_b 1
+	pop_a 1
+	buildAC "ButtonDoubleDown"
+.d 1 0
+	rtn
+case.87
+	pop_b 1
+	pop_a 1
+	buildAC "ButtonTripleDown"
+.d 1 0
+	rtn
+case.88
+	pop_b 1
+	pop_a 1
+	buildAC "ButtonStillDown"
+.d 1 0
+	rtn
+case.89
+	pop_b 1
+	pop_a 1
+	buildAC "ButtonUp"
+.d 1 0
+	rtn
+.export e_StdIOCommon_stoString;25
+.descexp e_StdIOCommon_dtoString;25 e_StdIOCommon_ntoString;25 e_StdIOCommon_ltoString;25 1 0 "toString;25"
+.o 2 0
+e_StdIOCommon_ltoString;25
+	pop_a 1
+.d 1 0
+	jsr ea26
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;25
+.o 1 0
+e_StdIOCommon_ntoString;25
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea26
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea26
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;25
+.o 1 0
+s26
+	pushD_a 0
+	eqD_b e_StdIOCommon_dMouseMove 2
+	jmp_true case.90
+	eqD_b e_StdIOCommon_dMouseDown 3
+	jmp_true case.91
+	eqD_b e_StdIOCommon_dMouseDrag 2
+	jmp_true case.92
+	eqD_b e_StdIOCommon_dMouseUp 2
+	jmp_true case.93
+	jmp case.94
+case.90
+	pop_b 1
+	repl_args 2 2
+	buildh _Nil 0
+	push_a 2
+	build e_StdIOCommon_dtoString;31 1 e_StdIOCommon_ntoString;31
+	buildh _Cons 2
+	push_a 1
+	build e_StdIOBasic_dtoString;24 1 e_StdIOBasic_ntoString;24
+	buildh _Cons 2
+	buildAC " "
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s87
+.o 1 0
+	buildAC "MouseMove "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.91
+	pop_b 1
+	repl_args 3 3
+	buildh _Nil 0
+	push_a 3
+	build _ 1 e_StdString_ntoString;5
+	buildh _Cons 2
+	push_a 2
+	build e_StdIOCommon_dtoString;31 1 e_StdIOCommon_ntoString;31
+	buildh _Cons 2
+	push_a 1
+	build e_StdIOBasic_dtoString;24 1 e_StdIOBasic_ntoString;24
+	buildh _Cons 2
+	buildAC " "
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s87
+.o 1 0
+	buildAC "MouseDown "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.92
+	pop_b 1
+	repl_args 2 2
+	buildh _Nil 0
+	push_a 2
+	build e_StdIOCommon_dtoString;31 1 e_StdIOCommon_ntoString;31
+	buildh _Cons 2
+	push_a 1
+	build e_StdIOBasic_dtoString;24 1 e_StdIOBasic_ntoString;24
+	buildh _Cons 2
+	buildAC " "
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s87
+.o 1 0
+	buildAC "MouseDrag "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.93
+	pop_b 1
+	repl_args 2 2
+	buildh _Nil 0
+	push_a 2
+	build e_StdIOCommon_dtoString;31 1 e_StdIOCommon_ntoString;31
+	buildh _Cons 2
+	push_a 1
+	build e_StdIOBasic_dtoString;24 1 e_StdIOBasic_ntoString;24
+	buildh _Cons 2
+	buildAC " "
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s87
+.o 1 0
+	buildAC "MouseUp "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.94
+	pop_b 1
+	pop_a 1
+	buildAC "MouseLost"
+.d 1 0
+	rtn
+.export e_StdIOCommon_s==;24
+.descexp e_StdIOCommon_d==;24 e_StdIOCommon_n==;24 e_StdIOCommon_l==;24 2 0 "==;24"
+.a 0 a25
+.o 2 0
+e_StdIOCommon_l==;24
+	repl_args 1 1
+.o 2 0
+a25
+.d 2 0
+	jsr ea25
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;24
+.o 1 0
+e_StdIOCommon_n==;24
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea25
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea25
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;24
+.o 2 0
+s25
+	pushD_a 0
+	eqD_b e_StdIOCommon_dButtonStillUp 0
+	jmp_true case.95
+	eqD_b e_StdIOCommon_dButtonDown 0
+	jmp_true case.96
+	eqD_b e_StdIOCommon_dButtonDoubleDown 0
+	jmp_true case.97
+	eqD_b e_StdIOCommon_dButtonTripleDown 0
+	jmp_true case.98
+	eqD_b e_StdIOCommon_dButtonStillDown 0
+	jmp_true case.99
+	jmp case.100
+case.95
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dButtonStillUp 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.96
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dButtonDown 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.97
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dButtonDoubleDown 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.98
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dButtonTripleDown 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.99
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dButtonStillDown 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.100
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dButtonUp 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_s==;23
+.descexp e_StdIOCommon_d==;23 e_StdIOCommon_n==;23 e_StdIOCommon_l==;23 2 0 "==;23"
+.a 0 a24
+.o 2 0
+e_StdIOCommon_l==;23
+	repl_args 1 1
+.o 2 0
+a24
+.d 2 0
+	jsr ea24
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;23
+.o 1 0
+e_StdIOCommon_n==;23
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea24
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea24
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;23
+.o 2 0
+s24
+	pushD_a 0
+	eqD_b e_StdIOCommon_dMouseMove 2
+	jmp_true case.101
+	eqD_b e_StdIOCommon_dMouseDown 3
+	jmp_true case.102
+	eqD_b e_StdIOCommon_dMouseDrag 2
+	jmp_true case.103
+	eqD_b e_StdIOCommon_dMouseUp 2
+	jmp_true case.104
+	jmp case.105
+case.101
+	pop_b 1
+	repl_args 2 2
+	push_a 1
+	push_a 1
+	push_a 4
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s106
+case.102
+	pop_b 1
+	repl_args 3 3
+	push_a 2
+	push_a 2
+	push_a 2
+	push_a 6
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp s107
+case.103
+	pop_b 1
+	repl_args 2 2
+	push_a 1
+	push_a 1
+	push_a 4
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s108
+case.104
+	pop_b 1
+	repl_args 2 2
+	push_a 1
+	push_a 1
+	push_a 4
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s109
+case.105
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dMouseLost 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.o 3 0
+s109
+	eq_desc e_StdIOCommon_dMouseUp 2 0
+	jmp_true case.106
+	jmp case.107
+case.106
+	repl_args 2 2
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 2
+	push_a 2
+	jsr_eval 0
+	repl_r_args 0 2
+	update_a 1 2
+	pop_a 2
+.d 0 4 iiii
+	jsr e_StdIOBasic_s==;18
+.o 0 1 b
+	jmp_false else.108
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 5
+	push_a 1
+	jsr_eval 0
+	repl_r_args 0 5
+	pop_a 2
+.d 0 10 bbbbbbbbbb
+	jmp s31
+else.108
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.107
+	pop_a 3
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 3 0
+s108
+	eq_desc e_StdIOCommon_dMouseDrag 2 0
+	jmp_true case.109
+	jmp case.110
+case.109
+	repl_args 2 2
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 2
+	push_a 2
+	jsr_eval 0
+	repl_r_args 0 2
+	update_a 1 2
+	pop_a 2
+.d 0 4 iiii
+	jsr e_StdIOBasic_s==;18
+.o 0 1 b
+	jmp_false else.111
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 5
+	push_a 1
+	jsr_eval 0
+	repl_r_args 0 5
+	pop_a 2
+.d 0 10 bbbbbbbbbb
+	jmp s31
+else.111
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.110
+	pop_a 3
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 4 0
+s107
+	eq_desc e_StdIOCommon_dMouseDown 3 0
+	jmp_true case.112
+	jmp case.113
+case.112
+	repl_args 3 3
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 2
+	push_a 3
+	jsr_eval 0
+	repl_r_args 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 0 4 iiii
+	jsr e_StdIOBasic_s==;18
+.o 0 1 b
+	jmp_false else.114
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 5
+	push_a 3
+	jsr_eval 0
+	repl_r_args 0 5
+	update_a 1 3
+	pop_a 3
+.d 0 10 bbbbbbbbbb
+	jsr s31
+.o 0 1 b
+	jmp_false else.115
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pop_a 2
+	eqI
+.d 0 1 b
+	rtn
+else.115
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.114
+	pop_a 5
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.113
+	pop_a 4
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 3 0
+s106
+	eq_desc e_StdIOCommon_dMouseMove 2 0
+	jmp_true case.116
+	jmp case.117
+case.116
+	repl_args 2 2
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 2
+	push_a 2
+	jsr_eval 0
+	repl_r_args 0 2
+	update_a 1 2
+	pop_a 2
+.d 0 4 iiii
+	jsr e_StdIOBasic_s==;18
+.o 0 1 b
+	jmp_false else.118
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 5
+	push_a 1
+	jsr_eval 0
+	repl_r_args 0 5
+	pop_a 2
+.d 0 10 bbbbbbbbbb
+	jmp s31
+else.118
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.117
+	pop_a 3
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_stoString;21
+.descexp e_StdIOCommon_dtoString;21 e_StdIOCommon_ntoString;21 e_StdIOCommon_ltoString;21 1 0 "toString;21"
+.o 2 0
+e_StdIOCommon_ltoString;21
+	pop_a 1
+.d 1 0
+	jsr ea22
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;21
+.o 1 0
+e_StdIOCommon_ntoString;21
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea22
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea22
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;21
+.o 1 0
+s22
+	pushD_a 0
+	eqD_b e_StdIOCommon_dCharKey 2
+	jmp_true case.119
+	eqD_b e_StdIOCommon_dSpecialKey 3
+	jmp_true case.120
+	jmp case.121
+case.119
+	pop_b 1
+	repl_args 2 2
+	push_a 1
+	jsr_eval 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr s23
+.o 1 0
+	buildAC " "
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	pushC_a 2
+	pop_a 1
+	CtoI
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+	buildAC "ASCII: "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jsr s84
+.o 1 0
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC " "
+.d 2 0
+	jsr catAC
+.o 1 0
+	pushC_a 1
+	CtoAC
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "CharKey "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.120
+	pop_b 1
+	repl_args 3 3
+	buildh _Nil 0
+	push_a 3
+	build e_StdIOCommon_dtoString;31 1 e_StdIOCommon_ntoString;31
+	buildh _Cons 2
+	push_a 2
+	build e_StdIOCommon_dtoString;22 1 e_StdIOCommon_ntoString;22
+	buildh _Cons 2
+	push_a 1
+	build e_oskey_dtoString;33 1 e_oskey_ntoString;33
+	buildh _Cons 2
+	buildAC " "
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s87
+.o 1 0
+	buildAC "SpecialKey "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.121
+	pop_b 1
+	pop_a 1
+	buildAC "KeyLost"
+.d 1 0
+	rtn
+.export e_StdIOCommon_stoString;31
+.descexp e_StdIOCommon_dtoString;31 e_StdIOCommon_ntoString;31 e_StdIOCommon_ltoString;31 1 0 "toString;31"
+.o 2 0
+e_StdIOCommon_ltoString;31
+	pop_a 1
+.d 1 0
+	jsr ea32
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;31
+.o 1 0
+e_StdIOCommon_ntoString;31
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea32
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea32
+	jsr_eval 0
+	repl_r_args 0 5
+.o 0 5 bbbbb
+e_StdIOCommon_stoString;31
+.o 0 5 bbbbb
+s32
+	buildh _Nil 0
+	push_b 4
+	build_u _ 0 1 n105
+	buildh _Cons 2
+	push_b 3
+	build_u _ 0 1 n104
+	buildh _Cons 2
+	push_b 2
+	build_u _ 0 1 n103
+	buildh _Cons 2
+	push_b 1
+	build_u _ 0 1 n102
+	buildh _Cons 2
+	push_b 0
+	build_u _ 0 1 n101
+	buildh _Cons 2
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 5
+.d 2 0
+	jsr e_StdList_sflatten
+.o 1 0
+	buildAC ","
+.d 2 0
+	jsr s87
+.o 1 0
+.d 1 0
+	jmp s83
+.nu 0 1 _ _
+.o 1 0
+n105
+	push_node_u _cycle_in_spine 0 1
+.o 1 1 b
+ea105
+.o 1 1 b
+s105
+	eqB_b TRUE 0
+	jmp_true case.122
+	jmp case.123
+case.122
+	buildh _Nil 0
+	buildAC "altDown"
+	buildh ARRAY 1
+	fillh _Cons 2 2
+	pop_b 1
+.d 1 0
+	rtn
+case.123
+	fillh _Nil 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 0 1 _ _
+.o 1 0
+n104
+	push_node_u _cycle_in_spine 0 1
+.o 1 1 b
+ea104
+.o 1 1 b
+s104
+	eqB_b TRUE 0
+	jmp_true case.124
+	jmp case.125
+case.124
+	buildh _Nil 0
+	buildAC "controlDown"
+	buildh ARRAY 1
+	fillh _Cons 2 2
+	pop_b 1
+.d 1 0
+	rtn
+case.125
+	fillh _Nil 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 0 1 _ _
+.o 1 0
+n103
+	push_node_u _cycle_in_spine 0 1
+.o 1 1 b
+ea103
+.o 1 1 b
+s103
+	eqB_b TRUE 0
+	jmp_true case.126
+	jmp case.127
+case.126
+	buildh _Nil 0
+	buildAC "commandDown"
+	buildh ARRAY 1
+	fillh _Cons 2 2
+	pop_b 1
+.d 1 0
+	rtn
+case.127
+	fillh _Nil 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 0 1 _ _
+.o 1 0
+n102
+	push_node_u _cycle_in_spine 0 1
+.o 1 1 b
+ea102
+.o 1 1 b
+s102
+	eqB_b TRUE 0
+	jmp_true case.128
+	jmp case.129
+case.128
+	buildh _Nil 0
+	buildAC "optionDown"
+	buildh ARRAY 1
+	fillh _Cons 2 2
+	pop_b 1
+.d 1 0
+	rtn
+case.129
+	fillh _Nil 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 0 1 _ _
+.o 1 0
+n101
+	push_node_u _cycle_in_spine 0 1
+.o 1 1 b
+ea101
+.o 1 1 b
+s101
+	eqB_b TRUE 0
+	jmp_true case.130
+	jmp case.131
+case.130
+	buildh _Nil 0
+	buildAC "shiftDown"
+	buildh ARRAY 1
+	fillh _Cons 2 2
+	pop_b 1
+.d 1 0
+	rtn
+case.131
+	fillh _Nil 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_stoString;22
+.descexp e_StdIOCommon_dtoString;22 e_StdIOCommon_ntoString;22 e_StdIOCommon_ltoString;22 1 0 "toString;22"
+.o 2 0
+e_StdIOCommon_ltoString;22
+	pop_a 1
+.d 1 0
+	jsr ea23
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;22
+.o 1 0
+e_StdIOCommon_ntoString;22
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea23
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea23
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;22
+.o 1 0
+s23
+	eq_desc e_StdIOCommon_dKeyDown 1 0
+	jmp_true case.132
+	jmp case.133
+case.132
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	pop_a 1
+.d 0 1 b
+	jsr BtoAC
+.o 1 0
+	buildAC "KeyDown "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	jmp s84
+case.133
+	pop_a 1
+	buildAC "KeyUp"
+.d 1 0
+	rtn
+.export e_StdIOCommon_s==;19
+.descexp e_StdIOCommon_d==;19 e_StdIOCommon_n==;19 e_StdIOCommon_l==;19 2 0 "==;19"
+.a 0 a20
+.o 2 0
+e_StdIOCommon_l==;19
+	repl_args 1 1
+.o 2 0
+a20
+.d 2 0
+	jsr ea20
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;19
+.o 1 0
+e_StdIOCommon_n==;19
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea20
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea20
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;19
+.o 2 0
+s20
+	pushD_a 0
+	eqD_b e_StdIOCommon_dCharKey 2
+	jmp_true case.134
+	eqD_b e_StdIOCommon_dSpecialKey 3
+	jmp_true case.135
+	jmp case.136
+case.134
+	pop_b 1
+	repl_args 2 2
+	push_a 1
+	push_a 1
+	push_a 4
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s98
+case.135
+	pop_b 1
+	repl_args 3 3
+	push_a 2
+	push_a 2
+	push_a 2
+	push_a 6
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp s99
+case.136
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dKeyLost 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.o 4 0
+s99
+	eq_desc e_StdIOCommon_dSpecialKey 3 0
+	jmp_true case.137
+	jmp case.138
+case.137
+	repl_args 3 3
+	push_a 0
+	jsr_eval 0
+	push_a 4
+	jsr_eval 0
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 2 0
+	jsr e_oskey_s==;32
+.o 0 1 b
+	jmp_false else.139
+	push_a 0
+	jsr_eval 0
+	push_a 4
+	jsr_eval 0
+	update_a 3 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s21
+.o 0 1 b
+	jmp_false else.140
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 5
+	push_a 1
+	jsr_eval 0
+	repl_r_args 0 5
+	pop_a 2
+.d 0 10 bbbbbbbbbb
+	jmp s31
+else.140
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.139
+	pop_a 5
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.138
+	pop_a 4
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 3 0
+s98
+	eq_desc e_StdIOCommon_dCharKey 2 0
+	jmp_true case.141
+	jmp case.142
+case.141
+	repl_args 2 2
+	push_a 0
+	jsr_eval 0
+	pushC_a 1
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushC_a 3
+	pop_a 1
+	eqC
+	jmp_false else.143
+	push_a 1
+	jsr_eval 0
+	push_a 4
+	jsr_eval 0
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jmp s21
+else.143
+	pop_a 4
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.142
+	pop_a 3
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_s==;30
+.descexp e_StdIOCommon_d==;30 e_StdIOCommon_n==;30 e_StdIOCommon_l==;30 2 0 "==;30"
+.a 0 a31
+.o 2 0
+e_StdIOCommon_l==;30
+	repl_args 1 1
+.o 2 0
+a31
+.d 2 0
+	jsr ea31
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;30
+.o 1 0
+e_StdIOCommon_n==;30
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea31
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea31
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 0 5
+	repl_r_args 0 5
+	pop_a 1
+.o 0 10 bbbbbbbbbb
+e_StdIOCommon_s==;30
+.o 0 10 bbbbbbbbbb
+s31
+	push_b 5
+	push_b 1
+	eqB
+	jmp_false else.144
+	push_b 6
+	push_b 2
+	eqB
+	jmp_false else.145
+	push_b 7
+	push_b 3
+	eqB
+	jmp_false else.146
+	push_b 8
+	push_b 4
+	eqB
+	jmp_false else.147
+	push_b 9
+	push_b 5
+	update_b 1 11
+	updatepop_b 0 10
+	eqB
+.d 0 1 b
+	rtn
+else.147
+	pop_b 10
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.146
+	pop_b 10
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.145
+	pop_b 10
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.144
+	pop_b 10
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_s==;20
+.descexp e_StdIOCommon_d==;20 e_StdIOCommon_n==;20 e_StdIOCommon_l==;20 2 0 "==;20"
+.a 0 a21
+.o 2 0
+e_StdIOCommon_l==;20
+	repl_args 1 1
+.o 2 0
+a21
+.d 2 0
+	jsr ea21
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;20
+.o 1 0
+e_StdIOCommon_n==;20
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea21
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea21
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;20
+.o 2 0
+s21
+	eq_desc e_StdIOCommon_dKeyUp 0 0
+	jmp_true case.148
+	jmp case.149
+case.148
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dKeyUp 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.149
+	repl_args 1 1
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s97
+.o 2 0
+s97
+	eq_desc e_StdIOCommon_dKeyDown 1 0
+	jmp_true case.150
+	jmp case.151
+case.150
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	pop_a 2
+	eqB
+.d 0 1 b
+	rtn
+case.151
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_stoString;18
+.descexp e_StdIOCommon_dtoString;18 e_StdIOCommon_ntoString;18 e_StdIOCommon_ltoString;18 1 0 "toString;18"
+.o 2 0
+e_StdIOCommon_ltoString;18
+	pop_a 1
+.d 1 0
+	jsr ea19
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;18
+.o 1 0
+e_StdIOCommon_ntoString;18
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea19
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea19
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;18
+.o 1 0
+s19
+	eq_desc e_StdIOCommon_dMark 0 0
+	jmp_true case.152
+	jmp case.153
+case.152
+	pop_a 1
+	buildAC "Mark"
+.d 1 0
+	rtn
+case.153
+	pop_a 1
+	buildAC "NoMark"
+.d 1 0
+	rtn
+.export e_StdIOCommon_stoString;17
+.descexp e_StdIOCommon_dtoString;17 e_StdIOCommon_ntoString;17 e_StdIOCommon_ltoString;17 1 0 "toString;17"
+.o 2 0
+e_StdIOCommon_ltoString;17
+	pop_a 1
+.d 1 0
+	jsr ea18
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dtoString;17
+.o 1 0
+e_StdIOCommon_ntoString;17
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea18
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea18
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_stoString;17
+.o 1 0
+s18
+	eq_desc e_StdIOCommon_dAble 0 0
+	jmp_true case.154
+	jmp case.155
+case.154
+	pop_a 1
+	buildAC "Able"
+.d 1 0
+	rtn
+case.155
+	pop_a 1
+	buildAC "Unable"
+.d 1 0
+	rtn
+.export e_StdIOCommon_s~;16
+.export e_StdIOCommon_ea~;16
+.descexp e_StdIOCommon_d~;16 e_StdIOCommon_n~;16 e_StdIOCommon_l~;16 1 0 "~;16"
+.o 2 0
+e_StdIOCommon_l~;16
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_ea~;16
+.n 1 e_StdIOCommon_d~;16 e_StdIOCommon_ea~;16
+.o 1 0
+e_StdIOCommon_n~;16
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_ea~;16
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s~;16
+.o 2 0
+s17
+	eq_desc e_StdIOCommon_dMark 0 0
+	jmp_true case.156
+	jmp case.157
+case.156
+	fillh e_StdIOCommon_dNoMark 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.157
+	fillh e_StdIOCommon_dMark 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_s~;15
+.export e_StdIOCommon_ea~;15
+.descexp e_StdIOCommon_d~;15 e_StdIOCommon_n~;15 e_StdIOCommon_l~;15 1 0 "~;15"
+.o 2 0
+e_StdIOCommon_l~;15
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_ea~;15
+.n 1 e_StdIOCommon_d~;15 e_StdIOCommon_ea~;15
+.o 1 0
+e_StdIOCommon_n~;15
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_ea~;15
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s~;15
+.o 2 0
+s16
+	eq_desc e_StdIOCommon_dAble 0 0
+	jmp_true case.158
+	jmp case.159
+case.158
+	fillh e_StdIOCommon_dUnable 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.159
+	fillh e_StdIOCommon_dAble 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_s==;14
+.descexp e_StdIOCommon_d==;14 e_StdIOCommon_n==;14 e_StdIOCommon_l==;14 2 0 "==;14"
+.a 0 a15
+.o 2 0
+e_StdIOCommon_l==;14
+	repl_args 1 1
+.o 2 0
+a15
+.d 2 0
+	jsr ea15
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;14
+.o 1 0
+e_StdIOCommon_n==;14
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea15
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea15
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;14
+.o 2 0
+s15
+	eq_desc e_StdIOCommon_dMark 0 0
+	jmp_true case.160
+	jmp case.161
+case.160
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dMark 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.161
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dMark 0 0
+	pop_a 1
+	notB
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_s==;13
+.descexp e_StdIOCommon_d==;13 e_StdIOCommon_n==;13 e_StdIOCommon_l==;13 2 0 "==;13"
+.a 0 a14
+.o 2 0
+e_StdIOCommon_l==;13
+	repl_args 1 1
+.o 2 0
+a14
+.d 2 0
+	jsr ea14
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;13
+.o 1 0
+e_StdIOCommon_n==;13
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea14
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea14
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;13
+.o 2 0
+s14
+	eq_desc e_StdIOCommon_dAble 0 0
+	jmp_true case.162
+	jmp case.163
+case.162
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dAble 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.163
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dAble 0 0
+	pop_a 1
+	notB
+.d 0 1 b
+	rtn
+.o 2 0
+s87
+	eq_desc _Cons 2 1
+	jmp_true case.164
+	jmp case.165
+case.164
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s89
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+case.165
+	pop_a 2
+	buildAC ""
+.d 1 0
+	rtn
+.o 2 0
+s89
+	eq_desc _Cons 2 1
+	jmp_true case.166
+	jmp case.167
+case.166
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	update_a 4 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s89
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+case.167
+	pop_a 2
+	buildAC ""
+.d 1 0
+	rtn
+.o 1 0
+s85
+	buildAC "]"
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "["
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.o 1 0
+s84
+	buildAC ")"
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "("
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.o 1 0
+s83
+	buildAC "}"
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "{"
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.export e_StdIOCommon_sstdUnfillUpdAreaLook
+.export e_StdIOCommon_eastdUnfillUpdAreaLook
+.descexp e_StdIOCommon_dstdUnfillUpdAreaLook e_StdIOCommon_nstdUnfillUpdAreaLook e_StdIOCommon_lstdUnfillUpdAreaLook 3 0 "stdUnfillUpdAreaLook"
+.a 3 e_StdIOCommon_eastdUnfillUpdAreaLook
+.o 2 0
+e_StdIOCommon_lstdUnfillUpdAreaLook
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.d 4 0
+	jmp e_StdIOCommon_eastdUnfillUpdAreaLook
+.n 3 e_StdIOCommon_dstdUnfillUpdAreaLook e_StdIOCommon_eastdUnfillUpdAreaLook
+.o 1 0
+e_StdIOCommon_nstdUnfillUpdAreaLook
+	push_node _cycle_in_spine 3
+.o 4 0
+e_StdIOCommon_eastdUnfillUpdAreaLook
+	jsr_eval 2
+	jsr_eval 1
+	push_r_args 1 3 0
+	update_a 2 4
+	update_a 0 2
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 6 0
+e_StdIOCommon_sstdUnfillUpdAreaLook
+.o 6 0
+s13
+	buildh e_StdPicture_dunfill;103 0
+	push_a 5
+	push_a 5
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 3 0
+	jsr e_commondef_sstateMap2
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sstdUnfillNewFrameLook
+.export e_StdIOCommon_eastdUnfillNewFrameLook
+.descexp e_StdIOCommon_dstdUnfillNewFrameLook e_StdIOCommon_nstdUnfillNewFrameLook e_StdIOCommon_lstdUnfillNewFrameLook 3 0 "stdUnfillNewFrameLook"
+.a 3 e_StdIOCommon_eastdUnfillNewFrameLook
+.o 2 0
+e_StdIOCommon_lstdUnfillNewFrameLook
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.d 4 0
+	jmp e_StdIOCommon_eastdUnfillNewFrameLook
+.n 3 e_StdIOCommon_dstdUnfillNewFrameLook e_StdIOCommon_eastdUnfillNewFrameLook
+.o 1 0
+e_StdIOCommon_nstdUnfillNewFrameLook
+	push_node _cycle_in_spine 3
+.o 4 0
+e_StdIOCommon_eastdUnfillNewFrameLook
+	jsr_eval 2
+	jsr_eval 1
+	push_r_args 1 3 0
+	update_a 2 4
+	update_a 0 2
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 6 0
+e_StdIOCommon_sstdUnfillNewFrameLook
+.o 6 0
+s12
+	push_r_args 2 2 0
+	push_a 6
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp e_StdPicture_sunfill;103
+.export e_StdIOCommon_sstdScrollFunction
+.export e_StdIOCommon_eastdScrollFunction
+.descexp e_StdIOCommon_dstdScrollFunction e_StdIOCommon_nstdScrollFunction e_StdIOCommon_lstdScrollFunction 2 0 "stdScrollFunction"
+.a 2 e_StdIOCommon_eastdScrollFunction
+.o 2 0
+e_StdIOCommon_lstdScrollFunction
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StdIOCommon_eastdScrollFunction
+.n 2 e_StdIOCommon_dstdScrollFunction e_StdIOCommon_eastdScrollFunction
+.o 1 0
+e_StdIOCommon_nstdScrollFunction
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StdIOCommon_eastdScrollFunction
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 1
+	update_a 0 1
+	pop_a 1
+.o 2 1 i
+e_StdIOCommon_sstdScrollFunction
+.o 2 1 i
+s11
+	buildI_b 0
+	push_a 1
+	fillh d88 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.desc d88 _hnf l88 5 0 "stdScrollFunction`;87"
+.a 0 a88
+.o 2 0
+l88
+	repl_args 4 4
+.o 5 0
+a88
+.d 5 0
+	jsr ea88
+.o 0 1 i
+	buildI_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 5 0
+ea88
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	push_r_args 3 0 3
+	push_r_args 2 2 0
+	pushI_a 3
+	update_a 1 5
+	update_a 0 4
+	update_a 2 3
+	pop_a 3
+.o 4 4 iiii
+s88
+	build_r e_StdIOBasic_rRectangle 2 0 1 0
+	push_a 1
+	push_b 0
+	push_b 4
+	push_a 5
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	update_b 1 5
+	updatepop_b 0 4
+.d 3 2 ii
+	jmp s95
+.o 3 2 ii
+s95
+	pushD_a 0
+	eqD_b e_StdIOCommon_dSliderIncSmall 0
+	jmp_true case.168
+	eqD_b e_StdIOCommon_dSliderDecSmall 0
+	jmp_true case.169
+	eqD_b e_StdIOCommon_dSliderIncLarge 0
+	jmp_true case.170
+	eqD_b e_StdIOCommon_dSliderDecLarge 0
+	jmp_true case.171
+	jmp case.172
+case.168
+	pop_b 1
+	push_b 1
+	pop_a 3
+.d 0 1 i
+	jsr e_StdInt_sabs;13
+.o 0 1 i
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	addI
+.d 0 1 i
+	rtn
+case.169
+	pop_b 1
+	push_b 1
+	pop_a 3
+.d 0 1 i
+	jsr e_StdInt_sabs;13
+.o 0 1 i
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	subI
+.d 0 1 i
+	rtn
+case.170
+	pop_b 1
+	push_b 1
+	pop_a 1
+.d 0 1 i
+	jsr e_StdInt_sabs;13
+.o 0 1 i
+	push_r_args 1 2 0
+	buildh e_StdIOCommon_dHorizontal 0
+	push_a 3
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s36
+.o 0 1 b
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 1 b
+	jsr s93
+.o 0 1 i
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	mulI
+	push_b 2
+	update_b 1 4
+	updatepop_b 0 3
+	addI
+.d 0 1 i
+	rtn
+case.171
+	pop_b 1
+	push_b 1
+	pop_a 1
+.d 0 1 i
+	jsr e_StdInt_sabs;13
+.o 0 1 i
+	push_r_args 1 2 0
+	buildh e_StdIOCommon_dHorizontal 0
+	push_a 3
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s36
+.o 0 1 b
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 1 b
+	jsr s94
+.o 0 1 i
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	mulI
+	push_b 2
+	update_b 1 4
+	updatepop_b 0 3
+	subI
+.d 0 1 i
+	rtn
+case.172
+	pop_b 1
+	repl_args 1 1
+	push_b 1
+	updatepop_b 0 2
+	update_a 0 2
+	pop_a 2
+.d 0 1 i
+	jsr e_StdInt_sabs;13
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 1
+	mulI
+.d 0 1 i
+	rtn
+.o 2 1 b
+s94
+	eqB_b TRUE 0
+	jmp_true case.173
+	jmp case.174
+case.173
+	push_a 1
+	push_a 1
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdIOBasic_srectangleSize
+.o 0 2 ii
+	update_b 0 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.174
+	push_a 1
+	push_a 1
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdIOBasic_srectangleSize
+.o 0 2 ii
+	pop_b 1
+.d 0 1 i
+	rtn
+.o 2 1 b
+s93
+	eqB_b TRUE 0
+	jmp_true case.175
+	jmp case.176
+case.175
+	push_a 1
+	push_a 1
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdIOBasic_srectangleSize
+.o 0 2 ii
+	update_b 0 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.176
+	push_a 1
+	push_a 1
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdIOBasic_srectangleSize
+.o 0 2 ii
+	pop_b 1
+.d 0 1 i
+	rtn
+.export e_StdIOCommon_s==;35
+.descexp e_StdIOCommon_d==;35 e_StdIOCommon_n==;35 e_StdIOCommon_l==;35 2 0 "==;35"
+.a 0 a36
+.o 2 0
+e_StdIOCommon_l==;35
+	repl_args 1 1
+.o 2 0
+a36
+.d 2 0
+	jsr ea36
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_StdIOCommon_d==;35
+.o 1 0
+e_StdIOCommon_n==;35
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea36
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea36
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_s==;35
+.o 2 0
+s36
+	eq_desc e_StdIOCommon_dHorizontal 0 0
+	jmp_true case.177
+	jmp case.178
+case.177
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dHorizontal 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.178
+	push_a 1
+	updatepop_a 0 2
+	eq_desc e_StdIOCommon_dVertical 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_sviewFrameRange
+.descexp e_StdIOCommon_dviewFrameRange e_StdIOCommon_nviewFrameRange e_StdIOCommon_lviewFrameRange 0 0 "viewFrameRange"
+.o 1 0
+e_StdIOCommon_lviewFrameRange
+	halt
+.n 0 e_StdIOCommon_dviewFrameRange
+.o 1 0
+e_StdIOCommon_nviewFrameRange
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea10
+.o 2 0
+	fill_r e_StdIOBasic_rRectangle 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 0 0
+ea10
+.o 0 0
+e_StdIOCommon_sviewFrameRange
+.o 0 0
+s10
+	pushI 31
+	pushI 2
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 31
+	pushI 2
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	build_r e_StdIOBasic_rPoint2 0 2 0 0
+	pop_b 2
+	pushI 31
+	pushI 2
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	pushI 1
+	subI
+	pushI 31
+	pushI 2
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	pushI 1
+	subI
+	build_r e_StdIOBasic_rPoint2 0 2 0 0
+	pop_b 2
+.d 2 0
+	rtn
+.export e_StdIOCommon_sviewDomainRange
+.descexp e_StdIOCommon_dviewDomainRange e_StdIOCommon_nviewDomainRange e_StdIOCommon_lviewDomainRange 0 0 "viewDomainRange"
+.o 1 0
+e_StdIOCommon_lviewDomainRange
+	halt
+.n 0 e_StdIOCommon_dviewDomainRange
+.o 1 0
+e_StdIOCommon_nviewDomainRange
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea9
+.o 2 0
+	fill_r e_StdIOBasic_rRectangle 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 0 0
+ea9
+.o 0 0
+e_StdIOCommon_sviewDomainRange
+.o 0 0
+s9
+	pushI 30
+	pushI 2
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	pushI 30
+	pushI 2
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	build_r e_StdIOBasic_rPoint2 0 2 0 0
+	pop_b 2
+	pushI 30
+	pushI 2
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	pushI 0
+	subI
+	pushI 30
+	pushI 2
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	pushI 0
+	subI
+	build_r e_StdIOBasic_rPoint2 0 2 0 0
+	pop_b 2
+.d 2 0
+	rtn
+.export e_StdIOCommon_srectangleToUpdateState
+.descexp e_StdIOCommon_drectangleToUpdateState e_StdIOCommon_nrectangleToUpdateState e_StdIOCommon_lrectangleToUpdateState 1 0 "rectangleToUpdateState"
+.o 2 0
+e_StdIOCommon_lrectangleToUpdateState
+	pop_a 1
+.d 1 0
+	jsr ea8
+.o 3 0
+	build_r e_StdIOCommon_rUpdateState 3 0 0 0
+	updatepop_a 0 3
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_drectangleToUpdateState
+.o 1 0
+e_StdIOCommon_nrectangleToUpdateState
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea8
+.o 3 0
+	fill_r e_StdIOCommon_rUpdateState 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.o 1 0
+ea8
+	jsr_eval 0
+	repl_r_args 2 0
+.o 2 0
+e_StdIOCommon_srectangleToUpdateState
+.o 2 0
+s8
+	buildh _Nil 0
+	build_r e_StdIOBasic_rRectangle 2 0 1 0
+	buildh _Cons 2
+	build_r e_StdIOBasic_rRectangle 2 0 1 0
+	build_r e_StdIOBasic_rRectangle 2 0 2 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	rtn
+.export e_StdIOCommon_sgetMouseStateButtonState
+.export e_StdIOCommon_eagetMouseStateButtonState
+.descexp e_StdIOCommon_dgetMouseStateButtonState e_StdIOCommon_ngetMouseStateButtonState e_StdIOCommon_lgetMouseStateButtonState 1 0 "getMouseStateButtonState"
+.o 2 0
+e_StdIOCommon_lgetMouseStateButtonState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eagetMouseStateButtonState
+.n 1 e_StdIOCommon_dgetMouseStateButtonState e_StdIOCommon_eagetMouseStateButtonState
+.o 1 0
+e_StdIOCommon_ngetMouseStateButtonState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eagetMouseStateButtonState
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_sgetMouseStateButtonState
+.o 2 0
+s7
+	pushD_a 0
+	eqD_b e_StdIOCommon_dMouseMove 2
+	jmp_true case.179
+	eqD_b e_StdIOCommon_dMouseDown 3
+	jmp_true case.180
+	eqD_b e_StdIOCommon_dMouseDrag 2
+	jmp_true case.181
+	eqD_b e_StdIOCommon_dMouseUp 2
+	jmp_true case.182
+	jmp case.183
+case.179
+	pop_b 1
+	repl_args 2 2
+	pop_a 2
+	fillh e_StdIOCommon_dButtonStillUp 0 0
+.d 1 0
+	rtn
+case.180
+	pop_b 1
+	repl_args 3 3
+	pop_a 2
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	jmp_false else.184
+	fillh e_StdIOCommon_dButtonDown 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.184
+	pushI 2
+	pushI_a 0
+	eqI
+	jmp_false else.185
+	fillh e_StdIOCommon_dButtonDoubleDown 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.185
+	fillh e_StdIOCommon_dButtonTripleDown 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.181
+	pop_b 1
+	repl_args 2 2
+	pop_a 2
+	fillh e_StdIOCommon_dButtonStillDown 0 0
+.d 1 0
+	rtn
+case.182
+	pop_b 1
+	repl_args 2 2
+	pop_a 2
+	fillh e_StdIOCommon_dButtonUp 0 0
+.d 1 0
+	rtn
+case.183
+	pop_b 1
+	fillh e_StdIOCommon_dButtonUp 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sgetMouseStateModifiers
+.descexp e_StdIOCommon_dgetMouseStateModifiers e_StdIOCommon_ngetMouseStateModifiers e_StdIOCommon_lgetMouseStateModifiers 1 0 "getMouseStateModifiers"
+.o 2 0
+e_StdIOCommon_lgetMouseStateModifiers
+	pop_a 1
+.d 1 0
+	jsr ea6
+.o 0 5 bbbbb
+	build_r e_StdIOCommon_rModifiers 0 5 0 0
+	pop_b 5
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dgetMouseStateModifiers
+.o 1 0
+e_StdIOCommon_ngetMouseStateModifiers
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea6
+.o 0 5 bbbbb
+	fill_r e_StdIOCommon_rModifiers 0 5 0 0 0
+	pop_b 5
+.d 1 0
+	rtn
+.o 1 0
+ea6
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_sgetMouseStateModifiers
+.o 1 0
+s6
+	pushD_a 0
+	eqD_b e_StdIOCommon_dMouseMove 2
+	jmp_true case.186
+	eqD_b e_StdIOCommon_dMouseDown 3
+	jmp_true case.187
+	eqD_b e_StdIOCommon_dMouseDrag 2
+	jmp_true case.188
+	eqD_b e_StdIOCommon_dMouseUp 2
+	jmp_true case.189
+	jmp case.190
+case.186
+	pop_b 1
+	repl_args 2 2
+	pop_a 1
+	jsr_eval 0
+	repl_r_args 0 5
+.d 0 5 bbbbb
+	rtn
+case.187
+	pop_b 1
+	repl_args 3 3
+	update_a 1 2
+	pop_a 2
+	jsr_eval 0
+	repl_r_args 0 5
+.d 0 5 bbbbb
+	rtn
+case.188
+	pop_b 1
+	repl_args 2 2
+	pop_a 1
+	jsr_eval 0
+	repl_r_args 0 5
+.d 0 5 bbbbb
+	rtn
+case.189
+	pop_b 1
+	repl_args 2 2
+	pop_a 1
+	jsr_eval 0
+	repl_r_args 0 5
+.d 0 5 bbbbb
+	rtn
+case.190
+	pop_b 1
+	pushB FALSE
+	pushB FALSE
+	pushB FALSE
+	pushB FALSE
+	pushB FALSE
+	pop_a 1
+.d 0 5 bbbbb
+	rtn
+.export e_StdIOCommon_sgetMouseStatePos
+.descexp e_StdIOCommon_dgetMouseStatePos e_StdIOCommon_ngetMouseStatePos e_StdIOCommon_lgetMouseStatePos 1 0 "getMouseStatePos"
+.o 2 0
+e_StdIOCommon_lgetMouseStatePos
+	pop_a 1
+.d 1 0
+	jsr ea5
+.o 0 2 ii
+	build_r e_StdIOBasic_rPoint2 0 2 0 0
+	pop_b 2
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dgetMouseStatePos
+.o 1 0
+e_StdIOCommon_ngetMouseStatePos
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea5
+.o 0 2 ii
+	fill_r e_StdIOBasic_rPoint2 0 2 0 0 0
+	pop_b 2
+.d 1 0
+	rtn
+.o 1 0
+ea5
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_sgetMouseStatePos
+.o 1 0
+s5
+	pushD_a 0
+	eqD_b e_StdIOCommon_dMouseMove 2
+	jmp_true case.191
+	eqD_b e_StdIOCommon_dMouseDown 3
+	jmp_true case.192
+	eqD_b e_StdIOCommon_dMouseDrag 2
+	jmp_true case.193
+	eqD_b e_StdIOCommon_dMouseUp 2
+	jmp_true case.194
+	jmp case.195
+case.191
+	pop_b 1
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	repl_r_args 0 2
+.d 0 2 ii
+	rtn
+case.192
+	pop_b 1
+	repl_args 3 3
+	update_a 0 2
+	pop_a 2
+	jsr_eval 0
+	repl_r_args 0 2
+.d 0 2 ii
+	rtn
+case.193
+	pop_b 1
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	repl_r_args 0 2
+.d 0 2 ii
+	rtn
+case.194
+	pop_b 1
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	repl_r_args 0 2
+.d 0 2 ii
+	rtn
+case.195
+	pop_b 1
+	pop_a 1
+.d 0 0
+	jmp e_StdIOBasic_szero;21
+.export e_StdIOCommon_sgetKeyboardStateKey
+.export e_StdIOCommon_eagetKeyboardStateKey
+.descexp e_StdIOCommon_dgetKeyboardStateKey e_StdIOCommon_ngetKeyboardStateKey e_StdIOCommon_lgetKeyboardStateKey 1 0 "getKeyboardStateKey"
+.o 2 0
+e_StdIOCommon_lgetKeyboardStateKey
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eagetKeyboardStateKey
+.n 1 e_StdIOCommon_dgetKeyboardStateKey e_StdIOCommon_eagetKeyboardStateKey
+.o 1 0
+e_StdIOCommon_ngetKeyboardStateKey
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eagetKeyboardStateKey
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_sgetKeyboardStateKey
+.o 2 0
+s4
+	pushD_a 0
+	eqD_b e_StdIOCommon_dCharKey 2
+	jmp_true case.196
+	eqD_b e_StdIOCommon_dSpecialKey 3
+	jmp_true case.197
+	jmp case.198
+case.196
+	pop_b 1
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	push_a 0
+	buildh e_StdIOCommon_dIsCharKey 1
+	fillh e_Data.Maybe_dJust 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.197
+	pop_b 1
+	repl_args 3 3
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	buildh e_StdIOCommon_dIsSpecialKey 1
+	fillh e_Data.Maybe_dJust 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.198
+	pop_b 1
+	fillh e_Data.Maybe_dNothing 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_sgetKeyboardStateKeyState
+.export e_StdIOCommon_eagetKeyboardStateKeyState
+.descexp e_StdIOCommon_dgetKeyboardStateKeyState e_StdIOCommon_ngetKeyboardStateKeyState e_StdIOCommon_lgetKeyboardStateKeyState 1 0 "getKeyboardStateKeyState"
+.o 2 0
+e_StdIOCommon_lgetKeyboardStateKeyState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StdIOCommon_eagetKeyboardStateKeyState
+.n 1 e_StdIOCommon_dgetKeyboardStateKeyState e_StdIOCommon_eagetKeyboardStateKeyState
+.o 1 0
+e_StdIOCommon_ngetKeyboardStateKeyState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StdIOCommon_eagetKeyboardStateKeyState
+	jsr_eval 0
+.o 2 0
+e_StdIOCommon_sgetKeyboardStateKeyState
+.o 2 0
+s3
+	pushD_a 0
+	eqD_b e_StdIOCommon_dCharKey 2
+	jmp_true case.199
+	eqD_b e_StdIOCommon_dSpecialKey 3
+	jmp_true case.200
+	jmp case.201
+case.199
+	pop_b 1
+	repl_args 2 2
+	pop_a 1
+	jmp_eval_upd
+case.200
+	pop_b 1
+	repl_args 3 3
+	update_a 1 2
+	pop_a 2
+	jmp_eval_upd
+case.201
+	pop_b 1
+	fillh e_StdIOCommon_dKeyUp 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StdIOCommon_smarked
+.descexp e_StdIOCommon_dmarked e_StdIOCommon_nmarked e_StdIOCommon_lmarked 1 0 "marked"
+.o 2 0
+e_StdIOCommon_lmarked
+	pop_a 1
+.d 1 0
+	jsr ea2
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_dmarked
+.o 1 0
+e_StdIOCommon_nmarked
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea2
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea2
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_smarked
+.o 1 0
+s2
+	eq_desc e_StdIOCommon_dMark 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.export e_StdIOCommon_senabled
+.descexp e_StdIOCommon_denabled e_StdIOCommon_nenabled e_StdIOCommon_lenabled 1 0 "enabled"
+.o 2 0
+e_StdIOCommon_lenabled
+	pop_a 1
+.d 1 0
+	jsr ea1
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_StdIOCommon_denabled
+.o 1 0
+e_StdIOCommon_nenabled
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea1
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea1
+	jsr_eval 0
+.o 1 0
+e_StdIOCommon_senabled
+.o 1 0
+s1
+	eq_desc e_StdIOCommon_dAble 0 0
+	pop_a 1
+.d 0 1 b
+	rtn

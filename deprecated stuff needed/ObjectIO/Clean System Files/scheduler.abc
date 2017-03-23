@@ -1,0 +1,7468 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "world" "20161223204044"
+.depend "StdProcessAttribute" "20161223204043"
+.depend "StdProcessDef" "20161223204043"
+.depend "roundrobin" "20161223204043"
+.depend "processstack" "20161223204043"
+.depend "timerhandle" "20161223204044"
+.depend "processhandle" "20161223204043"
+.depend "osmenu" "20161223204044"
+.depend "StdMenuDef" "20161223204043"
+.depend "menuhandle" "20161223204042"
+.depend "devicesystemstate" "20161223204042"
+.depend "keyfocus" "20161223204042"
+.depend "commondef" "20161223204042"
+.depend "receiverhandle" "20161223204043"
+.depend "StdWindowDef" "20161223204044"
+.depend "StdControlDef" "20161223204043"
+.depend "windowhandle" "20161223204044"
+.depend "StdTimerDef" "20161223204043"
+.depend "timertable" "20161223204044"
+.depend "semidynamic" "20161223204043"
+.depend "receivertable" "20161223204043"
+.depend "receivermessage" "20161223204043"
+.depend "deviceevents" "20170206121016"
+.depend "devicefunctions" "20161223204042"
+.depend "ossystem" "20161223204044"
+.depend "osguishare" "20161223204044"
+.depend "ostime" "20161223204044"
+.depend "clCrossCall_12" "20161223204044"
+.depend "osevent" "20161223204044"
+.depend "ostoolbar" "20161223204044"
+.depend "menuCrossCall_12" "20161223204044"
+.depend "osdocumentinterface" "20161223204044"
+.depend "osactivaterequests" "20161223204044"
+.depend "iostate" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "StdIOCommon" "20161223204043"
+.depend "StdPSt" "20161223204043"
+.depend "StdTuple" "20170313110416"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdReal" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdList" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "scheduler" "20161223204043"
+.module m_scheduler "scheduler" "20161223204043"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod world
+.implab e_world_sloadWorld
+.implab e_world_sstoreWorld
+.impmod StdProcessAttribute
+.impdesc e_StdProcessAttribute_disProcessKindAttribute
+.impmod roundrobin
+.implab e_roundrobin_semptyRR
+.implab e_roundrobin_stoRR
+.impdesc e_roundrobin_dfromRR
+.implab e_roundrobin_sfromRR
+.implab e_roundrobin_nfromRR
+.implab e_roundrobin_snotodoRR
+.implab e_roundrobin_sresetRR
+.impdesc e_roundrobin_dadddoneRR
+.implab e_roundrobin_sadddoneRR
+.implab e_roundrobin_nadddoneRR
+.implab e_roundrobin_sinserttodoRR
+.implab e_roundrobin_sgetcurrentRR
+.impmod processstack
+.implab e_processstack_spushProcessShowState
+.implab e_processstack_sremoveProcessShowState
+.implab e_processstack_stopShowProcessShowState
+.impdesc e_processstack_d==;6
+.implab e_processstack_s==;6
+.implab e_processstack_n==;6
+.impdesc e_processstack_rProcessShowState
+.impdesc e_processstack_tProcessShowState
+.implab e_processstack_cProcessShowState
+.impdesc e_processstack_dInteractiveProcess
+.impdesc e_processstack_dVirtualProcess
+.impmod commondef
+.implab e_commondef_serror
+.impdesc e_commondef_ddummy
+.implab e_commondef_ndummy _
+.implab e_commondef_sisSingleton
+.impdesc e_commondef_dhdtl
+.implab e_commondef_nhdtl
+.implab e_commondef_sstrictSeq
+.implab e_commondef_scontains
+.impdesc e_commondef_dremove
+.implab e_commondef_sremove
+.implab e_commondef_nremove
+.impmod timertable
+.implab e_timertable_sinitialTimerTable
+.implab e_timertable_sshiftTimeInTimerTable
+.implab e_timertable_sgetActiveTimerInTimerTable
+.implab e_timertable_sgetTimeIntervalFromTimerTable
+.impmod receivertable
+.implab e_receivertable_sinitialReceiverTable
+.implab e_receivertable_sremoveReceiverFromReceiverTable
+.implab e_receivertable_sgetReceiverTableEntry
+.implab e_receivertable_ssetReceiverTableEntry
+.impdesc e_receivertable_dgetActiveReceiverTableEntry
+.implab e_receivertable_sgetActiveReceiverTableEntry
+.implab e_receivertable_ngetActiveReceiverTableEntry
+.impmod receivermessage
+.impdesc e_receivermessage_rASyncMessage
+.impdesc e_receivermessage_dReceiverUnable
+.impdesc e_receivermessage_dReceiverUnknown
+.impmod deviceevents
+.impdesc e_deviceevents_kASyncMessage
+.impdesc e_deviceevents_kSyncMessage
+.impdesc e_deviceevents_kScheduleOSEvent
+.impdesc e_deviceevents_kScheduleMsgEvent
+.impdesc e_deviceevents_kScheduleTimerEvent
+.impdesc e_deviceevents_kReceiverEvent
+.impmod devicefunctions
+.impdesc e_devicefunctions_dDeviceFunctions.dEvent
+.implab e_devicefunctions_nDeviceFunctions.dEvent e_devicefunctions_eaDeviceFunctions.dEvent
+.impdesc e_devicefunctions_dDeviceFunctions.dDoIO
+.implab e_devicefunctions_nDeviceFunctions.dDoIO e_devicefunctions_eaDeviceFunctions.dDoIO
+.impdesc e_devicefunctions_dDeviceFunctions.dClose
+.implab e_devicefunctions_nDeviceFunctions.dClose e_devicefunctions_eaDeviceFunctions.dClose
+.impmod ostime
+.implab e_ostime_sosGetTime
+.implab e_ostime_s-;6
+.implab e_ostime_s<;7
+.implab e_ostime_stoInt;8
+.implab e_ostime_sfromInt;9
+.impmod osevent
+.implab e_osevent_sosNewEvents
+.implab e_osevent_sosAppendEvents
+.implab e_osevent_sosNullEvent
+.implab e_osevent_sosHandleEvents
+.implab e_osevent_sosEventIsUrgent
+.impdesc e_osevent_dcreateOSZeroTimerEvent
+.implab e_osevent_ncreateOSZeroTimerEvent
+.implab e_osevent_sgetOSZeroTimerStartTime
+.impmod osdocumentinterface
+.impdesc e_osdocumentinterface_dosCloseOSDInfo
+.impmod iostate
+.implab e_iostate_semptyIOSt
+.implab e_iostate_sioStGetInitIO
+.impdesc e_iostate_dioStClosed
+.implab e_iostate_sioStClosed
+.impdesc e_iostate_dioStGetRuntimeState
+.implab e_iostate_sioStGetRuntimeState
+.implab e_iostate_sioStGetIOIsModal
+.implab e_iostate_sioStGetIdTable
+.implab e_iostate_sioStGetReceiverTable
+.implab e_iostate_sioStGetTimerTable
+.implab e_iostate_sioStGetOSTime
+.implab e_iostate_sioStGetEvents
+.implab e_iostate_sioStGetCProcesses
+.implab e_iostate_sioStGetProcessStack
+.implab e_iostate_sioStGetOSDInfo
+.impdesc e_iostate_dioStGetProcessKind
+.implab e_iostate_sioStGetProcessKind
+.impdesc e_iostate_dioStGetIOId
+.implab e_iostate_sioStGetIOId
+.implab e_iostate_nioStGetIOId
+.implab e_iostate_sioStGetMaxIONr
+.implab e_iostate_sioStNewMaxIONr
+.implab e_iostate_sioStGetParentId
+.implab e_iostate_sioStGetGUIShare
+.impdesc e_iostate_dioStGetSubProcessIds
+.implab e_iostate_sioStGetSubProcessIds
+.implab e_iostate_nioStGetSubProcessIds
+.implab e_iostate_sioStGetIdSeed
+.impdesc e_iostate_dioStGetDeviceFunctions
+.impdesc e_iostate_dioStSetInitIO
+.implab e_iostate_nioStSetInitIO e_iostate_eaioStSetInitIO
+.impdesc e_iostate_dioStSetRuntimeState
+.implab e_iostate_sioStSetRuntimeState
+.implab e_iostate_nioStSetRuntimeState e_iostate_eaioStSetRuntimeState
+.implab e_iostate_sioStSetIOIsModal
+.implab e_iostate_sioStSetIdTable
+.implab e_iostate_sioStSetReceiverTable
+.implab e_iostate_sioStSetTimerTable
+.implab e_iostate_sioStSetOSTime
+.implab e_iostate_sioStSetEvents
+.implab e_iostate_sioStSetCProcesses
+.implab e_iostate_sioStSetProcessStack
+.implab e_iostate_sioStSetMaxIONr
+.impdesc e_iostate_dioStSetSubProcessIds
+.implab e_iostate_sioStSetSubProcessIds
+.implab e_iostate_nioStSetSubProcessIds e_iostate_eaioStSetSubProcessIds
+.implab e_iostate_sioStSetIdSeed
+.implab e_iostate_sioStSwapIO
+.implab e_iostate_sioStHasDevices
+.implab e_iostate_sappIOToolbox
+.impdesc e_iostate_rPSt
+.impdesc e_iostate_rCProcess
+.impdesc e_iostate_tCProcess
+.implab e_iostate_cCProcess
+.impdesc e_iostate_dCProcess.localState
+.implab e_iostate_nCProcess.localState e_iostate_eaCProcess.localState
+.impdesc e_iostate_dCProcess.localIOSt
+.implab e_iostate_nCProcess.localIOSt e_iostate_eaCProcess.localIOSt
+.impdesc e_iostate_dRunning
+.impdesc e_iostate_kBlocked
+.impdesc e_iostate_dClosed
+.impmod systemid
+.impdesc e_systemid_dinitSystemId
+.implab e_systemid_sinitSystemId
+.implab e_systemid_ninitSystemId e_systemid_eainitSystemId
+.impdesc e_systemid_dnullSystemId
+.implab e_systemid_nnullSystemId e_systemid_eanullSystemId
+.impdesc e_systemid_d==;5
+.implab e_systemid_s==;5
+.impmod id
+.implab e_id_sinitialIdTable
+.impmod ostoolbox
+.implab e_ostoolbox_sosInitToolbox
+.impmod StdIOCommon
+.impdesc e_StdIOCommon_dNDI
+.impmod StdPSt
+.implab e_StdPSt_saccPIO
+.impmod Data.Maybe
+.implab e_Data.Maybe_sisNothing
+.impdesc e_Data.Maybe_disJust
+.implab e_Data.Maybe_sisJust
+.implab e_Data.Maybe_nisJust
+.impdesc e_Data.Maybe_dfromJust
+.implab e_Data.Maybe_sfromJust
+.implab e_Data.Maybe_nfromJust _
+.impdesc e_Data.Maybe_dNothing
+.impdesc e_Data.Maybe_dJust
+.impmod StdInt
+.implab e_StdInt_s-;7
+.implab e_StdInt_s/;10
+.implab e_StdInt_s^;12
+.implab e_StdInt_s<;17
+.implab e_StdInt_sisEven;18
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod StdList
+.implab e_StdList_s++
+.implab e_StdList_sisEmpty
+.implab e_StdList_shd
+.impdesc e_StdList_dfilter
+.implab e_StdList_nfilter e_StdList_eafilter
+.export e_scheduler_rEnvirons
+.record e_scheduler_rEnvirons aa 2 0 "Environs"
+.descexp e_scheduler_tEnvirons e_scheduler_cEnvirons _hnf 2 1 "Environs"
+.n 2 e_scheduler_tEnvirons
+.o 1 0
+e_scheduler_cEnvirons
+	push_node _cycle_in_spine 2
+	jsr_eval 1
+	jsr_eval 0
+.impmod scheduler
+.impdesc e_scheduler_rEnvirons
+	fill_r e_scheduler_rEnvirons 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.export e_scheduler_dEnvirons.envsEvents
+.export e_scheduler_nEnvirons.envsEvents
+.export e_scheduler_eaEnvirons.envsEvents
+.descs e_scheduler_dEnvirons.envsEvents e_scheduler_nEnvirons.envsEvents _ 1 0 "Environs.envsEvents"
+.n -4 e_scheduler_dEnvirons.envsEvents e_scheduler_eaEnvirons.envsEvents
+.o 1 0
+e_scheduler_nEnvirons.envsEvents
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaEnvirons.envsEvents
+	jsr_eval 0
+	repl_r_args_a 2 0 1 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dEnvirons.envsWorld
+.export e_scheduler_nEnvirons.envsWorld
+.export e_scheduler_eaEnvirons.envsWorld
+.descs e_scheduler_dEnvirons.envsWorld e_scheduler_nEnvirons.envsWorld _ 2 0 "Environs.envsWorld"
+.n -4 e_scheduler_dEnvirons.envsWorld e_scheduler_eaEnvirons.envsWorld
+.o 1 0
+e_scheduler_nEnvirons.envsWorld
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaEnvirons.envsWorld
+	jsr_eval 0
+	repl_r_args_a 2 0 2 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_rContext
+.record e_scheduler_rContext aaaaaaaaaii 9 2 "Context"
+.descexp e_scheduler_tContext e_scheduler_cContext _hnf 11 1 "Context"
+.n 11 e_scheduler_tContext
+.o 1 0
+e_scheduler_cContext
+	push_node _cycle_in_spine 11
+	jsr_eval 10
+	jsr_eval 9
+	jsr_eval 8
+	jsr_eval 7
+	jsr_eval 6
+	jsr_eval 5
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 10
+	pushI_a 9
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	update_a 7 9
+	update_a 5 7
+	update_a 3 5
+	update_a 1 3
+	pop_a 2
+.impdesc e_scheduler_rContext
+	fill_r e_scheduler_rContext 9 2 9 0 0
+	pop_a 9
+	pop_b 2
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cEnvs
+.export e_scheduler_nContext.cEnvs
+.descs e_scheduler_dContext.cEnvs e_scheduler_nContext.cEnvs _ 1 0 "Context.cEnvs"
+.n -4 e_scheduler_dContext.cEnvs
+.o 1 0
+e_scheduler_nContext.cEnvs
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	repl_r_args_a 9 2 1 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cProcessStack
+.export e_scheduler_nContext.cProcessStack
+.export e_scheduler_eaContext.cProcessStack
+.descs e_scheduler_dContext.cProcessStack e_scheduler_nContext.cProcessStack _ 3 0 "Context.cProcessStack"
+.n -4 e_scheduler_dContext.cProcessStack e_scheduler_eaContext.cProcessStack
+.o 1 0
+e_scheduler_nContext.cProcessStack
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaContext.cProcessStack
+	jsr_eval 0
+	repl_r_args_a 9 2 2 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cMaxIONr
+.export e_scheduler_nContext.cMaxIONr
+.export e_scheduler_eaContext.cMaxIONr
+.descs e_scheduler_dContext.cMaxIONr e_scheduler_nContext.cMaxIONr _ 4 0 "Context.cMaxIONr"
+.n -4 e_scheduler_dContext.cMaxIONr e_scheduler_eaContext.cMaxIONr
+.o 1 0
+e_scheduler_nContext.cMaxIONr
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaContext.cMaxIONr
+	jsr_eval 0
+	repl_r_args_a 9 2 3 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cProcesses
+.export e_scheduler_nContext.cProcesses
+.descs e_scheduler_dContext.cProcesses e_scheduler_nContext.cProcesses _ 5 0 "Context.cProcesses"
+.n -4 e_scheduler_dContext.cProcesses
+.o 1 0
+e_scheduler_nContext.cProcesses
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	repl_r_args_a 9 2 4 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cModalProcess
+.export e_scheduler_nContext.cModalProcess
+.export e_scheduler_eaContext.cModalProcess
+.descs e_scheduler_dContext.cModalProcess e_scheduler_nContext.cModalProcess _ 6 0 "Context.cModalProcess"
+.n -4 e_scheduler_dContext.cModalProcess e_scheduler_eaContext.cModalProcess
+.o 1 0
+e_scheduler_nContext.cModalProcess
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaContext.cModalProcess
+	jsr_eval 0
+	repl_r_args_a 9 2 5 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cReceiverTable
+.export e_scheduler_nContext.cReceiverTable
+.export e_scheduler_eaContext.cReceiverTable
+.descs e_scheduler_dContext.cReceiverTable e_scheduler_nContext.cReceiverTable _ 7 0 "Context.cReceiverTable"
+.n -4 e_scheduler_dContext.cReceiverTable e_scheduler_eaContext.cReceiverTable
+.o 1 0
+e_scheduler_nContext.cReceiverTable
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaContext.cReceiverTable
+	jsr_eval 0
+	repl_r_args_a 9 2 6 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cTimerTable
+.export e_scheduler_nContext.cTimerTable
+.export e_scheduler_eaContext.cTimerTable
+.descs e_scheduler_dContext.cTimerTable e_scheduler_nContext.cTimerTable _ 8 0 "Context.cTimerTable"
+.n -4 e_scheduler_dContext.cTimerTable e_scheduler_eaContext.cTimerTable
+.o 1 0
+e_scheduler_nContext.cTimerTable
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaContext.cTimerTable
+	jsr_eval 0
+	repl_r_args_a 9 2 7 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cIdTable
+.export e_scheduler_nContext.cIdTable
+.export e_scheduler_eaContext.cIdTable
+.descs e_scheduler_dContext.cIdTable e_scheduler_nContext.cIdTable _ 9 0 "Context.cIdTable"
+.n -4 e_scheduler_dContext.cIdTable e_scheduler_eaContext.cIdTable
+.o 1 0
+e_scheduler_nContext.cIdTable
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaContext.cIdTable
+	jsr_eval 0
+	repl_r_args_a 9 2 8 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cOSTime
+.export e_scheduler_nContext.cOSTime
+.export e_scheduler_eaContext.cOSTime
+.descs e_scheduler_dContext.cOSTime e_scheduler_nContext.cOSTime _ 10 0 "Context.cOSTime"
+.n -4 e_scheduler_dContext.cOSTime e_scheduler_eaContext.cOSTime
+.o 1 0
+e_scheduler_nContext.cOSTime
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaContext.cOSTime
+	jsr_eval 0
+	repl_r_args_a 9 2 9 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cIdSeed
+.export e_scheduler_nContext.cIdSeed
+.descs e_scheduler_dContext.cIdSeed e_scheduler_nContext.cIdSeed INT 11 0 "Context.cIdSeed"
+.n -3 e_scheduler_dContext.cIdSeed
+.o 1 0
+e_scheduler_nContext.cIdSeed
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 9 2 1 1
+	pop_a 1
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_scheduler_dContext.cOSToolbox
+.export e_scheduler_nContext.cOSToolbox
+.descs e_scheduler_dContext.cOSToolbox e_scheduler_nContext.cOSToolbox INT 12 0 "Context.cOSToolbox"
+.n -3 e_scheduler_dContext.cOSToolbox
+.o 1 0
+e_scheduler_nContext.cOSToolbox
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	push_r_args_b 0 9 2 2 1
+	pop_a 1
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.export e_scheduler_dSwitchToYourself
+.desc0 e_scheduler_dSwitchToYourself 0 "SwitchToYourself"
+.export e_scheduler_dSwitchToDoesNotExist
+.desc0 e_scheduler_dSwitchToDoesNotExist 1 "SwitchToDoesNotExist"
+.export e_scheduler_dSwitchToReceiverDoesNotExist
+.desc0 e_scheduler_dSwitchToReceiverDoesNotExist 2 "SwitchToReceiverDoesNotExist"
+.export e_scheduler_dSwitchReceiverUnable
+.desc0 e_scheduler_dSwitchReceiverUnable 3 "SwitchReceiverUnable"
+.export e_scheduler_dSwitchEndsUpInDeadlock
+.desc0 e_scheduler_dSwitchEndsUpInDeadlock 4 "SwitchEndsUpInDeadlock"
+.desc0 d135 0 "Unguard"
+.export e_scheduler_sTD;UnguardType
+.export e_scheduler_eaTD;UnguardType
+.descexp e_scheduler_dTD;UnguardType e_scheduler_nTD;UnguardType e_scheduler_lTD;UnguardType 1 0 "TD;UnguardType"
+.o 2 0
+e_scheduler_lTD;UnguardType
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_scheduler_eaTD;UnguardType
+.n 1 e_scheduler_dTD;UnguardType e_scheduler_eaTD;UnguardType
+.o 1 0
+e_scheduler_nTD;UnguardType
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaTD;UnguardType
+.o 2 0
+e_scheduler_sTD;UnguardType
+.o 2 0
+s76
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_sTD;Result
+.export e_scheduler_eaTD;Result
+.descexp e_scheduler_dTD;Result e_scheduler_nTD;Result e_scheduler_lTD;Result 1 0 "TD;Result"
+.o 2 0
+e_scheduler_lTD;Result
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_scheduler_eaTD;Result
+.n 1 e_scheduler_dTD;Result e_scheduler_eaTD;Result
+.o 1 0
+e_scheduler_nTD;Result
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaTD;Result
+.o 2 0
+e_scheduler_sTD;Result
+.o 2 0
+s18
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_sTD;SwitchError
+.export e_scheduler_eaTD;SwitchError
+.descexp e_scheduler_dTD;SwitchError e_scheduler_nTD;SwitchError e_scheduler_lTD;SwitchError 1 0 "TD;SwitchError"
+.o 2 0
+e_scheduler_lTD;SwitchError
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_scheduler_eaTD;SwitchError
+.n 1 e_scheduler_dTD;SwitchError e_scheduler_eaTD;SwitchError
+.o 1 0
+e_scheduler_nTD;SwitchError
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaTD;SwitchError
+.o 2 0
+e_scheduler_sTD;SwitchError
+.o 2 0
+s17
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_sTD;Context
+.export e_scheduler_eaTD;Context
+.descexp e_scheduler_dTD;Context e_scheduler_nTD;Context e_scheduler_lTD;Context 1 0 "TD;Context"
+.o 2 0
+e_scheduler_lTD;Context
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_scheduler_eaTD;Context
+.n 1 e_scheduler_dTD;Context e_scheduler_eaTD;Context
+.o 1 0
+e_scheduler_nTD;Context
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaTD;Context
+.o 2 0
+e_scheduler_sTD;Context
+.o 2 0
+s16
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_sTD;Environs
+.export e_scheduler_eaTD;Environs
+.descexp e_scheduler_dTD;Environs e_scheduler_nTD;Environs e_scheduler_lTD;Environs 1 0 "TD;Environs"
+.o 2 0
+e_scheduler_lTD;Environs
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_scheduler_eaTD;Environs
+.n 1 e_scheduler_dTD;Environs e_scheduler_eaTD;Environs
+.o 1 0
+e_scheduler_nTD;Environs
+	push_node _cycle_in_spine 1
+.o 2 0
+e_scheduler_eaTD;Environs
+.o 2 0
+e_scheduler_sTD;Environs
+.o 2 0
+s15
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_saccContext
+.descexp e_scheduler_daccContext e_scheduler_naccContext e_scheduler_laccContext 2 0 "accContext"
+.a 0 a13
+.o 2 0
+e_scheduler_laccContext
+	repl_args 1 1
+.o 2 0
+a13
+.d 2 0
+	jsr ea13
+.o 3 0
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 3
+.d 1 0
+	rtn
+.n 2 e_scheduler_daccContext
+.o 1 0
+e_scheduler_naccContext
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea13
+.o 3 0
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 1
+	fillh _Tuple 2 5
+	pop_a 3
+.d 1 0
+	rtn
+.o 2 0
+ea13
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+e_scheduler_saccContext
+.o 3 0
+s13
+	buildh e_iostate_dioStGetIOId 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s44
+.o 11 2 ii
+	build_r e_scheduler_rContext 9 2 1 0
+	build _ 1 n21
+	push_a 11
+	pop_b 2
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 1 0
+	jsr s137
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr s138
+.o 2 0
+	push_a 3
+	build d_S.1 -1 n_S.1
+	push_a 5
+	buildh e_Data.Maybe_dJust 1
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_iostate_rCProcess 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build e_roundrobin_dadddoneRR 2 e_roundrobin_nadddoneRR
+	push_a 4
+	build d_S.2 -1 n_S.2
+	build _ 2 n139
+	push_a 7
+	update_a 7 8
+	update_a 4 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	jsr_ap 1
+	push_arg 0 2 2
+	jsr_eval 0
+	repl_r_args 9 2
+.d 9 2 ii
+	jsr s21
+.o 11 2 ii
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sresetRR
+.o 2 0
+.impmod roundrobin
+.impdesc e_roundrobin_rRR
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 1
+	push_b 1
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 21
+	push_a 20
+	push_a 22
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 21 24
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+.d 12 2 ii
+	jsr s43
+.o 2 0
+	push_arg 2 2 1
+	jsr_eval 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	rtn
+.n 2 _
+.o 1 0
+n139
+	push_node _cycle_in_spine 2
+.o 2 0
+ea139
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	repl_r_args 9 2
+	update_a 9 3
+	fill_r e_scheduler_rContext 9 2 12 0 0
+	pop_a 12
+	pop_b 2
+.d 1 0
+	rtn
+.export e_scheduler_sappContext
+.descexp e_scheduler_dappContext e_scheduler_nappContext e_scheduler_lappContext 2 0 "appContext"
+.a 0 a12
+.o 2 0
+e_scheduler_lappContext
+	repl_args 1 1
+.o 2 0
+a12
+.d 2 0
+	jsr ea12
+.o 2 0
+	build_r e_iostate_rPSt 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 2 e_scheduler_dappContext
+.o 1 0
+e_scheduler_nappContext
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea12
+.o 2 0
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea12
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+e_scheduler_sappContext
+.o 3 0
+s12
+	buildh e_iostate_dioStGetIOId 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s44
+.o 11 2 ii
+	push_a 10
+	buildh _Nil 0
+	update_a 0 12
+	pop_a 1
+.d 1 0
+	jsr s137
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr s138
+.o 2 0
+	build_r e_scheduler_rContext 9 2 4 0
+	build _ 1 n21
+	push_a 0
+	build d_S.1 -1 n_S.1
+	push_a 5
+	buildh e_Data.Maybe_dJust 1
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_iostate_rCProcess 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build e_roundrobin_dadddoneRR 2 e_roundrobin_nadddoneRR
+	push_a 1
+	build d_S.2 -1 n_S.2
+	build _ 2 n140
+	push_a 17
+	pop_b 2
+	update_a 17 18
+	update_a 5 17
+	update_a 3 16
+	update_a 1 15
+	updatepop_a 0 14
+	jsr_ap 1
+	repl_r_args 9 2
+.d 9 2 ii
+	jsr s21
+.o 11 2 ii
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sresetRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 1
+	push_b 1
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 20
+	push_a 19
+	push_a 21
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 3
+	updatepop_b 0 2
+.d 12 2 ii
+	jmp s43
+.n 2 _
+.o 1 0
+n140
+	push_node _cycle_in_spine 2
+.o 2 0
+ea140
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	repl_r_args 9 2
+	update_a 9 3
+	fill_r e_scheduler_rContext 9 2 12 0 0
+	pop_a 12
+	pop_b 2
+.d 1 0
+	rtn
+.o 12 2 ii
+s43
+	push_r_args 6 2 0
+	push_a 4
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+.d 3 0
+	jsr s45
+.o 2 1 b
+	push_b 0
+	notB
+	jmp_false else.1
+	buildAC "interactive process not found"
+	buildAC "accContext"
+	update_a 1 15
+	updatepop_a 0 14
+	pop_b 3
+.d 2 0
+	jsr s19
+.o 1 0
+	repl_r_args 2 0
+.d 2 0
+	rtn
+else.1
+	build_r e_roundrobin_rRR 2 0 0 0
+	build e_roundrobin_dfromRR 1 e_roundrobin_nfromRR
+	push_a 0
+	build d_S.2 -1 n_S.2
+	build e_commondef_dhdtl 1 e_commondef_nhdtl
+	push_a 0
+	build d_S.1 -1 n_S.1
+	push_a 0
+	build e_iostate_dCProcess.localIOSt -4 e_iostate_nCProcess.localIOSt
+	push_a 6
+	pop_b 1
+	update_a 8 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jsr s49
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStClosed
+.o 1 1 b
+	push_b 0
+	jmp_false else.2
+	buildh e_Data.Maybe_dNothing 0
+	jsr_eval 3
+	push_arg 3 2 2
+	jsr_eval 0
+	jsr_eval 5
+	push_arg 5 2 1
+	jsr_eval 0
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 1
+	push_b 1
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_a 9 4
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 10
+	build e_iostate_dCProcess.localState -4 e_iostate_nCProcess.localState
+	push_a 14
+	buildh _Nil 0
+	update_a 0 16
+	update_a 0 13
+	update_a 0 25
+	update_a 0 24
+	update_a 0 23
+	update_a 0 22
+	update_a 0 21
+	update_a 0 20
+	update_a 0 19
+	update_a 0 18
+	update_a 0 17
+	pop_a 1
+.d 2 0
+	jsr s49
+.o 1 0
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	push_a 10
+	push_a 10
+	update_a 1 11
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 0 10
+	pop_a 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 11 2 ii
+	jsr s32
+.o 5 0
+	pop_a 3
+.d 2 0
+	rtn
+else.2
+	jsr_eval 2
+	push_arg 2 2 2
+	jsr_eval 0
+	jsr_eval 4
+	push_arg 4 2 1
+	jsr_eval 0
+	pop_b 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 1
+	push_b 1
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 10
+	build e_iostate_dCProcess.localState -4 e_iostate_nCProcess.localState
+	push_a 12
+	buildh _Nil 0
+	update_a 0 14
+	update_a 0 13
+	update_a 0 23
+	update_a 0 22
+	update_a 0 21
+	update_a 0 20
+	update_a 0 19
+	update_a 0 18
+	update_a 0 17
+	update_a 0 16
+	update_a 0 15
+	pop_a 1
+.d 2 0
+	jsr s49
+.o 1 0
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	push_a 10
+	push_a 10
+	update_a 1 11
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 0 10
+	pop_a 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+.d 11 2 ii
+	jsr s32
+.o 5 0
+	pop_a 3
+.d 2 0
+	rtn
+.export e_scheduler_scswitchProcess
+.descexp e_scheduler_dcswitchProcess e_scheduler_ncswitchProcess e_scheduler_lcswitchProcess 3 0 "cswitchProcess"
+.a 0 a11
+.o 2 0
+e_scheduler_lcswitchProcess
+	repl_args 2 2
+.o 3 0
+a11
+.d 3 0
+	jsr ea11
+.o 4 0
+	build_r e_iostate_rPSt 2 0 2 0
+	push_a 2
+	push_a 2
+	buildh _Tuple 3
+	updatepop_a 0 4
+.d 1 0
+	rtn
+.n 3 e_scheduler_dcswitchProcess
+.o 1 0
+e_scheduler_ncswitchProcess
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea11
+.o 4 0
+	build_r e_iostate_rPSt 2 0 2 0
+	push_a 2
+	push_a 2
+	fillh _Tuple 3 7
+	pop_a 4
+.d 1 0
+	rtn
+.o 3 0
+ea11
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 2 2 0
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+.o 4 0
+e_scheduler_scswitchProcess
+.o 4 0
+s11
+	buildh e_iostate_dioStGetIOId 0
+	push_a 4
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 0
+	push_a 4
+.d 2 0
+	jsr e_systemid_s==;5
+.o 0 1 b
+	jmp_false else.3
+	buildh _Nil 0
+	buildh e_scheduler_dSwitchToYourself 0
+	buildh e_Data.Maybe_dJust 1
+	push_a 4
+	push_a 4
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	rtn
+else.3
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s44
+.o 11 2 ii
+	push_a 12
+	build_r e_iostate_kBlocked 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	push_a 11
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_iostate_dioStSetRuntimeState 2 e_iostate_nioStSetRuntimeState
+	build _ 1 n41
+	push_b 1
+	push_b 1
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 10 20
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 9 2 ii
+	jsr s21
+.o 11 2 ii
+	push_a 11
+	build d_S.2 -1 n_S.2
+	buildh e_Data.Maybe_dNothing 0
+	build e_iostate_tCProcess 2 e_iostate_cCProcess
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_roundrobin_sadddoneRR
+.o 2 0
+	push_a 14
+.d 3 0
+	jsr s45
+.o 2 1 b
+	push_b 0
+	notB
+	jmp_false else.4
+	build_r e_roundrobin_rRR 2 0 0 0
+	push_b 2
+	push_b 2
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_eval 20
+	push_arg 20 2 1
+	jsr_eval 0
+	push_a 22
+	push_a 24
+	push_a 11
+	update_a 2 12
+	update_a 1 2
+	update_a 3 1
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 11 10
+	update_a 0 11
+	pop_a 1
+	update_b 1 4
+	updatepop_b 0 3
+	update_a 11 27
+	update_a 10 26
+	update_a 9 25
+	update_a 8 24
+	update_a 7 23
+	update_a 6 22
+	update_a 5 21
+	update_a 4 20
+	update_a 3 19
+	update_a 2 18
+	update_a 1 17
+	updatepop_a 0 16
+.d 12 2 ii
+	jsr s67
+.o 2 0
+	buildh _Nil 0
+	buildh e_scheduler_dSwitchToDoesNotExist 0
+	buildh e_Data.Maybe_dJust 1
+.d 4 0
+	rtn
+else.4
+	push_a 1
+	push_a 1
+	push_a 16
+	push_a 16
+	pop_b 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jsr s46
+.o 2 1 b
+	push_b 0
+	jmp_false else.5
+	build_r e_roundrobin_rRR 2 0 0 0
+	push_b 2
+	push_b 2
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_eval 20
+	push_arg 20 2 1
+	jsr_eval 0
+	push_a 22
+	push_a 24
+	push_a 11
+	update_a 2 12
+	update_a 1 2
+	update_a 3 1
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 11 10
+	update_a 0 11
+	pop_a 1
+	update_b 1 4
+	updatepop_b 0 3
+	update_a 11 27
+	update_a 10 26
+	update_a 9 25
+	update_a 8 24
+	update_a 7 23
+	update_a 6 22
+	update_a 5 21
+	update_a 4 20
+	update_a 3 19
+	update_a 2 18
+	update_a 1 17
+	updatepop_a 0 16
+.d 12 2 ii
+	jsr s67
+.o 2 0
+	buildh _Nil 0
+	buildh e_scheduler_dSwitchEndsUpInDeadlock 0
+	buildh e_Data.Maybe_dJust 1
+.d 4 0
+	rtn
+else.5
+	build_r e_roundrobin_rRR 2 0 0 0
+	push_b 2
+	push_b 2
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 23
+	buildh d48 1
+	pushI 0
+	push_b 2
+	update_b 1 3
+	update_b 2 1
+	update_b 0 2
+	pop_b 1
+	update_b 2 5
+	update_b 1 4
+	updatepop_b 0 3
+	update_a 9 20
+	update_a 8 19
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	buildh _Nil 0
+	update_a 0 14
+	pop_a 1
+.d 10 3 iii
+	jsr s4
+.o 9 3 iii
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+.d 9 2 ii
+	jsr s21
+.o 11 2 ii
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sresetRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 1
+	push_b 1
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 22
+	pushB FALSE
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 9 18
+	update_a 8 17
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	buildh _Nil 0
+	update_a 0 15
+	pop_a 1
+.d 10 3 bii
+	jsr s30
+.o 10 2 ii
+	jsr_eval 10
+	push_arg 10 2 1
+	jsr_eval 0
+	push_a 12
+	push_b 1
+	push_b 1
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 23
+	push_a 11
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 12 2 ii
+	jsr s67
+.o 2 0
+	create
+	push_a 3
+.d 2 0
+	jsr s69
+.o 1 0
+	create
+	push_a 4
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s68
+.o 1 0
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	rtn
+.o 4 0
+s46
+	buildh _Nil 0
+	push_a 1
+	buildh _Cons 2
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp s72
+.o 4 0
+s72
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s47
+.o 3 1 b
+	push_a 0
+	push_b 0
+	push_b 0
+	notB
+	jmp_false else.6
+	push_a 3
+	push_a 3
+	pushB FALSE
+	update_a 1 6
+	updatepop_a 0 5
+	updatepop_b 0 2
+.d 2 1 b
+	rtn
+else.6
+	push_a 0
+	jsr_eval 0
+	push_a 0
+	pop_b 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.7
+	push_a 2
+	push_a 2
+	pushB FALSE
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 1 b
+	rtn
+else.7
+	push_a 0
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	push_a 4
+	push_a 1
+	buildh _Cons 2
+	push_a 1
+	buildh e_systemid_d==;5 1
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 8
+	update_a 0 5
+	pop_a 1
+.d 2 0
+	jsr e_commondef_scontains
+.o 0 1 b
+	jmp_false else.8
+	push_a 4
+	push_a 4
+	pushB TRUE
+	update_a 1 7
+	updatepop_a 0 6
+.d 2 1 b
+	rtn
+else.8
+	push_a 1
+	jsr_eval 0
+	push_a 5
+	push_a 5
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 4 0
+	jmp s72
+.n 1 _
+.o 1 0
+n41
+	push_node _cycle_in_spine 1
+.o 1 0
+ea41
+	jsr_eval 0
+	buildh d135 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+s44
+.d 0 0
+	jsr e_roundrobin_semptyRR
+.o 2 0
+	buildh _Nil 0
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 5 0
+	jmp s33
+.desc d48 _hnf l48 2 0 "processIsBlocked"
+.a 0 a48
+.o 2 0
+l48
+	repl_args 1 1
+.o 2 0
+a48
+.d 2 0
+	jsr ea48
+.o 9 3 bii
+	build_r e_scheduler_rContext 9 2 0 1
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 9
+	pop_b 3
+.d 1 0
+	rtn
+.o 2 0
+ea48
+	jsr_eval 1
+	push_r_args 1 9 2
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	push_a 9
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 10 2 ii
+s48
+	push_r_args 4 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr s47
+.o 3 1 b
+	push_a 0
+	push_b 0
+	push_b 0
+	jmp_false else.9
+	build_r e_roundrobin_rRR 2 0 2 0
+	push_b 3
+	push_b 3
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 9
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 11
+	update_a 0 23
+	update_a 0 22
+	update_a 0 21
+	update_a 0 20
+	update_a 0 19
+	update_a 0 18
+	update_a 0 17
+	update_a 0 16
+	update_a 0 15
+	update_a 0 13
+	update_a 0 14
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+.d 9 3 bii
+	rtn
+else.9
+	build_r e_roundrobin_rRR 2 0 2 0
+	push_b 3
+	push_b 3
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 2
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+.d 9 3 bii
+	rtn
+.o 3 0
+s47
+	push_a 0
+	buildh d74 1
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s14
+.export e_scheduler_saccessLocals
+.descexp e_scheduler_daccessLocals e_scheduler_naccessLocals e_scheduler_laccessLocals 2 0 "accessLocals"
+.a 0 a14
+.o 2 0
+e_scheduler_laccessLocals
+	repl_args 1 1
+.o 2 0
+a14
+.d 2 0
+	jsr ea14
+.o 3 1 b
+	build_r e_roundrobin_rRR 2 0 1 0
+	push_a 1
+	buildB_b 0
+	buildh _Tuple 2
+	buildh _Tuple 2
+	updatepop_a 0 3
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_scheduler_daccessLocals
+.o 1 0
+e_scheduler_naccessLocals
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea14
+.o 3 1 b
+	build_r e_roundrobin_rRR 2 0 1 0
+	push_a 1
+	buildB_b 0
+	buildh _Tuple 2
+	fillh _Tuple 2 5
+	pop_a 3
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea14
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+e_scheduler_saccessLocals
+.o 3 0
+s14
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sfromRR
+.o 2 0
+	push_a 0
+	push_a 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s75
+.o 2 1 b
+	push_a 0
+	push_b 0
+	push_b 0
+	jmp_false else.10
+	push_a 3
+	push_a 3
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	push_a 2
+	jsr_eval 0
+	push_b 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	updatepop_b 0 2
+.d 3 1 b
+	rtn
+else.10
+	push_a 3
+	push_a 5
+	pop_b 2
+	update_a 4 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jsr s75
+.o 2 1 b
+	push_a 1
+	push_a 3
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	push_a 2
+	push_b 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 3 1 b
+	rtn
+.o 2 0
+s75
+	eq_desc _Cons 2 1
+	jmp_true case.11
+	jmp case.12
+case.11
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	push_a 3
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_ap 1
+	push_arg 0 2 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	push_b 0
+	jmp_false else.13
+	push_a 2
+	push_arg 2 2 2
+	buildh _Cons 2
+	push_a 1
+	jsr_eval 0
+	push_b 0
+	update_a 1 6
+	updatepop_a 0 5
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+else.13
+	push_a 2
+	jsr_eval 0
+	push_a 4
+	pop_b 1
+	update_a 3 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jsr s75
+.o 2 1 b
+	push_a 1
+	push_arg 3 2 2
+	buildh _Cons 2
+	push_a 1
+	push_b 0
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+case.12
+	buildh _Nil 0
+	buildh e_Data.Maybe_dNothing 0
+	pushB FALSE
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 1 b
+	rtn
+.desc d74 _hnf l74 2 0 "checkInLocal;73"
+.a 0 a74
+.o 2 0
+l74
+	repl_args 1 1
+.o 2 0
+a74
+.o 2 0
+ea74
+	jsr_eval 1
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	push_a 2
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s73
+.o 2 1 b
+	push_a 1
+	push_a 4
+	push_a 4
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 2
+	push_b 0
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	updatepop_b 0 1
+	build_r e_iostate_rCProcess 2 0 1 0
+	push_a 1
+	buildB_b 0
+	buildh _Tuple 2
+	buildh _Tuple 2
+	updatepop_a 0 3
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+s73
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 0
+	push_a 3
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_systemid_s==;5
+.o 0 1 b
+	notB
+	jmp_false else.14
+	buildh e_Data.Maybe_dNothing 0
+	pushB FALSE
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 1 b
+	rtn
+else.14
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetRuntimeState
+.o 2 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr s25
+.o 1 1 b
+	push_b 0
+	jmp_false else.15
+	push_a 0
+	buildh e_Data.Maybe_dJust 1
+	pushB TRUE
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+else.15
+	buildh e_Data.Maybe_dNothing 0
+	pushB TRUE
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+.o 2 0
+s69
+	eq_desc e_deviceevents_kScheduleMsgEvent 0 0
+	jmp_true case.16
+	jmp case.17
+case.16
+	repl_args 1 1
+	eq_desc e_deviceevents_kSyncMessage 0 0
+	jmp_true case.18
+	jmp case.17
+case.18
+	repl_args 4 4
+	update_a 2 3
+	pop_a 3
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.17
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+s68
+	eq_desc e_deviceevents_kScheduleMsgEvent 0 0
+	jmp_true case.19
+	jmp case.20
+case.19
+	repl_args 1 1
+	eq_desc e_deviceevents_kSyncMessage 0 0
+	jmp_true case.21
+	jmp case.20
+case.21
+	repl_args 4 4
+	pop_a 3
+	push_a 0
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	jmp_false else.22
+	fillh e_Data.Maybe_dNothing 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.22
+	push_a 0
+.d 1 0
+	jsr e_commondef_sisSingleton
+.o 0 1 b
+	notB
+	jmp_false else.23
+	buildAC "more than one MessageError returned"
+	buildAC "checkSyncMessageError"
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s19
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.23
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_StdList_shd
+.o 1 0
+.d 2 0
+	jmp s86
+case.20
+	fillh e_Data.Maybe_dNothing 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+s86
+	eq_desc e_receivermessage_dReceiverUnable 0 0
+	jmp_true case.24
+	jmp case.25
+case.24
+	buildh e_scheduler_dSwitchReceiverUnable 0
+	fillh e_Data.Maybe_dJust 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.25
+	buildh e_scheduler_dSwitchToReceiverDoesNotExist 0
+	fillh e_Data.Maybe_dJust 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 12 2 ii
+s67
+	push_r_args 5 2 0
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr s45
+.o 2 1 b
+	pop_b 1
+.d 2 0
+	jsr e_roundrobin_sgetcurrentRR
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sfromRR
+.o 2 0
+	push_r_args_a 2 2 0 2 1
+	push_a 4
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s49
+.o 1 0
+	buildh e_iostate_dRunning 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetRuntimeState
+.o 1 0
+	push_a 2
+	push_a 2
+	buildh _Nil 0
+	update_a 0 4
+	update_a 0 5
+	pop_a 1
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 1
+	push_b 1
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 21
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+.d 11 2 ii
+	jsr s32
+.o 5 0
+	pop_a 3
+.d 2 0
+	rtn
+.o 2 0
+s49
+	pop_a 1
+	jmp_eval
+
+.d 1 0
+	rtn
+.o 3 0
+s45
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sresetRR
+.o 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s71
+.o 3 0
+s71
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_snotodoRR
+.o 2 1 b
+	push_b 0
+	jmp_false else.26
+	push_a 1
+	push_a 1
+	pushB FALSE
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+else.26
+	push_a 1
+	push_a 1
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sgetcurrentRR
+.o 3 0
+	push_r_args 0 2 0
+	push_a 5
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr s70
+.o 2 1 b
+	push_b 0
+	jmp_false else.27
+	build_r e_iostate_rCProcess 2 0 0 0
+	push_a 4
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 3 0
+	jsr e_roundrobin_sinserttodoRR
+.o 2 0
+	pushB TRUE
+.d 2 1 b
+	rtn
+else.27
+	build_r e_iostate_rCProcess 2 0 0 0
+	push_a 4
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jsr e_roundrobin_sadddoneRR
+.o 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s71
+.o 3 0
+s70
+	push_a 2
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 1
+	push_a 5
+	push_a 5
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 2
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 5
+	update_a 0 9
+	update_a 0 8
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr e_systemid_s==;5
+.o 0 1 b
+	update_a 1 6
+	updatepop_a 0 5
+.d 2 1 b
+	rtn
+.o 2 0
+s63
+	eq_desc _Nil 0 0
+	jmp_true case.28
+	jmp case.29
+case.28
+	buildh _Nil 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+case.29
+	eq_desc _Nil 0 1
+	jmp_true case.30
+	jmp case.31
+case.30
+	buildh _Nil 0
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+case.31
+	push_args_u 1 2 2
+	jsr_eval 0
+	push_args_u 0 2 2
+	push_a 1
+	build e_iostate_dioStGetIOId 1 e_iostate_nioStGetIOId
+	build e_systemid_dnullSystemId 0 e_systemid_nnullSystemId
+	push_a 1
+	build d_S.1 -1 n_S.1
+	buildh e_systemid_d==;5 1
+	push_a 7
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 9
+	update_a 0 6
+	pop_a 1
+.d 3 0
+	jsr e_commondef_sremove
+.o 2 1 b
+	push_b 0
+	jmp_false else.32
+	push_a 2
+	build d_S.2 -1 n_S.2
+	fill e_iostate_dioStGetSubProcessIds 1 e_iostate_nioStGetSubProcessIds 6
+	push_a 5
+	push_a 7
+	jsr_eval 0
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 11
+	push_a 5
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 14
+	update_a 0 12
+	update_a 0 8
+	pop_a 1
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s63
+.o 2 0
+	push_a 1
+	push_a 3
+	build d_S.2 -1 n_S.2
+	buildh e_scheduler_dquitProcess 0
+	build e_iostate_dioStSetInitIO 2 e_iostate_nioStSetInitIO
+	push_a 5
+	build e_iostate_tCProcess 2 e_iostate_cCProcess
+	buildh _Cons 2
+	push_a 1
+	update_a 1 10
+	updatepop_a 0 9
+.d 2 0
+	rtn
+else.32
+	push_a 6
+	jsr_eval 0
+	push_a 2
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+.d 2 0
+	jsr s63
+.o 2 0
+	push_a 1
+	push_a 3
+	build d_S.2 -1 n_S.2
+	push_a 5
+	build e_iostate_tCProcess 2 e_iostate_cCProcess
+	fill1 _Cons 2 7 111
+	push_a 5
+	push_a 1
+	update_a 1 10
+	updatepop_a 0 9
+.d 2 0
+	rtn
+.o 3 0
+s64
+	push_a 0
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	jmp_false else.33
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	rtn
+else.33
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sfromRR
+.o 2 0
+	push_a 0
+	push_a 3
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s63
+.o 2 0
+	push_a 2
+	push_a 1
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s63
+.o 2 0
+	push_a 1
+	push_a 3
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	rtn
+.o 3 0
+s39
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetCProcesses
+.o 3 0
+	push_a 1
+	push_a 1
+	push_a 5
+	update_a 5 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s64
+.o 3 0
+	pop_a 1
+	push_a 2
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jmp e_iostate_sioStSetCProcesses
+.export e_scheduler_squitProcess
+.descexp e_scheduler_dquitProcess e_scheduler_nquitProcess e_scheduler_lquitProcess 1 0 "quitProcess"
+.o 2 0
+e_scheduler_lquitProcess
+	pop_a 1
+.d 1 0
+	jsr ea10
+.o 2 0
+	build_r e_iostate_rPSt 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 1 e_scheduler_dquitProcess
+.o 1 0
+e_scheduler_nquitProcess
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea10
+.o 2 0
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 1 0
+ea10
+	jsr_eval 0
+	repl_r_args 2 0
+.o 2 0
+e_scheduler_squitProcess
+.o 2 0
+s10
+	buildh e_iostate_dioStGetRuntimeState 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 0
+.d 1 0
+	jsr s25
+.o 1 1 b
+	pop_a 1
+	jmp_false else.34
+	buildAC "closeProcess applied to blocked process"
+	buildAC "quitProcess"
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s19
+.o 1 0
+	repl_r_args 2 0
+.d 2 0
+	rtn
+else.34
+	push_a 0
+	updatepop_a 0 1
+	eq_desc e_iostate_dClosed 0 0
+	pop_a 1
+	jmp_false else.35
+.d 2 0
+	rtn
+else.35
+	buildh e_iostate_dioStGetDeviceFunctions 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	build_r e_iostate_rPSt 2 0 1 0
+	create
+	push_a 2
+	buildh _Nil 0
+	update_a 0 4
+	update_a 0 5
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s62
+.o 1 0
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr e_commondef_sstrictSeq
+.o 1 0
+	push_r_args_a 0 2 0 2 1
+	buildh e_iostate_dClosed 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetRuntimeState
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetSubProcessIds
+.o 2 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr s39
+.o 1 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr s40
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStGetProcessStack
+.o 2 0
+	push_a 0
+	push_a 3
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_processstack_sremoveProcessShowState
+.o 3 1 b
+	pop_a 2
+	pop_b 1
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_iostate_sioStSetProcessStack
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStGetOSDInfo
+.o 2 0
+	push_a 0
+	buildh e_osdocumentinterface_dosCloseOSDInfo 1
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_iostate_sappIOToolbox
+.o 1 0
+	push_r_args 1 2 0
+	update_a 2 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.n 1 _ ea62
+.o 1 0
+n62
+	push_node _cycle_in_spine 1
+.o 2 0
+ea62
+	jsr_eval 0
+.o 2 0
+s62
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp s85
+.o 2 0
+s85
+	eq_desc _Cons 2 0
+	jmp_true case.36
+	jmp case.37
+case.36
+	repl_args 2 2
+	push_a 1
+	build _ 1 n62
+	push_a 1
+	build e_devicefunctions_dDeviceFunctions.dClose -4 e_devicefunctions_nDeviceFunctions.dClose
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+case.37
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_saddInteractiveProcess
+.descexp e_scheduler_daddInteractiveProcess e_scheduler_naddInteractiveProcess e_scheduler_laddInteractiveProcess 7 0 "addInteractiveProcess"
+.a 0 a9
+.o 2 0
+e_scheduler_laddInteractiveProcess
+	repl_args 6 6
+.o 7 0
+a9
+.d 7 0
+	jsr ea9
+.o 2 0
+	build_r e_iostate_rPSt 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 7 e_scheduler_daddInteractiveProcess
+.o 1 0
+e_scheduler_naddInteractiveProcess
+	push_node _cycle_in_spine 7
+.d 7 0
+	jsr ea9
+.o 2 0
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 7 0
+ea9
+	jsr_eval 6
+	jsr_eval 5
+	jsr_eval 4
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 6 2 0
+	pushB_a 6
+	update_a 1 8
+	update_a 7 6
+	update_a 0 7
+	pop_a 2
+.o 7 1 b
+e_scheduler_saddInteractiveProcess
+.o 7 1 b
+s9
+	push_a 6
+.d 1 0
+	jsr e_iostate_sioStNewMaxIONr
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 1
+	push_b 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s36
+.o 2 0
+	create
+	push_a 2
+	push_a 5
+	push_b 0
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 1 b
+	jsr s37
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStGetProcessStack
+.o 2 0
+	buildh e_processstack_dInteractiveProcess 0
+	pushB TRUE
+	push_a 5
+	create
+	push_a 3
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 1 b
+	jsr e_processstack_spushProcessShowState
+.o 1 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_iostate_sioStSetProcessStack
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStGetCProcesses
+.o 3 0
+	buildh e_processstack_dInteractiveProcess 0
+	push_a 5
+	push_b 0
+	build_u _ 1 1 n84
+	push_a 12
+	buildh e_StdProcessAttribute_disProcessKindAttribute 1
+	push_a 9
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_StdList_dfilter 2 e_StdList_nfilter
+	push_a 13
+	buildB_b 0
+	push_a 8
+	push_a 11
+	push_a 15
+	push_a 15
+	push_a 7
+	update_a 6 8
+	update_a 4 6
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 7 1
+	update_a 5 7
+	update_a 0 5
+	pop_a 1
+	build _ 9 n27
+	push_a 10
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n35
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	update_a 5 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 3 0
+	jsr e_roundrobin_sinserttodoRR
+.o 2 0
+	create
+	push_a 3
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jsr e_iostate_sioStSetCProcesses
+.o 1 0
+	push_a 2
+	push_a 2
+	update_a 2 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.nu 1 1 _ _
+.o 1 0
+n84
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 b
+ea84
+.o 2 1 b
+s84
+	eqB_b TRUE 0
+	jmp_true case.38
+	jmp case.39
+case.38
+	push_a 0
+	fillh e_Data.Maybe_dJust 1 2
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.39
+	fillh e_Data.Maybe_dNothing 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.export e_scheduler_saddVirtualProcess
+.descexp e_scheduler_daddVirtualProcess e_scheduler_naddVirtualProcess e_scheduler_laddVirtualProcess 4 0 "addVirtualProcess"
+.a 0 a8
+.o 2 0
+e_scheduler_laddVirtualProcess
+	repl_args 3 3
+.o 4 0
+a8
+.d 4 0
+	jsr ea8
+.o 2 0
+	build_r e_iostate_rPSt 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 4 e_scheduler_daddVirtualProcess
+.o 1 0
+e_scheduler_naddVirtualProcess
+	push_node _cycle_in_spine 4
+.d 4 0
+	jsr ea8
+.o 2 0
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 4 0
+ea8
+	jsr_eval 3
+	jsr_eval 0
+	push_r_args 3 2 0
+	update_a 1 5
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 0 4
+	pop_a 1
+.o 5 0
+e_scheduler_saddVirtualProcess
+.o 5 0
+s8
+	push_a 4
+.d 1 0
+	jsr e_iostate_sioStNewMaxIONr
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 1
+	pushB TRUE
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s36
+.o 2 0
+	create
+	push_a 2
+	push_a 5
+	pushB TRUE
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 1 b
+	jsr s37
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStGetProcessStack
+.o 2 0
+	buildh e_processstack_dVirtualProcess 0
+	pushB FALSE
+	push_a 5
+	create
+	push_a 3
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 1 b
+	jsr e_processstack_spushProcessShowState
+.o 1 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_iostate_sioStSetProcessStack
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStGetCProcesses
+.o 3 0
+	buildh e_processstack_dVirtualProcess 0
+	buildh e_StdIOCommon_dNDI 0
+	push_a 6
+	buildh e_Data.Maybe_dJust 1
+	buildh _Nil 0
+	buildB TRUE
+	push_a 8
+	push_a 11
+	push_a 14
+	push_a 14
+	push_a 6
+	update_a 5 7
+	update_a 0 5
+	update_a 6 0
+	update_a 4 6
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 9 n27
+	push_a 9
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n35
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 3 0
+	jsr e_roundrobin_sinserttodoRR
+.o 2 0
+	create
+	push_a 3
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jsr e_iostate_sioStSetCProcesses
+.o 1 0
+	push_a 2
+	push_a 2
+	update_a 2 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.o 3 1 b
+s37
+	push_b 0
+	notB
+	jmp_false else.40
+	pop_b 1
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+else.40
+	push_a 1
+	pop_b 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetSubProcessIds
+.o 2 0
+	push_a 0
+	push_a 3
+	buildh _Cons 2
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp e_iostate_sioStSetSubProcessIds
+.o 1 1 b
+s36
+	push_b 0
+	notB
+	jmp_false else.41
+	buildh e_Data.Maybe_dNothing 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+else.41
+	push_a 0
+	pop_b 1
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetGUIShare
+.o 2 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	jmp_false else.42
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+else.42
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetProcessKind
+.o 2 0
+	buildh e_processstack_dVirtualProcess 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_processstack_s==;6
+.o 0 1 b
+	jmp_false else.43
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+else.43
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.export e_scheduler_shandleOneEventForDevices
+.descexp e_scheduler_dhandleOneEventForDevices e_scheduler_nhandleOneEventForDevices e_scheduler_lhandleOneEventForDevices 2 0 "handleOneEventForDevices"
+.a 0 a7
+.o 2 0
+e_scheduler_lhandleOneEventForDevices
+	repl_args 1 1
+.o 2 0
+a7
+.d 2 0
+	jsr ea7
+.o 3 1 b
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 1
+	buildB_b 0
+	buildh _Tuple 3
+	updatepop_a 0 3
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_scheduler_dhandleOneEventForDevices
+.o 1 0
+e_scheduler_nhandleOneEventForDevices
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea7
+.o 3 1 b
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 1
+	buildB_b 0
+	fillh _Tuple 3 6
+	pop_a 3
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea7
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+e_scheduler_shandleOneEventForDevices
+.o 3 0
+s7
+	buildh e_iostate_dioStGetDeviceFunctions 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	create
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s60
+.o 1 0
+	push_a 2
+	push_a 2
+	push_a 5
+	pushB FALSE
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 1 b
+	jmp s136
+.n 1 _ ea60
+.o 1 0
+n60
+	push_node _cycle_in_spine 1
+.o 2 0
+ea60
+	jsr_eval 0
+.o 2 0
+s60
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp s83
+.o 2 0
+s83
+	eq_desc _Cons 2 0
+	jmp_true case.44
+	jmp case.45
+case.44
+	repl_args 2 2
+	push_a 1
+	build _ 1 n60
+	push_a 1
+	build e_devicefunctions_dDeviceFunctions.dDoIO -4 e_devicefunctions_nDeviceFunctions.dDoIO
+	push_a 2
+	build e_devicefunctions_dDeviceFunctions.dEvent -4 e_devicefunctions_nDeviceFunctions.dEvent
+	buildh _Tuple 2
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+case.45
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_scloseContext
+.export e_scheduler_eacloseContext
+.descexp e_scheduler_dcloseContext e_scheduler_ncloseContext e_scheduler_lcloseContext 2 0 "closeContext"
+.a 2 e_scheduler_eacloseContext
+.o 2 0
+e_scheduler_lcloseContext
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_scheduler_eacloseContext
+.n 2 e_scheduler_dcloseContext e_scheduler_eacloseContext
+.o 1 0
+e_scheduler_ncloseContext
+	push_node _cycle_in_spine 2
+.o 3 0
+e_scheduler_eacloseContext
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 1
+	repl_r_args 9 2
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.o 10 3 iii
+e_scheduler_scloseContext
+.o 10 3 iii
+s6
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 2
+	pop_b 3
+	update_a 1 10
+	updatepop_a 0 9
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	jmp_false else.46
+	push_a 0
+	pushI 42
+	updatepop_a 0 1
+.d 2 1 i
+	jmp e_world_sstoreWorld
+else.46
+	buildAC "not a final Context"
+	buildAC "closeContext"
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s19
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_scheduler_schandleEvents
+.descexp e_scheduler_dchandleEvents e_scheduler_nchandleEvents e_scheduler_lchandleEvents 3 0 "chandleEvents"
+.a 0 a4
+.o 2 0
+e_scheduler_lchandleEvents
+	repl_args 2 2
+.o 3 0
+a4
+.d 3 0
+	jsr ea4
+.o 9 3 iii
+	buildI_b 2
+	build_r e_scheduler_rContext 9 2 1 0
+	buildh _Tuple 2
+	updatepop_a 0 9
+	pop_b 3
+.d 1 0
+	rtn
+.n 3 e_scheduler_dchandleEvents
+.o 1 0
+e_scheduler_nchandleEvents
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea4
+.o 9 3 iii
+	buildI_b 2
+	build_r e_scheduler_rContext 9 2 1 0
+	fillh _Tuple 2 11
+	pop_a 9
+	pop_b 3
+.d 1 0
+	rtn
+.o 3 0
+ea4
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 2
+	push_r_args 1 9 2
+	update_a 8 11
+	update_a 5 8
+	update_a 2 5
+	update_a 9 2
+	update_a 6 9
+	update_a 3 6
+	update_a 0 3
+	update_a 7 10
+	update_a 4 7
+	update_a 1 4
+	pop_a 2
+.o 10 3 iii
+e_scheduler_schandleEvents
+.o 10 3 iii
+s4
+	build_r e_scheduler_rContext 9 2 1 0
+	push_b 2
+	buildh e_scheduler_dhandleContextOSEvent 0
+	buildh d22 0
+	buildh d24 0
+	buildh d23 0
+	push_a 5
+	buildh d51 1
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+	updatepop_b 0 3
+.d 6 1 i
+	jsr e_osevent_sosHandleEvents
+.o 1 1 i
+	push_r_args 0 9 2
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 9 3 iii
+	rtn
+.desc d51 _hnf l51 2 0 "terminate;50"
+.a 0 a51
+.o 2 0
+l51
+	repl_args 1 1
+.o 2 0
+a51
+.o 2 0
+ea51
+	jsr_eval 1
+	push_r_args 1 9 2
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	push_a 9
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+	build_r e_scheduler_rContext 9 2 1 0
+	push_a 1
+	pop_b 2
+	update_a 1 11
+	updatepop_a 0 10
+	jsr_ap 1
+	push_arg 0 2 2
+	jsr_eval 0
+	repl_r_args 9 2
+	push_arg 9 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	notB
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	build_r e_scheduler_rContext 9 2 0 1
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 9
+	pop_b 3
+.d 1 0
+	rtn
+.export e_scheduler_shandleEvents
+.descexp e_scheduler_dhandleEvents e_scheduler_nhandleEvents e_scheduler_lhandleEvents 2 0 "handleEvents"
+.a 0 a3
+.o 2 0
+e_scheduler_lhandleEvents
+	repl_args 1 1
+.o 2 0
+a3
+.d 2 0
+	jsr ea3
+.o 9 3 iii
+	buildI_b 2
+	build_r e_scheduler_rContext 9 2 1 0
+	buildh _Tuple 2
+	updatepop_a 0 9
+	pop_b 3
+.d 1 0
+	rtn
+.n 2 e_scheduler_dhandleEvents
+.o 1 0
+e_scheduler_nhandleEvents
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea3
+.o 9 3 iii
+	buildI_b 2
+	build_r e_scheduler_rContext 9 2 1 0
+	fillh _Tuple 2 11
+	pop_a 9
+	pop_b 3
+.d 1 0
+	rtn
+.o 2 0
+ea3
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 1
+	repl_r_args 9 2
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.o 9 3 iii
+e_scheduler_shandleEvents
+.o 9 3 iii
+s3
+.d 0 0
+	jsr e_osevent_sosNullEvent
+.o 0 7 iiiiiii
+	push_b 8
+	push_b 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_b 8
+	update_b 2 9
+	update_b 4 2
+	update_b 6 4
+	update_b 8 6
+	update_b 1 8
+	update_b 3 1
+	update_b 5 3
+	update_b 7 5
+	update_b 0 7
+	pop_b 1
+	update_b 8 10
+	update_b 7 9
+	update_b 6 8
+	update_b 5 7
+	update_b 4 6
+	update_b 3 5
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 8 17
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+.d 9 9 iiiiiiiii
+	jsr s5
+.o 10 2 ii
+	build_r e_scheduler_rContext 9 2 1 0
+	update_a 0 10
+	pop_a 10
+	pop_b 2
+	push_b 0
+	buildh e_scheduler_dhandleContextOSEvent 0
+	buildh d22 0
+	buildh d24 0
+	buildh d23 0
+	buildh d50 0
+	updatepop_b 0 1
+.d 6 1 i
+	jsr e_osevent_sosHandleEvents
+.o 1 1 i
+	push_r_args 0 9 2
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 9 3 iii
+	rtn
+.desc d50 _hnf l50 1 0 "terminate;49"
+.o 2 0
+l50
+	pop_a 1
+.o 1 0
+ea50
+	jsr_eval 0
+	repl_r_args 9 2
+	push_a 1
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	push_b 2
+	push_b 2
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_b 2
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 8 17
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	build_r e_scheduler_rContext 9 2 0 1
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 9
+	pop_b 3
+.d 1 0
+	rtn
+.desc d23 _hnf l23 1 0 "contextGetOSEvents"
+.o 2 0
+l23
+	pop_a 1
+.o 1 0
+ea23
+	jsr_eval 0
+	repl_r_args 9 2
+	push_args_u 0 2 2
+	update_a 0 1
+	pop_a 1
+	create
+.d 1 0
+	jsr e_osevent_sosNewEvents
+.o 1 0
+	fill1_r e_scheduler_rEnvirons 2 0 2 010
+	push_a 1
+	push_b 1
+	push_b 1
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 9 0
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 9
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+	update_b 1 3
+	updatepop_b 0 2
+	build_r e_scheduler_rContext 9 2 1 0
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 10
+	pop_b 2
+.d 1 0
+	rtn
+.desc d24 _hnf l24 1 0 "contextSetOSEvents"
+.o 2 0
+l24
+	pop_a 1
+.o 1 0
+ea24
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 9 2
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	push_a 9
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	fill1_r e_scheduler_rEnvirons 2 0 2 010
+	push_a 1
+	push_b 1
+	push_b 1
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 9 0
+	build_r e_scheduler_rContext 9 2 0 0
+	updatepop_a 0 20
+	pop_b 4
+.d 1 0
+	rtn
+.desc d22 _hnf l22 1 0 "contextGetSleepTime"
+.o 2 0
+l22
+	pop_a 1
+.o 1 0
+ea22
+	jsr_eval 0
+	repl_r_args 9 2
+	push_a 5
+.d 1 0
+	jsr e_receivertable_sgetActiveReceiverTableEntry
+.o 2 0
+	push_a 8
+.d 1 0
+	jsr e_timertable_sgetTimeIntervalFromTimerTable
+.o 2 0
+	push_a 1
+	push_a 4
+	push_b 1
+	push_b 1
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	update_a 9 5
+	update_a 10 6
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	update_a 0 23
+	update_a 0 22
+	update_a 0 21
+	update_a 0 20
+	update_a 0 19
+	update_a 0 18
+	update_a 0 17
+	update_a 0 16
+	update_a 0 15
+	update_a 0 14
+	update_a 0 12
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	push_a 9
+	buildh _Nil 0
+	update_a 0 11
+	pop_a 1
+.d 1 1 b
+	jsr s82
+.o 0 1 i
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+	build_r e_scheduler_rContext 9 2 0 1
+	buildI_b 0
+	buildh _Tuple 2
+	updatepop_a 0 9
+	pop_b 3
+.d 1 0
+	rtn
+.o 1 1 b
+s82
+	eqB_b TRUE 0
+	jmp_true case.47
+	jmp case.48
+case.47
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+case.48
+	push_a 0
+	pop_b 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	jmp_false else.49
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	push_arg 0 2 2
+	jsr_eval 0
+	pushI_a 0
+	pop_a 2
+.d 0 1 i
+	rtn
+else.49
+	pushI 15
+	pushI 2
+	pop_a 1
+.d 0 2 ii
+	jsr e_StdInt_s^;12
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+.d 0 1 i
+	rtn
+.export e_scheduler_shandleContextOSEvent
+.descexp e_scheduler_dhandleContextOSEvent e_scheduler_nhandleContextOSEvent e_scheduler_lhandleContextOSEvent 2 0 "handleContextOSEvent"
+.a 0 a5
+.o 2 0
+e_scheduler_lhandleContextOSEvent
+	repl_args 1 1
+.o 2 0
+a5
+.d 2 0
+	jsr ea5
+.o 10 2 ii
+	build_r e_scheduler_rContext 9 2 1 0
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 10
+	pop_b 2
+.d 1 0
+	rtn
+.n 2 e_scheduler_dhandleContextOSEvent
+.o 1 0
+e_scheduler_nhandleContextOSEvent
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea5
+.o 10 2 ii
+	build_r e_scheduler_rContext 9 2 1 0
+	push_a 1
+	fillh _Tuple 2 12
+	pop_a 10
+	pop_b 2
+.d 1 0
+	rtn
+.o 2 0
+ea5
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 9 2
+	push_r_args 9 0 7
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	update_a 7 9
+	update_a 5 7
+	update_a 3 5
+	update_a 1 3
+	pop_a 2
+.o 9 9 iiiiiiiii
+e_scheduler_shandleContextOSEvent
+.o 9 9 iiiiiiiii
+s5
+	push_args_u 0 2 2
+	update_a 0 1
+	pop_a 1
+	push_b 8
+.d 0 1 i
+	jsr e_ostime_sosGetTime
+.o 1 1 i
+	create
+	push_a 11
+	push_a 2
+.d 3 0
+	jsr e_ostime_s-;6
+.o 1 0
+.d 1 0
+	jsr e_ostime_stoInt;8
+.o 0 1 i
+	create
+	push_a 9
+.d 2 1 i
+	jsr e_timertable_sshiftTimeInTimerTable
+.o 1 0
+	push_a 2
+	push_a 12
+	push_a 10
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 7 iiiiiii
+	jsr s29
+.o 4 0
+	push_r_args 8 2 0
+.d 2 0
+	jsr e_roundrobin_sresetRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_a 4
+	fill1_r e_scheduler_rEnvirons 2 0 7 010
+	push_a 6
+	push_b 0
+	push_a 6
+	push_a 5
+	push_a 5
+	push_b 10
+	push_b 10
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 18
+	push_a 13
+	update_a 12 14
+	update_a 10 12
+	update_a 13 10
+	update_a 11 13
+	update_a 0 11
+	pop_a 1
+	update_a 9 0
+	update_a 10 3
+	update_a 11 5
+	update_a 12 6
+	update_a 13 8
+	update_b 2 1
+	update_a 8 13
+	update_a 7 12
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	update_b 1 2
+	updatepop_b 0 1
+	push_a 9
+	pushB FALSE
+	update_b 2 12
+	update_b 1 11
+	updatepop_b 0 10
+	update_a 16 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+.d 10 3 bii
+	jsr s30
+.o 10 2 ii
+	push_b 1
+	push_b 1
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 9 18
+	update_a 8 17
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+.d 9 2 ii
+	jsr s20
+.o 10 2 ii
+	push_a 0
+.d 1 0
+	jsr e_processstack_stopShowProcessShowState
+.o 1 1 b
+	push_a 12
+	buildh _Nil 0
+	update_a 0 14
+	pop_a 1
+.d 1 0
+	jsr e_processstack_stopShowProcessShowState
+.o 1 1 b
+	pop_b 1
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr e_systemid_s==;5
+.o 0 1 b
+	jmp_true then.50
+	push_b 0
+	notB
+	jmp_false else.50
+then.50
+	create
+	push_a 12
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 12
+	pop_a 1
+.d 2 0
+	jsr s80
+.o 1 0
+	push_b 1
+	push_b 1
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 9 20
+	update_a 8 19
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	update_b 1 3
+	updatepop_b 0 2
+.d 10 2 ii
+	rtn
+else.50
+	push_b 2
+	push_b 2
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_b 1 4
+	updatepop_b 0 3
+	update_a 20 21
+	update_a 10 20
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 9 2 ii
+	jsr s21
+.o 11 2 ii
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sresetRR
+.o 2 0
+	push_a 12
+	push_a 12
+	buildh _Nil 0
+	update_a 0 14
+	update_a 0 15
+	pop_a 1
+.d 4 0
+	jsr s38
+.o 3 0
+	build_r e_roundrobin_rRR 2 0 1 0
+	push_a 1
+	push_b 1
+	push_b 1
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	update_a 9 1
+	update_a 10 3
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	create
+	push_a 24
+	buildh _Nil 0
+	update_a 0 26
+	update_a 0 15
+	update_a 0 16
+	update_a 0 17
+	update_a 0 18
+	update_a 0 19
+	update_a 0 20
+	update_a 0 21
+	update_a 0 22
+	update_a 0 23
+	update_a 0 12
+	update_a 0 13
+	update_a 0 14
+	pop_a 1
+.d 2 0
+	jsr s81
+.o 1 0
+	update_a 9 24
+	update_a 8 23
+	update_a 7 22
+	update_a 6 21
+	update_a 5 20
+	update_a 4 19
+	update_a 3 18
+	update_a 2 17
+	update_a 1 16
+	updatepop_a 0 15
+	update_b 1 3
+	updatepop_b 0 2
+.d 10 2 ii
+	rtn
+.o 2 0
+s81
+	eq_desc e_deviceevents_kScheduleOSEvent 0 0
+	jmp_true case.52
+	jmp case.53
+case.52
+	repl_args 2 2
+	pop_a 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.53
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+s80
+	eq_desc e_deviceevents_kScheduleOSEvent 0 0
+	jmp_true case.54
+	jmp case.55
+case.54
+	repl_args 2 2
+	pop_a 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.55
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 4 0
+s38
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_snotodoRR
+.o 2 1 b
+	push_b 0
+	jmp_false else.56
+	push_a 1
+	push_a 1
+	push_a 5
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	pop_b 1
+.d 3 0
+	rtn
+else.56
+	push_a 1
+	push_a 1
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sgetcurrentRR
+.o 3 0
+	push_r_args 0 2 0
+	push_a 6
+	push_a 6
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 4 0
+	jsr s61
+.o 3 1 b
+	push_b 0
+	jmp_false else.57
+	build_r e_iostate_rCProcess 2 0 1 0
+	push_a 5
+	push_a 5
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 3 0
+	jsr e_roundrobin_sinserttodoRR
+.o 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	rtn
+else.57
+	push_a 4
+	push_a 4
+	push_a 2
+	push_a 8
+	pop_b 1
+	update_a 6 10
+	update_a 5 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jsr s38
+.o 3 0
+	build_r e_iostate_rCProcess 2 0 3 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jsr e_roundrobin_sinserttodoRR
+.o 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	rtn
+.o 4 0
+s61
+	push_a 3
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 2
+	push_a 1
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_systemid_s==;5
+.o 0 1 b
+	notB
+	jmp_false else.58
+	push_a 0
+	push_a 4
+	push_a 4
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 3
+	pushB FALSE
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 1 b
+	rtn
+else.58
+	create
+	push_a 1
+	push_a 3
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_iostate_sioStSetProcessStack
+.o 1 0
+.d 1 0
+	jsr e_iostate_sioStGetProcessStack
+.o 2 0
+	push_a 1
+	push_a 4
+	push_a 4
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 2
+	pushB TRUE
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 1 b
+	rtn
+.n 1 _
+.o 1 0
+n21
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea21
+.o 11 2 ii
+	build_r e_scheduler_rContext 9 2 2 0
+	build_r e_roundrobin_rRR 2 0 1 0
+	fillh _Tuple 2 13
+	pop_a 11
+	pop_b 2
+.d 1 0
+	rtn
+.o 1 0
+ea21
+	jsr_eval 0
+	repl_r_args 9 2
+.o 9 2 ii
+s21
+.d 0 0
+	jsr e_roundrobin_semptyRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 1
+	push_b 1
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_r_args 12 2 0
+	update_a 10 19
+	update_a 9 18
+	update_a 8 17
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	update_b 1 3
+	updatepop_b 0 2
+.d 11 2 ii
+	rtn
+.o 9 2 ii
+s20
+	push_b 1
+	push_b 1
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 10
+	update_a 9 18
+	update_a 8 17
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	update_b 1 3
+	updatepop_b 0 2
+.d 10 2 ii
+	rtn
+.o 10 3 bii
+s30
+	push_r_args 4 2 0
+.d 2 0
+	jsr e_roundrobin_snotodoRR
+.o 2 1 b
+	push_b 0
+	jmp_false else.59
+	build_r e_roundrobin_rRR 2 0 0 0
+	push_b 3
+	push_b 3
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 11
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 5
+	updatepop_b 0 4
+.d 10 2 ii
+	rtn
+else.59
+	push_a 1
+	push_a 1
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sgetcurrentRR
+.o 3 0
+	push_r_args 0 2 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s55
+.o 2 1 b
+	build_r e_iostate_rCProcess 2 0 0 0
+	build _ 1 n56
+	push_b 0
+	jmp_false else.60
+	jsr_eval 0
+	push_arg 0 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	notB
+	jmp_false else.60
+	build_r e_roundrobin_rRR 2 0 3 0
+	push_b 3
+	push_b 3
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 14
+	push_b 3
+	update_a 9 24
+	update_a 8 23
+	update_a 7 22
+	update_a 6 21
+	update_a 5 20
+	update_a 4 19
+	update_a 3 18
+	update_a 2 17
+	update_a 1 16
+	updatepop_a 0 15
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+.d 10 3 bii
+	jmp s30
+else.60
+	push_b 0
+	jmp_false else.62
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 5
+	push_a 5
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 3 0
+	jsr e_roundrobin_sadddoneRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 3
+	push_b 3
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 9
+	push_b 3
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+	update_b 2 6
+	update_b 1 5
+	updatepop_b 0 4
+.d 10 3 bii
+	jmp s30
+else.62
+	build_r e_roundrobin_rRR 2 0 3 0
+	push_b 3
+	push_b 3
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_eval 9
+	push_arg 9 2 2
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 16
+	push_b 3
+	update_a 11 26
+	update_a 10 25
+	update_a 9 24
+	update_a 8 23
+	update_a 7 22
+	update_a 6 21
+	update_a 5 20
+	update_a 4 19
+	update_a 3 18
+	update_a 2 17
+	update_a 1 16
+	updatepop_a 0 15
+.d 12 3 bii
+	jsr s31
+.o 12 3 bii
+	push_r_args 6 2 0
+	build_r e_iostate_rCProcess 2 0 3 0
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_roundrobin_sadddoneRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	push_b 2
+	push_b 2
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 9 3
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 9
+	push_b 2
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+	update_b 2 9
+	update_b 1 8
+	updatepop_b 0 7
+.d 10 3 bii
+	jmp s30
+.o 12 3 bii
+s31
+	push_a 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 1 0
+	jsr e_iostate_sioStGetRuntimeState
+.o 2 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr s25
+.o 1 1 b
+	pop_a 1
+	jmp_false else.63
+	push_a 0
+	push_a 3
+	push_b 2
+	push_b 2
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 12
+	push_b 2
+	push_a 11
+	update_a 10 12
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 11 2
+	update_a 9 11
+	update_a 7 9
+	update_a 5 7
+	update_a 3 5
+	update_a 0 3
+	pop_a 1
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 2 5
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 3 bii
+	rtn
+else.63
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetInitIO
+.o 2 0
+	build_r e_scheduler_rContext 9 2 5 1
+	push_a 4
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	build _ 3 n32
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 5 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	jsr_ap 1
+	repl_r_args 2 0
+	buildh e_iostate_dioStGetProcessKind 0
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	buildh e_processstack_dVirtualProcess 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_processstack_s==;6
+.o 0 1 b
+	jmp_false else.64
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s58
+.o 2 0
+	jsr_eval 2
+	push_arg 2 2 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 5 0
+	jsr s33
+.o 11 2 ii
+	push_a 0
+	buildh e_Data.Maybe_dJust 1
+	push_a 11
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_b 1
+	push_b 1
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 22
+	push_b 4
+	push_a 11
+	update_a 10 12
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 11 2
+	update_a 9 11
+	update_a 7 9
+	update_a 5 7
+	update_a 3 5
+	update_a 0 3
+	pop_a 1
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 2 7
+	update_b 1 6
+	updatepop_b 0 5
+.d 12 3 bii
+	rtn
+else.64
+	buildh e_iostate_dioStClosed 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	pushB_a 0
+	jmp_false else.65
+	jsr_eval 3
+	push_arg 3 2 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	push_a 5
+	push_a 5
+	push_a 4
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jsr s33
+.o 11 2 ii
+	push_a 0
+	buildh e_Data.Maybe_dJust 1
+	push_a 11
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_b 1
+	push_b 1
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 22
+	push_b 4
+	push_a 11
+	update_a 10 12
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 11 2
+	update_a 9 11
+	update_a 7 9
+	update_a 5 7
+	update_a 3 5
+	update_a 0 3
+	pop_a 1
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 2 7
+	update_b 1 6
+	updatepop_b 0 5
+.d 12 3 bii
+	rtn
+else.65
+	buildh e_iostate_dioStGetDeviceFunctions 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	create
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s57
+.o 1 0
+	push_a 2
+	push_a 2
+	push_a 6
+	push_b 0
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	updatepop_b 0 3
+	update_a 6 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 1 b
+	jsr s136
+.o 3 1 b
+	jsr_eval 3
+	push_arg 3 2 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	push_a 5
+	push_a 5
+	push_a 4
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 5 0
+	jsr s33
+.o 11 2 ii
+	push_a 0
+	buildh e_Data.Maybe_dJust 1
+	push_a 11
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_b 1
+	push_b 1
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 22
+	push_b 4
+	push_a 11
+	update_a 10 12
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 11 2
+	update_a 9 11
+	update_a 7 9
+	update_a 5 7
+	update_a 3 5
+	update_a 0 3
+	pop_a 1
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 2 5
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 3 bii
+	rtn
+.o 3 0
+s59
+	eq_desc e_deviceevents_kReceiverEvent 0 0
+	jmp_true case.66
+	jmp case.67
+case.66
+	repl_args 1 1
+	push_a 0
+	fill_r e_deviceevents_kScheduleMsgEvent 1 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+case.67
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+.n 1 _ ea57
+.o 1 0
+n57
+	push_node _cycle_in_spine 1
+.o 2 0
+ea57
+	jsr_eval 0
+.o 2 0
+s57
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp s79
+.o 2 0
+s79
+	eq_desc _Cons 2 0
+	jmp_true case.68
+	jmp case.69
+case.68
+	repl_args 2 2
+	push_a 1
+	build _ 1 n57
+	push_a 1
+	build e_devicefunctions_dDeviceFunctions.dDoIO -4 e_devicefunctions_nDeviceFunctions.dDoIO
+	push_a 2
+	build e_devicefunctions_dDeviceFunctions.dEvent -4 e_devicefunctions_nDeviceFunctions.dEvent
+	buildh _Tuple 2
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+case.69
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 5 0
+s33
+	push_a 4
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+.d 1 0
+	jsr e_iostate_sioStGetOSTime
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetTimerTable
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIdSeed
+.o 1 1 i
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetReceiverTable
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIdTable
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIOIsModal
+.o 2 0
+	push_a 1
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 10
+	update_a 0 11
+	update_a 0 12
+	pop_a 1
+.d 4 0
+	jsr e_iostate_sioStSwapIO
+.o 4 0
+	push_a 3
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 1 0
+	jsr e_iostate_sioStGetMaxIONr
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetProcessStack
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetEvents
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 5 0
+	push_a 5
+	push_a 0
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 8
+	update_a 0 9
+	pop_a 1
+.d 1 0
+	jsr e_StdList_shd
+.o 1 0
+	push_a 2
+	build_r e_scheduler_rEnvirons 2 0 0 0
+	updatepop_a 0 2
+	pushI 0
+	push_b 1
+	push_a 14
+	push_a 12
+	push_a 15
+	push_a 15
+	push_a 14
+	push_a 6
+	push_a 11
+	push_a 11
+	push_a 8
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_a 11
+	push_a 27
+	push_a 10
+	update_a 2 11
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 0 10
+	pop_a 1
+	update_a 10 29
+	update_a 9 28
+	update_a 8 27
+	update_a 7 26
+	update_a 6 25
+	update_a 5 24
+	update_a 4 23
+	update_a 3 22
+	update_a 2 21
+	update_a 1 20
+	updatepop_a 0 19
+	update_b 1 2
+	updatepop_b 0 1
+.d 11 2 ii
+	rtn
+.o 2 0
+s58
+	push_a 1
+.d 1 0
+	jsr e_iostate_sioStGetSubProcessIds
+.o 2 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	notB
+	jmp_false else.70
+	push_a 0
+	push_a 3
+	push_a 3
+	update_a 2 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+else.70
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetProcessStack
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 2
+	push_a 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 2 0
+	jsr e_processstack_sremoveProcessShowState
+.o 3 1 b
+	pop_a 2
+	pop_b 1
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_iostate_sioStSetProcessStack
+.o 1 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr s40
+.o 1 0
+	buildh e_iostate_dClosed 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetRuntimeState
+.o 1 0
+	push_a 2
+	push_a 2
+	update_a 2 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.o 3 0
+s40
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetParentId
+.o 2 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.71
+	fill_a 1 3
+	pop_a 3
+.d 1 0
+	rtn
+else.71
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetCProcesses
+.o 3 0
+	push_a 3
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	push_a 2
+	push_a 2
+	push_a 7
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 6 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr s66
+.o 2 1 b
+	push_b 0
+	jmp_false else.72
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 4 0
+	jmp e_iostate_sioStSetCProcesses
+else.72
+	buildAC "parent process could not be located"
+	buildAC "CloseProcess"
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	jsr s19
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+s19
+	push_a 1
+	buildAC "scheduler"
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp e_commondef_serror
+.o 4 0
+s66
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_sfromRR
+.o 2 0
+	push_a 0
+	push_a 4
+	push_a 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr s65
+.o 1 1 b
+	push_b 0
+	jmp_false else.73
+	push_a 1
+	push_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	push_b 0
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+else.73
+	push_a 1
+	push_a 4
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s65
+.o 1 1 b
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	push_b 0
+	updatepop_b 0 2
+.d 2 1 b
+	rtn
+.o 3 0
+s65
+	eq_desc _Cons 2 2
+	jmp_true case.74
+	jmp case.75
+case.74
+	push_args_u 2 2 2
+	jsr_eval 0
+	push_args_u 0 2 2
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 0
+	push_a 7
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_systemid_s==;5
+.o 0 1 b
+	jmp_false else.76
+	push_a 0
+	fill e_iostate_dioStGetSubProcessIds 1 e_iostate_nioStGetSubProcessIds 3
+	push_a 2
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	buildAC "removeIOIdFromLocals"
+	buildh ARRAY 1
+	build e_commondef_ddummy 1 e_commondef_ndummy
+	push_a 8
+	buildh e_systemid_d==;5 1
+	build e_commondef_dremove 3 e_commondef_nremove
+	build d_S.3 -1 n_S.3
+	build e_iostate_dioStSetSubProcessIds 2 e_iostate_nioStSetSubProcessIds
+	push_a 3
+	build e_iostate_tCProcess 2 e_iostate_cCProcess
+	fill1 _Cons 2 8 010
+	push_a 7
+	pushB TRUE
+	updatepop_a 0 8
+.d 1 1 b
+	rtn
+else.76
+	push_a 3
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jsr s65
+.o 1 1 b
+	push_a 0
+	push_a 2
+	push_a 4
+	build_r e_iostate_rCProcess 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	fill1 _Cons 2 5 111
+	push_a 3
+	push_b 0
+	updatepop_a 0 4
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+case.75
+	buildh _Nil 0
+	pushB FALSE
+	updatepop_a 0 3
+.d 1 1 b
+	rtn
+.n 3 _
+.o 1 0
+n32
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea32
+.o 5 0
+	build_r e_iostate_rPSt 2 0 3 0
+	build_r e_roundrobin_rRR 2 0 2 0
+	push_a 2
+	buildh _Tuple 2
+	fillh _Tuple 2 7
+	pop_a 5
+.d 1 0
+	rtn
+.o 3 0
+ea32
+	jsr_eval 0
+	push_r_args 1 9 2
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	push_a 9
+	update_a 8 10
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 11 2 ii
+s32
+	push_args_u 1 2 2
+	create
+	push_a 13
+	push_a 6
+	buildh _Nil 0
+	update_a 0 8
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetProcessStack
+.o 1 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_iostate_sioStSetEvents
+.o 1 0
+	create
+	push_a 6
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetMaxIONr
+.o 1 0
+	push_r_args 6 2 0
+	buildh _Nil 0
+	push_a 4
+	fill1 _Cons 2 7 111
+	push_a 5
+	update_a 5 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jsr e_iostate_sioStSwapIO
+.o 4 0
+	create
+	push_a 4
+	push_a 7
+	buildh _Nil 0
+	update_a 0 9
+	update_a 0 7
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetIOIsModal
+.o 1 0
+	create
+	push_a 10
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 12
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetIdTable
+.o 1 0
+	create
+	push_a 8
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 10
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetReceiverTable
+.o 1 0
+	create
+	push_a 9
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 11
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetTimerTable
+.o 1 0
+	create
+	push_a 11
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetOSTime
+.o 1 0
+	create
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	updatepop_b 0 2
+.d 2 1 i
+	jsr e_iostate_sioStSetIdSeed
+.o 1 0
+	push_a 5
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+.d 5 0
+	rtn
+.o 1 0
+s25
+	eq_desc e_iostate_kBlocked 0 0
+	jmp_true case.77
+	jmp case.78
+case.77
+	repl_args 1 1
+	push_a 0
+	pushB TRUE
+	updatepop_a 0 1
+.d 1 1 b
+	rtn
+case.78
+	build e_systemid_dnullSystemId 0 e_systemid_nnullSystemId
+	pushB FALSE
+	updatepop_a 0 1
+.d 1 1 b
+	rtn
+.n 1 _
+.o 1 0
+n56
+	push_node _cycle_in_spine 1
+.o 1 0
+ea56
+	repl_r_args 2 0
+	push_a 1
+.d 1 0
+	jsr e_iostate_sioStHasDevices
+.o 1 1 b
+	push_a 0
+	push_a 3
+	push_a 3
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 0
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+	build_r e_iostate_rCProcess 2 0 0 0
+	buildB_b 0
+	fillh _Tuple 2 4
+	pop_a 2
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+s55
+	push_a 1
+.d 1 0
+	jsr e_iostate_sioStClosed
+.o 1 1 b
+	push_a 0
+	push_a 3
+	push_a 3
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_b 0
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+.o 4 7 iiiiiii
+s29
+	push_b 6
+	push_b 6
+	push_b 6
+	push_b 6
+	push_b 6
+	push_b 6
+	push_b 6
+.d 0 7 iiiiiii
+	jsr e_osevent_sosEventIsUrgent
+.o 0 1 b
+	jmp_false else.79
+	buildh _Nil 0
+.impmod clCrossCall_12
+.impdesc e_clCrossCall_12_rCrossCallInfo
+	build_r e_clCrossCall_12_rCrossCallInfo 0 7 0 0
+	build_r e_deviceevents_kScheduleOSEvent 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 4
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	pop_b 7
+.d 4 0
+	rtn
+else.79
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_timertable_sgetTimeIntervalFromTimerTable
+.o 2 0
+	push_a 0
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sisJust
+.o 0 1 b
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s78
+.o 0 1 b
+	push_a 2
+	build e_receivertable_dgetActiveReceiverTableEntry 1 e_receivertable_ngetActiveReceiverTableEntry
+	push_a 0
+	build d_S.1 -1 n_S.1
+	push_a 0
+	build e_Data.Maybe_disJust 1 e_Data.Maybe_nisJust
+	push_b 0
+	notB
+	jmp_false else.80
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	notB
+	jmp_false else.80
+	jsr_eval 2
+	push_arg 2 2 2
+	jsr_eval 0
+	buildh _Nil 0
+	build_r e_clCrossCall_12_rCrossCallInfo 0 7 0 1
+	build_r e_deviceevents_kScheduleOSEvent 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 9
+	push_a 7
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+	pop_b 8
+.d 4 0
+	rtn
+else.80
+	push_b 0
+	jmp_false else.82
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	jmp_false else.82
+	push_a 6
+	pop_b 1
+	updatepop_a 0 1
+.d 1 0
+	jsr e_ostime_stoInt;8
+.o 0 1 i
+	pushI 1
+	and%
+	pushI 0
+	eqI
+	jmp_false else.84
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	updatepop_a 0 3
+.d 1 0
+	jsr s54
+.o 2 0
+	jsr_eval 3
+	push_arg 3 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	create
+	push_a 6
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_a 6
+	push_b 7
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 7 14
+	update_b 6 13
+	update_b 5 12
+	update_b 4 11
+	update_b 3 10
+	update_b 2 9
+	update_b 1 8
+	updatepop_b 0 7
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 8 biiiiiii
+	jsr s52
+.o 1 0
+	jsr_eval 3
+	push_arg 3 2 2
+	jsr_eval 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	rtn
+else.84
+	jsr_eval 1
+	push_arg 1 2 2
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 3
+	update_a 0 4
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s53
+.o 2 0
+	jsr_eval 2
+	push_arg 2 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	create
+	push_a 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_a 7
+	push_b 7
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 7 14
+	update_b 6 13
+	update_b 5 12
+	update_b 4 11
+	update_b 3 10
+	update_b 2 9
+	update_b 1 8
+	updatepop_b 0 7
+	update_a 6 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 8 biiiiiii
+	jsr s52
+.o 1 0
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	rtn
+else.82
+	push_b 0
+	jmp_false else.85
+	push_a 4
+	pop_b 1
+	update_a 4 6
+	update_a 3 5
+	updatepop_a 0 4
+.d 1 0
+	jsr s54
+.o 2 0
+	jsr_eval 3
+	push_arg 3 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	create
+	push_a 6
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_a 6
+	push_b 7
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 7 14
+	update_b 6 13
+	update_b 5 12
+	update_b 4 11
+	update_b 3 10
+	update_b 2 9
+	update_b 1 8
+	updatepop_b 0 7
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 8 biiiiiii
+	jsr s52
+.o 1 0
+	jsr_eval 3
+	push_arg 3 2 2
+	jsr_eval 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	rtn
+else.85
+	jsr_eval 2
+	push_arg 2 2 2
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	pop_b 8
+	buildh _Nil 0
+	update_a 0 4
+	update_a 0 5
+	pop_a 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	update_a 6 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 2 0
+	jsr s53
+.o 2 0
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	rtn
+.o 1 1 b
+s78
+	eqB_b TRUE 0
+	jmp_true case.86
+	jmp case.87
+case.86
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	ltI
+	updatepop_b 0 1
+	pop_a 1
+	notB
+.d 0 1 b
+	rtn
+case.87
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 3 8 biiiiiii
+s52
+	push_b 0
+	notB
+	jmp_false else.88
+	pop_b 8
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+else.88
+	create
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	push_b 7
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 7 iiiiiii
+	jsr e_osevent_sgetOSZeroTimerStartTime
+.o 1 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.89
+	buildh _Nil 0
+	push_a 2
+	build e_osevent_dcreateOSZeroTimerEvent 1 e_osevent_ncreateOSZeroTimerEvent
+	buildh _Cons 2
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 7
+.d 3 0
+	jmp e_osevent_sosAppendEvents
+else.89
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_ostime_s-;6
+.o 1 0
+	create
+.d 1 0
+	jsr s28
+.o 1 0
+.d 2 0
+	jsr e_ostime_s<;7
+.o 0 1 b
+	notB
+	jmp_false else.90
+	buildh _Nil 0
+	build_r e_clCrossCall_12_rCrossCallInfo 0 7 0 0
+	buildh _Cons 2
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 7
+.d 3 0
+	jmp e_osevent_sosAppendEvents
+else.90
+	pop_b 7
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+s28
+	testcaf c28
+	jmp_false m.91
+	pushcaf c28 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.caf c28 1 0
+m.91
+.d 1 0
+	jsr s28.1
+.o 1 0
+	fillcaf c28 1 0
+.d 1 0
+	rtn
+.o 1 0
+s28.1
+	pushI 1
+	pushI 20
+	pushI 1000
+	divI
+	push_b 0
+	push_b 2
+	ltI
+	push_b 2
+	push_b 2
+	push_b 2
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 3 bii
+	jsr s77
+.o 0 1 i
+.d 1 1 i
+	jmp e_ostime_sfromInt;9
+.o 0 3 bii
+s77
+	eqB_b TRUE 0
+	jmp_true case.92
+	jmp case.93
+case.92
+	update_b 1 2
+	pop_b 2
+.d 0 1 i
+	rtn
+case.93
+	pop_b 2
+.d 0 1 i
+	rtn
+.o 2 0
+s53
+	push_a 1
+	push_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_receivertable_sgetReceiverTableEntry
+.o 2 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	push_r_args_b 0 2 1 1 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_r_args 0 2 1
+	update_b 1 0
+	updatepop_b 0 1
+	push_a 3
+	push_a 5
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr e_receivertable_sremoveReceiverFromReceiverTable
+.o 1 1 b
+	pop_b 1
+	create
+	push_b 0
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 0 3
+	pop_a 1
+.d 4 1 i
+	jsr e_receivertable_ssetReceiverTableEntry
+.o 1 0
+	push_a 1
+	build_r e_deviceevents_kASyncMessage 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e_deviceevents_kScheduleMsgEvent 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	rtn
+.o 1 0
+s54
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_timertable_sgetActiveTimerInTimerTable
+.o 2 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	repl_r_args 1 1
+	build_r e_deviceevents_kScheduleTimerEvent 1 1 0 0
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+.export e_scheduler_sinitContext`
+.descexp e_scheduler_dinitContext` e_scheduler_ninitContext` e_scheduler_linitContext` 1 0 "initContext`"
+.o 2 0
+e_scheduler_linitContext`
+	pop_a 1
+.d 1 0
+	jsr ea2
+.o 9 3 iii
+	buildI_b 2
+	build_r e_scheduler_rContext 9 2 1 0
+	buildh _Tuple 2
+	updatepop_a 0 9
+	pop_b 3
+.d 1 0
+	rtn
+.n 1 e_scheduler_dinitContext`
+.o 1 0
+e_scheduler_ninitContext`
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea2
+.o 9 3 iii
+	buildI_b 2
+	build_r e_scheduler_rContext 9 2 1 0
+	fillh _Tuple 2 11
+	pop_a 9
+	pop_b 3
+.d 1 0
+	rtn
+.o 1 0
+ea2
+	jsr_eval 0
+.o 1 0
+e_scheduler_sinitContext`
+.o 1 0
+s2
+	push_a 0
+.d 1 0
+	jsr e_world_sloadWorld
+.o 0 1 i
+	pushI 0
+.d 0 1 i
+	jsr e_ostoolbox_sosInitToolbox
+.o 0 1 i
+.d 0 1 i
+	jsr e_ostime_sosGetTime
+.o 1 1 i
+	create
+.d 1 0
+	jsr e_id_sinitialIdTable
+.o 1 0
+	create
+.d 1 0
+	jsr e_timertable_sinitialTimerTable
+.o 1 0
+	create
+.d 1 0
+	jsr e_receivertable_sinitialReceiverTable
+.o 1 0
+	buildh e_Data.Maybe_dNothing 0
+	buildh _Nil 0
+	buildh _Nil 0
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	create
+.d 1 0
+	jsr e_systemid_sinitSystemId
+.o 1 0
+	buildh _Nil 0
+	create
+	push_a 9
+	push_b 1
+	buildh _Nil 0
+	update_a 0 11
+	pop_a 1
+.d 2 1 i
+	jsr e_world_sstoreWorld
+.o 1 0
+	create
+.d 1 0
+	jsr e_osevent_sosNewEvents
+.o 1 0
+	build_r e_scheduler_rEnvirons 2 0 0 0
+	updatepop_a 0 2
+	pushI 0
+	push_b 2
+	push_a 8
+	push_a 8
+	update_a 1 9
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 0 8
+	pop_a 1
+	push_b 2
+	push_b 2
+	update_b 1 3
+	update_b 2 1
+	update_b 0 2
+	pop_b 1
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 9 3 iii
+	rtn
+.export e_scheduler_sinitContext
+.descexp e_scheduler_dinitContext e_scheduler_ninitContext e_scheduler_linitContext 6 0 "initContext"
+.a 0 a1
+.o 2 0
+e_scheduler_linitContext
+	repl_args 5 5
+.o 6 0
+a1
+.d 6 0
+	jsr ea1
+.o 9 3 iii
+	buildI_b 2
+	build_r e_scheduler_rContext 9 2 1 0
+	buildh _Tuple 2
+	updatepop_a 0 9
+	pop_b 3
+.d 1 0
+	rtn
+.n 6 e_scheduler_dinitContext
+.o 1 0
+e_scheduler_ninitContext
+	push_node _cycle_in_spine 6
+.d 6 0
+	jsr ea1
+.o 9 3 iii
+	buildI_b 2
+	build_r e_scheduler_rContext 9 2 1 0
+	fillh _Tuple 2 11
+	pop_a 9
+	pop_b 3
+.d 1 0
+	rtn
+.o 6 0
+ea1
+	jsr_eval 5
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	update_a 0 2
+	pop_a 1
+.o 6 0
+e_scheduler_sinitContext
+.o 6 0
+s1
+	push_a 5
+.d 1 0
+	jsr e_world_sloadWorld
+.o 0 1 i
+	pushI 0
+.d 0 1 i
+	jsr e_ostoolbox_sosInitToolbox
+.o 0 1 i
+.d 0 1 i
+	jsr e_ostime_sosGetTime
+.o 1 1 i
+	create
+.d 1 0
+	jsr e_id_sinitialIdTable
+.o 1 0
+	create
+.d 1 0
+	jsr e_timertable_sinitialTimerTable
+.o 1 0
+	create
+.d 1 0
+	jsr e_receivertable_sinitialReceiverTable
+.o 1 0
+	buildh e_Data.Maybe_dNothing 0
+	buildh _Nil 0
+	buildh e_Data.Maybe_dNothing 0
+	buildh e_Data.Maybe_dNothing 0
+	build e_systemid_dinitSystemId 0 e_systemid_ninitSystemId
+	buildh _Nil 0
+	push_a 14
+	push_a 14
+	buildB TRUE
+	push_a 14
+	buildh ARRAY 1
+	push_a 14
+	push_a 8
+	update_a 5 9
+	update_a 8 5
+	update_a 4 8
+	update_a 7 4
+	update_a 3 7
+	update_a 2 3
+	update_a 1 2
+	update_a 6 1
+	update_a 0 6
+	pop_a 1
+	build _ 9 n27
+	push_a 9
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n35
+	buildh _Cons 2
+	buildh _Nil 0
+	buildh _Nil 0
+	update_a 0 10
+	update_a 0 8
+	update_a 0 9
+	update_a 0 11
+	pop_a 1
+.d 2 0
+	jsr e_roundrobin_stoRR
+.o 2 0
+	build_r e_roundrobin_rRR 2 0 0 0
+	updatepop_a 0 2
+	create
+.d 1 0
+	jsr e_systemid_sinitSystemId
+.o 1 0
+	buildh _Nil 0
+	buildh e_processstack_dInteractiveProcess 0
+	push_a 13
+	build e_processstack_d==;6 2 e_processstack_n==;6
+	build e_systemid_dinitSystemId 0 e_systemid_ninitSystemId
+	push_a 14
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	build e_processstack_tProcessShowState 3 e_processstack_cProcessShowState
+	buildh _Cons 2
+	create
+	push_a 14
+	push_b 1
+	buildh _Nil 0
+	update_a 0 16
+	update_a 0 15
+	pop_a 1
+.d 2 1 i
+	jsr e_world_sstoreWorld
+.o 1 0
+	create
+.d 1 0
+	jsr e_osevent_sosNewEvents
+.o 1 0
+	build_r e_scheduler_rEnvirons 2 0 0 0
+	updatepop_a 0 2
+	pushI 0
+	push_b 2
+	push_a 8
+	push_a 8
+	update_a 1 9
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 0 8
+	pop_a 1
+	push_b 2
+	push_b 2
+	update_b 1 3
+	update_b 2 1
+	update_b 0 2
+	pop_b 1
+	update_a 8 15
+	update_a 7 14
+	update_a 6 13
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 9 3 iii
+	rtn
+.n 9 _ ea27
+.o 1 0
+n27
+	push_node _cycle_in_spine 9
+.o 10 0
+ea27
+	jsr_eval 8
+	jsr_eval 7
+	jsr_eval 6
+	jsr_eval 5
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 1
+	jsr_eval 0
+	pushB_a 6
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.o 9 1 b
+s27
+	buildh e_Data.Maybe_dNothing 0
+	push_a 2
+	push_a 2
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 7 15
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+	pop_b 1
+.d 9 0
+	jmp e_iostate_semptyIOSt
+.n 2 _
+.o 1 0
+n35
+	push_node _cycle_in_spine 2
+.o 2 0
+ea35
+	jsr_eval 1
+	jsr_eval 0
+	push_a 1
+	buildh e_Data.Maybe_dJust 1
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	fill_r e_iostate_rCProcess 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 4 1 b
+s136
+	eq_desc _Cons 2 0
+	jmp_true case.94
+	jmp case.95
+case.94
+	repl_args 2 2
+	jsr_eval 0
+	repl_args 2 2
+	push_b 0
+	jmp_false else.96
+	push_a 5
+	push_a 5
+	push_a 5
+	push_b 0
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	updatepop_b 0 1
+.d 3 1 b
+	rtn
+else.96
+	buildh e_iostate_dioStClosed 0
+	push_a 6
+	push_a 6
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 8
+	update_a 0 9
+	pop_a 1
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	pushB_a 0
+	jmp_false else.97
+	push_a 2
+	push_a 2
+	push_a 8
+	pushB TRUE
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 1
+.d 3 1 b
+	rtn
+else.97
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 4
+	jsr_eval 0
+	push_a 8
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 8 11
+	update_a 7 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+	jsr_ap 2
+	push_arg 0 4 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	notB
+	jmp_false else.98
+	push_arg 0 4 4
+	jsr_eval 0
+	repl_r_args 2 0
+	push_arg 2 4 3
+	jsr_eval 0
+	push_a 5
+	jsr_eval 0
+	push_b 0
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 4 1 b
+	jmp s136
+else.98
+	push_arg 0 4 2
+	jsr_eval 0
+	push_a 0
+	pop_b 1
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.99
+	push_arg 1 4 4
+	jsr_eval 0
+	repl_r_args 2 0
+	push_arg 3 4 3
+	jsr_eval 0
+	push_a 6
+	jsr_eval 0
+	pushB TRUE
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 1 b
+	jmp s136
+else.99
+	push_arg 1 4 4
+	push_a 1
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	push_a 4
+	jsr_eval 0
+	update_a 4 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 2
+	push_arg 0 2 2
+	jsr_eval 0
+	repl_r_args 2 0
+	push_arg 3 4 3
+	jsr_eval 0
+	push_arg 3 2 1
+	jsr_eval 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 7
+	pop_a 1
+.d 3 0
+	jsr s59
+.o 1 0
+	push_a 5
+	jsr_eval 0
+	pushB TRUE
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 1 b
+	jmp s136
+case.95
+	push_a 3
+	push_a 3
+	push_a 3
+	push_b 0
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	updatepop_b 0 1
+.d 3 1 b
+	rtn
+.o 1 0
+s137
+	buildh d135 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+.o 1 0
+s138
+	buildh d135 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+.impmod receivertable
+.impdesc e_receivertable_rReceiverTableEntry

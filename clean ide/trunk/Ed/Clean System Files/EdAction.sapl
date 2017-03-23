@@ -1,0 +1,158 @@
+|| ?module? EdAction
+
+
+EdAction.anon_79 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_78 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_77 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_76 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_75 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_74 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_73 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_72 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_71 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_70 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_69 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_68 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_67 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_66 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_65 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_64 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_63 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_62 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_126 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdAction.anon_62 ma_0 mb_1 state_3)::_Tuple2 1)
+EdAction.anon_20 start_0 newPos_1 = EdAction.anon_126 (EdMonad.setSelection (EdSelection._Selection start_0 newPos_1)) EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection
+EdAction.anon_127 ma_0 start_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_20 start_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_21 move_0 !_x_1 = case _x_1 (EdSelection._Selection start_1_0 end_1_1 -> EdAction.anon_127 (EdMovement.positionAfterMove move_0 start_1_0) start_1_0) 
+EdAction.anon_61 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_60 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_59 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_128 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdAction.anon_59 ma_0 mb_1 state_3)::_Tuple2 1)
+EdAction.anon_18 selection_0 newPos_1 = let selectionStart_1_0 = select selection_0::EdSelection._Selection 0 in EdAction.anon_128 (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection selectionStart_1_0 newPos_1)) (EdCommon.mChangeSelectionTo (EdSelection._Selection selectionStart_1_0 newPos_1)) EdVisualCursor.vScrollToCursor
+EdAction.anon_129 ma_0 selection_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_18 selection_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_19 move_0 selection_1 = EdAction.anon_129 (EdMovement.positionAfterMove move_0 (select selection_1::EdSelection._Selection 1)) selection_1
+EdAction.anon_58 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_57 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_56 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_14 move_0 lineHeight_1::I text_2 window_3 frame_4 = EdMonad.appEnv (StdPSt.appPIO (StdWindow.moveWindowViewFrame window_3 (StdIOBasic._Vector2 0 (<{StdInt.-_7}> (<{EdAction._c;94;43_161}> move_0 frame_4 lineHeight_1 text_2) (select (select frame_4::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1)))))
+<{EdAction._c;94;43_161}>::I !move_0 frame_1 lineHeight_2::I text_3 = case move_0 (EdMovement.PageUp -> let topPixel_2_0::I = 0, lines_2_1::I = <{StdInt./_10}> (<{StdInt.-_7}> (select (select frame_1::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 1) (select (select frame_1::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1)) lineHeight_2, pagePixels_2_2::I = <{StdInt.*_9}> (<{StdInt.-_7}> lines_2_1 1) lineHeight_2, y_2_3::I = <{StdInt.-_7}> (select (select frame_1::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1) pagePixels_2_2 in case (<{StdInt.<_17}> topPixel_2_0 y_2_3) (True -> y_2_3) (False -> topPixel_2_0) ) (EdMovement.PageDown -> let botPixel_2_0::I = <{StdInt.*_9}> (EdLineText.textLength text_3) lineHeight_2, lines_2_1::I = <{StdInt./_10}> (<{StdInt.-_7}> (select (select frame_1::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 1) (select (select frame_1::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1)) lineHeight_2, pagePixels_2_2::I = <{StdInt.*_9}> (<{StdInt.-_7}> lines_2_1 1) lineHeight_2, y_2_3::I = <{StdInt.+_6}> (select (select frame_1::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1) pagePixels_2_2 in case (<{StdInt.<_17}> botPixel_2_0 y_2_3) (True -> botPixel_2_0) (False -> y_2_3) ) (EdMovement.StartOfText -> 0) (EdMovement.EndOfText -> <{StdInt.-_7}> (<{StdInt.*_9}> (EdLineText.textLength text_3) lineHeight_2) (<{StdInt.*_9}> (<{StdInt.-_7}> (<{StdInt./_10}> (<{StdInt.-_7}> (select (select frame_1::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 1) (select (select frame_1::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1)) lineHeight_2) 1) lineHeight_2)) (_ -> select (select frame_1::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1)
+EdAction.anon_130 ma_0 move_1 lineHeight_2::I text_3 window_4 state_5 = let _x_1_0 = ma_0 state_5 in EdAction.anon_14 move_1 lineHeight_2 text_3 window_4 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_15 move_0 lineHeight_1::I text_2 window_3 = EdAction.anon_130 (EdMonad.accEnv (StdPSt.accPIO (StdWindow.getWindowViewFrame window_3))) move_0 lineHeight_1 text_2 window_3
+EdAction.anon_131 ma_0 move_1 lineHeight_2::I text_3 state_4 = let _x_1_0 = ma_0 state_4 in EdAction.anon_15 move_1 lineHeight_2 text_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_16 move_0 lineHeight_1::I text_2 = EdAction.anon_131 EdMonad.getWindowId move_0 lineHeight_1 text_2
+EdAction.anon_132 ma_0 move_1 lineHeight_2::I state_3 = let _x_1_0 = ma_0 state_3 in EdAction.anon_16 move_1 lineHeight_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_17 move_0 !_x_1 = case _x_1 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdAction.anon_132 EdMonad.getText move_0 lineHeight_1_1) 
+EdAction.anon_55 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_54 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_53 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_52 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.positionAfterText_22 !position_0 !_x_1 = case _x_1 (StrictList.SNil -> position_0) (StrictList.SCons string_1_0 _x_1_1 -> case position_0 (EdPosition._Position col_2_0 row_2_1 -> case _x_1_1 (StrictList.SNil -> EdPosition._Position (<{StdInt.+_6}> col_2_0 (_SystemArray.size_20 string_1_0)) row_2_1) ) ) (_ -> case position_0 (EdPosition._Position col_1_0 row_1_1 -> EdPosition._Position (_SystemArray.size_20 (StrictList.slLast _x_1)) (<{StdInt.-_7}> (<{StdInt.+_6}> row_1_1 (StrictList.slLength _x_1)) 1)) )
+EdAction.anon_133 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdAction.anon_52 ma_0 mb_1 state_3)::_Tuple2 1)
+EdAction.anon_134 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdAction.anon_133 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdAction.anon_135 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdAction.anon_134 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdAction.anon_13 fragment_0 selection_1 = let newPos_1_0 = EdAction.positionAfterText_22 (select selection_1::EdSelection._Selection 0) fragment_0 in EdAction.anon_135 (EdVisualText.vInsertText (select selection_1::EdSelection._Selection 0) fragment_0) (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection newPos_1_0 newPos_1_0)) (EdCommon.mChangeSelectionTo (EdSelection._Selection newPos_1_0 newPos_1_0)) EdVisualCursor.vScrollToCursor (EdMonad.setNeedSave True)
+EdAction.anon_51 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_50 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_49 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_48 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_47 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_46 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_136 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdAction.anon_46 ma_0 mb_1 state_3)::_Tuple2 1)
+EdAction.anon_11 newPos_0 = EdAction.anon_136 (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection newPos_0 newPos_0)) EdCommon.mRemoveSelection EdVisualCursor.vScrollToCursor
+EdAction.anon_45 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_10 move_0 newPos_1 = EdAction.anon_45 (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection newPos_1 newPos_1)) (<{EdAction._if;35;40_163}> (EdAction._f162_162 (<{EdMovement.==_4}> move_0 EdMovement.PageUp) move_0) move_0)
+<{EdAction._if;35;40_163}> !_x_0::B move_1 = case _x_0 (True -> EdVisualCursor.vMoveCursor move_1) (_ -> EdVisualCursor.vScrollToCursor)
+EdAction._f162_162::B !_x_0::B move_1 = case _x_0 (True -> True) (_ -> <{EdMovement.==_4}> move_1 EdMovement.PageDown)
+EdAction.anon_137 ma_0 !move_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_10 move_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_138 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdAction.anon_11 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_12 move_0 !selection_1 = case (<{EdPosition.==_1}> (select selection_1::EdSelection._Selection 0) (select selection_1::EdSelection._Selection 1)) (True -> EdAction.anon_137 (EdMovement.positionAfterMove move_0 (select selection_1::EdSelection._Selection 0)) move_0) (False -> EdAction.anon_138 (<{EdAction._if;51;25_165}> (StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{EdMovement.==_4}>)) move_0 (_predefined._Cons EdMovement.CharLeft (_predefined._Cons EdMovement.WordLeft (_predefined._Cons EdMovement.PageUp (_predefined._Cons EdMovement.LineUp (_predefined._Cons EdMovement.StartOfLine _predefined._Nil)))))) selection_1 move_0)) 
+<{EdAction._if;51;25_165}> !_x_0::B selection_1 move_2 = case _x_0 (True -> EdAction.anon_49 (select (EdSelection.orderSelection selection_1)::EdSelection._Selection 0)) (_ -> <{EdAction._c;53;38_164}> move_2 selection_1)
+<{EdAction._c;53;38_164}> !move_0 selection_1 = case move_0 (EdMovement.StartOfText -> EdMovement.positionAfterMove move_0 (select selection_1::EdSelection._Selection 0)) (EdMovement.EndOfText -> EdMovement.positionAfterMove move_0 (select selection_1::EdSelection._Selection 0)) (_ -> EdAction.anon_50 (select (EdSelection.orderSelection selection_1)::EdSelection._Selection 1))
+EdAction.anon_143 !ma_0 move_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_21 move_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_144 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdAction.anon_71 ma_0 mb_1 state_3)::_Tuple2 1)
+EdAction.anon_142 ma_0 move_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_19 move_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_141 !ma_0 move_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_17 move_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_140 ma_0 fragment_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_13 fragment_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_139 !ma_0 move_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_12 move_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.applyAction selectionRemoved_0::B !action_1 = <{EdAction._c;28;9_167}> action_1 selectionRemoved_0
+<{EdAction._c;28;9_167}> !action_0 selectionRemoved_1::B = case action_0 (EdActionType.Move move_1_0 -> EdAction.anon_139 EdMonad.getSelection move_1_0) (EdActionType.Insert fragment_1_0 -> EdAction.anon_140 EdMonad.getSelection fragment_1_0) (EdActionType.Scroll move_1_0 -> EdAction.anon_141 EdMonad.getFontInfo move_1_0) (EdActionType.Select move_1_0 -> EdAction.anon_142 EdMonad.getSelection move_1_0) (EdActionType.Remove move_1_0 -> EdAction.anon_144 (EdMonad.setNeedSave True) (<{EdAction._if;35;40_166}> selectionRemoved_1 move_1_0) EdVisualCursor.vScrollToCursor) (_ -> StdMisc.abort "applyAction (EdAction.icl): unknown action")
+<{EdAction._if;35;40_166}> !selectionRemoved_0::B move_1 = case selectionRemoved_0 (True -> EdAction.anon_69 StateMonad.nothing) (_ -> EdAction.anon_143 EdMonad.getSelection move_1)
+EdAction.anon_8 action_0 selectionRemoved_1::B = EdAction.anon_73 (EdAction.applyAction selectionRemoved_1 action_0) EdVisualCursor.vShowCursor
+EdAction.anon_44 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_43 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_42 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_41 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_40 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdAction.anon_145 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdAction.anon_40 ma_0 mb_1 state_3)::_Tuple2 1)
+EdAction.anon_146 ma_0 mb_1 x_2 state_3 = EdAction.anon_41 x_2 (select (EdAction.anon_40 ma_0 mb_1 state_3)::_Tuple2 1)
+EdAction.anon_23 !selection_0 = case (StdBool.not (EdSelection.isEmptySelection selection_0)) (True -> EdAction.anon_146 EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection True) (False -> EdAction.anon_43 False) 
+EdAction.anon_147 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdAction.anon_23 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.removeSelectionIfNecessary = EdAction.anon_147 EdMonad.getSelection
+EdAction.needsRemoveSelection::B !_x_0 = case _x_0 (EdActionType.Remove _x_1_0 -> True) (EdActionType.Insert _x_1_0 -> True) (_ -> False)
+EdAction.needsResetVirtualX::B !_x_0 _x_1 = case _x_0 (EdActionType.Scroll _x_1_0 -> False) (EdActionType.Move move_1_0 -> case (EdMovement.isVerticalMove move_1_0) (True -> StdBool.not (EdSelection.isEmptySelection _x_1)) (False -> True) ) (EdActionType.Select move_1_0 -> StdBool.not (EdMovement.isVerticalMove move_1_0)) (_ -> True)
+EdAction.anon_148 ma_0 mb_1 !f_2 state_3 = let _x_1_0 = EdAction.anon_74 ma_0 mb_1 state_3 in f_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_149 ma_0 mb_1 action_2 state_3 = let _x_1_0 = EdAction.anon_74 ma_0 mb_1 state_3 in EdAction.anon_8 action_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_9 action_0 selection_1 = EdAction.anon_149 (StateMonad.onlyIf (EdAction.needsResetVirtualX action_0 selection_1) (EdMonad.setVirtualX 0)) (StateMonad.onlyIf (EdAction.needsRemoveSelection action_0) EdAction.removeSelectionIfNecessary) action_0
+EdAction.needsCenterCursor::B !_x_0 = case _x_0 (EdActionType.Scroll _x_1_0 -> False) (_ -> True)
+EdAction.anon_39 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_38 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_37 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_36 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_35 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_24 state_0 = EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " Typing" (EdMonad.InsertInfo True state_0))
+EdAction.anon_150 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdAction.anon_24 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_25 !undoinfo_0 = <{EdAction._c;192;9_168}> (select undoinfo_0::EdMonad._UndoInfo 2)
+<{EdAction._c;192;9_168}> !_x_0 = case _x_0 (EdMonad.InsertInfo _x_1_0 _x_1_1 -> case _x_1_0 (True -> EdAction.anon_35 StateMonad.nothing) ) (_ -> EdAction.anon_150 EdMonad.getState)
+EdAction.anon_34 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_33 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_26 state_0 = EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " Deletion" (EdMonad.RemoveInfo True state_0))
+EdAction.anon_151 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdAction.anon_26 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_27 !undoinfo_0 = <{EdAction._c;199;9_169}> (select undoinfo_0::EdMonad._UndoInfo 2)
+<{EdAction._c;199;9_169}> !_x_0 = case _x_0 (EdMonad.RemoveInfo _x_1_0 _x_1_1 -> case _x_1_0 (True -> EdAction.anon_33 StateMonad.nothing) ) (_ -> EdAction.anon_151 EdMonad.getState)
+EdAction.anon_32 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_28 !undoinfo_0 = <{EdAction._c;206;9_170}> (select undoinfo_0::EdMonad._UndoInfo 2) undoinfo_0
+<{EdAction._c;206;9_170}> !_x_0 undoinfo_1 = case _x_0 (EdMonad.InsertInfo _x_1_0 state_1_1 -> case _x_1_0 (True -> EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [2:EdMonad.InsertInfo False state_1_1])) ) (EdMonad.RemoveInfo _x_1_0 state_1_1 -> case _x_1_0 (True -> EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [2:EdMonad.RemoveInfo False state_1_1])) ) (_ -> EdAction.anon_32 StateMonad.nothing)
+EdAction.anon_153 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdAction.anon_27 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_152 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdAction.anon_25 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_154 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdAction.anon_28 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.undoStuff !_x_0 = case _x_0 (EdActionType.Insert _x_1_0 -> EdAction.anon_152 EdMonad.getUndoInfo) (EdActionType.Remove _x_1_0 -> EdAction.anon_153 EdMonad.getUndoInfo) (_ -> EdAction.anon_154 EdMonad.getUndoInfo)
+EdAction.anon_155 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdAction.anon_76 ma_0 mb_1 state_3)::_Tuple2 1)
+EdAction.anon_156 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdAction.anon_155 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdAction.anon_157 ma_0 mb_1 mb_2 mb_3 !f_4 state_5 = let _x_1_0 = EdAction.anon_156 ma_0 mb_1 mb_2 mb_3 state_5 in f_4 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_158 ma_0 mb_1 mb_2 mb_3 action_4 state_5 = let _x_1_0 = EdAction.anon_156 ma_0 mb_1 mb_2 mb_3 state_5 in EdAction.anon_9 action_4 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.performAction action_0 = EdAction.anon_158 (EdAction.undoStuff action_0) EdVisualCursor.vHideCursor (StateMonad.onlyIf (EdAction.needsCenterCursor action_0) EdVisualCursor.vCenterCursor) EdMonad.getSelection action_0
+EdAction.anon_82 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_81 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_80 x_0 state_1 = _Tuple2 x_0 state_1
+EdAction.anon_29 !undoinfo_0 fin_1 = <{EdAction._c;215;9_171}> (select undoinfo_0::EdMonad._UndoInfo 2) undoinfo_0 fin_1
+<{EdAction._c;215;9_171}> !_x_0 undoinfo_1 fin_2 = case _x_0 (EdMonad.InsertInfo _x_1_0 ini_1_1 -> EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [2:EdMonad.UndoneInfo ini_1_1 fin_2])) (EdMonad.RemoveInfo _x_1_0 ini_1_1 -> EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [2:EdMonad.UndoneInfo ini_1_1 fin_2])) (_ -> EdAction.anon_80 StateMonad.nothing)
+EdAction.anon_159 ma_0 !undoinfo_1 state_2 = let _x_1_0 = ma_0 state_2 in EdAction.anon_29 undoinfo_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.anon_30 undoinfo_0 = EdAction.anon_159 EdMonad.getState undoinfo_0
+EdAction.anon_160 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdAction.anon_30 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdAction.undoAction = EdAction.anon_160 EdMonad.getUndoInfo
+
+
+|| Converted Records
+:: <{EdAction.gEq_s;}> = {!EdAction.gEq_s}
+
+:: <{EdAction.gEq_ss;}> = {!EdAction.gEq_ss}
+
+:: <{EdAction.gEq_sss;}> = {!EdAction.gEq_sss}
+
+:: <{EdAction.gEq_ssss;}> = {!EdAction.gEq_ssss}
+
+:: <{EdAction.gEq_sssss;}> = {!EdAction.gEq_sssss}
+
+:: <{EdAction.gEq_ssssss;}> = {!EdAction.gEq_ssssss}
+
+:: <{EdAction.gEq_sssssss;}> = {!EdAction.gEq_sssssss}
+
+:: <{EdAction.gEq_ssssssss;}> = {!EdAction.gEq_ssssssss}
+
+:: <{EdAction.gEq_sssssssss;}> = {!EdAction.gEq_sssssssss}
+
+:: <{EdAction.bimap_s;}> = {EdAction.bimap_s}
+
+:: <{EdAction.bimap_ss;}> = {EdAction.bimap_ss}
+
+:: <{EdAction.bimap_sss;}> = {EdAction.bimap_sss}
+

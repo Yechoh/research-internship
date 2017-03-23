@@ -1,0 +1,43 @@
+|| ?module? StdTimerElementClass
+
+
+StdTimerElementClass.getTimerElementType_0 !_vTimerElements_0 _x_1 = ""
+StdTimerElementClass.timerElementToHandles_1 !_vTimerElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic._NewLS newLS_1_0 newDef_1_1 -> let _x_2_0 = select _vTimerElements_0::<{StdTimerElementClass.TimerElements;}> 1 newDef_1_1 pState_2 in <{_Tuple2!3}> (_predefined._Cons (timerhandle.timerElementHandleToTimerElementState (timerhandle.TimerChangeLSHandle (timerhandle._TimerChangeLSHandle newLS_1_0 (StdList.map timerhandle.timerElementStateToTimerElementHandle (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdTimerElementClass.getTimerElementType_2 !_vTimerElements_0 _x_1 = ""
+StdTimerElementClass.timerElementToHandles_3 !_vTimerElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic._AddLS addLS_1_0 addDef_1_1 -> let _x_2_0 = select _vTimerElements_0::<{StdTimerElementClass.TimerElements;}> 1 addDef_1_1 pState_2 in <{_Tuple2!3}> (_predefined._Cons (timerhandle.timerElementHandleToTimerElementState (timerhandle.TimerExtendLSHandle (timerhandle._TimerExtendLSHandle addLS_1_0 (StdList.map timerhandle.timerElementStateToTimerElementHandle (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdTimerElementClass.getTimerElementType_4 !_vTimerElements_0 _x_1 = ""
+StdTimerElementClass.timerElementToHandles_5 !_vTimerElements_0 !_x_1 !pState_2 = case _x_1 (StdIOBasic.ListLS tDefs_1_0 -> let _x_2_0 = commondef.stateMap (select _vTimerElements_0::<{StdTimerElementClass.TimerElements;}> 1) tDefs_1_0 pState_2 in <{_Tuple2!3}> (_predefined._Cons (timerhandle.timerElementHandleToTimerElementState (timerhandle.TimerListLSHandle (StdList.map timerhandle.timerElementStateToTimerElementHandle (StdList.flatten (select _x_2_0::_Tuple2 0))))) _predefined._Nil) (select _x_2_0::_Tuple2 1)) 
+StdTimerElementClass.getTimerElementType_6 _x_0 = ""
+StdTimerElementClass.timerElementToHandles_7 !_x_0 !pState_1 = case _x_0 (StdIOBasic.NilLS -> <{_Tuple2!3}> (_predefined._Cons (timerhandle.timerElementHandleToTimerElementState (timerhandle.TimerListLSHandle _predefined._Nil)) _predefined._Nil) pState_1) 
+StdTimerElementClass.getTimerElementType_8 !_vTimerElements_0 !_vTimerElements_1 _x_2 = ""
+StdTimerElementClass.timerElementToHandles_9 !_vTimerElements_0 !_vTimerElements_1 !_x_2 !pState_3 = case _x_2 (<{StdIOBasic.:+:}> t1_1_0 t2_1_1 -> let _x_2_0 = select _vTimerElements_0::<{StdTimerElementClass.TimerElements;}> 1 t1_1_0 pState_3, _x_2_1 = select _vTimerElements_1::<{StdTimerElementClass.TimerElements;}> 1 t2_1_1 (select _x_2_0::_Tuple2 1) in <{_Tuple2!3}> (<{StdList.++}> (select _x_2_0::_Tuple2 0) (select _x_2_1::_Tuple2 0)) (select _x_2_1::_Tuple2 1)) 
+<{StdTimerElementClass.TD;TimerElements;}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: <{StdTimerElementClass.TimerElements;}> = {!StdTimerElementClass.getTimerElementType, !StdTimerElementClass.timerElementToHandles}
+
+:: <{StdTimerElementClass.gEq_s;}> = {!StdTimerElementClass.gEq_s}
+
+:: <{StdTimerElementClass.gEq_ss;}> = {!StdTimerElementClass.gEq_ss}
+
+:: <{StdTimerElementClass.gEq_sss;}> = {!StdTimerElementClass.gEq_sss}
+
+:: <{StdTimerElementClass.gEq_ssss;}> = {!StdTimerElementClass.gEq_ssss}
+
+:: <{StdTimerElementClass.gEq_sssss;}> = {!StdTimerElementClass.gEq_sssss}
+
+:: <{StdTimerElementClass.gEq_ssssss;}> = {!StdTimerElementClass.gEq_ssssss}
+
+:: <{StdTimerElementClass.gEq_sssssss;}> = {!StdTimerElementClass.gEq_sssssss}
+
+:: <{StdTimerElementClass.gEq_ssssssss;}> = {!StdTimerElementClass.gEq_ssssssss}
+
+:: <{StdTimerElementClass.gEq_sssssssss;}> = {!StdTimerElementClass.gEq_sssssssss}
+
+:: <{StdTimerElementClass.bimap_s;}> = {StdTimerElementClass.bimap_s}
+
+:: <{StdTimerElementClass.bimap_ss;}> = {StdTimerElementClass.bimap_ss}
+
+:: <{StdTimerElementClass.bimap_sss;}> = {StdTimerElementClass.bimap_sss}
+

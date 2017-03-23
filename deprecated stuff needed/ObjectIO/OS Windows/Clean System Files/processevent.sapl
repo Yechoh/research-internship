@@ -1,0 +1,42 @@
+|| ?module? processevent
+
+
+processevent.isProcessOSEvent_4::B !_x_0::I = case _x_0 (123 -> True) (127 -> True) (132 -> True) (_ -> False)
+<{processevent.<>_6}>::B !_vEq_0 !x_1 !y_2 = StdBool.not (select (select _vEq_0::<{StdClass.Eq;}> 0)::<{StdOverloaded.==;}> 0 x_1 y_2)
+processevent.getOSDInfoFramePtr::I !osd_0 = <{processevent._c;87;7_51}> (osdocumentinterface.getOSDInfoOSInfo osd_0)
+<{processevent._c;87;7_51}>::I !_x_0 = case _x_0 (Data.Maybe.Just info_1_0 -> select info_1_0::osdocumentinterface._OSInfo 0) (_ -> -1)
+processevent.getFileNames_5 !low_0::I !up_1::I !nrChars_2::I !allNames_3 fNames_4 = case (StdBool.not (<{StdInt.<_17}> up_1 nrChars_2)) (True -> fNames_4) (False -> case (<{StdChar.==_18}> (_SystemArray.select_19 allNames_3 up_1) '\n') (True -> processevent.getFileNames_5 (<{StdInt.+_6}> up_1 1) (<{StdInt.+_6}> up_1 1) nrChars_2 allNames_3 (_predefined._Cons (<{StdString.%_10}> allNames_3 (_Tuple2 low_0 (<{StdInt.-_7}> up_1 1))) fNames_4)) (False -> processevent.getFileNames_5 low_0 (<{StdInt.+_6}> up_1 1) nrChars_2 allNames_3 fNames_4) ) 
+processevent.processeventFatalError !function_0 !error_1 = commondef.fatalError function_0 "processevent" error_1
+<{processevent.<>_50}>::B !x_0 !y_1 = StdBool.not (<{StdString.==_2}> x_0 y_1)
+processevent.filterOSEvent !_x_0 !isActive_1::B !_x_2 !tb_3::I = case _x_0 (clCrossCall_12._CrossCallInfo _x_1_0 cString_1_1 p2_1_2 p3_1_3 p4_1_4 p5_1_5 p6_1_6 -> case _x_1_0 (123 -> case (StdBool.not isActive_1) (True -> <{_Tuple4!15}> False Data.Maybe.Nothing Data.Maybe.Nothing tb_3) (False -> let _x_4_0 = clCCall_12.winGetCStringAndFree cString_1_1 tb_3 in <{_Tuple4!15}> True Data.Maybe.Nothing (Data.Maybe.Just (deviceevents.ProcessRequestOpenFiles (_predefined._Cons (select _x_4_0::_Tuple2 0) _predefined._Nil))) (select _x_4_0::_Tuple2 1)) ) (127 -> case (<{StdInt.==_16}> cString_1_1 (processevent.getOSDInfoFramePtr _x_2)) (True -> <{_Tuple4!15}> True Data.Maybe.Nothing (Data.Maybe.Just deviceevents.ProcessRequestClose) tb_3) (False -> <{_Tuple4!15}> False Data.Maybe.Nothing Data.Maybe.Nothing tb_3) ) (132 -> case (StdBool.not (<{StdInt.==_16}> cString_1_1 (processevent.getOSDInfoFramePtr _x_2))) (True -> <{_Tuple4!15}> False Data.Maybe.Nothing Data.Maybe.Nothing tb_3) (False -> let _x_4_0 = clCCall_12.winGetCStringAndFree p2_1_2 tb_3, allNames_4_1 = select _x_4_0::_Tuple2 0, allNames_4_2 = <{processevent._if;71;27_52}> (<{StdChar.==_18}> (_SystemArray.select_19 allNames_4_1 (<{StdInt.-_7}> (_SystemArray.size_20 allNames_4_1) 1)) '\n') allNames_4_1 in <{_Tuple4!15}> True Data.Maybe.Nothing (Data.Maybe.Just (deviceevents.ProcessRequestOpenFiles (StdList.filter (<{processevent.<>_50}> "") (processevent.getFileNames_5 0 0 (_SystemArray.size_20 allNames_4_2) allNames_4_2 _predefined._Nil)))) (select _x_4_0::_Tuple2 1)) ) ) (_ -> processevent.processeventFatalError "filterOSEvent" "unmatched OSEvent")
+<{processevent._if;71;27_52}> !_x_0::B !allNames_1 = case _x_0 (True -> allNames_1) (_ -> <{StdString.+++_11}> allNames_1 "\n")
+processevent.processEvent !schedulerEvent_0 !pState_1 = case schedulerEvent_0 (deviceevents.ScheduleOSEvent osEvent_1_0 _x_1_1 -> case osEvent_1_0 (clCrossCall_12._CrossCallInfo ccMsg_2_0 p1_2_1 p2_2_2 p3_2_3 p4_2_4 p5_2_5 p6_2_6 -> case pState_1 (iostate._PSt ls_3_0 ioState_3_1 -> case (processevent.isProcessOSEvent_4 ccMsg_2_0) (True -> let _x_5_0 = iostate.ioStGetProcessStack ioState_3_1, processStack_5_1 = select _x_5_0::_Tuple2 0, _x_5_2 = processstack.topShowProcessShowState processStack_5_1, found_5_3 = select _x_5_2::_Tuple2 0, ioState_5_4::I = select _x_5_0::_Tuple2 1, _x_5_5 = iostate.ioStGetIOId ioState_5_4, ioState_5_6 = select _x_5_5::_Tuple2 1, _x_5_7 = iostate.ioStGetOSDInfo ioState_5_6, osd_5_8 = select _x_5_7::_Tuple2 0, ioState_5_9 = select _x_5_7::_Tuple2 1, _x_5_10 = iostate.getIOToolbox ioState_5_9, tb_5_11 = select _x_5_10::_Tuple2 0, _x_5_12::B = processevent.filterOSEvent osEvent_1_0 (processevent._f53_53 found_5_3 system_5_15 io_5_14) osd_5_8 tb_5_11, replyToOS_5_13 = select _x_5_12::_Tuple4 1, io_5_14 = select _x_5_5::_Tuple2 0, system_5_15 = select _x_5_2::_Tuple2 1 in <{_Tuple4!15}> (select _x_5_12::_Tuple4 0) (select _x_5_12::_Tuple4 2) (<{processevent._if;33;43_54}> (Data.Maybe.isJust replyToOS_5_13) osEvent_1_0 replyToOS_5_13 schedulerEvent_0) (update pState_1::iostate._PSt [1:iostate.setIOToolbox (select _x_5_12::_Tuple4 3) (select _x_5_10::_Tuple2 1)])) (False -> <{_Tuple4!15}> False Data.Maybe.Nothing schedulerEvent_0 pState_1) ) ) ) (_ -> <{_Tuple4!15}> False Data.Maybe.Nothing schedulerEvent_0 pState_1)
+<{processevent._if;33;43_54}> !_x_0::B osEvent_1 replyToOS_2 schedulerEvent_3 = case _x_0 (True -> deviceevents.ScheduleOSEvent osEvent_1 (Data.Maybe.fromJust replyToOS_2)) (_ -> schedulerEvent_3)
+processevent._f53_53::B !found_0::B system_1 io_2 = case found_0 (True -> <{systemid.==_5}> system_1 io_2) (_ -> False)
+
+
+|| Converted Records
+:: <{processevent.gEq_s;}> = {!processevent.gEq_s}
+
+:: <{processevent.gEq_ss;}> = {!processevent.gEq_ss}
+
+:: <{processevent.gEq_sss;}> = {!processevent.gEq_sss}
+
+:: <{processevent.gEq_ssss;}> = {!processevent.gEq_ssss}
+
+:: <{processevent.gEq_sssss;}> = {!processevent.gEq_sssss}
+
+:: <{processevent.gEq_ssssss;}> = {!processevent.gEq_ssssss}
+
+:: <{processevent.gEq_sssssss;}> = {!processevent.gEq_sssssss}
+
+:: <{processevent.gEq_ssssssss;}> = {!processevent.gEq_ssssssss}
+
+:: <{processevent.gEq_sssssssss;}> = {!processevent.gEq_sssssssss}
+
+:: <{processevent.bimap_s;}> = {processevent.bimap_s}
+
+:: <{processevent.bimap_ss;}> = {processevent.bimap_ss}
+
+:: <{processevent.bimap_sss;}> = {processevent.bimap_sss}
+

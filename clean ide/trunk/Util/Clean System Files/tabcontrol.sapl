@@ -1,0 +1,59 @@
+|| ?module? tabcontrol
+
+
+tabcontrol.LighterGrey = StdPictureDef.RGB (StdPictureDef._RGBColour 225 225 225)
+tabcontrol.Vellum = StdPictureDef.RGB (StdPictureDef._RGBColour 200 225 255)
+tabcontrol.look !sz_0 ss_1 !us_2 !pc_3 = case us_2 (StdIOCommon._UpdateState oldFrame_1_0 newFrame_1_1 updArea_1_2 -> let left_2_0::I = select (select newFrame_1_1::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 0, yoffset_2_1::I = <{StdInt.+_6}> (select sz_0::StdIOBasic._Size 1) 5, <{yoffset`_2_2}>::I = <{StdInt.+_6}> yoffset_2_1 StdInt.one_11, right_2_3::I = select (select newFrame_1_1::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 0 in StdPicture.drawLine (StdIOBasic._Point2 left_2_0 <{yoffset`_2_2}>) (StdIOBasic._Point2 right_2_3 <{yoffset`_2_2}>) (StdPicture.setPenColour tabcontrol.LighterGrey (StdPicture.drawLine (StdIOBasic._Point2 left_2_0 yoffset_2_1) (StdIOBasic._Point2 right_2_3 yoffset_2_1) (StdPicture.setPenColour StdPictureDef.DarkGrey pc_3)))) 
+tabcontrol.anon_19 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+tabcontrol.anon_63 !_x_0 !g_1 x_2 = StdControl.showControl _x_0 (g_1 x_2)
+tabcontrol.anon_64 !_x_0 !_x_1 !x_2 = StdControl.showControl _x_0 (StdControl.hideControls _x_1 x_2)
+tabcontrol.switchto_14 ids_0 x_1::I !ps_2 = StdPSt.appPIO (tabcontrol.anon_64 (<{StdList.!!}> ids_0 x_1) ids_0) ps_2
+<{tabcontrol.c;58;9_13}> ids_0 !g_l_1 x_2::I = <{tabcontrol.g_c1;57;19_65}> g_l_1 ids_0 x_2
+<{tabcontrol.g_c1;57;19_65}> !g_l_0 ids_1 x_2::I = case g_l_0 (_predefined._Cons label_1_0 g_t_1_1 -> _predefined._Cons (_Tuple3 label_1_0 Data.Maybe.Nothing (StdIOBasic.noLS (tabcontrol.switchto_14 ids_1 x_2))) (<{tabcontrol.c;58;9_13}> ids_1 g_t_1_1 (<{StdInt.+_6}> x_2 StdInt.one_11))) (_ -> _predefined._Nil)
+tabcontrol.rdef rid_0 labels_1 ids_2 = StdControlDef.RadioControl (<{tabcontrol.c;58;9_13}> ids_2 labels_1 0) (StdControlDef.Columns 2) 1 (_predefined._Cons (StdControlDef.ControlId rid_0) _predefined._Nil)
+tabcontrol.imp sz_0 rid_1 labels_2 panes_3 ids_4 atts_5 = StdControlDef.CompoundControl (<{StdIOBasic.:+:}> (tabcontrol.rdef rid_1 labels_2 ids_4) (tabcontrol.Handles panes_3)) (_predefined._Cons (StdControlDef.ControlLook True (tabcontrol.look sz_0)) (_predefined._Cons (StdControlDef.ControlHMargin 0 0) (_predefined._Cons (StdControlDef.ControlVMargin 0 0) atts_5)))
+tabcontrol.controlToHandles_16 !_x_0 !ps_1 = case _x_0 (tabcontrol.Handles h_1_0 -> h_1_0 ps_1) 
+tabcontrol.getControlType_17 _x_0 = "Handles"
+tabcontrol.controlToHandles_0 !_vPanes_0 !_x_1 !ps_2 = case _x_1 (tabcontrol.TabControl tabs_1_0 atts_1_1 -> let Controls_2_0 = <{StdControlClass.Controls;}> StdControlClass.controlToHandles_26 StdControlClass.getControlType_27, Controls_2_1 = <{StdControlClass.Controls;}> tabcontrol.controlToHandles_16 tabcontrol.getControlType_17, _x_2_2 = StdId.openId_13 ps_2, rid_2_3 = select _x_2_2::_Tuple2 0, _x_2_4 = select _vPanes_0::<{tabcontrol.Panes;}> 0 tabs_1_0 True rid_2_3 (select _x_2_2::_Tuple2 1), ts_2_5 = select _x_2_4::_Tuple4 0, is_2_6 = select _x_2_4::_Tuple4 1, _x_2_7 = StdControl.controlSize (<{StdControlClass.Controls;}> StdControlClass.controlToHandles_26 StdControlClass.getControlType_27) (tabcontrol.rdef rid_2_3 ts_2_5 is_2_6) False (Data.Maybe.Just (_Tuple2 0 0)) (Data.Maybe.Just (_Tuple2 0 0)) Data.Maybe.Nothing (select _x_2_4::_Tuple4 3), _x_2_8 = StdControlClass.controlToHandles_14 (<{StdControlClass.Controls;}> (StdControlClass.controlToHandles_8 Controls_2_0 Controls_2_1) (StdControlClass.getControlType_9 Controls_2_0 Controls_2_1)) (tabcontrol.imp (select _x_2_7::_Tuple2 0) rid_2_3 ts_2_5 (select _x_2_4::_Tuple4 2) is_2_6 atts_1_1) (select _x_2_7::_Tuple2 1) in <{_Tuple2!3}> (select _x_2_8::_Tuple2 0) (select _x_2_8::_Tuple2 1)) 
+tabcontrol.getControlType_1 !_vPanes_0 _x_1 = "TabControl"
+tabcontrol.getLC_2 !_vControls_0 !_x_1 !ini_2::B !rid_3 !ps_4 = case _x_1 (tabcontrol.Pane t_1_0 c_1_1 -> let _x_2_0 = StdId.openId_13 ps_4, i_2_1 = select _x_2_0::_Tuple2 0 in <{_Tuple4!15}> (_predefined._Cons t_1_0 _predefined._Nil) (_predefined._Cons i_2_1 _predefined._Nil) (StdControlClass.controlToHandles_22 _vControls_0 (StdControlDef.LayoutControl c_1_1 (_predefined._Cons (StdControlDef.ControlId i_2_1) (_predefined._Cons (StdControlDef.ControlPos (_Tuple2 (StdIOCommon.Below rid_3) (StdIOCommon.OffsetVector (StdIOBasic._Vector2 0 10)))) (_predefined._Cons (StdControlDef.ControlHMargin 0 0) (_predefined._Cons (StdControlDef.ControlVMargin 0 0) (<{tabcontrol._if;89;23_66}> ini_2))))))) (select _x_2_0::_Tuple2 1)) 
+<{tabcontrol._if;89;23_66}> !ini_0::B = case ini_0 (True -> _predefined._Nil) (_ -> _predefined._Cons StdControlDef.ControlHide _predefined._Nil)
+tabcontrol.hh_15 h1_0 h2_1 ps_2 = let _x_1_0 = h1_0 ps_2, _x_1_1 = h2_1 (select _x_1_0::_Tuple2 1) in _Tuple2 (<{StdList.++}> (select _x_1_0::_Tuple2 0) (select _x_1_1::_Tuple2 0)) (select _x_1_1::_Tuple2 1)
+tabcontrol.getLC_3 !_vPanes_0 !_vPanes_1 !_x_2 !ini_3::B !rid_4 !ps_5 = case _x_2 (<{StdIOBasic.:+:}> c1_1_0 c2_1_1 -> let _x_2_0 = select _vPanes_0::<{tabcontrol.Panes;}> 0 c1_1_0 ini_3 rid_4 ps_5, _x_2_1 = select _vPanes_1::<{tabcontrol.Panes;}> 0 c2_1_1 False rid_4 (select _x_2_0::_Tuple4 3) in <{_Tuple4!15}> (<{StdList.++}> (select _x_2_0::_Tuple4 0) (select _x_2_1::_Tuple4 0)) (<{StdList.++}> (select _x_2_0::_Tuple4 1) (select _x_2_1::_Tuple4 1)) (tabcontrol.hh_15 (select _x_2_0::_Tuple4 2) (select _x_2_1::_Tuple4 2)) (select _x_2_1::_Tuple4 3)) 
+<{tabcontrol.TD;TabControl}> _x_0::B = _predefined._Nil
+<{tabcontrol.TD;Xane}> _x_0::B = _predefined._Nil
+<{tabcontrol.TD;Pane}> _x_0::B = _predefined._Nil
+<{tabcontrol.TD;Panes;}> _x_0::B = _predefined._Nil
+<{tabcontrol.TD;Handles}> _x_0::B = _predefined._Nil
+
+:: tabcontrol.TabControl = tabcontrol.TabControl a1 a2
+:: tabcontrol.Pane = tabcontrol.Pane a1 a2
+:: tabcontrol.Handles = tabcontrol.Handles a1
+
+|| Converted Records
+:: <{tabcontrol.Panes;}> = {!tabcontrol.getLC}
+
+:: <{tabcontrol.gEq_s;}> = {!tabcontrol.gEq_s}
+
+:: <{tabcontrol.gEq_ss;}> = {!tabcontrol.gEq_ss}
+
+:: <{tabcontrol.gEq_sss;}> = {!tabcontrol.gEq_sss}
+
+:: <{tabcontrol.gEq_ssss;}> = {!tabcontrol.gEq_ssss}
+
+:: <{tabcontrol.gEq_sssss;}> = {!tabcontrol.gEq_sssss}
+
+:: <{tabcontrol.gEq_ssssss;}> = {!tabcontrol.gEq_ssssss}
+
+:: <{tabcontrol.gEq_sssssss;}> = {!tabcontrol.gEq_sssssss}
+
+:: <{tabcontrol.gEq_ssssssss;}> = {!tabcontrol.gEq_ssssssss}
+
+:: <{tabcontrol.gEq_sssssssss;}> = {!tabcontrol.gEq_sssssssss}
+
+:: <{tabcontrol.bimap_s;}> = {tabcontrol.bimap_s}
+
+:: <{tabcontrol.bimap_ss;}> = {tabcontrol.bimap_ss}
+
+:: <{tabcontrol.bimap_sss;}> = {tabcontrol.bimap_sss}
+

@@ -1,0 +1,161 @@
+|| ?module? EdMovement
+
+
+EdMovement.anon_89 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_88 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_29 text_0 = let lastLineNr_1_0::I = <{StdInt.-_7}> (EdLineText.textLength text_0) 1 in EdMovement.anon_88 (EdPosition._Position (_SystemArray.size_20 (select (EdLineText.getLine lastLineNr_1_0 text_0)::_Tuple2 0)) lastLineNr_1_0)
+EdMovement.anon_133 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMovement.anon_29 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.endOfText _x_0 = EdMovement.anon_133 EdMonad.getText
+EdMovement.anon_87 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.startOfText _x_0 = EdMovement.anon_87 (EdPosition._Position 0 0)
+EdMovement.anon_86 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_85 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_30 row_0::I text_1 = EdMovement.anon_85 (EdPosition._Position (_SystemArray.size_20 (select (EdLineText.getLine row_0 text_1)::_Tuple2 0)) row_0)
+EdMovement.anon_134 ma_0 row_1::I state_2 = let _x_1_0 = ma_0 state_2 in EdMovement.anon_30 row_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.endOfLine !_x_0 = case _x_0 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_134 EdMonad.getText row_1_1) 
+EdMovement.anon_84 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.startOfLine !_x_0 = case _x_0 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_84 (EdPosition._Position 0 row_1_1)) 
+EdMovement.anon_83 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_82 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_81 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_80 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_79 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMovement.anon_78 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_77 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMovement.anon_76 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.picfun_44 newRow_0::I virtualX_1::I position_2 text_3 !font_4 = case font_4 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> let newVirtualX_2_0::I = <{EdMovement._if;290;27_159}> (<{StdInt.==_16}> virtualX_1 0) position_2 text_3 font_4 virtualX_1 in _Tuple2 newVirtualX_2_0 (select (EdVisualText.pointToPosition (StdIOBasic._Point2 newVirtualX_2_0 (<{StdInt.*_9}> newRow_0 lineHeight_1_1)) text_3 font_4)::EdPosition._Position 0)) 
+<{EdMovement._if;290;27_159}>::I !_x_0::B position_1 text_2 font_3 virtualX_4::I = case _x_0 (True -> select (EdVisualText.positionToPoint position_1 text_2 font_3)::StdIOBasic._Point2 0) (_ -> virtualX_4)
+EdMovement.anon_135 ma_0 x_1 state_2 = EdMovement.anon_76 x_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMovement.anon_136 ma_0 x_1 state_2 = EdMovement.anon_78 x_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMovement.anon_40 position_0 !row_1::I font_2 text_3 !<{lastLineNr`_4}>::I rowChange_5::I virtualX_6::I = case (<{StdInt.==_16}> row_1 <{lastLineNr`_4}>) (True -> EdMovement.anon_135 (EdMonad.setVirtualX 0) position_0) (False -> let y_2_0 = <{StdInt.+_6}> rowChange_5 row_1, newRow_2_1::I = <{EdMovement._c;48;16_160}> (<{StdInt.<_17}> <{lastLineNr`_4}> y_2_0) <{lastLineNr`_4}> y_2_0, _x_2_2::I = EdMovement.picfun_44 newRow_2_1 virtualX_6 position_0 text_3 font_2 in EdMovement.anon_136 (EdMonad.setVirtualX (select _x_2_2::_Tuple2 0)) (EdPosition._Position (select _x_2_2::_Tuple2 1) newRow_2_1)) 
+<{EdMovement._c;48;16_160}>::I !_x_0::B <{lastLineNr`_1}>::I y_2::I = case _x_0 (True -> <{lastLineNr`_1}>) (_ -> y_2)
+EdMovement.anon_137 ma_0 position_1 !row_2::I font_3 text_4 !<{lastLineNr`_5}>::I rowChange_6::I state_7 = let _x_1_0 = ma_0 state_7 in EdMovement.anon_40 position_1 row_2 font_3 text_4 <{lastLineNr`_5}> rowChange_6 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_41 position_0 row_1::I frame_2 font_3 lineHeight_4::I text_5 = let <{lastLineNr`_1_0}>::I = EdLineText.lastLineNr text_5, botRow_1_1::I = <{StdInt./_10}> (<{StdInt.-_7}> (select (select frame_2::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 1) 1) lineHeight_4, lastRow_1_2::I = <{EdMovement._c;51;16_161}> (<{StdInt.<_17}> <{lastLineNr`_1_0}> botRow_1_1) botRow_1_1 <{lastLineNr`_1_0}>, rows_1_3::I = <{StdInt.-_7}> (<{StdInt./_10}> (<{StdInt.-_7}> (select (select frame_2::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 1) (select (select frame_2::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1)) lineHeight_4) 1 in EdMovement.anon_137 EdMonad.getVirtualX position_0 row_1 font_3 text_5 <{lastLineNr`_1_0}> (<{EdMovement._if;262;23_162}> (<{StdInt.<_17}> (<{StdInt.-_7}> lastRow_1_2 rows_1_3) row_1) lastRow_1_2 row_1 rows_1_3 botRow_1_1)
+<{EdMovement._if;262;23_162}>::I !_x_0::B !lastRow_1::I row_2::I rows_3::I botRow_4::I = case _x_0 (True -> <{StdInt.-_7}> lastRow_1 row_2) (_ -> case (<{StdInt.<_17}> (<{StdInt.-_7}> lastRow_1 rows_3) botRow_4) (True -> <{StdInt.-_7}> lastRow_1 botRow_4) (False -> rows_3) )
+<{EdMovement._c;51;16_161}>::I !_x_0::B botRow_1::I <{lastLineNr`_2}>::I = case _x_0 (True -> botRow_1) (_ -> <{lastLineNr`_2}>)
+EdMovement.anon_138 !ma_0 position_1 !row_2::I frame_3 font_4 lineHeight_5::I state_6 = let _x_1_0 = ma_0 state_6 in EdMovement.anon_41 position_1 row_2 frame_3 font_4 lineHeight_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_42 position_0 row_1::I frame_2 !font_3 = case font_3 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdMovement.anon_138 EdMonad.getText position_0 row_1 frame_2 font_3 lineHeight_1_1) 
+EdMovement.anon_139 !ma_0 position_1 !row_2::I frame_3 state_4 = let _x_1_0 = ma_0 state_4 in EdMovement.anon_42 position_1 row_2 frame_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_43 position_0 row_1::I frame_2 = EdMovement.anon_139 EdMonad.getFontInfo position_0 row_1 frame_2
+EdMovement.anon_140 ma_0 position_1 !row_2::I state_3 = let _x_1_0 = ma_0 state_3 in EdMovement.anon_43 position_1 row_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.pageDown !position_0 = case position_0 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_140 EdVisualText.getViewFrame position_0 row_1_1) 
+EdMovement.anon_75 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_74 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_55 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_54 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_53 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_52 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMovement.anon_51 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_50 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMovement.anon_49 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.picfun_48 newRow_0::I virtualX_1::I position_2 text_3 !font_4 = case font_4 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> let newVirtualX_2_0::I = <{EdMovement._if;320;35_163}> (<{StdInt.==_16}> virtualX_1 0) position_2 text_3 font_4 virtualX_1 in _Tuple2 newVirtualX_2_0 (select (EdVisualText.pointToPosition (StdIOBasic._Point2 newVirtualX_2_0 (<{StdInt.*_9}> newRow_0 lineHeight_1_1)) text_3 font_4)::EdPosition._Position 0)) 
+<{EdMovement._if;320;35_163}>::I !_x_0::B position_1 text_2 font_3 virtualX_4::I = case _x_0 (True -> select (EdVisualText.positionToPoint position_1 text_2 font_3)::StdIOBasic._Point2 0) (_ -> virtualX_4)
+EdMovement.anon_141 ma_0 x_1 state_2 = EdMovement.anon_49 x_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMovement.anon_142 ma_0 x_1 state_2 = EdMovement.anon_51 x_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMovement.anon_45 !endReached_0::I position_1 rowChange_2::I !row_3::I font_4 virtualX_5::I text_6 = case (<{StdInt.==_16}> row_3 endReached_0) (True -> EdMovement.anon_141 (EdMonad.setVirtualX 0) position_1) (False -> let newRow_2_0 = <{StdInt.+_6}> rowChange_2 row_3, _x_2_1::I = EdMovement.picfun_48 newRow_2_0 virtualX_5 position_1 text_6 font_4 in EdMovement.anon_142 (EdMonad.setVirtualX (select _x_2_1::_Tuple2 0)) (EdPosition._Position (select _x_2_1::_Tuple2 1) newRow_2_0)) 
+EdMovement.anon_143 ma_0 !endReached_1::I position_2 rowChange_3::I !row_4::I font_5 virtualX_6::I state_7 = let _x_1_0 = ma_0 state_7 in EdMovement.anon_45 endReached_1 position_2 rowChange_3 row_4 font_5 virtualX_6 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_46 endReached_0::I position_1 rowChange_2::I row_3::I font_4 virtualX_5::I = EdMovement.anon_143 EdMonad.getText endReached_0 position_1 rowChange_2 row_3 font_4 virtualX_5
+EdMovement.anon_144 ma_0 !endReached_1::I position_2 rowChange_3::I !row_4::I font_5 state_6 = let _x_1_0 = ma_0 state_6 in EdMovement.anon_46 endReached_1 position_2 rowChange_3 row_4 font_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_47 endReached_0::I position_1 rowChange_2::I row_3::I !font_4 = case font_4 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdMovement.anon_144 EdMonad.getVirtualX endReached_0 position_1 rowChange_2 row_3 font_4) 
+EdMovement.anon_145 !ma_0 !endReached_1::I position_2 rowChange_3::I !row_4::I state_5 = let _x_1_0 = ma_0 state_5 in EdMovement.anon_47 endReached_1 position_2 rowChange_3 row_4 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.verticalMove endReached_0::I rowChange_1::I !position_2 = case position_2 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_145 EdMonad.getFontInfo endReached_0 position_2 rowChange_1 row_1_1) 
+EdMovement.anon_38 row_0::I !position_1 frame_2 !_x_3 = case _x_3 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> let rows_2_0::I = <{StdInt.-_7}> (<{StdInt./_10}> (<{StdInt.-_7}> (select (select frame_2::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 1) (select (select frame_2::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1)) lineHeight_1_1) 1 in EdMovement.verticalMove 0 (<{EdMovement._if;244;23_164}> (<{StdInt.<_17}> row_0 rows_2_0) row_0 frame_2 lineHeight_1_1 rows_2_0) position_1) 
+<{EdMovement._if;244;23_164}>::I !_x_0::B row_1::I frame_2 lineHeight_3::I rows_4::I = case _x_0 (True -> <{StdInt.~_15}> row_1) (_ -> let topRow_1_0::I = <{StdInt./_10}> (select (select frame_2::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1) lineHeight_3 in case (<{StdInt.<_17}> topRow_1_0 rows_4) (True -> <{StdInt.~_15}> topRow_1_0) (False -> <{StdInt.~_15}> rows_4) )
+EdMovement.anon_146 !ma_0 row_1::I !position_2 frame_3 state_4 = let _x_1_0 = ma_0 state_4 in EdMovement.anon_38 row_1 position_2 frame_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_39 row_0::I position_1 frame_2 = EdMovement.anon_146 EdMonad.getFontInfo row_0 position_1 frame_2
+EdMovement.anon_147 ma_0 row_1::I !position_2 state_3 = let _x_1_0 = ma_0 state_3 in EdMovement.anon_39 row_1 position_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.pageUp !position_0 = case position_0 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_147 EdVisualText.getViewFrame row_1_1 position_0) 
+EdMovement.anon_73 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_72 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_71 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_70 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_33 selection_0 = EdMovement.anon_70 (select selection_0::EdSelection._Selection 1)
+EdMovement.anon_65 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_64 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_63 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.isWordChar::B !c_0::C = case (StdChar.isAlpha c_0) (True -> True) (False -> case (StdChar.isDigit c_0) (True -> True) (False -> StdList.isMember_52 c_0 (_predefined._Cons '`' (_predefined._Cons '_' _predefined._Nil))) ) 
+EdMovement.isFunnyChar::B c_0::C = StdList.isMember_52 c_0 (_predefined._Cons '~' (_predefined._Cons '@' (_predefined._Cons '#' (_predefined._Cons '$' (_predefined._Cons '%' (_predefined._Cons '^' (_predefined._Cons '?' (_predefined._Cons '!' (_predefined._Cons '+' (_predefined._Cons '-' (_predefined._Cons '*' (_predefined._Cons '<' (_predefined._Cons '>' (_predefined._Cons '\\' (_predefined._Cons '/' (_predefined._Cons '|' (_predefined._Cons '&' (_predefined._Cons '=' (_predefined._Cons ':' (_predefined._Cons '.' _predefined._Nil))))))))))))))))))))
+EdMovement.isWhiteSpace::B c_0::C = StdList.isMember_52 c_0 (_predefined._Cons ' ' (_predefined._Cons '\t' (_predefined._Cons '\r' (_predefined._Cons '\n' (_predefined._Cons '\f' (_predefined._Cons '\b' _predefined._Nil))))))
+EdMovement.otherChar !<{_v==_0}> c_1 = select <{_v==_0}>::<{StdOverloaded.==;}> 0 c_1
+EdMovement.findLeft_36::I !_vArray_0 isCorrectChar_1 line_2 !column_3::I = case (<{StdInt.<_17}> column_3 0) (True -> 0) (False -> case (isCorrectChar_1 (select _vArray_0::<{_SystemArray.Array;}> 3 line_2 column_3)) (True -> EdMovement.findLeft_36 _vArray_0 isCorrectChar_1 line_2 (<{StdInt.-_7}> column_3 1)) (False -> <{StdInt.+_6}> column_3 1) ) 
+EdMovement.findRight_37::I !_vArray_0 isCorrectChar_1 line_2 !column_3::I = case (StdBool.not (<{StdInt.<_17}> column_3 (select _vArray_0::<{_SystemArray.Array;}> 4 line_2))) (True -> select _vArray_0::<{_SystemArray.Array;}> 4 line_2) (False -> case (isCorrectChar_1 (select _vArray_0::<{_SystemArray.Array;}> 3 line_2 column_3)) (True -> EdMovement.findRight_37 _vArray_0 isCorrectChar_1 line_2 (<{StdInt.+_6}> column_3 1)) (False -> column_3) ) 
+EdMovement.findRight_149::I isCorrectChar_0 !line_1 !column_2::I = case (StdBool.not (<{StdInt.<_17}> column_2 (_SystemArray.size_20 line_1))) (True -> _SystemArray.size_20 line_1) (False -> case (isCorrectChar_0 (_SystemArray.select_19 line_1 column_2)) (True -> EdMovement.findRight_149 isCorrectChar_0 line_1 (<{StdInt.+_6}> column_2 1)) (False -> column_2) ) 
+EdMovement.findLeft_148::I isCorrectChar_0 line_1 !column_2::I = case (<{StdInt.<_17}> column_2 0) (True -> 0) (False -> case (isCorrectChar_0 (_SystemArray.select_19 line_1 column_2)) (True -> EdMovement.findLeft_148 isCorrectChar_0 line_1 (<{StdInt.-_7}> column_2 1)) (False -> <{StdInt.+_6}> column_2 1) ) 
+EdMovement.findWord isCorrectChar_0 column_1::I line_2 = _Tuple2 (EdMovement.findLeft_148 isCorrectChar_0 line_2 column_1) (EdMovement.findRight_149 isCorrectChar_0 line_2 column_1)
+EdMovement.otherChar_150 !c_0::C = <{StdChar.==_18}> c_0
+EdMovement.anon_35 col_0::I row_1::I text_2 = let _x_1_0 = EdLineText.getLine row_1 text_2, line_1_1::C = select _x_1_0::_Tuple2 0, <{col`_1_2}>::I = <{StdInt.-_7}> col_0 1, char_1_3 = _SystemArray.select_19 line_1_1 <{col`_1_2}>, _x_1_4 = EdMovement.findWord (<{EdMovement._if;205;17_165}> (EdMovement.isWordChar char_1_3) char_1_3) <{col`_1_2}> line_1_1 in EdMovement.anon_63 (EdSelection._Selection (EdPosition._Position (select _x_1_4::_Tuple2 0) row_1) (EdPosition._Position (select _x_1_4::_Tuple2 1) row_1))
+<{EdMovement._if;205;17_165}> !_x_0::B char_1::C = case _x_0 (True -> EdMovement.isWordChar) (_ -> case (EdMovement.isFunnyChar char_1) (True -> EdMovement.isFunnyChar) (False -> case (EdMovement.isWhiteSpace char_1) (True -> EdMovement.isWhiteSpace) (False -> EdMovement.otherChar_150 char_1) ) )
+EdMovement.anon_151 ma_0 col_1::I row_2::I state_3 = let _x_1_0 = ma_0 state_3 in EdMovement.anon_35 col_1 row_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.selectWordAt !_x_0 = case _x_0 (EdPosition._Position col_1_0 row_1_1 -> case (<{StdInt.==_16}> col_1_0 0) (True -> EdMovement.anon_64 (EdSelection._Selection (EdPosition._Position 0 row_1_1) (EdPosition._Position 0 row_1_1))) (False -> EdMovement.anon_151 EdMonad.getText col_1_0 row_1_1) ) 
+EdMovement.anon_152 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMovement.anon_33 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_34 position_0 !row_1::I !col_2::I !text_3 = case (<{StdInt.==_16}> col_2 (_SystemArray.size_20 (select (EdLineText.getLine row_1 text_3)::_Tuple2 0))) (True -> EdMovement.anon_71 (<{EdMovement._if;180;17_166}> (<{StdInt.==_16}> row_1 (<{StdInt.-_7}> (EdLineText.textLength text_3) 1)) position_0 row_1)) (False -> EdMovement.anon_152 (EdMovement.selectWordAt (EdPosition._Position (<{StdInt.+_6}> col_2 1) row_1))) 
+<{EdMovement._if;180;17_166}> !_x_0::B position_1 row_2::I = case _x_0 (True -> position_1) (_ -> EdPosition._Position 0 (<{StdInt.+_6}> row_2 1))
+EdMovement.anon_153 !ma_0 position_1 !row_2::I !col_3::I state_4 = let _x_1_0 = ma_0 state_4 in EdMovement.anon_34 position_1 row_2 col_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.wordRight !position_0 = case position_0 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_153 EdMonad.getText position_0 row_1_1 col_1_0) 
+EdMovement.anon_69 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_68 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_67 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_66 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_31 selection_0 = EdMovement.anon_66 (select selection_0::EdSelection._Selection 0)
+EdMovement.anon_154 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMovement.anon_31 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_32 !col_0::I row_1::I position_2 text_3 = case (<{StdInt.==_16}> col_0 0) (True -> EdMovement.anon_67 (<{EdMovement._if;164;17_167}> (<{StdInt.==_16}> row_1 0) position_2 row_1 text_3)) (False -> EdMovement.anon_154 (EdMovement.selectWordAt position_2)) 
+<{EdMovement._if;164;17_167}> !_x_0::B position_1 row_2::I text_3 = case _x_0 (True -> position_1) (_ -> EdPosition._Position (_SystemArray.size_20 (select (EdLineText.getLine (<{StdInt.-_7}> row_2 1) text_3)::_Tuple2 0)) (<{StdInt.-_7}> row_2 1))
+EdMovement.anon_155 ma_0 !col_1::I row_2::I position_3 state_4 = let _x_1_0 = ma_0 state_4 in EdMovement.anon_32 col_1 row_2 position_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.wordLeft !position_0 = case position_0 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_155 EdMonad.getText col_1_0 row_1_1 position_0) 
+EdMovement.anon_62 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_61 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_60 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_28 !row_0::I !col_1::I !text_2 = case (<{StdInt.==_16}> col_1 (_SystemArray.size_20 (select (EdLineText.getLine row_0 text_2)::_Tuple2 0))) (True -> EdMovement.anon_60 (<{EdMovement._if;126;17_168}> (<{StdInt.==_16}> row_0 (<{StdInt.-_7}> (EdLineText.textLength text_2) 1)) col_1 row_0)) (False -> EdMovement.anon_61 (EdPosition._Position (<{StdInt.+_6}> col_1 1) row_0)) 
+<{EdMovement._if;126;17_168}> !_x_0::B col_1::I row_2::I = case _x_0 (True -> EdPosition._Position col_1 row_2) (_ -> EdPosition._Position 0 (<{StdInt.+_6}> row_2 1))
+EdMovement.anon_156 !ma_0 !row_1::I !col_2::I state_3 = let _x_1_0 = ma_0 state_3 in EdMovement.anon_28 row_1 col_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.charRight !_x_0 = case _x_0 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_156 EdMonad.getText row_1_1 col_1_0) 
+EdMovement.anon_59 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_58 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_57 x_0 state_1 = _Tuple2 x_0 state_1
+EdMovement.anon_27 row_0::I !col_1::I text_2 = case (<{StdInt.==_16}> col_1 0) (True -> EdMovement.anon_57 (<{EdMovement._if;109;17_169}> (<{StdInt.==_16}> row_0 0) col_1 row_0 text_2)) (False -> EdMovement.anon_58 (EdPosition._Position (<{StdInt.-_7}> col_1 1) row_0)) 
+<{EdMovement._if;109;17_169}> !_x_0::B col_1::I row_2::I text_3 = case _x_0 (True -> EdPosition._Position col_1 row_2) (_ -> EdPosition._Position (_SystemArray.size_20 (select (EdLineText.getLine (<{StdInt.-_7}> row_2 1) text_3)::_Tuple2 0)) (<{StdInt.-_7}> row_2 1))
+EdMovement.anon_157 ma_0 row_1::I !col_2::I state_3 = let _x_1_0 = ma_0 state_3 in EdMovement.anon_27 row_1 col_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.charLeft !_x_0 = case _x_0 (EdPosition._Position col_1_0 row_1_1 -> EdMovement.anon_157 EdMonad.getText row_1_1 col_1_0) 
+EdMovement.anon_56 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.anon_26 !position_0 text_1 = EdMovement.verticalMove (<{StdInt.-_7}> (EdLineText.textLength text_1) 1) 1 position_0
+EdMovement.anon_158 !ma_0 !position_1 state_2 = let _x_1_0 = ma_0 state_2 in EdMovement.anon_26 position_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMovement.lineDown position_0 = EdMovement.anon_158 EdMonad.getText position_0
+EdMovement.lineUp !position_0 = EdMovement.verticalMove 0 (<{StdInt.~_15}> 1) position_0
+EdMovement.positionAfterMove !movement_0 !position_1 = <{EdMovement._c;74;11_170}> movement_0 position_1
+<{EdMovement._c;74;11_170}> !movement_0 = case movement_0 (EdMovement.LineUp -> EdMovement.lineUp) (EdMovement.LineDown -> EdMovement.lineDown) (EdMovement.CharLeft -> EdMovement.charLeft) (EdMovement.CharRight -> EdMovement.charRight) (EdMovement.WordLeft -> EdMovement.wordLeft) (EdMovement.WordRight -> EdMovement.wordRight) (EdMovement.PageUp -> EdMovement.pageUp) (EdMovement.PageDown -> EdMovement.pageDown) (EdMovement.StartOfLine -> EdMovement.startOfLine) (EdMovement.EndOfLine -> EdMovement.endOfLine) (EdMovement.StartOfText -> EdMovement.startOfText) (EdMovement.EndOfText -> EdMovement.endOfText) (_ -> StdMisc.abort "positionAfterArrow (EdAction.icl): unknown movement")
+<{EdMovement.==_4}>::B !_x_0 !_x_1 = case _x_0 (EdMovement.LineUp -> case _x_1 (EdMovement.LineUp -> True) ) (EdMovement.LineDown -> case _x_1 (EdMovement.LineDown -> True) ) (EdMovement.CharLeft -> case _x_1 (EdMovement.CharLeft -> True) ) (EdMovement.CharRight -> case _x_1 (EdMovement.CharRight -> True) ) (EdMovement.WordLeft -> case _x_1 (EdMovement.WordLeft -> True) ) (EdMovement.WordRight -> case _x_1 (EdMovement.WordRight -> True) ) (EdMovement.PageUp -> case _x_1 (EdMovement.PageUp -> True) ) (EdMovement.PageDown -> case _x_1 (EdMovement.PageDown -> True) ) (EdMovement.StartOfLine -> case _x_1 (EdMovement.StartOfLine -> True) ) (EdMovement.EndOfLine -> case _x_1 (EdMovement.EndOfLine -> True) ) (EdMovement.StartOfText -> case _x_1 (EdMovement.StartOfText -> True) ) (EdMovement.EndOfText -> case _x_1 (EdMovement.EndOfText -> True) ) (_ -> False)
+EdMovement.isVerticalMove::B !movement_0 = StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{EdMovement.==_4}>)) movement_0 (_predefined._Cons EdMovement.LineUp (_predefined._Cons EdMovement.LineDown (_predefined._Cons EdMovement.PageUp (_predefined._Cons EdMovement.PageDown _predefined._Nil))))
+EdMovement.allMovements = _predefined._Cons EdMovement.LineUp (_predefined._Cons EdMovement.LineDown (_predefined._Cons EdMovement.CharLeft (_predefined._Cons EdMovement.CharRight (_predefined._Cons EdMovement.WordLeft (_predefined._Cons EdMovement.WordRight (_predefined._Cons EdMovement.PageUp (_predefined._Cons EdMovement.PageDown (_predefined._Cons EdMovement.StartOfLine (_predefined._Cons EdMovement.EndOfLine (_predefined._Cons EdMovement.StartOfText (_predefined._Cons EdMovement.EndOfText _predefined._Nil)))))))))))
+EdMovement.toString_5 !movement_0 = <{EdMovement._c;38;7_171}> movement_0
+<{EdMovement._c;38;7_171}> !movement_0 = case movement_0 (EdMovement.LineUp -> "previous line") (EdMovement.LineDown -> "next line") (EdMovement.CharLeft -> "previous character") (EdMovement.CharRight -> "next character") (EdMovement.WordLeft -> "previous word") (EdMovement.WordRight -> "next word") (EdMovement.PageUp -> "previous page") (EdMovement.PageDown -> "next page") (EdMovement.StartOfLine -> "start of line") (EdMovement.EndOfLine -> "end of line") (EdMovement.StartOfText -> "start of text") (EdMovement.EndOfText -> "end of text") (_ -> "toString (EdMovement.icl): unknown movement")
+EdMovement.fromString_6 !s_0 = <{EdMovement._c;55;20_172}> s_0
+<{EdMovement._c;55;20_172}> !s_0 = case s_0 ("previous line" -> EdMovement.LineUp) ("next line" -> EdMovement.LineDown) ("previous character" -> EdMovement.CharLeft) ("next character" -> EdMovement.CharRight) ("previous word" -> EdMovement.WordLeft) ("next word" -> EdMovement.WordRight) ("previous page" -> EdMovement.PageUp) ("next page" -> EdMovement.PageDown) ("start of line" -> EdMovement.StartOfLine) ("end of line" -> EdMovement.EndOfLine) ("start of text" -> EdMovement.StartOfText) ("end of text" -> EdMovement.EndOfText) (_ -> EdMovement.StartOfText)
+<{EdMovement.TD;Movement}> _x_0::B = _predefined._Nil
+
+:: EdMovement.Movement = EdMovement.LineUp | EdMovement.LineDown | EdMovement.CharLeft | EdMovement.CharRight | EdMovement.WordLeft | EdMovement.WordRight | EdMovement.PageUp | EdMovement.PageDown | EdMovement.StartOfLine | EdMovement.EndOfLine | EdMovement.StartOfText | EdMovement.EndOfText
+
+|| Converted Records
+:: <{EdMovement.gEq_s;}> = {!EdMovement.gEq_s}
+
+:: <{EdMovement.gEq_ss;}> = {!EdMovement.gEq_ss}
+
+:: <{EdMovement.gEq_sss;}> = {!EdMovement.gEq_sss}
+
+:: <{EdMovement.gEq_ssss;}> = {!EdMovement.gEq_ssss}
+
+:: <{EdMovement.gEq_sssss;}> = {!EdMovement.gEq_sssss}
+
+:: <{EdMovement.gEq_ssssss;}> = {!EdMovement.gEq_ssssss}
+
+:: <{EdMovement.gEq_sssssss;}> = {!EdMovement.gEq_sssssss}
+
+:: <{EdMovement.gEq_ssssssss;}> = {!EdMovement.gEq_ssssssss}
+
+:: <{EdMovement.gEq_sssssssss;}> = {!EdMovement.gEq_sssssssss}
+
+:: <{EdMovement.bimap_s;}> = {EdMovement.bimap_s}
+
+:: <{EdMovement.bimap_ss;}> = {EdMovement.bimap_ss}
+
+:: <{EdMovement.bimap_sss;}> = {EdMovement.bimap_sss}
+

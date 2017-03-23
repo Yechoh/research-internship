@@ -1,0 +1,5172 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "EdTab" "20170123155351"
+.depend "EdVisualText" "20170123155352"
+.depend "ioutil" "20170123155353"
+.depend "StdWindow" "20161223204043"
+.depend "EdText" "20170206122647"
+.depend "StateMonad" "20170123155353"
+.depend "StdClipboard" "20161223204043"
+.depend "EdMonad" "20170206122647"
+.depend "syncol" "20170123155351"
+.depend "StrictList" "20170123155353"
+.depend "EdLineText" "20170123155351"
+.depend "EdPosition" "20170123155351"
+.depend "EdSelection" "20170123155352"
+.depend "EdMovement" "20170123155351"
+.depend "StdId" "20161223204043"
+.depend "StdControlClass" "20161223204043"
+.depend "roundrobin" "20161223204043"
+.depend "processstack" "20161223204043"
+.depend "timerhandle" "20161223204044"
+.depend "processhandle" "20161223204043"
+.depend "osmenu" "20161223204044"
+.depend "StdMenuDef" "20161223204043"
+.depend "menuhandle" "20161223204042"
+.depend "devicesystemstate" "20161223204042"
+.depend "keyfocus" "20161223204042"
+.depend "commondef" "20161223204042"
+.depend "receiverhandle" "20161223204043"
+.depend "StdWindowDef" "20161223204044"
+.depend "StdControlDef" "20161223204043"
+.depend "windowhandle" "20161223204044"
+.depend "StdTimerDef" "20161223204043"
+.depend "timertable" "20161223204044"
+.depend "semidynamic" "20161223204043"
+.depend "receivertable" "20161223204043"
+.depend "receivermessage" "20161223204043"
+.depend "deviceevents" "20170206121016"
+.depend "devicefunctions" "20161223204042"
+.depend "ossystem" "20161223204044"
+.depend "osguishare" "20161223204044"
+.depend "ostime" "20161223204044"
+.depend "clCrossCall_12" "20161223204044"
+.depend "osevent" "20161223204044"
+.depend "ostoolbar" "20161223204044"
+.depend "menuCrossCall_12" "20161223204044"
+.depend "osdocumentinterface" "20161223204044"
+.depend "osactivaterequests" "20161223204044"
+.depend "iostate" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "StdIOCommon" "20161223204043"
+.depend "StdPSt" "20161223204043"
+.depend "UtilNewlinesFile" "20170123155356"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdReal" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdList" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "EdVisualCursor" "20170123155351"
+.module m_EdVisualCursor "EdVisualCursor" "20170206121121"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod EdTab
+.implab e_EdTab_ssplitAtTabs
+.impmod EdVisualText
+.implab e_EdVisualText_svRemoveText
+.impdesc e_EdVisualText_dgetViewFrame
+.implab e_EdVisualText_ngetViewFrame e_EdVisualText_eagetViewFrame
+.impdesc e_EdVisualText_dvDraw
+.implab e_EdVisualText_svDraw
+.implab e_EdVisualText_nvDraw e_EdVisualText_eavDraw
+.impdesc e_EdVisualText_dpositionToPoint
+.implab e_EdVisualText_npositionToPoint
+.impdesc e_EdVisualText_dtabStringWidth
+.implab e_EdVisualText_stabStringWidth
+.implab e_EdVisualText_ntabStringWidth
+.impmod ioutil
+.impdesc e_ioutil_dseqmap
+.impmod StdWindow
+.impdesc e_StdWindow_dmoveWindowViewFrame
+.impdesc e_StdWindow_dgetWindowViewFrame
+.impmod EdText
+.impdesc e_EdText_dgetTextFragment
+.implab e_EdText_ngetTextFragment
+.impmod StateMonad
+.impdesc e_StateMonad_dnothing
+.implab e_StateMonad_nnothing _
+.impmod EdMonad
+.implab e_EdMonad_sappEnv
+.impdesc e_EdMonad_daccEnv
+.implab e_EdMonad_naccEnv e_EdMonad_eaaccEnv
+.impdesc e_EdMonad_dgetText
+.implab e_EdMonad_ngetText e_EdMonad_eagetText
+.impdesc e_EdMonad_dgetFontInfo
+.implab e_EdMonad_sgetFontInfo
+.implab e_EdMonad_ngetFontInfo e_EdMonad_eagetFontInfo
+.impdesc e_EdMonad_dgetWindowId
+.implab e_EdMonad_ngetWindowId e_EdMonad_eagetWindowId
+.impdesc e_EdMonad_dgetCursorVisibility
+.implab e_EdMonad_sgetCursorVisibility
+.implab e_EdMonad_ngetCursorVisibility e_EdMonad_eagetCursorVisibility
+.impdesc e_EdMonad_dsetCursorVisibility
+.implab e_EdMonad_nsetCursorVisibility e_EdMonad_easetCursorVisibility
+.impdesc e_EdMonad_dgetSelection
+.implab e_EdMonad_sgetSelection
+.implab e_EdMonad_ngetSelection e_EdMonad_eagetSelection
+.impdesc e_EdMonad_dsetSelection
+.implab e_EdMonad_nsetSelection e_EdMonad_easetSelection
+.impdesc e_EdMonad_dgetCursorHeight
+.implab e_EdMonad_ngetCursorHeight e_EdMonad_eagetCursorHeight
+.impdesc e_EdMonad_dSyntaxColours.backgroundColour
+.implab e_EdMonad_nSyntaxColours.backgroundColour e_EdMonad_eaSyntaxColours.backgroundColour
+.impdesc e_EdMonad_dSyntaxColours.marginColour
+.implab e_EdMonad_nSyntaxColours.marginColour e_EdMonad_eaSyntaxColours.marginColour
+.impmod StrictList
+.impdesc e_StrictList_dslHead
+.implab e_StrictList_sslHead
+.implab e_StrictList_nslHead _
+.implab e_StrictList_sslLast
+.impmod EdLineText
+.implab e_EdLineText_stextLength
+.impmod EdPosition
+.impdesc e_EdPosition_rPosition
+.impdesc e_EdPosition_dPosition.col
+.implab e_EdPosition_nPosition.col
+.impdesc e_EdPosition_dPosition.row
+.implab e_EdPosition_nPosition.row
+.impmod EdSelection
+.implab e_EdSelection_semptySelection
+.implab e_EdSelection_sisEmptySelection
+.implab e_EdSelection_sorderSelection
+.impdesc e_EdSelection_dchangeSelection
+.implab e_EdSelection_nchangeSelection e_EdSelection_eachangeSelection
+.impdesc e_EdSelection_rSelection
+.impdesc e_EdSelection_dSelection.start
+.implab e_EdSelection_nSelection.start
+.impmod EdMovement
+.impdesc e_EdMovement_dPageUp
+.impdesc e_EdMovement_dPageDown
+.impmod StdPicture
+.impdesc e_StdPicture_dsetPenColour
+.impdesc e_StdPicture_dsetPenBack
+.implab e_StdPicture_nsetPenBack e_StdPicture_easetPenBack
+.implab e_StdPicture_sappClipPicture
+.impdesc e_StdPicture_dappXorPicture
+.impdesc e_StdPicture_ddrawLine
+.impdesc e_StdPicture_dtoRegion;49
+.implab e_StdPicture_stoRegion;51
+.impdesc e_StdPicture_dhilite;55
+.impdesc e_StdPicture_rtoRegion;
+.impmod StdIOBasic
+.impdesc e_StdIOBasic_rVector2
+.impdesc e_StdIOBasic_tVector2
+.implab e_StdIOBasic_cVector2
+.impdesc e_StdIOBasic_rPoint2
+.impdesc e_StdIOBasic_tPoint2
+.implab e_StdIOBasic_cPoint2
+.impdesc e_StdIOBasic_dPoint2.x
+.implab e_StdIOBasic_nPoint2.x
+.impdesc e_StdIOBasic_dPoint2.y
+.implab e_StdIOBasic_nPoint2.y
+.impdesc e_StdIOBasic_rRectangle
+.impdesc e_StdIOBasic_tRectangle
+.implab e_StdIOBasic_cRectangle
+.impdesc e_StdIOBasic_dRectangle.corner1
+.implab e_StdIOBasic_nRectangle.corner1
+.impdesc e_StdIOBasic_dRectangle.corner2
+.implab e_StdIOBasic_nRectangle.corner2
+.impmod StdPictureDef
+.impdesc e_StdPictureDef_dBlack
+.impmod StdPSt
+.impdesc e_StdPSt_dappPIO
+.impdesc e_StdPSt_daccPIO
+.impmod StdFunc
+.impdesc e_StdFunc_did
+.impdesc e_StdFunc_dseq
+.implab e_StdFunc_sseq
+.impmod StdString
+.implab e_StdString_s%;10
+.impmod Data.Maybe
+.impdesc e_Data.Maybe_dNothing
+.impdesc e_Data.Maybe_dJust
+.impmod StdInt
+.impdesc e_StdInt_d+;6
+.implab e_StdInt_s+;6
+.implab e_StdInt_n+;6
+.implab e_StdInt_s-;7
+.impdesc e_StdInt_d*;9
+.implab e_StdInt_s*;9
+.implab e_StdInt_n*;9
+.implab e_StdInt_s/;10
+.implab e_StdInt_s~;15
+.implab e_StdInt_s==;16
+.implab e_StdInt_s<;17
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod StdList
+.impdesc e_StdList_dmap
+.implab e_StdList_nmap e_StdList_eamap
+.implab e_StdList_sany
+.export e_EdVisualCursor_svRemoveSelection
+.export e_EdVisualCursor_eavRemoveSelection
+.descexp e_EdVisualCursor_dvRemoveSelection e_EdVisualCursor_nvRemoveSelection e_EdVisualCursor_lvRemoveSelection 0 0 "vRemoveSelection"
+.o 1 0
+e_EdVisualCursor_lvRemoveSelection
+	halt
+.n 0 e_EdVisualCursor_dvRemoveSelection e_EdVisualCursor_eavRemoveSelection
+.o 1 0
+e_EdVisualCursor_nvRemoveSelection
+	push_node _cycle_in_spine 0
+.o 1 0
+e_EdVisualCursor_eavRemoveSelection
+.o 1 0
+e_EdVisualCursor_svRemoveSelection
+.o 1 0
+s11
+	build e_EdMonad_dgetSelection 0 e_EdMonad_ngetSelection
+	fillh d113 1 1
+.d 1 0
+	rtn
+.desc d113 _hnf l113 2 0 "<lambda>[line:15];18;156"
+.a 0 a113
+.o 2 0
+l113
+	repl_args 1 1
+.o 2 0
+a113
+.d 2 0
+	jsr ea113
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 2 0
+ea113
+	jsr_eval 0
+.o 2 0
+s113
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 2 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s171
+.o 2 0
+s81
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 3 0
+s82
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.export e_EdVisualCursor_svUpdateSelection
+.export e_EdVisualCursor_eavUpdateSelection
+.descexp e_EdVisualCursor_dvUpdateSelection e_EdVisualCursor_nvUpdateSelection e_EdVisualCursor_lvUpdateSelection 5 0 "vUpdateSelection"
+.a 5 e_EdVisualCursor_eavUpdateSelection
+.o 2 0
+e_EdVisualCursor_lvUpdateSelection
+	push_args 0 4 4
+	update_a 5 4
+	create
+	update_a 0 6
+	pop_a 1
+.d 6 0
+	jmp e_EdVisualCursor_eavUpdateSelection
+.n 5 e_EdVisualCursor_dvUpdateSelection e_EdVisualCursor_eavUpdateSelection
+.o 1 0
+e_EdVisualCursor_nvUpdateSelection
+	push_node _cycle_in_spine 5
+.o 6 0
+e_EdVisualCursor_eavUpdateSelection
+	jsr_eval 0
+	repl_r_args 2 0
+.o 7 0
+e_EdVisualCursor_svUpdateSelection
+.o 7 0
+s10
+	push_a 1
+	push_a 1
+.d 2 0
+	jsr e_EdSelection_sisEmptySelection
+.o 0 1 b
+	jmp_false else.1
+	fillh e_StdFunc_did 0 6
+	pop_a 6
+.d 1 0
+	rtn
+else.1
+	build_r e_EdSelection_rSelection 2 0 0 0
+	push_a 3
+	push_a 6
+	build _ 3 n197
+	push_a 3
+	push_a 5
+	push_a 8
+	push_a 8
+	fillh d14 5 11
+	pop_a 6
+.d 1 0
+	rtn
+.n 3 _ ea197
+.o 1 0
+n197
+	push_node _cycle_in_spine 3
+.o 4 0
+ea197
+.o 4 0
+s197
+	push_r_args 2 2 0
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 2 0
+	jsr e_EdSelection_sorderSelection
+.o 2 0
+	push_a 3
+	jsr_eval 0
+	repl_r_args 3 7
+	push_a 5
+	jsr_eval 0
+	repl_r_args 2 0
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 7 7 iiiibbb
+	jsr s15
+.o 2 0
+	fill_r e_EdSelection_rSelection 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.export e_EdVisualCursor_svChangeSelectionTo
+.export e_EdVisualCursor_eavChangeSelectionTo
+.descexp e_EdVisualCursor_dvChangeSelectionTo e_EdVisualCursor_nvChangeSelectionTo e_EdVisualCursor_lvChangeSelectionTo 1 0 "vChangeSelectionTo"
+.o 2 0
+e_EdVisualCursor_lvChangeSelectionTo
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdVisualCursor_eavChangeSelectionTo
+.n 1 e_EdVisualCursor_dvChangeSelectionTo e_EdVisualCursor_eavChangeSelectionTo
+.o 1 0
+e_EdVisualCursor_nvChangeSelectionTo
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdVisualCursor_eavChangeSelectionTo
+.o 2 0
+e_EdVisualCursor_svChangeSelectionTo
+.o 2 0
+s9
+	build e_EdMonad_dgetSelection 0 e_EdMonad_ngetSelection
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d112 2 3
+	pop_a 1
+.d 1 0
+	rtn
+.desc d112 _hnf l112 3 0 "<lambda>[line:15];18;155"
+.a 0 a112
+.o 2 0
+l112
+	repl_args 2 2
+.o 3 0
+a112
+.d 3 0
+	jsr ea112
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+ea112
+.o 3 0
+s112
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s172
+.o 5 0
+s111
+	push_a 4
+	push_a 2
+	push_a 2
+	build _ 3 n78
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 6
+	push_a 6
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 4 0
+	jmp s173
+.o 5 0
+s109
+	push_a 4
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 5 0
+	jmp s174
+.o 6 0
+s108
+	push_a 5
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 6 0
+	jmp s175
+.o 3 0
+s107
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s74
+.desc d15 _hnf l15 3 0 "clipSelection"
+.a 0 a15
+.o 2 0
+l15
+	repl_args 2 2
+.o 3 0
+a15
+.d 3 0
+	jsr ea15
+.o 2 0
+	build_r e_EdSelection_rSelection 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+ea15
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 2 2 0
+	push_r_args 3 3 7
+	push_r_args 5 2 0
+	update_a 6 9
+	update_a 3 6
+	update_a 0 3
+	update_a 5 8
+	update_a 2 5
+	update_a 4 7
+	update_a 1 4
+	pop_a 3
+.o 7 7 iiiibbb
+s15
+	push_r_args_u 0 0 2
+	pop_b 1
+	push_r_args_u 1 0 2
+	pop_b 1
+	jsr_eval 5
+	push_args_u 5 2 2
+	jsr_eval 8
+	push_args_u 8 2 2
+	push_b 2
+	push_b 2
+	divI
+	push_b 3
+	push_b 2
+	build_u _ 0 2 n214
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	jmp_false else.3
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	jmp_true then.2
+else.3
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI_a 4
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	jmp_false else.2
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	pushI_a 0
+	ltI
+	jmp_false else.2
+then.2
+	pop_a 12
+	pop_b 10
+.d 0 0
+	jmp e_EdSelection_semptySelection
+else.2
+	push_a 0
+	push_b 0
+	push_a 5
+	build_u _ 2 1 n212
+	push_a 1
+	push_b 0
+	push_a 4
+	build_u _ 2 1 n213
+	push_a 2
+	push_a 5
+	push_a 2
+	build _ 3 n144
+	push_a 4
+	push_a 2
+	build _ 2 n143
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildI_b 0
+	push_a 8
+	push_a 4
+	build _ 3 n142
+	push_a 7
+	push_a 4
+	build _ 2 n141
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	update_a 1 15
+	updatepop_a 0 14
+	pop_b 10
+.d 2 0
+	rtn
+.nu 0 2 _ _
+.o 1 0
+n214
+	push_node_u _cycle_in_spine 0 2
+.o 1 2 ii
+ea214
+.o 1 2 ii
+s214
+	pushI 1
+	push_b 1
+	subI
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	divI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n213
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea213
+.o 3 1 i
+s213
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	notB
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 2 1 b
+	jsr s139
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n212
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea212
+.o 3 1 i
+s212
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	notB
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 2 1 b
+	jsr s140
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 _
+.o 1 0
+n144
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea144
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea144
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 2 1 b
+s144
+	eqB_b TRUE 0
+	jmp_true case.6
+	jmp case.7
+case.6
+	pop_b 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 2
+.d 0 1 i
+	rtn
+case.7
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 2
+	addI
+.d 0 1 i
+	rtn
+.n 2 _
+.o 1 0
+n143
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea143
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea143
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 1 1 b
+s143
+	eqB_b TRUE 0
+	jmp_true case.8
+	jmp case.9
+case.8
+	pop_b 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+case.9
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.n 3 _
+.o 1 0
+n142
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea142
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea142
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 2 1 b
+s142
+	eqB_b TRUE 0
+	jmp_true case.10
+	jmp case.11
+case.10
+	pop_b 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 2
+.d 0 1 i
+	rtn
+case.11
+	pop_b 1
+	pop_a 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+.n 2 _
+.o 1 0
+n141
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea141
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea141
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 1 1 b
+s141
+	eqB_b TRUE 0
+	jmp_true case.12
+	jmp case.13
+case.12
+	pop_b 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+case.13
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 2 1 b
+s140
+	eqB_b TRUE 0
+	jmp_true case.14
+	jmp case.15
+case.14
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	updatepop_b 0 1
+	pop_a 2
+	notB
+.d 0 1 b
+	rtn
+case.15
+	pop_a 2
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 2 1 b
+s139
+	eqB_b TRUE 0
+	jmp_true case.16
+	jmp case.17
+case.16
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	updatepop_b 0 1
+	pop_a 2
+	notB
+.d 0 1 b
+	rtn
+case.17
+	pop_a 2
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.desc d14 _hnf l14 6 0 "vHiliteSelection"
+.a 6 ea14
+.o 2 0
+l14
+	push_args 0 5 5
+	update_a 6 5
+	create
+	update_a 0 7
+	pop_a 1
+.o 7 0
+ea14
+	jsr_eval 5
+	jsr_eval 3
+	jsr_eval 1
+	push_r_args 3 3 7
+	update_a 2 6
+	update_a 4 2
+	update_a 0 4
+	push_a 5
+	update_a 2 6
+	update_a 4 2
+	update_a 0 4
+	pop_a 2
+.o 9 7 iiiibbb
+s14
+	push_b 3
+	pushI 0
+	ltI
+	notB
+	jmp_false else.18
+	push_r_args_a 5 10 0 2 1
+.impmod EdMonad
+.impdesc e_EdMonad_rFontInfo
+	build_r e_EdMonad_rFontInfo 3 7 4 0
+	push_a 4
+	push_a 3
+	push_a 10
+	build _ 4 n16
+	buildh e_StdPicture_dhilite;55 0
+	build e_StdList_dmap 2 e_StdList_nmap
+	buildh d106 2
+	buildh e_StdPicture_dtoRegion;49 0
+	create
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 7
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 11
+	update_a 0 5
+	update_a 0 7
+	update_a 0 10
+	update_a 0 9
+	update_a 0 8
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_stoRegion;51
+.o 1 0
+	push_a 9
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 4 0
+	jmp e_StdPicture_sappClipPicture
+else.18
+	build_r e_EdMonad_rFontInfo 3 7 3 0
+	push_a 3
+	push_a 2
+	push_a 9
+	build _ 4 n16
+	build_r e_EdMonad_rFontInfo 3 7 4 0
+	push_a 7
+	buildh d43 2
+	build e_StdList_dmap 2 e_StdList_nmap
+	buildh e_StdFunc_dseq 1
+	buildh e_StdPicture_dtoRegion;49 0
+	create
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 7
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 10
+	update_a 0 9
+	update_a 0 8
+	update_a 0 11
+	update_a 0 5
+	update_a 0 7
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_stoRegion;51
+.o 1 0
+	push_a 9
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 4 0
+	jmp e_StdPicture_sappClipPicture
+.desc d106 _hnf l106 3 0 "<lambda>[line:15];13;149"
+.a 3 ea106
+.o 2 0
+l106
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.o 4 0
+ea106
+	jsr_eval 0
+.o 4 0
+s106
+	push_a 2
+	push_a 2
+	build e_StdPicture_dsetPenBack 2 e_StdPicture_nsetPenBack
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr e_StdFunc_sseq
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.desc d43 _hnf l43 3 0 "hiliteBackground;42"
+.a 3 ea43
+.o 2 0
+l43
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.o 4 0
+ea43
+	jsr_eval 2
+	push_r_args 2 2 0
+	push_r_args 3 3 7
+	update_a 4 7
+	update_a 1 4
+	update_a 3 6
+	update_a 0 3
+	push_a 5
+	update_a 3 6
+	update_a 0 3
+	pop_a 3
+.o 7 7 iiiibbb
+s43
+	push_r_args_u 4 0 2
+	update_b 0 1
+	pop_b 1
+	push_r_args_u 5 0 2
+	update_b 0 1
+	pop_b 1
+	buildI_b 4
+	buildI_b 5
+	build _ 2 e_StdInt_n*;9
+	push_b 5
+	pushI 0
+	ltI
+	notB
+	jmp_true then.19
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	notB
+	jmp_false else.19
+then.19
+	buildh _Nil 0
+	build_r e_StdIOBasic_rRectangle 2 0 6 0
+	buildh e_StdPicture_dhilite;55 1
+	buildh _Cons 2
+	push_a 2
+	build e_EdMonad_dSyntaxColours.backgroundColour -4 e_EdMonad_nSyntaxColours.backgroundColour
+	buildh e_StdPicture_dsetPenBack 1
+	buildh _Cons 2
+	fillh e_StdFunc_dseq 1 8
+	pop_a 7
+	pop_b 9
+.d 1 0
+	rtn
+else.19
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 2
+	ltI
+	notB
+	jmp_false else.21
+	buildh _Nil 0
+	build_r e_StdIOBasic_rRectangle 2 0 6 0
+	buildh e_StdPicture_dhilite;55 1
+	buildh _Cons 2
+	push_a 2
+	build e_EdMonad_dSyntaxColours.marginColour -4 e_EdMonad_nSyntaxColours.marginColour
+	buildh e_StdPicture_dsetPenBack 1
+	buildh _Cons 2
+	fillh e_StdFunc_dseq 1 8
+	pop_a 7
+	pop_b 9
+.d 1 0
+	rtn
+else.21
+	buildh _Nil 0
+	push_a 7
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n222
+	push_a 8
+	push_a 8
+	update_a 0 1
+	pop_a 1
+	build _ 2 n221
+	buildh e_StdPicture_dhilite;55 1
+	buildh _Cons 2
+	push_a 2
+	build e_EdMonad_dSyntaxColours.backgroundColour -4 e_EdMonad_nSyntaxColours.backgroundColour
+	buildh e_StdPicture_dsetPenBack 1
+	buildh _Cons 2
+	push_a 6
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n224
+	push_a 8
+	push_a 8
+	pop_a 1
+	build _ 2 n223
+	buildh e_StdPicture_dhilite;55 1
+	buildh _Cons 2
+	push_a 2
+	build e_EdMonad_dSyntaxColours.marginColour -4 e_EdMonad_nSyntaxColours.marginColour
+	buildh e_StdPicture_dsetPenBack 1
+	buildh _Cons 2
+	fillh e_StdFunc_dseq 1 8
+	pop_a 7
+	pop_b 9
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n221
+	push_node _cycle_in_spine 2
+.o 2 0
+ea221
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	fill_r e_StdIOBasic_rRectangle 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n222
+	push_node _cycle_in_spine 2
+.o 2 0
+ea222
+	jsr_eval 1
+	pushI_a 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 2
+	update_b 2 0
+	fill_r e_StdIOBasic_rPoint2 0 2 2 0 0
+	pop_a 2
+	pop_b 3
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n223
+	push_node _cycle_in_spine 2
+.o 2 0
+ea223
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	fill_r e_StdIOBasic_rRectangle 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n224
+	push_node _cycle_in_spine 2
+.o 2 0
+ea224
+	jsr_eval 1
+	pushI_a 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 2
+	update_b 2 0
+	fill_r e_StdIOBasic_rPoint2 0 2 2 0 0
+	pop_a 2
+	pop_b 3
+.d 1 0
+	rtn
+.n 4 _ ea16
+.o 1 0
+n16
+	push_node _cycle_in_spine 4
+.o 5 0
+ea16
+	jsr_eval 3
+	jsr_eval 0
+	push_r_args 3 3 7
+	push_r_args 3 2 0
+	update_a 4 8
+	update_a 6 4
+	update_a 2 6
+	update_a 0 2
+	update_a 7 5
+	update_a 3 7
+	update_a 1 3
+	pop_a 2
+.o 8 7 iiiibbb
+s16
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_EdSelection_sorderSelection
+.o 2 0
+	push_a 0
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 3
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_b 0
+	push_b 2
+	eqI
+	jmp_false else.22
+	build_r e_EdPosition_rPosition 2 0 0 0
+	buildI_b 1
+	buildI 0
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e_EdSelection_rSelection 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 8
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_EdText_dgetTextFragment 2 e_EdText_ngetTextFragment
+	build d_S.1 -1 n_S.1
+	build e_StrictList_dslHead 1 e_StrictList_nslHead
+	push_a 3
+	build_r e_EdMonad_rFontInfo 3 7 10 2
+	push_a 1
+	push_a 3
+	build _ 2 n215
+	buildI 0
+	build e_EdVisualText_dtabStringWidth 3 e_EdVisualText_ntabStringWidth
+	buildI_b 2
+	buildI_b 1
+	build _ 2 e_StdInt_n*;9
+	buildh _Nil 0
+	buildI_b 2
+	push_a 2
+	build _ 2 e_StdInt_n+;6
+	build_r e_EdMonad_rFontInfo 3 7 14 2
+	push_a 7
+	push_a 6
+	push_a 8
+	build _ 3 n217
+	push_a 5
+	build _ 3 n216
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	push_a 2
+	push_a 4
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	build e_StdIOBasic_tRectangle 2 e_StdIOBasic_cRectangle
+	fillh _Cons 2 17
+	pop_a 15
+	pop_b 9
+.d 1 0
+	rtn
+else.22
+	build_r e_EdPosition_rPosition 2 0 0 0
+	buildI_b 1
+	buildI 0
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e_EdSelection_rSelection 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 8
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_EdText_dgetTextFragment 2 e_EdText_ngetTextFragment
+	build d_S.1 -1 n_S.1
+	buildI_b 2
+	buildI_b 1
+	build _ 2 e_StdInt_n*;9
+	push_a 8
+	build e_StdIOBasic_dRectangle.corner1 -4 e_StdIOBasic_nRectangle.corner1
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	buildI 0
+	buildI_b 2
+	buildI_b 0
+	build _ 2 e_StdInt_n*;9
+	buildh _Nil 0
+	buildI_b 2
+	push_a 2
+	build _ 2 e_StdInt_n+;6
+	build_r e_EdMonad_rFontInfo 3 7 15 2
+	push_a 8
+	push_a 8
+	build _ 2 n220
+	buildI 0
+	build e_EdVisualText_dtabStringWidth 3 e_EdVisualText_ntabStringWidth
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	push_a 2
+	buildI 0
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	build e_StdIOBasic_tRectangle 2 e_StdIOBasic_cRectangle
+	buildh _Cons 2
+	push_a 12
+	build e_StdIOBasic_dRectangle.corner2 -4 e_StdIOBasic_nRectangle.corner2
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	buildI_b 2
+	push_a 6
+	build _ 2 e_StdInt_n+;6
+	push_a 4
+	push_a 6
+	build _ 2 n219
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	build e_StdIOBasic_tRectangle 2 e_StdIOBasic_cRectangle
+	buildh _Cons 2
+	buildI_b 2
+	push_a 5
+	build _ 2 e_StdInt_n+;6
+	push_a 13
+	build e_StdIOBasic_dRectangle.corner2 -4 e_StdIOBasic_nRectangle.corner2
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	build_r e_EdMonad_rFontInfo 3 7 15 2
+	push_a 10
+	push_a 8
+	build _ 2 n218
+	buildI 0
+	build e_EdVisualText_dtabStringWidth 3 e_EdVisualText_ntabStringWidth
+	push_a 6
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	build e_StdIOBasic_tRectangle 2 e_StdIOBasic_cRectangle
+	fillh _Cons 2 18
+	pop_a 16
+	pop_b 9
+.d 1 0
+	rtn
+.n 2 _ ea220
+.o 1 0
+n220
+	push_node _cycle_in_spine 2
+.o 3 0
+ea220
+.o 3 0
+s220
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 2
+.d 1 0
+	jsr e_StrictList_sslLast
+.o 1 0
+	push_array 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 2 0
+	jmp e_EdTab_ssplitAtTabs
+.n 2 _ ea219
+.o 1 0
+n219
+	push_node _cycle_in_spine 2
+.o 3 0
+ea219
+.o 3 0
+s219
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI_a 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 1 b
+	jsr s138
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea218
+.o 1 0
+n218
+	push_node _cycle_in_spine 2
+.o 3 0
+ea218
+.o 3 0
+s218
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 2
+.d 1 0
+	jsr e_StrictList_sslHead
+.o 1 0
+	push_array 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 2 0
+	jmp e_EdTab_ssplitAtTabs
+.n 3 _ ea217
+.o 1 0
+n217
+	push_node _cycle_in_spine 3
+.o 4 0
+ea217
+.o 4 0
+s217
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	updatepop_a 0 3
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 2 0
+	jmp e_EdTab_ssplitAtTabs
+.n 3 _ ea216
+.o 1 0
+n216
+	push_node _cycle_in_spine 3
+.o 4 0
+ea216
+.o 4 0
+s216
+	push_r_args 2 3 7
+	push_a 4
+	jsr_eval 0
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 8 iiiiibbb
+	jsr e_EdVisualText_stabStringWidth
+.o 0 1 i
+	pushI_a 0
+	pop_a 1
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea215
+.o 1 0
+n215
+	push_node _cycle_in_spine 2
+.o 3 0
+ea215
+.o 3 0
+s215
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	updatepop_a 0 2
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 2 0
+	jmp e_EdTab_ssplitAtTabs
+.o 2 1 b
+s138
+	eqB_b TRUE 0
+	jmp_true case.23
+	jmp case.24
+case.23
+	pop_b 1
+	pushI_a 0
+	pop_a 2
+.d 0 1 i
+	rtn
+case.24
+	pop_b 1
+	pop_a 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+.o 2 0
+s74
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.n 3 _ _
+.o 1 0
+n78
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea78
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 3 0
+ea78
+	jsr_eval 1
+.o 3 0
+s78
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.export e_EdVisualCursor_svDoCursorSafe
+.export e_EdVisualCursor_eavDoCursorSafe
+.descexp e_EdVisualCursor_dvDoCursorSafe e_EdVisualCursor_nvDoCursorSafe e_EdVisualCursor_lvDoCursorSafe 1 0 "vDoCursorSafe"
+.o 2 0
+e_EdVisualCursor_lvDoCursorSafe
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdVisualCursor_eavDoCursorSafe
+.n 1 e_EdVisualCursor_dvDoCursorSafe e_EdVisualCursor_eavDoCursorSafe
+.o 1 0
+e_EdVisualCursor_nvDoCursorSafe
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdVisualCursor_eavDoCursorSafe
+.o 2 0
+e_EdVisualCursor_svDoCursorSafe
+.o 2 0
+s8
+	build e_EdVisualCursor_dvShowCursor 0 e_EdVisualCursor_nvShowCursor
+	build e_EdVisualCursor_dvHideCursor 0 e_EdVisualCursor_nvHideCursor
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d104 3 4
+	pop_a 1
+.d 1 0
+	rtn
+.desc d104 _hnf l104 4 0 "<lambda>[line:19];17;147"
+.a 0 ea104
+.o 2 0
+l104
+	repl_args 3 3
+.o 4 0
+ea104
+	jsr_eval 2
+.o 4 0
+s104
+	push_a 3
+	push_a 2
+	push_a 2
+	build _ 3 n71
+	build d_S.2 -1 n_S.2
+	push_a 3
+	update_a 1 5
+	updatepop_a 0 4
+	jmp_ap 1
+.n 3 _ _
+.o 1 0
+n71
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea71
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 3 0
+ea71
+	jsr_eval 1
+.o 3 0
+s71
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.export e_EdVisualCursor_svMoveCursor
+.export e_EdVisualCursor_eavMoveCursor
+.descexp e_EdVisualCursor_dvMoveCursor e_EdVisualCursor_nvMoveCursor e_EdVisualCursor_lvMoveCursor 1 0 "vMoveCursor"
+.o 2 0
+e_EdVisualCursor_lvMoveCursor
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdVisualCursor_eavMoveCursor
+.n 1 e_EdVisualCursor_dvMoveCursor e_EdVisualCursor_eavMoveCursor
+.o 1 0
+e_EdVisualCursor_nvMoveCursor
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdVisualCursor_eavMoveCursor
+	jsr_eval 0
+.o 2 0
+e_EdVisualCursor_svMoveCursor
+.o 2 0
+s7
+	build e_EdMonad_dgetWindowId 0 e_EdMonad_ngetWindowId
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d103 2 3
+	pop_a 1
+.d 1 0
+	rtn
+.desc d103 _hnf l103 3 0 "<lambda>[line:15];18;146"
+.a 0 a103
+.o 2 0
+l103
+	repl_args 2 2
+.o 3 0
+a103
+.d 3 0
+	jsr ea103
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+ea103
+.o 3 0
+s103
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s176
+.o 4 0
+s102
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s177
+.o 5 0
+s101
+	push_a 4
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 6 0
+	jmp s178
+.o 6 0
+s100
+	push_a 5
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 3 7
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 7 13
+	update_a 6 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 8 7 iiiibbb
+	jmp s179
+.o 7 1 i
+s99
+	push_a 6
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 8
+	push_b 0
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+	updatepop_b 0 1
+.d 7 1 i
+	jmp s180
+.n 4 _
+.o 1 0
+n137
+	push_node _cycle_in_spine 4
+.d 4 0
+	jsr ea137
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 4 0
+ea137
+	jsr_eval 0
+.o 4 0
+s137
+	pushD_a 0
+	eqD_b e_EdMovement_dPageUp 0
+	jmp_true case.25
+	eqD_b e_EdMovement_dPageDown 0
+	jmp_true case.26
+	pop_b 1
+	jmp case.27
+case.25
+	pop_b 1
+	pushI 0
+	jsr_eval 2
+	push_r_args_a 2 2 0 1 1
+	repl_r_args 0 2
+	pop_b 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_r_args_a 2 2 0 2 1
+	repl_r_args 0 2
+	pop_b 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI_a 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	mulI
+	push_b 1
+	pop_a 4
+	subI
+	push_b 0
+	push_b 3
+	ltI
+	push_b 3
+	push_b 2
+	push_b 2
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 0 3 bii
+	jsr s135
+.o 0 1 i
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	subI
+.d 0 1 i
+	rtn
+case.26
+	pop_b 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 3
+	jsr_eval 0
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 1 0
+	jsr e_EdLineText_stextLength
+.o 0 1 i
+	mulI
+	jsr_eval 1
+	push_r_args_a 1 2 0 2 1
+	repl_r_args 0 2
+	pop_b 1
+	push_r_args_a 1 2 0 1 1
+	repl_r_args 0 2
+	pop_b 1
+	push_b 1
+	subI
+	pushI_a 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI_a 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	mulI
+	push_b 1
+	pop_a 3
+	addI
+	push_b 0
+	push_b 3
+	ltI
+	push_b 1
+	push_b 4
+	push_b 2
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 0 3 bii
+	jsr s136
+.o 0 1 i
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	subI
+.d 0 1 i
+	rtn
+case.27
+	pop_a 4
+	pushI 0
+.d 0 1 i
+	rtn
+.o 0 3 bii
+s136
+	eqB_b TRUE 0
+	jmp_true case.28
+	jmp case.29
+case.28
+	update_b 1 2
+	pop_b 2
+.d 0 1 i
+	rtn
+case.29
+	pop_b 2
+.d 0 1 i
+	rtn
+.o 0 3 bii
+s135
+	eqB_b TRUE 0
+	jmp_true case.30
+	jmp case.31
+case.30
+	update_b 1 2
+	pop_b 2
+.d 0 1 i
+	rtn
+case.31
+	pop_b 2
+.d 0 1 i
+	rtn
+.o 2 2 bi
+s134
+	eqB_b TRUE 0
+	jmp_true case.32
+	jmp case.33
+case.32
+	pop_a 2
+	pop_b 1
+.d 0 1 i
+	rtn
+case.33
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	jsr_eval 0
+	push_r_args_b 0 0 2 1 1
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 2
+	subI
+.d 0 1 i
+	rtn
+.o 2 1 b
+s133
+	eqB_b TRUE 0
+	jmp_true case.34
+	jmp case.35
+case.34
+	jsr_eval 1
+	push_r_args_b 1 0 2 1 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	updatepop_b 0 1
+	pop_a 2
+	notB
+.d 0 1 b
+	rtn
+case.35
+	pop_a 2
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_EdVisualCursor_svDragCursor
+.export e_EdVisualCursor_eavDragCursor
+.descexp e_EdVisualCursor_dvDragCursor e_EdVisualCursor_nvDragCursor e_EdVisualCursor_lvDragCursor 1 0 "vDragCursor"
+.o 2 0
+e_EdVisualCursor_lvDragCursor
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdVisualCursor_eavDragCursor
+.n 1 e_EdVisualCursor_dvDragCursor e_EdVisualCursor_eavDragCursor
+.o 1 0
+e_EdVisualCursor_nvDragCursor
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdVisualCursor_eavDragCursor
+	jsr_eval 0
+	repl_r_args 0 2
+.o 1 2 ii
+e_EdVisualCursor_svDragCursor
+.o 1 2 ii
+s6
+	build_r e_StdIOBasic_rPoint2 0 2 0 0
+	buildh e_Data.Maybe_dJust 1
+	pushB FALSE
+	updatepop_b 0 2
+.d 2 1 b
+	jmp s12
+.export e_EdVisualCursor_svScrollToCursor
+.export e_EdVisualCursor_eavScrollToCursor
+.descexp e_EdVisualCursor_dvScrollToCursor e_EdVisualCursor_nvScrollToCursor e_EdVisualCursor_lvScrollToCursor 0 0 "vScrollToCursor"
+.o 1 0
+e_EdVisualCursor_lvScrollToCursor
+	halt
+.n 0 e_EdVisualCursor_dvScrollToCursor e_EdVisualCursor_eavScrollToCursor
+.o 1 0
+e_EdVisualCursor_nvScrollToCursor
+	push_node _cycle_in_spine 0
+.o 1 0
+e_EdVisualCursor_eavScrollToCursor
+.o 1 0
+e_EdVisualCursor_svScrollToCursor
+.o 1 0
+s5
+	buildh e_Data.Maybe_dNothing 0
+	pushB FALSE
+.d 2 1 b
+	jmp s12
+.export e_EdVisualCursor_svCenterCursor
+.export e_EdVisualCursor_eavCenterCursor
+.descexp e_EdVisualCursor_dvCenterCursor e_EdVisualCursor_nvCenterCursor e_EdVisualCursor_lvCenterCursor 0 0 "vCenterCursor"
+.o 1 0
+e_EdVisualCursor_lvCenterCursor
+	halt
+.n 0 e_EdVisualCursor_dvCenterCursor e_EdVisualCursor_eavCenterCursor
+.o 1 0
+e_EdVisualCursor_nvCenterCursor
+	push_node _cycle_in_spine 0
+.o 1 0
+e_EdVisualCursor_eavCenterCursor
+.o 1 0
+e_EdVisualCursor_svCenterCursor
+.o 1 0
+s4
+	buildh e_Data.Maybe_dNothing 0
+	pushB TRUE
+.d 2 1 b
+	jmp s12
+.o 2 1 b
+s12
+	build e_EdMonad_dgetWindowId 0 e_EdMonad_ngetWindowId
+	buildB_b 0
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d98 3 4
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.desc d98 _hnf l98 4 0 "<lambda>[line:15];18;141"
+.a 0 a98
+.o 2 0
+l98
+	repl_args 3 3
+.o 4 0
+a98
+.d 4 0
+	jsr ea98
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea98
+.o 4 0
+s98
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s181
+.o 5 0
+s97
+	push_a 4
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 5 0
+	jmp s182
+.o 6 0
+s96
+	push_a 5
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	update_a 6 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 7 0
+	jmp s183
+.o 8 0
+s95
+	push_a 7
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+.d 8 0
+	jmp s184
+.o 9 0
+s94
+	push_a 8
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 10
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 3 7
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 10 19
+	update_a 9 18
+	update_a 8 17
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+.d 11 7 iiiibbb
+	jmp s185
+.n 12 _
+.o 1 0
+n132
+	push_node _cycle_in_spine 12
+.d 12 0
+	jsr ea132
+.o 0 2 ii
+	fill_r e_StdIOBasic_rVector2 0 2 0 0 0
+	pop_b 2
+.d 1 0
+	rtn
+.o 12 0
+ea132
+	jsr_eval 6
+	jsr_eval 0
+	pushB_a 6
+	pushB_a 0
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	pop_a 2
+.o 10 2 bb
+s132
+	eqB_b TRUE 0
+	jmp_true case.36
+	jmp case.37
+case.36
+	push_a 6
+	jsr_eval 0
+	pushI_a 7
+	pop_a 1
+	push_a 5
+	push_b 2
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 10
+	update_a 0 11
+	pop_a 1
+.d 1 1 b
+	jsr s128
+.o 0 1 b
+	push_a 7
+	push_a 4
+	pushI_a 8
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 2 2 bi
+	jsr s129
+.o 0 1 i
+	subI
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	push_a 1
+	updatepop_a 0 2
+.d 1 1 b
+	jsr s126
+.o 0 1 b
+	push_a 2
+	push_a 2
+	pushI_a 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 2 bi
+	jsr s127
+.o 0 1 i
+	subI
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 ii
+	rtn
+case.37
+	push_a 5
+	push_b 1
+	updatepop_b 0 2
+	update_a 4 5
+	updatepop_a 0 4
+.d 1 1 b
+	jsr s130
+.o 0 1 b
+	push_a 3
+	push_a 6
+	push_a 4
+	push_a 3
+	push_a 5
+	update_a 9 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 1 b
+	jsr s131
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+.d 0 2 ii
+	rtn
+.o 5 1 b
+s131
+	eqB_b TRUE 0
+	jmp_true case.38
+	jmp case.39
+case.38
+	pop_a 5
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+case.39
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	jmp_false else.40
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	jsr_eval 1
+	push_r_args_b 1 0 2 2 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 5
+	subI
+.d 0 1 i
+	rtn
+else.40
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	jsr_eval 1
+	push_r_args_b 1 0 2 2 1
+	addI
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 5
+	subI
+.d 0 1 i
+	rtn
+.o 1 1 b
+s130
+	eqB_b TRUE 0
+	jmp_true case.41
+	jmp case.42
+case.41
+	pop_b 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.42
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 2 2 bi
+s129
+	eqB_b TRUE 0
+	jmp_true case.43
+	jmp case.44
+case.43
+	pop_a 2
+	pop_b 1
+.d 0 1 i
+	rtn
+case.44
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	jsr_eval 0
+	push_r_args_b 0 0 2 2 1
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 2
+	subI
+.d 0 1 i
+	rtn
+.o 1 1 b
+s128
+	eqB_b TRUE 0
+	jmp_true case.45
+	jmp case.46
+case.45
+	pop_b 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.46
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 2 2 bi
+s127
+	eqB_b TRUE 0
+	jmp_true case.47
+	jmp case.48
+case.47
+	pop_a 2
+	pop_b 1
+.d 0 1 i
+	rtn
+case.48
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	jsr_eval 0
+	push_r_args_b 0 0 2 1 1
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 2
+	subI
+.d 0 1 i
+	rtn
+.o 1 1 b
+s126
+	eqB_b TRUE 0
+	jmp_true case.49
+	jmp case.50
+case.49
+	pop_b 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.50
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 5 1 b
+s124
+	eqB_b TRUE 0
+	jmp_true case.51
+	jmp case.52
+case.51
+	pop_a 5
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+case.52
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	jmp_false else.53
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	jsr_eval 1
+	push_r_args_b 1 0 2 1 1
+	subI
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 5
+	subI
+.d 0 1 i
+	rtn
+else.53
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	jsr_eval 1
+	push_r_args_b 1 0 2 1 1
+	addI
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 5
+	subI
+.d 0 1 i
+	rtn
+.o 1 1 b
+s123
+	eqB_b TRUE 0
+	jmp_true case.54
+	jmp case.55
+case.54
+	pop_b 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.55
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 5 1 b
+s122
+	eqB_b TRUE 0
+	jmp_true case.56
+	jmp case.57
+case.56
+	pop_a 5
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+case.57
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	jmp_false else.58
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	jsr_eval 1
+	push_r_args_b 1 0 2 1 1
+	subI
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 5
+	subI
+.d 0 1 i
+	rtn
+else.58
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	jsr_eval 1
+	push_r_args_b 1 0 2 1 1
+	addI
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 5
+	subI
+.d 0 1 i
+	rtn
+.o 1 1 b
+s121
+	eqB_b TRUE 0
+	jmp_true case.59
+	jmp case.60
+case.59
+	pop_b 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.60
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 5 2 bi
+s120
+	eqB_b TRUE 0
+	jmp_true case.61
+	jmp case.62
+case.61
+	jsr_eval 1
+	push_r_args_b 1 0 2 1 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	addI
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	notB
+	jmp_false else.63
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_r_args_b 1 0 2 2 1
+	ltI
+	notB
+	jmp_false else.64
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	push_r_args_b 1 0 2 2 1
+	addI
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	ltI
+	updatepop_b 0 2
+	pop_a 5
+	notB
+.d 0 1 b
+	rtn
+else.64
+	pop_a 5
+	pop_b 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.63
+	pop_a 5
+	pop_b 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.62
+	pop_a 5
+	pop_b 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 2 1 b
+s119
+	eqB_b TRUE 0
+	jmp_true case.65
+	jmp case.66
+case.65
+	pop_a 2
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+case.66
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	jmp_false else.67
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	updatepop_b 0 1
+	pop_a 2
+	negI
+.d 0 1 i
+	rtn
+else.67
+	pop_b 1
+	pop_a 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+.o 1 1 b
+s118
+	eqB_b TRUE 0
+	jmp_true case.68
+	jmp case.69
+case.68
+	pop_b 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+case.69
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 6 1 b
+s117
+	eqB_b TRUE 0
+	jmp_true case.70
+	jmp case.71
+case.70
+	pop_a 6
+	pop_b 1
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.71
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	jmp_false else.72
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	jmp_false else.73
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	jsr_eval 2
+	push_r_args_b 2 0 2 2 1
+	ltI
+	notB
+	jmp_false else.74
+	push_a 5
+	jsr_eval 0
+	pushI_a 6
+	pop_a 1
+	push_r_args_b 2 0 2 2 1
+	addI
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	ltI
+	updatepop_b 0 1
+	pop_a 6
+	notB
+.d 0 1 b
+	rtn
+else.74
+	pop_a 6
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.73
+	pop_a 6
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.72
+	pop_a 6
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 4 1 b
+s116
+	eqB_b TRUE 0
+	jmp_true case.75
+	jmp case.76
+case.75
+	jsr_eval 1
+	push_r_args_b 1 0 2 1 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	notB
+	jmp_false else.77
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_r_args_b 1 0 2 2 1
+	ltI
+	notB
+	jmp_false else.78
+	push_r_args_b 1 0 2 2 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	ltI
+	updatepop_b 0 1
+	pop_a 4
+	notB
+.d 0 1 b
+	rtn
+else.78
+	pop_a 4
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.77
+	pop_a 4
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.76
+	pop_a 4
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.n 4 _
+.o 1 0
+n115
+	push_node _cycle_in_spine 4
+.d 4 0
+	jsr ea115
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 4 0
+ea115
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 3 1 b
+s115
+	eqB_b TRUE 0
+	jmp_true case.79
+	jmp case.80
+case.79
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	jmp_false else.81
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	jmp_false else.82
+	pop_b 1
+	pop_a 2
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+else.82
+	pop_a 3
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.81
+	pop_a 3
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.80
+	pop_a 3
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 2 0
+s60
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.export e_EdVisualCursor_svHideCursor
+.export e_EdVisualCursor_eavHideCursor
+.descexp e_EdVisualCursor_dvHideCursor e_EdVisualCursor_nvHideCursor e_EdVisualCursor_lvHideCursor 0 0 "vHideCursor"
+.o 1 0
+e_EdVisualCursor_lvHideCursor
+	halt
+.n 0 e_EdVisualCursor_dvHideCursor e_EdVisualCursor_eavHideCursor
+.o 1 0
+e_EdVisualCursor_nvHideCursor
+	push_node _cycle_in_spine 0
+.o 1 0
+e_EdVisualCursor_eavHideCursor
+.o 1 0
+e_EdVisualCursor_svHideCursor
+.o 1 0
+s3
+	build e_EdMonad_dgetCursorVisibility 0 e_EdMonad_ngetCursorVisibility
+	fillh d93 1 1
+.d 1 0
+	rtn
+.desc d93 _hnf l93 2 0 "<lambda>[line:15];18;136"
+.a 0 a93
+.o 2 0
+l93
+	repl_args 1 1
+.o 2 0
+a93
+.d 2 0
+	jsr ea93
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 2 0
+ea93
+	jsr_eval 0
+.o 2 0
+s93
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	updatepop_a 0 1
+.d 1 1 b
+	jmp s186
+.o 2 0
+s92
+	push_a 1
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s187
+.o 3 0
+s91
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s188
+.o 4 0
+s90
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s189
+.o 5 0
+s89
+	push_a 4
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 6 0
+	jmp s190
+.o 3 0
+s53
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.o 2 0
+s58
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.export e_EdVisualCursor_svShowCursor
+.export e_EdVisualCursor_eavShowCursor
+.descexp e_EdVisualCursor_dvShowCursor e_EdVisualCursor_nvShowCursor e_EdVisualCursor_lvShowCursor 0 0 "vShowCursor"
+.o 1 0
+e_EdVisualCursor_lvShowCursor
+	halt
+.n 0 e_EdVisualCursor_dvShowCursor e_EdVisualCursor_eavShowCursor
+.o 1 0
+e_EdVisualCursor_nvShowCursor
+	push_node _cycle_in_spine 0
+.o 1 0
+e_EdVisualCursor_eavShowCursor
+.o 1 0
+e_EdVisualCursor_svShowCursor
+.o 1 0
+s2
+	build e_EdMonad_dgetSelection 0 e_EdMonad_ngetSelection
+	fillh d88 1 1
+.d 1 0
+	rtn
+.desc d88 _hnf l88 2 0 "<lambda>[line:15];18;131"
+.a 0 a88
+.o 2 0
+l88
+	repl_args 1 1
+.o 2 0
+a88
+.d 2 0
+	jsr ea88
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 2 0
+ea88
+	jsr_eval 0
+.o 2 0
+s88
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 2 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s191
+.o 3 0
+s87
+	push_a 2
+	push_a 1
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 1 b
+	jmp s192
+.o 3 0
+s86
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s193
+.o 4 0
+s85
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s194
+.o 5 0
+s84
+	push_a 4
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 5 0
+	jmp s195
+.n 5 _ ea13
+.o 1 0
+n13
+	push_node _cycle_in_spine 5
+.o 6 0
+ea13
+.o 6 0
+s13
+	pushB TRUE
+	jmp_false else.83
+	push_a 4
+	push_a 4
+	push_a 3
+	build e_EdVisualText_dpositionToPoint 3 e_EdVisualText_npositionToPoint
+	push_a 0
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 1
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	buildh _Nil 0
+	push_a 6
+	push_a 2
+	build _ 2 n199
+	push_a 3
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	push_a 2
+	push_a 4
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	buildh e_StdPicture_ddrawLine 2
+	buildh _Cons 2
+	buildh e_StdPictureDef_dBlack 0
+	buildh e_StdPicture_dsetPenColour 1
+	buildh _Cons 2
+	buildh e_StdFunc_dseq 1
+	fillh e_StdPicture_dappXorPicture 1 9
+	pop_a 8
+.d 1 0
+	rtn
+else.83
+	push_a 4
+	push_a 4
+	push_a 3
+	build e_EdVisualText_dpositionToPoint 3 e_EdVisualText_npositionToPoint
+	push_a 0
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 1
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	buildh _Nil 0
+	push_a 6
+	push_a 2
+	build _ 2 n200
+	push_a 3
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	push_a 2
+	push_a 4
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	buildh e_StdPicture_ddrawLine 2
+	buildh _Cons 2
+	push_a 8
+	push_a 3
+	build _ 2 n38
+	buildh e_StdPicture_dsetPenColour 1
+	buildh _Cons 2
+	fillh e_StdFunc_dseq 1 9
+	pop_a 8
+.d 1 0
+	rtn
+.n 2 _ ea200
+.o 1 0
+n200
+	push_node _cycle_in_spine 2
+.o 3 0
+ea200
+.o 3 0
+s200
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	addI
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	pop_a 2
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea199
+.o 1 0
+n199
+	push_node _cycle_in_spine 2
+.o 3 0
+ea199
+.o 3 0
+s199
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	addI
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	pop_a 2
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea38
+.o 1 0
+n38
+	push_node _cycle_in_spine 2
+.o 3 0
+ea38
+	jsr_eval 1
+	push_r_args 1 3 7
+	update_a 2 4
+	update_a 0 2
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 5 7 iiiibbb
+s38
+	push_b 3
+	pushI 0
+	ltI
+	jmp_false else.84
+	push_b 3
+	push_b 3
+	mulI
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	notB
+	jmp_false else.84
+	push_r_args_a 3 10 0 3 1
+	pop_b 7
+	fill_a 0 5
+	pop_a 5
+.d 1 0
+	rtn
+else.84
+	push_r_args_a 3 10 0 2 1
+	pop_b 7
+	fill_a 0 5
+	pop_a 5
+.d 1 0
+	rtn
+.o 3 0
+s45
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+	jmp_ap 1
+.o 2 0
+s48
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s51
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.export e_EdVisualCursor_svUpdateCursor
+.export e_EdVisualCursor_eavUpdateCursor
+.descexp e_EdVisualCursor_dvUpdateCursor e_EdVisualCursor_nvUpdateCursor e_EdVisualCursor_lvUpdateCursor 7 0 "vUpdateCursor"
+.a 7 e_EdVisualCursor_eavUpdateCursor
+.o 2 0
+e_EdVisualCursor_lvUpdateCursor
+	push_args 0 6 6
+	update_a 7 6
+	create
+	update_a 0 8
+	pop_a 1
+.d 8 0
+	jmp e_EdVisualCursor_eavUpdateCursor
+.n 7 e_EdVisualCursor_dvUpdateCursor e_EdVisualCursor_eavUpdateCursor
+.o 1 0
+e_EdVisualCursor_nvUpdateCursor
+	push_node _cycle_in_spine 7
+.o 8 0
+e_EdVisualCursor_eavUpdateCursor
+	jsr_eval 6
+	jsr_eval 5
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 5 2 0
+	push_r_args 5 3 7
+	pushI_a 7
+	push_r_args 6 2 0
+	pushB_a 7
+	update_a 6 12
+	update_a 1 6
+	update_a 11 10
+	update_a 5 11
+	update_a 0 5
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	pop_a 5
+.o 10 9 biiiiibbb
+e_EdVisualCursor_svUpdateCursor
+.o 10 9 biiiiibbb
+s1
+	push_b 0
+	jmp_false else.86
+	build_r e_EdMonad_rFontInfo 3 7 2 2
+	build_r e_EdPosition_rPosition 2 0 1 0
+	push_a 7
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_EdVisualText_dpositionToPoint 3 e_EdVisualText_npositionToPoint
+	push_a 0
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 1
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	buildI_b 1
+	push_a 3
+	buildh d17 2
+	push_a 12
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 2 0
+	jsr e_StdList_sany
+.o 0 1 b
+	jmp_false else.87
+	buildh _Nil 0
+	push_b 0
+	push_a 1
+	build_u _ 1 1 n198
+	push_a 3
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	push_a 2
+	push_a 4
+	build e_StdIOBasic_tPoint2 2 e_StdIOBasic_cPoint2
+	buildh e_StdPicture_ddrawLine 2
+	buildh _Cons 2
+	buildh e_StdPictureDef_dBlack 0
+	buildh e_StdPicture_dsetPenColour 1
+	buildh _Cons 2
+	buildh e_StdFunc_dseq 1
+	fillh e_StdPicture_dappXorPicture 1 3
+	pop_a 2
+	pop_b 8
+.d 1 0
+	rtn
+else.87
+	fillh e_StdFunc_did 0 2
+	pop_a 2
+	pop_b 8
+.d 1 0
+	rtn
+else.86
+	fillh e_StdFunc_did 0 9
+	pop_a 9
+	pop_b 9
+.d 1 0
+	rtn
+.nu 1 1 _ _
+.o 1 0
+n198
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea198
+.o 2 1 i
+s198
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	addI
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 1
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.desc d17 _hnf l17 3 0 "isCursorInRectangle"
+.a 0 a17
+.o 2 0
+l17
+	repl_args 2 2
+.o 3 0
+a17
+.d 3 0
+	jsr ea17
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea17
+	jsr_eval 2
+	jsr_eval 0
+	push_r_args 2 2 0
+	pushI_a 3
+	push_r_args 2 0 2
+	update_a 1 4
+	update_a 0 3
+	pop_a 3
+.o 2 3 iii
+s17
+	push_r_args_u 0 0 2
+	push_r_args_u 1 0 2
+	push_b 2
+	push_b 5
+	ltI
+	push_b 7
+	push_b 5
+	push_b 4
+	push_b 9
+	push_b 5
+	push_b 10
+	push_b 6
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 6 13
+	update_b 5 12
+	update_b 4 11
+	update_b 3 10
+	update_b 2 9
+	update_b 1 8
+	updatepop_b 0 7
+	pop_a 2
+.d 0 7 biiiiii
+	jsr s114
+.o 0 1 b
+	notB
+.d 0 1 b
+	rtn
+.o 0 7 biiiiii
+s114
+	eqB_b TRUE 0
+	jmp_true case.88
+	jmp case.89
+case.88
+	pop_b 7
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.89
+	push_b 2
+	push_b 2
+	ltI
+	notB
+	jmp_false else.90
+	pop_b 7
+	pushB TRUE
+.d 0 1 b
+	rtn
+else.90
+	push_b 4
+	push_b 4
+	ltI
+	notB
+	jmp_false else.91
+	pop_b 7
+	pushB TRUE
+.d 0 1 b
+	rtn
+else.91
+	push_b 6
+	push_b 4
+	addI
+	push_b 6
+	ltI
+	updatepop_b 0 7
+	notB
+.d 0 1 b
+	rtn
+.o 3 0
+s171
+	push_a 1
+	push_a 1
+.d 2 0
+	jsr e_EdSelection_sisEmptySelection
+.o 0 1 b
+	jmp_false else.92
+	build e_StateMonad_dnothing 0 e_StateMonad_nnothing
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s81
+else.92
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_EdSelection_sorderSelection
+.o 2 0
+	push_a 0
+	create
+	push_a 3
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_EdVisualText_svRemoveText
+.o 1 0
+	push_a 1
+	push_a 2
+	build_r e_EdSelection_rSelection 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build e_EdVisualCursor_dvChangeSelectionTo 1 e_EdVisualCursor_nvChangeSelectionTo
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr s82
+.o 1 0
+	repl_args 2 2
+.d 2 0
+	rtn
+.o 3 0
+s172
+	build e_EdVisualText_dgetViewFrame 0 e_EdVisualText_ngetViewFrame
+	push_a 1
+	build e_EdMonad_dsetSelection 1 e_EdMonad_nsetSelection
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 3 5
+	update_a 1 3
+	update_a 4 1
+	update_a 2 4
+	update_a 0 2
+	pop_a 1
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 5 0
+	jmp s111
+.o 4 0
+s173
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jmp s109
+.o 5 0
+s174
+	build e_EdMonad_dgetFontInfo 0 e_EdMonad_ngetFontInfo
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 6 0
+	jmp s108
+.o 6 0
+s175
+	build e_StateMonad_dnothing 0 e_StateMonad_nnothing
+	push_a 1
+	push_a 3
+	build e_EdSelection_dchangeSelection 2 e_EdSelection_nchangeSelection
+	push_a 6
+	push_a 5
+	buildh d15 2
+	build e_StdList_dmap 2 e_StdList_nmap
+	buildh _Nil 0
+	push_a 5
+	buildh _Cons 2
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh d14 4
+	buildh e_ioutil_dseqmap 2
+	build e_EdVisualText_dvDraw 1 e_EdVisualText_nvDraw
+	push_a 7
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 3 0
+	jmp s107
+.o 3 0
+s176
+	push_a 1
+	buildh e_StdWindow_dgetWindowViewFrame 1
+	buildh e_StdPSt_daccPIO 1
+	build e_EdMonad_daccEnv 1 e_EdMonad_naccEnv
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp s102
+.o 4 0
+s177
+	create
+.d 1 0
+	jsr e_EdMonad_sgetSelection
+.o 1 0
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jmp s101
+.o 6 0
+s178
+	create
+.d 1 0
+	jsr e_EdMonad_sgetFontInfo
+.o 1 0
+	push_a 6
+	push_a 6
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 6 0
+	jmp s100
+.o 8 7 iiiibbb
+s179
+	build_r e_EdMonad_rFontInfo 3 7 4 0
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 9
+	push_b 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 5 7
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 6 1
+	update_a 0 6
+	pop_a 1
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+	updatepop_b 0 7
+.d 7 1 i
+	jmp s99
+.o 7 1 i
+s180
+	push_a 4
+	push_a 6
+	push_a 5
+	build e_EdVisualText_dpositionToPoint 3 e_EdVisualText_npositionToPoint
+	push_a 3
+	build e_StdIOBasic_dRectangle.corner1 -4 e_StdIOBasic_nRectangle.corner1
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 4
+	build e_StdIOBasic_dRectangle.corner2 -4 e_StdIOBasic_nRectangle.corner2
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 8
+	push_a 6
+	buildI_b 0
+	push_a 6
+	build _ 4 n137
+	push_a 3
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 4
+	push_a 3
+	push_a 5
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 4 n211
+	build e_StdIOBasic_tVector2 2 e_StdIOBasic_cVector2
+	push_a 5
+	buildh e_StdWindow_dmoveWindowViewFrame 2
+	buildh e_StdPSt_dappPIO 1
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 2 0
+	jsr e_EdMonad_sappEnv
+.o 1 0
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 5
+	updatepop_a 0 4
+	jsr_ap 1
+	repl_args 2 2
+.d 2 0
+	rtn
+.n 4 _ ea211
+.o 1 0
+n211
+	push_node _cycle_in_spine 4
+.o 5 0
+ea211
+.o 5 0
+s211
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI_a 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	notB
+	push_a 3
+	push_a 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 1 b
+	jsr s133
+.o 0 1 b
+	push_a 1
+	push_a 3
+	pushI_a 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 2 bi
+	jsr s134
+.o 0 1 i
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 4 0
+s181
+	push_a 2
+	buildh e_StdWindow_dgetWindowViewFrame 1
+	buildh e_StdPSt_daccPIO 1
+	build e_EdMonad_daccEnv 1 e_EdMonad_naccEnv
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jmp s97
+.o 5 0
+s182
+	create
+.d 1 0
+	jsr e_EdMonad_sgetSelection
+.o 1 0
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 6 0
+	jmp s96
+.o 7 0
+s183
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 7 14
+	update_a 6 13
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 8 0
+	jmp s95
+.o 8 0
+s184
+	create
+.d 1 0
+	jsr e_EdMonad_sgetFontInfo
+.o 1 0
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 8 16
+	update_a 7 15
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 9 0
+	jmp s94
+.o 11 7 iiiibbb
+s185
+	push_a 3
+	build e_StdIOBasic_dRectangle.corner2 -4 e_StdIOBasic_nRectangle.corner2
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	build_r e_EdMonad_rFontInfo 3 7 8 0
+	push_a 8
+	push_a 8
+	build e_EdVisualText_dpositionToPoint 3 e_EdVisualText_npositionToPoint
+	push_a 5
+	build e_StdIOBasic_dRectangle.corner1 -4 e_StdIOBasic_nRectangle.corner1
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 6
+	build e_StdIOBasic_dRectangle.corner1 -4 e_StdIOBasic_nRectangle.corner1
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	push_a 7
+	build e_StdIOBasic_dRectangle.corner2 -4 e_StdIOBasic_nRectangle.corner2
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	push_a 3
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 3
+	push_b 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_u _ 2 1 n201
+	push_a 4
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_b 2
+	push_a 6
+	build_u _ 2 1 n202
+	push_a 5
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n203
+	push_a 6
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	push_b 0
+	push_a 4
+	build_u _ 2 1 n204
+	push_a 0
+	push_a 2
+	push_a 4
+	push_a 6
+	build _ 4 n115
+	push_a 14
+	build e_EdPosition_dPosition.row -4 e_EdPosition_nPosition.row
+	push_a 16
+	build e_EdPosition_dPosition.row -4 e_EdPosition_nPosition.row
+	build _ 2 n205
+	push_a 4
+	push_a 6
+	push_b 0
+	push_a 8
+	push_a 10
+	push_b 3
+	push_a 12
+	push_a 14
+	push_a 16
+	push_a 18
+	push_a 8
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 20
+	update_a 0 25
+	update_a 0 24
+	update_a 0 23
+	update_a 0 26
+	update_a 0 29
+	update_a 0 28
+	update_a 0 27
+	pop_a 1
+.d 10 2 ii
+	jsr s196
+.o 1 1 b
+	push_b 0
+	jmp_false else.93
+	build e_StateMonad_dnothing 0 e_StateMonad_nnothing
+	push_a 21
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 22
+	updatepop_a 0 21
+	pop_b 8
+.d 2 0
+	jmp s60
+else.93
+	buildI_b 1
+	push_a 1
+	push_a 7
+	push_a 9
+	push_a 5
+	push_a 7
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 12
+	push_a 14
+	push_a 22
+	build _ 12 n132
+	push_a 13
+	buildh e_StdWindow_dmoveWindowViewFrame 2
+	buildh e_StdPSt_dappPIO 1
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 8
+	update_a 1 21
+	updatepop_a 0 20
+.d 2 0
+	jsr e_EdMonad_sappEnv
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_ap 1
+	repl_args 2 2
+.d 2 0
+	rtn
+.n 2 _ ea205
+.o 1 0
+n205
+	push_node _cycle_in_spine 2
+.o 3 0
+ea205
+.o 3 0
+s205
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	subI
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	pop_a 2
+	eqI
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n204
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea204
+.o 3 1 i
+s204
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	addI
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	updatepop_b 0 1
+	pop_a 2
+	notB
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea203
+.o 1 0
+n203
+	push_node _cycle_in_spine 2
+.o 3 0
+ea203
+.o 3 0
+s203
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	pop_a 2
+	notB
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n202
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea202
+.o 3 1 i
+s202
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	addI
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	updatepop_b 0 1
+	pop_a 2
+	notB
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n201
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea201
+.o 3 1 i
+s201
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	ltI
+	updatepop_b 0 1
+	pop_a 2
+	notB
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 1 b
+s186
+	push_b 0
+	jmp_false else.94
+	build e_EdMonad_dgetCursorHeight 0 e_EdMonad_ngetCursorHeight
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	jmp s92
+else.94
+	build e_StateMonad_dnothing 0 e_StateMonad_nnothing
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	jmp s58
+.o 2 0
+s187
+	build e_EdMonad_dgetFontInfo 0 e_EdMonad_ngetFontInfo
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s91
+.o 3 0
+s188
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp s90
+.o 4 0
+s189
+	create
+.d 1 0
+	jsr e_EdMonad_sgetSelection
+.o 1 0
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jmp s89
+.o 6 0
+s190
+	push_a 1
+	push_a 3
+	push_a 2
+	push_a 7
+	buildB FALSE
+	build _ 5 n13
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 6
+	updatepop_a 0 5
+.d 2 0
+	jsr e_EdVisualText_svDraw
+.o 1 0
+	buildB FALSE
+	build e_EdMonad_dsetCursorVisibility 1 e_EdMonad_nsetCursorVisibility
+	push_a 2
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr s53
+.o 1 0
+	repl_args 2 2
+.d 2 0
+	rtn
+.o 3 0
+s191
+	push_a 1
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_EdSelection_sisEmptySelection
+.o 0 1 b
+	jmp_false else.95
+	create
+.d 1 0
+	jsr e_EdMonad_sgetCursorVisibility
+.o 1 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s87
+else.95
+	build e_StateMonad_dnothing 0 e_StateMonad_nnothing
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s51
+.o 2 1 b
+s192
+	push_b 0
+	jmp_false else.96
+	build e_StateMonad_dnothing 0 e_StateMonad_nnothing
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 1
+.d 2 0
+	jmp s48
+else.96
+	build e_EdMonad_dgetCursorHeight 0 e_EdMonad_ngetCursorHeight
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 1
+.d 3 0
+	jmp s86
+.o 3 0
+s193
+	build e_EdMonad_dgetFontInfo 0 e_EdMonad_ngetFontInfo
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp s85
+.o 4 0
+s194
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 5 0
+	jmp s84
+.o 5 0
+s195
+	push_a 2
+	push_a 4
+	push_a 3
+	push_a 3
+	buildB TRUE
+	build _ 5 n13
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jsr e_EdVisualText_svDraw
+.o 1 0
+	buildB TRUE
+	build e_EdMonad_dsetCursorVisibility 1 e_EdMonad_nsetCursorVisibility
+	push_a 2
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr s45
+.o 1 0
+	repl_args 2 2
+.d 2 0
+	rtn
+.o 10 2 ii
+s196
+	eq_desc e_Data.Maybe_dJust 1 0
+	jmp_true case.97
+	jmp case.98
+case.97
+	repl_args 1 1
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	jmp_false else.99
+	buildI 8
+	buildI_b 0
+	build _ 2 e_StdInt_n*;9
+	push_a 4
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 6
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 3 n206
+	push_a 5
+	build e_StdIOBasic_dPoint2.x -3 e_StdIOBasic_nPoint2.x
+	push_a 2
+	push_a 6
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	build _ 3 n207
+	buildI_b 0
+	push_a 1
+	push_a 3
+	build _ 3 n208
+	push_a 8
+	jsr_eval 0
+	pushI_a 9
+	pop_a 1
+	jsr_eval 4
+	push_r_args_b 4 0 2 1 1
+	ltI
+	notB
+	push_a 10
+	push_a 10
+	push_a 6
+	push_a 9
+	updatepop_b 0 1
+	buildh _Nil 0
+	update_a 0 11
+	update_a 0 9
+	update_a 0 13
+	update_a 0 8
+	update_a 0 16
+	pop_a 1
+.d 4 1 b
+	jsr s116
+.o 0 1 b
+	buildI_b 1
+	push_a 11
+	push_a 11
+	push_a 10
+	push_a 5
+	push_a 7
+	updatepop_b 0 1
+	buildh _Nil 0
+	update_a 0 9
+	update_a 0 14
+	update_a 0 16
+	update_a 0 17
+	pop_a 1
+.d 6 1 b
+	jsr s117
+.o 0 1 b
+	updatepop_a 0 13
+.d 1 1 b
+	rtn
+else.99
+	pushI 8
+	push_b 1
+	pop_a 2
+	mulI
+	push_a 0
+	push_a 3
+	buildI_b 1
+	push_a 4
+	push_a 10
+	push_a 10
+	build _ 6 n209
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	jsr_eval 2
+	push_r_args_b 2 0 2 1 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	ltI
+	notB
+	buildI_b 3
+	push_a 6
+	push_a 6
+	push_b 1
+	push_a 5
+	push_a 5
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 4
+	updatepop_b 0 3
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 8
+	update_a 0 10
+	update_a 0 11
+	update_a 0 9
+	update_a 0 12
+	pop_a 1
+.d 5 2 bi
+	jsr s120
+.o 0 1 b
+	updatepop_a 0 8
+.d 1 1 b
+	rtn
+case.98
+	push_a 2
+	push_a 5
+	buildI_b 0
+	push_a 6
+	push_a 12
+	push_a 12
+	build _ 6 n210
+	push_a 10
+	jsr_eval 0
+	pushB_a 11
+	pop_a 1
+	updatepop_a 0 10
+	updatepop_b 0 2
+.d 1 1 b
+	rtn
+.n 6 _ ea210
+.o 1 0
+n210
+	push_node _cycle_in_spine 6
+.o 7 0
+ea210
+.o 7 0
+s210
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	push_a 1
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s123
+.o 0 1 b
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 1 b
+	jsr s124
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 6 _ ea209
+.o 1 0
+n209
+	push_node _cycle_in_spine 6
+.o 7 0
+ea209
+.o 7 0
+s209
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	push_a 1
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s121
+.o 0 1 b
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 1 b
+	jsr s122
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 _ ea208
+.o 1 0
+n208
+	push_node _cycle_in_spine 3
+.o 4 0
+ea208
+.o 4 0
+s208
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	push_a 1
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s118
+.o 0 1 b
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 1 b
+	jsr s119
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 _ ea207
+.o 1 0
+n207
+	push_node _cycle_in_spine 3
+.o 4 0
+ea207
+.o 4 0
+s207
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	addI
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	pop_a 3
+	notB
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 _ ea206
+.o 1 0
+n206
+	push_node _cycle_in_spine 3
+.o 4 0
+ea206
+.o 4 0
+s206
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	subI
+	ltI
+	pop_a 3
+	notB
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn

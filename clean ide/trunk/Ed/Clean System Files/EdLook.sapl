@@ -1,0 +1,33 @@
+|| ?module? EdLook
+
+
+EdLook.cleanUpdate !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons h_1_0 t_1_1 -> case (<{StdInt.==_16}> (select (select h_1_0::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 0) (select (select h_1_0::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 0)) (True -> EdLook.cleanUpdate t_1_1) (False -> case (<{StdInt.==_16}> (select (select h_1_0::StdIOBasic._Rectangle 0)::StdIOBasic._Point2 1) (select (select h_1_0::StdIOBasic._Rectangle 1)::StdIOBasic._Point2 1)) (True -> EdLook.cleanUpdate t_1_1) (False -> _predefined._Cons h_1_0 (EdLook.cleanUpdate t_1_1)) ) ) 
+<{EdLook.editWindowLook`_2}> newFrame_0 updArea_1 end_2 height_3::I selection_4 !visible_5::B font_6 text_7 picture_8 = case visible_5 (True -> let updArea_2_0 = EdLook.cleanUpdate updArea_1 in EdVisualCursor.vUpdateCursor visible_5 end_2 height_3 font_6 text_7 newFrame_0 updArea_2_0 (EdVisualText.vUpdateText font_6 text_7 newFrame_0 updArea_2_0 (EdVisualLineNr.vDrawLineNrs font_6 text_7 newFrame_0 updArea_2_0 picture_8))) (False -> let updArea_2_0 = EdLook.cleanUpdate updArea_1 in EdVisualCursor.vUpdateSelection selection_4 font_6 text_7 newFrame_0 updArea_2_0 (EdVisualText.vUpdateText font_6 text_7 newFrame_0 updArea_2_0 (EdVisualLineNr.vDrawLineNrs font_6 text_7 newFrame_0 updArea_2_0 picture_8))) 
+EdLook.editWindowLook editState_0 selectState_1 !updateState_2 = case updateState_2 (StdIOCommon._UpdateState oldFrame_1_0 newFrame_1_1 updArea_1_2 -> let _x_2_0 = EdMonad.getFontInfo (_Tuple2 editState_0 42), _x_2_1 = EdMonad.getText (select _x_2_0::_Tuple2 1), _x_2_2 = EdMonad.getCursorVisibility (select _x_2_1::_Tuple2 1), _x_2_3 = EdMonad.getCursorHeight (select _x_2_2::_Tuple2 1), selection_2_4 = select (EdMonad.getSelection (select _x_2_3::_Tuple2 1))::_Tuple2 0 in <{EdLook.editWindowLook`_2}> newFrame_1_1 updArea_1_2 (select selection_2_4::EdSelection._Selection 1) (select _x_2_3::_Tuple2 0) selection_2_4 (select _x_2_2::_Tuple2 0) (select _x_2_0::_Tuple2 0) (select _x_2_1::_Tuple2 0)) 
+
+
+|| Converted Records
+:: <{EdLook.gEq_s;}> = {!EdLook.gEq_s}
+
+:: <{EdLook.gEq_ss;}> = {!EdLook.gEq_ss}
+
+:: <{EdLook.gEq_sss;}> = {!EdLook.gEq_sss}
+
+:: <{EdLook.gEq_ssss;}> = {!EdLook.gEq_ssss}
+
+:: <{EdLook.gEq_sssss;}> = {!EdLook.gEq_sssss}
+
+:: <{EdLook.gEq_ssssss;}> = {!EdLook.gEq_ssssss}
+
+:: <{EdLook.gEq_sssssss;}> = {!EdLook.gEq_sssssss}
+
+:: <{EdLook.gEq_ssssssss;}> = {!EdLook.gEq_ssssssss}
+
+:: <{EdLook.gEq_sssssssss;}> = {!EdLook.gEq_sssssssss}
+
+:: <{EdLook.bimap_s;}> = {EdLook.bimap_s}
+
+:: <{EdLook.bimap_ss;}> = {EdLook.bimap_ss}
+
+:: <{EdLook.bimap_sss;}> = {EdLook.bimap_sss}
+

@@ -1,0 +1,54 @@
+|| ?module? clipboard
+
+
+clipboard.isClipboardWindow !_vClipper_0 !w_1 !ps_2 = let _x_1_0 = select _vClipper_0::<{clipboard.Clipper;}> 0 ps_2 in _Tuple2 (<{id.==_27}> (select (select _x_1_0::_Tuple2 0)::clipboard._ClipInfo 0) w_1) (select _x_1_0::_Tuple2 1)
+clipboard.initClipInfo !_v_0 undo_1 menu_2 env_3 = let _x_1_0 = select _v_0::<{StdId.Ids;}> 0 env_3, _x_1_1 = select _v_0::<{StdId.Ids;}> 0 (select _x_1_0::_Tuple2 1), _x_1_2 = select _v_0::<{StdId.Ids;}> 0 (select _x_1_1::_Tuple2 1) in _Tuple2 (clipboard._ClipInfo (select _x_1_0::_Tuple2 0) (select _x_1_1::_Tuple2 0) undo_1 (select _x_1_2::_Tuple2 0) clipboard.Hidden menu_2) (select _x_1_2::_Tuple2 1)
+clipboard.getString_14 !_x_0 = case _x_0 (_predefined._Cons clip_1_0 clips_1_1 -> let clip_2_0 = StdClipboard.fromClipboard_3 clip_1_0 in case (Data.Maybe.isNothing clip_2_0) (True -> clipboard.getString_14 clips_1_1) (False -> Data.Maybe.fromJust clip_2_0) ) (_predefined._Nil -> "") 
+clipboard.show_13 !_vEditor_0 c_1 !ps_2 = let _x_1_0 = StdClipboard.clipboardHasChanged ps_2 in case (select _x_1_0::_Tuple2 0) (True -> let _x_3_0 = StdClipboard.getClipboard (select _x_1_0::_Tuple2 1) in select (EdClient.message _vEditor_0 c_1 EdVisualCursor.vHideCursor (select (EdClient.message _vEditor_0 c_1 (EdClient.msgSetNeedSave False) (select (EdClient.message _vEditor_0 c_1 (EdClient.msgSetText (EdLineText.stringsToText (EdLineText.stringToStrings (clipboard.getString_14 (select _x_3_0::_Tuple2 0))))) (select _x_3_0::_Tuple2 1))::_Tuple2 1))::_Tuple2 1))::_Tuple2 1) (False -> select _x_1_0::_Tuple2 1) 
+clipboard.tdef_12 !_vEditor_0 t_1 c_2 = StdTimerDef.Timer 1000 StdIOBasic.NilLS (_predefined._Cons (StdTimerDef.TimerId t_1) (_predefined._Cons (StdTimerDef.TimerFunction (StdIOBasic.noLS1 (StdFunc.const (clipboard.show_13 _vEditor_0 c_2)))) _predefined._Nil))
+clipboard.getClipInfo_4 !_vClipper_0 !ps_1 = StdPSt.accPLoc (select _vClipper_0::<{clipboard.Clipper;}> 0) ps_1
+clipboard.deactivate !_vClipper_0 !ps_1 = let _x_1_0 = clipboard.getClipInfo_4 _vClipper_0 ps_1 in StdPSt.appPIO (StdMenuElement.enableMenuElements (select (select _x_1_0::_Tuple2 0)::clipboard._ClipInfo 5)) (select _x_1_0::_Tuple2 1)
+clipboard.anon_16 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+clipboard.anon_60 !_x_0 !g_1 x_2 = StdMenuElement.disableMenuElements _x_0 (g_1 x_2)
+clipboard.anon_61 !_x_0 !_x_1 !x_2 = StdMenuElement.disableMenuElements _x_0 (StdMenuElement.setMenuElementTitles _x_1 x_2)
+clipboard.activate_11 ci_0 mn_sav_1 mn_rev_2 !ps_3 = StdPSt.appPIO (clipboard.anon_61 (_predefined._Cons mn_sav_1 (_predefined._Cons mn_rev_2 (select ci_0::clipboard._ClipInfo 5))) (_predefined._Cons (_Tuple2 mn_sav_1 "Save") (_predefined._Cons (_Tuple2 mn_rev_2 "Revert") _predefined._Nil))) ps_3
+clipboard.setClipInfo_5 !_vClipper_0 !ci_1 !ps_2 = StdPSt.appPLoc (select _vClipper_0::<{clipboard.Clipper;}> 1 ci_1) ps_2
+<{clipboard.==_6}>::B !_x_0 !_x_1 = case _x_0 (clipboard.Shown -> case _x_1 (clipboard.Shown -> True) ) (clipboard.Hidden -> case _x_1 (clipboard.Hidden -> True) ) (_ -> False)
+clipboard.showClip_15 !_vClipper_0 !_vEditor_1 ci_2 mn_sav_3 mn_rev_4 !ps_5 = let _x_1_0 = clipboard.getClipInfo_4 _vClipper_0 ps_5, ci_1_1 = select _x_1_0::_Tuple2 0 in case (<{clipboard.==_6}> (select ci_1_1::clipboard._ClipInfo 4) clipboard.Hidden) (True -> let ps_3_0 = select _x_1_0::_Tuple2 1, _x_3_1 = ioutil.accScreenPicture_21 (StdPicture.openFont StdPictureDef.NonProportionalFontDef) ps_3_0, ps_3_2 = select _x_3_1::_Tuple2 1, _x_3_3 = StdClipboard.getClipboard ps_3_2, ps_3_4 = select _x_3_3::_Tuple2 1, _x_3_5 = StdTimer.openTimer_8 (<{StdTimerElementClass.TimerElements;}> StdTimerElementClass.getTimerElementType_6 StdTimerElementClass.timerElementToHandles_7) StdMisc.undef (clipboard.tdef_12 _vEditor_1 (select ci_1_1::clipboard._ClipInfo 3) (select ci_1_1::clipboard._ClipInfo 0)) ps_3_4 in case (StdBool.not (<{StdIOCommon.==_42}> (select _x_3_5::_Tuple2 0) StdIOCommon.NoError)) (True -> select _x_3_5::_Tuple2 1) (False -> let ci_5_0 = update ci_1_1::clipboard._ClipInfo [4:clipboard.Shown] in select (EdClient.message _vEditor_1 (select ci_5_0::clipboard._ClipInfo 0) EdVisualCursor.vHideCursor (clipboard.setClipInfo_5 _vClipper_0 ci_5_0 (EdWindow.openEditWindow _vEditor_1 (select ci_1_1::clipboard._ClipInfo 2) "Clipboard" "" (EdLineText.stringsToText (EdLineText.stringToStrings (clipboard.getString_14 (select _x_3_3::_Tuple2 0)))) (select (select _x_3_1::_Tuple2 0)::_Tuple2 1) (_Tuple5 4 False False False False) 0 EdMonad.DefaultSyntaxColours (select ci_1_1::clipboard._ClipInfo 0) (_predefined._Cons (StdWindowDef.WindowActivate (StdIOBasic.noLS (clipboard.activate_11 ci_2 mn_sav_3 mn_rev_4))) (_predefined._Cons (StdWindowDef.WindowDeactivate (StdIOBasic.noLS (clipboard.deactivate _vClipper_0))) (_predefined._Cons (StdWindowDef.WindowClose (StdIOBasic.noLS (clipboard.showClip_15 _vClipper_0 _vEditor_1 ci_2 mn_sav_3 mn_rev_4))) _predefined._Nil))) (StdPSt.appPIO (StdMenuElement.setMenuElementTitles (_predefined._Cons (_Tuple2 (select ci_1_1::clipboard._ClipInfo 1) "Hide Clipboard") _predefined._Nil)) (select _x_3_5::_Tuple2 1)))))::_Tuple2 1) ) (False -> clipboard.deactivate _vClipper_0 (clipboard.setClipInfo_5 _vClipper_0 (update ci_1_1::clipboard._ClipInfo [4:clipboard.Hidden]) (EdWindow.closeEditWindow _vEditor_1 (select ci_1_1::clipboard._ClipInfo 0) (StdPSt.appPIO (StdTimer.closeTimer (select ci_1_1::clipboard._ClipInfo 3)) (StdPSt.appPIO (StdMenuElement.setMenuElementTitles (_predefined._Cons (_Tuple2 (select ci_1_1::clipboard._ClipInfo 1) "Show Clipboard") _predefined._Nil)) (select _x_1_0::_Tuple2 1)))))) 
+clipboard.clipMenuItems !_vClipper_0 !_vEditor_1 !mn_sav_2 !mn_rev_3 !ci_4 = StdMenuDef.MenuItem "&Show Clipboard" (_predefined._Cons (StdMenuDef.MenuFunction (StdIOBasic.noLS (clipboard.showClip_15 _vClipper_0 _vEditor_1 ci_4 mn_sav_2 mn_rev_3))) (_predefined._Cons (StdMenuDef.MenuId (select ci_4::clipboard._ClipInfo 1)) _predefined._Nil))
+clipboard.cw_maybe_close !_vClipper_0 !_vEditor_1 !win_2 !ps_3 = let _x_1_0 = clipboard.getClipInfo_4 _vClipper_0 ps_3, ci_1_1 = select _x_1_0::_Tuple2 0 in case (StdBool.not (<{id.==_27}> (select ci_1_1::clipboard._ClipInfo 0) win_2)) (True -> _Tuple2 False (select _x_1_0::_Tuple2 1)) (False -> let ci_3_0 = update ci_1_1::clipboard._ClipInfo [4:clipboard.Hidden], ps_3_1 = select _x_1_0::_Tuple2 1, ps_3_2 = StdPSt.appPIO (StdMenuElement.setMenuElementTitles (_predefined._Cons (_Tuple2 (select ci_1_1::clipboard._ClipInfo 1) "Show Clipboard") _predefined._Nil)) ps_3_1, ps_3_3 = StdPSt.appPIO (StdTimer.closeTimer (select ci_1_1::clipboard._ClipInfo 3)) ps_3_2, ps_3_4 = EdWindow.closeEditWindow _vEditor_1 (select ci_1_1::clipboard._ClipInfo 0) ps_3_3, ps_3_5 = clipboard.setClipInfo_5 _vClipper_0 ci_3_0 ps_3_4, _x_3_6 = StdPSt.accPIO StdWindow.getActiveWindow ps_3_5, act_3_7 = select _x_3_6::_Tuple2 0 in case (Data.Maybe.isNothing act_3_7) (True -> _Tuple2 True (select _x_3_6::_Tuple2 1)) (False -> case (StdBool.not (<{id.==_27}> win_2 (Data.Maybe.fromJust act_3_7))) (True -> _Tuple2 True (select _x_3_6::_Tuple2 1)) (False -> _Tuple2 True (clipboard.deactivate _vClipper_0 (select _x_3_6::_Tuple2 1))) ) ) 
+<{clipboard.TD;ClipInfo}> _x_0::B = _predefined._Nil
+<{clipboard.TD;ClipState`}> _x_0::B = _predefined._Nil
+<{clipboard.TD;Clipper;}> _x_0::B = _predefined._Nil
+
+:: clipboard.ClipState` = clipboard.Shown | clipboard.Hidden
+
+|| Converted Records
+:: clipboard._ClipInfo = {!clipboard.clip_clipId, !clipboard.clip_itemId, !clipboard.clip_undoId, !clipboard.clip_timeId, !clipboard.clip_state, !clipboard.menuIds}
+
+:: <{clipboard.Clipper;}> = {!clipboard.getClipInfo, !clipboard.setClipInfo}
+
+:: <{clipboard.gEq_s;}> = {!clipboard.gEq_s}
+
+:: <{clipboard.gEq_ss;}> = {!clipboard.gEq_ss}
+
+:: <{clipboard.gEq_sss;}> = {!clipboard.gEq_sss}
+
+:: <{clipboard.gEq_ssss;}> = {!clipboard.gEq_ssss}
+
+:: <{clipboard.gEq_sssss;}> = {!clipboard.gEq_sssss}
+
+:: <{clipboard.gEq_ssssss;}> = {!clipboard.gEq_ssssss}
+
+:: <{clipboard.gEq_sssssss;}> = {!clipboard.gEq_sssssss}
+
+:: <{clipboard.gEq_ssssssss;}> = {!clipboard.gEq_ssssssss}
+
+:: <{clipboard.gEq_sssssssss;}> = {!clipboard.gEq_sssssssss}
+
+:: <{clipboard.bimap_s;}> = {clipboard.bimap_s}
+
+:: <{clipboard.bimap_ss;}> = {clipboard.bimap_ss}
+
+:: <{clipboard.bimap_sss;}> = {clipboard.bimap_sss}
+

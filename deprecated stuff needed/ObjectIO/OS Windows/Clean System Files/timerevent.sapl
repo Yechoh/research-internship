@@ -1,0 +1,35 @@
+|| ?module? timerevent
+
+
+timerevent.timereventFatalError !function_0 !error_1 = commondef.fatalError function_0 "timerevent" error_1
+timerevent.lookForTimer_2 !parent_0 !timers_1 = case timers_1 (timerhandle._TimerHandles tHs_1_0 -> let _x_2_0 = commondef.ucontains (timeraccess.identifyTimerStateHandle parent_0) tHs_1_0 in <{_Tuple2!3}> (select _x_2_0::_Tuple2 0) (update timers_1::timerhandle._TimerHandles [0:select _x_2_0::_Tuple2 1])) 
+timerevent.timerEvent_3 !schedulerEvent_0 !pState_1 = case schedulerEvent_0 (deviceevents.ScheduleTimerEvent te_1_0 -> case te_1_0 (timertable._TimerEvent teLoc_2_0 teNr_2_1 -> case pState_1 (iostate._PSt ls_3_0 ioState_3_1 -> let _x_4_0 = iostate.ioStGetIOId ioState_3_1 in case (case (StdBool.not (<{systemid.==_5}> (select teLoc_2_0::timertable._TimerLoc 0) (select _x_4_0::_Tuple2 0))) (True -> True) (False -> StdBool.not (<{device.==_2}> (select teLoc_2_0::timertable._TimerLoc 1) device.TimerDevice)) ) (True -> <{_Tuple4!15}> False Data.Maybe.Nothing schedulerEvent_0 (update pState_1::iostate._PSt [1:select _x_4_0::_Tuple2 1])) (False -> let ioState_6_0 = select _x_4_0::_Tuple2 1, _x_6_1 = iostate.ioStGetDevice device.TimerDevice ioState_6_0, timer_6_2 = select _x_6_1::_Tuple3 1, timers_6_3 = devicesystemstate.timerSystemStateGetTimerHandles timer_6_2, _x_6_4 = timerevent.lookForTimer_2 (select teLoc_2_0::timertable._TimerLoc 2) timers_6_3 in case (select _x_6_4::_Tuple2 0) (True -> let !deviceEvent_8_0 = deviceevents.TimerEvent te_1_0 in <{_Tuple4!15}> True (Data.Maybe.Just deviceEvent_8_0) schedulerEvent_0 (update pState_1::iostate._PSt [1:iostate.ioStSetDevice (devicesystemstate.TimerSystemState (select _x_6_4::_Tuple2 1)) (select _x_6_1::_Tuple3 2)])) (False -> <{_Tuple4!15}> False Data.Maybe.Nothing schedulerEvent_0 (update pState_1::iostate._PSt [1:iostate.ioStSetDevice (devicesystemstate.TimerSystemState (select _x_6_4::_Tuple2 1)) (select _x_6_1::_Tuple3 2)])) ) ) ) ) (deviceevents.ScheduleMsgEvent msgEvent_1_0 -> let _x_2_0 = StdPSt.accPIO iostate.ioStGetIOId pState_1, recloc_2_1 = <{timerevent._c;53;31_47}> msgEvent_1_0 in case (case (<{systemid.==_5}> (select _x_2_0::_Tuple2 0) (select recloc_2_1::receivertable._RecLoc 0)) (True -> <{device.==_2}> device.TimerDevice (select recloc_2_1::receivertable._RecLoc 1)) (False -> False) ) (True -> <{_Tuple4!15}> True (Data.Maybe.Just (deviceevents.ReceiverEvent msgEvent_1_0)) schedulerEvent_0 (select _x_2_0::_Tuple2 1)) (False -> <{_Tuple4!15}> False Data.Maybe.Nothing schedulerEvent_0 (select _x_2_0::_Tuple2 1)) ) (_ -> <{_Tuple4!15}> False Data.Maybe.Nothing schedulerEvent_0 pState_1)
+<{timerevent._c;53;31_47}> !msgEvent_0 = case msgEvent_0 (deviceevents.QASyncMessage _x_1_0 -> case _x_1_0 (receivermessage._QASyncMessage qasmRecLoc_2_0 qasmMsg_2_1 -> qasmRecLoc_2_0) ) (deviceevents.ASyncMessage _x_1_0 -> case _x_1_0 (receivermessage._ASyncMessage asmRecLoc_2_0 -> asmRecLoc_2_0) ) (deviceevents.SyncMessage _x_1_0 -> case _x_1_0 (receivermessage._SyncMessage smRecLoc_2_0 smMsg_2_1 smResp_2_2 smError_2_3 -> smRecLoc_2_0) ) 
+timerevent.timerEvent !schedulerEvent_0 !pState_1 = let _x_1_0 = StdPSt.accPIO (iostate.ioStHasDevice device.TimerDevice) pState_1 in case (StdBool.not (select _x_1_0::_Tuple2 0)) (True -> timerevent.timereventFatalError "TimerFunctions.dEvent" "could not retrieve TimerSystemState from IOSt") (False -> timerevent.timerEvent_3 schedulerEvent_0 (select _x_1_0::_Tuple2 1)) 
+
+
+|| Converted Records
+:: <{timerevent.gEq_s;}> = {!timerevent.gEq_s}
+
+:: <{timerevent.gEq_ss;}> = {!timerevent.gEq_ss}
+
+:: <{timerevent.gEq_sss;}> = {!timerevent.gEq_sss}
+
+:: <{timerevent.gEq_ssss;}> = {!timerevent.gEq_ssss}
+
+:: <{timerevent.gEq_sssss;}> = {!timerevent.gEq_sssss}
+
+:: <{timerevent.gEq_ssssss;}> = {!timerevent.gEq_ssssss}
+
+:: <{timerevent.gEq_sssssss;}> = {!timerevent.gEq_sssssss}
+
+:: <{timerevent.gEq_ssssssss;}> = {!timerevent.gEq_ssssssss}
+
+:: <{timerevent.gEq_sssssssss;}> = {!timerevent.gEq_sssssssss}
+
+:: <{timerevent.bimap_s;}> = {timerevent.bimap_s}
+
+:: <{timerevent.bimap_ss;}> = {timerevent.bimap_ss}
+
+:: <{timerevent.bimap_sss;}> = {timerevent.bimap_sss}
+

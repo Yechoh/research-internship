@@ -1,0 +1,35 @@
+|| ?module? EdWindow
+
+
+EdWindow.determine_default_window_size !lineHeight_0::I !io_1 = let _x_1_0::I = StdProcess.getProcessWindowSize io_1, _x_1_1::I = select _x_1_0::_Tuple2 0, process_window_width_1_2::I = select _x_1_1::StdIOBasic._Size 0, default_window_width_1_3::I = <{StdInt.-_7}> process_window_width_1_2 40, process_window_height_1_4 = select _x_1_1::StdIOBasic._Size 1, process_window_lines_1_5 = <{StdInt./_10}> (<{StdInt.-_7}> process_window_height_1_4 60) lineHeight_0 in <{_Tuple2!3}> (StdIOBasic._Size (<{EdWindow._if;16;30_46}> (<{StdInt.<_17}> 800 default_window_width_1_3) default_window_width_1_3) (<{StdInt.*_9}> (<{EdWindow._if;19;30_47}> (<{StdInt.<_17}> 40 process_window_lines_1_5) process_window_lines_1_5) lineHeight_0)) (select _x_1_0::_Tuple2 1)
+<{EdWindow._if;19;30_47}>::I !_x_0::B process_window_lines_1::I = case _x_0 (True -> 40) (_ -> case (<{StdInt.<_17}> process_window_lines_1 5) (True -> 5) (False -> process_window_lines_1) )
+<{EdWindow._if;16;30_46}>::I !_x_0::B default_window_width_1::I = case _x_0 (True -> 800) (_ -> case (<{StdInt.<_17}> default_window_width_1 100) (True -> 100) (False -> default_window_width_1) )
+EdWindow.openEditWindow !_vEditor_0 u_1 title_2 pathName_3 text_4 !font_5 tabs_6 margin_7::I syncols_8 window_9 atts_10 !ps_11 = let _x_1_0 = EdState.getEditorState_6 _vEditor_0 ps_11, _x_1_1 = EdMessage.openEditId (<{StdId.Ids;}> StdId.openId_13 StdId.openIds_14 StdId.openR2Id_15 StdId.openR2Ids_16 StdId.openRId_17 StdId.openRIds_18) (select _x_1_0::_Tuple2 1), edit_1_2 = select _x_1_1::_Tuple2 0, _x_1_3 = EdMonad.initEditState window_9 u_1 pathName_3 font_5 tabs_6 margin_7 syncols_8 (select _x_1_1::_Tuple2 1), _x_1_4 = select (EdMonad.setText text_4 (_Tuple2 (select _x_1_3::_Tuple2 0) (select _x_1_3::_Tuple2 1)))::_Tuple2 1, _x_1_5 = EdMonad.getFontInfo (_Tuple2 (select _x_1_4::_Tuple2 0) (select _x_1_4::_Tuple2 1)), _x_1_6 = select _x_1_5::_Tuple2 1, _x_1_7 = EdVisualText.computeViewDomain (_Tuple2 (select _x_1_6::_Tuple2 0) (select _x_1_6::_Tuple2 1)), _x_1_8 = select _x_1_7::_Tuple2 1, editState_1_9 = select _x_1_8::_Tuple2 0, font_1_10 = select _x_1_5::_Tuple2 0, ps_1_11 = select _x_1_8::_Tuple2 1, _x_1_12 = EdWindow.determine_default_window_size (select font_1_10::EdMonad._FontInfo 1) (select ps_1_11::iostate._PSt 1) in EdState.setEditorState_7 _vEditor_0 (EdState.addReceiver window_9 edit_1_2 (select _x_1_0::_Tuple2 0)) (select (StdWindow.openWindow_55 (<{StdControlClass.Controls;}> StdControlReceiver.controlToHandles_2 StdControlReceiver.getControlType_3) editState_1_9 (StdWindowDef.Window title_2 (EdMessage.openEditReceiver edit_1_2) (<{StdList.++}> atts_10 (_predefined._Cons (StdWindowDef.WindowViewSize (select _x_1_12::_Tuple2 0)) (_predefined._Cons (StdWindowDef.WindowHMargin 0 0) (_predefined._Cons (StdWindowDef.WindowVMargin 0 0) (_predefined._Cons (StdWindowDef.WindowId window_9) (_predefined._Cons (StdWindowDef.WindowViewDomain (select _x_1_7::_Tuple2 0)) (_predefined._Cons (StdWindowDef.WindowLook True (EdLook.editWindowLook editState_1_9)) (_predefined._Cons (StdWindowDef.WindowHScroll (ioutil.altScrollFunction StdIOCommon.Horizontal (select (select font_1_10::EdMonad._FontInfo 2)::StdPictureDef._FontMetrics 3))) (_predefined._Cons (StdWindowDef.WindowVScroll (ioutil.alignScrollFunction StdIOCommon.Vertical (select font_1_10::EdMonad._FontInfo 1))) (_predefined._Cons (StdWindowDef.WindowPos (_Tuple2 StdIOCommon.Fix (StdIOCommon.OffsetVector (StdIOBasic._Vector2 10 10)))) (_predefined._Cons (StdWindowDef.WindowCursor StdIOCommon.IBeamCursor) _predefined._Nil)))))))))))) (update ps_1_11::iostate._PSt [1:select _x_1_12::_Tuple2 1]))::_Tuple2 1)
+EdWindow.closeEditWindow !_vEditor_0 !window_1 !pState_2 = let _x_1_0 = EdState.getEditorState_6 _vEditor_0 pState_2, editorState_1_1 = select _x_1_0::_Tuple2 0, _x_1_2 = EdState.findReceiver window_1 editorState_1_1 in case (Data.Maybe.isNothing (select _x_1_2::_Tuple2 0)) (True -> EdState.setEditorState_7 _vEditor_0 (select _x_1_2::_Tuple2 1) (select _x_1_0::_Tuple2 1)) (False -> EdState.setEditorState_7 _vEditor_0 (EdState.removeReceiver window_1 (select _x_1_2::_Tuple2 1)) (StdWindow.closeWindow window_1 (select _x_1_0::_Tuple2 1))) 
+
+
+|| Converted Records
+:: <{EdWindow.gEq_s;}> = {!EdWindow.gEq_s}
+
+:: <{EdWindow.gEq_ss;}> = {!EdWindow.gEq_ss}
+
+:: <{EdWindow.gEq_sss;}> = {!EdWindow.gEq_sss}
+
+:: <{EdWindow.gEq_ssss;}> = {!EdWindow.gEq_ssss}
+
+:: <{EdWindow.gEq_sssss;}> = {!EdWindow.gEq_sssss}
+
+:: <{EdWindow.gEq_ssssss;}> = {!EdWindow.gEq_ssssss}
+
+:: <{EdWindow.gEq_sssssss;}> = {!EdWindow.gEq_sssssss}
+
+:: <{EdWindow.gEq_ssssssss;}> = {!EdWindow.gEq_ssssssss}
+
+:: <{EdWindow.gEq_sssssssss;}> = {!EdWindow.gEq_sssssssss}
+
+:: <{EdWindow.bimap_s;}> = {EdWindow.bimap_s}
+
+:: <{EdWindow.bimap_ss;}> = {EdWindow.bimap_ss}
+
+:: <{EdWindow.bimap_sss;}> = {EdWindow.bimap_sss}
+

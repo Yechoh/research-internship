@@ -1,0 +1,57 @@
+|| ?module? Table
+
+
+Table.tableNew = _predefined._Nil
+Table.tableInsert !_x_0 !table_1 = case _x_0 (_Tuple2 key_1_0 value_1_1 -> _predefined._Cons (_Tuple2 key_1_0 value_1_1) table_1) 
+<{Table.c;57;13_11}> !<{_v==_0}> removeKey_1 !g_l_2 = <{Table.g_c1;57;32_63}> g_l_2 <{_v==_0}> removeKey_1
+<{Table.g_c1;57;32_63}> !g_l_0 <{_v==_1}> removeKey_2 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Table.g_c2;57;32_62}> g_h_1_0 <{_v==_1}> removeKey_2 g_t_1_1) (_ -> _predefined._Nil)
+<{Table.g_c2;57;32_62}> !g_h_0 !<{_v==_1}> removeKey_2 g_t_3 = case g_h_0 (_Tuple2 key_1_0 _x_1_1 -> case (StdBool.not (select <{_v==_1}>::<{StdOverloaded.==;}> 0 key_1_0 removeKey_2)) (True -> _predefined._Cons g_h_0 (<{Table.c;57;13_11}> <{_v==_1}> removeKey_2 g_t_3)) ) (_ -> <{Table.c;57;13_11}> <{_v==_1}> removeKey_2 g_t_3)
+Table.tableRemove !_vEq_0 !removeKey_1 !table_2 = <{Table.c;57;13_11}> (select _vEq_0::<{StdClass.Eq;}> 0) removeKey_1 table_2
+<{Table.c;61;13_12}> !<{_v==_0}> lookupKey_1 !g_l_2 = <{Table.g_c1;61;29_65}> g_l_2 <{_v==_0}> lookupKey_1
+<{Table.g_c1;61;29_65}> !g_l_0 <{_v==_1}> lookupKey_2 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Table.g_c2;61;29_64}> g_h_1_0 <{_v==_1}> lookupKey_2 g_t_1_1) (_ -> _predefined._Nil)
+<{Table.g_c2;61;29_64}> !g_h_0 !<{_v==_1}> lookupKey_2 g_t_3 = case g_h_0 (_Tuple2 key_1_0 value_1_1 -> case (select <{_v==_1}>::<{StdOverloaded.==;}> 0 key_1_0 lookupKey_2) (True -> _predefined._Cons value_1_1 (<{Table.c;61;13_12}> <{_v==_1}> lookupKey_2 g_t_3)) ) (_ -> <{Table.c;61;13_12}> <{_v==_1}> lookupKey_2 g_t_3)
+Table.tableLookup !_vEq_0 !lookupKey_1 !table_2 = <{Table.c;61;13_12}> (select _vEq_0::<{StdClass.Eq;}> 0) lookupKey_1 table_2
+<{Table.c;65;20_13}> !g_l_0 = <{Table.g_c1;65;36_67}> g_l_0
+<{Table.g_c1;65;36_67}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Table.g_c2;65;36_66}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Table.g_c2;65;36_66}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 key_1_0 value_1_1 -> _predefined._Cons (_Tuple2 value_1_1 key_1_0) (<{Table.c;65;20_13}> g_t_1)) (_ -> <{Table.c;65;20_13}> g_t_1)
+Table.tableInvert !_vEq_0 !table_1 = <{Table.c;65;20_13}> table_1
+<{Table.c;69;11_14}> !g_l_0 = <{Table.g_c1;69;23_69}> g_l_0
+<{Table.g_c1;69;23_69}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Table.g_c2;69;23_68}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Table.g_c2;69;23_68}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 key_1_0 _x_1_1 -> _predefined._Cons key_1_0 (<{Table.c;69;11_14}> g_t_1)) (_ -> <{Table.c;69;11_14}> g_t_1)
+Table.tableKeys !table_0 = <{Table.c;69;11_14}> table_0
+Table.toString_17 !_vtoString_0 !_vtoString_1 !_x_2 = case _x_2 (_Tuple2 l_1_0 r_1_1 -> <{StdString.+++_11}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 l_1_0) (<{StdString.+++_11}> " $$$ " (select _vtoString_1::<{StdOverloaded.toString;}> 0 r_1_1))) 
+Table.dosplit_15 l_0 !r_1 = case (StdBool.not (<{StdInt.<_17}> 5 (_SystemArray.size_20 r_1))) (True -> _Tuple2 (<{StdString.+++_11}> l_0 r_1) "") (False -> case (<{StdString.==_2}> (<{StdString.%_10}> r_1 (_Tuple2 0 4)) " $$$ ") (True -> _Tuple2 l_0 (<{StdString.%_10}> r_1 (_Tuple2 5 (<{StdInt.-_7}> (_SystemArray.size_20 r_1) 1)))) (False -> Table.dosplit_15 (<{StdString.+++_11}> l_0 (<{StdString.%_10}> r_1 (_Tuple2 0 0))) (<{StdString.%_10}> r_1 (_Tuple2 1 (<{StdInt.-_7}> (_SystemArray.size_20 r_1) 1)))) ) 
+Table.fromString_18 !_vfromString_0 !_vfromString_1 !s_2 = let _x_1_0 = Table.dosplit_15 "" s_2 in _Tuple2 (select _vfromString_0::<{StdOverloaded.fromString;}> 0 (select _x_1_0::_Tuple2 0)) (select _vfromString_1::<{StdOverloaded.fromString;}> 0 (select _x_1_0::_Tuple2 1))
+Table.Entry !_vfromString_0 !_vtoString_1 !_vfromString_2 !_vtoString_3 = UtilOptions._OptionsTableEntry "Entry" (UtilOptions.Simple (<{StdOverloaded.toString;}> (Table.toString_17 _vtoString_1 _vtoString_3)) (<{StdOverloaded.fromString;}> (Table.fromString_18 _vfromString_0 _vfromString_2))) StdFunc.id StdFunc.const
+Table.Table !_vfromString_0 !_vtoString_1 !_vfromString_2 !_vtoString_3 a_4 b_5 = _SystemArray.update_5 (_SystemArray._createArray_0 1) 0 (UtilOptions._OptionsTableEntry "Table" (UtilOptions.List (Table.Entry _vfromString_0 _vtoString_1 _vfromString_2 _vtoString_3) (_Tuple2 a_4 b_5)) StdFunc.id StdFunc.const)
+Table.WriteTable !_vfromString_0 !_vtoString_1 !_vfromString_2 !_vtoString_3 k_4 v_5 table_6 = UtilOptions.PutOptions (Table.Table _vfromString_0 _vtoString_1 _vfromString_2 _vtoString_3 k_4 v_5) (UtilStrictLists.ListToStrictList table_6)
+Table.ReadTable !_vfromString_0 !_vtoString_1 !_vfromString_2 !_vtoString_3 k_4 v_5 !options_6 = UtilStrictLists.StrictListToList (UtilOptions.GetOptions (Table.Table _vfromString_0 _vtoString_1 _vfromString_2 _vtoString_3 k_4 v_5) options_6 (UtilStrictLists.ListToStrictList _predefined._Nil))
+Table.fromString_16::I !s_0 = StdInt.toInt_23 s_0
+<{Table.TD;Table}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: <{Table.gEq_s;}> = {!Table.gEq_s}
+
+:: <{Table.gEq_ss;}> = {!Table.gEq_ss}
+
+:: <{Table.gEq_sss;}> = {!Table.gEq_sss}
+
+:: <{Table.gEq_ssss;}> = {!Table.gEq_ssss}
+
+:: <{Table.gEq_sssss;}> = {!Table.gEq_sssss}
+
+:: <{Table.gEq_ssssss;}> = {!Table.gEq_ssssss}
+
+:: <{Table.gEq_sssssss;}> = {!Table.gEq_sssssss}
+
+:: <{Table.gEq_ssssssss;}> = {!Table.gEq_ssssssss}
+
+:: <{Table.gEq_sssssssss;}> = {!Table.gEq_sssssssss}
+
+:: <{Table.bimap_s;}> = {Table.bimap_s}
+
+:: <{Table.bimap_ss;}> = {Table.bimap_ss}
+
+:: <{Table.bimap_sss;}> = {Table.bimap_sss}
+

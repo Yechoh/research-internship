@@ -1,0 +1,49 @@
+|| ?module? menubar
+
+
+menubar.anon_8 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+menubar.anon_7 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+menubar.anon_6 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+menubar.anon_5 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+menubar.anon_55 !_x_0 !g_1 x_2 = StdMenuElement.enableMenuElements _x_0 (g_1 x_2)
+menubar.anon_54 !_x_0 !g_1 x_2 = StdMenuElement.enableMenuElements _x_0 (g_1 x_2)
+menubar.anon_53 !_x_0 !g_1 x_2 = StdMenuElement.disableMenuElements _x_0 (g_1 x_2)
+menubar.anon_52 !_x_0 !g_1 x_2 = StdMenuElement.disableMenuElements _x_0 (g_1 x_2)
+menubar.anon_59 !_x_0 !_x_1 !x_2 = StdMenuElement.enableMenuElements _x_0 (StdMenuElement.setMenuElementTitles _x_1 x_2)
+menubar.anon_58 !_x_0 !_x_1 !x_2 = StdMenuElement.enableMenuElements _x_0 (StdMenuElement.setMenuElementTitles _x_1 x_2)
+menubar.anon_57 !_x_0 !_x_1 !x_2 = StdMenuElement.disableMenuElements _x_0 (StdMenuElement.setMenuElementTitles _x_1 x_2)
+menubar.anon_56 !_x_0 !_x_1 !x_2 = StdMenuElement.disableMenuElements _x_0 (StdMenuElement.setMenuElementTitles _x_1 x_2)
+menubar.mb_update_undoinfo !ps_0 = let _x_1_0 = IdeState.getMenuIds ps_0, ps_1_1 = select _x_1_0::_Tuple2 1, _x_1_2 = EdClient.sendToActiveWindow (<{EdState.Editor;}> IdeState.getEditorState_66 IdeState.setEditorState_67) EdClient.msgGetUndoState ps_1_1, ps_1_3 = select _x_1_2::_Tuple2 1, _x_1_4 = select _x_1_0::_Tuple2 0, mn_und_1_5 = select _x_1_4::IdeState._MenuIds 9 in <{menubar._c;12;7_61}> (select _x_1_2::_Tuple2 0) mn_und_1_5 ps_1_3
+<{menubar._c;12;7_61}> !_x_0 mn_und_1 !ps_2 = case _x_0 (Data.Maybe.Nothing -> StdPSt.appPIO (menubar.anon_56 (_predefined._Cons mn_und_1 _predefined._Nil) (_predefined._Cons (_Tuple2 mn_und_1 "Undo") _predefined._Nil)) ps_2) (Data.Maybe.Just _x_1_0 -> case _x_1_0 (_Tuple2 st_2_0 ac_2_1 -> <{menubar._c;14;28_60}> st_2_0 mn_und_1 ps_2 ac_2_1) ) 
+<{menubar._c;14;28_60}> !st_0 mn_und_1 !ps_2 ac_3 = case st_0 (EdMonad.None -> StdPSt.appPIO (menubar.anon_57 (_predefined._Cons mn_und_1 _predefined._Nil) (_predefined._Cons (_Tuple2 mn_und_1 "Undo") _predefined._Nil)) ps_2) (EdMonad.Undo -> StdPSt.appPIO (menubar.anon_58 (_predefined._Cons mn_und_1 _predefined._Nil) (_predefined._Cons (_Tuple2 mn_und_1 (<{StdString.+++_11}> "Undo" ac_3)) _predefined._Nil)) ps_2) (EdMonad.Redo -> StdPSt.appPIO (menubar.anon_59 (_predefined._Cons mn_und_1 _predefined._Nil) (_predefined._Cons (_Tuple2 mn_und_1 (<{StdString.+++_11}> "Redo" ac_3)) _predefined._Nil)) ps_2) 
+menubar.makeOther !pth_0 = case (PmPath.IsDefPathname pth_0) (True -> PmPath.MakeImpPathname pth_0) (False -> PmPath.MakeDefPathname pth_0) 
+menubar.mb_update_pathname !pathName_0 !ps_1 = let _x_1_0 = IdeState.getMenuIds ps_1, menu_1_1 = select _x_1_0::_Tuple2 0 in StdPSt.appPIO (StdMenuElement.setMenuElementTitles (_predefined._Cons (_Tuple2 (select menu_1_1::IdeState._MenuIds 0) (<{StdString.+++_11}> "Save " (StdPathname.RemovePath pathName_0))) (_predefined._Cons (_Tuple2 (select menu_1_1::IdeState._MenuIds 2) (<{StdString.+++_11}> "Revert " (StdPathname.RemovePath pathName_0))) (_predefined._Cons (_Tuple2 (select menu_1_1::IdeState._MenuIds 4) (<{StdString.+++_11}> "Open " (menubar.makeOther (StdPathname.RemovePath pathName_0)))) (_predefined._Cons (_Tuple2 (select menu_1_1::IdeState._MenuIds 7) (<{StdString.+++_11}> "Print " (StdPathname.RemovePath pathName_0))) _predefined._Nil))))) (select _x_1_0::_Tuple2 1)
+menubar.mb_enable_pathname !ps_0 = let _x_1_0 = IdeState.getMenuIds ps_0, menu_1_1 = select _x_1_0::_Tuple2 0 in StdPSt.appPIO (StdMenuElement.enableMenuElements (_predefined._Cons (select menu_1_1::IdeState._MenuIds 0) (_predefined._Cons (select menu_1_1::IdeState._MenuIds 2) (_predefined._Cons (select menu_1_1::IdeState._MenuIds 4) (_predefined._Cons (select menu_1_1::IdeState._MenuIds 7) _predefined._Nil))))) (select _x_1_0::_Tuple2 1)
+menubar.mb_disable_pathname !ps_0 = let _x_1_0 = IdeState.getMenuIds ps_0, menu_1_1 = select _x_1_0::_Tuple2 0 in StdPSt.appPIO (StdMenuElement.disableMenuElements (_predefined._Cons (select menu_1_1::IdeState._MenuIds 0) (_predefined._Cons (select menu_1_1::IdeState._MenuIds 2) (_predefined._Cons (select menu_1_1::IdeState._MenuIds 4) (_predefined._Cons (select menu_1_1::IdeState._MenuIds 7) _predefined._Nil))))) (select _x_1_0::_Tuple2 1)
+
+
+|| Converted Records
+:: <{menubar.gEq_s;}> = {!menubar.gEq_s}
+
+:: <{menubar.gEq_ss;}> = {!menubar.gEq_ss}
+
+:: <{menubar.gEq_sss;}> = {!menubar.gEq_sss}
+
+:: <{menubar.gEq_ssss;}> = {!menubar.gEq_ssss}
+
+:: <{menubar.gEq_sssss;}> = {!menubar.gEq_sssss}
+
+:: <{menubar.gEq_ssssss;}> = {!menubar.gEq_ssssss}
+
+:: <{menubar.gEq_sssssss;}> = {!menubar.gEq_sssssss}
+
+:: <{menubar.gEq_ssssssss;}> = {!menubar.gEq_ssssssss}
+
+:: <{menubar.gEq_sssssssss;}> = {!menubar.gEq_sssssssss}
+
+:: <{menubar.bimap_s;}> = {menubar.bimap_s}
+
+:: <{menubar.bimap_ss;}> = {menubar.bimap_ss}
+
+:: <{menubar.bimap_sss;}> = {menubar.bimap_sss}
+

@@ -1,0 +1,44 @@
+|| ?module? EdText
+
+
+EdText.chopLastLine_6 !<{_v%_0}> col2_1::I !_x_2 = case _x_2 (StrictList.SNil -> StrictList.SNil) (StrictList.SCons lastLine_1_0 _x_1_1 -> case _x_1_1 (StrictList.SNil -> StrictList.SCons (select <{_v%_0}>::<{StdOverloaded.%;}> 0 lastLine_1_0 (_Tuple2 0 (<{StdInt.-_7}> col2_1 1))) StrictList.SNil) (_ -> StrictList.SCons lastLine_1_0 (EdText.chopLastLine_6 <{_v%_0}> col2_1 _x_1_1))) 
+EdText.chopLastLine_50 col2_0::I !_x_1 = case _x_1 (StrictList.SNil -> StrictList.SNil) (StrictList.SCons lastLine_1_0 _x_1_1 -> case _x_1_1 (StrictList.SNil -> StrictList.SCons (<{StdString.%_10}> lastLine_1_0 (_Tuple2 0 (<{StdInt.-_7}> col2_0 1))) StrictList.SNil) (_ -> StrictList.SCons lastLine_1_0 (EdText.chopLastLine_50 col2_0 _x_1_1))) 
+EdText.getTextFragment !_x_0 !text_1 = case _x_0 (EdSelection._Selection _x_1_0 _x_1_1 -> case _x_1_0 (EdPosition._Position col1_2_0 row1_2_1 -> case _x_1_1 (EdPosition._Position col2_3_0 row2_3_1 -> case (<{StdInt.==_16}> row1_2_1 row2_3_1) (True -> let _x_5_0 = EdLineText.getLine row1_2_1 text_1 in <{_Tuple2!3}> (StrictList.SCons (<{StdString.%_10}> (select _x_5_0::_Tuple2 0) (_Tuple2 col1_2_0 (<{StdInt.-_7}> col2_3_0 1))) StrictList.SNil) (select _x_5_0::_Tuple2 1)) (False -> let _x_5_0 = EdLineText.getLines row1_2_1 row2_3_1 text_1, _x_5_1 = select _x_5_0::_Tuple2 0, firstLine_5_2 = select _x_5_1::_Tuple2 0 in <{_Tuple2!3}> (StrictList.SCons (<{StdString.%_10}> firstLine_5_2 (_Tuple2 col1_2_0 (<{StdInt.-_7}> (_SystemArray.size_20 firstLine_5_2) 1))) (EdText.chopLastLine_50 col2_3_0 (select _x_5_1::_Tuple2 1))) (select _x_5_0::_Tuple2 1)) ) ) ) 
+EdText.removeText !_x_0 !text_1 = case _x_0 (EdSelection._Selection _x_1_0 _x_1_1 -> case _x_1_0 (EdPosition._Position col1_2_0 row1_2_1 -> case _x_1_1 (EdPosition._Position col2_3_0 row2_3_1 -> case (<{StdInt.==_16}> row1_2_1 row2_3_1) (True -> let _x_5_0 = EdLineText.getLine row1_2_1 text_1, firstLine_5_1 = select _x_5_0::_Tuple2 0, _x_5_2 = EdLineText.updateLine row1_2_1 (<{StdString.+++_11}> (<{StdString.%_10}> firstLine_5_1 (_Tuple2 0 (<{StdInt.-_7}> col1_2_0 1))) (<{StdString.%_10}> firstLine_5_1 (_Tuple2 col2_3_0 (<{StdInt.-_7}> (_SystemArray.size_20 firstLine_5_1) 1)))) (select _x_5_0::_Tuple2 1) in _Tuple2 (Data.Maybe.Just (_Tuple2 (select _x_5_2::_Tuple3 0) (select _x_5_2::_Tuple3 1))) (select _x_5_2::_Tuple3 2)) (False -> let _x_5_0 = EdLineText.getLine row1_2_1 text_1, _x_5_1 = EdLineText.getLine row2_3_1 (select _x_5_0::_Tuple2 1), lastLine_5_2 = select _x_5_1::_Tuple2 0 in _Tuple2 Data.Maybe.Nothing (EdLineText.removeLines (<{StdInt.+_6}> row1_2_1 1) row2_3_1 (select (EdLineText.updateLine row1_2_1 (<{StdString.+++_11}> (<{StdString.%_10}> (select _x_5_0::_Tuple2 0) (_Tuple2 0 (<{StdInt.-_7}> col1_2_0 1))) (<{StdString.%_10}> lastLine_5_2 (_Tuple2 col2_3_0 (<{StdInt.-_7}> (_SystemArray.size_20 lastLine_5_2) 1)))) (select _x_5_1::_Tuple2 1))::_Tuple3 2))) ) ) ) 
+EdText.appendToLastLine !_x_0 right_1 = case _x_0 (StrictList.SCons string_1_0 _x_1_1 -> case _x_1_1 (StrictList.SNil -> StrictList.SCons (<{StdString.+++_11}> string_1_0 right_1) StrictList.SNil) (_ -> StrictList.SCons string_1_0 (EdText.appendToLastLine _x_1_1 right_1))) (StrictList.SNil -> StrictList.SCons right_1 StrictList.SNil) 
+EdText.insertText !_x_0 !strings_1 !text_2 = case _x_0 (EdPosition._Position col_1_0 row_1_1 -> let nrOfStrings_2_0::I = StrictList.slLength strings_1 in case (<{StdInt.==_16}> nrOfStrings_2_0 0) (True -> _Tuple2 Data.Maybe.Nothing (select (EdLineText.getLine row_1_1 text_2)::_Tuple2 1)) (False -> case (<{StdInt.==_16}> nrOfStrings_2_0 1) (True -> let _x_5_0 = EdLineText.getLine row_1_1 text_2, line_5_1 = select _x_5_0::_Tuple2 0, _x_5_2 = EdLineText.updateLine row_1_1 (<{StdString.+++_11}> (<{StdString.%_10}> line_5_1 (_Tuple2 0 (<{StdInt.-_7}> col_1_0 1))) (<{StdString.+++_11}> (StrictList.slHead strings_1) (<{StdString.%_10}> line_5_1 (_Tuple2 col_1_0 (<{StdInt.-_7}> (_SystemArray.size_20 line_5_1) 1))))) (select _x_5_0::_Tuple2 1) in _Tuple2 (Data.Maybe.Just (_Tuple2 (select _x_5_2::_Tuple3 0) (select _x_5_2::_Tuple3 1))) (select _x_5_2::_Tuple3 2)) (False -> let _x_5_0 = EdLineText.getLine row_1_1 text_2, line_5_1 = select _x_5_0::_Tuple2 0 in _Tuple2 Data.Maybe.Nothing (EdLineText.removeLine row_1_1 (EdLineText.insertLines (<{StdInt.+_6}> row_1_1 StdInt.one_11) (StrictList.SCons (<{StdString.+++_11}> (<{StdString.%_10}> line_5_1 (_Tuple2 0 (<{StdInt.-_7}> col_1_0 1))) (StrictList.slHead strings_1)) (EdText.appendToLastLine (StrictList.slTail strings_1) (<{StdString.%_10}> line_5_1 (_Tuple2 col_1_0 (<{StdInt.-_7}> (_SystemArray.size_20 line_5_1) 1))))) (select _x_5_0::_Tuple2 1)))) ) ) 
+EdText.replaceText !sel_0 !strings_1 !text_2 = case sel_0 (EdSelection._Selection start_1_0 end_1_1 -> case start_1_0 (EdPosition._Position col1_2_0 row1_2_1 -> case end_1_1 (EdPosition._Position col2_3_0 row2_3_1 -> let nrOfStrings_4_0::I = StrictList.slLength strings_1 in case (<{StdInt.==_16}> nrOfStrings_4_0 0) (True -> let _x_6_0 = EdLineText.getLine row1_2_1 text_2, firstLine_6_1 = select _x_6_0::_Tuple2 0, _x_6_2 = <{EdText._if;78;27_51}> (<{StdInt.==_16}> row1_2_1 row2_3_1) firstLine_6_1 text_6_4 row2_3_1, lastLine_6_3 = select _x_6_2::_Tuple2 0, text_6_4 = select _x_6_0::_Tuple2 1, text_6_5 = select _x_6_2::_Tuple2 1 in select (EdLineText.updateLine row1_2_1 (<{StdString.+++_11}> (<{StdString.%_10}> firstLine_6_1 (_Tuple2 0 (<{StdInt.-_7}> col1_2_0 1))) (<{StdString.%_10}> lastLine_6_3 (_Tuple2 col2_3_0 (<{StdInt.-_7}> (_SystemArray.size_20 lastLine_6_3) 1)))) (<{EdText._if;83;27_52}> (<{StdInt.==_16}> row1_2_1 row2_3_1) text_6_5 row1_2_1 row2_3_1))::_Tuple3 2) (False -> case (<{StdInt.==_16}> nrOfStrings_4_0 1) (True -> let _x_7_0 = EdLineText.getLine row1_2_1 text_2, firstLine_7_1 = select _x_7_0::_Tuple2 0, _x_7_2 = <{EdText._if;78;27_53}> (<{StdInt.==_16}> row1_2_1 row2_3_1) firstLine_7_1 text_7_4 row2_3_1, lastLine_7_3 = select _x_7_2::_Tuple2 0, text_7_4 = select _x_7_0::_Tuple2 1, text_7_5 = select _x_7_2::_Tuple2 1 in select (EdLineText.updateLine row1_2_1 (<{StdString.+++_11}> (<{StdString.%_10}> firstLine_7_1 (_Tuple2 0 (<{StdInt.-_7}> col1_2_0 1))) (<{StdString.+++_11}> (StrictList.slHead strings_1) (<{StdString.%_10}> lastLine_7_3 (_Tuple2 col2_3_0 (<{StdInt.-_7}> (_SystemArray.size_20 lastLine_7_3) 1))))) (<{EdText._if;83;27_54}> (<{StdInt.==_16}> row1_2_1 row2_3_1) text_7_5 row1_2_1 row2_3_1))::_Tuple3 2) (False -> let _x_7_0 = EdLineText.getLine row1_2_1 text_2, firstLine_7_1 = select _x_7_0::_Tuple2 0, _x_7_2 = <{EdText._if;78;27_55}> (<{StdInt.==_16}> row1_2_1 row2_3_1) firstLine_7_1 text_7_4 row2_3_1, lastLine_7_3 = select _x_7_2::_Tuple2 0, text_7_4 = select _x_7_0::_Tuple2 1, text_7_5 = select _x_7_2::_Tuple2 1 in EdLineText.removeLine row1_2_1 (EdLineText.insertLines (<{StdInt.+_6}> row1_2_1 StdInt.one_11) (StrictList.SCons (<{StdString.+++_11}> (<{StdString.%_10}> firstLine_7_1 (_Tuple2 0 (<{StdInt.-_7}> col1_2_0 1))) (StrictList.slHead strings_1)) (EdText.appendToLastLine (StrictList.slTail strings_1) (<{StdString.%_10}> lastLine_7_3 (_Tuple2 col2_3_0 (<{StdInt.-_7}> (_SystemArray.size_20 lastLine_7_3) 1))))) (<{EdText._if;83;27_56}> (<{StdInt.==_16}> row1_2_1 row2_3_1) text_7_5 row1_2_1 row2_3_1))) ) ) ) ) 
+<{EdText._if;83;27_56}> !_x_0::B !text_1 row1_2::I row2_3::I = case _x_0 (True -> text_1) (_ -> EdLineText.removeLines (<{StdInt.+_6}> row1_2 1) row2_3 text_1)
+<{EdText._if;78;27_55}> !_x_0::B firstLine_1 text_2 row2_3::I = case _x_0 (True -> _Tuple2 firstLine_1 text_2) (_ -> EdLineText.getLine row2_3 text_2)
+<{EdText._if;83;27_54}> !_x_0::B !text_1 row1_2::I row2_3::I = case _x_0 (True -> text_1) (_ -> EdLineText.removeLines (<{StdInt.+_6}> row1_2 1) row2_3 text_1)
+<{EdText._if;78;27_53}> !_x_0::B firstLine_1 text_2 row2_3::I = case _x_0 (True -> _Tuple2 firstLine_1 text_2) (_ -> EdLineText.getLine row2_3 text_2)
+<{EdText._if;83;27_52}> !_x_0::B !text_1 row1_2::I row2_3::I = case _x_0 (True -> text_1) (_ -> EdLineText.removeLines (<{StdInt.+_6}> row1_2 1) row2_3 text_1)
+<{EdText._if;78;27_51}> !_x_0::B firstLine_1 text_2 row2_3::I = case _x_0 (True -> _Tuple2 firstLine_1 text_2) (_ -> EdLineText.getLine row2_3 text_2)
+EdText.appendText !_x_0 !text_1 = case _x_0 (StrictList.SNil -> text_1) (_ -> <{EdLineText.appendLines`}> _x_0 text_1)
+
+
+|| Converted Records
+:: <{EdText.gEq_s;}> = {!EdText.gEq_s}
+
+:: <{EdText.gEq_ss;}> = {!EdText.gEq_ss}
+
+:: <{EdText.gEq_sss;}> = {!EdText.gEq_sss}
+
+:: <{EdText.gEq_ssss;}> = {!EdText.gEq_ssss}
+
+:: <{EdText.gEq_sssss;}> = {!EdText.gEq_sssss}
+
+:: <{EdText.gEq_ssssss;}> = {!EdText.gEq_ssssss}
+
+:: <{EdText.gEq_sssssss;}> = {!EdText.gEq_sssssss}
+
+:: <{EdText.gEq_ssssssss;}> = {!EdText.gEq_ssssssss}
+
+:: <{EdText.gEq_sssssssss;}> = {!EdText.gEq_sssssssss}
+
+:: <{EdText.bimap_s;}> = {EdText.bimap_s}
+
+:: <{EdText.bimap_ss;}> = {EdText.bimap_ss}
+
+:: <{EdText.bimap_sss;}> = {EdText.bimap_sss}
+

@@ -1,0 +1,154 @@
+|| ?module? iTasks._Framework.Client.RunOnClient
+
+
+iTasks._Framework.Client.RunOnClient.runOnClient !_viTask_0 !task_1 = task_1
+iTasks._Framework.Client.RunOnClient.newWorld = StdMisc.undef
+iTasks._Framework.Client.RunOnClient.locundef_8 !var_0 = StdMisc.abort (<{StdString.+++_11}> "IWorld structure is not avalaible at client side. Reference: " var_0)
+iTasks._Framework.Client.RunOnClient.createClientIWorld !serverURL_0 !current_1::I = let _x_1_0 = System.Time.time iTasks._Framework.Client.RunOnClient.newWorld, timestamp_1_1 = select _x_1_0::_Tuple2 0 in iTasks._Framework.IWorld._IWorld (iTasks._Framework.IWorld._ServerInfo "application" serverURL_0 "build" (iTasks._Framework.IWorld._SystemPaths (iTasks._Framework.Client.RunOnClient.locundef_8 "appDirectory") (iTasks._Framework.Client.RunOnClient.locundef_8 "dataDirectory") (iTasks._Framework.Client.RunOnClient.locundef_8 "webDirectory") (iTasks._Framework.Client.RunOnClient.locundef_8 "saplDirectory"))) (iTasks.API.Core.Types._Config 3600 (iTasks._Framework.Client.RunOnClient.locundef_8 "smtpServer")) (iTasks._Framework.IWorld._SystemClocks timestamp_1_1 (iTasks.API.Core.Types._Date 1977 1 1) (iTasks.API.Core.Types._Time 0 0 0) (iTasks.API.Core.Types._Date 1977 1 1) (iTasks.API.Core.Types._Time 0 0 0)) (iTasks._Framework.IWorld._TaskEvalState 0 current_1 (Data.Maybe.Just current_1) _predefined._Nil 6666) (Math.Random.genRandInt (select timestamp_1_1::_Tuple1 0)) _predefined._Nil Data.Map.newMap Data.Map.newMap Data.Map.newMap (iTasks._Framework.Client.RunOnClient.locundef_8 "jsCompilerState") (iTasks._Framework.IWorld._IOTasks _predefined._Nil _predefined._Nil) Data.Map.newMap (select _x_1_0::_Tuple2 1) Data.Maybe.Nothing True False
+iTasks._Framework.Client.RunOnClient.anon_11 k_0 x_1 xs_2 = _predefined._Cons (_Tuple2 k_0 x_1) xs_2
+iTasks._Framework.Client.RunOnClient.toList_7 q_0 = <{iTasks._Framework.Client.RunOnClient._c;115;16_384}> (Data.Queue.dequeue q_0)
+<{iTasks._Framework.Client.RunOnClient._c;115;16_384}> !_x_0 = case _x_0 (_Tuple2 _x_1_0 q_1_1 -> case _x_1_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just x_2_0 -> _predefined._Cons x_2_0 (iTasks._Framework.Client.RunOnClient.toList_7 q_1_1)) ) 
+iTasks._Framework.Client.RunOnClient.getUpdates_6 !_x_0 = case _x_0 (_Tuple2 instanceNo_1_0 upds_1_1 -> _Tuple2 instanceNo_1_0 (_predefined._Cons (Text.JSON.toString_7 (iTasks.UI.Definition.encodeUIChanges (iTasks._Framework.Client.RunOnClient.toList_7 upds_1_1))) _predefined._Nil)) 
+iTasks._Framework.Client.RunOnClient.getUIUpdates !iworld_0 = <{iTasks._Framework.Client.RunOnClient._c;104;7_386}> (iTasks._Framework.SDS.read iTasks._Framework.TaskStore.allUIChanges iworld_0)
+<{iTasks._Framework.Client.RunOnClient._c;104;7_386}> !_x_0 = case _x_0 (_Tuple2 _x_1_0 iworld_1_1 -> case _x_1_0 (Data.Error.Ok uiChanges_2_0 -> let changes_3_0 = Data.Map.foldrWithKey iTasks._Framework.Client.RunOnClient.anon_11 _predefined._Nil uiChanges_2_0 in <{iTasks._Framework.Client.RunOnClient._c;106;15_385}> changes_3_0 iworld_1_1) (_ -> <{_Tuple2!1}> Data.Maybe.Nothing iworld_1_1)) 
+<{iTasks._Framework.Client.RunOnClient._c;106;15_385}> !changes_0 iworld_1 = case changes_0 (_predefined._Nil -> <{_Tuple2!1}> Data.Maybe.Nothing iworld_1) (_ -> <{_Tuple2!1}> (Data.Maybe.Just (StdList.map iTasks._Framework.Client.RunOnClient.getUpdates_6 changes_0)) (select (iTasks._Framework.SDS.write Data.Map.newMap iTasks._Framework.TaskStore.allUIChanges iworld_1)::_Tuple2 1))
+iTasks._Framework.Client.RunOnClient.gen_res !<{_vJSONDecode*_0}> !_x_1 = case _x_1 (iTasks._Framework.Client.RunOnClient._TaskState instanceNo_1_0 session_1_1 task_1_2 task_1_3 _x_1_4 -> case _x_1_4 (Data.Maybe.Nothing -> iTasks.API.Core.Types.NoValue) (Data.Maybe.Just _x_2_0 -> case _x_2_0 (iTasks.API.Core.Types.NoValue -> iTasks.API.Core.Types.NoValue) (iTasks.API.Core.Types.Value json_3_0 stability_3_1 -> iTasks.API.Core.Types.Value (Data.Maybe.fromJust (Text.JSON.fromJSON <{_vJSONDecode*_0}> json_3_0)) stability_3_1) ) ) 
+iTasks._Framework.Client.RunOnClient.controllerFunc !_viTask_0 _x_1 !st_2 !_x_3 !_x_4 !_x_5 !iworld_6 = case st_2 (iTasks._Framework.Client.RunOnClient._TaskState instanceNo_1_0 session_1_1 task_1_2 task_1_3 value_1_4 -> case task_1_2 (Data.Maybe.Nothing -> case _x_3 (Data.Maybe.Nothing -> case _x_4 (Data.Maybe.Nothing -> case _x_5 (Data.Maybe.Nothing -> let _x_6_0 = iTasks._Framework.TaskStore.createClientTaskInstance _viTask_0 task_1_3 session_1_1 instanceNo_1_0 iworld_6, iworld_6_1 = select _x_6_0::_Tuple2 1 in <{iTasks._Framework.Client.RunOnClient._c;59;7_388}> (select _x_6_0::_Tuple2 0) instanceNo_1_0 iworld_6_1 st_2) ) ) ) (_ -> case _x_3 (Data.Maybe.Nothing -> case _x_4 (Data.Maybe.Just name_3_0 -> case _x_5 (Data.Maybe.Just jsonval_4_0 -> let _x_5_0 = iTasks._Framework.TaskEval.evalTaskInstance instanceNo_1_0 (iTasks._Framework.Task.EditEvent _x_1 name_3_0 (Text.JSON.fromString_8 jsonval_4_0)) iworld_6, iworld_5_1 = select _x_5_0::_Tuple2 1 in <{iTasks._Framework.Client.RunOnClient._c;87;7_389}> (select _x_5_0::_Tuple2 0) st_2 iworld_5_1) (Data.Maybe.Nothing -> let _x_5_0 = iTasks._Framework.TaskEval.evalTaskInstance instanceNo_1_0 (iTasks._Framework.Task.ActionEvent _x_1 name_3_0) iworld_6, iworld_5_1 = select _x_5_0::_Tuple2 1 in <{iTasks._Framework.Client.RunOnClient._c;94;7_390}> (select _x_5_0::_Tuple2 0) st_2 iworld_5_1) ) ) )) 
+<{iTasks._Framework.Client.RunOnClient._c;94;7_390}> !_x_0 st_1 iworld_2 = case _x_0 (Data.Error.Ok value_1_0 -> _Tuple3 Data.Maybe.Nothing (update st_1::iTasks._Framework.Client.RunOnClient._TaskState [4:Data.Maybe.Just value_1_0]) iworld_2) (Data.Error.Error msg_1_0 -> StdMisc.abort (<{StdString.+++_11}> "controllerFunc: " msg_1_0)) 
+<{iTasks._Framework.Client.RunOnClient._c;87;7_389}> !_x_0 st_1 iworld_2 = case _x_0 (Data.Error.Ok value_1_0 -> _Tuple3 Data.Maybe.Nothing (update st_1::iTasks._Framework.Client.RunOnClient._TaskState [4:Data.Maybe.Just value_1_0]) iworld_2) (Data.Error.Error msg_1_0 -> StdMisc.abort (<{StdString.+++_11}> "controllerFunc: " msg_1_0)) 
+<{iTasks._Framework.Client.RunOnClient._c;59;7_388}> !_x_0 instanceNo_1::I iworld_2 st_3 = case _x_0 (Data.Error.Ok task_1_0 -> let _x_2_0 = iTasks._Framework.TaskEval.evalTaskInstance instanceNo_1 (iTasks._Framework.Task.RefreshEvent "Client init") iworld_2, iworld_2_1 = select _x_2_0::_Tuple2 1 in <{iTasks._Framework.Client.RunOnClient._c;62;13_387}> (select _x_2_0::_Tuple2 0) st_3 task_1_0 iworld_2_1) (_ -> _Tuple3 Data.Maybe.Nothing st_3 iworld_2)
+<{iTasks._Framework.Client.RunOnClient._c;62;13_387}> !_x_0 st_1 task_2 iworld_3 = case _x_0 (Data.Error.Ok _x_1_0 -> _Tuple3 Data.Maybe.Nothing (update st_1::iTasks._Framework.Client.RunOnClient._TaskState [2:Data.Maybe.Just task_2]) iworld_3) (_ -> _Tuple3 Data.Maybe.Nothing (update st_1::iTasks._Framework.Client.RunOnClient._TaskState [2:Data.Maybe.Just task_2]) iworld_3)
+<{iTasks._Framework.Client.RunOnClient.TD;TaskState}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: iTasks._Framework.Client.RunOnClient._TaskState = {!iTasks._Framework.Client.RunOnClient.instanceNo, !iTasks._Framework.Client.RunOnClient.sessionId, !iTasks._Framework.Client.RunOnClient.taskId, !iTasks._Framework.Client.RunOnClient.task, !iTasks._Framework.Client.RunOnClient.value}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEditor_s;}> = {iTasks._Framework.Client.RunOnClient.gEditor_s}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEditor_ss;}> = {iTasks._Framework.Client.RunOnClient.gEditor_ss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEditor_sss;}> = {iTasks._Framework.Client.RunOnClient.gEditor_sss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_s;}> = {!iTasks._Framework.Client.RunOnClient.gText_s}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_ss;}> = {!iTasks._Framework.Client.RunOnClient.gText_ss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_sss;}> = {!iTasks._Framework.Client.RunOnClient.gText_sss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_s;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_s}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_ss;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_ss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_sss;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_sss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_s;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_s}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_ss;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_ss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_sss;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_sss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_s;}> = {iTasks._Framework.Client.RunOnClient.gDefault_s}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_ss;}> = {iTasks._Framework.Client.RunOnClient.gDefault_ss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_sss;}> = {iTasks._Framework.Client.RunOnClient.gDefault_sss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_s;}> = {!iTasks._Framework.Client.RunOnClient.gEq_s}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_ss;}> = {!iTasks._Framework.Client.RunOnClient.gEq_ss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_sss;}> = {!iTasks._Framework.Client.RunOnClient.gEq_sss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_ssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_ssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_ssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_ssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_ssss;}> = {!iTasks._Framework.Client.RunOnClient.gEq_ssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_ssss;}> = {iTasks._Framework.Client.RunOnClient.gDefault_ssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_sssss;}> = {!iTasks._Framework.Client.RunOnClient.gEq_sssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_ssssss;}> = {!iTasks._Framework.Client.RunOnClient.gEq_ssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_sssssss;}> = {!iTasks._Framework.Client.RunOnClient.gEq_sssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_ssssssss;}> = {!iTasks._Framework.Client.RunOnClient.gEq_ssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEq_sssssssss;}> = {!iTasks._Framework.Client.RunOnClient.gEq_sssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.bimap_s;}> = {iTasks._Framework.Client.RunOnClient.bimap_s}
+
+:: <{iTasks._Framework.Client.RunOnClient.bimap_ss;}> = {iTasks._Framework.Client.RunOnClient.bimap_ss}
+
+:: <{iTasks._Framework.Client.RunOnClient.bimap_sss;}> = {iTasks._Framework.Client.RunOnClient.bimap_sss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_sssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_sssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_ssssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_sssssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_ssssssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONEncode_sssssssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_sssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_sssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_ssssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_sssssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_ssssssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.JSONDecode_sssssssss;}> = {!iTasks._Framework.Client.RunOnClient.JSONDecode_sssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_s;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_s}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_ss;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_ss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_sss;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_sss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_ssss;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_ssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_sssss;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_sssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_ssssss;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_ssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_sssssss;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_sssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_ssssssss;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_ssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gLexOrd_sssssssss;}> = {!iTasks._Framework.Client.RunOnClient.gLexOrd_sssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_ssss;}> = {!iTasks._Framework.Client.RunOnClient.gText_ssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_sssss;}> = {!iTasks._Framework.Client.RunOnClient.gText_sssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_ssssss;}> = {!iTasks._Framework.Client.RunOnClient.gText_ssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_sssssss;}> = {!iTasks._Framework.Client.RunOnClient.gText_sssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_ssssssss;}> = {!iTasks._Framework.Client.RunOnClient.gText_ssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gText_sssssssss;}> = {!iTasks._Framework.Client.RunOnClient.gText_sssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_sssss;}> = {iTasks._Framework.Client.RunOnClient.gDefault_sssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_ssssss;}> = {iTasks._Framework.Client.RunOnClient.gDefault_ssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_sssssss;}> = {iTasks._Framework.Client.RunOnClient.gDefault_sssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_ssssssss;}> = {iTasks._Framework.Client.RunOnClient.gDefault_ssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gDefault_sssssssss;}> = {iTasks._Framework.Client.RunOnClient.gDefault_sssssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEditor_ssss;}> = {iTasks._Framework.Client.RunOnClient.gEditor_ssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEditor_sssss;}> = {iTasks._Framework.Client.RunOnClient.gEditor_sssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEditor_ssssss;}> = {iTasks._Framework.Client.RunOnClient.gEditor_ssssss}
+
+:: <{iTasks._Framework.Client.RunOnClient.gEditor_sssssss;}> = {iTasks._Framework.Client.RunOnClient.gEditor_sssssss}
+

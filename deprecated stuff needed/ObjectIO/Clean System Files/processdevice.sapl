@@ -1,0 +1,37 @@
+|| ?module? processdevice
+
+
+processdevice.processdeviceFatalError !rule_0 !error_1 = commondef.fatalError rule_0 "processdevice" error_1
+processdevice.processIO !deviceEvent_0 !pState_1 = case deviceEvent_0 (deviceevents.ProcessRequestClose -> let _x_2_0 = StdPSt.accPIO iostate.ioStGetProcessAttributes pState_1, atts_2_1 = select _x_2_0::_Tuple2 0, _x_2_2 = commondef.cselect StdProcessAttribute.isProcessClose StdMisc.undef atts_2_1 in case (StdBool.not (select _x_2_2::_Tuple2 0)) (True -> <{_Tuple2!3}> deviceEvent_0 (select _x_2_0::_Tuple2 1)) (False -> <{_Tuple2!3}> deviceEvent_0 (StdProcessAttribute.getProcessCloseFun (select _x_2_2::_Tuple2 1) (select _x_2_0::_Tuple2 1))) ) (deviceevents.ProcessRequestOpenFiles openFiles_1_0 -> let _x_2_0 = StdPSt.accPIO iostate.ioStGetProcessAttributes pState_1, atts_2_1 = select _x_2_0::_Tuple2 0, _x_2_2 = commondef.cselect StdProcessAttribute.isProcessOpenFiles StdMisc.undef atts_2_1 in case (StdBool.not (select _x_2_2::_Tuple2 0)) (True -> <{_Tuple2!3}> deviceEvent_0 (select _x_2_0::_Tuple2 1)) (False -> <{_Tuple2!3}> deviceEvent_0 (StdProcessAttribute.getProcessOpenFilesFun (select _x_2_2::_Tuple2 1) openFiles_1_0 (select _x_2_0::_Tuple2 1))) ) (deviceevents.ProcessRequestClipboardChanged -> let _x_2_0 = StdPSt.accPIO iostate.ioStGetProcessAttributes pState_1, atts_2_1 = select _x_2_0::_Tuple2 0, _x_2_2 = commondef.cselect StdProcessAttribute.isProcessClipboardChanged StdMisc.undef atts_2_1 in case (StdBool.not (select _x_2_2::_Tuple2 0)) (True -> <{_Tuple2!3}> deviceEvent_0 (select _x_2_0::_Tuple2 1)) (False -> <{_Tuple2!3}> deviceEvent_0 (StdProcessAttribute.getProcessClipboardChangedFun (select _x_2_2::_Tuple2 1) (select _x_2_0::_Tuple2 1))) ) (_ -> processdevice.processdeviceFatalError "processIO" "unexpected DeviceEvent")
+processdevice.createOSDInfo_5 !emptyOSD_0 !ioState_1 = let di_1_0 = osdocumentinterface.getOSDInfoDocumentInterface emptyOSD_0 in case (<{StdIOCommon.==_39}> di_1_0 StdIOCommon.NDI) (True -> let _x_3_0 = iostate.getIOToolbox ioState_1, _x_3_1 = osdocumentinterface.osOpenNDI (select _x_3_0::_Tuple2 0) in iostate.setIOToolbox (select _x_3_1::_Tuple2 1) (iostate.ioStSetOSDInfo (select _x_3_1::_Tuple2 0) (select _x_3_0::_Tuple2 1))) (False -> case (<{StdIOCommon.==_39}> di_1_0 StdIOCommon.MDI) (True -> let _x_4_0 = iostate.ioStGetProcessAttributes ioState_1, atts_4_1 = select _x_4_0::_Tuple2 0, _x_4_2 = iostate.getIOToolbox (select _x_4_0::_Tuple2 1), _x_4_3 = osdocumentinterface.osOpenMDI (StdBool.not (commondef.contains StdProcessAttribute.isProcessToolbar atts_4_1)) (commondef.contains StdProcessAttribute.isProcessOpenFiles atts_4_1) (select _x_4_2::_Tuple2 0) in toolbar.openToolbar (iostate.ioStSetOSDInfo (select _x_4_3::_Tuple2 0) (iostate.setIOToolbox (select _x_4_3::_Tuple2 1) (select _x_4_2::_Tuple2 1)))) (False -> case (<{StdIOCommon.==_39}> di_1_0 StdIOCommon.SDI) (True -> let _x_5_0 = iostate.ioStGetProcessAttributes ioState_1, _x_5_1 = iostate.getIOToolbox (select _x_5_0::_Tuple2 1), _x_5_2 = osdocumentinterface.osOpenSDI (commondef.contains StdProcessAttribute.isProcessOpenFiles (select _x_5_0::_Tuple2 0)) (select _x_5_1::_Tuple2 0) in toolbar.openToolbar (iostate.ioStSetOSDInfo (select _x_5_2::_Tuple2 0) (iostate.setIOToolbox (select _x_5_2::_Tuple2 1) (select _x_5_1::_Tuple2 1)))) ) ) 
+processdevice.processClose !pState_0 = case pState_0 (iostate._PSt ls_1_0 ioState_1_1 -> update pState_0::iostate._PSt [1:iostate.ioStRemoveDeviceFunctions device.ProcessDevice (select (iostate.ioStGetDevice device.ProcessDevice ioState_1_1)::_Tuple3 2)]) 
+processdevice.processOpen !pState_0 = case pState_0 (iostate._PSt ls_1_0 ioState_1_1 -> let _x_2_0 = iostate.ioStHasDevice device.ProcessDevice ioState_1_1 in case (select _x_2_0::_Tuple2 0) (True -> update pState_0::iostate._PSt [1:select _x_2_0::_Tuple2 1]) (False -> let ioState_4_0 = select _x_2_0::_Tuple2 1, ioState_4_1 = iostate.appIOToolbox osdocumentinterface.osInitialiseDI ioState_4_0, ioState_4_2 = iostate.ioStSetDeviceFunctions processdevice.processFunctions ioState_4_1, _x_4_3 = iostate.ioStGetOSDInfo ioState_4_2, osdinfo_4_4 = select _x_4_3::_Tuple2 0, ioState_4_5 = select _x_4_3::_Tuple2 1 in <{processdevice._c;38;39_49}> (osdocumentinterface.getOSDInfoDocumentInterface osdinfo_4_4) pState_0 osdinfo_4_4 ioState_4_5) ) 
+processdevice.processFunctions = devicefunctions._DeviceFunctions device.ProcessDevice StdFunc.id StdFunc.id processevent.processEvent processdevice.processIO processdevice.processOpen processdevice.processClose
+<{processdevice._c;38;39_49}> !_x_0 pState_1 osdinfo_2 ioState_3 = case _x_0 (StdIOCommon.MDI -> menuwindowmenu.openWindowMenu (select menudevice.menuFunctions::devicefunctions._DeviceFunctions 1 (update pState_1::iostate._PSt [1:processdevice.createOSDInfo_5 osdinfo_2 ioState_3]))) (_ -> select menudevice.menuFunctions::devicefunctions._DeviceFunctions 1 (update pState_1::iostate._PSt [1:processdevice.createOSDInfo_5 osdinfo_2 ioState_3]))
+
+
+|| Converted Records
+:: <{processdevice.gEq_s;}> = {!processdevice.gEq_s}
+
+:: <{processdevice.gEq_ss;}> = {!processdevice.gEq_ss}
+
+:: <{processdevice.gEq_sss;}> = {!processdevice.gEq_sss}
+
+:: <{processdevice.gEq_ssss;}> = {!processdevice.gEq_ssss}
+
+:: <{processdevice.gEq_sssss;}> = {!processdevice.gEq_sssss}
+
+:: <{processdevice.gEq_ssssss;}> = {!processdevice.gEq_ssssss}
+
+:: <{processdevice.gEq_sssssss;}> = {!processdevice.gEq_sssssss}
+
+:: <{processdevice.gEq_ssssssss;}> = {!processdevice.gEq_ssssssss}
+
+:: <{processdevice.gEq_sssssssss;}> = {!processdevice.gEq_sssssssss}
+
+:: <{processdevice.bimap_s;}> = {processdevice.bimap_s}
+
+:: <{processdevice.bimap_ss;}> = {processdevice.bimap_ss}
+
+:: <{processdevice.bimap_sss;}> = {processdevice.bimap_sss}
+

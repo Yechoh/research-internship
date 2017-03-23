@@ -1,0 +1,660 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdArray" "20170313110416"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "_SystemArray" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "colourclip" "20170123155400"
+.module m_colourclip "colourclip" "20170123155400"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdPictureDef
+.impdesc e_StdPictureDef_rRGBColour
+.impdesc e_StdPictureDef_tRGBColour
+.implab e_StdPictureDef_cRGBColour
+.impdesc e_StdPictureDef_dRGB
+.impdesc e_StdPictureDef_dBlack
+.impdesc e_StdPictureDef_dWhite
+.impdesc e_StdPictureDef_dDarkGrey
+.impdesc e_StdPictureDef_dGrey
+.impdesc e_StdPictureDef_dLightGrey
+.impdesc e_StdPictureDef_dRed
+.impdesc e_StdPictureDef_dGreen
+.impdesc e_StdPictureDef_dBlue
+.impdesc e_StdPictureDef_dCyan
+.impdesc e_StdPictureDef_dMagenta
+.impdesc e_StdPictureDef_dYellow
+.impmod _SystemArray
+.impmod StdString
+.implab e_StdString_s==;2
+.implab e_StdString_stoString;5
+.implab e_StdString_s%;10
+.implab e_StdString_s+++;11
+.impmod StdChar
+.implab e_StdChar_sisDigit
+.impmod StdInt
+.implab e_StdInt_s+;6
+.implab e_StdInt_s-;7
+.implab e_StdInt_sone;11
+.implab e_StdInt_s==;16
+.implab e_StdInt_s<;17
+.implab e_StdInt_stoInt;23
+.impmod StdBool
+.implab e_StdBool_snot
+.export e_colourclip_sfromString;1
+.export e_colourclip_eafromString;1
+.descexp e_colourclip_dfromString;1 e_colourclip_nfromString;1 e_colourclip_lfromString;1 1 0 "fromString;1"
+.o 2 0
+e_colourclip_lfromString;1
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_colourclip_eafromString;1
+.n 1 e_colourclip_dfromString;1 e_colourclip_eafromString;1
+.o 1 0
+e_colourclip_nfromString;1
+	push_node _cycle_in_spine 1
+.o 2 0
+e_colourclip_eafromString;1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_colourclip_sfromString;1
+.o 2 0
+s2
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	jmp_false else.1
+	fillh e_StdPictureDef_dBlack 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.1
+	pushI 0
+	push_a 0
+	select CHAR 0 1
+	push_a 0
+	updatepop_a 0 1
+.d 2 1 c
+	jmp s13
+.o 2 1 c
+s13
+	eqC_b '0' 0
+	jmp_true case.2
+	eqC_b '1' 0
+	jmp_true case.3
+	eqC_b '2' 0
+	jmp_true case.4
+	eqC_b '3' 0
+	jmp_true case.5
+	eqC_b '4' 0
+	jmp_true case.6
+	eqC_b '5' 0
+	jmp_true case.7
+	eqC_b '6' 0
+	jmp_true case.8
+	eqC_b '7' 0
+	jmp_true case.9
+	eqC_b '8' 0
+	jmp_true case.10
+	eqC_b '9' 0
+	jmp_true case.11
+	eqC_b 'Y' 0
+	jmp_true case.12
+	eqC_b 'R' 0
+	jmp_true case.13
+	jmp case.14
+case.2
+	fillh e_StdPictureDef_dBlack 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.3
+	fillh e_StdPictureDef_dWhite 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.4
+	fillh e_StdPictureDef_dDarkGrey 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.5
+	fillh e_StdPictureDef_dGrey 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.6
+	fillh e_StdPictureDef_dLightGrey 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.7
+	fillh e_StdPictureDef_dRed 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.8
+	fillh e_StdPictureDef_dGreen 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.9
+	fillh e_StdPictureDef_dBlue 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.10
+	fillh e_StdPictureDef_dCyan 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.11
+	fillh e_StdPictureDef_dMagenta 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.12
+	fillh e_StdPictureDef_dYellow 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.13
+	push_a 0
+	buildh ARRAY 1
+	buildAC "RGB "
+	buildh ARRAY 1
+	build _ 2 n11
+	build d_S.2 -1 n_S.2
+	push_a 0
+	build _ 1 n12
+	push_a 1
+	push_a 1
+	build _ 2 n16
+	build d_S.2 -1 n_S.2
+	buildAC " :: "
+	buildh ARRAY 1
+	build _ 2 n11
+	build d_S.2 -1 n_S.2
+	push_a 0
+	build _ 1 n12
+	push_a 1
+	push_a 1
+	build _ 2 n17
+	build d_S.2 -1 n_S.2
+	buildAC " :: "
+	buildh ARRAY 1
+	build _ 2 n11
+	build d_S.2 -1 n_S.2
+	build _ 1 n12
+	push_a 1
+	push_a 4
+	build e_StdPictureDef_tRGBColour 3 e_StdPictureDef_cRGBColour
+	fillh e_StdPictureDef_dRGB 1 6
+	pop_a 5
+	pop_b 1
+.d 1 0
+	rtn
+case.14
+	fillh e_StdPictureDef_dBlack 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea17
+.o 1 0
+n17
+	push_node _cycle_in_spine 2
+.o 3 0
+ea17
+.o 3 0
+s17
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 2
+	update_a 0 3
+	pop_a 1
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s11
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _ ea16
+.o 1 0
+n16
+	push_node _cycle_in_spine 2
+.o 3 0
+ea16
+.o 3 0
+s16
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 2
+	update_a 0 3
+	pop_a 1
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s11
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n11
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea11
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea11
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	push_array 1
+	update_a 1 3
+	update_a 0 2
+	pop_a 2
+.o 2 0
+s11
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_b 0
+	pushI 0
+	push_a 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.15
+	push_b 0
+	push_a 0
+	build_u _ 1 1 n18
+	buildB TRUE
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+else.15
+	push_a 0
+	buildh ARRAY 1
+	buildB FALSE
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+.nu 1 1 _ _
+.o 1 0
+n18
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea18
+.o 2 1 i
+s18
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 1
+	push_b 2
+	addI
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n12
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea12
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea12
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+s12
+	pushI 0
+	push_a 0
+.d 1 1 i
+	jsr s8
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.d 1 0
+	jmp e_StdInt_stoInt;23
+.o 1 1 i
+s8
+	push_a 0
+	push_arraysize CHAR 0 1
+	push_b 1
+	ltI
+	notB
+	jmp_false else.16
+	pop_a 1
+.d 0 1 i
+	rtn
+else.16
+	push_b 0
+	push_a 0
+	select CHAR 0 1
+.d 0 1 c
+	jsr e_StdChar_sisDigit
+.o 0 1 b
+	jmp_false else.17
+	pushI 1
+	push_b 1
+	addI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	jmp s8
+else.17
+	pop_a 1
+.d 0 1 i
+	rtn
+.export e_colourclip_stoString;0
+.descexp e_colourclip_dtoString;0 e_colourclip_ntoString;0 e_colourclip_ltoString;0 1 0 "toString;0"
+.o 2 0
+e_colourclip_ltoString;0
+	pop_a 1
+.d 1 0
+	jsr ea1
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_colourclip_dtoString;0
+.o 1 0
+e_colourclip_ntoString;0
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea1
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea1
+	jsr_eval 0
+.o 1 0
+e_colourclip_stoString;0
+.o 1 0
+s1
+	pushD_a 0
+	eqD_b e_StdPictureDef_dRGB 1
+	jmp_true case.18
+	eqD_b e_StdPictureDef_dBlack 0
+	jmp_true case.19
+	eqD_b e_StdPictureDef_dWhite 0
+	jmp_true case.20
+	eqD_b e_StdPictureDef_dDarkGrey 0
+	jmp_true case.21
+	eqD_b e_StdPictureDef_dGrey 0
+	jmp_true case.22
+	eqD_b e_StdPictureDef_dLightGrey 0
+	jmp_true case.23
+	eqD_b e_StdPictureDef_dRed 0
+	jmp_true case.24
+	eqD_b e_StdPictureDef_dGreen 0
+	jmp_true case.25
+	eqD_b e_StdPictureDef_dBlue 0
+	jmp_true case.26
+	eqD_b e_StdPictureDef_dCyan 0
+	jmp_true case.27
+	eqD_b e_StdPictureDef_dMagenta 0
+	jmp_true case.28
+	jmp case.29
+case.18
+	pop_b 1
+	repl_args 1 1
+	jsr_eval 0
+	push_r_args_u 0 0 3
+	push_b 2
+	pop_a 1
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+	buildAC " :: "
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_b 1
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC " :: "
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_b 0
+	updatepop_b 0 3
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "RGB "
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+case.19
+	pop_b 1
+	pop_a 1
+	buildAC "0Black"
+.d 1 0
+	rtn
+case.20
+	pop_b 1
+	pop_a 1
+	buildAC "1White"
+.d 1 0
+	rtn
+case.21
+	pop_b 1
+	pop_a 1
+	buildAC "2DarkGrey"
+.d 1 0
+	rtn
+case.22
+	pop_b 1
+	pop_a 1
+	buildAC "3Grey"
+.d 1 0
+	rtn
+case.23
+	pop_b 1
+	pop_a 1
+	buildAC "4LightGrey"
+.d 1 0
+	rtn
+case.24
+	pop_b 1
+	pop_a 1
+	buildAC "5Red"
+.d 1 0
+	rtn
+case.25
+	pop_b 1
+	pop_a 1
+	buildAC "6Green"
+.d 1 0
+	rtn
+case.26
+	pop_b 1
+	pop_a 1
+	buildAC "7Blue"
+.d 1 0
+	rtn
+case.27
+	pop_b 1
+	pop_a 1
+	buildAC "8Cyan"
+.d 1 0
+	rtn
+case.28
+	pop_b 1
+	pop_a 1
+	buildAC "9Magenta"
+.d 1 0
+	rtn
+case.29
+	pop_b 1
+	pop_a 1
+	buildAC "Yellow"
+.d 1 0
+	rtn

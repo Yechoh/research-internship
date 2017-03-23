@@ -1,0 +1,1109 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdMisc" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "StrictList" "20170123155353"
+.module m_StrictList "StrictList" "20170123155353"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdMisc
+.implab e_StdMisc_sabort
+.impmod StdInt
+.implab e_StdInt_s+;6
+.implab e_StdInt_s-;7
+.export e_StrictList_eaSCons
+.descexp e_StrictList_dSCons e_StrictList_nSCons e_StrictList_lSCons 2 0 "SCons"
+.a 2 e_StrictList_eaSCons
+.o 2 0
+e_StrictList_lSCons
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StrictList_eaSCons
+.n 2 e_StrictList_dSCons e_StrictList_eaSCons
+.o 1 0
+e_StrictList_nSCons
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StrictList_eaSCons
+	jsr_eval 0
+	fill_r e_StrictList_kSCons 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.export e_StrictList_kSCons
+.record e_StrictList_kSCons daa 2 0 "SCons"
+.export e_StrictList_dSNil
+.desc e_StrictList_dSNil _hnf _hnf 0 0 "SNil"
+.export e_StrictList_sTD;StrictList
+.export e_StrictList_eaTD;StrictList
+.descexp e_StrictList_dTD;StrictList e_StrictList_nTD;StrictList e_StrictList_lTD;StrictList 1 0 "TD;StrictList"
+.o 2 0
+e_StrictList_lTD;StrictList
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StrictList_eaTD;StrictList
+.n 1 e_StrictList_dTD;StrictList e_StrictList_eaTD;StrictList
+.o 1 0
+e_StrictList_nTD;StrictList
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StrictList_eaTD;StrictList
+.o 2 0
+e_StrictList_sTD;StrictList
+.o 2 0
+s18
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StrictList_s==;16
+.descexp e_StrictList_d==;16 e_StrictList_n==;16 e_StrictList_l==;16 3 0 "==;16"
+.a 0 a17
+.o 2 0
+e_StrictList_l==;16
+	repl_args 2 2
+.o 3 0
+a17
+.d 3 0
+	jsr ea17
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 e_StrictList_d==;16
+.o 1 0
+e_StrictList_n==;16
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea17
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea17
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	repl_r_args 1 0
+.o 3 0
+e_StrictList_s==;16
+.o 3 0
+s17
+	eq_desc e_StrictList_dSNil 0 1
+	jmp_true case.1
+	jmp case.2
+case.1
+	eq_desc e_StrictList_dSNil 0 2
+	jmp_true case.4
+	jmp case.3
+case.4
+	pop_a 3
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.2
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	eq_desc e_StrictList_kSCons 0 4
+	jmp_true case.5
+	pop_a 2
+	jmp case.3
+case.5
+	push_args 4 2 2
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+	push_a 0
+	push_a 5
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 2
+	pushB_a 0
+	pop_a 1
+	jmp_false else.6
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	push_a 4
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 3 0
+	jmp s17
+else.6
+	pop_a 5
+	pushB FALSE
+.d 0 1 b
+	rtn
+case.3
+	pop_a 3
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_StrictList_sslUpdate
+.export e_StrictList_easlUpdate
+.descexp e_StrictList_dslUpdate e_StrictList_nslUpdate e_StrictList_lslUpdate 3 0 "slUpdate"
+.a 3 e_StrictList_easlUpdate
+.o 2 0
+e_StrictList_lslUpdate
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.d 4 0
+	jmp e_StrictList_easlUpdate
+.n 3 e_StrictList_dslUpdate e_StrictList_easlUpdate
+.o 1 0
+e_StrictList_nslUpdate
+	push_node _cycle_in_spine 3
+.o 4 0
+e_StrictList_easlUpdate
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.o 3 1 i
+e_StrictList_sslUpdate
+.o 3 1 i
+s16
+	eq_desc e_StrictList_dSNil 0 1
+	jmp_true case.7
+	jmp case.8
+case.7
+	buildh e_StrictList_dSNil 0
+	push_a 1
+	fill_r e_StrictList_kSCons 2 0 4 0 0
+	pop_a 4
+	pop_b 1
+.d 1 0
+	rtn
+case.8
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	eqI_b 0 0
+	jmp_true case.9
+	jmp case.10
+case.9
+	push_a 1
+	push_a 3
+	fill_r e_StrictList_kSCons 2 0 6 0 0
+	pop_a 6
+	pop_b 1
+.d 1 0
+	rtn
+case.10
+	push_a 1
+	push_a 3
+	push_b 0
+	build_u _ 2 1 n26
+	push_a 1
+	fill_r e_StrictList_kSCons 2 0 6 0 0
+	pop_a 6
+	pop_b 1
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n26
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea26
+.o 3 1 i
+s26
+	push_a 1
+	jsr_eval 0
+	pushI 1
+	push_b 1
+	subI
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 3 1 i
+	jmp s16
+.export e_StrictList_sslInit
+.export e_StrictList_easlInit
+.descexp e_StrictList_dslInit e_StrictList_nslInit e_StrictList_lslInit 1 0 "slInit"
+.o 2 0
+e_StrictList_lslInit
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StrictList_easlInit
+.n 1 e_StrictList_dslInit e_StrictList_easlInit
+.o 1 0
+e_StrictList_nslInit
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StrictList_easlInit
+	jsr_eval 0
+.o 2 0
+e_StrictList_sslInit
+.o 2 0
+s15
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.11
+	jmp s15.1
+case.11
+	repl_args 2 2
+	jsr_eval 1
+	eq_desc e_StrictList_dSNil 0 1
+	jmp_true case.12
+	jmp case.13
+case.12
+	fillh e_StrictList_dSNil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.13
+	push_a 1
+	build e_StrictList_dslInit 1 e_StrictList_nslInit
+	push_a 1
+	fill_r e_StrictList_kSCons 2 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+s15.1
+	pop_a 2
+	pushD m_StrictList
+	pushD e_StrictList_dslInit
+.d 0 2 ii
+	jmp _match_error
+.export e_StrictList_sslLast
+.descexp e_StrictList_dslLast e_StrictList_nslLast e_StrictList_lslLast 1 0 "slLast"
+.o 2 0
+e_StrictList_lslLast
+	pop_a 1
+.d 1 0
+	jmp ea14
+.n 1 e_StrictList_dslLast _
+.o 1 0
+e_StrictList_nslLast
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea14
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea14
+	jsr_eval 0
+.o 1 0
+e_StrictList_sslLast
+.o 1 0
+s14
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.14
+	jmp s14.1
+case.14
+	repl_args 2 2
+	jsr_eval 1
+	eq_desc e_StrictList_dSNil 0 1
+	jmp_true case.15
+	jmp case.16
+case.15
+	updatepop_a 0 1
+.d 1 0
+	rtn
+case.16
+	push_a 1
+	updatepop_a 0 2
+.d 1 0
+	jmp s14
+s14.1
+	pop_a 1
+	pushD m_StrictList
+	pushD e_StrictList_dslLast
+.d 0 2 ii
+	jmp _match_error
+.export e_StrictList_sslDrop
+.export e_StrictList_easlDrop
+.descexp e_StrictList_dslDrop e_StrictList_nslDrop e_StrictList_lslDrop 2 0 "slDrop"
+.a 2 e_StrictList_easlDrop
+.o 2 0
+e_StrictList_lslDrop
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StrictList_easlDrop
+.n 2 e_StrictList_dslDrop e_StrictList_easlDrop
+.o 1 0
+e_StrictList_nslDrop
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StrictList_easlDrop
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.o 2 1 i
+e_StrictList_sslDrop
+.o 2 1 i
+s13
+	eq_desc e_StrictList_dSNil 0 0
+	jmp_true case.17
+	jmp case.18
+case.17
+	fillh e_StrictList_dSNil 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.18
+	eqI_b 0 0
+	jmp_true case.19
+	jmp case.20
+case.19
+	pop_b 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.20
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.21
+	jmp s13.1
+case.21
+	repl_args 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI 1
+	push_b 1
+	subI
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 2 1 i
+	jmp s13
+s13.1
+	pop_a 2
+	pop_b 1
+	pushD m_StrictList
+	pushD e_StrictList_dslDrop
+.d 0 2 ii
+	jmp _match_error
+.export e_StrictList_sslTake
+.export e_StrictList_easlTake
+.descexp e_StrictList_dslTake e_StrictList_nslTake e_StrictList_lslTake 2 0 "slTake"
+.a 2 e_StrictList_easlTake
+.o 2 0
+e_StrictList_lslTake
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StrictList_easlTake
+.n 2 e_StrictList_dslTake e_StrictList_easlTake
+.o 1 0
+e_StrictList_nslTake
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StrictList_easlTake
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.o 2 1 i
+e_StrictList_sslTake
+.o 2 1 i
+s12
+	eq_desc e_StrictList_dSNil 0 0
+	jmp_true case.22
+	jmp case.23
+case.22
+	fillh e_StrictList_dSNil 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.23
+	eqI_b 0 0
+	jmp_true case.24
+	jmp case.25
+case.24
+	fillh e_StrictList_dSNil 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.25
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.26
+	jmp s12.1
+case.26
+	repl_args 2 2
+	push_a 1
+	push_b 0
+	build_u _ 1 1 n27
+	push_a 1
+	fill_r e_StrictList_kSCons 2 0 4 0 0
+	pop_a 4
+	pop_b 1
+.d 1 0
+	rtn
+s12.1
+	pop_a 2
+	pop_b 1
+	pushD m_StrictList
+	pushD e_StrictList_dslTake
+.d 0 2 ii
+	jmp _match_error
+.nu 1 1 _ _
+.o 1 0
+n27
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea27
+.o 2 1 i
+s27
+	push_a 0
+	jsr_eval 0
+	pushI 1
+	push_b 1
+	subI
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 2 1 i
+	jmp s12
+.export e_StrictList_sslIsEmpty
+.descexp e_StrictList_dslIsEmpty e_StrictList_nslIsEmpty e_StrictList_lslIsEmpty 1 0 "slIsEmpty"
+.o 2 0
+e_StrictList_lslIsEmpty
+	pop_a 1
+.d 1 0
+	jsr ea11
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_StrictList_dslIsEmpty
+.o 1 0
+e_StrictList_nslIsEmpty
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea11
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea11
+	jsr_eval 0
+.o 1 0
+e_StrictList_sslIsEmpty
+.o 1 0
+s11
+	eq_desc e_StrictList_dSNil 0 0
+	pop_a 1
+.d 0 1 b
+	rtn
+.export e_StrictList_sslIndex
+.descexp e_StrictList_dslIndex e_StrictList_nslIndex e_StrictList_lslIndex 2 0 "slIndex"
+.a 0 ea10
+.o 2 0
+e_StrictList_lslIndex
+	repl_args 1 1
+.d 2 0
+	jmp ea10
+.n 2 e_StrictList_dslIndex _
+.o 1 0
+e_StrictList_nslIndex
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea10
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+ea10
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.o 1 1 i
+e_StrictList_sslIndex
+.o 1 1 i
+s10
+	eq_desc e_StrictList_dSNil 0 0
+	jmp_true case.27
+	jmp case.28
+case.27
+	buildAC "slIndex (StrictList.icl): index out of range\n"
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+.d 1 0
+	rtn
+case.28
+	repl_args 2 2
+	eqI_b 0 0
+	jmp_true case.29
+	jmp case.30
+case.29
+	pop_b 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+case.30
+	push_a 1
+	jsr_eval 0
+	pushI 1
+	push_b 1
+	subI
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 1 1 i
+	jmp s10
+.export e_StrictList_sslToList
+.export e_StrictList_easlToList
+.descexp e_StrictList_dslToList e_StrictList_nslToList e_StrictList_lslToList 1 0 "slToList"
+.o 2 0
+e_StrictList_lslToList
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StrictList_easlToList
+.n 1 e_StrictList_dslToList e_StrictList_easlToList
+.o 1 0
+e_StrictList_nslToList
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StrictList_easlToList
+	jsr_eval 0
+.o 2 0
+e_StrictList_sslToList
+.o 2 0
+s9
+	eq_desc e_StrictList_dSNil 0 0
+	jmp_true case.31
+	jmp case.32
+case.31
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.32
+	repl_args 2 2
+	push_a 1
+	build e_StrictList_dslToList 1 e_StrictList_nslToList
+	push_a 1
+	fillh _Cons 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.export e_StrictList_sslTail
+.export e_StrictList_easlTail
+.descexp e_StrictList_dslTail e_StrictList_nslTail e_StrictList_lslTail 1 0 "slTail"
+.o 2 0
+e_StrictList_lslTail
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StrictList_easlTail
+.n 1 e_StrictList_dslTail e_StrictList_easlTail
+.o 1 0
+e_StrictList_nslTail
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StrictList_easlTail
+	jsr_eval 0
+.o 2 0
+e_StrictList_sslTail
+.o 2 0
+s8
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.33
+	jmp case.34
+case.33
+	repl_args 2 2
+	pop_a 1
+	jmp_eval_upd
+case.34
+	buildAC "slTail (StrictList.icl): empty list\n"
+	updatepop_a 0 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_StrictList_sslHead
+.descexp e_StrictList_dslHead e_StrictList_nslHead e_StrictList_lslHead 1 0 "slHead"
+.o 2 0
+e_StrictList_lslHead
+	pop_a 1
+.d 1 0
+	jmp ea7
+.n 1 e_StrictList_dslHead _
+.o 1 0
+e_StrictList_nslHead
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea7
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea7
+	jsr_eval 0
+.o 1 0
+e_StrictList_sslHead
+.o 1 0
+s7
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.35
+	jmp case.36
+case.35
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.36
+	buildAC "slHead (StrictList.icl): empty list\n"
+	updatepop_a 0 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+.d 1 0
+	rtn
+.export e_StrictList_sslLength
+.descexp e_StrictList_dslLength e_StrictList_nslLength e_StrictList_lslLength 1 0 "slLength"
+.o 2 0
+e_StrictList_lslLength
+	pop_a 1
+.d 1 0
+	jsr ea6
+.o 0 1 i
+	buildI_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_StrictList_dslLength
+.o 1 0
+e_StrictList_nslLength
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea6
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea6
+	jsr_eval 0
+.o 1 0
+e_StrictList_sslLength
+.o 1 0
+s6
+	pushI 0
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 i
+	jmp s20
+.o 1 1 i
+s20
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.37
+	jmp case.38
+case.37
+	repl_args 2 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	addI
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	jmp s20
+case.38
+	pop_a 1
+.d 0 1 i
+	rtn
+.export e_StrictList_sslMap
+.export e_StrictList_easlMap
+.descexp e_StrictList_dslMap e_StrictList_nslMap e_StrictList_lslMap 2 0 "slMap"
+.a 2 e_StrictList_easlMap
+.o 2 0
+e_StrictList_lslMap
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StrictList_easlMap
+.n 2 e_StrictList_dslMap e_StrictList_easlMap
+.o 1 0
+e_StrictList_nslMap
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StrictList_easlMap
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_StrictList_sslMap
+.o 3 0
+s5
+	eq_desc e_StrictList_dSNil 0 1
+	jmp_true case.39
+	jmp case.40
+case.39
+	fillh e_StrictList_dSNil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.40
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	push_a 3
+	build e_StrictList_dslMap 2 e_StrictList_nslMap
+	push_a 1
+	push_a 4
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 4
+	update_a 0 5
+	pop_a 1
+	jsr_ap 1
+	fill_r e_StrictList_kSCons 2 0 6 0 0
+	pop_a 6
+.d 1 0
+	rtn
+.export e_StrictList_sslFromList
+.export e_StrictList_easlFromList
+.descexp e_StrictList_dslFromList e_StrictList_nslFromList e_StrictList_lslFromList 1 0 "slFromList"
+.o 2 0
+e_StrictList_lslFromList
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StrictList_easlFromList
+.n 1 e_StrictList_dslFromList e_StrictList_easlFromList
+.o 1 0
+e_StrictList_nslFromList
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StrictList_easlFromList
+	jsr_eval 0
+.o 2 0
+e_StrictList_sslFromList
+.o 2 0
+s4
+	eq_desc _Nil 0 0
+	jmp_true case.41
+	jmp case.42
+case.41
+	fillh e_StrictList_dSNil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.42
+	repl_args 2 2
+	push_a 1
+	build e_StrictList_dslFromList 1 e_StrictList_nslFromList
+	push_a 1
+	jsr_eval 0
+	fill_r e_StrictList_kSCons 2 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.export e_StrictList_sslSplitAt
+.descexp e_StrictList_dslSplitAt e_StrictList_nslSplitAt e_StrictList_lslSplitAt 2 0 "slSplitAt"
+.a 0 a3
+.o 2 0
+e_StrictList_lslSplitAt
+	repl_args 1 1
+.o 2 0
+a3
+.d 2 0
+	jsr ea3
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 2 e_StrictList_dslSplitAt
+.o 1 0
+e_StrictList_nslSplitAt
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea3
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea3
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.o 1 1 i
+e_StrictList_sslSplitAt
+.o 1 1 i
+s3
+	eqI_b 0 0
+	jmp_true case.43
+	jmp case.44
+case.43
+	buildh e_StrictList_dSNil 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+case.44
+	jsr_eval 0
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.45
+	jmp case.46
+case.45
+	repl_args 2 2
+	push_a 1
+	push_b 0
+	build_u _ 1 1 n28
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 3
+	build_r e_StrictList_kSCons 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	rtn
+case.46
+	buildh e_StrictList_dSNil 0
+	buildh e_StrictList_dSNil 0
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+.nu 1 1 _ _
+.o 1 0
+n28
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea28
+.o 2 1 i
+s28
+	pushI 1
+	push_b 1
+	subI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	jsr s3
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.export e_StrictList_sslReverse
+.export e_StrictList_easlReverse
+.descexp e_StrictList_dslReverse e_StrictList_nslReverse e_StrictList_lslReverse 1 0 "slReverse"
+.o 2 0
+e_StrictList_lslReverse
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_StrictList_easlReverse
+.n 1 e_StrictList_dslReverse e_StrictList_easlReverse
+.o 1 0
+e_StrictList_nslReverse
+	push_node _cycle_in_spine 1
+.o 2 0
+e_StrictList_easlReverse
+	jsr_eval 0
+.o 2 0
+e_StrictList_sslReverse
+.o 2 0
+s2
+	buildh e_StrictList_dSNil 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s19
+.o 3 0
+s19
+	eq_desc e_StrictList_kSCons 0 0
+	jmp_true case.47
+	jmp case.48
+case.47
+	repl_args 2 2
+	push_a 2
+	push_a 1
+	build_r e_StrictList_kSCons 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 2
+	jsr_eval 0
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s19
+case.48
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+.export e_StrictList_sslAppend
+.export e_StrictList_easlAppend
+.descexp e_StrictList_dslAppend e_StrictList_nslAppend e_StrictList_lslAppend 2 0 "slAppend"
+.a 2 e_StrictList_easlAppend
+.o 2 0
+e_StrictList_lslAppend
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_StrictList_easlAppend
+.n 2 e_StrictList_dslAppend e_StrictList_easlAppend
+.o 1 0
+e_StrictList_nslAppend
+	push_node _cycle_in_spine 2
+.o 3 0
+e_StrictList_easlAppend
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_StrictList_sslAppend
+.o 3 0
+s1
+	eq_desc e_StrictList_dSNil 0 0
+	jmp_true case.49
+	jmp case.50
+case.49
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+case.50
+	repl_args 2 2
+	push_a 2
+	push_a 2
+	build e_StrictList_dslAppend 2 e_StrictList_nslAppend
+	push_a 1
+	fill_r e_StrictList_kSCons 2 0 5 0 0
+	pop_a 5
+.d 1 0
+	rtn
+.impmod _system
+.implab _match_error

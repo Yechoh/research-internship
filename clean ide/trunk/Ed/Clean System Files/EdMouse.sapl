@@ -1,0 +1,99 @@
+|| ?module? EdMouse
+
+
+EdMouse.anon_49 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMouse.anon_48 x_0 state_1 = _Tuple2 x_0 state_1
+EdMouse.anon_47 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_46 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_45 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_44 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMouse.anon_43 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_42 x_0 state_1 = _Tuple2 x_0 state_1
+EdMouse.anon_41 x_0 state_1 = _Tuple2 x_0 state_1
+EdMouse.anon_40 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_39 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMouse.anon_18 row_0::I text_1 = EdMouse.anon_39 (EdVisualCursor.vChangeSelectionTo (EdSelection.selectLines row_0 row_0 text_1)) (EdMonad.setSelectMode (EdMonad.SelectLines row_0))
+EdMouse.anon_93 ma_0 row_1::I state_2 = let _x_1_0 = ma_0 state_2 in EdMouse.anon_18 row_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.tripleClick !position_0 = case position_0 (EdPosition._Position col_1_0 row_1_1 -> EdMouse.anon_93 EdMonad.getText row_1_1) 
+EdMouse.anon_38 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_37 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMouse.anon_17 selection_0 = EdMouse.anon_37 (EdVisualCursor.vChangeSelectionTo selection_0) (EdMonad.setSelectMode (EdMonad.SelectWords selection_0))
+EdMouse.anon_94 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMouse.anon_17 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.doubleClick position_0 = EdMouse.anon_94 (EdMovement.selectWordAt position_0)
+EdMouse.anon_36 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_35 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMouse.anon_34 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMouse.anon_33 x_0 state_1 = _Tuple2 x_0 state_1
+EdMouse.anon_16 !undoinfo_0 = <{EdMouse._c;113;5_109}> (select undoinfo_0::EdMonad._UndoInfo 2) undoinfo_0
+<{EdMouse._c;113;5_109}> !_x_0 undoinfo_1 = case _x_0 (EdMonad.InsertInfo _x_1_0 state_1_1 -> case _x_1_0 (True -> EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [2:EdMonad.InsertInfo False state_1_1])) ) (EdMonad.RemoveInfo _x_1_0 state_1_1 -> case _x_1_0 (True -> EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [2:EdMonad.RemoveInfo False state_1_1])) ) (_ -> EdMouse.anon_33 StateMonad.nothing)
+EdMouse.anon_95 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdMouse.anon_34 ma_0 mb_1 state_3)::_Tuple2 1)
+EdMouse.anon_96 ma_0 mb_1 mb_2 !f_3 state_4 = let _x_1_0 = EdMouse.anon_95 ma_0 mb_1 mb_2 state_4 in f_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_97 ma_0 mb_1 !mb_2 state_3 = let _x_1_0 = EdMouse.anon_95 ma_0 mb_1 mb_2 state_3 in EdMouse.anon_16 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.singleClick position_0 = EdMouse.anon_97 (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection position_0 position_0)) (EdMonad.setSelectMode EdMonad.SelectChars) EdMonad.getUndoInfo
+EdMouse.anon_32 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_19 position_0 selection_1 = EdVisualCursor.vChangeSelectionTo (EdSelection._Selection (select selection_1::EdSelection._Selection 0) position_0)
+EdMouse.anon_98 ma_0 position_1 state_2 = let _x_1_0 = ma_0 state_2 in EdMouse.anon_19 position_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.shiftClick position_0 = EdMouse.anon_98 EdMonad.getSelection position_0
+EdMouse.anon_7 point_0 !mods_1 shiftDown_2::B nrDown_3::I text_4 font_5 = <{EdMouse._if;35;40_113}> (select mods_1::StdIOCommon._Modifiers 3) nrDown_3 point_0 text_4 font_5 shiftDown_2
+<{EdMouse._if;35;40_113}> !_x_0::B nrDown_1::I point_2 text_3 font_4 shiftDown_5::B = case _x_0 (True -> <{EdMouse._c;41;9_110}> nrDown_1 point_2 text_3 font_4 shiftDown_5) (_ -> <{EdMouse._if;35;40_112}> shiftDown_5 point_2 text_3 font_4 nrDown_1)
+<{EdMouse._if;35;40_112}> !shiftDown_0::B point_1 text_2 font_3 nrDown_4::I = case shiftDown_0 (True -> EdMouse.shiftClick (EdVisualText.pointToPosition point_1 text_2 font_3)) (_ -> <{EdMouse._c;53;9_111}> nrDown_4 point_1 text_2 font_3)
+<{EdMouse._c;53;9_111}> !nrDown_0::I point_1 text_2 font_3 = case nrDown_0 (1 -> EdMouse.singleClick (EdVisualText.pointToPosition point_1 text_2 font_3)) (2 -> EdMouse.doubleClick (EdVisualText.pointToPosition point_1 text_2 font_3)) (3 -> EdMouse.tripleClick (EdVisualText.pointToPosition point_1 text_2 font_3)) (_ -> EdMouse.anon_42 StateMonad.nothing)
+<{EdMouse._c;41;9_110}> !nrDown_0::I point_1 text_2 font_3 shiftDown_4::B = case nrDown_0 (1 -> EdMouse.singleClick (EdVisualText.pointToPosition point_1 text_2 font_3)) (2 -> EdCommon.controlDoubleClick shiftDown_4 (EdVisualText.pointToPosition point_1 text_2 font_3)) (3 -> EdMouse.tripleClick (EdVisualText.pointToPosition point_1 text_2 font_3)) (_ -> EdMouse.anon_41 StateMonad.nothing)
+EdMouse.anon_99 ma_0 point_1 !mods_2 shiftDown_3::B nrDown_4::I text_5 state_6 = let _x_1_0 = ma_0 state_6 in EdMouse.anon_7 point_1 mods_2 shiftDown_3 nrDown_4 text_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_8 point_0 mods_1 shiftDown_2::B nrDown_3::I text_4 = EdMouse.anon_99 EdMonad.getFontInfo point_0 mods_1 shiftDown_2 nrDown_3 text_4
+EdMouse.anon_31 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_30 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_29 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_28 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMouse.anon_27 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_26 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_10 newPosition_0 firstLine_1::I text_2 = EdVisualCursor.vChangeSelectionTo (EdSelection.selectLines firstLine_1 (select newPosition_0::EdPosition._Position 1) text_2)
+EdMouse.anon_9 !newPosition_0 !firstWord_1 endSelection_2 = case (<{EdPosition.<_0}> newPosition_0 (select firstWord_1::EdSelection._Selection 1)) (True -> EdVisualCursor.vChangeSelectionTo (EdSelection._Selection (select firstWord_1::EdSelection._Selection 1) (select endSelection_2::EdSelection._Selection 0))) (False -> EdVisualCursor.vChangeSelectionTo (EdSelection._Selection (select firstWord_1::EdSelection._Selection 0) (select endSelection_2::EdSelection._Selection 1))) 
+EdMouse.anon_101 ma_0 newPosition_1 firstLine_2::I state_3 = let _x_1_0 = ma_0 state_3 in EdMouse.anon_10 newPosition_1 firstLine_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_100 ma_0 !newPosition_1 !firstWord_2 state_3 = let _x_1_0 = ma_0 state_3 in EdMouse.anon_9 newPosition_1 firstWord_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_11 point_0 selection_1 newPosition_2 selectMode_3 = EdMouse.anon_28 (<{EdMouse._c;70;6_114}> selectMode_3 selection_1 newPosition_2) (EdVisualCursor.vDragCursor point_0)
+<{EdMouse._c;70;6_114}> !selectMode_0 selection_1 newPosition_2 = case selectMode_0 (EdMonad.SelectChars -> EdVisualCursor.vChangeSelectionTo (EdSelection._Selection (select selection_1::EdSelection._Selection 0) newPosition_2)) (EdMonad.SelectWords firstWord_1_0 -> EdMouse.anon_100 (EdMovement.selectWordAt newPosition_2) newPosition_2 firstWord_1_0) (EdMonad.SelectLines firstLine_1_0 -> EdMouse.anon_101 EdMonad.getText newPosition_2 firstLine_1_0) 
+EdMouse.anon_102 ma_0 !point_1 selection_2 newPosition_3 state_4 = let _x_1_0 = ma_0 state_4 in EdMouse.anon_11 point_1 selection_2 newPosition_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_12 point_0 selection_1 text_2 font_3 = EdMouse.anon_102 EdMonad.getSelectMode point_0 selection_1 (EdVisualText.pointToPosition point_0 text_2 font_3)
+EdMouse.anon_103 ma_0 !point_1 selection_2 text_3 state_4 = let _x_1_0 = ma_0 state_4 in EdMouse.anon_12 point_1 selection_2 text_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_13 point_0 selection_1 text_2 = EdMouse.anon_103 EdMonad.getFontInfo point_0 selection_1 text_2
+EdMouse.anon_104 ma_0 !point_1 selection_2 state_3 = let _x_1_0 = ma_0 state_3 in EdMouse.anon_13 point_1 selection_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_14 point_0 selection_1 = EdMouse.anon_104 EdMonad.getText point_0 selection_1
+EdMouse.anon_25 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdMouse.anon_24 x_0 state_1 = _Tuple2 x_0 state_1
+EdMouse.anon_15 selection_0 = EdMouse.anon_25 (EdCommon.mChangeSelectionTo selection_0) (<{EdMouse._if;35;40_115}> (EdSelection.isEmptySelection selection_0))
+<{EdMouse._if;35;40_115}> !_x_0::B = case _x_0 (True -> EdVisualCursor.vShowCursor) (_ -> EdMouse.anon_24 StateMonad.nothing)
+EdMouse.anon_107 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdMouse.anon_15 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_106 ma_0 !point_1 state_2 = let _x_1_0 = ma_0 state_2 in EdMouse.anon_14 point_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_105 ma_0 mb_1 !f_2 state_3 = let _x_1_0 = EdMouse.anon_44 ma_0 mb_1 state_3 in f_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.anon_108 ma_0 mb_1 point_2 !mods_3 shiftDown_4::B nrDown_5::I state_6 = let _x_1_0 = EdMouse.anon_44 ma_0 mb_1 state_6 in EdMouse.anon_8 point_2 mods_3 shiftDown_4 nrDown_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdMouse.mouse !_x_0 = case _x_0 (StdIOCommon.MouseDown point_1_0 mods_1_1 nrDown_1_2 -> case mods_1_1 (StdIOCommon._Modifiers shiftDown_2_0 optionDown_2_1 commandDown_2_2 controlDown_2_3 altDown_2_4 -> EdMouse.anon_108 EdVisualCursor.vHideCursor EdMonad.getText point_1_0 mods_1_1 shiftDown_2_0 nrDown_1_2) ) (StdIOCommon.MouseDrag point_1_0 modifiers_1_1 -> EdMouse.anon_106 EdMonad.getSelection point_1_0) (StdIOCommon.MouseUp point_1_0 modifiers_1_1 -> EdMouse.anon_107 EdMonad.getSelection) (_ -> EdMouse.anon_48 StateMonad.nothing)
+EdMouse.editWindowMouse mouseState_0 state_1 = EdMonad.noResult (EdMouse.anon_49 (EdMonad.setVirtualX 0) (EdMouse.mouse mouseState_0)) state_1
+EdMouse.noMouseMoved::B !_x_0 = case _x_0 (StdIOCommon.MouseMove _x_1_0 _x_1_1 -> False) (_ -> True)
+
+
+|| Converted Records
+:: <{EdMouse.gEq_s;}> = {!EdMouse.gEq_s}
+
+:: <{EdMouse.gEq_ss;}> = {!EdMouse.gEq_ss}
+
+:: <{EdMouse.gEq_sss;}> = {!EdMouse.gEq_sss}
+
+:: <{EdMouse.gEq_ssss;}> = {!EdMouse.gEq_ssss}
+
+:: <{EdMouse.gEq_sssss;}> = {!EdMouse.gEq_sssss}
+
+:: <{EdMouse.gEq_ssssss;}> = {!EdMouse.gEq_ssssss}
+
+:: <{EdMouse.gEq_sssssss;}> = {!EdMouse.gEq_sssssss}
+
+:: <{EdMouse.gEq_ssssssss;}> = {!EdMouse.gEq_ssssssss}
+
+:: <{EdMouse.gEq_sssssssss;}> = {!EdMouse.gEq_sssssssss}
+
+:: <{EdMouse.bimap_s;}> = {EdMouse.bimap_s}
+
+:: <{EdMouse.bimap_ss;}> = {EdMouse.bimap_ss}
+
+:: <{EdMouse.bimap_sss;}> = {EdMouse.bimap_sss}
+

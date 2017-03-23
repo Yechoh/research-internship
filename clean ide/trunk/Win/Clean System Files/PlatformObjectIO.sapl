@@ -1,0 +1,43 @@
+|| ?module? PlatformObjectIO
+
+
+PlatformObjectIO.cl_args =: ArgEnv.getCommandLine
+<{PlatformObjectIO.c;30;20_8}> !_vArray_0 !g_i_1::I !g_s_2::I g_a_3 = case (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = select _vArray_0::<{_SystemArray.Array;}> 6 g_a_3 g_i_1 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{PlatformObjectIO.c;30;20_8}> _vArray_0 (<{StdInt.+_6}> g_i_1 StdInt.one_11) g_s_2 g_a_2_0)) (False -> _predefined._Nil) 
+PlatformObjectIO.filter_opts !_vArray_0 !_x_1 = case _x_1 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons h_1_0 t_1_1 -> case (<{StdChar.==_18}> (select _vArray_0::<{_SystemArray.Array;}> 3 h_1_0 0) '-') (True -> PlatformObjectIO.filter_opts _vArray_0 (StdList.drop 1 t_1_1)) (False -> _predefined._Cons h_1_0 (PlatformObjectIO.filter_opts _vArray_0 t_1_1)) ) 
+<{PlatformObjectIO.c;30;20_55}> !g_i_0::I !g_s_1::I g_a_2 = case (StdBool.not (<{StdInt.<_17}> g_s_1 g_i_0)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = _SystemArray.uselect_78 g_a_2 g_i_0 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{PlatformObjectIO.c;30;20_55}> (<{StdInt.+_6}> g_i_0 StdInt.one_11) g_s_1 g_a_2_0)) (False -> _predefined._Nil) 
+PlatformObjectIO.filter_opts_56 !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons h_1_0 t_1_1 -> case (<{StdChar.==_18}> (_SystemArray.select_19 h_1_0 0) '-') (True -> PlatformObjectIO.filter_opts_56 (StdList.drop 1 t_1_1)) (False -> _predefined._Cons h_1_0 (PlatformObjectIO.filter_opts_56 t_1_1)) ) 
+PlatformObjectIO.initPlatformCommandLineArguments !ps_0 = let args_1_0 = PlatformObjectIO.cl_args, _x_1_1 = _SystemArray.usize_79 args_1_0, args_1_2 = <{PlatformObjectIO.c;30;20_55}> 0 (<{StdInt.-_7}> (select _x_1_1::_Tuple2 0) 1) (select _x_1_1::_Tuple2 1), args_1_3 = PlatformObjectIO.filter_opts_56 args_1_2 in case (StdList.isEmpty args_1_3) (True -> <{_Tuple2!3}> _predefined._Nil ps_0) (False -> <{_Tuple2!3}> (StdList.map UtilIO.GetLongPathName (StdList.tl args_1_3)) ps_0) 
+PlatformObjectIO.installPlatformEventHandlers !ps_0 = ps_0
+PlatformObjectIO.openPlatformWindowMenu !ps_0 = ps_0
+PlatformObjectIO.getWindowModified !_x_0 !io_1 = <{_Tuple2!3}> Data.Maybe.Nothing io_1
+PlatformObjectIO.setWindowModified !_x_0 !_x_1 !_x_2::B !io_3 = io_3
+PlatformObjectIO.app_world_instead_of_io_11 !f_0 !io_1 = let _x_1_0 = iostate.ioStGetWorld io_1 in iostate.ioStSetWorld (f_0 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1)
+PlatformObjectIO.app_world_instead_of_io_57 !_x_0::I !io_1 = let _x_1_0 = iostate.ioStGetWorld io_1 in iostate.ioStSetWorld (set_return_code.set_return_code_world _x_0 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1)
+PlatformObjectIO.pAbort !ps_0 = StdPSt.appPIO (PlatformObjectIO.app_world_instead_of_io_57 -1) ps_0
+
+
+|| Converted Records
+:: <{PlatformObjectIO.gEq_s;}> = {!PlatformObjectIO.gEq_s}
+
+:: <{PlatformObjectIO.gEq_ss;}> = {!PlatformObjectIO.gEq_ss}
+
+:: <{PlatformObjectIO.gEq_sss;}> = {!PlatformObjectIO.gEq_sss}
+
+:: <{PlatformObjectIO.gEq_ssss;}> = {!PlatformObjectIO.gEq_ssss}
+
+:: <{PlatformObjectIO.gEq_sssss;}> = {!PlatformObjectIO.gEq_sssss}
+
+:: <{PlatformObjectIO.gEq_ssssss;}> = {!PlatformObjectIO.gEq_ssssss}
+
+:: <{PlatformObjectIO.gEq_sssssss;}> = {!PlatformObjectIO.gEq_sssssss}
+
+:: <{PlatformObjectIO.gEq_ssssssss;}> = {!PlatformObjectIO.gEq_ssssssss}
+
+:: <{PlatformObjectIO.gEq_sssssssss;}> = {!PlatformObjectIO.gEq_sssssssss}
+
+:: <{PlatformObjectIO.bimap_s;}> = {PlatformObjectIO.bimap_s}
+
+:: <{PlatformObjectIO.bimap_ss;}> = {PlatformObjectIO.bimap_ss}
+
+:: <{PlatformObjectIO.bimap_sss;}> = {PlatformObjectIO.bimap_sss}
+

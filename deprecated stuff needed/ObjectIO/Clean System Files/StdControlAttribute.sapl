@@ -1,0 +1,90 @@
+|| ?module? StdControlAttribute
+
+
+StdControlAttribute.isValidButtonControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlFunction _x_1_0 -> True) (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlModsFunction _x_1_0 -> True) (StdControlDef.ControlOuterSize _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlResize _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (StdControlDef.ControlViewSize _x_1_0 -> True) (StdControlDef.ControlWidth _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isValidCheckControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isValidCompoundControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlFunction _x_1_0 -> False) (StdControlDef.ControlModsFunction _x_1_0 -> False) (_ -> True)
+StdControlAttribute.isValidCustomButtonControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlFunction _x_1_0 -> True) (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlMinimumSize _x_1_0 -> True) (StdControlDef.ControlModsFunction _x_1_0 -> True) (StdControlDef.ControlPen _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlResize _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isValidCustomControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlActivate _x_1_0 -> True) (StdControlDef.ControlDeactivate _x_1_0 -> True) (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlKeyboard _x_1_0 _x_1_1 _x_1_2 -> True) (StdControlDef.ControlMinimumSize _x_1_0 -> True) (StdControlDef.ControlMouse _x_1_0 _x_1_1 _x_1_2 -> True) (StdControlDef.ControlPen _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlResize _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isValidEditControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlActivate _x_1_0 -> True) (StdControlDef.ControlDeactivate _x_1_0 -> True) (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlKeyboard _x_1_0 _x_1_1 _x_1_2 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlResize _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isValidLayoutControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlHide -> True) (StdControlDef.ControlHMargin _x_1_0 _x_1_1 -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlItemSpace _x_1_0 _x_1_1 -> True) (StdControlDef.ControlMinimumSize _x_1_0 -> True) (StdControlDef.ControlOuterSize _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlResize _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlViewSize _x_1_0 -> True) (StdControlDef.ControlVMargin _x_1_0 _x_1_1 -> True) (_ -> False)
+StdControlAttribute.isValidPopUpControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlActivate _x_1_0 -> True) (StdControlDef.ControlDeactivate _x_1_0 -> True) (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (StdControlDef.ControlWidth _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isValidRadioControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isValidSliderControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlResize _x_1_0 -> True) (StdControlDef.ControlSelectState _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isValidTextControlAttribute::B !_x_0 = case _x_0 (StdControlDef.ControlHide -> True) (StdControlDef.ControlId _x_1_0 -> True) (StdControlDef.ControlPos _x_1_0 -> True) (StdControlDef.ControlTip _x_1_0 -> True) (StdControlDef.ControlWidth _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlActivate::B !_x_0 = case _x_0 (StdControlDef.ControlActivate _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlDeactivate::B !_x_0 = case _x_0 (StdControlDef.ControlDeactivate _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlFunction::B !_x_0 = case _x_0 (StdControlDef.ControlFunction _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlHide::B !_x_0 = case _x_0 (StdControlDef.ControlHide -> True) (_ -> False)
+StdControlAttribute.isControlHMargin::B !_x_0 = case _x_0 (StdControlDef.ControlHMargin _x_1_0 _x_1_1 -> True) (_ -> False)
+StdControlAttribute.isControlHScroll::B !_x_0 = case _x_0 (StdControlDef.ControlHScroll _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlId::B !_x_0 = case _x_0 (StdControlDef.ControlId _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlItemSpace::B !_x_0 = case _x_0 (StdControlDef.ControlItemSpace _x_1_0 _x_1_1 -> True) (_ -> False)
+StdControlAttribute.isControlKeyboard::B !_x_0 = case _x_0 (StdControlDef.ControlKeyboard _x_1_0 _x_1_1 _x_1_2 -> True) (_ -> False)
+StdControlAttribute.isControlLook::B !_x_0 = case _x_0 (StdControlDef.ControlLook _x_1_0 _x_1_1 -> True) (_ -> False)
+StdControlAttribute.isControlMinimumSize::B !_x_0 = case _x_0 (StdControlDef.ControlMinimumSize _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlModsFunction::B !_x_0 = case _x_0 (StdControlDef.ControlModsFunction _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlMouse::B !_x_0 = case _x_0 (StdControlDef.ControlMouse _x_1_0 _x_1_1 _x_1_2 -> True) (_ -> False)
+StdControlAttribute.isControlOrigin::B !_x_0 = case _x_0 (StdControlDef.ControlOrigin _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlOuterSize::B !_x_0 = case _x_0 (StdControlDef.ControlOuterSize _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlPen::B !_x_0 = case _x_0 (StdControlDef.ControlPen _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlPos::B !_x_0 = case _x_0 (StdControlDef.ControlPos _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlResize::B !_x_0 = case _x_0 (StdControlDef.ControlResize _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlSelectState::B !_x_0 = case _x_0 (StdControlDef.ControlSelectState _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlTip::B !_x_0 = case _x_0 (StdControlDef.ControlTip _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlViewDomain::B !_x_0 = case _x_0 (StdControlDef.ControlViewDomain _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlViewSize::B !_x_0 = case _x_0 (StdControlDef.ControlViewSize _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlVMargin::B !_x_0 = case _x_0 (StdControlDef.ControlVMargin _x_1_0 _x_1_1 -> True) (_ -> False)
+StdControlAttribute.isControlVScroll::B !_x_0 = case _x_0 (StdControlDef.ControlVScroll _x_1_0 -> True) (_ -> False)
+StdControlAttribute.isControlWidth::B !_x_0 = case _x_0 (StdControlDef.ControlWidth _x_1_0 -> True) (_ -> False)
+StdControlAttribute.getControlActivateFun !_x_0 = case _x_0 (StdControlDef.ControlActivate f_1_0 -> f_1_0) 
+StdControlAttribute.getControlDeactivateFun !_x_0 = case _x_0 (StdControlDef.ControlDeactivate f_1_0 -> f_1_0) 
+StdControlAttribute.getControlFun !_x_0 = case _x_0 (StdControlDef.ControlFunction f_1_0 -> f_1_0) 
+StdControlAttribute.getControlHMarginAtt !_x_0 = case _x_0 (StdControlDef.ControlHMargin left_1_0 right_1_1 -> _Tuple2 left_1_0 right_1_1) 
+StdControlAttribute.getControlHScrollFun !_x_0 = case _x_0 (StdControlDef.ControlHScroll f_1_0 -> f_1_0) 
+StdControlAttribute.getControlIdAtt !_x_0 = case _x_0 (StdControlDef.ControlId id_1_0 -> id_1_0) 
+StdControlAttribute.getControlItemSpaceAtt !_x_0 = case _x_0 (StdControlDef.ControlItemSpace hspace_1_0 vspace_1_1 -> _Tuple2 hspace_1_0 vspace_1_1) 
+StdControlAttribute.getControlKeyboardAtt !_x_0 = case _x_0 (StdControlDef.ControlKeyboard filter_1_0 s_1_1 f_1_2 -> _Tuple3 filter_1_0 s_1_1 f_1_2) 
+StdControlAttribute.getControlLookAtt !_x_0 = case _x_0 (StdControlDef.ControlLook systemLook_1_0 f_1_1 -> _Tuple2 systemLook_1_0 f_1_1) 
+StdControlAttribute.getControlMinimumSizeAtt !_x_0 = case _x_0 (StdControlDef.ControlMinimumSize size_1_0 -> size_1_0) 
+StdControlAttribute.getControlModsFun !_x_0 = case _x_0 (StdControlDef.ControlModsFunction f_1_0 -> f_1_0) 
+StdControlAttribute.getControlMouseAtt !_x_0 = case _x_0 (StdControlDef.ControlMouse filter_1_0 s_1_1 f_1_2 -> _Tuple3 filter_1_0 s_1_1 f_1_2) 
+StdControlAttribute.getControlOriginAtt !_x_0 = case _x_0 (StdControlDef.ControlOrigin p_1_0 -> p_1_0) 
+StdControlAttribute.getControlOuterSizeAtt !_x_0 = case _x_0 (StdControlDef.ControlOuterSize size_1_0 -> size_1_0) 
+StdControlAttribute.getControlPenAtt !_x_0 = case _x_0 (StdControlDef.ControlPen atts_1_0 -> atts_1_0) 
+StdControlAttribute.getControlPosAtt !_x_0 = case _x_0 (StdControlDef.ControlPos itemPos_1_0 -> itemPos_1_0) 
+StdControlAttribute.getControlResizeFun !_x_0 = case _x_0 (StdControlDef.ControlResize f_1_0 -> f_1_0) 
+StdControlAttribute.getControlSelectStateAtt !_x_0 = case _x_0 (StdControlDef.ControlSelectState s_1_0 -> s_1_0) 
+StdControlAttribute.getControlTipAtt !_x_0 = case _x_0 (StdControlDef.ControlTip tip_1_0 -> tip_1_0) 
+StdControlAttribute.getControlViewDomainAtt !_x_0 = case _x_0 (StdControlDef.ControlViewDomain pd_1_0 -> pd_1_0) 
+StdControlAttribute.getControlViewSizeAtt !_x_0 = case _x_0 (StdControlDef.ControlViewSize size_1_0 -> size_1_0) 
+StdControlAttribute.getControlVMarginAtt !_x_0 = case _x_0 (StdControlDef.ControlVMargin top_1_0 bottom_1_1 -> _Tuple2 top_1_0 bottom_1_1) 
+StdControlAttribute.getControlVScrollFun !_x_0 = case _x_0 (StdControlDef.ControlVScroll f_1_0 -> f_1_0) 
+StdControlAttribute.getControlWidthAtt !_x_0 = case _x_0 (StdControlDef.ControlWidth w_1_0 -> w_1_0) 
+
+
+|| Converted Records
+:: <{StdControlAttribute.gEq_s;}> = {!StdControlAttribute.gEq_s}
+
+:: <{StdControlAttribute.gEq_ss;}> = {!StdControlAttribute.gEq_ss}
+
+:: <{StdControlAttribute.gEq_sss;}> = {!StdControlAttribute.gEq_sss}
+
+:: <{StdControlAttribute.gEq_ssss;}> = {!StdControlAttribute.gEq_ssss}
+
+:: <{StdControlAttribute.gEq_sssss;}> = {!StdControlAttribute.gEq_sssss}
+
+:: <{StdControlAttribute.gEq_ssssss;}> = {!StdControlAttribute.gEq_ssssss}
+
+:: <{StdControlAttribute.gEq_sssssss;}> = {!StdControlAttribute.gEq_sssssss}
+
+:: <{StdControlAttribute.gEq_ssssssss;}> = {!StdControlAttribute.gEq_ssssssss}
+
+:: <{StdControlAttribute.gEq_sssssssss;}> = {!StdControlAttribute.gEq_sssssssss}
+
+:: <{StdControlAttribute.bimap_s;}> = {StdControlAttribute.bimap_s}
+
+:: <{StdControlAttribute.bimap_ss;}> = {StdControlAttribute.bimap_ss}
+
+:: <{StdControlAttribute.bimap_sss;}> = {StdControlAttribute.bimap_sss}
+

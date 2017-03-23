@@ -1,0 +1,46 @@
+|| ?module? StdClipboard
+
+
+StdClipboard.clipboardItemToScrap_10::I !_x_0 !tb_1::I = case _x_0 (StdClipboard.ClipboardString text_1_0 -> osclipboard.osSetClipboardText text_1_0 tb_1) 
+StdClipboard.eqClipboardType_8::B !_x_0 !item_1 = case _x_0 (StdClipboard.ClipboardString _x_1_0 -> <{StdClipboard._c;53;55_55}> item_1) 
+<{StdClipboard._c;53;55_55}>::B !item_0 = case item_0 (StdClipboard.ClipboardString _x_1_0 -> True) (_ -> False)
+StdClipboard.removeDuplicateClipItems_9 !_x_0 = case _x_0 (_predefined._Cons item_1_0 items_1_1 -> _predefined._Cons item_1_0 (StdClipboard.removeDuplicateClipItems_9 (select (commondef.remove (StdClipboard.eqClipboardType_8 item_1_0) StdMisc.undef items_1_1)::_Tuple3 2))) (_ -> _x_0)
+StdClipboard.setClipboard !clip_0 !pState_1 = case pState_1 (iostate._PSt ls_1_0 io_1_1 -> let _x_2_0 = iostate.getIOToolbox io_1_1 in update pState_1::iostate._PSt [1:iostate.setIOToolbox (commondef.strictSeq (StdList.map StdClipboard.clipboardItemToScrap_10 (StdClipboard.removeDuplicateClipItems_9 clip_0)) (osclipboard.osInitialiseClipboard (select _x_2_0::_Tuple2 0))) (select _x_2_0::_Tuple2 1)]) 
+StdClipboard.stdClipboardFatalError !function_0 !error_1 = commondef.fatalError function_0 "StdClipboard" error_1
+StdClipboard.scrapToClipboardItem_11 !_x_0::I !tb_1::I = case _x_0 (1 -> let _x_2_0 = osclipboard.osGetClipboardText tb_1 in <{_Tuple2!3}> (StdClipboard.ClipboardString (select _x_2_0::_Tuple2 0)) (select _x_2_0::_Tuple2 1)) (_ -> StdClipboard.stdClipboardFatalError "getClipboard" (<{StdString.+++_11}> "unimplemented clipboard content of type: " (StdString.toString_5 _x_0)))
+StdClipboard.getClipboard !pState_0 = let _x_1_0 = iostate.getIOToolbox (select pState_0::iostate._PSt 1), _x_1_1 = osclipboard.osGetClipboardContent (osclipboard.osInitialiseClipboard (select _x_1_0::_Tuple2 0)), _x_1_2 = commondef.strictSeqList (StdList.map StdClipboard.scrapToClipboardItem_11 (StdList.filter (<{StdInt.==_16}> 1) (select _x_1_1::_Tuple2 0))) (select _x_1_1::_Tuple2 1), _x_1_3 = iostate.ioStGetClipboardState (select _x_1_0::_Tuple2 1), cbs_1_4 = select _x_1_3::_Tuple2 0, _x_1_5 = osclipboard.osGetClipboardVersion (select cbs_1_4::iostate._ClipboardState 0) (select _x_1_2::_Tuple2 1) in <{_Tuple2!3}> (select _x_1_2::_Tuple2 0) (update pState_0::iostate._PSt [1:iostate.setIOToolbox (select _x_1_5::_Tuple2 1) (iostate.ioStSetClipboardState (update cbs_1_4::iostate._ClipboardState [0:select _x_1_5::_Tuple2 0]) (select _x_1_3::_Tuple2 1))])
+StdClipboard.clipboardHasChanged !pState_0 = let _x_1_0 = iostate.ioStGetClipboardState (select pState_0::iostate._PSt 1), oldCount_1_1 = select (select _x_1_0::_Tuple2 0)::iostate._ClipboardState 0, _x_1_2::I = iostate.getIOToolbox (select _x_1_0::_Tuple2 1), _x_1_3 = osclipboard.osGetClipboardVersion oldCount_1_1 (osclipboard.osInitialiseClipboard (select _x_1_2::_Tuple2 0)) in <{_Tuple2!3}> (StdBool.not (<{StdInt.==_16}> oldCount_1_1 (select _x_1_3::_Tuple2 0))) (update pState_0::iostate._PSt [1:iostate.setIOToolbox (select _x_1_3::_Tuple2 1) (select _x_1_2::_Tuple2 1)])
+StdClipboard.fromClipboard_3 !_x_0 = case _x_0 (StdClipboard.ClipboardString string_1_0 -> Data.Maybe.Just string_1_0) 
+StdClipboard.toClipboard_4 !string_0 = StdClipboard.ClipboardString string_0
+<{StdClipboard.TD;ClipboardItem}> _x_0::B = _predefined._Nil
+<{StdClipboard.TD;Clipboard;}> _x_0::B = _predefined._Nil
+
+:: StdClipboard.ClipboardItem = StdClipboard.ClipboardString !a1
+
+|| Converted Records
+:: <{StdClipboard.Clipboard;}> = {!StdClipboard.fromClipboard, !StdClipboard.toClipboard}
+
+:: <{StdClipboard.gEq_s;}> = {!StdClipboard.gEq_s}
+
+:: <{StdClipboard.gEq_ss;}> = {!StdClipboard.gEq_ss}
+
+:: <{StdClipboard.gEq_sss;}> = {!StdClipboard.gEq_sss}
+
+:: <{StdClipboard.gEq_ssss;}> = {!StdClipboard.gEq_ssss}
+
+:: <{StdClipboard.gEq_sssss;}> = {!StdClipboard.gEq_sssss}
+
+:: <{StdClipboard.gEq_ssssss;}> = {!StdClipboard.gEq_ssssss}
+
+:: <{StdClipboard.gEq_sssssss;}> = {!StdClipboard.gEq_sssssss}
+
+:: <{StdClipboard.gEq_ssssssss;}> = {!StdClipboard.gEq_ssssssss}
+
+:: <{StdClipboard.gEq_sssssssss;}> = {!StdClipboard.gEq_sssssssss}
+
+:: <{StdClipboard.bimap_s;}> = {StdClipboard.bimap_s}
+
+:: <{StdClipboard.bimap_ss;}> = {StdClipboard.bimap_ss}
+
+:: <{StdClipboard.bimap_sss;}> = {StdClipboard.bimap_sss}
+

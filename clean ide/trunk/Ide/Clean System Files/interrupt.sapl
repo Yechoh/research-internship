@@ -1,0 +1,36 @@
+|| ?module? interrupt
+
+
+interrupt.checkDialogExistence id_0 io_1 = let _x_1_0 = StdWindow.getDialogsStack io_1 in _Tuple2 (StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{id.==_27}>)) id_0 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1)
+interrupt.TriggerIntr_4 !callback_0 dialog_1 dialogid_2 interrupt_3 noi_4 !_x_5 = case _x_5 (_Tuple2 ls_1_0 ps_1_1 -> let _x_2_0 = StdPSt.accPIO (interrupt.checkDialogExistence dialog_1) ps_1_1 in case (select _x_2_0::_Tuple2 0) (True -> callback_0 False ls_1_0 (StdPSt.appPIO (StdTimer.disableTimer interrupt_3) (select _x_2_0::_Tuple2 1))) (False -> callback_0 True ls_1_0 (StdWindow.closeWindow dialogid_2 (select _x_2_0::_Tuple2 1))) ) 
+interrupt.TriggerNoIntr_5 !callback_0 interrupt_1 noi_2 !_x_3 = case _x_3 (_Tuple2 ls_1_0 ps_1_1 -> callback_0 False ls_1_0 ps_1_1) 
+interrupt.StartIntr !_x_0 ls_1 callback_2 !ps_3 = case _x_0 (_Tuple2 dialog_1_0 interrupt_1_1 -> let _x_2_0 = StdPSt.accPIO (interrupt.checkDialogExistence dialog_1_0) ps_3 in case (select _x_2_0::_Tuple2 0) (True -> let timerdef_4_0 = StdTimerDef.Timer 0 StdIOBasic.NilLS (_predefined._Cons (StdTimerDef.TimerId interrupt_1_1) (_predefined._Cons (StdTimerDef.TimerSelectState StdIOCommon.Able) (_predefined._Cons (StdTimerDef.TimerFunction (interrupt.TriggerIntr_4 callback_2 dialog_1_0 dialog_1_0 interrupt_1_1)) _predefined._Nil))), ps_4_1 = select _x_2_0::_Tuple2 1, _x_4_2 = StdTimer.openTimer_8 (<{StdTimerElementClass.TimerElements;}> StdTimerElementClass.getTimerElementType_6 StdTimerElementClass.timerElementToHandles_7) ls_1 timerdef_4_0 ps_4_1 in case (StdBool.not (<{StdIOCommon.==_42}> (select _x_4_2::_Tuple2 0) StdIOCommon.NoError)) (True -> select _x_4_2::_Tuple2 1) (False -> select _x_4_2::_Tuple2 1) ) (False -> select (StdTimer.openTimer_8 (<{StdTimerElementClass.TimerElements;}> StdTimerElementClass.getTimerElementType_6 StdTimerElementClass.timerElementToHandles_7) ls_1 (StdTimerDef.Timer 0 StdIOBasic.NilLS (_predefined._Cons (StdTimerDef.TimerId interrupt_1_1) (_predefined._Cons (StdTimerDef.TimerSelectState StdIOCommon.Able) (_predefined._Cons (StdTimerDef.TimerFunction (interrupt.TriggerNoIntr_5 callback_2 interrupt_1_1)) _predefined._Nil)))) (select _x_2_0::_Tuple2 1))::_Tuple2 1) ) 
+interrupt.StopIntr !_x_0 !ps_1 = case _x_0 (_Tuple2 dialog_1_0 interrupt_1_1 -> StdPSt.appPIO (StdTimer.closeTimer interrupt_1_1) ps_1) 
+interrupt.ContIntr !_x_0 !ps_1 = case _x_0 (_Tuple2 dialog_1_0 interrupt_1_1 -> StdPSt.appPIO (StdTimer.enableTimer interrupt_1_1) ps_1) 
+
+
+|| Converted Records
+:: <{interrupt.gEq_s;}> = {!interrupt.gEq_s}
+
+:: <{interrupt.gEq_ss;}> = {!interrupt.gEq_ss}
+
+:: <{interrupt.gEq_sss;}> = {!interrupt.gEq_sss}
+
+:: <{interrupt.gEq_ssss;}> = {!interrupt.gEq_ssss}
+
+:: <{interrupt.gEq_sssss;}> = {!interrupt.gEq_sssss}
+
+:: <{interrupt.gEq_ssssss;}> = {!interrupt.gEq_ssssss}
+
+:: <{interrupt.gEq_sssssss;}> = {!interrupt.gEq_sssssss}
+
+:: <{interrupt.gEq_ssssssss;}> = {!interrupt.gEq_ssssssss}
+
+:: <{interrupt.gEq_sssssssss;}> = {!interrupt.gEq_sssssssss}
+
+:: <{interrupt.bimap_s;}> = {interrupt.bimap_s}
+
+:: <{interrupt.bimap_ss;}> = {interrupt.bimap_ss}
+
+:: <{interrupt.bimap_sss;}> = {interrupt.bimap_sss}
+

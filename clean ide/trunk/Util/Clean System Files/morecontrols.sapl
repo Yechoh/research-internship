@@ -1,0 +1,53 @@
+|| ?module? morecontrols
+
+
+<{morecontrols.c;12;5_6}> action_0 !g_l_1 = <{morecontrols.g_c1;12;13_62}> g_l_1 action_0
+<{morecontrols.g_c1;12;13_62}> !g_l_0 action_1 = case g_l_0 (_predefined._Cons name_1_0 g_t_1_1 -> _predefined._Cons (_Tuple2 name_1_0 (action_1 name_1_0)) (<{morecontrols.c;12;5_6}> action_1 g_t_1_1)) (_ -> _predefined._Nil)
+morecontrols.FontNameControl names_0 action_1 initial_2::I atts_3 = StdControlDef.PopUpControl (<{morecontrols.c;12;5_6}> action_1 names_0) initial_2 (<{StdList.++}> atts_3 _predefined._Nil)
+<{morecontrols.c;21;5_7}> !_vtoString_0 action_1 !g_l_2 = <{morecontrols.g_c1;21;13_63}> g_l_2 _vtoString_0 action_1
+<{morecontrols.g_c1;21;13_63}> !g_l_0 _vtoString_1 action_2 = case g_l_0 (_predefined._Cons size_1_0 g_t_1_1 -> _predefined._Cons (_Tuple2 (select _vtoString_1::<{StdOverloaded.toString;}> 0 size_1_0) (action_2 size_1_0)) (<{morecontrols.c;21;5_7}> _vtoString_1 action_2 g_t_1_1)) (_ -> _predefined._Nil)
+morecontrols.FontSizeControl !_vtoString_0 sizes_1 action_2 initial_3::I atts_4 = StdControlDef.PopUpControl (<{morecontrols.c;21;5_7}> _vtoString_0 action_2 sizes_1) initial_3 (<{StdList.++}> atts_4 _predefined._Nil)
+morecontrols.find_8::I !<{_v==_0}> name_1 i_2::I !_x_3 = case _x_3 (_predefined._Nil -> 0) (_predefined._Cons h_1_0 t_1_1 -> case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 name_1 h_1_0) (True -> i_2) (False -> morecontrols.find_8 <{_v==_0}> name_1 (<{StdInt.+_6}> i_2 StdInt.one_11) t_1_1) ) 
+morecontrols.findNameInList::I !<{_v==_0}> name_1 !list_2 = morecontrols.find_8 <{_v==_0}> name_1 1 list_2
+morecontrols.anon_10 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+morecontrols.anon_54 !_x_0 !_x_1::I !g_2 x_3 = StdControl.selectPopUpControlItem _x_0 _x_1 (g_2 x_3)
+morecontrols.anon_55 !_x_0 !_x_1::I !_x_2 !_x_3::I !x_4 = StdControl.selectPopUpControlItem _x_0 _x_1 (StdControl.selectPopUpControlItem _x_2 _x_3 x_4)
+morecontrols.anon_9 !<{_v==_0}> !<{_v==_1}> fontSizes_2 fontNames_3 names_4 sizes_5 fontname_6 fontsize_7 !ps_8 = StdPSt.appPIO (morecontrols.anon_55 sizes_5 (morecontrols.findNameInList <{_v==_1}> fontsize_7 fontSizes_2) names_4 (morecontrols.findNameInList <{_v==_0}> fontname_6 fontNames_3)) ps_8
+morecontrols.find_59::I name_0::I i_1::I !_x_2 = case _x_2 (_predefined._Nil -> 0) (_predefined._Cons h_1_0 t_1_1 -> case (<{StdInt.==_16}> name_0 h_1_0) (True -> i_1) (False -> morecontrols.find_59 name_0 (<{StdInt.+_6}> i_1 StdInt.one_11) t_1_1) ) 
+morecontrols.findNameInList_58::I name_0::I !list_1 = morecontrols.find_59 name_0 1 list_1
+<{morecontrols.c;21;5_61}> action_0 !g_l_1 = <{morecontrols.g_c1;21;13_64}> g_l_1 action_0
+<{morecontrols.g_c1;21;13_64}> !g_l_0 action_1 = case g_l_0 (_predefined._Cons size_1_0 g_t_1_1 -> _predefined._Cons (_Tuple2 (StdString.toString_5 size_1_0) (action_1 size_1_0)) (<{morecontrols.c;21;5_61}> action_1 g_t_1_1)) (_ -> _predefined._Nil)
+morecontrols.FontSizeControl_60 sizes_0 action_1 initial_2::I atts_3 = StdControlDef.PopUpControl (<{morecontrols.c;21;5_61}> action_1 sizes_0) initial_2 (<{StdList.++}> atts_3 _predefined._Nil)
+morecontrols.find_57::I name_0 i_1::I !_x_2 = case _x_2 (_predefined._Nil -> 0) (_predefined._Cons h_1_0 t_1_1 -> case (<{StdString.==_2}> name_0 h_1_0) (True -> i_1) (False -> morecontrols.find_57 name_0 (<{StdInt.+_6}> i_1 StdInt.one_11) t_1_1) ) 
+morecontrols.findNameInList_56::I name_0 !list_1 = morecontrols.find_57 name_0 1 list_1
+morecontrols.controlToHandles_0 !_x_0 !ps_1 = case _x_0 (morecontrols.FontNameSizeControl fontname_1_0 fontsize_1_1 fontNames_1_2 fontSizes_1_3 nameFun_1_4 sizeFun_1_5 atts_1_6 -> let Controls_2_0 = <{StdControlClass.Controls;}> StdControlClass.controlToHandles_30 StdControlClass.getControlType_31, Controls_2_1 = <{StdControlClass.Controls;}> StdControlClass.controlToHandles_24 StdControlClass.getControlType_25, Controls_2_2 = <{StdControlClass.Controls;}> StdControlClass.controlToHandles_30 StdControlClass.getControlType_31, Controls_2_3 = <{StdControlClass.Controls;}> StdControlClass.controlToHandles_24 StdControlClass.getControlType_25, Controls_2_4 = <{StdControlClass.Controls;}> (StdControlClass.controlToHandles_8 Controls_2_2 Controls_2_3) (StdControlClass.getControlType_9 Controls_2_2 Controls_2_3), Controls_2_5 = <{StdControlClass.Controls;}> (StdControlClass.controlToHandles_8 Controls_2_1 Controls_2_4) (StdControlClass.getControlType_9 Controls_2_1 Controls_2_4), left_2_6 = StdControlDef.ControlPos (_Tuple2 StdIOCommon.Left StdIOCommon.zero_32), _x_2_7 = StdId.openId_13 ps_1, _x_2_8 = StdId.openId_13 (select _x_2_7::_Tuple2 1) in StdControlClass.controlToHandles_22 (<{StdControlClass.Controls;}> (StdControlClass.controlToHandles_8 Controls_2_0 Controls_2_5) (StdControlClass.getControlType_9 Controls_2_0 Controls_2_5)) (StdControlDef.LayoutControl (<{StdIOBasic.:+:}> (StdControlDef.TextControl "Font:" (_predefined._Cons left_2_6 _predefined._Nil)) (<{StdIOBasic.:+:}> (morecontrols.FontNameControl fontNames_1_2 nameFun_1_4 (morecontrols.findNameInList_56 fontname_1_0 fontNames_1_2) (_predefined._Cons (StdControlDef.ControlId (select _x_2_7::_Tuple2 0)) _predefined._Nil)) (<{StdIOBasic.:+:}> (StdControlDef.TextControl "Size:" (_predefined._Cons left_2_6 _predefined._Nil)) (morecontrols.FontSizeControl_60 fontSizes_1_3 sizeFun_1_5 (morecontrols.findNameInList_58 fontsize_1_1 fontSizes_1_3) (_predefined._Cons (StdControlDef.ControlId (select _x_2_8::_Tuple2 0)) _predefined._Nil))))) (<{StdList.++}> atts_1_6 (_predefined._Cons (StdControlDef.ControlHMargin 0 0) (_predefined._Cons (StdControlDef.ControlVMargin 0 0) _predefined._Nil)))) (select _x_2_8::_Tuple2 1)) 
+morecontrols.getControlType_1 _x_0 = "FontNameSizeControl"
+<{morecontrols.TD;FontNameSizeControl}> _x_0::B = _predefined._Nil
+
+:: morecontrols.FontNameSizeControl = morecontrols.FontNameSizeControl a1 a2::I a3 a4 a5 a6 a7
+
+|| Converted Records
+:: <{morecontrols.gEq_s;}> = {!morecontrols.gEq_s}
+
+:: <{morecontrols.gEq_ss;}> = {!morecontrols.gEq_ss}
+
+:: <{morecontrols.gEq_sss;}> = {!morecontrols.gEq_sss}
+
+:: <{morecontrols.gEq_ssss;}> = {!morecontrols.gEq_ssss}
+
+:: <{morecontrols.gEq_sssss;}> = {!morecontrols.gEq_sssss}
+
+:: <{morecontrols.gEq_ssssss;}> = {!morecontrols.gEq_ssssss}
+
+:: <{morecontrols.gEq_sssssss;}> = {!morecontrols.gEq_sssssss}
+
+:: <{morecontrols.gEq_ssssssss;}> = {!morecontrols.gEq_ssssssss}
+
+:: <{morecontrols.gEq_sssssssss;}> = {!morecontrols.gEq_sssssssss}
+
+:: <{morecontrols.bimap_s;}> = {morecontrols.bimap_s}
+
+:: <{morecontrols.bimap_ss;}> = {morecontrols.bimap_ss}
+
+:: <{morecontrols.bimap_sss;}> = {morecontrols.bimap_sss}
+

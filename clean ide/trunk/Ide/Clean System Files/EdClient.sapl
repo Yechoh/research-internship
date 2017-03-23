@@ -1,0 +1,544 @@
+|| ?module? EdClient
+
+
+EdClient.isEditWin !_vEditor_0 window_1 pState_2 = let _x_1_0 = EdState.getEditorState_6 _vEditor_0 pState_2, _x_1_1 = EdState.findReceiver window_1 (select _x_1_0::_Tuple2 0) in _Tuple2 (StdBool.not (Data.Maybe.isNothing (select _x_1_1::_Tuple2 0))) (EdState.setEditorState_7 _vEditor_0 (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1))
+EdClient.message !_vEditor_0 !window_1 !monad_2 !pState_3 = let _x_1_0 = EdState.getEditorState_6 _vEditor_0 pState_3, editorState_1_1 = select _x_1_0::_Tuple2 0, _x_1_2 = EdState.findReceiver window_1 editorState_1_1, maybeEdit_1_3 = select _x_1_2::_Tuple2 0 in case (Data.Maybe.isNothing maybeEdit_1_3) (True -> _Tuple2 Data.Maybe.Nothing (EdState.setEditorState_7 _vEditor_0 (select _x_1_2::_Tuple2 1) (select _x_1_0::_Tuple2 1))) (False -> let _x_3_0 = EdMessage.appEditState (Data.Maybe.fromJust maybeEdit_1_3) monad_2 (select _x_1_0::_Tuple2 1) in _Tuple2 (Data.Maybe.Just (select _x_3_0::_Tuple2 0)) (EdState.setEditorState_7 _vEditor_0 (select _x_1_2::_Tuple2 1) (select _x_3_0::_Tuple2 1))) 
+EdClient.sendToActiveWindow !_vEditor_0 editAction_1 !pState_2 = let _x_1_0 = StdPSt.accPIO StdWindow.getActiveWindow pState_2, maybe_1_1 = select _x_1_0::_Tuple2 0 in case (Data.Maybe.isNothing maybe_1_1) (True -> _Tuple2 Data.Maybe.Nothing (select _x_1_0::_Tuple2 1)) (False -> let window_3_0 = Data.Maybe.fromJust maybe_1_1, pState_3_1 = select _x_1_0::_Tuple2 1, _x_3_2 = EdState.getEditorState_6 _vEditor_0 pState_3_1 in case (Data.Maybe.isNothing (select (EdState.findReceiver window_3_0 (select _x_3_2::_Tuple2 0))::_Tuple2 0)) (True -> _Tuple2 Data.Maybe.Nothing (select _x_3_2::_Tuple2 1)) (False -> EdClient.message _vEditor_0 window_3_0 editAction_1 (select _x_3_2::_Tuple2 1)) ) 
+EdClient.anon_138 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_137 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_136 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_135 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_134 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_133 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_132 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_131 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_130 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_129 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_375 ma_0 x_1 state_2 = EdClient.anon_129 x_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_77 !error_0 = case (Data.Maybe.isNothing error_0) (True -> EdClient.anon_375 (EdMonad.setNeedSave False) Data.Maybe.Nothing) (False -> EdClient.anon_131 error_0) 
+EdClient.anon_376 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_77 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_78 text_0 pathName_1 newlineConv_2 !_x_3 = case _x_3 (PmPrefs._Prefs pmp_pth_1_0 pmp_lnk_1_1 pmp_obj_1_2 typ_prefs_1_3 con_prefs_1_4 err_prefs_1_5 src_prefs_1_6 prj_prefs_1_7 edwinfont_1_8 edwintabs_1_9 edwinmargin_1_10 compopts_1_11 cgenopts_1_12 linkopts_1_13 applopts_1_14 syncols_1_15 defcols_1_16 impcols_1_17 proj_hist_1_18 file_hist_1_19 switch_close_1_20 show_toolbar_1_21 be_verbose_1_22 altgr_workaround_1_23 newline_handling_1_24 reg_prefs_1_25 -> EdClient.anon_376 (EdMonad.accEnv (EdFile.writeText (<{StdFile.FileSystem;}> StdPStClass.fclose_0 StdPStClass.fopen_1 StdPStClass.sfopen_2 StdPStClass.stdio_3) pathName_1 (<{EdClient._c;418;18_541}> newline_handling_1_24 newlineConv_2) text_0))) 
+<{EdClient._c;418;18_541}> !newline_handling_0 newlineConv_1 = case newline_handling_0 (PmPrefs.LeaveAlone _x_1_0 -> newlineConv_1) (PmPrefs.AlwaysUse _x_1_0 -> case _x_1_0 (UtilNewlinesFile.NewlineConventionNone -> UtilNewlinesFile.NewlineConventionDos) (_ -> _x_1_0)) 
+EdClient.anon_377 !ma_0 text_1 pathName_2 newlineConv_3 state_4 = let _x_1_0 = ma_0 state_4 in EdClient.anon_78 text_1 pathName_2 newlineConv_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_79 text_0 pathName_1 newlineConv_2 = EdClient.anon_377 (EdMonad.accEnv IdeState.getPrefs) text_0 pathName_1 newlineConv_2
+EdClient.anon_378 ma_0 text_1 pathName_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_79 text_1 pathName_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_80 text_0 pathName_1 = EdClient.anon_378 EdMonad.getNewlineConvention text_0 pathName_1
+EdClient.anon_379 ma_0 text_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_80 text_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_81 text_0 = EdClient.anon_379 EdMonad.getPathName text_0
+EdClient.anon_380 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_81 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_82 !readOnly_0::B = case readOnly_0 (True -> EdClient.anon_136 (Data.Maybe.Just "File is read-only")) (False -> EdClient.anon_380 EdMonad.getText) 
+EdClient.anon_381 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_82 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgSave = EdClient.anon_381 EdMonad.getReadOnly
+EdClient.anon_144 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_143 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_142 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_141 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_140 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_139 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_382 ma_0 x_1 state_2 = EdClient.anon_139 x_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_83 !error_0 = case (Data.Maybe.isNothing error_0) (True -> EdClient.anon_382 (EdMonad.setNeedSave False) Data.Maybe.Nothing) (False -> EdClient.anon_141 error_0) 
+EdClient.anon_383 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_83 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_84 pathName_0 text_1 !_x_2 = case _x_2 (PmPrefs._Prefs pmp_pth_1_0 pmp_lnk_1_1 pmp_obj_1_2 typ_prefs_1_3 con_prefs_1_4 err_prefs_1_5 src_prefs_1_6 prj_prefs_1_7 edwinfont_1_8 edwintabs_1_9 edwinmargin_1_10 compopts_1_11 cgenopts_1_12 linkopts_1_13 applopts_1_14 syncols_1_15 defcols_1_16 impcols_1_17 proj_hist_1_18 file_hist_1_19 switch_close_1_20 show_toolbar_1_21 be_verbose_1_22 altgr_workaround_1_23 newline_handling_1_24 reg_prefs_1_25 -> EdClient.anon_383 (EdMonad.accEnv (EdFile.writeText (<{StdFile.FileSystem;}> StdPStClass.fclose_0 StdPStClass.fopen_1 StdPStClass.sfopen_2 StdPStClass.stdio_3) pathName_0 (<{EdClient._c;439;14_542}> newline_handling_1_24) text_1))) 
+<{EdClient._c;439;14_542}> !newline_handling_0 = case newline_handling_0 (PmPrefs.LeaveAlone conv_1_0 -> conv_1_0) (PmPrefs.AlwaysUse _x_1_0 -> case _x_1_0 (UtilNewlinesFile.NewlineConventionNone -> UtilNewlinesFile.NewlineConventionDos) (_ -> _x_1_0)) 
+EdClient.anon_384 !ma_0 pathName_1 text_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_84 pathName_1 text_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_85 pathName_0 text_1 = EdClient.anon_384 (EdMonad.accEnv IdeState.getPrefs) pathName_0 text_1
+EdClient.anon_385 ma_0 pathName_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_85 pathName_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgSaveTo !pathName_0 = EdClient.anon_385 EdMonad.getText pathName_0
+EdClient.msgSetFont font_0 = EdMonad.setFont font_0
+EdClient.anon_146 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_145 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_43 !_x_0 = case _x_0 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdClient.anon_145 thefont_1_0) 
+EdClient.anon_386 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_43 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgGetFont = EdClient.anon_386 EdMonad.getFontInfo
+EdClient.anon_151 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_150 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_149 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_148 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_387 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_148 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_388 ma_0 mb_1 x_2 state_3 = EdClient.anon_149 x_2 (select (EdClient.anon_148 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_44 s_0::B a_1::B t_2::I fontinfo_3 = EdClient.anon_388 (EdMonad.setFontInfo (update fontinfo_3::EdMonad._FontInfo [3:t_2,6:a_1,7:s_0])) (EdMonad.setFont (select fontinfo_3::EdMonad._FontInfo 0)) StateMonad.nothing
+EdClient.anon_389 ma_0 s_1::B a_2::B t_3::I state_4 = let _x_1_0 = ma_0 state_4 in EdClient.anon_44 s_1 a_2 t_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgSetTabs !_x_0 = case _x_0 (_Tuple3 t_1_0 a_1_1 s_1_2 -> EdClient.anon_389 EdMonad.getFontInfo s_1_2 a_1_1 t_1_0) 
+EdClient.anon_153 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_152 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_45 !_x_0 = case _x_0 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdClient.anon_152 (_Tuple3 tabSize_1_3 autoTab_1_6 showTabs_1_7)) 
+EdClient.anon_390 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_45 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgGetTabs = EdClient.anon_390 EdMonad.getFontInfo
+EdClient.anon_157 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_156 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_155 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_154 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_391 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_154 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_392 ma_0 mb_1 x_2 state_3 = EdClient.anon_155 x_2 (select (EdClient.anon_154 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_46 m_0::I fontinfo_1 = EdClient.anon_392 (EdMonad.setFontInfo (update fontinfo_1::EdMonad._FontInfo [5:m_0])) (EdMonad.setFont (select fontinfo_1::EdMonad._FontInfo 0)) StateMonad.nothing
+EdClient.anon_393 ma_0 m_1::I state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_46 m_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgSetMargin !m_0::I = EdClient.anon_393 EdMonad.getFontInfo m_0
+EdClient.anon_159 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_158 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_47 !_x_0 = case _x_0 (EdMonad._FontInfo thefont_1_0 lineHeight_1_1 metrics_1_2 tabSize_1_3 charWidth_1_4 marginWidth_1_5 autoTab_1_6 showTabs_1_7 showSyntax_1_8 syntaxColours_1_9 -> EdClient.anon_158 marginWidth_1_5) 
+EdClient.anon_394 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_47 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgGetMargin = EdClient.anon_394 EdMonad.getFontInfo
+EdClient.anon_164 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_163 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_162 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_161 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_160 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_53 text_0 !selection_1 oldclip_2 = case (EdSelection.isEmptySelection selection_1) (True -> EdClient.anon_160 StateMonad.nothing) (False -> let newclip_2_0 = _predefined._Cons (StdClipboard.toClipboard_4 (EdLineText.stringsToString (select (EdText.getTextFragment (EdSelection.orderSelection selection_1) text_0)::_Tuple2 0))) _predefined._Nil in EdClient.anon_161 (EdMonad.appEnv (StdClipboard.setClipboard newclip_2_0)) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " Copy" (EdMonad.CopyInfo newclip_2_0 oldclip_2)))) 
+EdClient.anon_395 ma_0 text_1 !selection_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_53 text_1 selection_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_54 text_0 selection_1 = EdClient.anon_395 (EdMonad.accEnv StdClipboard.getClipboard) text_0 selection_1
+EdClient.anon_396 !ma_0 text_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_54 text_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_55 text_0 = EdClient.anon_396 EdMonad.getSelection text_0
+EdClient.anon_397 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_55 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgCopy = EdClient.anon_397 EdMonad.getText
+EdClient.anon_175 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_174 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_173 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_172 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_171 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_170 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_169 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_168 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_167 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_166 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_165 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_399 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_167 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_398 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_165 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_400 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_398 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_59 selection_0 text_1 oldclip_2 needsave_3::B = let orderedSelection_1_0 = EdSelection.orderSelection selection_0, fragment_1_1 = select (EdText.getTextFragment orderedSelection_1_0 text_1)::_Tuple2 0, newclip_1_2 = _predefined._Cons (StdClipboard.toClipboard_4 (EdLineText.stringsToString fragment_1_1)) _predefined._Nil in EdClient.anon_400 (EdMonad.appEnv (StdClipboard.setClipboard newclip_1_2)) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " Cut" (EdMonad.CutInfo newclip_1_2 oldclip_2 fragment_1_1 (select selection_0::EdSelection._Selection 1) orderedSelection_1_0 needsave_3))) (EdMonad.setNeedSave True) (EdVisualCursor.vDoCursorSafe (EdClient.anon_399 EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection EdVisualCursor.vCenterCursor))
+EdClient.anon_401 ma_0 selection_1 text_2 oldclip_3 state_4 = let _x_1_0 = ma_0 state_4 in EdClient.anon_59 selection_1 text_2 oldclip_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_60 selection_0 text_1 oldclip_2 = EdClient.anon_401 EdMonad.getNeedSave selection_0 text_1 oldclip_2
+EdClient.anon_402 ma_0 selection_1 text_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_60 selection_1 text_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_61 selection_0 text_1 = EdClient.anon_402 (EdMonad.accEnv StdClipboard.getClipboard) selection_0 text_1
+EdClient.anon_403 ma_0 selection_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_61 selection_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_62 !selection_0 = case (<{EdPosition.==_1}> (select selection_0::EdSelection._Selection 0) (select selection_0::EdSelection._Selection 1)) (True -> EdClient.anon_172 StateMonad.nothing) (False -> EdClient.anon_403 EdMonad.getText selection_0) 
+EdClient.anon_404 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_62 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_63 !readOnly_0::B = case readOnly_0 (True -> EdClient.msgCopy) (False -> EdClient.anon_404 EdMonad.getSelection) 
+EdClient.anon_405 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_63 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgCut = EdClient.anon_405 EdMonad.getReadOnly
+EdClient.anon_189 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_188 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_187 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_186 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_185 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_184 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_183 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_182 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_181 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_180 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_179 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_178 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_177 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_176 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.newCursorPos_73 !pos_0 !_x_1 = case pos_0 (EdPosition._Position col_1_0 row_1_1 -> case _x_1 (StrictList.SNil -> pos_0) (StrictList.SCons string_2_0 _x_2_1 -> case _x_2_1 (StrictList.SNil -> EdPosition._Position (<{StdInt.+_6}> col_1_0 (_SystemArray.size_20 string_2_0)) row_1_1) ) (_ -> EdPosition._Position (_SystemArray.size_20 (StrictList.slLast _x_1)) (<{StdInt.-_7}> (<{StdInt.+_6}> row_1_1 (StrictList.slLength _x_1)) 1))) 
+EdClient.anon_406 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_176 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_407 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_406 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_408 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_407 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_409 ma_0 mb_1 mb_2 mb_3 mb_4 !mb_5 state_6 = mb_5 (select (EdClient.anon_408 ma_0 mb_1 mb_2 mb_3 mb_4 state_6)::_Tuple2 1)
+EdClient.anon_410 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_181 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_68 maybeString_0 text_1 selection_2 needsave_3::B = let orderedSelection_1_0 = EdSelection.orderSelection selection_2, fragment_1_1 = EdLineText.stringToStrings (Data.Maybe.fromJust maybeString_0), position_1_2 = select orderedSelection_1_0::EdSelection._Selection 0, newPosition_1_3 = EdClient.newCursorPos_73 position_1_2 fragment_1_1 in EdClient.anon_410 (EdVisualCursor.vDoCursorSafe (EdClient.anon_409 EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection (EdVisualText.vInsertText (select orderedSelection_1_0::EdSelection._Selection 0) fragment_1_1) (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection newPosition_1_3 newPosition_1_3)) (EdCommon.mChangeSelectionTo (EdSelection._Selection newPosition_1_3 newPosition_1_3)) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " Paste" (EdMonad.PasteInfo fragment_1_1 (select (EdText.getTextFragment orderedSelection_1_0 text_1)::_Tuple2 0) selection_2 position_1_2 needsave_3)))
+EdClient.anon_411 ma_0 maybeString_1 text_2 selection_3 state_4 = let _x_1_0 = ma_0 state_4 in EdClient.anon_68 maybeString_1 text_2 selection_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_69 maybeString_0 text_1 selection_2 = EdClient.anon_411 EdMonad.getNeedSave maybeString_0 text_1 selection_2
+EdClient.anon_412 ma_0 maybeString_1 text_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_69 maybeString_1 text_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_70 maybeString_0 text_1 = EdClient.anon_412 EdMonad.getSelection maybeString_0 text_1
+EdClient.clipToString_75 !clip_0 = StdClipboard.fromClipboard_3 clip_0
+EdClient.findString_76 !_x_0 = case _x_0 (_predefined._Nil -> Data.Maybe.Nothing) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just string_2_0 -> Data.Maybe.Just string_2_0) (_ -> EdClient.findString_76 _x_1_1)) 
+EdClient.clipItemsToString_74 !clip_0 = EdClient.findString_76 (StdList.map EdClient.clipToString_75 clip_0)
+EdClient.anon_413 ma_0 maybeString_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_70 maybeString_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_71 !clip_0 = let maybeString_1_0 = EdClient.clipItemsToString_74 clip_0 in case (Data.Maybe.isNothing maybeString_1_0) (True -> EdClient.anon_185 StateMonad.nothing) (False -> EdClient.anon_413 EdMonad.getText maybeString_1_0) 
+EdClient.anon_414 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_71 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_72 !readOnly_0::B = case readOnly_0 (True -> EdClient.anon_187 StateMonad.nothing) (False -> EdClient.anon_414 (EdMonad.accEnv StdClipboard.getClipboard)) 
+EdClient.anon_415 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_72 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgPaste = EdClient.anon_415 EdMonad.getReadOnly
+EdClient.anon_197 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_196 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_195 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_194 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_193 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_192 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_191 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_190 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_416 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_191 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_417 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_190 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_56 selection_0 text_1 needsave_2::B = let orderedSelection_1_0 = EdSelection.orderSelection selection_0 in EdClient.anon_417 (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " Clear" (EdMonad.ClearInfo (select (EdText.getTextFragment orderedSelection_1_0 text_1)::_Tuple2 0) (select selection_0::EdSelection._Selection 1) orderedSelection_1_0 needsave_2))) (EdMonad.setNeedSave True) (EdVisualCursor.vDoCursorSafe (EdClient.anon_416 EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection EdVisualCursor.vCenterCursor))
+EdClient.anon_418 ma_0 selection_1 text_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_56 selection_1 text_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_57 selection_0 text_1 = EdClient.anon_418 EdMonad.getNeedSave selection_0 text_1
+EdClient.anon_419 ma_0 selection_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_57 selection_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_58 !selection_0 = case (<{EdPosition.==_1}> (select selection_0::EdSelection._Selection 0) (select selection_0::EdSelection._Selection 1)) (True -> EdClient.anon_195 StateMonad.nothing) (False -> EdClient.anon_419 EdMonad.getText selection_0) 
+EdClient.anon_420 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_58 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgClear = EdClient.anon_420 EdMonad.getSelection
+EdClient.anon_199 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_198 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_52 text_0 = let linenr_1_0 = EdLineText.lastLineNr text_0, line_1_1::I = select (EdLineText.getLine linenr_1_0 text_0)::_Tuple2 0 in EdClient.anon_198 (EdVisualCursor.vDoCursorSafe (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection (EdPosition._Position 0 0) (EdPosition._Position (_SystemArray.size_20 line_1_1) linenr_1_0)))) (EdCommon.mChangeSelectionTo (EdSelection._Selection (EdPosition._Position 0 0) (EdPosition._Position (_SystemArray.size_20 line_1_1) linenr_1_0)))
+EdClient.anon_421 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_52 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgSelectAll = EdClient.anon_421 EdMonad.getText
+EdClient.anon_257 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_256 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_255 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_254 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_253 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_252 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_251 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_250 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_249 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_248 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_247 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_246 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_245 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_244 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_243 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_242 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_241 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_240 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_239 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_238 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_237 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_236 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_235 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_234 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_233 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_232 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_231 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_230 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_229 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_228 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_227 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_226 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_225 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_224 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_223 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_222 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_221 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_220 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_219 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_218 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_217 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_216 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_215 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_214 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_213 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_212 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_211 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_210 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_209 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_208 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_207 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_206 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.redoReplaceAll !_x_0 !text_1 = case _x_0 (_predefined._Nil -> text_1) (_predefined._Cons _x_1_0 rest_1_1 -> case _x_1_0 (_Tuple4 osel_2_0 nsel_2_1 ofrg_2_2 nfrg_2_3 -> EdClient.redoReplaceAll rest_1_1 (EdText.replaceText osel_2_0 nfrg_2_3 text_1)) ) 
+EdClient.anon_422 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_206 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_423 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_422 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_424 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_423 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_425 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_210 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_49 undoinfo_0 ulist_1 nsel_2 text_3 = EdClient.anon_425 (EdVisualCursor.vDoCursorSafe (EdClient.anon_424 (EdMonad.setText (EdClient.redoReplaceAll ulist_1 text_3)) EdVisualText.vResetViewDomain (EdVisualCursor.vChangeSelectionTo nsel_2) (EdCommon.mChangeSelectionTo nsel_2) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (update undoinfo_0::EdMonad._UndoInfo [0:EdMonad.Undo]))
+EdClient.newCursorPos_51 !_vArray_0 !pos_1 !_x_2 = case pos_1 (EdPosition._Position col_1_0 row_1_1 -> case _x_2 (StrictList.SNil -> pos_1) (StrictList.SCons string_2_0 _x_2_1 -> case _x_2_1 (StrictList.SNil -> EdPosition._Position (<{StdInt.+_6}> col_1_0 (select _vArray_0::<{_SystemArray.Array;}> 4 string_2_0)) row_1_1) ) (_ -> EdPosition._Position (select _vArray_0::<{_SystemArray.Array;}> 4 (StrictList.slLast _x_2)) (<{StdInt.-_7}> (<{StdInt.+_6}> row_1_1 (StrictList.slLength _x_2)) 1))) 
+EdClient.anon_205 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_204 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_203 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_202 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_201 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_200 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.undoReplaceAll !_x_0 !text_1 = case _x_0 (_predefined._Nil -> text_1) (_predefined._Cons _x_1_0 rest_1_1 -> case _x_1_0 (_Tuple4 osel_2_0 nsel_2_1 ofrg_2_2 nfrg_2_3 -> EdClient.undoReplaceAll rest_1_1 (EdText.replaceText nsel_2_1 ofrg_2_2 text_1)) ) 
+EdClient.anon_426 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_200 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_427 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_426 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_428 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_427 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_429 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_204 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_48 undoinfo_0 ulist_1 osel_2 needsave_3::B text_4 = EdClient.anon_429 (EdVisualCursor.vDoCursorSafe (EdClient.anon_428 (EdMonad.setText (EdClient.undoReplaceAll (StdList.reverse ulist_1) text_4)) EdVisualText.vResetViewDomain (EdVisualCursor.vChangeSelectionTo osel_2) (EdCommon.mChangeSelectionTo osel_2) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave needsave_3) (EdMonad.setUndoInfo (update undoinfo_0::EdMonad._UndoInfo [0:EdMonad.Redo]))
+EdClient.anon_443 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_232 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_442 ma_0 mb_1 !f_2 state_3 = let _x_1_0 = EdClient.anon_230 ma_0 mb_1 state_3 in f_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.newCursorPos_437 !pos_0 !_x_1 = case pos_0 (EdPosition._Position col_1_0 row_1_1 -> case _x_1 (StrictList.SNil -> pos_0) (StrictList.SCons string_2_0 _x_2_1 -> case _x_2_1 (StrictList.SNil -> EdPosition._Position (<{StdInt.+_6}> col_1_0 (_SystemArray.size_20 string_2_0)) row_1_1) ) (_ -> EdPosition._Position (_SystemArray.size_20 (StrictList.slLast _x_1)) (<{StdInt.-_7}> (<{StdInt.+_6}> row_1_1 (StrictList.slLength _x_1)) 1))) 
+EdClient.anon_438 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_224 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_439 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_438 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_440 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_439 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_441 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_228 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_434 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_219 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_435 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_434 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_436 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_222 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_430 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_213 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_431 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_430 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_432 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_216 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_433 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_432 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_456 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_254 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_455 ma_0 mb_1 !f_2 state_3 = let _x_1_0 = EdClient.anon_252 ma_0 mb_1 state_3 in f_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_449 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_244 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_450 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_449 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_451 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_450 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_452 ma_0 mb_1 mb_2 mb_3 mb_4 !mb_5 state_6 = mb_5 (select (EdClient.anon_451 ma_0 mb_1 mb_2 mb_3 mb_4 state_6)::_Tuple2 1)
+EdClient.anon_453 ma_0 mb_1 mb_2 mb_3 mb_4 mb_5 !mb_6 state_7 = mb_6 (select (EdClient.anon_452 ma_0 mb_1 mb_2 mb_3 mb_4 mb_5 state_7)::_Tuple2 1)
+EdClient.anon_454 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_250 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_447 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_240 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_448 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_242 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_444 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_235 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_445 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_237 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_446 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_445 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_457 ma_0 mb_1 undoinfo_2 ulist_3 osel_4 needsave_5::B state_6 = let _x_1_0 = EdClient.anon_230 ma_0 mb_1 state_6 in EdClient.anon_48 undoinfo_2 ulist_3 osel_4 needsave_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_458 ma_0 mb_1 undoinfo_2 ulist_3 nsel_4 state_5 = let _x_1_0 = EdClient.anon_252 ma_0 mb_1 state_5 in EdClient.anon_49 undoinfo_2 ulist_3 nsel_4 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_50 !undoinfo_0 = case undoinfo_0 (EdMonad._UndoInfo state_1_0 action_1_1 uninfo_1_2 -> <{EdClient._if;35;40_545}> (<{EdMonad.==_43}> state_1_0 EdMonad.Undo) uninfo_1_2 undoinfo_0) 
+<{EdClient._if;35;40_545}> !_x_0::B !uninfo_1 undoinfo_2 = case _x_0 (True -> <{EdClient._c;91;14_543}> uninfo_1 undoinfo_2) (_ -> <{EdClient._c;149;14_544}> uninfo_1 undoinfo_2)
+<{EdClient._c;149;14_544}> !uninfo_0 undoinfo_1 = case uninfo_0 (EdMonad.CopyInfo newclip_1_0 oldclip_1_1 -> EdClient.anon_234 (EdMonad.appEnv (StdClipboard.setClipboard newclip_1_0)) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Undo]))) (EdMonad.CutInfo newclip_1_0 oldclip_1_1 fragment_1_2 position_1_3 osel_1_4 needsave_1_5 -> EdClient.anon_446 (EdMonad.appEnv (StdClipboard.setClipboard newclip_1_0)) (EdVisualCursor.vDoCursorSafe (EdClient.anon_444 EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Undo]))) (EdMonad.ClearInfo fragment_1_0 position_1_1 osel_1_2 needsave_1_3 -> EdClient.anon_448 (EdVisualCursor.vDoCursorSafe (EdClient.anon_447 EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Undo]))) (EdMonad.PasteInfo fragment_1_0 ofragment_1_1 selection_1_2 position_1_3 needsave_1_4 -> let newPosition_2_0 = EdClient.newCursorPos_437 position_1_3 fragment_1_0 in EdClient.anon_454 (EdVisualCursor.vDoCursorSafe (EdClient.anon_453 (EdVisualCursor.vChangeSelectionTo selection_1_2) EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection (EdVisualText.vInsertText position_1_3 fragment_1_0) (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection newPosition_2_0 newPosition_2_0)) (EdCommon.mChangeSelectionTo (EdSelection._Selection newPosition_2_0 newPosition_2_0)) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Undo]))) (EdMonad.ReplaceAllInfo nfrag_1_0 osel_1_1 nsel_1_2 ulist_1_3 needsave_1_4 -> EdClient.anon_458 (EdVisualCursor.vChangeSelectionTo EdSelection.emptySelection) EdMonad.getText undoinfo_1 ulist_1_3 nsel_1_2) (EdMonad.UndoneInfo ini_1_0 fin_1_1 -> EdClient.anon_456 (EdMonad.setState fin_1_1) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Undo])) EdVisualText.vResetViewDomain) (_ -> StdMisc.abort "EdClient: [msgUndo] unimplemented redo type")
+<{EdClient._c;91;14_543}> !uninfo_0 undoinfo_1 = case uninfo_0 (EdMonad.CopyInfo newclip_1_0 oldclip_1_1 -> EdClient.anon_212 (EdMonad.appEnv (StdClipboard.setClipboard oldclip_1_1)) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Redo]))) (EdMonad.CutInfo newclip_1_0 oldclip_1_1 fragment_1_2 position_1_3 osel_1_4 needsave_1_5 -> EdClient.anon_433 (EdMonad.appEnv (StdClipboard.setClipboard oldclip_1_1)) (EdVisualCursor.vDoCursorSafe (EdClient.anon_431 (EdVisualText.vInsertText (select osel_1_4::EdSelection._Selection 0) fragment_1_2) (EdVisualCursor.vChangeSelectionTo osel_1_4) (EdCommon.mChangeSelectionTo osel_1_4) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave needsave_1_5) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Redo]))) (EdMonad.ClearInfo fragment_1_0 position_1_1 osel_1_2 needsave_1_3 -> EdClient.anon_436 (EdVisualCursor.vDoCursorSafe (EdClient.anon_435 (EdVisualText.vInsertText (select osel_1_2::EdSelection._Selection 0) fragment_1_0) (EdVisualCursor.vChangeSelectionTo osel_1_2) (EdCommon.mChangeSelectionTo osel_1_2) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave needsave_1_3) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Redo]))) (EdMonad.PasteInfo fragment_1_0 ofragment_1_1 selection_1_2 position_1_3 needsave_1_4 -> EdClient.anon_441 (EdVisualCursor.vDoCursorSafe (EdClient.anon_440 (EdVisualText.vRemoveText (EdSelection._Selection position_1_3 (EdClient.newCursorPos_437 position_1_3 fragment_1_0))) (EdVisualText.vInsertText position_1_3 ofragment_1_1) (EdVisualCursor.vChangeSelectionTo selection_1_2) (EdCommon.mChangeSelectionTo selection_1_2) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave needsave_1_4) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Redo]))) (EdMonad.ReplaceAllInfo nfrag_1_0 osel_1_1 nsel_1_2 ulist_1_3 needsave_1_4 -> EdClient.anon_457 (EdVisualCursor.vChangeSelectionTo EdSelection.emptySelection) EdMonad.getText undoinfo_1 ulist_1_3 osel_1_1 needsave_1_4) (EdMonad.UndoneInfo ini_1_0 fin_1_1 -> EdClient.anon_443 (EdMonad.setState ini_1_0) (EdMonad.setUndoInfo (update undoinfo_1::EdMonad._UndoInfo [0:EdMonad.Redo])) EdVisualText.vResetViewDomain) (_ -> StdMisc.abort "EdClient: [msgUndo] unimplemented undo type")
+EdClient.anon_459 ma_0 mb_1 !f_2 state_3 = let _x_1_0 = EdClient.anon_256 ma_0 mb_1 state_3 in f_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_460 ma_0 !mb_1 state_2 = let _x_1_0 = EdClient.anon_256 ma_0 mb_1 state_2 in EdClient.anon_50 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgUndo = EdClient.anon_460 EdAction.undoAction EdMonad.getUndoInfo
+EdClient.anon_261 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_260 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_259 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_258 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_86 !text_0 !sel_1 = case (<{EdPosition.==_1}> (select sel_1::EdSelection._Selection 0) (select sel_1::EdSelection._Selection 1)) (True -> let pos_2_0 = select sel_1::EdSelection._Selection 0, _x_2_1 = balance.Text_Balance (select pos_2_0::EdPosition._Position 1) (select pos_2_0::EdPosition._Position 0) (select pos_2_0::EdPosition._Position 1) (select pos_2_0::EdPosition._Position 0) text_0, nsel_2_2 = select _x_2_1::_Tuple2 1 in case (select _x_2_1::_Tuple2 0) (True -> EdVisualCursor.vDoCursorSafe (EdClient.anon_258 (EdVisualCursor.vChangeSelectionTo nsel_2_2) (EdCommon.mChangeSelectionTo nsel_2_2))) (False -> EdMonad.appEnv (StdPSt.appPIO StdPSt.beep)) ) (False -> let _x_2_0 = balance.Text_Balance (select (select sel_1::EdSelection._Selection 0)::EdPosition._Position 1) (select (select sel_1::EdSelection._Selection 0)::EdPosition._Position 0) (select (select sel_1::EdSelection._Selection 1)::EdPosition._Position 1) (select (select sel_1::EdSelection._Selection 1)::EdPosition._Position 0) text_0, nsel_2_1 = select _x_2_0::_Tuple2 1 in case (select _x_2_0::_Tuple2 0) (True -> EdVisualCursor.vDoCursorSafe (EdClient.anon_259 (EdVisualCursor.vChangeSelectionTo nsel_2_1) (EdCommon.mChangeSelectionTo nsel_2_1))) (False -> EdMonad.appEnv (StdPSt.appPIO StdPSt.beep)) ) 
+EdClient.anon_461 !ma_0 !text_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_86 text_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_87 text_0 = EdClient.anon_461 EdMonad.getSelection text_0
+EdClient.anon_462 !ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_87 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgBalance = EdClient.anon_462 EdMonad.getText
+EdClient.anon_263 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_262 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_88 undoinfo_0 = EdClient.anon_262 (_Tuple2 (select undoinfo_0::EdMonad._UndoInfo 0) (select undoinfo_0::EdMonad._UndoInfo 1))
+EdClient.anon_463 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_88 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgGetUndoState = EdClient.anon_463 EdMonad.getUndoInfo
+EdClient.msgGetPathName = EdMonad.getPathName
+EdClient.msgSetPathName path_0 = EdMonad.setPathName path_0
+EdClient.msgGetNeedSave = EdMonad.getNeedSave
+EdClient.msgSetNeedSave ns_0::B = EdMonad.setNeedSave ns_0
+EdClient.msgGetText = EdMonad.getText
+EdClient.anon_268 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_267 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_266 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_265 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_264 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_464 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_264 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_465 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_464 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_466 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_465 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_467 ma_0 mb_1 mb_2 mb_3 mb_4 !mb_5 state_6 = mb_5 (select (EdClient.anon_466 ma_0 mb_1 mb_2 mb_3 mb_4 state_6)::_Tuple2 1)
+EdClient.msgSetText !text_0 = EdClient.anon_467 (EdMonad.setText text_0) (EdMonad.setSelection EdSelection.emptySelection) EdVisualCursor.vCenterCursor EdVisualText.vResetViewDomain (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.None "" EdMonad.NoInfo))
+EdClient.anon_274 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_273 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_272 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_271 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_270 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_269 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_468 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_269 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_469 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_468 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_470 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_469 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_471 ma_0 mb_1 mb_2 mb_3 mb_4 !mb_5 state_6 = mb_5 (select (EdClient.anon_470 ma_0 mb_1 mb_2 mb_3 mb_4 state_6)::_Tuple2 1)
+EdClient.anon_89 text_0 selection_1 = let realsel_1_0 = EdSelection.validateSelection selection_1 text_0 in EdClient.anon_471 (EdMonad.setText text_0) (EdVisualCursor.vChangeSelectionTo realsel_1_0) (EdCommon.mChangeSelectionTo realsel_1_0) EdVisualText.vResetViewDomain (EdMonad.setNeedSave False) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.None "" EdMonad.NoInfo))
+EdClient.anon_472 ma_0 text_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_89 text_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgRevertText !text_0 = EdClient.anon_472 EdMonad.getSelection text_0
+EdClient.anon_278 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_277 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_276 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_275 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_90 text_0 !selection_1 = case (<{EdPosition.==_1}> (select selection_1::EdSelection._Selection 0) (select selection_1::EdSelection._Selection 1)) (True -> EdClient.anon_275 (_Tuple2 "" selection_1)) (False -> let orderedSelection_2_0 = EdSelection.orderSelection selection_1 in EdClient.anon_276 (_Tuple2 (EdLineText.stringsToString (select (EdText.getTextFragment orderedSelection_2_0 text_0)::_Tuple2 0)) orderedSelection_2_0)) 
+EdClient.anon_473 !ma_0 text_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_90 text_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_91 text_0 = EdClient.anon_473 EdMonad.getSelection text_0
+EdClient.anon_474 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_91 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgGetSelection = EdClient.anon_474 EdMonad.getText
+EdClient.anon_288 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_287 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_286 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_285 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_284 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_283 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_282 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_281 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_280 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_279 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.newCursorPos_67 !pos_0 !_x_1 = case pos_0 (EdPosition._Position col_1_0 row_1_1 -> case _x_1 (StrictList.SNil -> pos_0) (StrictList.SCons string_2_0 _x_2_1 -> case _x_2_1 (StrictList.SNil -> EdPosition._Position (<{StdInt.+_6}> col_1_0 (_SystemArray.size_20 string_2_0)) row_1_1) ) (_ -> EdPosition._Position (_SystemArray.size_20 (StrictList.slLast _x_1)) (<{StdInt.-_7}> (<{StdInt.+_6}> row_1_1 (StrictList.slLength _x_1)) 1))) 
+EdClient.anon_475 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_279 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_476 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_475 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_477 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_476 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_478 ma_0 mb_1 mb_2 mb_3 mb_4 !mb_5 state_6 = mb_5 (select (EdClient.anon_477 ma_0 mb_1 mb_2 mb_3 mb_4 state_6)::_Tuple2 1)
+EdClient.anon_479 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_284 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_64 string_0 text_1 selection_2 needsave_3::B = let orderedSelection_1_0 = EdSelection.orderSelection selection_2, position_1_1 = select orderedSelection_1_0::EdSelection._Selection 0, fragment_1_2 = EdLineText.stringToStrings string_0, newPosition_1_3 = EdClient.newCursorPos_67 position_1_1 fragment_1_2 in EdClient.anon_479 (EdVisualCursor.vDoCursorSafe (EdClient.anon_478 EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection (EdVisualText.vInsertText position_1_1 fragment_1_2) (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection newPosition_1_3 newPosition_1_3)) (EdCommon.mChangeSelectionTo (EdSelection._Selection newPosition_1_3 newPosition_1_3)) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " Replace" (EdMonad.PasteInfo fragment_1_2 (select (EdText.getTextFragment orderedSelection_1_0 text_1)::_Tuple2 0) selection_2 position_1_1 needsave_3)))
+EdClient.anon_480 ma_0 string_1 text_2 selection_3 state_4 = let _x_1_0 = ma_0 state_4 in EdClient.anon_64 string_1 text_2 selection_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_65 string_0 text_1 selection_2 = EdClient.anon_480 EdMonad.getNeedSave string_0 text_1 selection_2
+EdClient.anon_481 ma_0 string_1 text_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_65 string_1 text_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_66 string_0 text_1 = EdClient.anon_481 EdMonad.getSelection string_0 text_1
+EdClient.anon_482 ma_0 string_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_66 string_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgReplaceSelection string_0 = EdClient.anon_482 EdMonad.getText string_0
+EdClient.anon_291 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_290 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_289 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_483 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_289 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_92 selection_0 text_1 = let realsel_1_0 = EdSelection.validateSelection selection_0 text_1 in EdClient.anon_483 (EdVisualCursor.vChangeSelectionTo realsel_1_0) (EdCommon.mChangeSelectionTo realsel_1_0) EdVisualCursor.vCenterCursor
+EdClient.anon_484 ma_0 selection_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_92 selection_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgChangeSelection selection_0 = EdVisualCursor.vDoCursorSafe (EdClient.anon_484 EdMonad.getText selection_0)
+EdClient.msgScrollToCursor = EdVisualCursor.vCenterCursor
+EdClient.anon_294 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_293 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_292 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_485 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_292 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_93 line_0::I text_1 = let realline_1_0::I = EdLineText.validateLineNr line_0 text_1 in EdClient.anon_485 (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection (EdPosition._Position 0 realline_1_0) (EdPosition._Position 0 realline_1_0))) (EdCommon.mChangeSelectionTo (EdSelection._Selection (EdPosition._Position 0 realline_1_0) (EdPosition._Position 0 realline_1_0))) EdVisualCursor.vCenterCursor
+EdClient.anon_486 ma_0 line_1::I state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_93 line_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgScrollToLine line_0::I = EdVisualCursor.vDoCursorSafe (EdClient.anon_486 EdMonad.getText line_0)
+EdClient.anon_298 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_297 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_296 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_295 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+<{EdClient.c;870;20_121}> !_vArray_0 !g_i_1::I !g_s_2::I g_a_3 = case (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = select _vArray_0::<{_SystemArray.Array;}> 6 g_a_3 g_i_1 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{EdClient.c;870;20_121}> _vArray_0 (<{StdInt.+_6}> g_i_1 StdInt.one_11) g_s_2 g_a_2_0)) (False -> _predefined._Nil) 
+EdClient.a2l_126 !_vArray_0 a_1 = let _x_1_0 = select _vArray_0::<{_SystemArray.Array;}> 7 a_1 in <{EdClient.c;870;20_121}> _vArray_0 0 (<{StdInt.-_7}> (select _x_1_0::_Tuple2 0) 1) (select _x_1_0::_Tuple2 1)
+EdClient.safemod_125::I !x_0::I !m_1::I = let s_1_0::I = StdInt.rem_28 x_0 m_1 in case (StdBool.not (<{StdInt.<_17}> 0 s_1_0)) (True -> <{StdInt.+_6}> s_1_0 m_1) (False -> s_1_0) 
+EdClient.doit_124 tabwidth_0::I !i_1::I !s_2::I l_3 m_4 n_5::I = case (StdBool.not (<{StdInt.<_17}> i_1 s_2)) (True -> StdList.reverse m_4) (False -> let c_2_0::C = <{StdList.!!}> l_3 i_1 in case (<{StdChar.==_18}> c_2_0 '\t') (True -> EdClient.doit_124 tabwidth_0 (<{StdInt.+_6}> i_1 StdInt.one_11) s_2 l_3 (<{StdList.++}> (StdList.repeatn n_5 ' ') m_4) tabwidth_0) (False -> EdClient.doit_124 tabwidth_0 (<{StdInt.+_6}> i_1 StdInt.one_11) s_2 l_3 (_predefined._Cons c_2_0 m_4) (EdClient.safemod_125 (<{StdInt.-_7}> n_5 StdInt.one_11) tabwidth_0)) ) 
+<{EdClient.cu;871;20_123}> !_vone_0 !<{_v+_1}> c_l_i_2 !g_l_3 = <{EdClient.g_c1;871;25_546}> g_l_3 _vone_0 <{_v+_1}> c_l_i_2
+<{EdClient.g_c1;871;25_546}> !g_l_0 _vone_1 <{_v+_2}> c_l_i_3 = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{EdClient.cu;871;20_123}> _vone_1 <{_v+_2}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 c_l_i_3 (select _vone_1::<{StdOverloaded.one;}> 0)) g_t_1_1) (_ -> c_l_i_3)
+<{EdClient.cu;871;20_122}> !_vArray_0 c_a_1 c_i_2::I !g_l_3 = <{EdClient.g_c1;871;25_547}> g_l_3 _vArray_0 c_a_1 c_i_2
+<{EdClient.g_c1;871;25_547}> !g_l_0 _vArray_1 c_a_2 c_i_3::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{EdClient.cu;871;20_122}> _vArray_1 (select _vArray_1::<{_SystemArray.Array;}> 5 c_a_2 c_i_3 c_1_0) (<{StdInt.+_6}> c_i_3 StdInt.one_11) g_t_1_1) (_ -> c_a_2)
+<{EdClient.cu;871;20_487}>::I !<{_v+_0}> c_l_i_1::I !g_l_2 = <{EdClient.g_c1;871;25_548}> g_l_2 <{_v+_0}> c_l_i_1
+<{EdClient.g_c1;871;25_548}>::I !g_l_0 <{_v+_1}> c_l_i_2::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{EdClient.cu;871;20_487}> <{_v+_1}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 c_l_i_2 StdInt.one_11) g_t_1_1) (_ -> c_l_i_2)
+<{EdClient.cu;871;20_488}>::I !c_l_i_0::I !g_l_1 = <{EdClient.g_c1;871;25_549}> g_l_1 c_l_i_0
+<{EdClient.g_c1;871;25_549}>::I !g_l_0 !c_l_i_1::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{EdClient.cu;871;20_488}> (<{StdInt.+_6}> c_l_i_1 StdInt.one_11) g_t_1_1) (_ -> c_l_i_1)
+EdClient.l2a_127 !_vArray_0 !l_1 = <{EdClient.cu;871;20_122}> _vArray_0 (select _vArray_0::<{_SystemArray.Array;}> 0 (<{EdClient.cu;871;20_488}> 0 l_1)) 0 l_1
+<{EdClient.fun`_128}> !_vArray_0 !_vArray_1 tabwidth_2::I line_3 = let line_1_0 = EdClient.a2l_126 _vArray_0 line_3 in EdClient.l2a_127 _vArray_1 (EdClient.doit_124 tabwidth_2 0 (StdList.length_47 line_1_0) line_1_0 _predefined._Nil tabwidth_2)
+EdClient.tabs2spaces !_vArray_0 !_vArray_1 tabwidth_2::I !text_3 = StrictList.slMap (<{EdClient.fun`_128}> _vArray_0 _vArray_1 tabwidth_2) text_3
+EdClient.pads_119 !_vtoString_0 !w_1::I i_2 = let intstring_1_0 = select _vtoString_0::<{StdOverloaded.toString;}> 0 i_2 in <{StdString.+++.}> (<{StdString.%_10}> "         " (_Tuple2 0 (<{StdInt.-_7}> w_1 (_SystemArray.size_20 intstring_1_0)))) (<{StdString.+++.}> intstring_1_0 " ")
+EdClient.func_118 !_vtoString_0 !_vone_1 !<{_v+_2}> width_3::I i_4 !_x_5 = case _x_5 (StrictList.SNil -> StrictList.SNil) (StrictList.SCons h_1_0 t_1_1 -> StrictList.SCons (<{StdString.+++.}> (EdClient.pads_119 _vtoString_0 width_3 i_4) (<{StdString.+++.}> h_1_0 "\n")) (EdClient.func_118 _vtoString_0 _vone_1 <{_v+_2}> width_3 (select <{_v+_2}>::<{StdOverloaded.+;}> 0 i_4 (select _vone_1::<{StdOverloaded.one;}> 0)) t_1_1)) 
+<{EdClient.c;870;20_492}> !g_i_0::I !g_s_1::I g_a_2 = case (StdBool.not (<{StdInt.<_17}> g_s_1 g_i_0)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = _SystemArray.uselect_22 g_a_2 g_i_0 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{EdClient.c;870;20_492}> (<{StdInt.+_6}> g_i_0 StdInt.one_11) g_s_1 g_a_2_0)) (False -> _predefined._Nil) 
+EdClient.a2l_491 !a_0 = let _x_1_0 = _SystemArray.usize_23 a_0 in <{EdClient.c;870;20_492}> 0 (<{StdInt.-_7}> (select _x_1_0::_Tuple2 0) 1) (select _x_1_0::_Tuple2 1)
+<{EdClient.fun`_490}> !_vArray_0 tabwidth_1::I !line_2 = let line_1_0 = EdClient.a2l_491 line_2 in EdClient.l2a_127 _vArray_0 (EdClient.doit_124 tabwidth_1 0 (StdList.length_47 line_1_0) line_1_0 _predefined._Nil tabwidth_1)
+EdClient.tabs2spaces_489 !_vArray_0 tabwidth_1::I !text_2 = StrictList.slMap (<{EdClient.fun`_490}> _vArray_0 tabwidth_1) text_2
+EdClient.pads_494 !w_0::I !i_1::I = let intstring_1_0 = StdString.toString_5 i_1 in <{StdString.+++.}> (<{StdString.%_10}> "         " (_Tuple2 0 (<{StdInt.-_7}> w_0 (_SystemArray.size_20 intstring_1_0)))) (<{StdString.+++.}> intstring_1_0 " ")
+EdClient.func_493 !_vone_0 !<{_v+_1}> width_2::I i_3::I !_x_4 = case _x_4 (StrictList.SNil -> StrictList.SNil) (StrictList.SCons h_1_0 t_1_1 -> StrictList.SCons (<{StdString.+++.}> (EdClient.pads_494 width_2 i_3) (<{StdString.+++.}> h_1_0 "\n")) (EdClient.func_493 _vone_0 <{_v+_1}> width_2 (select <{_v+_1}>::<{StdOverloaded.+;}> 0 i_3 (select _vone_0::<{StdOverloaded.one;}> 0)) t_1_1)) 
+<{EdClient.cu;871;20_498}> !c_a_0 c_i_1::I !g_l_2 = <{EdClient.g_c1;871;25_550}> g_l_2 c_a_0 c_i_1
+<{EdClient.g_c1;871;25_550}> !g_l_0 !c_a_1 c_i_2::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{EdClient.cu;871;20_498}> (_SystemArray.update_21 c_a_1 c_i_2 c_1_0) (<{StdInt.+_6}> c_i_2 StdInt.one_11) g_t_1_1) (_ -> c_a_1)
+EdClient.l2a_497 !l_0 = <{EdClient.cu;871;20_498}> (_SystemArray._createArray_16 (<{EdClient.cu;871;20_488}> 0 l_0)) 0 l_0
+<{EdClient.fun`_496}> tabwidth_0::I !line_1 = let line_1_0 = EdClient.a2l_491 line_1 in EdClient.l2a_497 (EdClient.doit_124 tabwidth_0 0 (StdList.length_47 line_1_0) line_1_0 _predefined._Nil tabwidth_0)
+EdClient.tabs2spaces_495 tabwidth_0::I !text_1 = StrictList.slMap (<{EdClient.fun`_496}> tabwidth_0) text_1
+EdClient.func_499 !<{_v+_0}> width_1::I i_2::I !_x_3 = case _x_3 (StrictList.SNil -> StrictList.SNil) (StrictList.SCons h_1_0 t_1_1 -> StrictList.SCons (<{StdString.+++.}> (EdClient.pads_494 width_1 i_2) (<{StdString.+++.}> h_1_0 "\n")) (EdClient.func_499 <{_v+_0}> width_1 (select <{_v+_0}>::<{StdOverloaded.+;}> 0 i_2 StdInt.one_11) t_1_1)) 
+EdClient.func_500 width_0::I i_1::I !_x_2 = case _x_2 (StrictList.SNil -> StrictList.SNil) (StrictList.SCons h_1_0 t_1_1 -> StrictList.SCons (<{StdString.+++.}> (EdClient.pads_494 width_0 i_1) (<{StdString.+++.}> h_1_0 "\n")) (EdClient.func_500 width_0 (<{StdInt.+_6}> i_1 StdInt.one_11) t_1_1)) 
+EdClient.Text2TextCharStreamWithLinenrs tabWidth_0::I !txt_1 = textcharstream._TextCharStream (EdClient.func_500 5 1 (EdClient.tabs2spaces_495 tabWidth_0 (EdLineText.textToStrings txt_1))) 0 (_Tuple2 StrictList.SNil 0)
+EdClient.anon_117 !str_0 = <{StdString.+++.}> str_0 "\n"
+EdClient.Text2TextCharStream !txt_0 = textcharstream._TextCharStream (StrictList.slMap EdClient.anon_117 (EdLineText.textToStrings txt_0)) 0 (_Tuple2 StrictList.SNil 0)
+EdClient.textstream_116 info_0 !text_1 !linenos_2::B = case linenos_2 (True -> EdClient.Text2TextCharStreamWithLinenrs (select info_0::EdMonad._FontInfo 3) text_1) (False -> EdClient.Text2TextCharStream text_1) 
+EdClient.myPrintText !_vPrintEnvironments_0 !printsetup_1 !path_2 !text_3 !info_4 !linenos_5::B !env_6 = let _x_1_0 = StdPrintText.printText2 (<{StdPrintText.CharStreams;}> textcharstream.eos_0 textcharstream.getChar_1 textcharstream.restorePos_2 textcharstream.savePos_3) _vPrintEnvironments_0 path_2 "page " True 1 (StdPicture.getFontDef (select info_4::EdMonad._FontInfo 0)) (select info_4::EdMonad._FontInfo 3) (EdClient.textstream_116 info_4 text_3 linenos_5) printsetup_1 env_6 in _Tuple2 (select (select _x_1_0::_Tuple2 0)::_Tuple2 1) (select _x_1_0::_Tuple2 1)
+EdClient.anon_112 !_vPrintEnvironments_0 printSetup_1 text_2 pathName_3 font_4 linenos_5::B = EdMonad.accEnv (EdClient.myPrintText _vPrintEnvironments_0 printSetup_1 pathName_3 text_2 font_4 linenos_5)
+EdClient.anon_501 ma_0 !_vPrintEnvironments_1 printSetup_2 text_3 pathName_4 font_5 state_6 = let _x_1_0 = ma_0 state_6 in EdClient.anon_112 _vPrintEnvironments_1 printSetup_2 text_3 pathName_4 font_5 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_113 !_vPrintEnvironments_0 printSetup_1 text_2 pathName_3 font_4 = EdClient.anon_501 EdMonad.getLineNumbers _vPrintEnvironments_0 printSetup_1 text_2 pathName_3 font_4
+EdClient.anon_502 ma_0 !_vPrintEnvironments_1 printSetup_2 text_3 pathName_4 state_5 = let _x_1_0 = ma_0 state_5 in EdClient.anon_113 _vPrintEnvironments_1 printSetup_2 text_3 pathName_4 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_114 !_vPrintEnvironments_0 printSetup_1 text_2 pathName_3 = EdClient.anon_502 EdMonad.getFontInfo _vPrintEnvironments_0 printSetup_1 text_2 pathName_3
+EdClient.anon_503 ma_0 !_vPrintEnvironments_1 printSetup_2 text_3 state_4 = let _x_1_0 = ma_0 state_4 in EdClient.anon_114 _vPrintEnvironments_1 printSetup_2 text_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_115 !_vPrintEnvironments_0 printSetup_1 text_2 = EdClient.anon_503 EdMonad.getPathName _vPrintEnvironments_0 printSetup_1 text_2
+EdClient.myPrintText_511 !printsetup_0 !path_1 !text_2 !info_3 !linenos_4::B !env_5 = let _x_1_0 = StdPrintText.printText2 (<{StdPrintText.CharStreams;}> textcharstream.eos_0 textcharstream.getChar_1 textcharstream.restorePos_2 textcharstream.savePos_3) (<{osprint.PrintEnvironments;}> osprint.os_printpageperpage_7 osprint.os_printsetupdialog_8) path_1 "page " True 1 (StdPicture.getFontDef (select info_3::EdMonad._FontInfo 0)) (select info_3::EdMonad._FontInfo 3) (EdClient.textstream_116 info_3 text_2 linenos_4) printsetup_0 env_5 in _Tuple2 (select (select _x_1_0::_Tuple2 0)::_Tuple2 1) (select _x_1_0::_Tuple2 1)
+EdClient.anon_510 printSetup_0 text_1 pathName_2 font_3 linenos_4::B = EdMonad.accEnv (EdClient.myPrintText_511 printSetup_0 pathName_2 text_1 font_3 linenos_4)
+EdClient.anon_509 ma_0 printSetup_1 text_2 pathName_3 font_4 state_5 = let _x_1_0 = ma_0 state_5 in EdClient.anon_510 printSetup_1 text_2 pathName_3 font_4 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_508 printSetup_0 text_1 pathName_2 font_3 = EdClient.anon_509 EdMonad.getLineNumbers printSetup_0 text_1 pathName_2 font_3
+EdClient.anon_507 ma_0 printSetup_1 text_2 pathName_3 state_4 = let _x_1_0 = ma_0 state_4 in EdClient.anon_508 printSetup_1 text_2 pathName_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_506 printSetup_0 text_1 pathName_2 = EdClient.anon_507 EdMonad.getFontInfo printSetup_0 text_1 pathName_2
+EdClient.anon_505 ma_0 printSetup_1 text_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_506 printSetup_1 text_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_504 printSetup_0 text_1 = EdClient.anon_505 EdMonad.getPathName printSetup_0 text_1
+EdClient.anon_512 ma_0 printSetup_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_504 printSetup_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgPrint !printSetup_0 = EdClient.anon_512 EdMonad.getText printSetup_0
+EdClient.anon_302 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_301 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_300 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_299 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_513 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_299 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_514 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_513 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_120 text_0 = EdClient.anon_514 (EdMonad.setText (EdLineText.stringsToText (EdClient.tabs2spaces_495 4 (EdLineText.textToStrings text_0)))) EdVisualText.vResetViewDomain (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.None "" EdMonad.NoInfo))
+EdClient.anon_515 ma_0 state_1 = let _x_1_0 = ma_0 state_1 in EdClient.anon_120 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgDetab = EdClient.anon_515 EdMonad.getText
+EdClient.anon_308 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_307 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_306 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_305 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_304 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_303 x_0 state_1 = _Tuple2 x_0 state_1
+<{EdClient.maybesel`_94}> !fr_0 !text_1 = case (select fr_0::EdClient._FRInfo 7) (True -> EdFind.regexpLineSearch (select fr_0::EdClient._FRInfo 0) (select fr_0::EdClient._FRInfo 5) (select fr_0::EdClient._FRInfo 6) (select fr_0::EdClient._FRInfo 3) (select fr_0::EdClient._FRInfo 4) (select fr_0::EdClient._FRInfo 1) text_1) (False -> EdFind.simpleLineSearch (select fr_0::EdClient._FRInfo 0) (select fr_0::EdClient._FRInfo 5) (select fr_0::EdClient._FRInfo 6) (select fr_0::EdClient._FRInfo 3) (select fr_0::EdClient._FRInfo 4) (select fr_0::EdClient._FRInfo 1) text_1) 
+EdClient.anon_516 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_304 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_517 ma_0 x_1 state_2 = EdClient.anon_306 x_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_95 !fr_0 !text_1 = let maybesel_1_0 = <{EdClient.maybesel`_94}> fr_0 text_1 in case (Data.Maybe.isNothing maybesel_1_0) (True -> EdClient.anon_303 False) (False -> let realsel_3_0 = EdSelection.validateSelection (Data.Maybe.fromJust maybesel_1_0) text_1 in EdClient.anon_517 (EdVisualCursor.vDoCursorSafe (EdClient.anon_516 (EdVisualCursor.vChangeSelectionTo realsel_3_0) (EdCommon.mChangeSelectionTo realsel_3_0) EdVisualCursor.vCenterCursor)) True) 
+EdClient.anon_518 !ma_0 !fr_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_95 fr_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgFind !fr_0 = EdClient.anon_518 EdMonad.getText fr_0
+EdClient.anon_322 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_321 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_320 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_319 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_318 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_317 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_316 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_315 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_314 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_313 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_312 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_311 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_310 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_309 x_0 state_1 = _Tuple2 x_0 state_1
+<{EdClient.fragment`_97}> !fr_0 text_1 orderedSelection_2 = case (select fr_0::EdClient._FRInfo 7) (True -> EdFind.regexpLineReplace orderedSelection_2 (select fr_0::EdClient._FRInfo 5) (select fr_0::EdClient._FRInfo 6) (select fr_0::EdClient._FRInfo 3) (select fr_0::EdClient._FRInfo 4) (select fr_0::EdClient._FRInfo 1) (select fr_0::EdClient._FRInfo 2) (select (EdLineText.getLine (select (select orderedSelection_2::EdSelection._Selection 0)::EdPosition._Position 1) text_1)::_Tuple2 0)) (False -> Data.Maybe.Just (select fr_0::EdClient._FRInfo 2)) 
+EdClient.newCursorPos_100 !pos_0 !_x_1 = case pos_0 (EdPosition._Position col_1_0 row_1_1 -> case _x_1 (StrictList.SNil -> pos_0) (StrictList.SCons string_2_0 _x_2_1 -> case _x_2_1 (StrictList.SNil -> EdPosition._Position (<{StdInt.+_6}> col_1_0 (_SystemArray.size_20 string_2_0)) row_1_1) ) (_ -> EdPosition._Position (_SystemArray.size_20 (StrictList.slLast _x_1)) (<{StdInt.-_7}> (<{StdInt.+_6}> row_1_1 (StrictList.slLength _x_1)) 1))) 
+EdClient.anon_519 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_310 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_520 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_519 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_521 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_520 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_522 ma_0 mb_1 mb_2 mb_3 mb_4 !mb_5 state_6 = mb_5 (select (EdClient.anon_521 ma_0 mb_1 mb_2 mb_3 mb_4 state_6)::_Tuple2 1)
+EdClient.anon_523 ma_0 mb_1 mb_2 mb_3 mb_4 mb_5 !mb_6 state_7 = mb_6 (select (EdClient.anon_522 ma_0 mb_1 mb_2 mb_3 mb_4 mb_5 state_7)::_Tuple2 1)
+EdClient.anon_524 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_316 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_525 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_524 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_526 ma_0 mb_1 mb_2 x_3 state_4 = EdClient.anon_318 x_3 (select (EdClient.anon_524 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_98 !fr_0 text_1 maybesel_2 needsave_3::B = let realsel_1_0 = EdSelection.validateSelection (Data.Maybe.fromJust maybesel_2) text_1, orderedSelection_1_1 = EdSelection.orderSelection realsel_1_0, mfragment_1_2 = <{EdClient.fragment`_97}> fr_0 text_1 orderedSelection_1_1, position_1_3 = select orderedSelection_1_1::EdSelection._Selection 0 in case (Data.Maybe.isNothing mfragment_1_2) (True -> EdClient.anon_309 False) (False -> let <{jfragment`_3_0}> = EdLineText.stringToStrings (Data.Maybe.fromJust mfragment_1_2), newPosition_3_1 = EdClient.newCursorPos_100 position_1_3 <{jfragment`_3_0}> in EdClient.anon_526 (EdVisualCursor.vDoCursorSafe (EdClient.anon_523 (EdVisualCursor.vChangeSelectionTo realsel_1_0) EdVisualCursor.vRemoveSelection EdCommon.mRemoveSelection (EdVisualText.vInsertText position_1_3 <{jfragment`_3_0}>) (EdVisualCursor.vChangeSelectionTo (EdSelection._Selection position_1_3 newPosition_3_1)) (EdCommon.mChangeSelectionTo (EdSelection._Selection position_1_3 newPosition_3_1)) EdVisualCursor.vCenterCursor)) (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " Replace" (EdMonad.PasteInfo <{jfragment`_3_0}> (select (EdText.getTextFragment orderedSelection_1_1 text_1)::_Tuple2 0) realsel_1_0 position_1_3 needsave_3))) True) 
+<{EdClient.maybesel`_96}> !fr_0 !text_1 = case (select fr_0::EdClient._FRInfo 7) (True -> EdFind.regexpLineSearch (select fr_0::EdClient._FRInfo 0) (select fr_0::EdClient._FRInfo 5) (select fr_0::EdClient._FRInfo 6) (select fr_0::EdClient._FRInfo 3) (select fr_0::EdClient._FRInfo 4) (select fr_0::EdClient._FRInfo 1) text_1) (False -> EdFind.simpleLineSearch (select fr_0::EdClient._FRInfo 0) (select fr_0::EdClient._FRInfo 5) (select fr_0::EdClient._FRInfo 6) (select fr_0::EdClient._FRInfo 3) (select fr_0::EdClient._FRInfo 4) (select fr_0::EdClient._FRInfo 1) text_1) 
+EdClient.anon_527 ma_0 !fr_1 text_2 maybesel_3 state_4 = let _x_1_0 = ma_0 state_4 in EdClient.anon_98 fr_1 text_2 maybesel_3 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_99 !fr_0 !text_1 = let maybesel_1_0 = <{EdClient.maybesel`_96}> fr_0 text_1 in case (Data.Maybe.isNothing maybesel_1_0) (True -> EdClient.anon_320 False) (False -> EdClient.anon_527 EdMonad.getNeedSave fr_0 text_1 maybesel_1_0) 
+EdClient.anon_528 !ma_0 !fr_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_99 fr_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgReplace !fr_0 = EdClient.anon_528 EdMonad.getText fr_0
+EdClient.anon_331 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_330 ma_0 !f_1 state_2 = let _x_1_0 = ma_0 state_2 in f_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_329 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_328 x_0 state_1 = _Tuple2 x_0 state_1
+EdClient.anon_327 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_326 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_325 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_324 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+EdClient.anon_323 ma_0 !mb_1 state_2 = mb_1 (select (ma_0 state_2)::_Tuple2 1)
+<{EdClient.cu;703;56_102}> !_vone_0 !<{_v+_1}> c_l_i_2 !g_l_3 = <{EdClient.g_c1;703;61_551}> g_l_3 _vone_0 <{_v+_1}> c_l_i_2
+<{EdClient.g_c1;703;61_551}> !g_l_0 _vone_1 <{_v+_2}> c_l_i_3 = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{EdClient.cu;703;56_102}> _vone_1 <{_v+_2}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 c_l_i_3 (select _vone_1::<{StdOverloaded.one;}> 0)) g_t_1_1) (_ -> c_l_i_3)
+<{EdClient.cu;703;56_101}> !_vArray_0 c_a_1 c_i_2::I !g_l_3 = <{EdClient.g_c1;703;61_552}> g_l_3 _vArray_0 c_a_1 c_i_2
+<{EdClient.g_c1;703;61_552}> !g_l_0 _vArray_1 c_a_2 c_i_3::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{EdClient.cu;703;56_101}> _vArray_1 (select _vArray_1::<{_SystemArray.Array;}> 5 c_a_2 c_i_3 e_1_0) (<{StdInt.+_6}> c_i_3 StdInt.one_11) g_t_1_1) (_ -> c_a_2)
+EdClient.searchFun_106 !fr_0 !pos_1 !txt_2 = case (select fr_0::EdClient._FRInfo 7) (True -> <{EdFind.regexpLineSearch`}> pos_1 False False (select fr_0::EdClient._FRInfo 3) (select fr_0::EdClient._FRInfo 4) (select fr_0::EdClient._FRInfo 1) txt_2) (False -> <{EdFind.simpleLineSearch`}> pos_1 False False (select fr_0::EdClient._FRInfo 3) (select fr_0::EdClient._FRInfo 4) (select fr_0::EdClient._FRInfo 1) txt_2) 
+<{EdClient.getTextFragment`_110}> !_x_0 !text_1 = case _x_0 (EdSelection._Selection _x_1_0 _x_1_1 -> case _x_1_0 (EdPosition._Position col1_2_0 row1_2_1 -> case _x_1_1 (EdPosition._Position col2_3_0 row2_3_1 -> case (<{StdInt.==_16}> row1_2_1 row2_3_1) (True -> let _x_5_0 = _SystemArray.uselect_78 text_1 row1_2_1 in <{_Tuple2!3}> (StrictList.SCons (<{StdString.%_10}> (select _x_5_0::_Tuple2 0) (_Tuple2 col1_2_0 (<{StdInt.-_7}> col2_3_0 1))) StrictList.SNil) (select _x_5_0::_Tuple2 1)) (False -> StdMisc.abort "EdClient: ReplaceAll: fragment must be single line...") ) ) ) 
+<{EdClient.replaceText`_111}> !sel_0 !string_1 !text_2 = case sel_0 (EdSelection._Selection start_1_0 end_1_1 -> case start_1_0 (EdPosition._Position col1_2_0 row1_2_1 -> case end_1_1 (EdPosition._Position col2_3_0 row2_3_1 -> case (StdBool.not (<{StdInt.==_16}> row1_2_1 row2_3_1)) (True -> StdMisc.abort "EdClient: ReplaceAll: fragment must be single line...") (False -> let _x_5_0 = _SystemArray.uselect_78 text_2 row1_2_1, firstLine_5_1 = select _x_5_0::_Tuple2 0 in _SystemArray.update_77 (select _x_5_0::_Tuple2 1) row1_2_1 (<{StdString.+++_11}> (<{StdString.%_10}> firstLine_5_1 (_Tuple2 0 (<{StdInt.-_7}> col1_2_0 1))) (<{StdString.+++_11}> string_1 (<{StdString.%_10}> firstLine_5_1 (_Tuple2 col2_3_0 (<{StdInt.-_7}> (_SystemArray.size_20 firstLine_5_1) 1)))))) ) ) ) 
+EdClient.replaceFun_107 !fr_0 !sel_1 !txt_2 = case (select fr_0::EdClient._FRInfo 7) (True -> let _x_2_0 = _SystemArray.uselect_78 txt_2 (select (select sel_1::EdSelection._Selection 0)::EdPosition._Position 1), nfrg_2_1 = Data.Maybe.fromJust (EdFind.regexpLineReplace sel_1 False False (select fr_0::EdClient._FRInfo 3) (select fr_0::EdClient._FRInfo 4) (select fr_0::EdClient._FRInfo 1) (select fr_0::EdClient._FRInfo 2) (select _x_2_0::_Tuple2 0)) in <{_Tuple2!3}> nfrg_2_1 (<{EdClient.replaceText`_111}> sel_1 nfrg_2_1 (select _x_2_0::_Tuple2 1))) (False -> <{_Tuple2!3}> (select fr_0::EdClient._FRInfo 2) (<{EdClient.replaceText`_111}> sel_1 (select fr_0::EdClient._FRInfo 2) txt_2)) 
+EdClient.newCursorPos_109 !_x_0 !string_1 = case _x_0 (EdPosition._Position col_1_0 row_1_1 -> EdPosition._Position (<{StdInt.+_6}> col_1_0 (_SystemArray.size_20 string_1)) row_1_1) 
+EdClient.allFun_108 !fr_0 !pos_1 !acc_2 !txt_3 = let _x_1_0 = EdClient.searchFun_106 fr_0 pos_1 txt_3, msel_1_1 = select _x_1_0::_Tuple2 0 in case (Data.Maybe.isNothing msel_1_1) (True -> <{_Tuple2!3}> (StdList.reverse acc_2) (select _x_1_0::_Tuple2 1)) (False -> let osel_3_0 = EdSelection.orderSelection (Data.Maybe.fromJust msel_1_1), _x_3_1 = <{EdClient.getTextFragment`_110}> osel_3_0 (select _x_1_0::_Tuple2 1), _x_3_2 = EdClient.replaceFun_107 fr_0 osel_3_0 (select _x_3_1::_Tuple2 1), nfrg_3_3 = select _x_3_2::_Tuple2 0, endpos_3_4 = EdClient.newCursorPos_109 (select osel_3_0::EdSelection._Selection 0) nfrg_3_3 in EdClient.allFun_108 fr_0 (EdSelection._Selection endpos_3_4 endpos_3_4) (_predefined._Cons (_Tuple4 osel_3_0 (update osel_3_0::EdSelection._Selection [1:endpos_3_4]) (select _x_3_1::_Tuple2 0) (EdLineText.stringToStrings nfrg_3_3)) acc_2) (select _x_3_2::_Tuple2 1)) 
+<{EdClient.c;704;56_103}> !_vArray_0 !g_i_1::I !g_s_2::I g_a_3 = case (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = select _vArray_0::<{_SystemArray.Array;}> 6 g_a_3 g_i_1 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{EdClient.c;704;56_103}> _vArray_0 (<{StdInt.+_6}> g_i_1 StdInt.one_11) g_s_2 g_a_2_0)) (False -> _predefined._Nil) 
+<{EdClient.c;704;56_531}> !g_i_0::I !g_s_1::I g_a_2 = case (StdBool.not (<{StdInt.<_17}> g_s_1 g_i_0)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = _SystemArray.uselect_78 g_a_2 g_i_0 in _predefined._Cons (select _x_2_1::_Tuple2 0) (<{EdClient.c;704;56_531}> (<{StdInt.+_6}> g_i_0 StdInt.one_11) g_s_1 g_a_2_0)) (False -> _predefined._Nil) 
+<{EdClient.cu;703;56_529}>::I !<{_v+_0}> c_l_i_1::I !g_l_2 = <{EdClient.g_c1;703;61_553}> g_l_2 <{_v+_0}> c_l_i_1
+<{EdClient.g_c1;703;61_553}>::I !g_l_0 <{_v+_1}> c_l_i_2::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{EdClient.cu;703;56_529}> <{_v+_1}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 c_l_i_2 StdInt.one_11) g_t_1_1) (_ -> c_l_i_2)
+<{EdClient.cu;703;56_530}> !c_a_0 c_i_1::I !g_l_2 = <{EdClient.g_c1;703;61_554}> g_l_2 c_a_0 c_i_1
+<{EdClient.g_c1;703;61_554}> !g_l_0 !c_a_1 c_i_2::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{EdClient.cu;703;56_530}> (_SystemArray.update_77 c_a_1 c_i_2 e_1_0) (<{StdInt.+_6}> c_i_2 StdInt.one_11) g_t_1_1) (_ -> c_a_1)
+EdClient.anon_532 ma_0 mb_1 !mb_2 state_3 = mb_2 (select (EdClient.anon_323 ma_0 mb_1 state_3)::_Tuple2 1)
+EdClient.anon_533 ma_0 mb_1 mb_2 !mb_3 state_4 = mb_3 (select (EdClient.anon_532 ma_0 mb_1 mb_2 state_4)::_Tuple2 1)
+EdClient.anon_534 ma_0 mb_1 mb_2 mb_3 !mb_4 state_5 = mb_4 (select (EdClient.anon_533 ma_0 mb_1 mb_2 mb_3 state_5)::_Tuple2 1)
+EdClient.anon_535 ma_0 mb_1 mb_2 mb_3 mb_4 !mb_5 state_6 = mb_5 (select (EdClient.anon_534 ma_0 mb_1 mb_2 mb_3 mb_4 state_6)::_Tuple2 1)
+EdClient.anon_536 ma_0 mb_1 mb_2 mb_3 mb_4 mb_5 !mb_6 state_7 = mb_6 (select (EdClient.anon_535 ma_0 mb_1 mb_2 mb_3 mb_4 mb_5 state_7)::_Tuple2 1)
+<{EdClient.cu;703;56_537}>::I !c_l_i_0::I !g_l_1 = <{EdClient.g_c1;703;61_555}> g_l_1 c_l_i_0
+<{EdClient.g_c1;703;61_555}>::I !g_l_0 !c_l_i_1::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{EdClient.cu;703;56_537}> (<{StdInt.+_6}> c_l_i_1 StdInt.one_11) g_t_1_1) (_ -> c_l_i_1)
+EdClient.anon_538 ma_0 mb_1 mb_2 mb_3 mb_4 mb_5 x_6 state_7 = EdClient.anon_328 x_6 (select (EdClient.anon_535 ma_0 mb_1 mb_2 mb_3 mb_4 mb_5 state_7)::_Tuple2 1)
+EdClient.anon_104 fr_0 text_1 needsave_2::B = let lines_1_0 = EdLineText.textToStrings text_1, _x_1_1 = EdClient.allFun_108 fr_0 EdSelection.emptySelection _predefined._Nil (<{EdClient.cu;703;56_530}> (_SystemArray._createArray_72 (<{EdClient.cu;703;56_537}> 0 (StrictList.slToList lines_1_0))) 0 (StrictList.slToList lines_1_0)), _x_1_2 = _SystemArray.usize_79 (select _x_1_1::_Tuple2 1), ulist_1_3 = select _x_1_1::_Tuple2 0 in EdClient.anon_538 (EdVisualCursor.vChangeSelectionTo EdSelection.emptySelection) (EdCommon.mChangeSelectionTo EdSelection.emptySelection) (EdMonad.setText (EdLineText.stringsToText (StrictList.slFromList (<{EdClient.c;704;56_531}> 0 (<{StdInt.-_7}> (select _x_1_2::_Tuple2 0) 1) (select _x_1_2::_Tuple2 1))))) (EdMonad.setNeedSave True) (EdMonad.setUndoInfo (EdMonad._UndoInfo EdMonad.Undo " ReplaceAll" (EdMonad.ReplaceAllInfo (EdLineText.stringToStrings (select fr_0::EdClient._FRInfo 2)) (select fr_0::EdClient._FRInfo 0) EdSelection.emptySelection ulist_1_3 needsave_2))) EdVisualText.vResetViewDomain (StdList.length_47 ulist_1_3)
+EdClient.anon_539 ma_0 fr_1 text_2 state_3 = let _x_1_0 = ma_0 state_3 in EdClient.anon_104 fr_1 text_2 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.anon_105 fr_0 text_1 = EdClient.anon_539 EdMonad.getNeedSave fr_0 text_1
+EdClient.anon_540 ma_0 fr_1 state_2 = let _x_1_0 = ma_0 state_2 in EdClient.anon_105 fr_1 (select _x_1_0::_Tuple2 0) (select _x_1_0::_Tuple2 1)
+EdClient.msgReplaceAll !fr_0 = EdClient.anon_540 EdMonad.getText fr_0
+<{EdClient.TD;FRInfo}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: EdClient._FRInfo = {!EdClient.fr_pos, !EdClient.fr_search, !EdClient.fr_replace, !EdClient.fr_ignore_case::B, !EdClient.fr_match_words::B, !EdClient.fr_backwards::B, !EdClient.fr_wraparound::B, !EdClient.fr_regexp::B}
+
+:: <{EdClient.gEq_s;}> = {!EdClient.gEq_s}
+
+:: <{EdClient.gEq_ss;}> = {!EdClient.gEq_ss}
+
+:: <{EdClient.gEq_sss;}> = {!EdClient.gEq_sss}
+
+:: <{EdClient.gEq_ssss;}> = {!EdClient.gEq_ssss}
+
+:: <{EdClient.gEq_sssss;}> = {!EdClient.gEq_sssss}
+
+:: <{EdClient.gEq_ssssss;}> = {!EdClient.gEq_ssssss}
+
+:: <{EdClient.gEq_sssssss;}> = {!EdClient.gEq_sssssss}
+
+:: <{EdClient.gEq_ssssssss;}> = {!EdClient.gEq_ssssssss}
+
+:: <{EdClient.gEq_sssssssss;}> = {!EdClient.gEq_sssssssss}
+
+:: <{EdClient.bimap_s;}> = {EdClient.bimap_s}
+
+:: <{EdClient.bimap_ss;}> = {EdClient.bimap_ss}
+
+:: <{EdClient.bimap_sss;}> = {EdClient.bimap_sss}
+

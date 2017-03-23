@@ -1,0 +1,45 @@
+|| ?module? EdSelection
+
+
+EdSelection.emptySelection = EdSelection._Selection (EdPosition._Position 0 0) (EdPosition._Position 0 0)
+EdSelection.lineSelection !lnr_0::I = EdSelection._Selection (EdPosition._Position 0 (<{StdInt.-_7}> lnr_0 StdInt.one_11)) (EdPosition._Position 0 lnr_0)
+EdSelection.isEmptySelection::B !_x_0 = case _x_0 (EdSelection._Selection start_1_0 end_1_1 -> <{EdPosition.==_1}> start_1_0 end_1_1) 
+EdSelection.orderSelection !_x_0 = case _x_0 (EdSelection._Selection start_1_0 end_1_1 -> case (<{EdPosition.<_0}> start_1_0 end_1_1) (True -> EdSelection._Selection start_1_0 end_1_1) (False -> EdSelection._Selection end_1_1 start_1_0) ) 
+<{EdSelection.changeSelection`_9}> !old_0 !new_1 = let old_1_0 = EdSelection.orderSelection old_0, new_1_1 = EdSelection.orderSelection new_1 in case (case (<{EdPosition.==_1}> (select old_1_0::EdSelection._Selection 0) (select new_1_1::EdSelection._Selection 0)) (True -> <{EdPosition.==_1}> (select old_1_0::EdSelection._Selection 1) (select new_1_1::EdSelection._Selection 1)) (False -> False) ) (True -> _predefined._Nil) (False -> case (case (StdBool.not (<{EdPosition.<_0}> (select new_1_1::EdSelection._Selection 0) (select old_1_0::EdSelection._Selection 1))) (True -> True) (False -> StdBool.not (<{EdPosition.<_0}> (select old_1_0::EdSelection._Selection 0) (select new_1_1::EdSelection._Selection 1))) ) (True -> _predefined._Cons old_1_0 (_predefined._Cons new_1_1 _predefined._Nil)) (False -> _predefined._Cons (EdSelection.orderSelection (EdSelection._Selection (select old_1_0::EdSelection._Selection 0) (select new_1_1::EdSelection._Selection 0))) (_predefined._Cons (EdSelection.orderSelection (EdSelection._Selection (select old_1_0::EdSelection._Selection 1) (select new_1_1::EdSelection._Selection 1))) _predefined._Nil)) ) 
+EdSelection.notEmptySelection::B !_x_0 = case _x_0 (EdSelection._Selection start_1_0 end_1_1 -> StdBool.not (<{EdPosition.==_1}> start_1_0 end_1_1)) 
+EdSelection.changeSelection !oldSelection_0 !newSelection_1 = StdList.filter EdSelection.notEmptySelection (<{EdSelection.changeSelection`_9}> oldSelection_0 newSelection_1)
+EdSelection.selectLines !bound1_0::I !bound2_1::I !text_2 = let last_1_0::I = <{EdSelection._c;51;16_53}> (<{StdInt.<_17}> bound1_0 bound2_1) bound2_1 bound1_0 in case (StdBool.not (<{StdInt.<_17}> last_1_0 (<{StdInt.-_7}> (EdLineText.textLength text_2) 1))) (True -> EdSelection._Selection (EdPosition._Position 0 (<{EdSelection._c;48;16_54}> (<{StdInt.<_17}> bound1_0 bound2_1) bound1_0 bound2_1)) (EdPosition._Position (_SystemArray.size_20 (select (EdLineText.getLine last_1_0 text_2)::_Tuple2 0)) last_1_0)) (False -> EdSelection._Selection (EdPosition._Position 0 (<{EdSelection._c;48;16_55}> (<{StdInt.<_17}> bound1_0 bound2_1) bound1_0 bound2_1)) (EdPosition._Position 0 (<{StdInt.+_6}> last_1_0 1))) 
+<{EdSelection._c;48;16_55}>::I !_x_0::B bound1_1::I bound2_2::I = case _x_0 (True -> bound1_1) (_ -> bound2_2)
+<{EdSelection._c;48;16_54}>::I !_x_0::B bound1_1::I bound2_2::I = case _x_0 (True -> bound1_1) (_ -> bound2_2)
+<{EdSelection._c;51;16_53}>::I !_x_0::B bound2_1::I bound1_2::I = case _x_0 (True -> bound2_1) (_ -> bound1_2)
+EdSelection.validateSelection !_x_0 text_1 = case _x_0 (EdSelection._Selection start_1_0 end_1_1 -> EdSelection._Selection (update start_1_0::EdPosition._Position [1:EdLineText.validateLineNr (select start_1_0::EdPosition._Position 1) text_1]) (update end_1_1::EdPosition._Position [1:EdLineText.validateLineNr (select end_1_1::EdPosition._Position 1) text_1])) 
+<{EdSelection.TD;Selection}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: EdSelection._Selection = {EdSelection.start, EdSelection.end}
+
+:: <{EdSelection.gEq_s;}> = {!EdSelection.gEq_s}
+
+:: <{EdSelection.gEq_ss;}> = {!EdSelection.gEq_ss}
+
+:: <{EdSelection.gEq_sss;}> = {!EdSelection.gEq_sss}
+
+:: <{EdSelection.gEq_ssss;}> = {!EdSelection.gEq_ssss}
+
+:: <{EdSelection.gEq_sssss;}> = {!EdSelection.gEq_sssss}
+
+:: <{EdSelection.gEq_ssssss;}> = {!EdSelection.gEq_ssssss}
+
+:: <{EdSelection.gEq_sssssss;}> = {!EdSelection.gEq_sssssss}
+
+:: <{EdSelection.gEq_ssssssss;}> = {!EdSelection.gEq_ssssssss}
+
+:: <{EdSelection.gEq_sssssssss;}> = {!EdSelection.gEq_sssssssss}
+
+:: <{EdSelection.bimap_s;}> = {EdSelection.bimap_s}
+
+:: <{EdSelection.bimap_ss;}> = {EdSelection.bimap_ss}
+
+:: <{EdSelection.bimap_sss;}> = {EdSelection.bimap_sss}
+

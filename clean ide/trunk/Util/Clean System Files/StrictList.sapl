@@ -1,0 +1,27 @@
+|| ?module? StrictList
+
+
+StrictList.slAppend !_x_0 !<{list`_1}> = case _x_0 (StrictList.SNil -> <{list`_1}>) (StrictList.SCons x_1_0 list_1_1 -> StrictList.SCons x_1_0 (StrictList.slAppend list_1_1 <{list`_1}>)) 
+<{StrictList.slReverse`_18}> !_x_0 list_1 = case _x_0 (StrictList.SCons head_1_0 tail_1_1 -> <{StrictList.slReverse`_18}> tail_1_1 (StrictList.SCons head_1_0 list_1)) (StrictList.SNil -> list_1) 
+StrictList.slReverse !list_0 = <{StrictList.slReverse`_18}> list_0 StrictList.SNil
+StrictList.slSplitAt !_x_0::I xs_1 = case _x_0 (0 -> _Tuple2 StrictList.SNil xs_1) (_ -> case xs_1 (StrictList.SCons x_1_0 xs_1_1 -> let _x_2_0 = StrictList.slSplitAt (<{StdInt.-_7}> _x_0 1) xs_1_1 in _Tuple2 (StrictList.SCons x_1_0 (select _x_2_0::_Tuple2 0)) (select _x_2_0::_Tuple2 1)) (StrictList.SNil -> _Tuple2 StrictList.SNil StrictList.SNil) )
+StrictList.slFromList !_x_0 = case _x_0 (_predefined._Nil -> StrictList.SNil) (_predefined._Cons x_1_0 xs_1_1 -> StrictList.SCons x_1_0 (StrictList.slFromList xs_1_1)) 
+StrictList.slMap !_x_0 !_x_1 = case _x_1 (StrictList.SNil -> StrictList.SNil) (StrictList.SCons x_1_0 xs_1_1 -> StrictList.SCons (_x_0 x_1_0) (StrictList.slMap _x_0 xs_1_1)) 
+<{StrictList.slLength`_19}>::I !_x_0 !len_1::I = case _x_0 (StrictList.SCons x_1_0 xs_1_1 -> <{StrictList.slLength`_19}> xs_1_1 (<{StdInt.+_6}> len_1 1)) (StrictList.SNil -> len_1) 
+StrictList.slLength::I !list_0 = <{StrictList.slLength`_19}> list_0 0
+StrictList.slHead !_x_0 = case _x_0 (StrictList.SCons x_1_0 xs_1_1 -> x_1_0) (StrictList.SNil -> StdMisc.abort "slHead (StrictList.icl): empty list\n") 
+StrictList.slTail !_x_0 = case _x_0 (StrictList.SCons x_1_0 xs_1_1 -> xs_1_1) (StrictList.SNil -> StdMisc.abort "slTail (StrictList.icl): empty list\n") 
+StrictList.slToList !_x_0 = case _x_0 (StrictList.SNil -> _predefined._Nil) (StrictList.SCons x_1_0 xs_1_1 -> _predefined._Cons x_1_0 (StrictList.slToList xs_1_1)) 
+StrictList.slIndex !_x_0::I !_x_1 = case _x_1 (StrictList.SNil -> StdMisc.abort "slIndex (StrictList.icl): index out of range\n") (StrictList.SCons x_1_0 _x_1_1 -> case _x_0 (0 -> x_1_0) (_ -> StrictList.slIndex (<{StdInt.-_7}> _x_0 1) _x_1_1)) 
+StrictList.slIsEmpty::B !_x_0 = case _x_0 (StrictList.SNil -> True) (_ -> False)
+StrictList.slTake !_x_0::I !_x_1 = case _x_1 (StrictList.SNil -> StrictList.SNil) (_ -> case _x_0 (0 -> StrictList.SNil) (_ -> case _x_1 (StrictList.SCons x_1_0 xs_1_1 -> StrictList.SCons x_1_0 (StrictList.slTake (<{StdInt.-_7}> _x_0 1) xs_1_1)) ))
+StrictList.slDrop !_x_0::I !_x_1 = case _x_1 (StrictList.SNil -> StrictList.SNil) (_ -> case _x_0 (0 -> _x_1) (_ -> case _x_1 (StrictList.SCons x_1_0 xs_1_1 -> StrictList.slDrop (<{StdInt.-_7}> _x_0 1) xs_1_1) ))
+StrictList.slLast !_x_0 = case _x_0 (StrictList.SCons lastElement_1_0 _x_1_1 -> case _x_1_1 (StrictList.SNil -> lastElement_1_0) (_ -> StrictList.slLast _x_1_1)) 
+StrictList.slInit !_x_0 = case _x_0 (StrictList.SCons lastElement_1_0 _x_1_1 -> case _x_1_1 (StrictList.SNil -> StrictList.SNil) (_ -> StrictList.SCons lastElement_1_0 (StrictList.slInit _x_1_1))) 
+StrictList.slUpdate !_x_0::I !a_1 !_x_2 = case _x_2 (StrictList.SNil -> StrictList.SCons a_1 StrictList.SNil) (StrictList.SCons x_1_0 xs_1_1 -> case _x_0 (0 -> StrictList.SCons a_1 xs_1_1) (_ -> StrictList.SCons x_1_0 (StrictList.slUpdate (<{StdInt.-_7}> _x_0 1) a_1 xs_1_1))) 
+<{StrictList.==_16}>::B !<{_v==_0}> !_x_1 !_x_2 = case _x_1 (StrictList.SNil -> case _x_2 (StrictList.SNil -> True) ) (StrictList.SCons x_1_0 xs_1_1 -> case _x_2 (StrictList.SCons y_2_0 ys_2_1 -> case (select <{_v==_0}>::<{StdOverloaded.==;}> 0 x_1_0 y_2_0) (True -> <{StrictList.==_16}> <{_v==_0}> xs_1_1 ys_2_1) (False -> False) ) ) (_ -> False)
+<{StrictList.TD;StrictList}> _x_0::B = _predefined._Nil
+
+:: StrictList.StrictList = StrictList.SCons !a1 a2 | StrictList.SNil
+
+|| Converted Records

@@ -1,0 +1,85 @@
+|| ?module? StdWindowAttribute
+
+
+StdWindowAttribute.isWindowOnlyAttribute::B !_x_0 = case _x_0 (StdWindowDef.WindowCursor _x_1_0 -> True) (StdWindowDef.WindowHScroll _x_1_0 -> True) (StdWindowDef.WindowKeyboard _x_1_0 _x_1_1 _x_1_2 -> True) (StdWindowDef.WindowLook _x_1_0 _x_1_1 -> True) (StdWindowDef.WindowMouse _x_1_0 _x_1_1 _x_1_2 -> True) (StdWindowDef.WindowOrigin _x_1_0 -> True) (StdWindowDef.WindowPen _x_1_0 -> True) (StdWindowDef.WindowSelectState _x_1_0 -> True) (StdWindowDef.WindowViewDomain _x_1_0 -> True) (StdWindowDef.WindowVScroll _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isAllWindowsAttribute::B !_x_0 = case _x_0 (StdWindowDef.WindowActivate _x_1_0 -> True) (StdWindowDef.WindowClose _x_1_0 -> True) (StdWindowDef.WindowDeactivate _x_1_0 -> True) (StdWindowDef.WindowHMargin _x_1_0 _x_1_1 -> True) (StdWindowDef.WindowId _x_1_0 -> True) (StdWindowDef.WindowIndex _x_1_0 -> True) (StdWindowDef.WindowInit _x_1_0 -> True) (StdWindowDef.WindowInitActive _x_1_0 -> True) (StdWindowDef.WindowItemSpace _x_1_0 _x_1_1 -> True) (StdWindowDef.WindowOuterSize _x_1_0 -> True) (StdWindowDef.WindowPos _x_1_0 -> True) (StdWindowDef.WindowViewSize _x_1_0 -> True) (StdWindowDef.WindowVMargin _x_1_0 _x_1_1 -> True) (_ -> False)
+StdWindowAttribute.isValidWindowAttribute::B !att_0 = case (StdWindowAttribute.isAllWindowsAttribute att_0) (True -> True) (False -> StdWindowAttribute.isWindowOnlyAttribute att_0) 
+StdWindowAttribute.isDialogOnlyAttribute::B !_x_0 = case _x_0 (StdWindowDef.WindowCancel _x_1_0 -> True) (StdWindowDef.WindowOk _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isValidDialogAttribute::B !att_0 = case (StdWindowAttribute.isAllWindowsAttribute att_0) (True -> True) (False -> StdWindowAttribute.isDialogOnlyAttribute att_0) 
+StdWindowAttribute.isWindowActivate::B !_x_0 = case _x_0 (StdWindowDef.WindowActivate _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowCancel::B !_x_0 = case _x_0 (StdWindowDef.WindowCancel _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowClose::B !_x_0 = case _x_0 (StdWindowDef.WindowClose _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowCursor::B !_x_0 = case _x_0 (StdWindowDef.WindowCursor _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowDeactivate::B !_x_0 = case _x_0 (StdWindowDef.WindowDeactivate _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowHMargin::B !_x_0 = case _x_0 (StdWindowDef.WindowHMargin _x_1_0 _x_1_1 -> True) (_ -> False)
+StdWindowAttribute.isWindowHScroll::B !_x_0 = case _x_0 (StdWindowDef.WindowHScroll _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowId::B !_x_0 = case _x_0 (StdWindowDef.WindowId _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowIndex::B !_x_0 = case _x_0 (StdWindowDef.WindowIndex _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowInit::B !_x_0 = case _x_0 (StdWindowDef.WindowInit _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowInitActive::B !_x_0 = case _x_0 (StdWindowDef.WindowInitActive _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowItemSpace::B !_x_0 = case _x_0 (StdWindowDef.WindowItemSpace _x_1_0 _x_1_1 -> True) (_ -> False)
+StdWindowAttribute.isWindowKeyboard::B !_x_0 = case _x_0 (StdWindowDef.WindowKeyboard _x_1_0 _x_1_1 _x_1_2 -> True) (_ -> False)
+StdWindowAttribute.isWindowLook::B !_x_0 = case _x_0 (StdWindowDef.WindowLook _x_1_0 _x_1_1 -> True) (_ -> False)
+StdWindowAttribute.isWindowMouse::B !_x_0 = case _x_0 (StdWindowDef.WindowMouse _x_1_0 _x_1_1 _x_1_2 -> True) (_ -> False)
+StdWindowAttribute.isWindowOk::B !_x_0 = case _x_0 (StdWindowDef.WindowOk _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowOrigin::B !_x_0 = case _x_0 (StdWindowDef.WindowOrigin _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowOuterSize::B !_x_0 = case _x_0 (StdWindowDef.WindowOuterSize _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowPen::B !_x_0 = case _x_0 (StdWindowDef.WindowPen _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowPos::B !_x_0 = case _x_0 (StdWindowDef.WindowPos _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowSelectState::B !_x_0 = case _x_0 (StdWindowDef.WindowSelectState _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowViewDomain::B !_x_0 = case _x_0 (StdWindowDef.WindowViewDomain _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowViewSize::B !_x_0 = case _x_0 (StdWindowDef.WindowViewSize _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.isWindowVMargin::B !_x_0 = case _x_0 (StdWindowDef.WindowVMargin _x_1_0 _x_1_1 -> True) (_ -> False)
+StdWindowAttribute.isWindowVScroll::B !_x_0 = case _x_0 (StdWindowDef.WindowVScroll _x_1_0 -> True) (_ -> False)
+StdWindowAttribute.getWindowActivateFun !_x_0 = case _x_0 (StdWindowDef.WindowActivate f_1_0 -> f_1_0) 
+StdWindowAttribute.getWindowCancelAtt !_x_0 = case _x_0 (StdWindowDef.WindowCancel id_1_0 -> id_1_0) 
+StdWindowAttribute.getWindowCloseFun !_x_0 = case _x_0 (StdWindowDef.WindowClose f_1_0 -> f_1_0) 
+StdWindowAttribute.getWindowCursorAtt !_x_0 = case _x_0 (StdWindowDef.WindowCursor cShape_1_0 -> cShape_1_0) 
+StdWindowAttribute.getWindowDeactivateFun !_x_0 = case _x_0 (StdWindowDef.WindowDeactivate f_1_0 -> f_1_0) 
+StdWindowAttribute.getWindowHMarginAtt !_x_0 = case _x_0 (StdWindowDef.WindowHMargin left_1_0 right_1_1 -> _Tuple2 left_1_0 right_1_1) 
+StdWindowAttribute.getWindowHScrollFun !_x_0 = case _x_0 (StdWindowDef.WindowHScroll f_1_0 -> f_1_0) 
+StdWindowAttribute.getWindowIdAtt !_x_0 = case _x_0 (StdWindowDef.WindowId id_1_0 -> id_1_0) 
+StdWindowAttribute.getWindowIndexAtt::I !_x_0 = case _x_0 (StdWindowDef.WindowIndex index_1_0 -> index_1_0) 
+StdWindowAttribute.getWindowInitFun !_x_0 = case _x_0 (StdWindowDef.WindowInit init_1_0 -> init_1_0) 
+StdWindowAttribute.getWindowInitActiveAtt !_x_0 = case _x_0 (StdWindowDef.WindowInitActive id_1_0 -> id_1_0) 
+StdWindowAttribute.getWindowItemSpaceAtt !_x_0 = case _x_0 (StdWindowDef.WindowItemSpace hspace_1_0 vspace_1_1 -> _Tuple2 hspace_1_0 vspace_1_1) 
+StdWindowAttribute.getWindowKeyboardAtt !_x_0 = case _x_0 (StdWindowDef.WindowKeyboard filter_1_0 select_1_1 keysF_1_2 -> _Tuple3 filter_1_0 select_1_1 keysF_1_2) 
+StdWindowAttribute.getWindowLookAtt !_x_0 = case _x_0 (StdWindowDef.WindowLook systemLook_1_0 f_1_1 -> _Tuple2 systemLook_1_0 f_1_1) 
+StdWindowAttribute.getWindowMouseAtt !_x_0 = case _x_0 (StdWindowDef.WindowMouse filter_1_0 select_1_1 mouseF_1_2 -> _Tuple3 filter_1_0 select_1_1 mouseF_1_2) 
+StdWindowAttribute.getWindowOkAtt !_x_0 = case _x_0 (StdWindowDef.WindowOk id_1_0 -> id_1_0) 
+StdWindowAttribute.getWindowOriginAtt !_x_0 = case _x_0 (StdWindowDef.WindowOrigin origin_1_0 -> origin_1_0) 
+StdWindowAttribute.getWindowOuterSizeAtt !_x_0 = case _x_0 (StdWindowDef.WindowOuterSize size_1_0 -> size_1_0) 
+StdWindowAttribute.getWindowPenAtt !_x_0 = case _x_0 (StdWindowDef.WindowPen pen_1_0 -> pen_1_0) 
+StdWindowAttribute.getWindowPosAtt !_x_0 = case _x_0 (StdWindowDef.WindowPos pos_1_0 -> pos_1_0) 
+StdWindowAttribute.getWindowSelectStateAtt !_x_0 = case _x_0 (StdWindowDef.WindowSelectState select_1_0 -> select_1_0) 
+StdWindowAttribute.getWindowViewDomainAtt !_x_0 = case _x_0 (StdWindowDef.WindowViewDomain d_1_0 -> d_1_0) 
+StdWindowAttribute.getWindowViewSizeAtt !_x_0 = case _x_0 (StdWindowDef.WindowViewSize size_1_0 -> size_1_0) 
+StdWindowAttribute.getWindowVMarginAtt !_x_0 = case _x_0 (StdWindowDef.WindowVMargin top_1_0 bottom_1_1 -> _Tuple2 top_1_0 bottom_1_1) 
+StdWindowAttribute.getWindowVScrollFun !_x_0 = case _x_0 (StdWindowDef.WindowVScroll f_1_0 -> f_1_0) 
+
+
+|| Converted Records
+:: <{StdWindowAttribute.gEq_s;}> = {!StdWindowAttribute.gEq_s}
+
+:: <{StdWindowAttribute.gEq_ss;}> = {!StdWindowAttribute.gEq_ss}
+
+:: <{StdWindowAttribute.gEq_sss;}> = {!StdWindowAttribute.gEq_sss}
+
+:: <{StdWindowAttribute.gEq_ssss;}> = {!StdWindowAttribute.gEq_ssss}
+
+:: <{StdWindowAttribute.gEq_sssss;}> = {!StdWindowAttribute.gEq_sssss}
+
+:: <{StdWindowAttribute.gEq_ssssss;}> = {!StdWindowAttribute.gEq_ssssss}
+
+:: <{StdWindowAttribute.gEq_sssssss;}> = {!StdWindowAttribute.gEq_sssssss}
+
+:: <{StdWindowAttribute.gEq_ssssssss;}> = {!StdWindowAttribute.gEq_ssssssss}
+
+:: <{StdWindowAttribute.gEq_sssssssss;}> = {!StdWindowAttribute.gEq_sssssssss}
+
+:: <{StdWindowAttribute.bimap_s;}> = {StdWindowAttribute.bimap_s}
+
+:: <{StdWindowAttribute.bimap_ss;}> = {StdWindowAttribute.bimap_ss}
+
+:: <{StdWindowAttribute.bimap_sss;}> = {StdWindowAttribute.bimap_sss}
+

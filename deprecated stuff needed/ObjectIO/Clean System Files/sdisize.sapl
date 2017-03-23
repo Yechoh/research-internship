@@ -1,0 +1,37 @@
+|| ?module? sdisize
+
+
+sdisize.getSDIWindowSize !ioState_0 = let _x_1_0 = iostate.ioStGetOSDInfo ioState_0, osd_1_1 = select _x_1_0::_Tuple2 0 in case (StdBool.not (<{StdIOCommon.==_39}> (osdocumentinterface.getOSDInfoDocumentInterface osd_1_1) StdIOCommon.SDI)) (True -> <{_Tuple3!7}> StdIOBasic.zero_15 (<{sdisize._c;18;31_47}> (osdocumentinterface.getOSDInfoOSInfo osd_1_1)) (select _x_1_0::_Tuple2 1)) (False -> let wPtr_3_0 = <{sdisize._c;18;31_48}> (osdocumentinterface.getOSDInfoOSInfo osd_1_1), _x_3_1 = iostate.accIOToolbox (oswindow.osGetWindowViewFrameSize wPtr_3_0) (select _x_1_0::_Tuple2 1), _x_3_2::I = select _x_3_1::_Tuple2 0 in <{_Tuple3!7}> (StdIOBasic._Size (select _x_3_2::_Tuple2 0) (select _x_3_2::_Tuple2 1)) wPtr_3_0 (select _x_3_1::_Tuple2 1)) 
+<{sdisize._c;18;31_48}>::I !_x_0 = case _x_0 (Data.Maybe.Just info_1_0 -> select info_1_0::osdocumentinterface._OSInfo 0) (_ -> -1)
+<{sdisize._c;18;31_47}>::I !_x_0 = case _x_0 (Data.Maybe.Just info_1_0 -> select info_1_0::osdocumentinterface._OSInfo 0) (_ -> -1)
+sdisize.sdisizeFatalError !rule_0 !error_1 = commondef.fatalError rule_0 "sdisize" error_1
+sdisize.updateSDIWindow_3 !wMetrics_0 !oldH_1::I !newSize_2 !wsH_3 !tb_4::I = case wsH_3 (windowhandle._WindowStateHandle wsh_1_0 wshHandle_1_1 -> case wshHandle_1_1 (Data.Maybe.Just wlsH_2_0 -> case wlsH_2_0 (windowhandle._WindowLSHandle wlsState_3_0 wH_3_1 -> let newArea_4_0 = update commondef.zero_64::ostypes._OSRect [2:select newSize_2::StdIOBasic._Size 0,3:oldH_1], _x_4_1 = windowupdate.updatewindow wMetrics_0 (deviceevents._UpdateInfo wsh_1_0 newArea_4_0 _predefined._Nil Data.Maybe.Nothing) wH_3_1 tb_4, _x_4_2 = windowupdate.updaterectcontrols wMetrics_0 newArea_4_0 (select wsh_1_0::windowhandle._WIDS 1) (select _x_4_1::_Tuple2 0) (select _x_4_1::_Tuple2 1) in <{_Tuple2!3}> (update wsH_3::windowhandle._WindowStateHandle [1:Data.Maybe.Just (update wlsH_2_0::windowhandle._WindowLSHandle [1:select _x_4_2::_Tuple2 0])]) (select _x_4_2::_Tuple2 1)) ) ) (_ -> sdisize.sdisizeFatalError "updateSDIWindow" "unexpected window placeholder")
+sdisize.resizeSDIWindow !wPtr_0::I !_x_1 !newFrameSize_2 !ioState_3 = case _x_1 (StdIOBasic._Size w_1_0 oldHeight_1_1 -> case newFrameSize_2 (StdIOBasic._Size w_2_0 newHeight_2_1 -> let _x_3_0 = iostate.ioStGetOSDInfo ioState_3, osd_3_1 = select _x_3_0::_Tuple2 0 in case (StdBool.not (<{StdIOCommon.==_39}> (osdocumentinterface.getOSDInfoDocumentInterface osd_3_1) StdIOCommon.SDI)) (True -> sdisize.sdisizeFatalError "resizeSDIWindow" "not an SDI process") (False -> let _x_5_0::I = <{sdisize._c;41;35_49}> (osdocumentinterface.getOSDInfoOSInfo osd_3_1), framePtr_5_1 = select _x_5_0::_Tuple2 0 in case (StdBool.not (<{StdInt.==_16}> wPtr_0 framePtr_5_1)) (True -> sdisize.sdisizeFatalError "resizeSDIWindow" "SDIWindow frame could not be located") (False -> case (<{StdInt.<_17}> oldHeight_1_1 newHeight_2_1) (True -> let _x_8_0 = iostate.getIOToolbox (select _x_3_0::_Tuple2 1), _x_8_1 = oswindow.osGetWindowSize framePtr_5_1 (select _x_8_0::_Tuple2 0), _x_8_2 = select _x_8_1::_Tuple2 0 in iostate.setIOToolbox (oswindow.osSetWindowSize framePtr_5_1 (_Tuple2 (select _x_8_2::_Tuple2 0) (<{StdInt.-_7}> (<{StdInt.+_6}> (select _x_8_2::_Tuple2 1) oldHeight_1_1) newHeight_2_1)) True (select _x_8_1::_Tuple2 1)) (select _x_8_0::_Tuple2 1)) (False -> let ioState_8_0 = select _x_3_0::_Tuple2 1, _x_8_1 = iostate.getIOToolbox ioState_8_0, ioState_8_2 = select _x_8_1::_Tuple2 1, _x_8_3 = iostate.ioStGetDevice device.WindowDevice ioState_8_2 in case (StdBool.not (select _x_8_3::_Tuple3 0)) (True -> select _x_8_3::_Tuple3 2) (False -> let clientPtr_10_0 = select _x_5_0::_Tuple2 1, wDevice_10_1 = select _x_8_3::_Tuple3 1, windows_10_2 = devicesystemstate.windowSystemStateGetWindowHandles wDevice_10_1, _x_10_3::I = windowaccess.getWindowHandlesWindow (windowaccess.toWID_72 clientPtr_10_0) windows_10_2 in case (StdBool.not (select _x_10_3::_Tuple3 0)) (True -> iostate.ioStSetDevice (devicesystemstate.WindowSystemState (select _x_10_3::_Tuple3 2)) (select _x_8_3::_Tuple3 2)) (False -> let _x_12_0 = iostate.ioStGetOSWindowMetrics (select _x_8_3::_Tuple3 2), _x_12_1 = oswindow.osGetWindowSize framePtr_5_1 (select _x_8_1::_Tuple2 0), _x_12_2 = select _x_12_1::_Tuple2 0, _x_12_3 = sdisize.updateSDIWindow_3 (select _x_12_0::_Tuple2 0) oldHeight_1_1 newFrameSize_2 (select _x_10_3::_Tuple3 1) (oswindow.osSetWindowSize framePtr_5_1 (_Tuple2 (select _x_12_2::_Tuple2 0) (<{StdInt.-_7}> (<{StdInt.+_6}> (select _x_12_2::_Tuple2 1) oldHeight_1_1) newHeight_2_1)) True (select _x_12_1::_Tuple2 1)) in iostate.setIOToolbox (select _x_12_3::_Tuple2 1) (iostate.ioStSetDevice (devicesystemstate.WindowSystemState (windowaccess.setWindowHandlesWindow (select _x_12_3::_Tuple2 0) (select _x_10_3::_Tuple3 2))) (select _x_12_0::_Tuple2 1))) ) ) ) ) ) ) 
+<{sdisize._c;41;35_49}> !_x_0 = case _x_0 (Data.Maybe.Just _x_1_0 -> case _x_1_0 (osdocumentinterface._OSInfo osFrame_2_0 osToolbar_2_1 osClient_2_2 osMenuBar_2_3 -> _Tuple2 osFrame_2_0 osClient_2_2) ) (_ -> _Tuple2 -1 -1)
+
+
+|| Converted Records
+:: <{sdisize.gEq_s;}> = {!sdisize.gEq_s}
+
+:: <{sdisize.gEq_ss;}> = {!sdisize.gEq_ss}
+
+:: <{sdisize.gEq_sss;}> = {!sdisize.gEq_sss}
+
+:: <{sdisize.gEq_ssss;}> = {!sdisize.gEq_ssss}
+
+:: <{sdisize.gEq_sssss;}> = {!sdisize.gEq_sssss}
+
+:: <{sdisize.gEq_ssssss;}> = {!sdisize.gEq_ssssss}
+
+:: <{sdisize.gEq_sssssss;}> = {!sdisize.gEq_sssssss}
+
+:: <{sdisize.gEq_ssssssss;}> = {!sdisize.gEq_ssssssss}
+
+:: <{sdisize.gEq_sssssssss;}> = {!sdisize.gEq_sssssssss}
+
+:: <{sdisize.bimap_s;}> = {sdisize.bimap_s}
+
+:: <{sdisize.bimap_ss;}> = {sdisize.bimap_ss}
+
+:: <{sdisize.bimap_sss;}> = {sdisize.bimap_sss}
+

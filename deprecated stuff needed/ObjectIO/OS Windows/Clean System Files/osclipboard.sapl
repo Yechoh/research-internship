@@ -1,0 +1,14 @@
+|| ?module? osclipboard
+
+
+osclipboard.osInitialiseClipboard::I !tb_0::I = clipboardCrossCall_12.winInitialiseClipboard tb_0
+osclipboard.osHasClipboardText !tb_0::I = clipboardCrossCall_12.winHasClipboardText tb_0
+osclipboard.osSetClipboardText::I !text_0 !tb_1::I = clipboardCrossCall_12.winSetClipboardText text_0 tb_1
+osclipboard.osGetClipboardText !tb_0::I = clipboardCrossCall_12.winGetClipboardText tb_0
+osclipboard.osGetClipboardContent !tb_0::I = let _x_1_0 = clipboardCrossCall_12.winHasClipboardText tb_0 in <{_Tuple2!3}> (<{osclipboard._if;32;8_8}> (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1)
+<{osclipboard._if;32;8_8}> !_x_0::B = case _x_0 (True -> _predefined._Cons 1 _predefined._Nil) (_ -> _predefined._Nil)
+osclipboard.osGetClipboardVersion !nr_0::I !tb_1::I = clipboardCrossCall_12.winGetClipboardCount tb_1
+<{osclipboard.TD;OSClipboardItemType}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records

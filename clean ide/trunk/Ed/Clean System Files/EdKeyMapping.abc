@@ -1,0 +1,5453 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdListBox" "20170123155353"
+.depend "Table" "20170206122647"
+.depend "ioutil" "20170123155353"
+.depend "Platform" "20170123155356"
+.depend "StdWindow" "20161223204043"
+.depend "StdMisc" "20170313110416"
+.depend "ostick" "20161223204044"
+.depend "StdTime" "20161223204043"
+.depend "StdFileSelect" "20161223204043"
+.depend "StdPStClass" "20161223204043"
+.depend "StdArray" "20170313110416"
+.depend "StdLibMisc" "20170313110414"
+.depend "StdReceiverDef" "20161223204043"
+.depend "StdReceiver" "20161223204043"
+.depend "EdMessage" "20170123155351"
+.depend "EdText" "20170206122647"
+.depend "StateMonad" "20170123155353"
+.depend "StdClipboard" "20161223204043"
+.depend "EdMonad" "20170206122647"
+.depend "syncol" "20170123155351"
+.depend "StrictList" "20170123155353"
+.depend "EdLineText" "20170123155351"
+.depend "EdPosition" "20170123155351"
+.depend "EdSelection" "20170123155352"
+.depend "EdMovement" "20170123155351"
+.depend "EdActionType" "20170123155351"
+.depend "EdState" "20170206122647"
+.depend "StdId" "20161223204043"
+.depend "StdControlClass" "20161223204043"
+.depend "StdControl" "20161223204043"
+.depend "roundrobin" "20161223204043"
+.depend "processstack" "20161223204043"
+.depend "timerhandle" "20161223204044"
+.depend "processhandle" "20161223204043"
+.depend "osmenu" "20161223204044"
+.depend "StdMenuDef" "20161223204043"
+.depend "menuhandle" "20161223204042"
+.depend "devicesystemstate" "20161223204042"
+.depend "keyfocus" "20161223204042"
+.depend "commondef" "20161223204042"
+.depend "receiverhandle" "20161223204043"
+.depend "StdWindowDef" "20161223204044"
+.depend "StdControlDef" "20161223204043"
+.depend "windowhandle" "20161223204044"
+.depend "StdTimerDef" "20161223204043"
+.depend "timertable" "20161223204044"
+.depend "semidynamic" "20161223204043"
+.depend "receivertable" "20161223204043"
+.depend "receivermessage" "20161223204043"
+.depend "deviceevents" "20170206121016"
+.depend "devicefunctions" "20161223204042"
+.depend "ossystem" "20161223204044"
+.depend "osguishare" "20161223204044"
+.depend "ostime" "20161223204044"
+.depend "clCrossCall_12" "20161223204044"
+.depend "osevent" "20161223204044"
+.depend "ostoolbar" "20161223204044"
+.depend "menuCrossCall_12" "20161223204044"
+.depend "osdocumentinterface" "20161223204044"
+.depend "osactivaterequests" "20161223204044"
+.depend "iostate" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "StdIOCommon" "20161223204043"
+.depend "StdPSt" "20161223204043"
+.depend "UtilOptions" "20170123155354"
+.depend "UtilStrictLists" "20170123155353"
+.depend "UtilNewlinesFile" "20170123155356"
+.depend "_SystemArray" "20170313110416"
+.depend "_SystemEnum" "20170313110416"
+.depend "StdEnum" "20170313110416"
+.depend "StdTuple" "20170313110416"
+.depend "StdOrdList" "20170313110416"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdReal" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdList" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "EdKeyMapping" "20170206122647"
+.module m_EdKeyMapping "EdKeyMapping" "20170206122647"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdListBox
+.impdesc e_StdListBox_dopenListBoxId
+.impdesc e_StdListBox_dgetListBoxSelection
+.implab e_StdListBox_ngetListBoxSelection
+.impdesc e_StdListBox_dgetListBoxItems
+.implab e_StdListBox_ngetListBoxItems
+.implab e_StdListBox_sopenListBoxItems
+.implab e_StdListBox_scloseListBoxItems
+.impdesc e_StdListBox_dcontrolToHandles;14
+.impdesc e_StdListBox_dgetControlType;15
+.impdesc e_StdListBox_dListBoxControl
+.impmod Table
+.impdesc e_Table_dtableNew
+.implab e_Table_stableNew
+.implab e_Table_ntableNew e_Table_eatableNew
+.implab e_Table_stableInsert
+.implab e_Table_stableRemove
+.implab e_Table_stableLookup
+.implab e_Table_stableInvert
+.implab e_Table_sWriteTable
+.implab e_Table_sReadTable
+.impmod ioutil
+.implab e_ioutil_saccScreenPicture;21
+.impmod StdWindow
+.impdesc e_StdWindow_dcloseWindow
+.implab e_StdWindow_ncloseWindow
+.implab e_StdWindow_sopenModalDialog;58
+.impmod StdMisc
+.implab e_StdMisc_sabort
+.impmod StdPStClass
+.implab e_StdPStClass_saccFiles;8
+.implab e_StdPStClass_sselectInputFile;13
+.implab e_StdPStClass_sselectOutputFile;14
+.impmod StrictList
+.impdesc e_StrictList_dSNil
+.impmod EdMovement
+.impdesc e_EdMovement_dLineUp
+.impdesc e_EdMovement_dLineDown
+.impdesc e_EdMovement_dCharLeft
+.impdesc e_EdMovement_dCharRight
+.impdesc e_EdMovement_dWordLeft
+.impdesc e_EdMovement_dWordRight
+.impdesc e_EdMovement_dPageUp
+.impdesc e_EdMovement_dPageDown
+.impdesc e_EdMovement_dStartOfLine
+.impdesc e_EdMovement_dEndOfLine
+.impdesc e_EdMovement_dStartOfText
+.impdesc e_EdMovement_dEndOfText
+.impmod EdActionType
+.impdesc e_EdActionType_dallActions
+.implab e_EdActionType_sallActions
+.implab e_EdActionType_nallActions e_EdActionType_eaallActions
+.impdesc e_EdActionType_dtoString;1
+.implab e_EdActionType_stoString;1
+.impdesc e_EdActionType_dfromString;2
+.impdesc e_EdActionType_d==;3
+.impdesc e_EdActionType_dMove
+.impdesc e_EdActionType_dInsert
+.impdesc e_EdActionType_dScroll
+.impdesc e_EdActionType_dSelect
+.impdesc e_EdActionType_dRemove
+.impmod StdId
+.impdesc e_StdId_dopenId;7
+.impdesc e_StdId_dopenIds;8
+.impdesc e_StdId_dopenR2Id;9
+.impdesc e_StdId_dopenR2Ids;10
+.impdesc e_StdId_dopenRId;11
+.impdesc e_StdId_dopenRIds;12
+.implab e_StdId_sopenId;13
+.impdesc e_StdId_rIds;
+.impmod StdControlClass
+.impdesc e_StdControlClass_dcontrolToHandles;8
+.impdesc e_StdControlClass_dgetControlType;9
+.impdesc e_StdControlClass_dcontrolToHandles;10
+.impdesc e_StdControlClass_dgetControlType;11
+.impdesc e_StdControlClass_dcontrolToHandles;12
+.impdesc e_StdControlClass_dgetControlType;13
+.impdesc e_StdControlClass_dcontrolToHandles;14
+.impdesc e_StdControlClass_dgetControlType;15
+.impdesc e_StdControlClass_dcontrolToHandles;24
+.impdesc e_StdControlClass_dgetControlType;25
+.impdesc e_StdControlClass_dcontrolToHandles;30
+.impdesc e_StdControlClass_dgetControlType;31
+.impdesc e_StdControlClass_rControls;
+.impmod StdControl
+.implab e_StdControl_scontrolSize
+.impdesc e_StdControl_dsetControlTexts
+.impdesc e_StdControl_dgetWindow
+.implab e_StdControl_sgetCheckControlSelection
+.implab e_StdControl_sgetPopUpControlSelection
+.impmod StdWindowDef
+.impdesc e_StdWindowDef_dDialog
+.impdesc e_StdWindowDef_dWindowId
+.impdesc e_StdWindowDef_dWindowInit
+.impdesc e_StdWindowDef_dWindowOk
+.impmod StdControlDef
+.impdesc e_StdControlDef_dButtonControl
+.impdesc e_StdControlDef_dCheckControl
+.impdesc e_StdControlDef_dCompoundControl
+.impdesc e_StdControlDef_dPopUpControl
+.impdesc e_StdControlDef_dTextControl
+.impdesc e_StdControlDef_dColumns
+.impdesc e_StdControlDef_dPixelWidth
+.impdesc e_StdControlDef_dContentWidth
+.impdesc e_StdControlDef_dControlFunction
+.impdesc e_StdControlDef_dControlId
+.impdesc e_StdControlDef_dControlPos
+.impdesc e_StdControlDef_dControlWidth
+.impdesc e_StdControlDef_dControlLook
+.impdesc e_StdControlDef_dControlViewSize
+.impmod oskey
+.impdesc e_oskey_dbackSpaceKey
+.implab e_oskey_sbackSpaceKey
+.implab e_oskey_nbackSpaceKey e_oskey_eabackSpaceKey
+.impdesc e_oskey_dbeginKey
+.implab e_oskey_sbeginKey
+.implab e_oskey_nbeginKey e_oskey_eabeginKey
+.impdesc e_oskey_dclearKey
+.implab e_oskey_sclearKey
+.implab e_oskey_nclearKey e_oskey_eaclearKey
+.impdesc e_oskey_ddeleteKey
+.implab e_oskey_sdeleteKey
+.implab e_oskey_ndeleteKey e_oskey_eadeleteKey
+.impdesc e_oskey_ddownKey
+.implab e_oskey_sdownKey
+.implab e_oskey_ndownKey e_oskey_eadownKey
+.impdesc e_oskey_dendKey
+.implab e_oskey_sendKey
+.implab e_oskey_nendKey e_oskey_eaendKey
+.implab e_oskey_senterKey
+.implab e_oskey_sescapeKey
+.impdesc e_oskey_df1Key
+.implab e_oskey_sf1Key
+.implab e_oskey_nf1Key e_oskey_eaf1Key
+.impdesc e_oskey_df2Key
+.implab e_oskey_sf2Key
+.implab e_oskey_nf2Key e_oskey_eaf2Key
+.impdesc e_oskey_df3Key
+.implab e_oskey_sf3Key
+.implab e_oskey_nf3Key e_oskey_eaf3Key
+.impdesc e_oskey_df4Key
+.implab e_oskey_sf4Key
+.implab e_oskey_nf4Key e_oskey_eaf4Key
+.impdesc e_oskey_df5Key
+.implab e_oskey_sf5Key
+.implab e_oskey_nf5Key e_oskey_eaf5Key
+.impdesc e_oskey_df6Key
+.implab e_oskey_sf6Key
+.implab e_oskey_nf6Key e_oskey_eaf6Key
+.impdesc e_oskey_df7Key
+.implab e_oskey_sf7Key
+.implab e_oskey_nf7Key e_oskey_eaf7Key
+.impdesc e_oskey_df8Key
+.implab e_oskey_sf8Key
+.implab e_oskey_nf8Key e_oskey_eaf8Key
+.impdesc e_oskey_df9Key
+.implab e_oskey_sf9Key
+.implab e_oskey_nf9Key e_oskey_eaf9Key
+.impdesc e_oskey_df10Key
+.implab e_oskey_sf10Key
+.implab e_oskey_nf10Key e_oskey_eaf10Key
+.impdesc e_oskey_df11Key
+.implab e_oskey_sf11Key
+.implab e_oskey_nf11Key e_oskey_eaf11Key
+.impdesc e_oskey_df12Key
+.implab e_oskey_sf12Key
+.implab e_oskey_nf12Key e_oskey_eaf12Key
+.impdesc e_oskey_df13Key
+.implab e_oskey_sf13Key
+.implab e_oskey_nf13Key e_oskey_eaf13Key
+.impdesc e_oskey_df14Key
+.implab e_oskey_sf14Key
+.implab e_oskey_nf14Key e_oskey_eaf14Key
+.impdesc e_oskey_df15Key
+.implab e_oskey_sf15Key
+.implab e_oskey_nf15Key e_oskey_eaf15Key
+.impdesc e_oskey_dhelpKey
+.implab e_oskey_shelpKey
+.implab e_oskey_nhelpKey e_oskey_eahelpKey
+.impdesc e_oskey_dleftKey
+.implab e_oskey_sleftKey
+.implab e_oskey_nleftKey e_oskey_ealeftKey
+.impdesc e_oskey_dpgDownKey
+.implab e_oskey_spgDownKey
+.implab e_oskey_npgDownKey e_oskey_eapgDownKey
+.impdesc e_oskey_dpgUpKey
+.implab e_oskey_spgUpKey
+.implab e_oskey_npgUpKey e_oskey_eapgUpKey
+.implab e_oskey_sreturnKey
+.impdesc e_oskey_drightKey
+.implab e_oskey_srightKey
+.implab e_oskey_nrightKey e_oskey_earightKey
+.impdesc e_oskey_dupKey
+.implab e_oskey_supKey
+.implab e_oskey_nupKey e_oskey_eaupKey
+.implab e_oskey_s==;32
+.impdesc e_oskey_dtoString;33
+.implab e_oskey_stoString;33
+.impmod StdPicture
+.impdesc e_StdPicture_dopenDialogFont
+.impdesc e_StdPicture_dgetFontStringWidth
+.impdesc e_StdPicture_dgetFontStringWidths
+.impdesc e_StdPicture_dgetFontMetrics
+.impdesc e_StdPicture_ddraw;97
+.impmod StdIOBasic
+.impdesc e_StdIOBasic_dnoLS
+.impdesc e_StdIOBasic_rSize
+.impdesc e_StdIOBasic_tSize
+.implab e_StdIOBasic_cSize
+.impdesc e_StdIOBasic_dSize.w
+.implab e_StdIOBasic_nSize.w
+.impdesc e_StdIOBasic_d:+:
+.impmod StdPictureDef
+.impdesc e_StdPictureDef_dFontMetrics.fAscent
+.implab e_StdPictureDef_nFontMetrics.fAscent
+.impdesc e_StdPictureDef_dFontMetrics.fDescent
+.implab e_StdPictureDef_nFontMetrics.fDescent
+.impdesc e_StdPictureDef_dFontMetrics.fLeading
+.implab e_StdPictureDef_nFontMetrics.fLeading
+.impmod StdIOCommon
+.impdesc e_StdIOCommon_dzero;32
+.implab e_StdIOCommon_nzero;32 e_StdIOCommon_eazero;32
+.impdesc e_StdIOCommon_dNoMark
+.impdesc e_StdIOCommon_dCharKey
+.impdesc e_StdIOCommon_dSpecialKey
+.impdesc e_StdIOCommon_dKeyLost
+.impdesc e_StdIOCommon_dLeft
+.impmod StdPSt
+.impdesc e_StdPSt_dappPIO
+.implab e_StdPSt_sappPIO
+.implab e_StdPSt_nappPIO
+.implab e_StdPSt_saccPIO
+.impmod UtilOptions
+.implab e_UtilOptions_sWriteOptionsFile
+.implab e_UtilOptions_sReadOptionsFile
+.implab e_UtilOptions_sReadVersion
+.impmod _SystemArray
+.impmod _SystemEnum
+.implab e__SystemEnum_s_from_to;6
+.impmod StdOrdList
+.impdesc e_StdOrdList_dmaxList;15
+.implab e_StdOrdList_smaxList;15
+.implab e_StdOrdList_nmaxList;15
+.impmod StdFunc
+.impdesc e_StdFunc_dseq
+.impmod StdFile
+.implab e_StdFile_sfclose;26
+.implab e_StdFile_sfopen;27
+.impmod StdString
+.implab e_StdString_s==;2
+.implab e_StdString_s%;10
+.implab e_StdString_s+++;11
+.impmod Data.Maybe
+.implab e_Data.Maybe_sisNothing
+.impdesc e_Data.Maybe_dfromJust
+.implab e_Data.Maybe_sfromJust
+.implab e_Data.Maybe_nfromJust _
+.impdesc e_Data.Maybe_dNothing
+.impdesc e_Data.Maybe_dJust
+.impmod StdInt
+.implab e_StdInt_sbitand
+.impdesc e_StdInt_d+;6
+.implab e_StdInt_s+;6
+.implab e_StdInt_n+;6
+.implab e_StdInt_s-;7
+.impdesc e_StdInt_d*;9
+.implab e_StdInt_n*;9
+.implab e_StdInt_sone;11
+.implab e_StdInt_s==;16
+.implab e_StdInt_s<;17
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod StdClass
+.impdesc e_StdClass_rEq;
+.impmod StdList
+.implab e_StdList_s!!
+.implab e_StdList_sisEmpty
+.impdesc e_StdList_dhd
+.implab e_StdList_shd
+.implab e_StdList_nhd _
+.impdesc e_StdList_dmap
+.implab e_StdList_nmap e_StdList_eamap
+.impdesc e_StdList_drepeat
+.implab e_StdList_nrepeat e_StdList_earepeat
+.impdesc e_StdList_dzip2
+.implab e_StdList_nzip2 e_StdList_eazip2
+.implab e_StdList_slength;47
+.impmod StdOverloaded
+.impdesc e_StdOverloaded_r==;
+.impdesc e_StdOverloaded_rtoString;
+.impdesc e_StdOverloaded_rfromString;
+.desc d105 _hnf _add_arg 2 0 "KeyCode"
+.record r78 aa 2 0 "KeyMappingDialogState"
+.export e_EdKeyMapping_sTD;KeyMappingDialogState
+.export e_EdKeyMapping_eaTD;KeyMappingDialogState
+.descexp e_EdKeyMapping_dTD;KeyMappingDialogState e_EdKeyMapping_nTD;KeyMappingDialogState e_EdKeyMapping_lTD;KeyMappingDialogState 1 0 "TD;KeyMappingDialogState"
+.o 2 0
+e_EdKeyMapping_lTD;KeyMappingDialogState
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdKeyMapping_eaTD;KeyMappingDialogState
+.n 1 e_EdKeyMapping_dTD;KeyMappingDialogState e_EdKeyMapping_eaTD;KeyMappingDialogState
+.o 1 0
+e_EdKeyMapping_nTD;KeyMappingDialogState
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdKeyMapping_eaTD;KeyMappingDialogState
+.o 2 0
+e_EdKeyMapping_sTD;KeyMappingDialogState
+.o 2 0
+s39
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdKeyMapping_sTD;MyModifiers
+.export e_EdKeyMapping_eaTD;MyModifiers
+.descexp e_EdKeyMapping_dTD;MyModifiers e_EdKeyMapping_nTD;MyModifiers e_EdKeyMapping_lTD;MyModifiers 1 0 "TD;MyModifiers"
+.o 2 0
+e_EdKeyMapping_lTD;MyModifiers
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdKeyMapping_eaTD;MyModifiers
+.n 1 e_EdKeyMapping_dTD;MyModifiers e_EdKeyMapping_eaTD;MyModifiers
+.o 1 0
+e_EdKeyMapping_nTD;MyModifiers
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdKeyMapping_eaTD;MyModifiers
+.o 2 0
+e_EdKeyMapping_sTD;MyModifiers
+.o 2 0
+s38
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdKeyMapping_sTD;KeyCode
+.export e_EdKeyMapping_eaTD;KeyCode
+.descexp e_EdKeyMapping_dTD;KeyCode e_EdKeyMapping_nTD;KeyCode e_EdKeyMapping_lTD;KeyCode 1 0 "TD;KeyCode"
+.o 2 0
+e_EdKeyMapping_lTD;KeyCode
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdKeyMapping_eaTD;KeyCode
+.n 1 e_EdKeyMapping_dTD;KeyCode e_EdKeyMapping_eaTD;KeyCode
+.o 1 0
+e_EdKeyMapping_nTD;KeyCode
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdKeyMapping_eaTD;KeyCode
+.o 2 0
+e_EdKeyMapping_sTD;KeyCode
+.o 2 0
+s11
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdKeyMapping_sTD;KeyMapping
+.export e_EdKeyMapping_eaTD;KeyMapping
+.descexp e_EdKeyMapping_dTD;KeyMapping e_EdKeyMapping_nTD;KeyMapping e_EdKeyMapping_lTD;KeyMapping 1 0 "TD;KeyMapping"
+.o 2 0
+e_EdKeyMapping_lTD;KeyMapping
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdKeyMapping_eaTD;KeyMapping
+.n 1 e_EdKeyMapping_dTD;KeyMapping e_EdKeyMapping_eaTD;KeyMapping
+.o 1 0
+e_EdKeyMapping_nTD;KeyMapping
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdKeyMapping_eaTD;KeyMapping
+.o 2 0
+e_EdKeyMapping_sTD;KeyMapping
+.o 2 0
+s10
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdKeyMapping_sfindAction
+.export e_EdKeyMapping_eafindAction
+.descexp e_EdKeyMapping_dfindAction e_EdKeyMapping_nfindAction e_EdKeyMapping_lfindAction 2 0 "findAction"
+.a 2 e_EdKeyMapping_eafindAction
+.o 2 0
+e_EdKeyMapping_lfindAction
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_EdKeyMapping_eafindAction
+.n 2 e_EdKeyMapping_dfindAction e_EdKeyMapping_eafindAction
+.o 1 0
+e_EdKeyMapping_nfindAction
+	push_node _cycle_in_spine 2
+.o 3 0
+e_EdKeyMapping_eafindAction
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+e_EdKeyMapping_sfindAction
+.o 3 0
+s3
+	create
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s16
+.o 1 0
+	buildh e_EdKeyMapping_d==;5 0
+	create
+	push_a 3
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jsr e_Table_stableLookup
+.o 1 0
+	push_a 0
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	jmp_false else.1
+	fillh e_Data.Maybe_dNothing 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.1
+	push_a 0
+	build e_StdList_dhd 1 e_StdList_nhd
+	fillh e_Data.Maybe_dJust 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+s16
+	pushD_a 0
+	eqD_b e_StdIOCommon_dSpecialKey 3
+	jmp_true case.2
+	eqD_b e_StdIOCommon_dCharKey 2
+	jmp_true case.3
+	jmp case.4
+case.2
+	pop_b 1
+	repl_args 3 3
+	update_a 0 1
+	pop_a 1
+	push_a 1
+	build _ 1 n18
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d105 2 4
+	pop_a 2
+.d 1 0
+	rtn
+case.3
+	pop_b 1
+	repl_args 2 2
+	pop_a 2
+	buildAC "convertKeyboardState (EdKeyMapping.icl): character key not allowed"
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.4
+	pop_b 1
+	buildAC "convertKeyboardState (EdKeyMapping.icl): key lost allowed"
+	updatepop_a 0 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n18
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea18
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea18
+	jsr_eval 0
+	repl_r_args 0 5
+.o 0 5 bbbbb
+s18
+	push_b 1
+	push_b 5
+.d 0 2 bb
+	jsr s73
+.o 0 1 b
+.d 0 1 b
+	jsr s74
+.o 0 1 i
+	push_b 3
+	push_b 5
+.d 0 2 bb
+	jsr s71
+.o 0 1 b
+.d 0 1 b
+	jsr s72
+.o 0 1 i
+	push_b 2
+.d 0 1 b
+	jsr s70
+.o 0 1 i
+	addI
+	update_b 1 6
+	updatepop_b 0 5
+	addI
+.d 0 1 i
+	rtn
+.o 0 1 b
+s74
+	eqB_b TRUE 0
+	jmp_true case.5
+	jmp case.6
+case.5
+	pop_b 1
+	pushI 4
+.d 0 1 i
+	rtn
+case.6
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 0 2 bb
+s73
+	eqB_b TRUE 0
+	jmp_true case.7
+	jmp case.8
+case.7
+	pop_b 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.8
+	pop_b 1
+.d 0 1 b
+	rtn
+.o 0 1 b
+s72
+	eqB_b TRUE 0
+	jmp_true case.9
+	jmp case.10
+case.9
+	pop_b 1
+	pushI 2
+.d 0 1 i
+	rtn
+case.10
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 0 2 bb
+s71
+	eqB_b TRUE 0
+	jmp_true case.11
+	jmp case.12
+case.11
+	pop_b 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.12
+	pop_b 1
+.d 0 1 b
+	rtn
+.o 0 1 b
+s70
+	eqB_b TRUE 0
+	jmp_true case.13
+	jmp case.14
+case.13
+	pop_b 1
+	pushI 1
+.d 0 1 i
+	rtn
+case.14
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.export e_EdKeyMapping_smacKeyMapping
+.export e_EdKeyMapping_eamacKeyMapping
+.descexp e_EdKeyMapping_dmacKeyMapping e_EdKeyMapping_nmacKeyMapping e_EdKeyMapping_lmacKeyMapping 0 0 "macKeyMapping"
+.o 1 0
+e_EdKeyMapping_lmacKeyMapping
+	halt
+.n 0 e_EdKeyMapping_dmacKeyMapping e_EdKeyMapping_eamacKeyMapping
+.o 1 0
+e_EdKeyMapping_nmacKeyMapping
+	push_node _cycle_in_spine 0
+.o 1 0
+e_EdKeyMapping_eamacKeyMapping
+.o 1 0
+e_EdKeyMapping_smacKeyMapping
+.o 1 0
+s2
+	buildh _Nil 0
+	buildh e_EdMovement_dCharLeft 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_dbackSpaceKey 0 e_oskey_nbackSpaceKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dWordLeft 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_dbackSpaceKey 0 e_oskey_nbackSpaceKey
+	buildI 4
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dStartOfLine 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_dbackSpaceKey 0 e_oskey_nbackSpaceKey
+	buildI 2
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dCharRight 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_ddeleteKey 0 e_oskey_ndeleteKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dWordRight 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_ddeleteKey 0 e_oskey_ndeleteKey
+	buildI 4
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dEndOfLine 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_ddeleteKey 0 e_oskey_ndeleteKey
+	buildI 2
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dCharRight 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_dclearKey 0 e_oskey_nclearKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dWordRight 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_dclearKey 0 e_oskey_nclearKey
+	buildI 4
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dEndOfLine 0
+	buildh e_EdActionType_dRemove 1
+	build e_oskey_dclearKey 0 e_oskey_nclearKey
+	buildI 2
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dPageDown 0
+	buildh e_EdActionType_dScroll 1
+	build e_oskey_dpgDownKey 0 e_oskey_npgDownKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dPageUp 0
+	buildh e_EdActionType_dScroll 1
+	build e_oskey_dpgUpKey 0 e_oskey_npgUpKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dEndOfText 0
+	buildh e_EdActionType_dScroll 1
+	build e_oskey_dendKey 0 e_oskey_nendKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dStartOfText 0
+	buildh e_EdActionType_dScroll 1
+	build e_oskey_dbeginKey 0 e_oskey_nbeginKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dLineDown 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_ddownKey 0 e_oskey_ndownKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dEndOfText 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_ddownKey 0 e_oskey_ndownKey
+	buildI 2
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dPageDown 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_ddownKey 0 e_oskey_ndownKey
+	buildI 4
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dLineDown 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_ddownKey 0 e_oskey_ndownKey
+	buildI 1
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dEndOfText 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_ddownKey 0 e_oskey_ndownKey
+	buildI 1
+	buildI 2
+	build _ 2 e_StdInt_n+;6
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dPageDown 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_ddownKey 0 e_oskey_ndownKey
+	buildI 1
+	buildI 4
+	build _ 2 e_StdInt_n+;6
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dLineUp 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_dupKey 0 e_oskey_nupKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dStartOfText 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_dupKey 0 e_oskey_nupKey
+	buildI 2
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dPageUp 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_dupKey 0 e_oskey_nupKey
+	buildI 4
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dLineUp 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_dupKey 0 e_oskey_nupKey
+	buildI 1
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dStartOfText 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_dupKey 0 e_oskey_nupKey
+	buildI 1
+	buildI 2
+	build _ 2 e_StdInt_n+;6
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dPageUp 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_dupKey 0 e_oskey_nupKey
+	buildI 1
+	buildI 4
+	build _ 2 e_StdInt_n+;6
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dCharRight 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_drightKey 0 e_oskey_nrightKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dEndOfLine 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_drightKey 0 e_oskey_nrightKey
+	buildI 2
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dWordRight 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_drightKey 0 e_oskey_nrightKey
+	buildI 4
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dCharRight 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_drightKey 0 e_oskey_nrightKey
+	buildI 1
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dEndOfLine 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_drightKey 0 e_oskey_nrightKey
+	buildI 2
+	buildI 1
+	build _ 2 e_StdInt_n+;6
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dWordRight 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_drightKey 0 e_oskey_nrightKey
+	buildI 1
+	buildI 4
+	build _ 2 e_StdInt_n+;6
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dCharLeft 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_dleftKey 0 e_oskey_nleftKey
+	buildI 0
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dStartOfLine 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_dleftKey 0 e_oskey_nleftKey
+	buildI 2
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dWordLeft 0
+	buildh e_EdActionType_dMove 1
+	build e_oskey_dleftKey 0 e_oskey_nleftKey
+	buildI 4
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dCharLeft 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_dleftKey 0 e_oskey_nleftKey
+	buildI 1
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dStartOfLine 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_dleftKey 0 e_oskey_nleftKey
+	buildI 1
+	buildI 2
+	build _ 2 e_StdInt_n+;6
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_EdMovement_dWordLeft 0
+	buildh e_EdActionType_dSelect 1
+	build e_oskey_dleftKey 0 e_oskey_nleftKey
+	buildI 4
+	buildI 1
+	build _ 2 e_StdInt_n+;6
+	buildh d105 2
+	buildh _Tuple 2
+	buildh _Cons 2
+	create
+.d 1 0
+	jsr e_Table_stableNew
+.o 1 0
+.d 3 0
+	jmp s57
+.o 3 0
+s57
+	eq_desc _Nil 0 1
+	jmp_true case.15
+	jmp case.16
+case.15
+	fill_a 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.16
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	create
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s57
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	repl_args 2 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jmp e_Table_stableInsert
+.export e_EdKeyMapping_sconfigureKeyMapping
+.descexp e_EdKeyMapping_dconfigureKeyMapping e_EdKeyMapping_nconfigureKeyMapping e_EdKeyMapping_lconfigureKeyMapping 3 0 "configureKeyMapping"
+.a 0 a1
+.o 2 0
+e_EdKeyMapping_lconfigureKeyMapping
+	repl_args 2 2
+.o 3 0
+a1
+.d 3 0
+	jsr ea1
+.o 2 0
+.impmod iostate
+.impdesc e_iostate_rPSt
+	build_r e_iostate_rPSt 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 3 e_EdKeyMapping_dconfigureKeyMapping
+.o 1 0
+e_EdKeyMapping_nconfigureKeyMapping
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea1
+.o 2 0
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+ea1
+.o 3 0
+e_EdKeyMapping_sconfigureKeyMapping
+.o 3 0
+s1
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;13 0
+	buildh e_StdControlClass_dcontrolToHandles;12 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;13 0
+	buildh e_StdControlClass_dcontrolToHandles;12 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;13 0
+	buildh e_StdControlClass_dcontrolToHandles;12 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;25 0
+	buildh e_StdControlClass_dcontrolToHandles;24 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 2
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 3
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 4
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 5
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 6
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 7
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 8
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 9
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 10
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 11
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 12
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 13
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	buildh e_StdControlClass_dgetControlType;15 1
+	push_a 1
+	buildh e_StdControlClass_dcontrolToHandles;14 1
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;25 0
+	buildh e_StdControlClass_dcontrolToHandles;24 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdListBox_dgetControlType;15 0
+	buildh e_StdListBox_dcontrolToHandles;14 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 2
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 3
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 4
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 5
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 6
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 7
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	buildh e_StdControlClass_dgetControlType;15 1
+	push_a 1
+	buildh e_StdControlClass_dcontrolToHandles;14 1
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;11 0
+	buildh e_StdControlClass_dcontrolToHandles;10 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;11 0
+	buildh e_StdControlClass_dcontrolToHandles;10 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;11 0
+	buildh e_StdControlClass_dcontrolToHandles;10 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;11 0
+	buildh e_StdControlClass_dcontrolToHandles;10 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;11 0
+	buildh e_StdControlClass_dcontrolToHandles;10 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;11 0
+	buildh e_StdControlClass_dcontrolToHandles;10 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 2
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 3
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 4
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 5
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 6
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 7
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 8
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 9
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 10
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 11
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 12
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 13
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 36
+	jsr_eval 0
+	repl_r_args 2 0
+	update_a 37 38
+	update_a 36 37
+	update_a 22 36
+	update_a 2 35
+	update_a 1 34
+	updatepop_a 0 33
+.d 2 0
+	jsr e_StdId_sopenId;13
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdId_sopenId;13
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdId_sopenId;13
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdId_sopenId;13
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdId_sopenId;13
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdId_sopenId;13
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdId_sopenId;13
+.o 3 0
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdId_sopenId;13
+.o 3 0
+	buildh e_StdId_dopenRIds;12 0
+	buildh e_StdId_dopenRId;11 0
+	buildh e_StdId_dopenR2Ids;10 0
+	buildh e_StdId_dopenR2Id;9 0
+	buildh e_StdId_dopenIds;8 0
+	buildh e_StdId_dopenId;7 0
+	build_r e_StdId_rIds; 6 0 0 0
+	update_a 0 6
+	pop_a 6
+	buildh e_StdListBox_dopenListBoxId 1
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	buildh e_StdPicture_dopenDialogFont 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_ioutil_saccScreenPicture;21
+.o 3 0
+	push_a 0
+	push_a 4
+	push_a 7
+	push_a 13
+	push_a 12
+	push_a 14
+	push_a 12
+	push_a 11
+	push_a 19
+	push_a 16
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;25 0
+	buildh e_StdControlClass_dcontrolToHandles;24 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdListBox_dgetControlType;15 0
+	buildh e_StdListBox_dcontrolToHandles;14 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 2
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 3
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 4
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 5
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 6
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 7
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 16
+	buildh e_StdPicture_dgetFontMetrics 1
+	push_a 20
+	push_a 20
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 19 31
+	update_a 18 30
+	update_a 17 29
+	update_a 16 28
+	update_a 15 27
+	update_a 14 26
+	update_a 13 25
+	update_a 12 24
+	update_a 11 23
+	update_a 10 22
+	update_a 3 21
+	update_a 2 20
+	update_a 1 19
+	updatepop_a 0 18
+.d 3 0
+	jsr e_ioutil_saccScreenPicture;21
+.o 3 0
+	build e_EdActionType_dallActions 0 e_EdActionType_nallActions
+	buildh e_EdActionType_dtoString;1 0
+	build e_StdList_dmap 2 e_StdList_nmap
+	push_a 14
+	buildh e_StdPicture_dgetFontStringWidths 2
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_ioutil_saccScreenPicture;21
+.o 3 0
+	build _ 0 n17
+	buildh e_oskey_dtoString;33 0
+	build e_StdList_dmap 2 e_StdList_nmap
+	push_a 15
+	buildh e_StdPicture_dgetFontStringWidths 2
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_ioutil_saccScreenPicture;21
+.o 3 0
+	buildAC "Ctrl+Alt+Shift+"
+	buildh ARRAY 1
+	push_a 16
+	buildh e_StdPicture_dgetFontStringWidth 2
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_ioutil_saccScreenPicture;21
+.o 3 0
+	push_a 0
+	push_a 6
+	push_r_args_b 0 0 4 3 1
+	buildI_b 0
+	pop_b 1
+	push_r_args_b 1 0 4 2 1
+	buildI_b 0
+	pop_b 1
+	push_r_args_b 2 0 4 1 1
+	buildI_b 0
+	pop_b 1
+	build _ 3 n108
+	buildh _Nil 0
+	push_a 1
+	buildI 3
+	build _ 2 e_StdInt_n*;9
+	push_a 8
+	push_a 5
+	build _ 2 n109
+	build e_StdIOBasic_tSize 2 e_StdIOBasic_cSize
+	buildh e_StdControlDef_dControlViewSize 1
+	buildh _Cons 2
+	push_a 19
+	buildh _Nil 0
+	buildh _Nil 0
+	buildh e_StdListBox_dListBoxControl 4
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;13 0
+	buildh e_StdControlClass_dcontrolToHandles;12 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;13 0
+	buildh e_StdControlClass_dcontrolToHandles;12 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;13 0
+	buildh e_StdControlClass_dcontrolToHandles;12 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;25 0
+	buildh e_StdControlClass_dcontrolToHandles;24 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_StdControlClass_dgetControlType;31 0
+	buildh e_StdControlClass_dcontrolToHandles;30 0
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 2
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 3
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 4
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 5
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 6
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 7
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 8
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 9
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 10
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 11
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 0
+	push_a 12
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 1
+	push_a 13
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	build_r e_StdControlClass_rControls; 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 21
+	build e_StdOrdList_dmaxList;15 1 e_StdOrdList_nmaxList;15
+	buildh e_Data.Maybe_dNothing 0
+	buildh e_Data.Maybe_dNothing 0
+	buildh e_Data.Maybe_dNothing 0
+	buildh _Nil 0
+	create
+	push_a 20
+	push_a 6
+	push_a 34
+	push_a 36
+	push_a 38
+	push_a 40
+	push_a 42
+	push_a 38
+	push_a 9
+	update_a 9 10
+	update_a 0 9
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 36
+	update_a 0 27
+	update_a 0 16
+	update_a 0 26
+	update_a 0 17
+	update_a 0 25
+	update_a 0 18
+	update_a 0 24
+	update_a 0 19
+	update_a 0 23
+	update_a 0 20
+	update_a 0 22
+	update_a 0 21
+	update_a 0 35
+	update_a 0 30
+	update_a 0 37
+	update_a 0 32
+	pop_a 1
+.d 10 0
+	jsr s23
+.o 1 0
+	push_a 5
+	buildh e_StdControlClass_dgetControlType;15 1
+	push_a 6
+	buildh e_StdControlClass_dcontrolToHandles;14 1
+	push_a 26
+	push_a 26
+	pushB FALSE
+	push_a 7
+	update_a 2 8
+	update_a 4 2
+	update_a 6 4
+	update_a 0 6
+	update_a 7 0
+	update_a 1 7
+	update_a 3 1
+	update_a 5 3
+	update_a 0 5
+	pop_a 1
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	buildh _Nil 0
+	update_a 0 15
+	update_a 0 16
+	pop_a 1
+.d 8 1 b
+	jsr e_StdControl_scontrolSize
+.o 2 2 ii
+	buildh e_Data.Maybe_dNothing 0
+	buildh e_Data.Maybe_dNothing 0
+	buildh e_Data.Maybe_dNothing 0
+	buildh _Nil 0
+	create
+	push_a 8
+	push_a 27
+	push_a 22
+	push_a 30
+	push_a 5
+	update_a 5 6
+	update_a 0 5
+	pop_a 1
+.d 6 0
+	jsr s22
+.o 1 0
+	push_a 17
+	buildh e_StdControlClass_dgetControlType;15 1
+	push_a 18
+	buildh e_StdControlClass_dcontrolToHandles;14 1
+	push_a 7
+	push_a 7
+	pushB FALSE
+	push_a 7
+	update_a 2 8
+	update_a 4 2
+	update_a 6 4
+	update_a 0 6
+	update_a 7 0
+	update_a 1 7
+	update_a 3 1
+	update_a 5 3
+	update_a 0 5
+	pop_a 1
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 20
+	pop_a 1
+.d 8 1 b
+	jsr e_StdControl_scontrolSize
+.o 2 2 ii
+	build_r e_StdIOBasic_rSize 0 2 0 0
+	push_r_args_b 0 0 2 1 1
+	buildI_b 0
+	pop_b 1
+	build_r e_StdIOBasic_rSize 0 2 0 2
+	push_r_args_b 0 0 2 1 1
+	buildI_b 0
+	pop_b 1
+	push_a 0
+	push_a 3
+	build _ 2 n110
+	buildh _Nil 0
+	push_a 21
+	push_a 34
+	buildh d31 2
+	buildh e_StdControlDef_dControlFunction 1
+	buildh _Cons 2
+	push_a 20
+	buildh e_StdControlDef_dControlId 1
+	buildh _Cons 2
+	buildAC "Ok"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dButtonControl 2
+	buildh _Nil 0
+	push_a 22
+	buildh e_StdWindow_dcloseWindow 1
+	buildh e_StdIOBasic_dnoLS 1
+	buildh e_StdControlDef_dControlFunction 1
+	buildh _Cons 2
+	buildAC "Cancel"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dButtonControl 2
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 22
+	push_a 29
+	push_a 31
+	push_a 26
+	push_a 31
+	push_a 31
+	push_a 31
+	push_a 31
+	buildh d35 8
+	buildh e_StdControlDef_dControlFunction 1
+	buildh _Cons 2
+	buildAC "Remove binding"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dButtonControl 2
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 22
+	push_a 29
+	push_a 25
+	push_a 30
+	push_a 30
+	push_a 30
+	push_a 30
+	push_a 36
+	buildh d36 8
+	buildh e_StdControlDef_dControlFunction 1
+	buildh _Cons 2
+	buildAC "Bind"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dButtonControl 2
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	buildh d55 0
+	buildh e_StdControlDef_dControlFunction 1
+	buildh _Cons 2
+	buildAC "Save..."
+	buildh ARRAY 1
+	buildh e_StdControlDef_dButtonControl 2
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 22
+	push_a 29
+	push_a 31
+	push_a 26
+	push_a 31
+	push_a 31
+	push_a 31
+	push_a 31
+	buildh d24 8
+	buildh e_StdControlDef_dControlFunction 1
+	buildh _Cons 2
+	build e_StdIOCommon_dzero;32 0 e_StdIOCommon_nzero;32
+	buildh e_StdIOCommon_dLeft 0
+	buildh _Tuple 2
+	buildh e_StdControlDef_dControlPos 1
+	buildh _Cons 2
+	buildAC "Open..."
+	buildh ARRAY 1
+	buildh e_StdControlDef_dButtonControl 2
+	buildh e_StdIOBasic_d:+: 2
+	create
+	push_a 10
+	push_a 12
+	push_a 11
+	push_a 9
+	push_a 8
+	push_a 26
+	push_a 28
+	push_a 30
+	push_a 32
+	push_a 34
+	push_a 36
+	push_a 38
+	push_a 40
+	push_a 42
+	push_a 16
+	update_a 15 17
+	update_a 13 15
+	update_a 11 13
+	update_a 0 11
+	update_a 16 0
+	update_a 14 16
+	update_a 12 14
+	update_a 10 12
+	update_a 9 10
+	update_a 8 9
+	update_a 0 8
+	pop_a 1
+	pop_b 4
+	update_a 47 48
+	update_a 46 47
+	update_a 45 46
+	update_a 44 45
+	update_a 27 44
+	update_a 22 43
+	update_a 21 42
+	update_a 19 41
+	update_a 17 40
+	update_a 16 39
+	update_a 15 38
+	update_a 14 37
+	update_a 13 36
+	update_a 12 35
+	update_a 11 34
+	update_a 10 33
+	update_a 9 32
+	update_a 8 31
+	update_a 7 30
+	update_a 6 29
+	update_a 5 28
+	update_a 4 27
+	update_a 3 26
+	update_a 2 25
+	update_a 1 24
+	updatepop_a 0 23
+.d 17 0
+	jsr s27
+.o 1 0
+	push_a 6
+	push_a 10
+	build_r r78 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 8
+	push_a 10
+	buildh e_StdControlClass_dgetControlType;9 2
+	push_a 9
+	push_a 11
+	buildh e_StdControlClass_dcontrolToHandles;8 2
+	push_a 7
+	push_a 7
+	push_a 5
+	update_a 2 6
+	update_a 4 2
+	update_a 0 4
+	update_a 5 0
+	update_a 1 5
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	update_a 10 14
+	update_a 7 13
+	update_a 6 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 6 0
+	jsr e_StdWindow_sopenModalDialog;58
+.o 4 0
+	update_a 3 6
+	updatepop_a 2 5
+.d 2 0
+	rtn
+.n 2 _ ea110
+.o 1 0
+n110
+	push_node _cycle_in_spine 2
+.o 3 0
+ea110
+.o 3 0
+s110
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 1 b
+	jsr s69
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea109
+.o 1 0
+n109
+	push_node _cycle_in_spine 2
+.o 3 0
+ea109
+.o 3 0
+s109
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_StdOrdList_smaxList;15
+.o 0 1 i
+	addI
+	pushI_a 0
+	pop_a 1
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 _ ea108
+.o 1 0
+n108
+	push_node _cycle_in_spine 3
+.o 4 0
+ea108
+.o 4 0
+s108
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	addI
+	pop_a 3
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 1 b
+s69
+	eqB_b TRUE 0
+	jmp_true case.17
+	jmp case.18
+case.17
+	pop_b 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 2
+.d 0 1 i
+	rtn
+case.18
+	pop_b 1
+	pop_a 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+.desc d55 _hnf l55 1 0 "savekm;104"
+.o 2 0
+l55
+	pop_a 1
+.o 1 0
+ea55
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 2
+	push_a 1
+	build _ 2 n56
+	build_r r78 2 0 1 0
+	update_a 1 4
+	updatepop_a 0 3
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n56
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea56
+.o 2 0
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea56
+	jsr_eval 1
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+s56
+	push_a 2
+	push_a 2
+	buildAC "*.km"
+	buildAC "Save keymapping as..."
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jsr e_StdPStClass_sselectOutputFile;14
+.o 3 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.19
+	update_a 2 3
+	updatepop_a 1 2
+.d 2 0
+	rtn
+else.19
+	push_a 0
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh e_EdKeyMapping_dSaveKeyMapFile 2
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jsr e_StdPStClass_saccFiles;8
+.o 3 0
+	pushB_a 0
+	notB
+	jmp_false else.20
+	pop_a 1
+.d 2 0
+	rtn
+else.20
+	pop_a 1
+.d 2 0
+	rtn
+.desc d24 _hnf l24 9 0 "openkm;23"
+.a 0 a24
+.o 2 0
+l24
+	repl_args 8 8
+.o 9 0
+a24
+.d 9 0
+	jsr ea24
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 9 0
+ea24
+	push_a 8
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	push_r_args 1 2 0
+	update_a 1 12
+	update_a 5 3
+	update_a 7 5
+	update_a 9 7
+	update_a 11 9
+	update_a 0 11
+	push_a 10
+	update_a 3 11
+	update_a 5 3
+	update_a 7 5
+	update_a 9 7
+	update_a 0 9
+	pop_a 3
+.o 11 0
+s24
+	push_a 10
+	push_a 10
+	buildh _Nil 0
+	update_a 0 12
+	update_a 0 13
+	pop_a 1
+.d 2 0
+	jsr s106
+.o 2 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.21
+	push_a 1
+	push_a 11
+	update_a 1 14
+	updatepop_a 0 13
+.d 2 0
+	rtn
+else.21
+	push_a 1
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 2
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	push_a 13
+	jsr_eval 0
+	repl_r_args 2 0
+	update_a 2 0
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 13
+	jsr_eval 0
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 19 22
+	update_a 18 21
+	update_a 17 20
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 10 0
+	jsr s107
+.o 4 0
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 7 0
+	jmp s29
+.export e_EdKeyMapping_sReadKeyMapFile
+.descexp e_EdKeyMapping_dReadKeyMapFile e_EdKeyMapping_nReadKeyMapFile e_EdKeyMapping_lReadKeyMapFile 2 0 "ReadKeyMapFile"
+.a 0 a4
+.o 2 0
+e_EdKeyMapping_lReadKeyMapFile
+	repl_args 1 1
+.o 2 0
+a4
+.d 2 0
+	jsr ea4
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 2 e_EdKeyMapping_dReadKeyMapFile
+.o 1 0
+e_EdKeyMapping_nReadKeyMapFile
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea4
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea4
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_EdKeyMapping_sReadKeyMapFile
+.o 2 0
+s4
+	push_a 1
+	pushI 3
+	push_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 1 i
+	jsr e_StdFile_sfopen;27
+.o 1 3 bf
+	push_b 0
+	notB
+	jmp_false else.22
+	push_a 1
+	build _ 1 n111
+	build e_Table_dtableNew 0 e_Table_ntableNew
+	buildB FALSE
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Tuple 3
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 3
+.d 2 0
+	rtn
+else.22
+	push_b 2
+	push_b 2
+	update_b 1 4
+	updatepop_b 0 3
+.d 0 2 f
+	jsr e_UtilOptions_sReadVersion
+.o 1 2 f
+	buildAC "1.0"
+	push_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	notB
+	jmp_false else.23
+	push_a 1
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 2 f
+	jsr e_StdFile_sfclose;26
+.o 1 1 b
+	pop_b 1
+	push_a 1
+	push_a 3
+	build _ 2 n112
+	build e_Table_dtableNew 0 e_Table_ntableNew
+	buildB FALSE
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Tuple 3
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+else.23
+	buildF_b 0
+	pop_b 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_UtilOptions_sReadOptionsFile
+.o 2 0
+	push_a 0
+	jsr_eval 0
+	build _ 0 n13
+	build _ 0 n12
+	buildh e_EdActionType_dtoString;1 0
+	buildh e_EdActionType_dfromString;2 0
+	buildh e_EdKeyMapping_dtoString;6 0
+	buildh e_EdKeyMapping_dfromString;7 0
+	create
+	push_a 7
+	update_a 1 8
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 0 7
+	pop_a 1
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 8 0
+	jsr e_Table_sReadTable
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	pushF_a 2
+	pop_a 1
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 1 2 f
+	jsr e_StdFile_sfclose;26
+.o 1 1 b
+	push_b 0
+	notB
+	jmp_false else.24
+	push_a 2
+	build _ 1 n113
+	buildB TRUE
+	push_a 3
+	buildh _Tuple 3
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	rtn
+else.24
+	buildAC ""
+	buildh ARRAY 1
+	buildB TRUE
+	push_a 3
+	buildh _Tuple 3
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	rtn
+.n 1 _ ea113
+.o 1 0
+n113
+	push_node _cycle_in_spine 1
+.o 2 0
+ea113
+.o 2 0
+s113
+	buildAC "\" clould not be closed."
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "The file \""
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.n 2 _ ea112
+.o 1 0
+n112
+	push_node _cycle_in_spine 2
+.o 3 0
+ea112
+.o 3 0
+s112
+	buildAC "<<<"
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "\" has the wrong version."
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "The file \""
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.n 1 _ ea111
+.o 1 0
+n111
+	push_node _cycle_in_spine 1
+.o 2 0
+ea111
+.o 2 0
+s111
+	buildAC "\" could not be opened."
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	buildAC "The file \""
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdKeyMapping_sSaveKeyMapFile
+.descexp e_EdKeyMapping_dSaveKeyMapFile e_EdKeyMapping_nSaveKeyMapFile e_EdKeyMapping_lSaveKeyMapFile 3 0 "SaveKeyMapFile"
+.a 0 a5
+.o 2 0
+e_EdKeyMapping_lSaveKeyMapFile
+	repl_args 2 2
+.o 3 0
+a5
+.d 3 0
+	jsr ea5
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	buildh _Tuple 2
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 e_EdKeyMapping_dSaveKeyMapFile
+.o 1 0
+e_EdKeyMapping_nSaveKeyMapFile
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea5
+.o 1 1 b
+	push_a 0
+	buildB_b 0
+	fillh _Tuple 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea5
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 3 0
+e_EdKeyMapping_sSaveKeyMapFile
+.o 3 0
+s5
+	push_a 2
+	pushI 1
+	push_a 1
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 1 i
+	jsr e_StdFile_sfopen;27
+.o 1 3 bf
+	push_b 0
+	notB
+	jmp_false else.25
+	push_a 0
+	pushB FALSE
+	updatepop_a 0 2
+	updatepop_b 0 3
+.d 1 1 b
+	rtn
+else.25
+	build _ 0 n13
+	build _ 0 n12
+	buildh e_EdActionType_dtoString;1 0
+	buildh e_EdActionType_dfromString;2 0
+	buildh e_EdKeyMapping_dtoString;6 0
+	buildh e_EdKeyMapping_dfromString;7 0
+	create
+	push_a 8
+	push_a 7
+	update_a 2 8
+	update_a 4 2
+	update_a 6 4
+	update_a 0 6
+	update_a 7 0
+	update_a 1 7
+	update_a 3 1
+	update_a 5 3
+	update_a 0 5
+	pop_a 1
+	pop_b 1
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 8 0
+	jsr e_Table_sWriteTable
+.o 1 0
+	push_b 1
+	push_b 1
+	push_a 0
+	buildAC "1.0"
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 2 f
+	jsr e_UtilOptions_sWriteOptionsFile
+.o 0 2 f
+	push_a 0
+	push_b 1
+	push_b 1
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 f
+	jmp e_StdFile_sfclose;26
+.export e_EdKeyMapping_sfromString;7
+.export e_EdKeyMapping_eafromString;7
+.descexp e_EdKeyMapping_dfromString;7 e_EdKeyMapping_nfromString;7 e_EdKeyMapping_lfromString;7 1 0 "fromString;7"
+.o 2 0
+e_EdKeyMapping_lfromString;7
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdKeyMapping_eafromString;7
+.n 1 e_EdKeyMapping_dfromString;7 e_EdKeyMapping_eafromString;7
+.o 1 0
+e_EdKeyMapping_nfromString;7
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdKeyMapping_eafromString;7
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_EdKeyMapping_sfromString;7
+.o 2 0
+s8
+	push_a 0
+	buildh ARRAY 1
+	buildAC "Shift+"
+	buildh ARRAY 1
+	build _ 2 n50
+	push_a 0
+	build d_S.2 -1 n_S.2
+	buildAC "Ctrl+"
+	buildh ARRAY 1
+	build _ 2 n50
+	push_a 0
+	build d_S.2 -1 n_S.2
+	buildAC "Alt+"
+	buildh ARRAY 1
+	build _ 2 n50
+	push_a 0
+	build d_S.2 -1 n_S.2
+	build e_EdKeyMapping_dfromString;8 1 e_EdKeyMapping_nfromString;8
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 3
+	build d_S.1 -1 n_S.1
+	push_a 5
+	build d_S.1 -1 n_S.1
+	build _ 3 n114
+	fillh d105 2 6
+	pop_a 4
+.d 1 0
+	rtn
+.n 3 _ ea114
+.o 1 0
+n114
+	push_node _cycle_in_spine 3
+.o 4 0
+ea114
+.o 4 0
+s114
+	push_a 2
+	jsr_eval 0
+	pushB_a 3
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 0 1 b
+	jsr s68
+.o 0 1 i
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	update_a 0 2
+	pop_a 2
+.d 0 1 b
+	jsr s67
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	pop_a 1
+.d 0 1 b
+	jsr s66
+.o 0 1 i
+	pushI 0
+	addI
+	addI
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 1 b
+s68
+	eqB_b TRUE 0
+	jmp_true case.26
+	jmp case.27
+case.26
+	pop_b 1
+	pushI 4
+.d 0 1 i
+	rtn
+case.27
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 0 1 b
+s67
+	eqB_b TRUE 0
+	jmp_true case.28
+	jmp case.29
+case.28
+	pop_b 1
+	pushI 2
+.d 0 1 i
+	rtn
+case.29
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 0 1 b
+s66
+	eqB_b TRUE 0
+	jmp_true case.30
+	jmp case.31
+case.30
+	pop_b 1
+	pushI 1
+.d 0 1 i
+	rtn
+case.31
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.n 2 _
+.o 1 0
+n50
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea50
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea50
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	push_array 1
+	update_a 1 3
+	update_a 0 2
+	pop_a 2
+.o 2 0
+s50
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_b 0
+	pushI 0
+	push_a 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.32
+	push_b 0
+	push_a 0
+	build_u _ 1 1 n115
+	buildB TRUE
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+else.32
+	push_a 0
+	buildh ARRAY 1
+	buildB FALSE
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+.nu 1 1 _ _
+.o 1 0
+n115
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea115
+.o 2 1 i
+s115
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 1
+	push_b 2
+	addI
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdKeyMapping_sfromString;8
+.export e_EdKeyMapping_eafromString;8
+.descexp e_EdKeyMapping_dfromString;8 e_EdKeyMapping_nfromString;8 e_EdKeyMapping_lfromString;8 1 0 "fromString;8"
+.o 2 0
+e_EdKeyMapping_lfromString;8
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdKeyMapping_eafromString;8
+.n 1 e_EdKeyMapping_dfromString;8 e_EdKeyMapping_eafromString;8
+.o 1 0
+e_EdKeyMapping_nfromString;8
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdKeyMapping_eafromString;8
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_EdKeyMapping_sfromString;8
+.o 2 0
+s9
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp s65
+.o 2 0
+s65
+	push_a 0
+	eqAC_a "BackSpaceKey"
+	jmp_true case.33
+	push_a 0
+	eqAC_a "BeginKey"
+	jmp_true case.34
+	push_a 0
+	eqAC_a "ClearKey"
+	jmp_true case.35
+	push_a 0
+	eqAC_a "DeleteKey"
+	jmp_true case.36
+	push_a 0
+	eqAC_a "DownKey"
+	jmp_true case.37
+	push_a 0
+	eqAC_a "EndKey"
+	jmp_true case.38
+	push_a 0
+	eqAC_a "EnterKey"
+	jmp_true case.39
+	push_a 0
+	eqAC_a "EscapeKey"
+	jmp_true case.40
+	push_a 0
+	eqAC_a "F1Key"
+	jmp_true case.41
+	push_a 0
+	eqAC_a "F2Key"
+	jmp_true case.42
+	push_a 0
+	eqAC_a "F3Key"
+	jmp_true case.43
+	push_a 0
+	eqAC_a "F4Key"
+	jmp_true case.44
+	push_a 0
+	eqAC_a "F5Key"
+	jmp_true case.45
+	push_a 0
+	eqAC_a "F6Key"
+	jmp_true case.46
+	push_a 0
+	eqAC_a "F7Key"
+	jmp_true case.47
+	push_a 0
+	eqAC_a "F8Key"
+	jmp_true case.48
+	push_a 0
+	eqAC_a "F9Key"
+	jmp_true case.49
+	push_a 0
+	eqAC_a "F10Key"
+	jmp_true case.50
+	push_a 0
+	eqAC_a "F11Key"
+	jmp_true case.51
+	push_a 0
+	eqAC_a "F12Key"
+	jmp_true case.52
+	push_a 0
+	eqAC_a "F13Key"
+	jmp_true case.53
+	push_a 0
+	eqAC_a "F14Key"
+	jmp_true case.54
+	push_a 0
+	eqAC_a "F15Key"
+	jmp_true case.55
+	push_a 0
+	eqAC_a "HelpKey"
+	jmp_true case.56
+	push_a 0
+	eqAC_a "LeftKey"
+	jmp_true case.57
+	push_a 0
+	eqAC_a "PgDownKey"
+	jmp_true case.58
+	push_a 0
+	eqAC_a "PgUpKey"
+	jmp_true case.59
+	push_a 0
+	eqAC_a "ReturnKey"
+	jmp_true case.60
+	push_a 0
+	eqAC_a "RightKey"
+	jmp_true case.61
+	push_a 0
+	eqAC_a "UpKey"
+	jmp_true case.62
+	jmp case.63
+case.33
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sbackSpaceKey
+case.34
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sbeginKey
+case.35
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sclearKey
+case.36
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sdeleteKey
+case.37
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sdownKey
+case.38
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sendKey
+case.39
+	pop_a 1
+.d 1 0
+	jmp e_oskey_senterKey
+case.40
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sescapeKey
+case.41
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf1Key
+case.42
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf2Key
+case.43
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf3Key
+case.44
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf4Key
+case.45
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf5Key
+case.46
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf6Key
+case.47
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf7Key
+case.48
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf8Key
+case.49
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf9Key
+case.50
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf10Key
+case.51
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf11Key
+case.52
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf12Key
+case.53
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf13Key
+case.54
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf14Key
+case.55
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sf15Key
+case.56
+	pop_a 1
+.d 1 0
+	jmp e_oskey_shelpKey
+case.57
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sleftKey
+case.58
+	pop_a 1
+.d 1 0
+	jmp e_oskey_spgDownKey
+case.59
+	pop_a 1
+.d 1 0
+	jmp e_oskey_spgUpKey
+case.60
+	pop_a 1
+.d 1 0
+	jmp e_oskey_sreturnKey
+case.61
+	pop_a 1
+.d 1 0
+	jmp e_oskey_srightKey
+case.62
+	pop_a 1
+.d 1 0
+	jmp e_oskey_supKey
+case.63
+	pop_a 1
+.d 1 0
+	jmp e_oskey_shelpKey
+.n 0 _ ea12
+.o 1 0
+n12
+	push_node _cycle_in_spine 0
+.o 1 0
+ea12
+.o 1 0
+s12
+	build e_oskey_dhelpKey 0 e_oskey_nhelpKey
+	buildI 0
+	fillh d105 2 2
+.d 1 0
+	rtn
+.n 0 _ ea13
+.o 1 0
+n13
+	push_node _cycle_in_spine 0
+.o 1 0
+ea13
+.o 1 0
+s13
+	buildh e_StrictList_dSNil 0
+	fillh e_EdActionType_dInsert 1 1
+.d 1 0
+	rtn
+.desc d36 _hnf l36 9 0 "bindKey;35"
+.a 0 a36
+.o 2 0
+l36
+	repl_args 8 8
+.o 9 0
+a36
+.d 9 0
+	jsr ea36
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 9 0
+ea36
+	push_a 8
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	push_r_args 2 2 0
+	update_a 3 14
+	update_a 6 3
+	update_a 9 6
+	update_a 12 9
+	update_a 1 12
+	update_a 8 5
+	update_a 11 8
+	update_a 0 11
+	update_a 7 4
+	update_a 10 7
+	update_a 13 10
+	update_a 2 13
+	pop_a 3
+.o 12 0
+s36
+	push_a 7
+	buildh e_StdControl_dgetWindow 1
+	push_a 12
+	push_a 12
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 14
+	update_a 0 15
+	pop_a 1
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.64
+	build_r e_iostate_rPSt 2 0 1 0
+	build_r r78 2 0 12 0
+	update_a 1 16
+	updatepop_a 0 15
+.d 2 0
+	rtn
+else.64
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	push_a 9
+	jsr_eval 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr s33
+.o 0 1 i
+	create
+.d 1 0
+	jsr e_EdActionType_sallActions
+.o 1 0
+.d 1 1 i
+	jsr e_StdList_s!!
+.o 1 0
+	push_a 12
+	jsr_eval 0
+	buildh e_EdActionType_d==;3 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_Table_stableInvert
+.o 1 0
+	buildh e_EdActionType_d==;3 0
+	create
+	push_a 3
+	push_a 3
+	update_a 2 4
+	update_a 1 2
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+.d 4 0
+	jsr e_Table_stableLookup
+.o 1 0
+.d 1 0
+	jsr e_StdList_slength;47
+.o 0 1 i
+	pushI 4
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	notB
+	jmp_false else.65
+	build_r e_iostate_rPSt 2 0 2 0
+	build_r r78 2 0 13 0
+	update_a 1 17
+	updatepop_a 0 16
+.d 2 0
+	rtn
+else.65
+	build_r e_iostate_rPSt 2 0 2 0
+	push_a 2
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	build _ 5 n34
+	push_a 14
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 3 n47
+	push_a 15
+	push_a 15
+	update_a 2 0
+	build_r r78 2 0 0 0
+	updatepop_a 0 3
+	push_a 13
+	push_a 13
+	push_a 8
+	build _ 5 n132
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 14
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	build _ 8 n133
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	update_a 1 19
+	updatepop_a 0 18
+.d 2 0
+	rtn
+.n 8 _ ea133
+.o 1 0
+n133
+	push_node _cycle_in_spine 8
+.o 9 0
+ea133
+.o 9 0
+s133
+	push_a 7
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 8
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 9 17
+	update_a 8 16
+	update_a 7 15
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 10 0
+	jsr s28
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 5 _ ea132
+.o 1 0
+n132
+	push_node _cycle_in_spine 5
+.o 6 0
+ea132
+.o 6 0
+s132
+	push_a 4
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 5
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 7 0
+	jsr s29
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 3 _ ea47
+.o 1 0
+n47
+	push_node _cycle_in_spine 3
+.o 4 0
+ea47
+	jsr_eval 2
+	jsr_eval 0
+.o 4 0
+s47
+	buildh e_EdKeyMapping_d==;5 0
+	create
+	push_a 4
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+.d 4 0
+	jsr e_Table_stableRemove
+.o 1 0
+	push_a 2
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp e_Table_stableInsert
+.desc d35 _hnf l35 9 0 "removeBinding;34"
+.a 0 a35
+.o 2 0
+l35
+	repl_args 8 8
+.o 9 0
+a35
+.d 9 0
+	jsr ea35
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 9 0
+ea35
+	push_a 8
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	push_r_args 2 2 0
+	update_a 3 14
+	update_a 6 3
+	update_a 9 6
+	update_a 12 9
+	update_a 1 12
+	update_a 8 5
+	update_a 11 8
+	update_a 0 11
+	update_a 7 4
+	update_a 10 7
+	update_a 13 10
+	update_a 2 13
+	pop_a 3
+.o 12 0
+s35
+	push_a 7
+	buildh e_StdControl_dgetWindow 1
+	push_a 12
+	push_a 12
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 14
+	update_a 0 15
+	pop_a 1
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.66
+	build_r e_iostate_rPSt 2 0 1 0
+	build_r r78 2 0 12 0
+	update_a 1 16
+	updatepop_a 0 15
+.d 2 0
+	rtn
+else.66
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 9
+	build e_StdListBox_dgetListBoxSelection 2 e_StdListBox_ngetListBoxSelection
+	push_a 0
+	build d_S.1 -1 n_S.1
+	build d_S.2 -1 n_S.2
+	buildh d40 0
+	build e_StdList_dmap 2 e_StdList_nmap
+	push_a 1
+	build d_S.2 -1 n_S.2
+	buildh _Nil 0
+	push_a 15
+	build _ 1 n120
+	push_a 5
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	build e_EdActionType_dallActions 0 e_EdActionType_nallActions
+	push_a 16
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 3 n119
+	build _ 2 n118
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	build _ 3 n44
+	push_a 15
+	build _ 2 n46
+	push_a 16
+	push_a 16
+	update_a 2 0
+	build_r r78 2 0 0 0
+	updatepop_a 0 3
+	push_a 2
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 4
+	update_a 4 5
+	update_a 0 4
+	pop_a 1
+	build _ 6 n117
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 15
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	build _ 8 n121
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	update_a 1 20
+	updatepop_a 0 19
+.d 2 0
+	rtn
+.n 8 _ ea121
+.o 1 0
+n121
+	push_node _cycle_in_spine 8
+.o 9 0
+ea121
+.o 9 0
+s121
+	push_a 7
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 8
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 9 17
+	update_a 8 16
+	update_a 7 15
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 10 0
+	jsr s28
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 1 _ ea120
+.o 1 0
+n120
+	push_node _cycle_in_spine 1
+.o 2 0
+ea120
+.o 2 0
+s120
+	push_a 0
+	jsr_eval 0
+	buildh e_EdActionType_d==;3 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp e_Table_stableInvert
+.n 3 _ ea119
+.o 1 0
+n119
+	push_node _cycle_in_spine 3
+.o 4 0
+ea119
+.o 4 0
+s119
+	push_a 2
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s33
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 1 i
+	jsr e_StdList_s!!
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.n 2 _ ea118
+.o 1 0
+n118
+	push_node _cycle_in_spine 2
+.o 3 0
+ea118
+.o 3 0
+s118
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh e_EdActionType_d==;3 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp e_Table_stableLookup
+.n 6 _ ea117
+.o 1 0
+n117
+	push_node _cycle_in_spine 6
+.o 7 0
+ea117
+.o 7 0
+s117
+	push_a 5
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 6
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 9
+	update_a 0 10
+	pop_a 1
+.d 4 0
+	jsr e_StdListBox_scloseListBoxItems
+.o 2 0
+	push_a 5
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 6 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 7 0
+	jsr s29
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _ ea46
+.o 1 0
+n46
+	push_node _cycle_in_spine 2
+.o 3 0
+ea46
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+s46
+	eq_desc _Nil 0 1
+	jmp_true case.67
+	jmp case.68
+case.67
+	fill_a 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.68
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	create
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s46
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	buildh e_EdKeyMapping_d==;5 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jmp e_Table_stableRemove
+.n 3 _ ea44
+.o 1 0
+n44
+	push_node _cycle_in_spine 3
+.o 4 0
+ea44
+	jsr_eval 2
+.o 4 0
+s44
+	eq_desc _Nil 0 2
+	jmp_true case.69
+	jmp case.70
+case.69
+	updatepop_a 1 2
+	jmp_eval_upd
+case.70
+	push_args 2 2 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	push_a 1
+	push_a 4
+	push_a 4
+	build _ 3 n44
+	push_a 1
+	push_a 4
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s20
+.o 4 0
+s20
+	push_a 1
+	push_a 1
+	build _ 2 n131
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh _Cons 2 5
+	pop_a 3
+.d 1 0
+	rtn
+.n 2 _ ea131
+.o 1 0
+n131
+	push_node _cycle_in_spine 2
+.o 3 0
+ea131
+.o 3 0
+s131
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 2
+.d 1 1 i
+	jsr e_StdList_s!!
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.desc d40 _hnf l40 1 0 "snd;46"
+.o 2 0
+l40
+	pop_a 1
+.o 1 0
+ea40
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+.o 2 0
+s40
+	pop_a 1
+.d 1 0
+	rtn
+.desc d31 _hnf l31 3 0 "storeKeyMapping;30"
+.a 0 a31
+.o 2 0
+l31
+	repl_args 2 2
+.o 3 0
+a31
+.o 3 0
+ea31
+	push_a 2
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 0
+	repl_r_args 2 0
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	push_a 4
+	push_a 3
+	push_a 2
+	build _ 3 n116
+	push_a 2
+	build e_StdWindow_dcloseWindow 2 e_StdWindow_ncloseWindow
+	build_r r78 2 0 3 0
+	update_a 1 6
+	updatepop_a 0 5
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.n 3 _ ea116
+.o 1 0
+n116
+	push_node _cycle_in_spine 3
+.o 4 0
+ea116
+.o 4 0
+s116
+	push_a 2
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	jsr_ap 2
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 17 0
+s27
+	buildh _Nil 0
+	buildh _Nil 0
+	push_a 10
+	push_a 9
+	push_a 6
+	push_a 8
+	push_a 10
+	push_a 12
+	buildh d28 6
+	buildh _Cons 2
+	push_a 10
+	push_a 4
+	push_a 4
+	buildh d29 3
+	buildh _Cons 2
+	buildh e_StdFunc_dseq 1
+	buildh e_StdWindowDef_dWindowInit 1
+	buildh _Cons 2
+	push_a 10
+	buildh e_StdWindowDef_dWindowOk 1
+	buildh _Cons 2
+	push_a 9
+	buildh e_StdWindowDef_dWindowId 1
+	buildh _Cons 2
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 14
+	push_a 21
+	push_a 15
+	push_a 15
+	build _ 15 n26
+	buildAC "Key mapping"
+	buildh ARRAY 1
+	fillh e_StdWindowDef_dDialog 3 19
+	pop_a 16
+.d 1 0
+	rtn
+.n 15 _ ea26
+.o 1 0
+n26
+	push_node _cycle_in_spine 15
+.o 16 0
+ea26
+.o 16 0
+s26
+	push_a 8
+	buildh _Nil 0
+	push_a 11
+	push_a 14
+	build _ 2 n136
+	buildh e_StdControlDef_dControlViewSize 1
+	buildh _Cons 2
+	push_a 16
+	push_a 4
+	push_a 6
+	push_a 5
+	build _ 5 n22
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 11
+	push_a 13
+	build _ 2 n137
+	buildh e_StdControlDef_dControlViewSize 1
+	buildh _Cons 2
+	push_a 15
+	push_a 15
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	build _ 9 n23
+	fillh e_StdIOBasic_d:+: 2 17
+	pop_a 15
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n136
+	push_node _cycle_in_spine 2
+.o 2 0
+ea136
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 2
+	update_b 2 0
+	fill_r e_StdIOBasic_rSize 0 2 2 0 0
+	pop_a 2
+	pop_b 3
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n137
+	push_node _cycle_in_spine 2
+.o 2 0
+ea137
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 0 2
+	update_b 2 0
+	fill_r e_StdIOBasic_rSize 0 2 2 0 0
+	pop_a 2
+	pop_b 3
+.d 1 0
+	rtn
+.n 5 _ ea22
+.o 1 0
+n22
+	push_node _cycle_in_spine 5
+.o 6 0
+ea22
+.o 6 0
+s22
+	push_a 4
+	build _ 0 n30
+	buildB TRUE
+	buildh e_StdControlDef_dControlLook 2
+	buildh _Cons 2
+	build e_StdIOCommon_dzero;32 0 e_StdIOCommon_nzero;32
+	buildh e_StdIOCommon_dLeft 0
+	buildh _Tuple 2
+	buildh e_StdControlDef_dControlPos 1
+	buildh _Cons 2
+	push_a 4
+	buildh _Nil 0
+	build e_StdIOCommon_dzero;32 0 e_StdIOCommon_nzero;32
+	buildh e_StdIOCommon_dLeft 0
+	buildh _Tuple 2
+	buildh e_StdControlDef_dControlPos 1
+	buildh _Cons 2
+	buildAC "Mapped from:"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dTextControl 2
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 5
+	buildh e_StdControlDef_dControlId 1
+	buildh _Cons 2
+	buildI 1
+	push_a 5
+	push_a 7
+	push_a 6
+	buildh d29 3
+	build e_StdList_drepeat 1 e_StdList_nrepeat
+	build e_EdActionType_dallActions 0 e_EdActionType_nallActions
+	buildh e_EdActionType_dtoString;1 0
+	build e_StdList_dmap 2 e_StdList_nmap
+	build e_StdList_dzip2 2 e_StdList_nzip2
+	buildh e_StdControlDef_dPopUpControl 3
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	build e_StdIOCommon_dzero;32 0 e_StdIOCommon_nzero;32
+	buildh e_StdIOCommon_dLeft 0
+	buildh _Tuple 2
+	buildh e_StdControlDef_dControlPos 1
+	buildh _Cons 2
+	buildAC "Mapped from:"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dContentWidth 1
+	buildh e_StdControlDef_dControlWidth 1
+	buildh _Cons 2
+	buildAC "Action:"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dTextControl 2
+	buildh e_StdIOBasic_d:+: 2
+	fillh e_StdControlDef_dCompoundControl 2 7
+	pop_a 5
+.d 1 0
+	rtn
+.desc d29 _hnf l29 4 0 "updateMappedFrom;28"
+.a 0 a29
+.o 2 0
+l29
+	repl_args 3 3
+.o 4 0
+a29
+.d 4 0
+	jsr ea29
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea29
+	push_a 3
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	jsr_eval 4
+	push_r_args 1 2 0
+	push_r_args 2 2 0
+	update_a 3 9
+	update_a 6 3
+	update_a 0 6
+	update_a 8 5
+	update_a 2 8
+	update_a 7 4
+	update_a 1 7
+	pop_a 3
+.o 7 0
+s29
+	push_a 2
+	buildh e_StdControl_dgetWindow 1
+	push_a 7
+	push_a 7
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 9
+	update_a 0 10
+	update_a 0 6
+	pop_a 1
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.71
+	build_r e_iostate_rPSt 2 0 1 0
+	build_r r78 2 0 7 0
+	update_a 1 11
+	updatepop_a 0 10
+.d 2 0
+	rtn
+else.71
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 4
+	build e_StdListBox_dgetListBoxItems 2 e_StdListBox_ngetListBoxItems
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	build d_S.2 -1 n_S.2
+	build _ 1 n126
+	push_a 9
+	build _ 1 n125
+	push_a 4
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	build e_EdActionType_dallActions 0 e_EdActionType_nallActions
+	push_a 10
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 3 n124
+	build _ 2 n123
+	buildh e_EdKeyMapping_dtoString;6 0
+	build e_StdList_dmap 2 e_StdList_nmap
+	push_a 7
+	build _ 4 n122
+	build_r r78 2 0 8 0
+	update_a 1 12
+	updatepop_a 0 11
+.d 2 0
+	rtn
+.n 1 _ ea126
+.o 1 0
+n126
+	push_node _cycle_in_spine 1
+.o 2 0
+ea126
+.o 2 0
+s126
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_StdList_slength;47
+.o 0 1 i
+	pushI 1
+.d 1 2 ii
+	jmp e__SystemEnum_s_from_to;6
+.n 1 _ ea125
+.o 1 0
+n125
+	push_node _cycle_in_spine 1
+.o 2 0
+ea125
+.o 2 0
+s125
+	push_a 0
+	jsr_eval 0
+	buildh e_EdActionType_d==;3 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp e_Table_stableInvert
+.n 3 _ ea124
+.o 1 0
+n124
+	push_node _cycle_in_spine 3
+.o 4 0
+ea124
+.o 4 0
+s124
+	push_a 2
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s33
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 1 i
+	jsr e_StdList_s!!
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.n 2 _ ea123
+.o 1 0
+n123
+	push_node _cycle_in_spine 2
+.o 3 0
+ea123
+.o 3 0
+s123
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh e_EdActionType_d==;3 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp e_Table_stableLookup
+.n 4 _ ea122
+.o 1 0
+n122
+	push_node _cycle_in_spine 4
+.o 5 0
+ea122
+.o 5 0
+s122
+	push_a 3
+	jsr_eval 0
+	repl_r_args 2 0
+	push_a 4
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jsr e_StdListBox_scloseListBoxItems
+.o 2 0
+	push_a 3
+	jsr_eval 0
+	pushI 0
+	push_a 3
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 1 i
+	jsr e_StdListBox_sopenListBoxItems
+.o 2 0
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.export e_EdKeyMapping_stoString;6
+.descexp e_EdKeyMapping_dtoString;6 e_EdKeyMapping_ntoString;6 e_EdKeyMapping_ltoString;6 1 0 "toString;6"
+.o 2 0
+e_EdKeyMapping_ltoString;6
+	pop_a 1
+.d 1 0
+	jsr ea7
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_EdKeyMapping_dtoString;6
+.o 1 0
+e_EdKeyMapping_ntoString;6
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea7
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea7
+	jsr_eval 0
+.o 1 0
+e_EdKeyMapping_stoString;6
+.o 1 0
+s7
+	repl_args 2 2
+	push_a 1
+	jsr_eval 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_oskey_stoString;33
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 4
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	and%
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	notB
+.d 0 1 b
+	jsr s64
+.o 1 0
+.d 2 0
+	jsr catAC
+.o 1 0
+	pushI 2
+	pushI_a 1
+	and%
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	notB
+.d 0 1 b
+	jsr s63
+.o 1 0
+.d 2 0
+	jsr catAC
+.o 1 0
+	pushI 1
+	pushI_a 1
+	and%
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	notB
+	buildh _Nil 0
+	update_a 0 2
+	pop_a 1
+.d 0 1 b
+	jsr s62
+.o 1 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.o 0 1 b
+s64
+	eqB_b TRUE 0
+	jmp_true case.72
+	jmp case.73
+case.72
+	pop_b 1
+	buildAC "Alt+"
+.d 1 0
+	rtn
+case.73
+	pop_b 1
+	buildAC ""
+.d 1 0
+	rtn
+.o 0 1 b
+s63
+	eqB_b TRUE 0
+	jmp_true case.74
+	jmp case.75
+case.74
+	pop_b 1
+	buildAC "Ctrl+"
+.d 1 0
+	rtn
+case.75
+	pop_b 1
+	buildAC ""
+.d 1 0
+	rtn
+.o 0 1 b
+s62
+	eqB_b TRUE 0
+	jmp_true case.76
+	jmp case.77
+case.76
+	pop_b 1
+	buildAC "Shift+"
+.d 1 0
+	rtn
+case.77
+	pop_b 1
+	buildAC ""
+.d 1 0
+	rtn
+.n 9 _ ea23
+.o 1 0
+n23
+	push_node _cycle_in_spine 9
+.o 10 0
+ea23
+.o 10 0
+s23
+	push_a 8
+	build _ 0 n30
+	buildB TRUE
+	buildh e_StdControlDef_dControlLook 2
+	buildh _Cons 2
+	build e_StdIOCommon_dzero;32 0 e_StdIOCommon_nzero;32
+	buildh e_StdIOCommon_dLeft 0
+	buildh _Tuple 2
+	buildh e_StdControlDef_dControlPos 1
+	buildh _Cons 2
+	buildh _Nil 0
+	push_a 7
+	buildh e_StdControlDef_dControlId 1
+	buildh _Cons 2
+	push_a 8
+	buildh e_StdControlDef_dPixelWidth 1
+	buildh e_StdControlDef_dControlWidth 1
+	buildh _Cons 2
+	buildAC ""
+	buildh ARRAY 1
+	buildh e_StdControlDef_dTextControl 2
+	buildh _Nil 0
+	build e_StdIOCommon_dzero;32 0 e_StdIOCommon_nzero;32
+	buildh e_StdIOCommon_dLeft 0
+	buildh _Tuple 2
+	buildh e_StdControlDef_dControlPos 1
+	buildh _Cons 2
+	buildAC "Currently mapped to:"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dTextControl 2
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 7
+	buildh e_StdControlDef_dControlId 1
+	buildh _Cons 2
+	buildI 1
+	push_a 4
+	push_a 10
+	push_a 7
+	push_a 9
+	push_a 11
+	push_a 13
+	buildh d28 6
+	build e_StdList_drepeat 1 e_StdList_nrepeat
+	build _ 0 n17
+	buildh e_oskey_dtoString;33 0
+	build e_StdList_dmap 2 e_StdList_nmap
+	build e_StdList_dzip2 2 e_StdList_nzip2
+	buildh e_StdControlDef_dPopUpControl 3
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 6
+	buildh e_StdControlDef_dControlId 1
+	buildh _Cons 2
+	buildI 1
+	buildh e_StdControlDef_dColumns 1
+	buildh _Nil 0
+	push_a 5
+	push_a 11
+	push_a 8
+	push_a 10
+	push_a 12
+	push_a 14
+	buildh d28 6
+	buildh e_StdIOCommon_dNoMark 0
+	buildh e_Data.Maybe_dNothing 0
+	buildAC "Alt +"
+	buildh ARRAY 1
+	buildh _Tuple 4
+	buildh _Cons 2
+	buildh e_StdControlDef_dCheckControl 3
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 5
+	buildh e_StdControlDef_dControlId 1
+	buildh _Cons 2
+	buildI 1
+	buildh e_StdControlDef_dColumns 1
+	buildh _Nil 0
+	push_a 5
+	push_a 11
+	push_a 8
+	push_a 10
+	push_a 12
+	push_a 14
+	buildh d28 6
+	buildh e_StdIOCommon_dNoMark 0
+	buildh e_Data.Maybe_dNothing 0
+	buildAC "Ctrl +"
+	buildh ARRAY 1
+	buildh _Tuple 4
+	buildh _Cons 2
+	buildh e_StdControlDef_dCheckControl 3
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	push_a 4
+	buildh e_StdControlDef_dControlId 1
+	buildh _Cons 2
+	buildI 1
+	buildh e_StdControlDef_dColumns 1
+	buildh _Nil 0
+	push_a 5
+	push_a 11
+	push_a 8
+	push_a 10
+	push_a 12
+	push_a 14
+	buildh d28 6
+	buildh e_StdIOCommon_dNoMark 0
+	buildh e_Data.Maybe_dNothing 0
+	buildAC "Shift +"
+	buildh ARRAY 1
+	buildh _Tuple 4
+	buildh _Cons 2
+	buildh e_StdControlDef_dCheckControl 3
+	buildh e_StdIOBasic_d:+: 2
+	buildh _Nil 0
+	build e_StdIOCommon_dzero;32 0 e_StdIOCommon_nzero;32
+	buildh e_StdIOCommon_dLeft 0
+	buildh _Tuple 2
+	buildh e_StdControlDef_dControlPos 1
+	buildh _Cons 2
+	buildAC "Key:"
+	buildh ARRAY 1
+	buildh e_StdControlDef_dTextControl 2
+	buildh e_StdIOBasic_d:+: 2
+	fillh e_StdControlDef_dCompoundControl 2 11
+	pop_a 9
+.d 1 0
+	rtn
+.desc d28 _hnf l28 7 0 "updateMappedTo;27"
+.a 0 a28
+.o 2 0
+l28
+	repl_args 6 6
+.o 7 0
+a28
+.d 7 0
+	jsr ea28
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 7 0
+ea28
+	push_a 6
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	jsr_eval 7
+	push_r_args 1 2 0
+	push_r_args 2 2 0
+	update_a 3 12
+	update_a 6 3
+	update_a 9 6
+	update_a 0 9
+	update_a 8 5
+	update_a 11 8
+	update_a 2 11
+	update_a 7 4
+	update_a 10 7
+	update_a 1 10
+	pop_a 3
+.o 10 0
+s28
+	push_a 5
+	buildh e_StdControl_dgetWindow 1
+	push_a 10
+	push_a 10
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 12
+	update_a 0 13
+	update_a 0 9
+	pop_a 1
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.78
+	build_r e_iostate_rPSt 2 0 1 0
+	build_r r78 2 0 10 0
+	update_a 1 14
+	updatepop_a 0 13
+.d 2 0
+	rtn
+else.78
+	push_a 0
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	build _ 5 n34
+	push_a 10
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n127
+	build_r e_iostate_rPSt 2 0 2 0
+	buildh _Nil 0
+	push_a 2
+	build _ 1 n128
+	push_a 11
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_StdControl_dsetControlTexts 1
+	build e_StdPSt_dappPIO 2 e_StdPSt_nappPIO
+	build_r r78 2 0 11 0
+	update_a 1 15
+	updatepop_a 0 14
+.d 2 0
+	rtn
+.n 1 _ ea128
+.o 1 0
+n128
+	push_node _cycle_in_spine 1
+.o 2 0
+ea128
+.o 2 0
+s128
+	push_a 0
+	jsr_eval 0
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s61
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.n 2 _ ea127
+.o 1 0
+n127
+	push_node _cycle_in_spine 2
+.o 3 0
+ea127
+.o 3 0
+s127
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh e_EdKeyMapping_d==;5 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp e_Table_stableLookup
+.o 1 1 b
+s61
+	eqB_b TRUE 0
+	jmp_true case.79
+	jmp case.80
+case.79
+	pop_a 1
+	pop_b 1
+	buildAC "<nothing>"
+.d 1 0
+	rtn
+case.80
+	push_a 0
+	jsr_eval 0
+	pop_b 1
+	updatepop_a 0 1
+.d 1 0
+	jsr e_StdList_shd
+.o 1 0
+.d 1 0
+	jmp e_EdActionType_stoString;1
+.export e_EdKeyMapping_s==;5
+.descexp e_EdKeyMapping_d==;5 e_EdKeyMapping_n==;5 e_EdKeyMapping_l==;5 2 0 "==;5"
+.a 0 a6
+.o 2 0
+e_EdKeyMapping_l==;5
+	repl_args 1 1
+.o 2 0
+a6
+.d 2 0
+	jsr ea6
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_EdKeyMapping_d==;5
+.o 1 0
+e_EdKeyMapping_n==;5
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea6
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea6
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_EdKeyMapping_s==;5
+.o 2 0
+s6
+	repl_args 2 2
+	push_args 2 2 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	eqI
+	jmp_false else.81
+	push_a 1
+	jsr_eval 0
+	push_a 4
+	jsr_eval 0
+	update_a 1 6
+	updatepop_a 0 5
+.d 2 0
+	jmp e_oskey_s==;32
+else.81
+	pop_a 5
+	pushB FALSE
+.d 0 1 b
+	rtn
+.n 5 _ ea34
+.o 1 0
+n34
+	push_node _cycle_in_spine 5
+.o 6 0
+ea34
+.o 6 0
+s34
+	build _ 0 n17
+	push_a 5
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 3 n130
+	push_a 2
+	push_a 4
+	push_a 7
+	push_a 7
+	build _ 4 n129
+	fillh d105 2 7
+	pop_a 5
+.d 1 0
+	rtn
+.n 3 _ ea130
+.o 1 0
+n130
+	push_node _cycle_in_spine 3
+.o 4 0
+ea130
+.o 4 0
+s130
+	push_a 2
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s33
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 1 i
+	jsr e_StdList_s!!
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.n 4 _ ea129
+.o 1 0
+n129
+	push_node _cycle_in_spine 4
+.o 5 0
+ea129
+.o 5 0
+s129
+	push_a 1
+	jsr_eval 0
+	push_a 4
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s32
+.o 0 1 b
+.d 0 1 b
+	jsr s60
+.o 0 1 i
+	push_a 2
+	jsr_eval 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s32
+.o 0 1 b
+.d 0 1 b
+	jsr s59
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr s32
+.o 0 1 b
+.d 0 1 b
+	jsr s58
+.o 0 1 i
+	addI
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 1 b
+s60
+	eqB_b TRUE 0
+	jmp_true case.82
+	jmp case.83
+case.82
+	pop_b 1
+	pushI 4
+.d 0 1 i
+	rtn
+case.83
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 0 1 b
+s59
+	eqB_b TRUE 0
+	jmp_true case.84
+	jmp case.85
+case.84
+	pop_b 1
+	pushI 2
+.d 0 1 i
+	rtn
+case.85
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 0 1 b
+s58
+	eqB_b TRUE 0
+	jmp_true case.86
+	jmp case.87
+case.86
+	pop_b 1
+	pushI 1
+.d 0 1 i
+	rtn
+case.87
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+.o 2 0
+s33
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdControl_sgetPopUpControlSelection
+.o 2 0
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	notB
+	jmp_false else.88
+	buildAC "EdKeyMapping[getPopUp]: wrong id"
+	updatepop_a 0 2
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+else.88
+	push_a 1
+	jsr_eval 0
+	push_a 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.89
+	buildAC "EdKeyMapping[getPopUp]: strange error"
+	updatepop_a 0 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+else.89
+	pushI 1
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+	pushI_a 0
+	pop_a 1
+	subI
+.d 0 1 i
+	rtn
+.o 2 0
+s32
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdControl_sgetCheckControlSelection
+.o 2 0
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	notB
+	jmp_false else.90
+	buildAC "EdKeyMapping[getCheckbox]: wrong id"
+	updatepop_a 0 2
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+else.90
+	push_a 1
+	jsr_eval 0
+	push_a 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.91
+	buildAC "EdKeyMapping[getCheckbox]: strange error"
+	updatepop_a 0 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn
+else.91
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_Data.Maybe_sfromJust
+.o 1 0
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	notB
+.d 0 1 b
+	rtn
+.n 0 _ ea30
+.o 1 0
+n30
+	push_node _cycle_in_spine 0
+.o 1 0
+ea30
+.o 1 0
+s30
+	fillh d19 0 0
+.d 1 0
+	rtn
+.desc d19 _hnf l19 2 0 "<lambda>[line:380];11;18"
+.a 2 ea19
+.o 2 0
+l19
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea19
+	jsr_eval 1
+	push_r_args 1 3 0
+	update_a 2 4
+	update_a 0 2
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 5 0
+s19
+	push_a 2
+	fillh e_StdPicture_ddraw;97 1 5
+	pop_a 4
+.d 1 0
+	rtn
+.n 0 _ ea17
+.o 1 0
+n17
+	push_node _cycle_in_spine 0
+.o 1 0
+ea17
+.o 1 0
+s17
+	buildh _Nil 0
+	build e_oskey_df15Key 0 e_oskey_nf15Key
+	buildh _Cons 2
+	build e_oskey_df14Key 0 e_oskey_nf14Key
+	buildh _Cons 2
+	build e_oskey_df13Key 0 e_oskey_nf13Key
+	buildh _Cons 2
+	build e_oskey_df12Key 0 e_oskey_nf12Key
+	buildh _Cons 2
+	build e_oskey_df11Key 0 e_oskey_nf11Key
+	buildh _Cons 2
+	build e_oskey_df10Key 0 e_oskey_nf10Key
+	buildh _Cons 2
+	build e_oskey_df9Key 0 e_oskey_nf9Key
+	buildh _Cons 2
+	build e_oskey_df8Key 0 e_oskey_nf8Key
+	buildh _Cons 2
+	build e_oskey_df7Key 0 e_oskey_nf7Key
+	buildh _Cons 2
+	build e_oskey_df6Key 0 e_oskey_nf6Key
+	buildh _Cons 2
+	build e_oskey_df5Key 0 e_oskey_nf5Key
+	buildh _Cons 2
+	build e_oskey_df4Key 0 e_oskey_nf4Key
+	buildh _Cons 2
+	build e_oskey_df3Key 0 e_oskey_nf3Key
+	buildh _Cons 2
+	build e_oskey_df2Key 0 e_oskey_nf2Key
+	buildh _Cons 2
+	build e_oskey_df1Key 0 e_oskey_nf1Key
+	buildh _Cons 2
+	build e_oskey_dendKey 0 e_oskey_nendKey
+	buildh _Cons 2
+	build e_oskey_dbeginKey 0 e_oskey_nbeginKey
+	buildh _Cons 2
+	build e_oskey_dbackSpaceKey 0 e_oskey_nbackSpaceKey
+	buildh _Cons 2
+	build e_oskey_ddeleteKey 0 e_oskey_ndeleteKey
+	buildh _Cons 2
+	build e_oskey_dpgDownKey 0 e_oskey_npgDownKey
+	buildh _Cons 2
+	build e_oskey_dpgUpKey 0 e_oskey_npgUpKey
+	buildh _Cons 2
+	build e_oskey_ddownKey 0 e_oskey_ndownKey
+	buildh _Cons 2
+	build e_oskey_dupKey 0 e_oskey_nupKey
+	buildh _Cons 2
+	build e_oskey_drightKey 0 e_oskey_nrightKey
+	buildh _Cons 2
+	build e_oskey_dleftKey 0 e_oskey_nleftKey
+	fillh _Cons 2 2
+.d 1 0
+	rtn
+.o 2 0
+s106
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jsr e_StdPStClass_sselectInputFile;13
+.o 3 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.92
+	build_r e_iostate_rPSt 2 0 1 0
+	buildh e_Data.Maybe_dNothing 0
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+else.92
+	push_a 0
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	buildh e_EdKeyMapping_dReadKeyMapFile 1
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr e_StdPStClass_saccFiles;8
+.o 3 0
+	push_args 0 3 3
+	jsr_eval 1
+	pushB_a 1
+	update_a 0 1
+	pop_a 1
+	push_b 0
+	notB
+	jmp_false else.93
+	build_r e_iostate_rPSt 2 0 3 0
+	buildh e_Data.Maybe_dNothing 0
+	update_a 1 6
+	updatepop_a 0 5
+	pop_b 1
+.d 2 0
+	rtn
+else.93
+	build_r e_iostate_rPSt 2 0 3 0
+	push_a 1
+	buildh e_Data.Maybe_dJust 1
+	update_a 1 6
+	updatepop_a 0 5
+	pop_b 1
+.d 2 0
+	rtn
+.o 10 0
+s107
+	push_a 5
+	buildh e_StdControl_dgetWindow 1
+	push_a 10
+	push_a 10
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 12
+	update_a 0 13
+	update_a 0 9
+	pop_a 1
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	push_a 0
+.d 1 0
+	jsr e_Data.Maybe_sisNothing
+.o 0 1 b
+	jmp_false else.94
+	push_a 2
+	push_a 2
+	push_a 12
+	push_a 12
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+.d 4 0
+	rtn
+else.94
+	push_a 0
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	build _ 5 n34
+	push_a 10
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n134
+	buildh _Nil 0
+	push_a 1
+	build _ 1 n135
+	push_a 10
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_StdControl_dsetControlTexts 1
+	push_a 4
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 14 16
+	update_a 13 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+.d 3 0
+	jsr e_StdPSt_sappPIO
+.o 2 0
+	push_a 4
+	push_a 4
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	rtn
+.n 1 _ ea135
+.o 1 0
+n135
+	push_node _cycle_in_spine 1
+.o 2 0
+ea135
+.o 2 0
+s135
+	push_a 0
+	jsr_eval 0
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s61
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.n 2 _ ea134
+.o 1 0
+n134
+	push_node _cycle_in_spine 2
+.o 3 0
+ea134
+.o 3 0
+s134
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh e_EdKeyMapping_d==;5 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp e_Table_stableLookup

@@ -1,0 +1,2825 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "timerevent" "20161223204045"
+.depend "timerdefaccess" "20161223204044"
+.depend "timeraccess" "20161223204044"
+.depend "receiveraccess" "20161223204043"
+.depend "StdReceiverDef" "20161223204043"
+.depend "roundrobin" "20161223204043"
+.depend "processstack" "20161223204043"
+.depend "timerhandle" "20161223204044"
+.depend "processhandle" "20161223204043"
+.depend "osmenu" "20161223204044"
+.depend "StdMenuDef" "20161223204043"
+.depend "menuhandle" "20161223204042"
+.depend "devicesystemstate" "20161223204042"
+.depend "keyfocus" "20161223204042"
+.depend "commondef" "20161223204042"
+.depend "receiverhandle" "20161223204043"
+.depend "StdWindowDef" "20161223204044"
+.depend "StdControlDef" "20161223204043"
+.depend "windowhandle" "20161223204044"
+.depend "StdTimerDef" "20161223204043"
+.depend "timertable" "20161223204044"
+.depend "semidynamic" "20161223204043"
+.depend "receivertable" "20161223204043"
+.depend "receivermessage" "20161223204043"
+.depend "deviceevents" "20170206121016"
+.depend "devicefunctions" "20161223204042"
+.depend "ossystem" "20161223204044"
+.depend "osguishare" "20161223204044"
+.depend "ostime" "20161223204044"
+.depend "clCrossCall_12" "20161223204044"
+.depend "osevent" "20161223204044"
+.depend "ostoolbar" "20161223204044"
+.depend "menuCrossCall_12" "20161223204044"
+.depend "osdocumentinterface" "20161223204044"
+.depend "osactivaterequests" "20161223204044"
+.depend "iostate" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "StdIOCommon" "20161223204043"
+.depend "StdPSt" "20161223204043"
+.depend "_SystemEnum" "20170313110416"
+.depend "StdEnum" "20170313110416"
+.depend "StdTuple" "20170313110416"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdReal" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdList" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "timerdevice" "20161223204044"
+.module m_timerdevice "timerdevice" "20161223204044"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod timerevent
+.impdesc e_timerevent_dtimerEvent
+.impmod timeraccess
+.implab e_timeraccess_sunbindTimerElementIds
+.impdesc e_timeraccess_didentifyTimerStateHandle
+.impmod receiveraccess
+.implab e_receiveraccess_sreceiverIdentified
+.implab e_receiveraccess_sreceiverHandleSyncMessage
+.impdesc e_receiveraccess_dreceiverAddASyncMessage
+.implab e_receiveraccess_nreceiverAddASyncMessage
+.impmod timerhandle
+.impdesc e_timerhandle_rTimerHandles
+.impdesc e_timerhandle_tTimerHandles
+.implab e_timerhandle_cTimerHandles
+.impdesc e_timerhandle_dTimerHandles.tTimers
+.implab e_timerhandle_nTimerHandles.tTimers e_timerhandle_eaTimerHandles.tTimers
+.impdesc e_timerhandle_rTimerLSHandle
+.impdesc e_timerhandle_tTimerLSHandle
+.implab e_timerhandle_cTimerLSHandle
+.impdesc e_timerhandle_rTimerHandle
+.impdesc e_timerhandle_tTimerHandle
+.implab e_timerhandle_cTimerHandle
+.impdesc e_timerhandle_rTimerReceiverHandle
+.impdesc e_timerhandle_rTimerIntroLSHandle
+.impdesc e_timerhandle_rTimerExtendLSHandle
+.impdesc e_timerhandle_rTimerChangeLSHandle
+.impdesc e_timerhandle_kTimerLSHandle
+.impdesc e_timerhandle_dTimerLSHandle
+.implab e_timerhandle_nTimerLSHandle e_timerhandle_eaTimerLSHandle
+.impdesc e_timerhandle_dTimerReceiverHandle
+.impdesc e_timerhandle_dTimerListLSHandle
+.impdesc e_timerhandle_dTimerElimLSHandle
+.impdesc e_timerhandle_dTimerIntroLSHandle
+.impdesc e_timerhandle_dTimerExtendLSHandle
+.impdesc e_timerhandle_dTimerChangeLSHandle
+.impmod devicesystemstate
+.impdesc e_devicesystemstate_dtimerSystemStateGetTimerHandles
+.implab e_devicesystemstate_stimerSystemStateGetTimerHandles
+.implab e_devicesystemstate_ntimerSystemStateGetTimerHandles
+.impdesc e_devicesystemstate_dTimerSystemState
+.impmod commondef
+.implab e_commondef_sfatalError
+.implab e_commondef_sstateMap2
+.implab e_commondef_suremove
+.impmod receiverhandle
+.impdesc e_receiverhandle_rReceiverHandle
+.impmod timertable
+.implab e_timertable_sremoveTimerFromTimerTable
+.impdesc e_timertable_rTimerLoc
+.impmod receivermessage
+.impdesc e_receivermessage_rSyncMessage
+.impmod deviceevents
+.impdesc e_deviceevents_kQASyncMessage
+.impdesc e_deviceevents_kASyncMessage
+.impdesc e_deviceevents_kSyncMessage
+.impdesc e_deviceevents_kReceiverEvent
+.impdesc e_deviceevents_kTimerEvent
+.impmod devicefunctions
+.impdesc e_devicefunctions_rDeviceFunctions
+.impmod iostate
+.implab e_iostate_sioStGetIdTable
+.implab e_iostate_sioStGetReceiverTable
+.implab e_iostate_sioStGetTimerTable
+.implab e_iostate_sioStGetIOId
+.implab e_iostate_sioStSetIdTable
+.implab e_iostate_sioStSetReceiverTable
+.implab e_iostate_sioStSetTimerTable
+.implab e_iostate_sioStSetDeviceFunctions
+.implab e_iostate_sioStRemoveDeviceFunctions
+.impdesc e_iostate_dioStHasDevice
+.implab e_iostate_sioStHasDevice
+.implab e_iostate_sioStGetDevice
+.impdesc e_iostate_dioStSetDevice
+.implab e_iostate_sioStSetDevice
+.implab e_iostate_nioStSetDevice e_iostate_eaioStSetDevice
+.impdesc e_iostate_rPSt
+.impdesc e_iostate_tPSt
+.implab e_iostate_cPSt
+.impmod device
+.impdesc e_device_dTimerDevice
+.impmod id
+.implab e_id_sremoveIdFromIdTable
+.impmod StdPSt
+.impdesc e_StdPSt_dappPIO
+.implab e_StdPSt_nappPIO
+.implab e_StdPSt_saccPIO
+.impmod StdFunc
+.impdesc e_StdFunc_did
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod StdList
+.impdesc e_StdList_d++
+.implab e_StdList_n++ e_StdList_ea++
+.desc d3 _hnf l3 1 0 "timerOpen"
+.o 2 0
+l3
+	pop_a 1
+.d 1 0
+	jsr ea3
+.o 2 0
+	build_r e_iostate_rPSt 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 1 0
+ea3
+	jsr_eval 0
+	repl_r_args 2 0
+.o 2 0
+s3
+	buildh e_device_dTimerDevice 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr e_iostate_sioStHasDevice
+.o 1 1 b
+	push_b 0
+	jmp_false else.1
+	push_a 0
+	push_a 3
+	push_a 3
+	update_a 2 1
+	update_a 1 5
+	updatepop_a 0 4
+	pop_b 1
+.d 2 0
+	rtn
+else.1
+	buildh _Nil 0
+	build_r e_timerhandle_rTimerHandles 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e_devicesystemstate_dTimerSystemState 1
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_iostate_sioStSetDevice
+.o 1 0
+.d 0 0
+	jsr s1
+.o 7 0
+	create
+	push_a 8
+	update_a 1 9
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 0 8
+	pop_a 1
+.d 9 0
+	jsr e_iostate_sioStSetDeviceFunctions
+.o 1 0
+	push_a 2
+	push_a 2
+	update_a 2 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.export e_timerdevice_stimerFunctions
+.descexp e_timerdevice_dtimerFunctions e_timerdevice_ntimerFunctions e_timerdevice_ltimerFunctions 0 0 "timerFunctions"
+.o 1 0
+e_timerdevice_ltimerFunctions
+	halt
+.n 0 e_timerdevice_dtimerFunctions
+.o 1 0
+e_timerdevice_ntimerFunctions
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea1
+.o 7 0
+	fill_r e_devicefunctions_rDeviceFunctions 7 0 7 0 0
+	pop_a 7
+.d 1 0
+	rtn
+.o 0 0
+ea1
+.o 0 0
+e_timerdevice_stimerFunctions
+.o 0 0
+s1
+	buildh d4 0
+	buildh d3 0
+	buildh d5 0
+	buildh e_timerevent_dtimerEvent 0
+	buildh e_StdFunc_did 0
+	buildh e_StdFunc_did 0
+	buildh e_device_dTimerDevice 0
+.d 7 0
+	rtn
+.desc d4 _hnf l4 1 0 "timerClose"
+.o 2 0
+l4
+	pop_a 1
+.d 1 0
+	jsr ea4
+.o 2 0
+	build_r e_iostate_rPSt 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 1 0
+ea4
+	jsr_eval 0
+	repl_r_args 2 0
+.o 2 0
+s4
+	buildh e_device_dTimerDevice 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr e_iostate_sioStGetDevice
+.o 2 1 b
+	push_b 0
+	notB
+	jmp_false else.2
+	push_a 1
+	push_a 4
+	push_a 4
+	update_a 2 1
+	update_a 1 6
+	updatepop_a 0 5
+	pop_b 1
+.d 2 0
+	rtn
+else.2
+	push_a 1
+	pop_b 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetReceiverTable
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetTimerTable
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIdTable
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_iostate_sioStGetIOId
+.o 2 0
+	push_a 2
+	push_a 5
+	push_a 5
+	buildh _Tuple 3
+	push_a 6
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 8
+	update_a 0 6
+	update_a 0 7
+	update_a 0 5
+	pop_a 1
+.d 1 0
+	jsr e_devicesystemstate_stimerSystemStateGetTimerHandles
+.o 1 0
+	push_a 2
+	buildh d6 1
+	update_a 4 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 3 0
+	jsr e_commondef_sstateMap2
+.o 1 0
+	push_arg 0 3 2
+	jsr_eval 0
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_iostate_sioStSetReceiverTable
+.o 1 0
+	push_arg 1 3 1
+	jsr_eval 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStSetTimerTable
+.o 1 0
+	push_arg 1 3 3
+	jsr_eval 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_iostate_sioStSetIdTable
+.o 1 0
+	buildh e_device_dTimerDevice 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_iostate_sioStRemoveDeviceFunctions
+.o 1 0
+	push_a 2
+	push_a 2
+	update_a 2 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.desc d6 _hnf l6 3 0 "closeTimerIds;5"
+.a 0 a6
+.o 2 0
+l6
+	repl_args 2 2
+.o 3 0
+a6
+.o 3 0
+ea6
+	push_a 2
+	jsr_eval 0
+	repl_args 3 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	jsr_eval 4
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	pop_a 1
+	push_r_args_u 0 3 2
+	update_a 0 1
+	pop_a 1
+	pop_b 2
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 4
+	push_a 7
+	update_a 8 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 5 0
+	jsr e_timeraccess_sunbindTimerElementIds
+.o 3 0
+	push_a 2
+	push_a 4
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 2 0
+	jsr e_id_sremoveIdFromIdTable
+.o 1 1 b
+	pop_b 1
+	buildh e_device_dTimerDevice 0
+	push_a 5
+	push_a 6
+	push_a 8
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	push_a 5
+	push_a 4
+	update_a 1 5
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 0 4
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 11
+	update_a 0 10
+	pop_a 1
+.d 5 0
+	jsr e_timertable_sremoveTimerFromTimerTable
+.o 1 1 b
+	pop_b 1
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	push_a 2
+	push_a 2
+	push_a 2
+	buildh _Tuple 3
+	updatepop_a 0 3
+.d 1 0
+	rtn
+.desc d5 _hnf l5 2 0 "timerIO"
+.a 0 a5
+.o 2 0
+l5
+	repl_args 1 1
+.o 2 0
+a5
+.d 2 0
+	jsr ea5
+.o 3 0
+	build_r e_iostate_rPSt 2 0 1 0
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 3
+.d 1 0
+	rtn
+.o 2 0
+ea5
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 3 0
+s5
+	buildh e_device_dTimerDevice 0
+	buildh e_iostate_dioStHasDevice 1
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr e_StdPSt_saccPIO
+.o 3 0
+	pushB_a 0
+	notB
+	jmp_false else.3
+	buildAC "could not retrieve TimerSystemState from IOSt"
+	buildAC "timerFunctions.dDoIO"
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jsr s2
+.o 1 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	rtn
+else.3
+	push_a 2
+	push_a 2
+	push_a 5
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s23
+.o 3 0
+s23
+	pushD_a 0
+	eqD_b e_deviceevents_kTimerEvent 0
+	jmp_true case.4
+	eqD_b e_deviceevents_kReceiverEvent 0
+	jmp_true case.5
+	pop_b 1
+	jmp case.6
+case.4
+	pop_b 1
+	push_r_args 0 1 1
+	repl_args 4 4
+	pop_a 2
+	buildh e_device_dTimerDevice 0
+	push_a 5
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr e_iostate_sioStGetDevice
+.o 2 1 b
+	push_a 1
+	push_a 7
+	push_a 7
+	update_a 2 1
+	update_a 1 2
+	updatepop_a 0 1
+	push_a 2
+	jsr_eval 0
+	pop_b 1
+	buildh _Nil 0
+	update_a 0 4
+	update_a 0 10
+	update_a 0 9
+	update_a 0 5
+	pop_a 1
+.d 1 0
+	jsr e_devicesystemstate_stimerSystemStateGetTimerHandles
+.o 1 0
+	push_b 0
+	push_a 6
+	push_a 6
+	updatepop_b 0 1
+	update_a 9 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 5 1 i
+	jsr s9
+.o 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	rtn
+case.5
+	pop_b 1
+	push_args 0 1 1
+	pushD_a 0
+	eqD_b e_deviceevents_kQASyncMessage 0
+	jmp_true case.7
+	eqD_b e_deviceevents_kASyncMessage 0
+	jmp_true case.8
+	jmp case.9
+case.7
+	pop_b 1
+	repl_args 2 2
+	push_a 4
+	push_a 4
+	push_a 3
+	push_a 3
+	update_a 6 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr s13
+.o 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	rtn
+case.8
+	pop_b 1
+	repl_args 1 1
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 4 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s18
+.o 2 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	rtn
+case.9
+	pop_b 1
+	repl_args 4 4
+	push_a 6
+	push_a 6
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 6 0
+	jsr s22
+.o 6 0
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 3
+	build_r e_deviceevents_kSyncMessage 4 0 0 0
+	update_a 0 4
+	pop_a 4
+	build_r e_deviceevents_kReceiverEvent 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	push_a 6
+	push_a 6
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 3 0
+	rtn
+case.6
+	buildAC "device event passed timer event filter without handling"
+	buildAC "timerIO"
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s2
+.o 1 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	rtn
+.o 6 0
+s22
+	push_args_u 0 4 4
+	pop_a 3
+	create 4
+	push_a 7
+	buildh e_device_dTimerDevice 0
+.d 2 0
+	jsr e_iostate_sioStGetDevice
+.o 2 1 b
+	push_a 0
+	jsr_eval 0
+	pop_b 1
+	updatepop_a 0 1
+.d 1 0
+	jsr e_devicesystemstate_stimerSystemStateGetTimerHandles
+.o 1 0
+	push_a 2
+	build d_S.2 -1 n_S.2
+	push_a 1
+	pop_a 1
+	build _ 1 n56
+	buildh e_devicesystemstate_dTimerSystemState 1
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_iostate_dioStSetDevice 2 e_iostate_nioStSetDevice
+	push_a 10
+	push_a 10
+	update_a 0 1
+	pop_a 1
+	build _ 2 n55
+	push_a 1
+	build_r e_receivermessage_rSyncMessage 4 0 6 0
+	push_a 6
+	fill _ 4 n21 6
+	jsr_eval 2
+	push_arg 2 3 3
+	jsr_eval 0
+	repl_r_args 2 0
+	push_arg 4 3 1
+	jsr_eval 0
+	repl_r_args 4 0
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 6 0
+	rtn
+.n 2 _
+.o 1 0
+n55
+	push_node _cycle_in_spine 2
+.o 2 0
+ea55
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n56
+	push_node _cycle_in_spine 1
+.o 1 0
+ea56
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+	fill_r e_timerhandle_rTimerHandles 1 0 1 0 0
+	pop_a 1
+.d 1 0
+	rtn
+.n 4 _
+.o 1 0
+n21
+	push_node _cycle_in_spine 4
+.d 4 0
+	jsr ea21
+.o 6 0
+	push_a 5
+	push_a 5
+	build_r e_receivermessage_rSyncMessage 4 0 2 0
+	fillh _Tuple 3 9
+	pop_a 6
+.d 1 0
+	rtn
+.o 4 0
+ea21
+	push_r_args 1 4 0
+	update_a 3 5
+	update_a 1 3
+	update_a 4 1
+	update_a 2 4
+	update_a 0 2
+	pop_a 1
+.o 7 0
+s21
+	eq_desc _Cons 2 5
+	jmp_true case.10
+	jmp case.11
+case.10
+	push_args 5 2 2
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	push_r_args_u 1 3 2
+	pop_a 2
+	pop_b 2
+	push_a 11
+	push_a 2
+	push_a 2
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 8 0
+	jsr s20
+.o 6 1 b
+	push_b 0
+	jmp_false else.12
+	push_a 5
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 10
+	push_a 7
+	fill2_r e_timerhandle_rTimerHandle 3 2 10 000100
+	push_a 9
+	push_a 3
+	build d_S.1 -1 n_S.1
+	build _ 2 n50
+	fill1 _Cons 2 11 111
+	push_a 9
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+	pop_b 1
+.d 6 0
+	rtn
+else.12
+	push_a 5
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 10
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 16
+	pop_b 1
+	update_a 21 22
+	update_a 20 21
+	update_a 19 20
+	update_a 18 19
+	update_a 15 18
+	update_a 14 17
+	update_a 12 16
+	update_a 7 15
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 7 0
+	jsr s21
+.o 6 0
+	push_a 4
+	push_a 8
+	fill2_r e_timerhandle_rTimerHandle 3 2 10 000100
+	push_a 9
+	push_a 8
+	build d_S.1 -1 n_S.1
+	build _ 2 n51
+	fill1 _Cons 2 11 111
+	push_a 9
+	push_a 6
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 6
+	update_a 0 5
+	pop_a 1
+	update_a 5 20
+	update_a 4 19
+	update_a 3 18
+	update_a 2 17
+	update_a 1 16
+	updatepop_a 0 15
+.d 6 0
+	rtn
+case.11
+	buildh _Nil 0
+	push_a 7
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 5
+	update_a 5 6
+	update_a 0 5
+	pop_a 1
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 6 0
+	rtn
+.n 2 _ ea51
+.o 1 0
+n51
+	push_node _cycle_in_spine 2
+.o 3 0
+ea51
+.o 3 0
+s51
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	fill_r e_timerhandle_kTimerLSHandle 2 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.n 2 _ ea50
+.o 1 0
+n50
+	push_node _cycle_in_spine 2
+.o 3 0
+ea50
+.o 3 0
+s50
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	fill_r e_timerhandle_kTimerLSHandle 2 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.o 8 0
+s19
+	pushD_a 5
+	eqD_b e_timerhandle_dTimerReceiverHandle 1
+	jmp_true case.13
+	eqD_b e_timerhandle_dTimerListLSHandle 1
+	jmp_true case.14
+	eqD_b e_timerhandle_dTimerElimLSHandle 1
+	jmp_true case.15
+	eqD_b e_timerhandle_dTimerIntroLSHandle 1
+	jmp_true case.16
+	eqD_b e_timerhandle_dTimerExtendLSHandle 1
+	jmp_true case.17
+	jmp case.18
+case.13
+	pop_b 1
+	push_args_u 5 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	update_a 0 1
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 7 0
+	push_a 9
+	buildh _Nil 0
+	update_a 0 11
+	pop_a 1
+.d 8 0
+	jsr e_receiveraccess_sreceiverIdentified
+.o 0 1 b
+	notB
+	jmp_false else.19
+	push_a 9
+	push_a 9
+	buildh _Tuple 2
+	fill1 e_timerhandle_dTimerReceiverHandle 1 8 00
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	pushB FALSE
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 6 1 b
+	rtn
+else.19
+	push_a 9
+	push_a 9
+	push_r_args 2 7 0
+	push_a 15
+	push_a 15
+	push_a 15
+	push_a 15
+	update_a 14 15
+	update_a 12 14
+	update_a 11 13
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 13 0
+	jsr e_receiveraccess_sreceiverHandleSyncMessage
+.o 3 0
+	push_a 2
+	build d_S.2 -1 n_S.2
+	push_a 3
+	build d_S.1 -1 n_S.1
+	buildh _Tuple 2
+	push_a 2
+	fill1_r e_timerhandle_rTimerReceiverHandle 2 0 5 010
+	push_a 4
+	fill1 e_timerhandle_dTimerReceiverHandle 1 10 01
+	push_a 9
+	push_a 2
+	jsr_eval 0
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 4 2
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pushB TRUE
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+.d 6 1 b
+	rtn
+case.14
+	pop_b 1
+	push_args_u 5 1 1
+	push_a 8
+	push_a 8
+	push_a 2
+	jsr_eval 0
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 7 13
+	update_a 6 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 8 0
+	jsr s20
+.o 6 1 b
+	push_a 5
+	build d_S.2 -1 n_S.2
+	push_a 6
+	build d_S.1 -1 n_S.1
+	buildh _Tuple 2
+	push_a 5
+	fill1 e_timerhandle_dTimerListLSHandle 1 8 01
+	push_a 7
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_b 0
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 1
+.d 6 1 b
+	rtn
+case.15
+	pop_b 1
+	push_args_u 5 1 1
+	push_a 8
+	push_a 8
+	push_a 2
+	jsr_eval 0
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 7 13
+	update_a 6 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 8 0
+	jsr s20
+.o 6 1 b
+	push_a 5
+	build d_S.2 -1 n_S.2
+	push_a 6
+	build d_S.1 -1 n_S.1
+	buildh _Tuple 2
+	push_a 5
+	fill1 e_timerhandle_dTimerElimLSHandle 1 8 01
+	push_a 7
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_b 0
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 1
+.d 6 1 b
+	rtn
+case.16
+	pop_b 1
+	push_args_u 5 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	push_a 10
+	push_a 1
+	push_a 3
+	jsr_eval 0
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 10 15
+	update_a 7 14
+	update_a 6 13
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 8 0
+	jsr s20
+.o 6 1 b
+	push_a 5
+	build d_S.2 -1 n_S.2
+	push_a 9
+	buildh _Tuple 2
+	push_a 6
+	build d_S.1 -1 n_S.1
+	push_a 6
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fill1_r e_timerhandle_rTimerIntroLSHandle 2 0 9 011
+	push_a 7
+	fill1 e_timerhandle_dTimerIntroLSHandle 1 9 01
+	push_a 8
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_b 0
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+	updatepop_b 0 1
+.d 6 1 b
+	rtn
+case.17
+	pop_b 1
+	push_args_u 5 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 8
+	fill1 _Tuple 2 2 101
+	push_a 1
+	push_a 10
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 7 14
+	update_a 6 13
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 8 0
+	jsr s20
+.o 6 1 b
+	push_a 5
+	build d_S.1 -1 n_S.1
+	push_a 6
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.2 -1 n_S.2
+	buildh _Tuple 2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 7
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_timerhandle_rTimerExtendLSHandle 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	fill1 e_timerhandle_dTimerExtendLSHandle 1 9 01
+	push_a 8
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_b 0
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+	updatepop_b 0 1
+.d 6 1 b
+	rtn
+case.18
+	pop_b 1
+	push_args_u 5 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	push_a 10
+	push_a 1
+	push_a 3
+	jsr_eval 0
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 17 18
+	update_a 16 17
+	update_a 10 16
+	update_a 7 15
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 8 0
+	jsr s20
+.o 6 1 b
+	push_a 5
+	build d_S.2 -1 n_S.2
+	push_a 9
+	buildh _Tuple 2
+	push_a 6
+	build d_S.1 -1 n_S.1
+	push_a 6
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fill1_r e_timerhandle_rTimerChangeLSHandle 2 0 9 011
+	push_a 7
+	fill1 e_timerhandle_dTimerChangeLSHandle 1 9 01
+	push_a 8
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_b 0
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 1
+.d 6 1 b
+	rtn
+.o 8 0
+s20
+	eq_desc _Cons 2 5
+	jmp_true case.20
+	jmp case.21
+case.20
+	push_args 5 2 2
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+	push_a 9
+	push_a 9
+	push_a 2
+	jsr_eval 0
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 9
+	update_a 10 15
+	update_a 9 14
+	update_a 7 13
+	update_a 6 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 8 0
+	jsr s19
+.o 6 1 b
+	push_b 0
+	jmp_false else.22
+	push_a 5
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	buildh _Tuple 2
+	push_a 8
+	push_a 7
+	buildh _Cons 2
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_b 0
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	updatepop_b 0 1
+.d 6 1 b
+	rtn
+else.22
+	push_a 5
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 9
+	jsr_eval 0
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 7
+	push_a 15
+	update_a 13 16
+	update_a 7 15
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 8 0
+	jsr s20
+.o 6 1 b
+	push_a 5
+	build d_S.2 -1 n_S.2
+	push_a 6
+	build d_S.1 -1 n_S.1
+	buildh _Tuple 2
+	push_a 5
+	push_a 8
+	buildh _Cons 2
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_b 0
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 2
+.d 6 1 b
+	rtn
+case.21
+	push_a 7
+	push_a 7
+	buildh _Tuple 2
+	buildh _Nil 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	pushB FALSE
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 6 1 b
+	rtn
+.o 3 0
+s18
+	push_args_u 0 4 4
+	pop_a 3
+	create 3
+	push_a 4
+	buildh e_device_dTimerDevice 0
+.d 2 0
+	jsr e_iostate_sioStGetDevice
+.o 2 1 b
+	push_a 0
+	jsr_eval 0
+	pop_b 1
+	updatepop_a 0 1
+.d 1 0
+	jsr e_devicesystemstate_stimerSystemStateGetTimerHandles
+.o 1 0
+	push_a 2
+	build d_S.1 -1 n_S.1
+	push_a 1
+	pop_a 1
+	build _ 1 n58
+	buildh e_devicesystemstate_dTimerSystemState 1
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_iostate_dioStSetDevice 2 e_iostate_nioStSetDevice
+	push_a 7
+	push_a 7
+	update_a 0 1
+	pop_a 1
+	build _ 2 n57
+	push_a 1
+	push_a 5
+	fill _ 3 n17 5
+	jsr_eval 2
+	push_arg 2 2 2
+	jsr_eval 0
+	updatepop_a 0 7
+	repl_r_args 2 0
+.d 2 0
+	rtn
+.n 2 _
+.o 1 0
+n57
+	push_node _cycle_in_spine 2
+.o 2 0
+ea57
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	fill_r e_iostate_rPSt 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n58
+	push_node _cycle_in_spine 1
+.o 1 0
+ea58
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+	fill_r e_timerhandle_rTimerHandles 1 0 1 0 0
+	pop_a 1
+.d 1 0
+	rtn
+.n 3 _
+.o 1 0
+n17
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea17
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 0
+ea17
+	jsr_eval 1
+	jsr_eval 0
+.o 3 0
+s17
+	eq_desc _Cons 2 1
+	jmp_true case.23
+	jmp case.24
+case.23
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	push_r_args_u 1 3 2
+	pop_a 2
+	pop_b 2
+	push_a 7
+	push_a 2
+	buildh _Tuple 2
+	push_a 1
+	push_a 7
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jsr s16
+.o 2 1 b
+	push_b 0
+	jmp_false else.25
+	push_a 1
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 6
+	push_a 3
+	fill2_r e_timerhandle_rTimerHandle 3 2 6 000100
+	push_a 5
+	push_a 3
+	build d_S.1 -1 n_S.1
+	build _ 2 n52
+	fill1 _Cons 2 7 111
+	push_a 5
+	update_a 1 10
+	updatepop_a 0 9
+	pop_b 1
+.d 2 0
+	rtn
+else.25
+	push_a 1
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 6
+	push_a 8
+	build _ 3 n17
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	fill2_r e_timerhandle_rTimerHandle 3 2 7 000100
+	push_a 6
+	push_a 4
+	build d_S.1 -1 n_S.1
+	build _ 2 n53
+	fill1 _Cons 2 8 111
+	push_a 6
+	update_a 1 11
+	updatepop_a 0 10
+	pop_b 1
+.d 2 0
+	rtn
+case.24
+	buildh _Nil 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.n 2 _ ea53
+.o 1 0
+n53
+	push_node _cycle_in_spine 2
+.o 3 0
+ea53
+.o 3 0
+s53
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	fill_r e_timerhandle_kTimerLSHandle 2 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.n 2 _ ea52
+.o 1 0
+n52
+	push_node _cycle_in_spine 2
+.o 3 0
+ea52
+.o 3 0
+s52
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	fill_r e_timerhandle_kTimerLSHandle 2 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.o 3 0
+s15
+	pushD_a 1
+	eqD_b e_timerhandle_dTimerListLSHandle 1
+	jmp_true case.26
+	eqD_b e_timerhandle_dTimerElimLSHandle 1
+	jmp_true case.27
+	eqD_b e_timerhandle_dTimerIntroLSHandle 1
+	jmp_true case.28
+	eqD_b e_timerhandle_dTimerExtendLSHandle 1
+	jmp_true case.29
+	eqD_b e_timerhandle_dTimerChangeLSHandle 1
+	jmp_true case.30
+	jmp case.31
+case.26
+	pop_b 1
+	push_args_u 1 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 4
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 5 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s16
+.o 2 1 b
+	push_a 0
+	fill1 e_timerhandle_dTimerListLSHandle 1 3 01
+	push_a 2
+	push_a 2
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+case.27
+	pop_b 1
+	push_args_u 1 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 4
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 5 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s16
+.o 2 1 b
+	push_a 0
+	fill1 e_timerhandle_dTimerElimLSHandle 1 3 01
+	push_a 2
+	push_a 2
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+case.28
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	jsr_eval 5
+	push_args_u 5 2 2
+	update_a 0 1
+	pop_a 1
+	push_a 1
+	fill1 _Tuple 2 7 010
+	push_a 6
+	push_a 3
+	jsr_eval 0
+	push_a 6
+	update_a 8 9
+	update_a 6 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jsr s16
+.o 2 1 b
+	push_a 1
+	build d_S.2 -1 n_S.2
+	push_a 3
+	buildh _Tuple 2
+	push_a 2
+	build d_S.1 -1 n_S.1
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fill1_r e_timerhandle_rTimerIntroLSHandle 2 0 6 011
+	push_a 4
+	fill1 e_timerhandle_dTimerIntroLSHandle 1 6 01
+	push_a 5
+	push_b 0
+	update_a 1 6
+	updatepop_a 0 5
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+case.29
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	jsr_eval 4
+	push_args_u 4 2 2
+	update_a 0 1
+	pop_a 1
+	push_a 0
+	fill1 _Tuple 2 3 101
+	push_a 2
+	fill1 _Tuple 2 6 010
+	push_a 5
+	push_a 2
+	jsr_eval 0
+	push_a 5
+	update_a 7 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jsr s16
+.o 2 1 b
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 2
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.2 -1 n_S.2
+	buildh _Tuple 2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_timerhandle_rTimerExtendLSHandle 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	fill1 e_timerhandle_dTimerExtendLSHandle 1 6 01
+	push_a 5
+	push_b 0
+	update_a 1 6
+	updatepop_a 0 5
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+case.30
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	jsr_eval 5
+	push_args_u 5 2 2
+	update_a 0 1
+	pop_a 1
+	push_a 1
+	fill1 _Tuple 2 7 010
+	push_a 6
+	push_a 3
+	jsr_eval 0
+	push_a 6
+	update_a 8 9
+	update_a 6 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jsr s16
+.o 2 1 b
+	push_a 1
+	build d_S.2 -1 n_S.2
+	push_a 3
+	buildh _Tuple 2
+	push_a 2
+	build d_S.1 -1 n_S.1
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fill1_r e_timerhandle_rTimerChangeLSHandle 2 0 6 011
+	push_a 4
+	fill1 e_timerhandle_dTimerChangeLSHandle 1 6 01
+	push_a 5
+	push_b 0
+	update_a 1 6
+	updatepop_a 0 5
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+case.31
+	pop_b 1
+	push_args_u 1 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 4
+	push_args_u 4 2 2
+	pop_a 2
+	push_a 0
+	jsr_eval 0
+	repl_r_args 7 0
+	push_a 9
+	buildh _Nil 0
+	update_a 0 11
+	pop_a 1
+.d 8 0
+	jsr e_receiveraccess_sreceiverIdentified
+.o 0 1 b
+	jmp_false else.32
+	fill1 _Tuple 2 4 000
+	push_a 4
+	push_a 1
+	build _ 2 n14
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	buildh _Tuple 2
+	push_a 2
+	build d_S.1 -1 n_S.1
+	fill1_r e_timerhandle_rTimerReceiverHandle 2 0 5 010
+	push_a 4
+	fill1 e_timerhandle_dTimerReceiverHandle 1 7 01
+	push_a 6
+	pushB TRUE
+	update_a 1 8
+	updatepop_a 0 7
+.d 2 1 b
+	rtn
+else.32
+	fill1 _Tuple 2 4 000
+	push_a 4
+	fill1 e_timerhandle_dTimerReceiverHandle 1 4 00
+	push_a 4
+	pushB FALSE
+	update_a 1 6
+	updatepop_a 0 5
+.d 2 1 b
+	rtn
+.o 3 0
+s16
+	eq_desc _Cons 2 1
+	jmp_true case.33
+	jmp case.34
+case.33
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 5
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 5 7
+	update_a 4 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s15
+.o 2 1 b
+	push_b 0
+	jmp_false else.35
+	push_a 2
+	push_a 1
+	buildh _Cons 2
+	push_a 2
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 5
+	updatepop_a 0 4
+	updatepop_b 0 1
+.d 2 1 b
+	rtn
+else.35
+	push_a 2
+	jsr_eval 0
+	push_a 2
+	push_a 5
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr s16
+.o 2 1 b
+	push_a 0
+	push_a 3
+	buildh _Cons 2
+	push_a 2
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 2
+.d 2 1 b
+	rtn
+case.34
+	buildh _Nil 0
+	push_a 3
+	pushB FALSE
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 1 b
+	rtn
+.n 2 _
+.o 1 0
+n14
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea14
+.o 8 0
+	push_a 7
+	build_r e_receiverhandle_rReceiverHandle 7 0 1 0
+	fillh _Tuple 2 10
+	pop_a 8
+.d 1 0
+	rtn
+.o 2 0
+ea14
+	jsr_eval 0
+	repl_r_args 7 0
+.o 8 0
+s14
+	jmp case.36
+case.36
+	jsr_eval 1
+	eq_desc _Cons 2 1
+	jmp_true case.38
+	jmp case.37
+case.38
+	push_args 1 2 2
+	jsr_eval 9
+	push_args_u 9 2 2
+	pop_a 2
+	fill1 _Tuple 2 9 000
+	push_a 9
+	push_a 1
+	push_a 8
+	build _ 3 n54
+	push_a 0
+	build d_S.3 -1 n_S.3
+	push_a 1
+	build d_S.1 -1 n_S.1
+	buildh _Tuple 2
+	push_a 3
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 7 1
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+.d 8 0
+	rtn
+case.37
+	buildAC "message queue of target receiver is empty"
+	buildAC "asyncReceiverHandle"
+	update_a 1 9
+	updatepop_a 0 8
+.d 2 0
+	jsr s2
+.o 1 0
+	repl_args 2 2
+	jsr_eval 0
+	repl_r_args 7 0
+.d 8 0
+	rtn
+.n 3 _ ea54
+.o 1 0
+n54
+	push_node _cycle_in_spine 3
+.o 4 0
+ea54
+	jsr_eval 2
+.o 4 0
+s54
+	push_a 2
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	jsr_ap 2
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 4 0
+s13
+	push_args_u 0 4 4
+	pop_a 3
+	push_a 4
+	buildh e_device_dTimerDevice 0
+.d 2 0
+	jsr e_iostate_sioStGetDevice
+.o 2 1 b
+	push_a 0
+	build e_devicesystemstate_dtimerSystemStateGetTimerHandles 1 e_devicesystemstate_ntimerSystemStateGetTimerHandles
+	push_a 0
+	build e_timerhandle_dTimerHandles.tTimers -4 e_timerhandle_nTimerHandles.tTimers
+.impmod receivermessage
+.impdesc e_receivermessage_rQASyncMessage
+	build_r e_receivermessage_rQASyncMessage 2 0 5 0
+	push_a 5
+	build _ 3 n12
+	push_a 1
+	build _ 2 n59
+	buildh e_devicesystemstate_dTimerSystemState 1
+	create
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 3 0
+	jsr e_iostate_sioStSetDevice
+.o 1 0
+	push_a 2
+	push_a 2
+	update_a 2 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.n 2 _
+.o 1 0
+n59
+	push_node _cycle_in_spine 2
+.o 2 0
+ea59
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	repl_r_args 1 0
+	update_a 1 0
+	fill_r e_timerhandle_rTimerHandles 1 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.n 3 _ ea12
+.o 1 0
+n12
+	push_node _cycle_in_spine 3
+.o 4 0
+ea12
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 5 0
+s12
+	eq_desc _Cons 2 3
+	jmp_true case.39
+	jmp case.40
+case.39
+	push_args 3 2 2
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+	jsr_eval 0
+	repl_args 2 2
+	push_a 1
+	push_a 1
+	pop_a 1
+	push_r_args_u 0 3 2
+	pop_a 2
+	pop_b 2
+	push_a 0
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jsr s11
+.o 1 1 b
+	push_b 0
+	jmp_false else.41
+	push_a 0
+	fill2_r e_timerhandle_rTimerHandle 3 2 2 000100
+	push_a 1
+	push_a 4
+	push_a 4
+	update_a 0 1
+	pop_a 1
+	build _ 2 n60
+	build e_timerhandle_dTimerLSHandle 1 e_timerhandle_nTimerLSHandle
+	push_a 5
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh _Cons 2 11
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+else.41
+	build_r e_receivermessage_rQASyncMessage 2 0 6 0
+	push_a 5
+	push_a 7
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	build _ 3 n12
+	push_a 1
+	fill2_r e_timerhandle_rTimerHandle 3 2 3 000100
+	push_a 2
+	push_a 5
+	push_a 5
+	update_a 0 1
+	pop_a 1
+	build _ 2 n61
+	build e_timerhandle_dTimerLSHandle 1 e_timerhandle_nTimerLSHandle
+	fillh _Cons 2 11
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+case.40
+	fillh _Nil 0 4
+	pop_a 4
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n60
+	push_node _cycle_in_spine 2
+.o 2 0
+ea60
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	fill_r e_timerhandle_rTimerLSHandle 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n61
+	push_node _cycle_in_spine 2
+.o 2 0
+ea61
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	fill_r e_timerhandle_rTimerLSHandle 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 4 0
+s10
+	jmp case.42
+case.42
+	eq_desc e_timerhandle_dTimerReceiverHandle 1 3
+	jmp_true case.44
+	jmp case.43
+case.44
+	push_args 3 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	update_a 0 1
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	repl_r_args 7 0
+	push_a 9
+.d 8 0
+	jsr e_receiveraccess_sreceiverIdentified
+.o 0 1 b
+	jmp_false else.45
+	push_a 0
+	push_a 5
+	push_a 4
+	build e_receiveraccess_dreceiverAddASyncMessage 3 e_receiveraccess_nreceiverAddASyncMessage
+	fill1_r e_timerhandle_rTimerReceiverHandle 2 0 2 010
+	push_a 1
+	buildh e_timerhandle_dTimerReceiverHandle 1
+	pushB TRUE
+	updatepop_a 0 6
+.d 1 1 b
+	rtn
+else.45
+	push_a 1
+	buildh e_timerhandle_dTimerReceiverHandle 1
+	pushB FALSE
+	updatepop_a 0 6
+.d 1 1 b
+	rtn
+case.43
+	pushD_a 3
+	eqD_b e_timerhandle_dTimerListLSHandle 1
+	jmp_true case.46
+	eqD_b e_timerhandle_dTimerElimLSHandle 1
+	jmp_true case.47
+	eqD_b e_timerhandle_dTimerIntroLSHandle 1
+	jmp_true case.48
+	eqD_b e_timerhandle_dTimerExtendLSHandle 1
+	jmp_true case.49
+	eqD_b e_timerhandle_dTimerChangeLSHandle 1
+	jmp_true case.50
+	pop_b 1
+	jmp s10.1
+case.46
+	pop_b 1
+	push_args_u 3 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr s11
+.o 1 1 b
+	push_a 0
+	fill1 e_timerhandle_dTimerListLSHandle 1 2 01
+	push_a 1
+	push_b 0
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+case.47
+	pop_b 1
+	push_args_u 3 1 1
+	push_a 0
+	jsr_eval 0
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr s11
+.o 1 1 b
+	push_a 0
+	fill1 e_timerhandle_dTimerElimLSHandle 1 2 01
+	push_a 1
+	push_b 0
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+case.48
+	pop_b 1
+	push_args_u 3 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr s11
+.o 1 1 b
+	push_a 0
+	fill1_r e_timerhandle_rTimerIntroLSHandle 2 0 2 001
+	push_a 1
+	fill1 e_timerhandle_dTimerIntroLSHandle 1 3 01
+	push_a 2
+	push_b 0
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+case.49
+	pop_b 1
+	push_args_u 3 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr s11
+.o 1 1 b
+	push_a 0
+	fill1_r e_timerhandle_rTimerExtendLSHandle 2 0 2 001
+	push_a 1
+	fill1 e_timerhandle_dTimerExtendLSHandle 1 3 01
+	push_a 2
+	push_b 0
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+case.50
+	pop_b 1
+	push_args_u 3 1 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jsr s11
+.o 1 1 b
+	push_a 0
+	fill1_r e_timerhandle_rTimerChangeLSHandle 2 0 2 001
+	push_a 1
+	fill1 e_timerhandle_dTimerChangeLSHandle 1 3 01
+	push_a 2
+	push_b 0
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+s10.1
+	pop_a 4
+	pushD m_timerdevice
+	pushD x_10
+.d 0 2 ii
+	jmp _match_error
+.string x_10 "qMessage`;9"
+.o 4 0
+s11
+	eq_desc _Cons 2 3
+	jmp_true case.51
+	jmp case.52
+case.51
+	push_args 3 2 2
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jsr s10
+.o 1 1 b
+	push_b 0
+	jmp_false else.53
+	push_a 1
+	push_a 1
+	buildh _Cons 2
+	push_b 0
+	updatepop_a 0 6
+	updatepop_b 0 1
+.d 1 1 b
+	rtn
+else.53
+	push_a 1
+	jsr_eval 0
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jsr s11
+.o 1 1 b
+	push_a 0
+	push_a 2
+	buildh _Cons 2
+	push_b 0
+	updatepop_a 0 2
+	updatepop_b 0 2
+.d 1 1 b
+	rtn
+case.52
+	buildh _Nil 0
+	pushB FALSE
+	updatepop_a 0 4
+.d 1 1 b
+	rtn
+.o 5 1 i
+s9
+	create 3
+	buildAC "timer could not be found"
+	buildh ARRAY 1
+	buildAC "timerIO (TimerEvent _)"
+	buildh ARRAY 1
+	build _ 2 n2
+	push_a 2
+	buildh e_timeraccess_didentifyTimerStateHandle 1
+	push_a 5
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+.d 3 0
+	jsr e_commondef_suremove
+.o 2 1 b
+	build_r e_iostate_rPSt 2 0 6 0
+	buildh _Nil 0
+	push_a 4
+	build d_S.1 -1 n_S.1
+	buildh _Cons 2
+	push_a 3
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 7
+	pop_a 1
+	build _ 1 n62
+	buildh e_devicesystemstate_dTimerSystemState 1
+	buildh e_iostate_dioStSetDevice 1
+	build e_StdPSt_dappPIO 2 e_StdPSt_nappPIO
+	push_a 1
+	buildI_b 1
+	fill _ 3 n8 5
+	jsr_eval 2
+	push_arg 2 2 2
+	pop_b 2
+	jsr_eval 0
+	updatepop_a 0 8
+	repl_r_args 2 0
+.d 2 0
+	rtn
+.n 1 _
+.o 1 0
+n62
+	push_node _cycle_in_spine 1
+.o 1 0
+ea62
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+	fill_r e_timerhandle_rTimerHandles 1 0 1 0 0
+	pop_a 1
+.d 1 0
+	rtn
+.n 3 _
+.o 1 0
+n8
+	push_node _cycle_in_spine 3
+.o 3 0
+ea8
+	jsr_eval 2
+	jsr_eval 1
+	pushI_a 0
+	pop_a 1
+	push_args_u 0 2 2
+	push_a 1
+	push_a 1
+	push_r_args 1 3 2
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	update_a 1 2
+	pop_a 2
+	pop_b 2
+	push_a 6
+	push_a 2
+	push_b 0
+	push_a 2
+	build_u _ 3 1 n7
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 7
+	push_a 7
+	update_a 2 0
+	update_a 1 2
+	updatepop_a 0 1
+	fill1_r e_timerhandle_kTimerLSHandle 2 0 9 011
+	push_a 7
+	update_a 1 9
+	updatepop_a 0 8
+	pop_b 1
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.nu 3 1 _
+.o 1 0
+n7
+	push_node_u _cycle_in_spine 3 1
+.d 3 1 i
+	jsr ea7
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 3 1 i
+ea7
+.o 3 1 i
+s7
+	push_a 2
+	push_a 2
+	buildh _Tuple 2
+	buildI_b 0
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+	jsr_ap 2
+	repl_args 2 2
+	jsr_eval 1
+.d 2 0
+	rtn
+.n 2 _ _
+.o 1 0
+n2
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea2
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+ea2
+	push_array 1
+	push_array 1
+	update_a 1 3
+	update_a 0 2
+	pop_a 2
+.o 2 0
+s2
+	push_a 1
+	buildAC "timerdevice"
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp e_commondef_sfatalError
+.impmod _system
+.implab _match_error

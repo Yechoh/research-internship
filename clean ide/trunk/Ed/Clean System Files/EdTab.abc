@@ -1,0 +1,4853 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "StdArray" "20170313110416"
+.depend "EdText" "20170206122647"
+.depend "StateMonad" "20170123155353"
+.depend "StdClipboard" "20161223204043"
+.depend "EdMonad" "20170206122647"
+.depend "syncol" "20170123155351"
+.depend "StrictList" "20170123155353"
+.depend "EdLineText" "20170123155351"
+.depend "EdPosition" "20170123155351"
+.depend "EdSelection" "20170123155352"
+.depend "StdId" "20161223204043"
+.depend "roundrobin" "20161223204043"
+.depend "processstack" "20161223204043"
+.depend "timerhandle" "20161223204044"
+.depend "processhandle" "20161223204043"
+.depend "osmenu" "20161223204044"
+.depend "StdMenuDef" "20161223204043"
+.depend "menuhandle" "20161223204042"
+.depend "devicesystemstate" "20161223204042"
+.depend "keyfocus" "20161223204042"
+.depend "commondef" "20161223204042"
+.depend "receiverhandle" "20161223204043"
+.depend "StdWindowDef" "20161223204044"
+.depend "StdControlDef" "20161223204043"
+.depend "windowhandle" "20161223204044"
+.depend "StdTimerDef" "20161223204043"
+.depend "timertable" "20161223204044"
+.depend "semidynamic" "20161223204043"
+.depend "receivertable" "20161223204043"
+.depend "receivermessage" "20161223204043"
+.depend "deviceevents" "20170206121016"
+.depend "devicefunctions" "20161223204042"
+.depend "ossystem" "20161223204044"
+.depend "osguishare" "20161223204044"
+.depend "ostime" "20161223204044"
+.depend "clCrossCall_12" "20161223204044"
+.depend "osevent" "20161223204044"
+.depend "ostoolbar" "20161223204044"
+.depend "menuCrossCall_12" "20161223204044"
+.depend "osdocumentinterface" "20161223204044"
+.depend "osactivaterequests" "20161223204044"
+.depend "iostate" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "StdIOCommon" "20161223204043"
+.depend "StdPSt" "20161223204043"
+.depend "UtilNewlinesFile" "20170123155356"
+.depend "_SystemArray" "20170313110416"
+.depend "_SystemEnum" "20170313110416"
+.depend "StdEnum" "20170313110416"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdReal" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdList" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "EdTab" "20170123155351"
+.module m_EdTab "EdTab" "20170123155351"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdPicture
+.implab e_StdPicture_ssetPenPos
+.implab e_StdPicture_sgetPenPos
+.implab e_StdPicture_ssetPenColour
+.implab e_StdPicture_sgetPenColour
+.implab e_StdPicture_sdraw;57
+.implab e_StdPicture_sdraw;61
+.impmod StdPictureDef
+.impdesc e_StdPictureDef_dBlack
+.impdesc e_StdPictureDef_dRed
+.impmod ospicture
+.implab e_ospicture_spictdrawchar
+.implab e_ospicture_spictdrawstring
+.impmod _SystemArray
+.impdesc e__SystemArray_dsize;20
+.implab e__SystemArray_nsize;20
+.impmod StdString
+.implab e_StdString_s==;2
+.implab e_StdString_s%;10
+.impmod StdChar
+.implab e_StdChar_sisAlpha
+.implab e_StdChar_sisAlphanum
+.implab e_StdChar_s==;18
+.impmod StdInt
+.impdesc e_StdInt_d+;6
+.implab e_StdInt_s+;6
+.implab e_StdInt_n+;6
+.implab e_StdInt_s-;7
+.implab e_StdInt_s*;9
+.implab e_StdInt_s/;10
+.implab e_StdInt_sone;11
+.implab e_StdInt_s==;16
+.implab e_StdInt_s<;17
+.impmod StdBool
+.implab e_StdBool_snot
+.desc d66 _hnf _add_arg 1 0 "N"
+.desc d67 _hnf _hnf 0 0 "L"
+.desc d68 _hnf _hnf 0 0 "S"
+.desc d69 _hnf _hnf 0 0 "C"
+.desc d70 _hnf _add_arg 1 0 "T"
+.desc d71 _hnf _add_arg 1 0 "D"
+.export e_EdTab_sTD;CommentLevel
+.export e_EdTab_eaTD;CommentLevel
+.descexp e_EdTab_dTD;CommentLevel e_EdTab_nTD;CommentLevel e_EdTab_lTD;CommentLevel 1 0 "TD;CommentLevel"
+.o 2 0
+e_EdTab_lTD;CommentLevel
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdTab_eaTD;CommentLevel
+.n 1 e_EdTab_dTD;CommentLevel e_EdTab_eaTD;CommentLevel
+.o 1 0
+e_EdTab_nTD;CommentLevel
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdTab_eaTD;CommentLevel
+.o 2 0
+e_EdTab_sTD;CommentLevel
+.o 2 0
+s23
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdTab_stabDrawStringC
+.export e_EdTab_eatabDrawStringC
+.descexp e_EdTab_dtabDrawStringC e_EdTab_ntabDrawStringC e_EdTab_ltabDrawStringC 4 0 "tabDrawStringC"
+.a 4 e_EdTab_eatabDrawStringC
+.o 2 0
+e_EdTab_ltabDrawStringC
+	push_args 0 3 3
+	update_a 4 3
+	create
+	update_a 0 5
+	pop_a 1
+.d 5 0
+	jmp e_EdTab_eatabDrawStringC
+.n 4 e_EdTab_dtabDrawStringC e_EdTab_eatabDrawStringC
+.o 1 0
+e_EdTab_ntabDrawStringC
+	push_node _cycle_in_spine 4
+.o 5 0
+e_EdTab_eatabDrawStringC
+	jsr_eval 3
+	jsr_eval 2
+	push_a 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 0
+	jsr_eval 2
+	push_r_args 4 3 7
+	push_array 4
+	push_r_args 4 0 5
+	push_r_args 6 0 2
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	update_a 0 5
+	pop_a 5
+.o 6 14 iiibbibiiiibbb
+e_EdTab_stabDrawStringC
+.o 6 14 iiibbibiiiibbb
+s4
+	push_args_u 3 10 10
+	update_a 0 2
+	pop_a 2
+	create
+	push_a 9
+	buildh _Nil 0
+	update_a 0 11
+	pop_a 1
+.d 2 0
+	jsr s1
+.o 1 0
+	push_b 3
+	jmp_false else.1
+	buildI_b 2
+	buildh d70 1
+	push_a 14
+	push_a 2
+	push_b 1
+	push_b 1
+	buildI_b 11
+	buildI_b 10
+	buildB_b 14
+	push_a 8
+	push_a 8
+	push_a 12
+	push_a 14
+	push_a 13
+	push_a 18
+	push_a 20
+	push_a 19
+	push_a 13
+	update_a 13 14
+	update_a 12 13
+	update_a 0 12
+	pop_a 1
+	update_a 13 27
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+	update_b 1 15
+	updatepop_b 0 14
+.d 15 2 ii
+	jmp s21
+else.1
+	push_b 4
+	jmp_false else.2
+	buildI_b 2
+	buildh d71 1
+	push_a 14
+	push_a 2
+	push_b 1
+	push_b 1
+	buildI_b 11
+	buildI_b 10
+	buildB_b 14
+	push_a 8
+	push_a 8
+	push_a 12
+	push_a 14
+	push_a 13
+	push_a 18
+	push_a 20
+	push_a 19
+	push_a 13
+	update_a 13 14
+	update_a 12 13
+	update_a 0 12
+	pop_a 1
+	update_a 13 27
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+	update_b 1 15
+	updatepop_b 0 14
+.d 15 2 ii
+	jmp s21
+else.2
+	buildI_b 2
+	buildh d66 1
+	push_a 14
+	push_a 2
+	push_b 1
+	push_b 1
+	buildI_b 11
+	buildI_b 10
+	buildB_b 14
+	push_a 8
+	push_a 8
+	push_a 12
+	push_a 14
+	push_a 13
+	push_a 18
+	push_a 20
+	push_a 19
+	push_a 13
+	update_a 13 14
+	update_a 12 13
+	update_a 0 12
+	pop_a 1
+	update_a 13 27
+	update_a 12 26
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+	update_b 1 15
+	updatepop_b 0 14
+.d 15 2 ii
+	jmp s21
+.o 15 2 ii
+s21
+	eq_desc _Nil 0 12
+	jmp_true case.3
+	jmp case.4
+case.3
+	pop_b 2
+	fill_a 13 14
+	pop_a 14
+.d 1 0
+	rtn
+case.4
+	push_args 12 2 2
+	buildh _Nil 0
+	update_a 0 15
+	pop_a 1
+	jsr_eval 1
+	eq_desc _Nil 0 1
+	jmp_true case.5
+	jmp case.6
+case.5
+	create
+	push_a 16
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 17
+	update_a 0 11
+	update_a 0 12
+	update_a 0 13
+	update_a 0 14
+	pop_a 1
+.d 2 2 ii
+	jsr e_StdPicture_ssetPenPos
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_a 1
+	push_a 15
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 14
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 9
+	update_a 9 10
+	update_a 0 9
+	pop_a 1
+	update_a 9 25
+	update_a 8 24
+	update_a 7 23
+	update_a 6 22
+	update_a 5 21
+	update_a 4 20
+	update_a 3 19
+	update_a 2 18
+	update_a 1 17
+	updatepop_a 0 16
+.d 10 0
+	jsr s22
+.o 2 0
+	fill_a 1 2
+	pop_a 2
+.d 1 0
+	rtn
+case.6
+	create
+	push_a 16
+	push_b 1
+	push_b 1
+	buildh _Nil 0
+	update_a 0 18
+	pop_a 1
+.d 2 2 ii
+	jsr e_StdPicture_ssetPenPos
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_a 1
+	push_a 16
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 15
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 9
+	update_a 9 10
+	update_a 0 9
+	pop_a 1
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	buildh _Nil 0
+	update_a 0 23
+	pop_a 1
+.d 10 0
+	jsr s22
+.o 2 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 1 0
+	jsr e_StdPicture_sgetPenPos
+.o 1 2 ii
+	push_a 13
+	jsr_eval 0
+	pushI_a 14
+	pop_a 1
+	push_a 12
+	jsr_eval 0
+	pushI_a 13
+	pop_a 1
+	push_b 2
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 3 iii
+	jsr s5
+.o 0 1 i
+	push_a 11
+	jsr_eval 0
+	pushB_a 12
+	pop_a 1
+	notB
+	jmp_false else.7
+	push_b 0
+	push_b 3
+	push_b 3
+	update_b 2 0
+	update_b 1 2
+	updatepop_b 0 1
+	push_a 0
+	push_a 3
+	push_a 3
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+	update_b 1 4
+	updatepop_b 0 3
+.d 15 2 ii
+	jmp s21
+else.7
+	push_a 10
+	jsr_eval 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	push_a 1
+	pushC '~'
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_a 9
+	jsr_eval 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	push_b 0
+	push_b 3
+	push_b 3
+	update_b 2 0
+	update_b 1 2
+	updatepop_b 0 1
+	push_a 0
+	push_a 3
+	push_a 3
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	update_a 13 30
+	update_a 12 29
+	update_a 11 28
+	update_a 10 27
+	update_a 9 26
+	update_a 8 25
+	update_a 7 24
+	update_a 6 23
+	update_a 5 22
+	update_a 4 21
+	update_a 3 20
+	update_a 2 19
+	update_a 1 18
+	updatepop_a 0 17
+	update_b 1 4
+	updatepop_b 0 3
+.d 15 2 ii
+	jmp s21
+.o 10 0
+s22
+	push_a 8
+	buildh ARRAY 1
+	build e__SystemArray_dsize;20 1 e__SystemArray_nsize;20
+	push_a 10
+	push_a 9
+	buildAC "~@#$%^?!+-*<>\\/|&=:."
+	buildh ARRAY 1
+	buildI 20
+	push_a 13
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 12 13
+	update_a 11 12
+	update_a 0 11
+	pop_a 1
+	update_a 12 22
+	update_a 11 21
+	update_a 10 20
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 13 0
+	jmp s15
+.o 13 0
+s15
+	pushD_a 11
+	eqD_b d68 0
+	jmp_true case.8
+	eqD_b d69 0
+	jmp_true case.9
+	eqD_b d67 0
+	jmp_true case.10
+	eqD_b d66 1
+	jmp_true case.11
+	eqD_b d70 1
+	jmp_true case.12
+	jmp case.13
+case.8
+	pop_b 1
+	push_a 6
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	push_a 11
+	jsr_eval 0
+	pushI_a 12
+	pop_a 1
+	pushI 0
+	push_a 10
+	push_a 10
+	push_a 10
+	buildh ARRAY 1
+	push_a 7
+	push_a 9
+	push_a 12
+	push_a 12
+	push_a 8
+	push_a 10
+	push_a 12
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+.d 11 2 ii
+	jmp s19
+case.9
+	pop_b 1
+	push_a 5
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	push_a 11
+	jsr_eval 0
+	pushI_a 12
+	pop_a 1
+	pushI 0
+	push_a 10
+	push_a 10
+	push_a 10
+	buildh ARRAY 1
+	push_a 7
+	push_a 9
+	push_a 12
+	push_a 12
+	push_a 8
+	push_a 10
+	push_a 12
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+.d 11 2 ii
+	jmp s20
+case.10
+	pop_b 1
+	push_a 4
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 10 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	buildh d67 0
+.d 2 0
+	rtn
+case.11
+	pop_b 1
+	push_args 11 1 1
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	create
+	push_a 14
+	push_a 7
+	push_a 7
+	buildh _Nil 0
+	update_a 0 18
+	pop_a 1
+.d 4 1 b
+	jsr s72
+.o 1 0
+	push_a 1
+	buildh d66 1
+	push_a 13
+	jsr_eval 0
+	pushI_a 14
+	pop_a 1
+	pushI 0
+	push_a 12
+	push_a 12
+	push_a 12
+	buildh ARRAY 1
+	push_a 10
+	push_a 13
+	push_a 13
+	push_a 9
+	push_a 11
+	push_a 13
+	push_a 15
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 12 2 ii
+	jmp s18
+case.12
+	pop_b 1
+	push_args 11 1 1
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	create
+	push_a 14
+	push_a 7
+	push_a 6
+	buildh _Nil 0
+	update_a 0 18
+	pop_a 1
+.d 4 1 b
+	jsr s73
+.o 1 0
+	push_a 1
+	buildh d70 1
+	push_a 13
+	jsr_eval 0
+	pushI_a 14
+	pop_a 1
+	pushI 0
+	push_a 12
+	push_a 12
+	push_a 12
+	buildh ARRAY 1
+	push_a 10
+	push_a 13
+	push_a 13
+	push_a 9
+	push_a 11
+	push_a 13
+	push_a 15
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 12 2 ii
+	jmp s18
+case.13
+	pop_b 1
+	push_args 11 1 1
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	create
+	push_a 14
+	push_a 7
+	push_a 5
+	buildh _Nil 0
+	update_a 0 18
+	pop_a 1
+.d 4 1 b
+	jsr s74
+.o 1 0
+	push_a 1
+	buildh d71 1
+	push_a 13
+	jsr_eval 0
+	pushI_a 14
+	pop_a 1
+	pushI 0
+	push_a 12
+	push_a 12
+	push_a 12
+	buildh ARRAY 1
+	push_a 10
+	push_a 13
+	push_a 13
+	push_a 9
+	push_a 11
+	push_a 13
+	push_a 15
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 11 25
+	update_a 10 24
+	update_a 9 23
+	update_a 8 22
+	update_a 7 21
+	update_a 6 20
+	update_a 5 19
+	update_a 4 18
+	update_a 3 17
+	update_a 2 16
+	update_a 1 15
+	updatepop_a 0 14
+.d 12 2 ii
+	jmp s18
+.o 11 2 ii
+s20
+	push_b 0
+	push_b 2
+	ltI
+	notB
+	jmp_false else.14
+	buildh d69 0
+	push_a 11
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 12
+	updatepop_a 0 11
+	pop_b 2
+.d 2 0
+	rtn
+else.14
+	push_a 7
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_b 1
+	select CHAR 0 1
+	pushC '\''
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.15
+	create
+	push_a 11
+	pushC '\''
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_a 7
+	jsr_eval 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	pushI 1
+	push_b 2
+	addI
+	buildI 0
+	buildh d66 1
+	push_b 1
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 17
+	update_a 11 22
+	update_a 10 21
+	update_a 9 20
+	update_a 8 19
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	update_b 1 3
+	updatepop_b 0 2
+.d 12 2 ii
+	jmp s18
+else.15
+	push_b 1
+	push_array 7
+	select CHAR 0 1
+	pushC '\\'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.16
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_b 1
+	ltI
+	notB
+	jmp_false else.17
+	create
+	push_a 11
+	pushC '\\'
+	updatepop_b 0 3
+	update_a 1 12
+	updatepop_a 0 11
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	buildh d69 0
+.d 2 0
+	rtn
+else.17
+	create
+	push_a 11
+	pushC '\\'
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_b 0
+	push_array 8
+	select CHAR 0 1
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	pushI 1
+	push_b 1
+	addI
+	push_b 2
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 10 21
+	update_a 9 20
+	update_a 8 19
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	update_b 1 4
+	updatepop_b 0 3
+.d 11 2 ii
+	jmp s20
+else.16
+	push_b 1
+	push_array 7
+	select CHAR 0 1
+	create
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 10 21
+	update_a 9 20
+	update_a 8 19
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	update_b 1 3
+	updatepop_b 0 2
+.d 11 2 ii
+	jmp s20
+.o 12 2 ii
+s18
+	push_b 0
+	push_b 2
+	ltI
+	notB
+	jmp_false else.18
+	push_a 11
+	push_a 11
+	update_a 1 13
+	updatepop_a 0 12
+	pop_b 2
+.d 2 0
+	rtn
+else.18
+	push_a 7
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_b 1
+	select CHAR 0 1
+	pushC '*'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.19
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_b 1
+	ltI
+	notB
+	jmp_false else.20
+	create
+	push_a 12
+	pushC '*'
+	updatepop_b 0 3
+	update_a 12 13
+	update_a 1 12
+	updatepop_a 0 11
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+else.20
+	push_b 0
+	push_array 7
+	select CHAR 0 1
+	pushC '/'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.21
+	push_a 10
+.d 1 0
+	jsr s8
+.o 0 1 b
+	jmp_false else.22
+	create
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 0
+	jsr s9
+.o 1 0
+	push_a 0
+.d 1 0
+	jsr s8
+.o 0 1 b
+	notB
+	jmp_false else.23
+	push_a 7
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	buildAC "*/"
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	push_a 1
+	push_a 5
+	push_a 5
+	push_a 5
+.d 4 0
+	jsr s11
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	pushI 1
+	push_b 1
+	addI
+	push_a 1
+	push_b 2
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.23
+	push_a 7
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	buildAC "*/"
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	pushI 1
+	push_b 1
+	addI
+	push_a 1
+	push_b 2
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.22
+	pushI 1
+	push_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	addI
+	push_b 1
+	push_b 1
+	ltI
+	jmp_false else.24
+	push_a 9
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_a 9
+	jsr_eval 0
+	pushI_a 10
+	pop_a 1
+	push_b 1
+	push_array 8
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+.d 2 2 ii
+	jsr s26
+.o 0 1 b
+	jmp_false else.24
+	push_b 0
+	push_b 2
+	push_a 9
+	push_a 9
+	push_a 9
+.d 3 2 ii
+	jsr s27
+.o 0 1 i
+	create
+	push_a 12
+	buildAC "*/"
+	buildh _Nil 0
+	update_a 0 15
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	pushI 1
+	push_b 1
+	subI
+	push_b 2
+	push_array 8
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	push_b 0
+	push_a 11
+	push_b 3
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 5
+	updatepop_b 0 4
+.d 12 2 ii
+	jmp s18
+else.24
+	create
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 0
+	jsr s9
+.o 1 0
+	push_a 0
+.d 1 0
+	jsr s8
+.o 0 1 b
+	notB
+	jmp_false else.26
+	push_a 7
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	buildAC "*/"
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	push_a 1
+	push_a 5
+	push_a 5
+	push_a 5
+.d 4 0
+	jsr s11
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	push_b 0
+	push_a 1
+	push_b 2
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.26
+	push_a 7
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	buildAC "*/"
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	push_b 0
+	push_a 1
+	push_b 2
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.21
+	create
+	push_a 12
+	pushC '*'
+	buildh _Nil 0
+	update_a 0 14
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_b 0
+	push_a 11
+	push_b 2
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.19
+	push_b 1
+	push_array 7
+	select CHAR 0 1
+	pushC '/'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.27
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_b 1
+	ltI
+	notB
+	jmp_false else.28
+	create
+	push_a 12
+	pushC '/'
+	updatepop_b 0 3
+	update_a 12 13
+	update_a 1 12
+	updatepop_a 0 11
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+else.28
+	push_b 0
+	push_array 7
+	select CHAR 0 1
+	pushC '/'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.29
+	push_a 6
+	jsr_eval 0
+	create
+	push_a 13
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 10 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	buildAC "//"
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	pushI 1
+	push_b 1
+	addI
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	push_array 1
+	update_b 1 4
+	updatepop_b 0 3
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	buildh d67 0
+.d 2 0
+	rtn
+else.29
+	push_b 0
+	push_array 7
+	select CHAR 0 1
+	pushC '*'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.30
+	create
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 0
+	jsr s10
+.o 1 0
+	push_a 0
+.d 1 0
+	jsr s8
+.o 0 1 b
+	jmp_false else.31
+	push_a 7
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	buildAC "/*"
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	pushI 1
+	push_b 1
+	addI
+	push_a 1
+	push_b 2
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.31
+	push_a 7
+	jsr_eval 0
+	create
+	push_a 14
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 16
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	buildAC "/*"
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	push_a 1
+	push_a 5
+	push_a 5
+	push_a 5
+.d 4 0
+	jsr s11
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	pushI 1
+	push_b 1
+	addI
+	push_a 1
+	push_b 2
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	push_a 12
+	update_a 11 24
+	update_a 10 23
+	update_a 9 22
+	update_a 8 21
+	update_a 7 20
+	update_a 6 19
+	update_a 5 18
+	update_a 4 17
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.30
+	create
+	push_a 12
+	pushC '/'
+	buildh _Nil 0
+	update_a 0 14
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_b 0
+	push_a 11
+	push_b 2
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.27
+	push_b 1
+	push_array 7
+	select CHAR 0 1
+	pushC '"'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.32
+	push_a 10
+.d 1 0
+	jsr s8
+.o 0 1 b
+	notB
+	jmp_false else.32
+	push_a 5
+	jsr_eval 0
+	create
+	push_a 13
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 15
+	update_a 0 14
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	pushC '"'
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 4
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 3
+	updatepop_b 0 2
+.d 11 2 ii
+	jmp s19
+else.32
+	push_b 1
+	push_array 7
+	select CHAR 0 1
+	pushC '\''
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.34
+	push_a 10
+.d 1 0
+	jsr s8
+.o 0 1 b
+	notB
+	jmp_false else.34
+	push_a 4
+	jsr_eval 0
+	create
+	push_a 13
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 15
+	update_a 0 14
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	pushC '\''
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 4
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 3
+	updatepop_b 0 2
+.d 11 2 ii
+	jmp s20
+else.34
+	push_a 10
+.d 1 0
+	jsr s8
+.o 0 1 b
+	notB
+	jmp_false else.36
+	push_a 9
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_a 9
+	jsr_eval 0
+	pushI_a 10
+	pop_a 1
+	push_b 2
+	push_array 8
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+.d 2 2 ii
+	jsr s26
+.o 0 1 b
+	jmp_false else.36
+	push_b 1
+	push_b 1
+	push_a 9
+	push_a 9
+	push_a 9
+.d 3 2 ii
+	jsr s27
+.o 0 1 i
+	pushI 1
+	push_b 1
+	subI
+	push_b 3
+	push_array 7
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	create
+	push_a 13
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 15
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	push_b 0
+	push_a 11
+	push_b 2
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 4
+	updatepop_b 0 3
+.d 12 2 ii
+	jmp s18
+else.36
+	push_b 1
+	push_array 7
+	push_b 1
+	push_a 8
+.d 2 2 ii
+	jsr s28
+.o 0 2 bi
+	push_b 0
+	jmp_false else.38
+	push_a 10
+	pop_b 1
+.d 1 0
+	jsr s8
+.o 0 1 b
+	notB
+	pushI 0
+	update_b 1 0
+	jmp_false else.38
+	push_b 1
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 1 0
+	jsr e_StdPicture_sgetPenColour
+.o 2 0
+	push_a 5
+	jsr_eval 0
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	pushI 1
+	push_b 1
+	subI
+	push_b 5
+	push_array 9
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	push_b 0
+	push_a 11
+	push_b 4
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 6
+	updatepop_b 0 5
+.d 12 2 ii
+	jmp s18
+else.38
+	push_b 1
+	pushI 1
+	push_b 1
+	subI
+	push_b 5
+	push_array 7
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	create
+	push_a 13
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 15
+	pop_a 1
+.d 3 0
+	jsr e_ospicture_spictdrawstring
+.o 1 0
+	push_b 0
+	push_a 11
+	push_b 4
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 11
+	update_a 11 23
+	update_a 10 22
+	update_a 9 21
+	update_a 8 20
+	update_a 7 19
+	update_a 6 18
+	update_a 5 17
+	update_a 4 16
+	update_a 3 15
+	update_a 2 14
+	update_a 1 13
+	updatepop_a 0 12
+	update_b 1 6
+	updatepop_b 0 5
+.d 12 2 ii
+	jmp s18
+.o 11 2 ii
+s19
+	push_b 0
+	push_b 2
+	ltI
+	notB
+	jmp_false else.40
+	buildh d68 0
+	push_a 11
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 12
+	updatepop_a 0 11
+	pop_b 2
+.d 2 0
+	rtn
+else.40
+	push_a 7
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_b 1
+	select CHAR 0 1
+	pushC '"'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.41
+	create
+	push_a 11
+	pushC '"'
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_a 7
+	jsr_eval 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	pushI 1
+	push_b 2
+	addI
+	buildI 0
+	buildh d66 1
+	push_b 1
+	push_a 11
+	push_a 11
+	push_a 11
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 17
+	update_a 11 22
+	update_a 10 21
+	update_a 9 20
+	update_a 8 19
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	update_b 1 3
+	updatepop_b 0 2
+.d 12 2 ii
+	jmp s18
+else.41
+	push_b 1
+	push_array 7
+	select CHAR 0 1
+	pushC '\\'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.42
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_b 1
+	ltI
+	notB
+	jmp_false else.43
+	create
+	push_a 11
+	pushC '\\'
+	updatepop_b 0 3
+	update_a 1 12
+	updatepop_a 0 11
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	buildh d68 0
+.d 2 0
+	rtn
+else.43
+	create
+	push_a 11
+	pushC '\\'
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	push_b 0
+	push_array 8
+	select CHAR 0 1
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	pushI 1
+	push_b 1
+	addI
+	push_b 2
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 10 21
+	update_a 9 20
+	update_a 8 19
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	update_b 1 4
+	updatepop_b 0 3
+.d 11 2 ii
+	jmp s19
+else.42
+	push_b 1
+	push_array 7
+	select CHAR 0 1
+	create
+	push_a 11
+	buildh _Nil 0
+	update_a 0 13
+	pop_a 1
+.d 2 1 c
+	jsr e_ospicture_spictdrawchar
+.o 1 0
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	update_a 10 21
+	update_a 9 20
+	update_a 8 19
+	update_a 7 18
+	update_a 6 17
+	update_a 5 16
+	update_a 4 15
+	update_a 3 14
+	update_a 2 13
+	update_a 1 12
+	updatepop_a 0 11
+	update_b 1 3
+	updatepop_b 0 2
+.d 11 2 ii
+	jmp s19
+.o 2 2 ii
+s28
+	push_b 1
+	push_a 1
+	select CHAR 0 1
+	push_b 0
+.d 0 1 c
+	jsr e_StdChar_sisAlpha
+.o 0 1 b
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+.d 0 2 bc
+	jsr s35
+.o 0 1 b
+	notB
+	jmp_false else.44
+	pushI 1
+	push_b 3
+	addI
+	pushB FALSE
+	update_b 1 4
+	updatepop_b 0 3
+	pop_a 2
+.d 0 2 bi
+	rtn
+else.44
+	pushC 'f'
+	push_b 1
+	eqC
+	jmp_false else.45
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 4
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.46
+	pushI 3
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "from"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.46
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.46
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.45
+	pushC 'g'
+	push_b 1
+	eqC
+	jmp_false else.48
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 7
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.49
+	pushI 6
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "generic"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.49
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.49
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.48
+	pushC 'd'
+	push_b 1
+	eqC
+	jmp_false else.51
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 10
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.52
+	pushI 9
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "definition"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 bi
+	rtn
+else.52
+	pushI 6
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.53
+	pushI 5
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "derive"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 bi
+	rtn
+else.53
+	pushI 7
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.54
+	pushI 6
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "dynamic"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 bi
+	rtn
+else.54
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.51
+	pushC 'i'
+	push_b 1
+	eqC
+	jmp_false else.55
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 14
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.56
+	pushI 13
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "implementation"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.56
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.56
+	pushI 8
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.58
+	pushI 7
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "instance"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.58
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.58
+	pushI 6
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.60
+	pushI 5
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "import"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.60
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.60
+	pushI 6
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.62
+	pushI 5
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "infixl"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.62
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.62
+	pushI 6
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.64
+	pushI 5
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "infixr"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.64
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.64
+	pushI 5
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.66
+	pushI 4
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "infix"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.66
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.66
+	pushI 2
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.68
+	pushI 1
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "if"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.68
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.68
+	pushI 2
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.70
+	pushI 1
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "in"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.70
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.70
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.55
+	pushC 'e'
+	push_b 1
+	eqC
+	jmp_false else.72
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 6
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.73
+	pushI 5
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "export"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.73
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.73
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.72
+	pushC 'm'
+	push_b 1
+	eqC
+	jmp_false else.75
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 6
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.76
+	pushI 5
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "module"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.76
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.76
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.75
+	pushC 's'
+	push_b 1
+	eqC
+	jmp_false else.78
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 6
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.79
+	pushI 5
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "system"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.79
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.79
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.78
+	pushC 'c'
+	push_b 1
+	eqC
+	jmp_false else.81
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 5
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.82
+	pushI 4
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "class"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.82
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.82
+	pushI 4
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.84
+	pushI 3
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "case"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.85
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.85
+	pushI 3
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "code"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.86
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 bi
+	rtn
+else.86
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 bi
+	rtn
+else.84
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.81
+	pushC 'l'
+	push_b 1
+	eqC
+	jmp_false else.87
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 4
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.88
+	pushI 3
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "let!"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.88
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.88
+	pushI 3
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.90
+	pushI 2
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "let"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.90
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.90
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.87
+	pushC 'o'
+	push_b 1
+	eqC
+	jmp_false else.92
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 2
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.93
+	pushI 1
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "of"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.93
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.93
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.92
+	pushC 'w'
+	push_b 1
+	eqC
+	jmp_false else.95
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushI 4
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.96
+	pushI 3
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "with"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.96
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.96
+	pushI 5
+	push_b 2
+	addI
+	push_b 1
+	eqI
+	jmp_false else.98
+	pushI 4
+	push_b 2
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	buildAC "where"
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	buildh _Nil 0
+	jmp_false else.98
+	push_b 0
+	pushB TRUE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.98
+	push_b 0
+	pushB FALSE
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+.d 0 2 bi
+	rtn
+else.95
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	update_b 1 4
+	updatepop_b 0 3
+	updatepop_a 0 2
+.d 1 2 ii
+	jsr s29
+.o 0 1 i
+	pushB FALSE
+.d 0 2 bi
+	rtn
+.o 0 2 bc
+s35
+	eqB_b TRUE 0
+	jmp_true case.100
+	jmp case.101
+case.100
+	pop_b 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.101
+	pushC '_'
+	push_b 2
+	update_b 1 3
+	updatepop_b 0 2
+	eqC
+.d 0 1 b
+	rtn
+.o 1 2 ii
+s29
+	push_b 0
+	push_b 2
+	ltI
+	notB
+	jmp_false else.102
+	update_b 0 1
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+else.102
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_b 1
+	select CHAR 0 1
+	push_b 0
+.d 0 1 c
+	jsr e_StdChar_sisAlphanum
+.o 0 1 b
+	jmp_false else.103
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 4
+	updatepop_b 0 3
+.d 1 2 ii
+	jmp s29
+else.103
+	pushC '_'
+	push_b 1
+	eqC
+	jmp_false else.104
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 4
+	updatepop_b 0 3
+.d 1 2 ii
+	jmp s29
+else.104
+	pushC '`'
+	push_b 1
+	eqC
+	jmp_false else.105
+	pushI 1
+	push_b 3
+	addI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 4
+	updatepop_b 0 3
+.d 1 2 ii
+	jmp s29
+else.105
+	pop_a 1
+	pop_b 2
+.d 0 1 i
+	rtn
+.o 3 2 ii
+s27
+	push_b 0
+	push_b 2
+	ltI
+	notB
+	jmp_false else.106
+	update_b 0 1
+	pop_a 3
+	pop_b 1
+.d 0 1 i
+	rtn
+else.106
+	push_a 2
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+.d 2 2 ii
+	jsr s26
+.o 0 1 b
+	jmp_false else.107
+	pushI 1
+	push_b 2
+	addI
+	push_b 1
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	update_b 1 3
+	updatepop_b 0 2
+.d 3 2 ii
+	jmp s27
+else.107
+	pop_a 3
+	pop_b 1
+.d 0 1 i
+	rtn
+.o 2 2 ii
+s26
+	pushI 1
+	push_b 1
+	subI
+	push_b 2
+	push_a 0
+	updatepop_a 0 1
+	select CHAR 0 1
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 ci
+	jmp s17
+.o 2 0
+s10
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp s33
+.o 2 0
+s33
+	pushD_a 0
+	eqD_b d66 1
+	jmp_true case.108
+	eqD_b d70 1
+	jmp_true case.109
+	eqD_b d71 1
+	jmp_true case.110
+	pop_b 1
+	jmp s33.1
+case.108
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	build _ 1 n79
+	fillh d66 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.109
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	build _ 1 n80
+	fillh d70 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.110
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	build _ 1 n81
+	fillh d71 1 2
+	pop_a 1
+.d 1 0
+	rtn
+s33.1
+	pop_a 2
+	pushD m_EdTab
+	pushD x_33
+.d 0 2 ii
+	jmp _match_error
+.string x_33 "<case>[line:320];30;78"
+.n 1 _ ea81
+.o 1 0
+n81
+	push_node _cycle_in_spine 1
+.o 2 0
+ea81
+.o 2 0
+s81
+	pushI 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _ ea80
+.o 1 0
+n80
+	push_node _cycle_in_spine 1
+.o 2 0
+ea80
+.o 2 0
+s80
+	pushI 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _ ea79
+.o 1 0
+n79
+	push_node _cycle_in_spine 1
+.o 2 0
+ea79
+.o 2 0
+s79
+	pushI 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 2 ci
+s17
+	pushI 0
+	push_b 2
+	ltI
+	jmp_false else.111
+	pop_a 1
+	pop_b 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+else.111
+	push_b 1
+	push_a 0
+	select CHAR 0 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.112
+	pop_a 1
+	pop_b 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+else.112
+	pushI 1
+	push_b 2
+	subI
+	push_a 0
+	push_b 1
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 ci
+	jmp s17
+.o 4 0
+s11
+	push_a 2
+	push_a 2
+	push_a 2
+	push_a 6
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp s32
+.o 4 0
+s32
+	pushD_a 0
+	eqD_b d66 1
+	jmp_true case.113
+	eqD_b d70 1
+	jmp_true case.114
+	eqD_b d71 1
+	jmp_true case.115
+	pop_b 1
+	jmp s32.1
+case.113
+	pop_b 1
+	repl_args 1 1
+	pop_a 1
+	updatepop_a 0 2
+	jmp_eval
+case.114
+	pop_b 1
+	repl_args 1 1
+	pop_a 1
+	updatepop_a 1 2
+	jmp_eval
+case.115
+	pop_b 1
+	repl_args 1 1
+	pop_a 1
+	pop_a 2
+	jmp_eval
+s32.1
+	pop_a 4
+	pushD m_EdTab
+	pushD x_32
+.d 0 2 ii
+	jmp _match_error
+.string x_32 "<case>[line:325];37;77"
+.o 2 0
+s9
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp s31
+.o 2 0
+s31
+	pushD_a 0
+	eqD_b d66 1
+	jmp_true case.116
+	eqD_b d70 1
+	jmp_true case.117
+	eqD_b d71 1
+	jmp_true case.118
+	pop_b 1
+	jmp s31.1
+case.116
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	build _ 1 n82
+	fillh d66 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.117
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	build _ 1 n83
+	fillh d70 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.118
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	build _ 1 n84
+	fillh d71 1 2
+	pop_a 1
+.d 1 0
+	rtn
+s31.1
+	pop_a 2
+	pushD m_EdTab
+	pushD x_31
+.d 0 2 ii
+	jmp _match_error
+.string x_31 "<case>[line:315];30;76"
+.n 1 _ ea84
+.o 1 0
+n84
+	push_node _cycle_in_spine 1
+.o 2 0
+ea84
+.o 2 0
+s84
+	pushI 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _ ea83
+.o 1 0
+n83
+	push_node _cycle_in_spine 1
+.o 2 0
+ea83
+.o 2 0
+s83
+	pushI 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _ ea82
+.o 1 0
+n82
+	push_node _cycle_in_spine 1
+.o 2 0
+ea82
+.o 2 0
+s82
+	pushI 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+s8
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jmp s30
+.o 1 0
+s30
+	pushD_a 0
+	eqD_b d66 1
+	jmp_true case.119
+	eqD_b d70 1
+	jmp_true case.120
+	eqD_b d71 1
+	jmp_true case.121
+	pop_b 1
+	jmp case.122
+case.119
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	pop_a 1
+	notB
+.d 0 1 b
+	rtn
+case.120
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	pop_a 1
+	notB
+.d 0 1 b
+	rtn
+case.121
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	pop_a 1
+	notB
+.d 0 1 b
+	rtn
+case.122
+	pop_a 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_EdTab_stabDrawString
+.export e_EdTab_eatabDrawString
+.descexp e_EdTab_dtabDrawString e_EdTab_ntabDrawString e_EdTab_ltabDrawString 4 0 "tabDrawString"
+.a 4 e_EdTab_eatabDrawString
+.o 2 0
+e_EdTab_ltabDrawString
+	push_args 0 3 3
+	update_a 4 3
+	create
+	update_a 0 5
+	pop_a 1
+.d 5 0
+	jmp e_EdTab_eatabDrawString
+.n 4 e_EdTab_dtabDrawString e_EdTab_eatabDrawString
+.o 1 0
+e_EdTab_ntabDrawString
+	push_node _cycle_in_spine 4
+.o 5 0
+e_EdTab_eatabDrawString
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 2 3 7
+	push_array 4
+	push_r_args 4 0 2
+	update_a 3 6
+	update_a 0 3
+	update_a 2 5
+	update_a 1 4
+	pop_a 3
+.o 6 9 iiiiiibbb
+e_EdTab_stabDrawString
+.o 6 9 iiiiiibbb
+s3
+	create
+	push_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jsr s1
+.o 1 0
+	push_a 1
+	push_a 1
+	push_b 1
+	push_b 1
+	buildI_b 6
+	buildI_b 5
+	buildB_b 9
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	update_b 1 10
+	updatepop_b 0 9
+.d 6 2 ii
+	jmp s7
+.o 6 2 ii
+s7
+	eq_desc _Nil 0 3
+	jmp_true case.123
+	jmp case.124
+case.123
+	pop_b 2
+	fill_a 4 5
+	pop_a 5
+.d 1 0
+	rtn
+case.124
+	push_args 3 2 2
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+	jsr_eval 1
+	eq_desc _Nil 0 1
+	jmp_true case.125
+	jmp case.126
+case.125
+	create
+	push_a 7
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 2 2 ii
+	jsr e_StdPicture_ssetPenPos
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp e_StdPicture_sdraw;61
+case.126
+	push_a 2
+	jsr_eval 0
+	pushB_a 3
+	pop_a 1
+	notB
+	jmp_false else.127
+	create
+	push_a 7
+	push_b 1
+	push_b 1
+	buildh _Nil 0
+	update_a 0 9
+	pop_a 1
+.d 2 2 ii
+	jsr e_StdPicture_ssetPenPos
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_StdPicture_sdraw;61
+.o 1 0
+.d 1 0
+	jsr e_StdPicture_sgetPenPos
+.o 1 2 ii
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	push_b 2
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 3 iii
+	jsr s5
+.o 0 1 i
+	push_b 2
+	push_b 2
+	update_b 2 0
+	update_b 1 2
+	updatepop_b 0 1
+	push_a 0
+	push_a 2
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 ii
+	jmp s7
+else.127
+	create
+	push_a 7
+	push_b 1
+	push_b 1
+	buildh _Nil 0
+	update_a 0 9
+	pop_a 1
+.d 2 2 ii
+	jsr e_StdPicture_ssetPenPos
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_StdPicture_sdraw;61
+.o 1 0
+.d 1 0
+	jsr e_StdPicture_sgetPenPos
+.o 1 2 ii
+	buildh e_StdPictureDef_dRed 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	create
+	pushC '~'
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 1 c
+	jsr e_StdPicture_sdraw;57
+.o 1 0
+	buildh e_StdPictureDef_dBlack 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdPicture_ssetPenColour
+.o 1 0
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	push_b 2
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 3 iii
+	jsr s5
+.o 0 1 i
+	push_b 2
+	push_b 2
+	update_b 2 0
+	update_b 1 2
+	updatepop_b 0 1
+	push_a 1
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 ii
+	jmp s7
+.o 0 3 iii
+s5
+	push_b 1
+	pushI 0
+	ltI
+	notB
+	jmp_false else.128
+	push_b 2
+	push_b 1
+	update_b 1 4
+	updatepop_b 0 3
+	addI
+.d 0 1 i
+	rtn
+else.128
+	push_b 2
+	push_b 2
+	mulI
+	pushI 1
+	push_b 1
+	push_b 3
+	divI
+	addI
+	push_b 1
+	update_b 1 5
+	updatepop_b 0 4
+	mulI
+.d 0 1 i
+	rtn
+.export e_EdTab_stabTake
+.export e_EdTab_eatabTake
+.descexp e_EdTab_dtabTake e_EdTab_ntabTake e_EdTab_ltabTake 2 0 "tabTake"
+.a 2 e_EdTab_eatabTake
+.o 2 0
+e_EdTab_ltabTake
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_EdTab_eatabTake
+.n 2 e_EdTab_dtabTake e_EdTab_eatabTake
+.o 1 0
+e_EdTab_ntabTake
+	push_node _cycle_in_spine 2
+.o 3 0
+e_EdTab_eatabTake
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.o 2 1 i
+e_EdTab_stabTake
+.o 2 1 i
+s2
+	eqI_b 0 0
+	jmp_true case.129
+	jmp case.130
+case.129
+	buildh _Nil 0
+	buildAC ""
+	buildh ARRAY 1
+	fillh _Cons 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.130
+	jsr_eval 0
+	eq_desc _Nil 0 0
+	jmp_true case.131
+	jmp case.132
+case.131
+	fillh _Nil 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.132
+	repl_args 2 2
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_arraysize CHAR 0 1
+	push_b 1
+	push_b 1
+	ltI
+	notB
+	jmp_false else.133
+	buildh _Nil 0
+	push_b 1
+	push_a 1
+	build_u _ 1 1 n75
+	fillh _Cons 2 4
+	pop_a 2
+	pop_b 2
+.d 1 0
+	rtn
+else.133
+	push_a 1
+	push_b 0
+	push_b 2
+	build_u _ 1 2 n76
+	push_a 1
+	fillh _Cons 2 4
+	pop_a 2
+	pop_b 2
+.d 1 0
+	rtn
+.nu 1 2 _ _
+.o 1 0
+n76
+	push_node_u _cycle_in_spine 1 2
+.o 2 2 ii
+ea76
+.o 2 2 ii
+s76
+	push_b 1
+	push_b 1
+	subI
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 2
+.d 2 1 i
+	jmp s2
+.nu 1 1 _ _
+.o 1 0
+n75
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea75
+.o 2 1 i
+s75
+	pushI 1
+	push_b 1
+	subI
+	pushI 0
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdTab_ssplitAtTabs
+.export e_EdTab_easplitAtTabs
+.descexp e_EdTab_dsplitAtTabs e_EdTab_nsplitAtTabs e_EdTab_lsplitAtTabs 1 0 "splitAtTabs"
+.o 2 0
+e_EdTab_lsplitAtTabs
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdTab_easplitAtTabs
+.n 1 e_EdTab_dsplitAtTabs e_EdTab_easplitAtTabs
+.o 1 0
+e_EdTab_nsplitAtTabs
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdTab_easplitAtTabs
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_EdTab_ssplitAtTabs
+.o 2 0
+s1
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	buildI 0
+	push_a 1
+	buildh ARRAY 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 2 ii
+	jmp s25
+.nu 3 1 _ _
+.o 1 0
+n25
+	push_node_u _cycle_in_spine 3 1
+.o 4 1 i
+ea25
+	jsr_eval 2
+	pushI_a 2
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+.o 3 2 ii
+s25
+	push_b 1
+	push_b 1
+	ltI
+	jmp_false else.134
+	buildh _Nil 0
+	push_b 0
+	push_a 2
+	push_a 2
+	build_u _ 2 1 n77
+	fillh _Cons 2 4
+	pop_a 2
+	pop_b 2
+.d 1 0
+	rtn
+else.134
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	push_b 1
+	select CHAR 0 1
+	pushC '\t'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.135
+	buildI 1
+	buildI_b 1
+	build _ 2 e_StdInt_n+;6
+	push_a 0
+	push_a 1
+	push_b 0
+	push_a 3
+	build_u _ 3 1 n25
+	push_b 1
+	push_a 3
+	push_a 3
+	build_u _ 2 1 n78
+	fillh _Cons 2 5
+	pop_a 3
+	pop_b 2
+.d 1 0
+	rtn
+else.135
+	pushI 1
+	push_b 2
+	addI
+	push_a 1
+	push_b 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	update_b 1 3
+	updatepop_b 0 2
+.d 3 2 ii
+	jmp s25
+.nu 2 1 _ _
+.o 1 0
+n78
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea78
+.o 3 1 i
+s78
+	pushI 1
+	push_b 1
+	subI
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	updatepop_a 0 2
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n77
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea77
+.o 3 1 i
+s77
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	updatepop_a 0 2
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 4 1 b
+s72
+	eqB_b TRUE 0
+	jmp_true case.136
+	jmp case.137
+case.136
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 3 0
+	jmp e_StdPicture_ssetPenColour
+case.137
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 3 0
+	jmp e_StdPicture_ssetPenColour
+.o 4 1 b
+s73
+	eqB_b TRUE 0
+	jmp_true case.138
+	jmp case.139
+case.138
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 3 0
+	jmp e_StdPicture_ssetPenColour
+case.139
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 3 0
+	jmp e_StdPicture_ssetPenColour
+.o 4 1 b
+s74
+	eqB_b TRUE 0
+	jmp_true case.140
+	jmp case.141
+case.140
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 3 0
+	jmp e_StdPicture_ssetPenColour
+case.141
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 3 0
+	jmp e_StdPicture_ssetPenColour
+.impmod StdIOBasic
+.impdesc e_StdIOBasic_rPoint2
+.impmod _system
+.implab _match_error

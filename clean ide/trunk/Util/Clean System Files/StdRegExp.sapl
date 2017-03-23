@@ -1,0 +1,167 @@
+|| ?module? StdRegExp
+
+
+<{StdRegExp.c;123;21_72}> !g_l_0 = <{StdRegExp.g_c1;123;24_178}> g_l_0
+<{StdRegExp.g_c1;123;24_178}> !g_l_0 = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> case (case (StdBool.not (<{StdChar.==_18}> c_1_0 '\0')) (True -> StdBool.not (<{StdChar.==_18}> c_1_0 '\x01')) (False -> False) ) (True -> _predefined._Cons c_1_0 (<{StdRegExp.c;123;21_72}> g_t_1_1)) (False -> <{StdRegExp.c;123;21_72}> g_t_1_1) ) (_ -> _predefined._Nil)
+StdRegExp.strip_73 !s_0 = <{StdRegExp.c;123;21_72}> s_0
+StdRegExp.slice_74 b_0 e_1 = let lb_1_0::I = StdList.length_47 (StdRegExp.strip_73 b_0) in _Tuple2 e_1 (_Tuple2 lb_1_0 (<{StdInt.+_6}> lb_1_0 (StdList.length_47 (StdRegExp.strip_73 e_1))))
+StdRegExp.anon_68 b_0 e_1 = StdRegExp.slice_74 b_0 e_1
+StdRegExp.anon_69 pExpr_0 b_1 = <{StdParsComb.<@}> pExpr_0 (StdRegExp.anon_68 b_1)
+StdRegExp.anon_70 pbeg_0 pExpr_1 = StdParsComb.begin (<{StdParsComb.<&>}> pbeg_0 (StdRegExp.anon_69 pExpr_1))
+StdRegExp.anon_65 parser1_0 parser2_1 = <{StdParsComb.<++>}> parser1_0 parser2_1
+StdRegExp.anon_63 parser1_0 parser2_1 = <{StdParsComb.<++>}> parser1_0 parser2_1
+StdRegExp.anon_44 r_0 rs_1 = _predefined._Cons r_0 rs_1
+StdRegExp.anon_42 r_0 rs_1 = _predefined._Cons r_0 rs_1
+StdRegExp.anon_43 p_0 r_1 = <{StdParsComb.<@}> (<{StdRegExp.<*~>}> p_0) (StdRegExp.anon_42 r_1)
+<{StdRegExp.<*~>}> p_0 = <{StdParsComb.<|>}> (StdParsComb.yield _predefined._Nil) (<{StdParsComb.<!&>}> p_0 (StdRegExp.anon_43 p_0))
+StdRegExp.anon_45 p_0 r_1 = <{StdParsComb.<@}> (<{StdRegExp.<*~>}> p_0) (StdRegExp.anon_44 r_1)
+<{StdRegExp.<+~>}> p_0 = <{StdParsComb.<&>}> p_0 (StdRegExp.anon_45 p_0)
+StdRegExp.anon_62 parser1_0 parser2_1 = <{StdParsComb.<++>}> (<{StdParsComb.<@}> (<{StdRegExp.<+~>}> parser1_0) StdList.flatten) parser2_1
+StdRegExp.anon_61 parser1_0 parser2_1 = <{StdParsComb.<++>}> (<{StdParsComb.<@}> (<{StdRegExp.<*~>}> parser1_0) StdList.flatten) parser2_1
+StdRegExp.anon_67 begin_0 end_1 i_2 = <{StdParsComb.<++>}> begin_0 (<{StdParsComb.<++>}> i_2 end_1)
+StdRegExp.anon_57 r_0 = _predefined._Cons r_0 _predefined._Nil
+StdRegExp.anon_56::B !_vEq_0 !cl_1 c_2 = StdList.isMember _vEq_0 c_2 (StdList.flatten cl_1)
+StdRegExp.anon_58 !_vEq_0 cl_1 = <{StdParsComb.<@}> (StdParsComb.satisfy (StdRegExp.anon_56 _vEq_0 cl_1)) StdRegExp.anon_57
+StdRegExp.anon_55 e_0 = _predefined._Cons e_0 _predefined._Nil
+StdRegExp.anon_108::B c_0 = True
+StdRegExp.anon_48::B c_0::C = StdBool.not (StdList.isMember_52 c_0 (_predefined._Cons '(' (_predefined._Cons ')' (_predefined._Cons '*' (_predefined._Cons '+' (_predefined._Cons '.' (_predefined._Cons '[' (_predefined._Cons ']' (_predefined._Cons '{' (_predefined._Cons '}' (_predefined._Cons '@' (_predefined._Cons '~' (_predefined._Cons '#' _predefined._Nil)))))))))))))
+StdRegExp.nextChar = <{StdParsComb.<!>}> (StdParsComb.satisfy StdRegExp.anon_48) (<{StdParsComb.&>}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '#') (StdParsComb.satisfy StdRegExp.anon_108))
+StdRegExp.anon_59 !_vEnum_0 !b_1 !e_2 = case (StdBool.not (select (select _vEnum_0::<{StdClass.Enum;}> 0)::<{StdOverloaded.<;}> 0 e_2 b_1)) (True -> _SystemEnum._from_to _vEnum_0 b_1 e_2) (False -> _SystemEnum._from_to _vEnum_0 e_2 b_1) 
+StdRegExp.anon_156 !b_0::C !e_1::C = case (StdBool.not (<{StdChar.<_19}> e_1 b_0)) (True -> _SystemEnum._from_to_7 b_0 e_1) (False -> _SystemEnum._from_to_7 e_1 b_0) 
+StdRegExp.anon_60 b_0::C = <{StdParsComb.<@}> (<{StdParsComb.&>}> (StdParsComb.token (<{StdOverloaded.==;}> <{StdChar.==_18}>) (_predefined._Cons '.' (_predefined._Cons '.' _predefined._Nil))) StdRegExp.nextChar) (StdRegExp.anon_156 b_0)
+StdRegExp.anon_158::B !cl_0 c_1::C = StdList.isMember_52 c_1 (StdList.flatten cl_0)
+StdRegExp.anon_157 cl_0 = <{StdParsComb.<@}> (StdParsComb.satisfy (StdRegExp.anon_158 cl_0)) StdRegExp.anon_57
+StdRegExp.oneOfaSet = <{StdParsComb.<@}> (<{StdParsComb.&>}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '[') (<{StdParsComb.<&}> (<{StdParsComb.<+>}> (<{StdParsComb.<!>}> (<{StdParsComb.<&>}> StdRegExp.nextChar StdRegExp.anon_60) (<{StdParsComb.<@}> StdRegExp.nextChar StdRegExp.anon_55))) (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) ']'))) StdRegExp.anon_157
+StdRegExp.anon_111 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+StdRegExp.anon_49 c_0 = _predefined._Cons c_0 _predefined._Nil
+StdRegExp.anon_159::B !g_0 x_1 = StdBool.not (g_0 x_1)
+StdRegExp.anon_160::B !x_0::C = StdBool.not (StdChar.isAlpha x_0)
+StdRegExp.anon_50 _x_0 = <{StdParsComb.<@}> (StdParsComb.satisfy StdRegExp.anon_160) StdRegExp.anon_49
+StdRegExp.nonAlpha = <{StdParsComb.<@}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '~') StdRegExp.anon_50
+StdRegExp.anon_110 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+StdRegExp.anon_51 c_0 = _predefined._Cons c_0 _predefined._Nil
+StdRegExp.anon_161::B !g_0 x_1 = StdBool.not (g_0 x_1)
+StdRegExp.anon_162::B !x_0::C = StdBool.not (StdChar.isAlpha x_0)
+StdRegExp.anon_52 _x_0 = <{StdParsComb.<@}> (StdParsComb.satisfy StdRegExp.anon_162) StdRegExp.anon_51
+StdRegExp.anyAlpha = <{StdParsComb.<@}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '@') StdRegExp.anon_52
+StdRegExp.anon_109::B c_0 = True
+StdRegExp.anon_53 c_0 = _predefined._Cons c_0 _predefined._Nil
+StdRegExp.anon_54 _x_0 = <{StdParsComb.<@}> (StdParsComb.satisfy StdRegExp.anon_109) StdRegExp.anon_53
+StdRegExp.anyChar = <{StdParsComb.<@}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '.') StdRegExp.anon_54
+StdRegExp.anon_47 !<{_v==_0}> cs_1 = StdParsComb.token <{_v==_0}> cs_1
+StdRegExp.anon_163 cs_0 = StdParsComb.token (<{StdOverloaded.==;}> <{StdChar.==_18}>) cs_0
+StdRegExp.charSeq = <{StdParsComb.<@}> (<{StdParsComb.<+>}> StdRegExp.nextChar) StdRegExp.anon_163
+StdRegExp.exprGroup = <{StdParsComb.&>}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '(') (<{StdParsComb.<&}> StdRegExp.Exprs (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) ')'))
+StdRegExp.subExpr = <{StdParsComb.<@}> (<{StdParsComb.&>}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '{') (<{StdParsComb.<&}> StdRegExp.Exprs (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '}'))) (StdRegExp.anon_67 (StdParsComb.yield (_predefined._Cons '\0' _predefined._Nil)) (StdParsComb.yield (_predefined._Cons '\x01' _predefined._Nil)))
+StdRegExp.Unit = <{StdParsComb.<!>}> StdRegExp.charSeq (<{StdParsComb.<!>}> StdRegExp.anyChar (<{StdParsComb.<!>}> StdRegExp.anyAlpha (<{StdParsComb.<!>}> StdRegExp.nonAlpha (<{StdParsComb.<!>}> StdRegExp.oneOfaSet (<{StdParsComb.<!>}> StdRegExp.exprGroup StdRegExp.subExpr)))))
+StdRegExp.anon_64 parser1_0 = <{StdParsComb.<!>}> (<{StdParsComb.&>}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '*') (<{StdParsComb.<!>}> (<{StdParsComb.<@}> StdRegExp.Exprs (StdRegExp.anon_61 parser1_0)) (StdParsComb.yield (<{StdParsComb.<@}> (<{StdRegExp.<*~>}> parser1_0) StdList.flatten)))) (<{StdParsComb.<!>}> (<{StdParsComb.&>}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '+') (<{StdParsComb.<!>}> (<{StdParsComb.<@}> StdRegExp.Exprs (StdRegExp.anon_62 parser1_0)) (StdParsComb.yield (<{StdParsComb.<@}> (<{StdRegExp.<+~>}> parser1_0) StdList.flatten)))) (<{StdParsComb.<!>}> (<{StdParsComb.<@}> (StdParsComb.sp StdRegExp.Exprs) (StdRegExp.anon_63 parser1_0)) (StdParsComb.yield parser1_0)))
+StdRegExp.Exprs = <{StdParsComb.<&>}> StdRegExp.Unit StdRegExp.anon_64
+StdRegExp.anon_66 parser1_0 = <{StdParsComb.<!>}> (<{StdParsComb.<@}> StdRegExp.Expr (StdRegExp.anon_65 parser1_0)) (StdParsComb.yield parser1_0)
+StdRegExp.Expr = <{StdParsComb.<&>}> StdRegExp.Exprs StdRegExp.anon_66
+StdRegExp.anon_71 pbeg_0 = <{StdParsComb.<@}> (<{StdParsComb.<&}> StdRegExp.Expr (StdParsComb.sp StdParsComb.eof)) (StdRegExp.anon_70 pbeg_0)
+StdRegExp.anon_107::B c_0 = True
+StdRegExp.anon_40 r_0 rs_1 = _predefined._Cons r_0 rs_1
+StdRegExp.anon_41 p_0 r_1 = <{StdParsComb.<@}> (<{StdRegExp.>*<}> p_0) (StdRegExp.anon_40 r_1)
+<{StdRegExp.>*<}> p_0 = <{StdParsComb.<|>}> (StdParsComb.yield _predefined._Nil) (<{StdParsComb.<&>}> p_0 (StdRegExp.anon_41 p_0))
+StdRegExp.space = <{StdParsComb.<+>}> (StdParsComb.satisfy StdChar.isSpace)
+StdRegExp.word = <{StdParsComb.<+>}> (StdParsComb.satisfy StdChar.isAlphanum)
+StdRegExp.anon_76 _x_0 = <{StdParsComb.<++>}> (<{StdParsComb.<*>}> (StdParsComb.satisfy StdChar.isSpace)) (<{StdParsComb.<@}> (<{StdRegExp.>*<}> (<{StdParsComb.<++>}> StdRegExp.word StdRegExp.space)) StdList.flatten)
+StdRegExp.anon_79 !l_0 _x_1 = <{StdList.++}> l_0 (_predefined._Cons '\n' _predefined._Nil)
+StdRegExp.anon_78::B !c_0::C = <{StdChar.==_18}> c_0 '\n'
+StdRegExp.anon_80 l_0 = <{StdParsComb.<@}> (StdParsComb.satisfy StdRegExp.anon_78) (StdRegExp.anon_79 l_0)
+StdRegExp.anon_77::B !c_0::C = StdBool.not (<{StdChar.==_18}> c_0 '\n')
+StdRegExp.newline = <{StdParsComb.<&>}> (<{StdParsComb.<+>}> (StdParsComb.satisfy StdRegExp.anon_77)) StdRegExp.anon_80
+StdRegExp.anon_75 _x_0 = <{StdParsComb.<@}> (<{StdRegExp.>*<}> StdRegExp.newline) StdList.flatten
+StdRegExp.beg = <{StdParsComb.<!>}> (<{StdParsComb.<@}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '^') StdRegExp.anon_75) (<{StdParsComb.<!>}> (<{StdParsComb.<@}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '|') StdRegExp.anon_76) (StdParsComb.yield (<{StdRegExp.>*<}> (StdParsComb.satisfy StdRegExp.anon_107))))
+StdRegExp.anon_82 !rc_0 = rc_0
+StdRegExp.anon_81 x_0 nc_1 rc_2 ss_3 = _predefined._Cons (_Tuple2 ss_3 x_0) _predefined._Nil
+StdRegExp.begin1 !p_0 = p_0 StdRegExp.anon_81 StdRegExp.anon_82 _predefined._Nil
+StdRegExp.findParser = StdRegExp.begin1 (<{StdParsComb.<&>}> StdRegExp.beg StdRegExp.anon_71)
+StdRegExp.anon_94 arg_0 !f_1 = f_1 arg_0
+StdRegExp.anon_95 !pExpr_0 arg_1 = StdList.flatten (StdList.map (StdRegExp.anon_94 arg_1) pExpr_0)
+StdRegExp.anon_93 parser1_0 = _predefined._Cons parser1_0 _predefined._Nil
+StdRegExp.fetchstring_90 !_x_0 !i_1::I = case _x_0 (_Tuple2 string_1_0 substrings_1_1 -> case (case (StdBool.not (<{StdInt.<_17}> i_1 0)) (True -> <{StdInt.<_17}> i_1 (StdList.length_47 substrings_1_1)) (False -> False) ) (True -> select (<{StdList.!!}> substrings_1_1 i_1)::_Tuple2 0) (False -> _predefined._Nil) ) 
+StdRegExp.anon_89 !i_0::C !tup_1 = StdRegExp.fetchstring_90 tup_1 (StdChar.digitToInt i_0)
+StdRegExp.subrepString = <{StdParsComb.<@}> (<{StdParsComb.&>}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '$') (StdParsComb.satisfy StdChar.isDigit)) StdRegExp.anon_89
+StdRegExp.anon_88 _x_0 !_x_1 = case _x_1 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple2 string_2_0 _x_2_1 -> string_2_0) ) 
+StdRegExp.wholeString = <{StdParsComb.<@}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '&') StdRegExp.anon_88
+StdRegExp.anon_87 !repl_0 _x_1 = repl_0
+StdRegExp.anon_112::B c_0 = True
+StdRegExp.anon_86::B c_0::C = StdBool.not (StdList.isMember_52 c_0 (_predefined._Cons '&' (_predefined._Cons '$' (_predefined._Cons '#' _predefined._Nil))))
+StdRegExp.nextrepChar = <{StdParsComb.<!>}> (StdParsComb.satisfy StdRegExp.anon_86) (<{StdParsComb.&>}> (StdParsComb.symbol (<{StdOverloaded.==;}> <{StdChar.==_18}>) '#') (StdParsComb.satisfy StdRegExp.anon_112))
+StdRegExp.repcharSeq = <{StdParsComb.<@}> (<{StdParsComb.<+>}> StdRegExp.nextrepChar) StdRegExp.anon_87
+StdRegExp.repExprs = <{StdParsComb.<!>}> StdRegExp.repcharSeq (<{StdParsComb.<!>}> StdRegExp.wholeString StdRegExp.subrepString)
+StdRegExp.anon_91 parser1_0 parser2_1 = _predefined._Cons parser1_0 parser2_1
+StdRegExp.anon_92 parser1_0 = <{StdParsComb.<@}> StdRegExp.repExpr (StdRegExp.anon_91 parser1_0)
+StdRegExp.repExpr = <{StdParsComb.<!>}> (<{StdParsComb.<&>}> StdRegExp.repExprs StdRegExp.anon_92) (<{StdParsComb.<@}> StdRegExp.repExprs StdRegExp.anon_93)
+StdRegExp.replaceExpr = <{StdParsComb.<!>}> StdRegExp.repExpr (StdMisc.abort "Illegal replace expression")
+StdRegExp.replaceParser = StdRegExp.begin1 (<{StdParsComb.<@}> (<{StdParsComb.<&}> StdRegExp.replaceExpr (StdParsComb.sp StdParsComb.eof)) StdRegExp.anon_95)
+StdRegExp.replaceOne_RE rep_0 !string_1 = <{StdRegExp._c;218;4_179}> (StdRegExp.replaceParser rep_0) string_1
+<{StdRegExp._c;218;4_179}> !_x_0 string_1 = case _x_0 (_predefined._Nil -> _Tuple2 (Data.Maybe.Just "no valid replace pattern") Data.Maybe.Nothing) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple2 _x_2_0 p_2_1 -> case _x_2_0 (_predefined._Nil -> case _x_1_1 (_predefined._Nil -> _Tuple2 Data.Maybe.Nothing (Data.Maybe.Just (p_2_1 string_1))) ) (_ -> case _x_1_1 (_predefined._Nil -> _Tuple2 (Data.Maybe.Just "Internal error, pattern does not comsume entire pattern") Data.Maybe.Nothing) )) ) (_ -> _Tuple2 (Data.Maybe.Just "Internal error, pattern generates multiple parsers") Data.Maybe.Nothing)
+StdRegExp.anon_96::B !c_0::C = case (StdBool.not (<{StdChar.==_18}> c_0 '\0')) (True -> StdBool.not (<{StdChar.==_18}> c_0 '\x01')) (False -> False) 
+StdRegExp.filterMarks_97 !s_0 = StdList.filter StdRegExp.anon_96 s_0
+StdRegExp.whole_98 !string_0 = StdRegExp.filterMarks_97 string_0
+StdRegExp.matchingEnd !_vone_0 !<{_v+_1}> !_x_2 _x_3 !_x_4::I = case _x_2 (_predefined._Nil -> StdMisc.abort "No matching end found??") (_predefined._Cons h_1_0 t_1_1 -> <{StdRegExp._c;242;7_180}> h_1_0 _vone_0 <{_v+_1}> t_1_1 _x_3 _x_4) 
+<{StdRegExp._c;242;7_180}> !h_0::C _vone_1 <{_v+_2}> t_3 _x_4 !_x_5::I = case h_0 ('\0' -> StdRegExp.matchingEnd _vone_1 <{_v+_2}> t_3 _x_4 (<{StdInt.+_6}> _x_5 StdInt.one_11)) ('\x01' -> case (<{StdInt.==_16}> _x_5 0) (True -> _x_4) (False -> StdRegExp.matchingEnd _vone_1 <{_v+_2}> t_3 _x_4 (<{StdInt.-_7}> _x_5 StdInt.one_11)) ) (_ -> StdRegExp.matchingEnd _vone_1 <{_v+_2}> t_3 (select <{_v+_2}>::<{StdOverloaded.+;}> 0 _x_4 (select _vone_1::<{StdOverloaded.one;}> 0)) _x_5)
+StdRegExp.subSlice !_vone_0 !<{_v+_1}> !_x_2 i_3 = case _x_2 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons h_1_0 t_1_1 -> case (<{StdChar.==_18}> h_1_0 '\x01') (True -> StdRegExp.subSlice _vone_0 <{_v+_1}> t_1_1 i_3) (False -> case (StdBool.not (<{StdChar.==_18}> h_1_0 '\0')) (True -> StdRegExp.subSlice _vone_0 <{_v+_1}> t_1_1 (select <{_v+_1}>::<{StdOverloaded.+;}> 0 i_3 (select _vone_0::<{StdOverloaded.one;}> 0))) (False -> _predefined._Cons (_Tuple2 i_3 (StdRegExp.matchingEnd _vone_0 <{_v+_1}> t_1_1 i_3 0)) (StdRegExp.subSlice _vone_0 <{_v+_1}> t_1_1 i_3)) ) ) 
+StdRegExp.fillOut !<{_v%_0}> !_x_1 _x_2 = case _x_1 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons h_1_0 t_1_1 -> case h_1_0 (_Tuple2 f_2_0 l_2_1 -> _predefined._Cons (_Tuple2 (select <{_v%_0}>::<{StdOverloaded.%;}> 0 _x_2 (_Tuple2 f_2_0 (<{StdInt.-_7}> l_2_1 StdInt.one_11))) h_1_0) (StdRegExp.fillOut <{_v%_0}> t_1_1 _x_2)) ) 
+StdRegExp.matchingEnd_165::I !<{_v+_0}> !_x_1 _x_2::I !_x_3::I = case _x_1 (_predefined._Nil -> StdMisc.abort "No matching end found??") (_predefined._Cons h_1_0 t_1_1 -> <{StdRegExp._c;242;7_181}> h_1_0 <{_v+_0}> t_1_1 _x_2 _x_3) 
+<{StdRegExp._c;242;7_181}>::I !h_0::C <{_v+_1}> t_2 _x_3::I !_x_4::I = case h_0 ('\0' -> StdRegExp.matchingEnd_165 <{_v+_1}> t_2 _x_3 (<{StdInt.+_6}> _x_4 StdInt.one_11)) ('\x01' -> case (<{StdInt.==_16}> _x_4 0) (True -> _x_3) (False -> StdRegExp.matchingEnd_165 <{_v+_1}> t_2 _x_3 (<{StdInt.-_7}> _x_4 StdInt.one_11)) ) (_ -> StdRegExp.matchingEnd_165 <{_v+_1}> t_2 (select <{_v+_1}>::<{StdOverloaded.+;}> 0 _x_3 StdInt.one_11) _x_4)
+StdRegExp.subSlice_164 !<{_v+_0}> !_x_1 i_2::I = case _x_1 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons h_1_0 t_1_1 -> case (<{StdChar.==_18}> h_1_0 '\x01') (True -> StdRegExp.subSlice_164 <{_v+_0}> t_1_1 i_2) (False -> case (StdBool.not (<{StdChar.==_18}> h_1_0 '\0')) (True -> StdRegExp.subSlice_164 <{_v+_0}> t_1_1 (select <{_v+_0}>::<{StdOverloaded.+;}> 0 i_2 StdInt.one_11)) (False -> _predefined._Cons (_Tuple2 i_2 (StdRegExp.matchingEnd_165 <{_v+_0}> t_1_1 i_2 0)) (StdRegExp.subSlice_164 <{_v+_0}> t_1_1 i_2)) ) ) 
+StdRegExp.fillOut_166 !_x_0 _x_1 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons h_1_0 t_1_1 -> case h_1_0 (_Tuple2 f_2_0 l_2_1 -> _predefined._Cons (_Tuple2 (<{StdList.%_48}> _x_1 (_Tuple2 f_2_0 (<{StdInt.-_7}> l_2_1 StdInt.one_11))) h_1_0) (StdRegExp.fillOut_166 t_1_1 _x_1)) ) 
+StdRegExp.matchingEnd_168::I !_x_0 !_x_1::I !_x_2::I = case _x_0 (_predefined._Nil -> StdMisc.abort "No matching end found??") (_predefined._Cons h_1_0 t_1_1 -> <{StdRegExp._c;242;7_182}> h_1_0 t_1_1 _x_1 _x_2) 
+<{StdRegExp._c;242;7_182}>::I !h_0::C t_1 !_x_2::I !_x_3::I = case h_0 ('\0' -> StdRegExp.matchingEnd_168 t_1 _x_2 (<{StdInt.+_6}> _x_3 StdInt.one_11)) ('\x01' -> case (<{StdInt.==_16}> _x_3 0) (True -> _x_2) (False -> StdRegExp.matchingEnd_168 t_1 _x_2 (<{StdInt.-_7}> _x_3 StdInt.one_11)) ) (_ -> StdRegExp.matchingEnd_168 t_1 (<{StdInt.+_6}> _x_2 StdInt.one_11) _x_3)
+StdRegExp.subSlice_167 !_x_0 i_1::I = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons h_1_0 t_1_1 -> case (<{StdChar.==_18}> h_1_0 '\x01') (True -> StdRegExp.subSlice_167 t_1_1 i_1) (False -> case (StdBool.not (<{StdChar.==_18}> h_1_0 '\0')) (True -> StdRegExp.subSlice_167 t_1_1 (<{StdInt.+_6}> i_1 StdInt.one_11)) (False -> _predefined._Cons (_Tuple2 i_1 (StdRegExp.matchingEnd_168 t_1_1 i_1 0)) (StdRegExp.subSlice_167 t_1_1 i_1)) ) ) 
+StdRegExp.massageResult !string_0 = <{_Tuple2!3}> (_Tuple2 (StdRegExp.whole_98 string_0) (_Tuple2 0 (StdList.length_47 (StdRegExp.whole_98 string_0)))) (StdRegExp.fillOut_166 (StdList.take 10 (StdRegExp.subSlice_167 string_0 0)) (StdRegExp.whole_98 string_0))
+<{StdRegExp.+_106}> !s_0 !t_1 = <{StdString.+++_11}> s_0 t_1
+StdRegExp.tail_46 !_vtoString_0 !_x_1 = case _x_1 (_predefined._Cons a_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> <{StdRegExp.+_106}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 a_1_0) "]") (_ -> <{StdRegExp.+_106}> (<{StdRegExp.+_106}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 a_1_0) ", ") (StdRegExp.tail_46 _vtoString_0 _x_1_1))) 
+StdRegExp.showList !_vtoString_0 !_x_1 = case _x_1 (_predefined._Nil -> "[]") (_ -> <{StdRegExp.+_106}> "[" (StdRegExp.tail_46 _vtoString_0 _x_1))
+StdRegExp.anon_84 !x_0 = x_0
+StdRegExp.anon_83 !_vlength_0 n_1::I r_2 xc_3 ac_4 ss_5 = _predefined._Cons (_Tuple2 ss_5 (_Tuple2 r_2 (_Tuple2 n_1 (<{StdInt.+_6}> n_1 (select _vlength_0::<{StdOverloaded.length;}> 0 r_2))))) _predefined._Nil
+StdRegExp.AnyWhere_85 !_vlength_0 p_1 n_2::I !_x_3 = case _x_3 (_predefined._Nil -> _predefined._Nil) (_ -> p_1 (StdRegExp.anon_83 _vlength_0 n_2) StdRegExp.anon_84 (StdRegExp.AnyWhere_85 _vlength_0 p_1 (<{StdInt.+_6}> n_2 StdInt.one_11) (StdList.tl _x_3)) _x_3)
+StdRegExp.toString_105 !_vtoString_0 !_vtoString_1 !_x_2 = case _x_2 (_Tuple2 a_1_0 b_1_1 -> <{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> "(" (select _vtoString_0::<{StdOverloaded.toString;}> 0 a_1_0)) ", ") (select _vtoString_1::<{StdOverloaded.toString;}> 0 b_1_1)) ")") 
+StdRegExp.anon_172 n_0::I r_1 xc_2 ac_3 ss_4 = _predefined._Cons (_Tuple2 ss_4 (_Tuple2 r_1 (_Tuple2 n_0 (<{StdInt.+_6}> n_0 (StdList.length_47 r_1))))) _predefined._Nil
+StdRegExp.AnyWhere_171 p_0 n_1::I !_x_2 = case _x_2 (_predefined._Nil -> _predefined._Nil) (_ -> p_0 (StdRegExp.anon_172 n_1) StdRegExp.anon_84 (StdRegExp.AnyWhere_171 p_0 (<{StdInt.+_6}> n_1 StdInt.one_11) (StdList.tl _x_2)) _x_2)
+StdRegExp.toString_169 !_vtoString_0 !_x_1 = case _x_1 (_Tuple2 a_1_0 b_1_1 -> <{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> "(" (StdString.toString_5 a_1_0)) ", ") (select _vtoString_0::<{StdOverloaded.toString;}> 0 b_1_1)) ")") 
+StdRegExp.toString_170 !_vtoString_0 !_x_1 = case _x_1 (_Tuple2 a_1_0 b_1_1 -> <{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> "(" (StdList.toString_79 a_1_0)) ", ") (select _vtoString_0::<{StdOverloaded.toString;}> 0 b_1_1)) ")") 
+StdRegExp.toString_175 !_x_0 = case _x_0 (_Tuple2 a_1_0 b_1_1 -> <{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> "(" (StdString.toString_5 a_1_0)) ", ") (StdString.toString_5 b_1_1)) ")") 
+StdRegExp.toString_176 !_x_0 = case _x_0 (_Tuple2 a_1_0 b_1_1 -> <{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> "(" (StdList.toString_79 a_1_0)) ", ") (StdRegExp.toString_175 b_1_1)) ")") 
+StdRegExp.toString_177 !_x_0 = case _x_0 (_Tuple2 a_1_0 b_1_1 -> <{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> (<{StdRegExp.+_106}> "(" (StdList.toString_79 a_1_0)) ", ") (StdRegExp.toString_176 b_1_1)) ")") 
+StdRegExp.tail_174 !_x_0 = case _x_0 (_predefined._Cons a_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> <{StdRegExp.+_106}> (StdRegExp.toString_177 a_1_0) "]") (_ -> <{StdRegExp.+_106}> (<{StdRegExp.+_106}> (StdRegExp.toString_177 a_1_0) ", ") (StdRegExp.tail_174 _x_1_1))) 
+StdRegExp.showList_173 !_x_0 = case _x_0 (_predefined._Nil -> "[]") (_ -> <{StdRegExp.+_106}> "[" (StdRegExp.tail_174 _x_0))
+StdRegExp.searchAnyWhere !pat_0 !string_1 = <{StdRegExp._c;150;4_183}> (StdRegExp.begin1 (<{StdParsComb.<&}> StdRegExp.Expr StdParsComb.eof) pat_0) string_1
+<{StdRegExp._c;150;4_183}> !_x_0 string_1 = case _x_0 (_predefined._Nil -> "no valid search pattern") (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple2 _x_2_0 p_2_1 -> case _x_2_0 (_predefined._Nil -> case _x_1_1 (_predefined._Nil -> StdRegExp.showList_173 (StdRegExp.AnyWhere_171 p_2_1 0 string_1)) ) (_ -> case _x_1_1 (_predefined._Nil -> "Internal error, pattern does not consume entire pattern") )) ) (_ -> "Internal error, pattern generates multiple parsers")
+StdRegExp.searchOne_RE !pat_0 !string_1 = <{StdRegExp._c;161;4_184}> (StdRegExp.findParser pat_0) string_1
+<{StdRegExp._c;161;4_184}> !_x_0 string_1 = case _x_0 (_predefined._Nil -> "no valid search pattern") (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple2 _x_2_0 p_2_1 -> case _x_2_0 (_predefined._Nil -> case _x_1_1 (_predefined._Nil -> StdRegExp.showList_173 (p_2_1 string_1)) ) (_ -> case _x_1_1 (_predefined._Nil -> "Internal error, pattern does not comsume entire pattern") )) ) (_ -> "Internal error, pattern generates multiple parsers")
+<{StdRegExp.searchOne_RE`}> pat_0 string_1 = <{StdRegExp._c;169;4_185}> (StdRegExp.findParser pat_0) string_1
+<{StdRegExp._c;169;4_185}> !_x_0 string_1 = case _x_0 (_predefined._Nil -> _Tuple2 (Data.Maybe.Just "no valid search pattern") Data.Maybe.Nothing) (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple2 _x_2_0 p_2_1 -> case _x_2_0 (_predefined._Nil -> case _x_1_1 (_predefined._Nil -> _Tuple2 Data.Maybe.Nothing (Data.Maybe.Just (p_2_1 string_1))) ) (_ -> case _x_1_1 (_predefined._Nil -> _Tuple2 (Data.Maybe.Just "Internal error, pattern does not comsume entire pattern") Data.Maybe.Nothing) )) ) (_ -> _Tuple2 (Data.Maybe.Just "Internal error, pattern generates multiple parsers") Data.Maybe.Nothing)
+<{StdRegExp.TD;StrSlice}> _x_0::B = _predefined._Nil
+<{StdRegExp.TD;StrResult}> _x_0::B = _predefined._Nil
+<{StdRegExp.TD;Cparser}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: <{StdRegExp.gEq_s;}> = {!StdRegExp.gEq_s}
+
+:: <{StdRegExp.gEq_ss;}> = {!StdRegExp.gEq_ss}
+
+:: <{StdRegExp.gEq_sss;}> = {!StdRegExp.gEq_sss}
+
+:: <{StdRegExp.gEq_ssss;}> = {!StdRegExp.gEq_ssss}
+
+:: <{StdRegExp.gEq_sssss;}> = {!StdRegExp.gEq_sssss}
+
+:: <{StdRegExp.gEq_ssssss;}> = {!StdRegExp.gEq_ssssss}
+
+:: <{StdRegExp.gEq_sssssss;}> = {!StdRegExp.gEq_sssssss}
+
+:: <{StdRegExp.gEq_ssssssss;}> = {!StdRegExp.gEq_ssssssss}
+
+:: <{StdRegExp.gEq_sssssssss;}> = {!StdRegExp.gEq_sssssssss}
+
+:: <{StdRegExp.bimap_s;}> = {StdRegExp.bimap_s}
+
+:: <{StdRegExp.bimap_ss;}> = {StdRegExp.bimap_ss}
+
+:: <{StdRegExp.bimap_sss;}> = {StdRegExp.bimap_sss}
+

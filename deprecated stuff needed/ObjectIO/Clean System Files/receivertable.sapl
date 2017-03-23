@@ -1,0 +1,47 @@
+|| ?module? receivertable
+
+
+receivertable.initialReceiverTable = _predefined._Nil
+receivertable.eqReceiverId::B !id_0 !_x_1 = case _x_1 (receivertable._RecLoc rl_1_0 rlDevice_1_1 rlParent_1_2 rlReceiver_1_3 -> <{id.==_27}> id_0 rlReceiver_1_3) 
+receivertable.add_10 !rid_0 !entry_1 !_x_2 = case _x_2 (_predefined._Cons rte_1_0 rtes_1_1 -> case rte_1_0 (receivertable._ReceiverTableEntry rteLoc_2_0 rteSelectState_2_1 rteASMCount_2_2 -> case (receivertable.eqReceiverId rid_0 rteLoc_2_0) (True -> <{_Tuple2!3}> False (_predefined._Cons rte_1_0 rtes_1_1)) (False -> let _x_4_0 = receivertable.add_10 rid_0 entry_1 rtes_1_1 in <{_Tuple2!3}> (select _x_4_0::_Tuple2 0) (_predefined._Cons rte_1_0 (select _x_4_0::_Tuple2 1))) ) ) (_ -> <{_Tuple2!3}> True (_predefined._Cons entry_1 _predefined._Nil))
+receivertable.addReceiverToReceiverTable !rte_0 !receivers_1 = case rte_0 (receivertable._ReceiverTableEntry rteLoc_1_0 rteSelectState_1_1 rteASMCount_1_2 -> case rteLoc_1_0 (receivertable._RecLoc rl_2_0 rlDevice_2_1 rlParent_2_2 rlReceiver_2_3 -> receivertable.add_10 rlReceiver_2_3 rte_0 receivers_1) ) 
+receivertable.anon_11::B !rid_0 !_x_1 = case _x_1 (receivertable._ReceiverTableEntry rteLoc_1_0 rteSelectState_1_1 rteASMCount_1_2 -> receivertable.eqReceiverId rid_0 rteLoc_1_0) 
+receivertable.removeReceiverFromReceiverTable !rid_0 !receivers_1 = let _x_1_0 = commondef.remove (receivertable.anon_11 rid_0) StdMisc.undef receivers_1 in <{_Tuple2!3}> (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 2)
+receivertable.getReceiverTableEntry !rid_0 !_x_1 = case _x_1 (_predefined._Cons rte_1_0 rtes_1_1 -> case rte_1_0 (receivertable._ReceiverTableEntry rteLoc_2_0 rteSelectState_2_1 rteASMCount_2_2 -> case (receivertable.eqReceiverId rid_0 rteLoc_2_0) (True -> <{_Tuple2!3}> (Data.Maybe.Just rte_1_0) (_predefined._Cons rte_1_0 rtes_1_1)) (False -> let _x_4_0 = receivertable.getReceiverTableEntry rid_0 rtes_1_1 in <{_Tuple2!3}> (select _x_4_0::_Tuple2 0) (_predefined._Cons rte_1_0 (select _x_4_0::_Tuple2 1))) ) ) (_predefined._Nil -> <{_Tuple2!3}> Data.Maybe.Nothing _predefined._Nil) 
+receivertable.set_12 !rid_0 !new_1 !_x_2 = case _x_2 (_predefined._Cons rte_1_0 rtes_1_1 -> case rte_1_0 (receivertable._ReceiverTableEntry rteLoc_2_0 rteSelectState_2_1 rteASMCount_2_2 -> case (receivertable.eqReceiverId rid_0 rteLoc_2_0) (True -> _predefined._Cons new_1 rtes_1_1) (False -> _predefined._Cons rte_1_0 (receivertable.set_12 rid_0 new_1 rtes_1_1)) ) ) (_ -> _predefined._Cons new_1 _predefined._Nil)
+receivertable.setReceiverTableEntry !rte_0 !receivers_1 = case rte_0 (receivertable._ReceiverTableEntry rteLoc_1_0 rteSelectState_1_1 rteASMCount_1_2 -> case rteLoc_1_0 (receivertable._RecLoc rl_2_0 rlDevice_2_1 rlParent_2_2 rlReceiver_2_3 -> receivertable.set_12 rlReceiver_2_3 rte_0 receivers_1) ) 
+receivertable.getActiveReceiverTableEntry !_x_0 = case _x_0 (_predefined._Cons rte_1_0 rtes_1_1 -> case rte_1_0 (receivertable._ReceiverTableEntry rteLoc_2_0 rteSelectState_2_1 rteASMCount_2_2 -> case (case (StdIOCommon.enabled rteSelectState_2_1) (True -> <{StdInt.<_17}> 0 rteASMCount_2_2) (False -> False) ) (True -> let !id_4_0 = select rteLoc_2_0::receivertable._RecLoc 3 in <{_Tuple2!3}> (Data.Maybe.Just id_4_0) (_predefined._Cons rte_1_0 rtes_1_1)) (False -> let _x_4_0 = receivertable.getActiveReceiverTableEntry rtes_1_1 in <{_Tuple2!3}> (select _x_4_0::_Tuple2 0) (_predefined._Cons rte_1_0 (select _x_4_0::_Tuple2 1))) ) ) (_predefined._Nil -> <{_Tuple2!3}> Data.Maybe.Nothing _predefined._Nil) 
+<{receivertable.TD;ReceiverTable}> _x_0::B = _predefined._Nil
+<{receivertable.TD;ReceiverTableEntry}> _x_0::B = _predefined._Nil
+<{receivertable.TD;RecLoc}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: receivertable._ReceiverTableEntry = {!receivertable.rteLoc, !receivertable.rteSelectState, !receivertable.rteASMCount::I}
+
+:: receivertable._RecLoc = {!receivertable.rlIOId, !receivertable.rlDevice, !receivertable.rlParentId, !receivertable.rlReceiverId}
+
+:: <{receivertable.gEq_s;}> = {!receivertable.gEq_s}
+
+:: <{receivertable.gEq_ss;}> = {!receivertable.gEq_ss}
+
+:: <{receivertable.gEq_sss;}> = {!receivertable.gEq_sss}
+
+:: <{receivertable.gEq_ssss;}> = {!receivertable.gEq_ssss}
+
+:: <{receivertable.gEq_sssss;}> = {!receivertable.gEq_sssss}
+
+:: <{receivertable.gEq_ssssss;}> = {!receivertable.gEq_ssssss}
+
+:: <{receivertable.gEq_sssssss;}> = {!receivertable.gEq_sssssss}
+
+:: <{receivertable.gEq_ssssssss;}> = {!receivertable.gEq_ssssssss}
+
+:: <{receivertable.gEq_sssssssss;}> = {!receivertable.gEq_sssssssss}
+
+:: <{receivertable.bimap_s;}> = {receivertable.bimap_s}
+
+:: <{receivertable.bimap_ss;}> = {receivertable.bimap_ss}
+
+:: <{receivertable.bimap_sss;}> = {receivertable.bimap_sss}
+

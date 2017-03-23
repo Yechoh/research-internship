@@ -1,0 +1,4115 @@
+.comp 920 000111010001
+.start _nostart_
+.depend "EdVisualText" "20170123155352"
+.depend "StdMisc" "20170313110416"
+.depend "StdArray" "20170313110416"
+.depend "EdText" "20170206122647"
+.depend "StateMonad" "20170123155353"
+.depend "StdClipboard" "20161223204043"
+.depend "EdMonad" "20170206122647"
+.depend "syncol" "20170123155351"
+.depend "StrictList" "20170123155353"
+.depend "EdLineText" "20170123155351"
+.depend "EdPosition" "20170123155351"
+.depend "EdSelection" "20170123155352"
+.depend "StdId" "20161223204043"
+.depend "roundrobin" "20161223204043"
+.depend "processstack" "20161223204043"
+.depend "timerhandle" "20161223204044"
+.depend "processhandle" "20161223204043"
+.depend "osmenu" "20161223204044"
+.depend "StdMenuDef" "20161223204043"
+.depend "menuhandle" "20161223204042"
+.depend "devicesystemstate" "20161223204042"
+.depend "keyfocus" "20161223204042"
+.depend "commondef" "20161223204042"
+.depend "receiverhandle" "20161223204043"
+.depend "StdWindowDef" "20161223204044"
+.depend "StdControlDef" "20161223204043"
+.depend "windowhandle" "20161223204044"
+.depend "StdTimerDef" "20161223204043"
+.depend "timertable" "20161223204044"
+.depend "semidynamic" "20161223204043"
+.depend "receivertable" "20161223204043"
+.depend "receivermessage" "20161223204043"
+.depend "deviceevents" "20170206121016"
+.depend "devicefunctions" "20161223204042"
+.depend "ossystem" "20161223204044"
+.depend "osguishare" "20161223204044"
+.depend "ostime" "20161223204044"
+.depend "clCrossCall_12" "20161223204044"
+.depend "osevent" "20161223204044"
+.depend "ostoolbar" "20161223204044"
+.depend "menuCrossCall_12" "20161223204044"
+.depend "osdocumentinterface" "20161223204044"
+.depend "osactivaterequests" "20161223204044"
+.depend "iostate" "20161223204042"
+.depend "systemid" "20161223204044"
+.depend "device" "20161223204042"
+.depend "id" "20161223204042"
+.depend "oskey" "20161223204044"
+.depend "StdKey" "20161223204043"
+.depend "StdPicture" "20161223204043"
+.depend "StdIOBasic" "20161223204043"
+.depend "StdPictureDef" "20161223204043"
+.depend "osfont" "20161223204044"
+.depend "ostypes" "20161223204044"
+.depend "ostoolbox" "20161223204044"
+.depend "osrgn" "20161223204044"
+.depend "ospicture" "20161223204044"
+.depend "osbitmap" "20161223204044"
+.depend "StdBitmap" "20161223204043"
+.depend "StdIOCommon" "20161223204043"
+.depend "StdPSt" "20161223204043"
+.depend "UtilNewlinesFile" "20170123155356"
+.depend "_SystemArray" "20170313110416"
+.depend "StdTuple" "20170313110416"
+.depend "StdMaybe" "20170313110414"
+.depend "StdFunc" "20170313110416"
+.depend "StdFile" "20170313110416"
+.depend "StdString" "20170313110416"
+.depend "StdGeneric" "20170313110416"
+.depend "GenEq" "20170313110405"
+.depend "Data.Monoid" "20170313110413"
+.depend "Control.Monad" "20170313110412"
+.depend "Control.Applicative" "20170313110412"
+.depend "System.IO" "20170313110415"
+.depend "Data.Functor" "20170313110413"
+.depend "Data.Maybe" "20170313110413"
+.depend "StdReal" "20170313110416"
+.depend "StdChar" "20170313110416"
+.depend "StdInt" "20170313110416"
+.depend "StdBool" "20170313110416"
+.depend "StdClass" "20170313110416"
+.depend "StdList" "20170313110416"
+.depend "StdOverloaded" "20170313110416"
+.depend "_SystemDynamic" "20170313110405"
+.depend "EdMovement" "20170123155351"
+.module m_EdMovement "EdMovement" "20170123155351"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod EdVisualText
+.impdesc e_EdVisualText_dgetViewFrame
+.implab e_EdVisualText_ngetViewFrame e_EdVisualText_eagetViewFrame
+.implab e_EdVisualText_spointToPosition
+.implab e_EdVisualText_spositionToPoint
+.impmod StdMisc
+.implab e_StdMisc_sabort
+.impmod EdMonad
+.impdesc e_EdMonad_dgetText
+.implab e_EdMonad_sgetText
+.implab e_EdMonad_ngetText e_EdMonad_eagetText
+.impdesc e_EdMonad_dgetVirtualX
+.implab e_EdMonad_ngetVirtualX e_EdMonad_eagetVirtualX
+.impdesc e_EdMonad_dsetVirtualX
+.implab e_EdMonad_nsetVirtualX e_EdMonad_easetVirtualX
+.impdesc e_EdMonad_dgetFontInfo
+.implab e_EdMonad_sgetFontInfo
+.implab e_EdMonad_ngetFontInfo e_EdMonad_eagetFontInfo
+.impmod EdLineText
+.implab e_EdLineText_stextLength
+.implab e_EdLineText_slastLineNr
+.impdesc e_EdLineText_dgetLine
+.implab e_EdLineText_sgetLine
+.implab e_EdLineText_ngetLine
+.impmod EdPosition
+.impdesc e_EdPosition_rPosition
+.impdesc e_EdPosition_dPosition.col
+.implab e_EdPosition_nPosition.col
+.impmod EdSelection
+.impdesc e_EdSelection_rSelection
+.impdesc e_EdSelection_dSelection.start
+.implab e_EdSelection_nSelection.start
+.impdesc e_EdSelection_dSelection.end
+.implab e_EdSelection_nSelection.end
+.impmod StdIOBasic
+.impdesc e_StdIOBasic_rPoint2
+.impdesc e_StdIOBasic_dPoint2.y
+.implab e_StdIOBasic_nPoint2.y
+.impdesc e_StdIOBasic_dRectangle.corner1
+.implab e_StdIOBasic_nRectangle.corner1
+.impdesc e_StdIOBasic_dRectangle.corner2
+.implab e_StdIOBasic_nRectangle.corner2
+.impmod _SystemArray
+.impdesc e__SystemArray_dselect;19
+.implab e__SystemArray_nselect;19
+.impdesc e__SystemArray_dsize;20
+.implab e__SystemArray_nsize;20
+.impmod StdChar
+.implab e_StdChar_sisAlpha
+.implab e_StdChar_sisDigit
+.impdesc e_StdChar_d==;18
+.impmod StdInt
+.impdesc e_StdInt_d+;6
+.implab e_StdInt_s+;6
+.implab e_StdInt_n+;6
+.impdesc e_StdInt_d-;7
+.implab e_StdInt_s-;7
+.implab e_StdInt_n-;7
+.implab e_StdInt_s*;9
+.implab e_StdInt_s/;10
+.impdesc e_StdInt_d~;15
+.implab e_StdInt_s~;15
+.implab e_StdInt_n~;15
+.implab e_StdInt_s==;16
+.implab e_StdInt_s<;17
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod StdClass
+.impdesc e_StdClass_rEq;
+.impmod StdList
+.implab e_StdList_sisMember
+.implab e_StdList_sisMember;52
+.impmod StdOverloaded
+.impdesc e_StdOverloaded_r==;
+.export e_EdMovement_dLineUp
+.desc0 e_EdMovement_dLineUp 0 "LineUp"
+.export e_EdMovement_dLineDown
+.desc0 e_EdMovement_dLineDown 1 "LineDown"
+.export e_EdMovement_dCharLeft
+.desc0 e_EdMovement_dCharLeft 2 "CharLeft"
+.export e_EdMovement_dCharRight
+.desc0 e_EdMovement_dCharRight 3 "CharRight"
+.export e_EdMovement_dWordLeft
+.desc0 e_EdMovement_dWordLeft 4 "WordLeft"
+.export e_EdMovement_dWordRight
+.desc0 e_EdMovement_dWordRight 5 "WordRight"
+.export e_EdMovement_dPageUp
+.desc0 e_EdMovement_dPageUp 6 "PageUp"
+.export e_EdMovement_dPageDown
+.desc0 e_EdMovement_dPageDown 7 "PageDown"
+.export e_EdMovement_dStartOfLine
+.desc0 e_EdMovement_dStartOfLine 8 "StartOfLine"
+.export e_EdMovement_dEndOfLine
+.desc0 e_EdMovement_dEndOfLine 9 "EndOfLine"
+.export e_EdMovement_dStartOfText
+.desc0 e_EdMovement_dStartOfText 10 "StartOfText"
+.export e_EdMovement_dEndOfText
+.desc0 e_EdMovement_dEndOfText 11 "EndOfText"
+.export e_EdMovement_sTD;Movement
+.export e_EdMovement_eaTD;Movement
+.descexp e_EdMovement_dTD;Movement e_EdMovement_nTD;Movement e_EdMovement_lTD;Movement 1 0 "TD;Movement"
+.o 2 0
+e_EdMovement_lTD;Movement
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdMovement_eaTD;Movement
+.n 1 e_EdMovement_dTD;Movement e_EdMovement_eaTD;Movement
+.o 1 0
+e_EdMovement_nTD;Movement
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdMovement_eaTD;Movement
+.o 2 0
+e_EdMovement_sTD;Movement
+.o 2 0
+s8
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdMovement_sfromString;6
+.export e_EdMovement_eafromString;6
+.descexp e_EdMovement_dfromString;6 e_EdMovement_nfromString;6 e_EdMovement_lfromString;6 1 0 "fromString;6"
+.o 2 0
+e_EdMovement_lfromString;6
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdMovement_eafromString;6
+.n 1 e_EdMovement_dfromString;6 e_EdMovement_eafromString;6
+.o 1 0
+e_EdMovement_nfromString;6
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdMovement_eafromString;6
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+e_EdMovement_sfromString;6
+.o 2 0
+s7
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp s130
+.o 2 0
+s130
+	push_a 0
+	eqAC_a "previous line"
+	jmp_true case.1
+	push_a 0
+	eqAC_a "next line"
+	jmp_true case.2
+	push_a 0
+	eqAC_a "previous character"
+	jmp_true case.3
+	push_a 0
+	eqAC_a "next character"
+	jmp_true case.4
+	push_a 0
+	eqAC_a "previous word"
+	jmp_true case.5
+	push_a 0
+	eqAC_a "next word"
+	jmp_true case.6
+	push_a 0
+	eqAC_a "previous page"
+	jmp_true case.7
+	push_a 0
+	eqAC_a "next page"
+	jmp_true case.8
+	push_a 0
+	eqAC_a "start of line"
+	jmp_true case.9
+	push_a 0
+	eqAC_a "end of line"
+	jmp_true case.10
+	push_a 0
+	eqAC_a "start of text"
+	jmp_true case.11
+	push_a 0
+	eqAC_a "end of text"
+	jmp_true case.12
+	jmp case.13
+case.1
+	fillh e_EdMovement_dLineUp 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.2
+	fillh e_EdMovement_dLineDown 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.3
+	fillh e_EdMovement_dCharLeft 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.4
+	fillh e_EdMovement_dCharRight 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.5
+	fillh e_EdMovement_dWordLeft 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.6
+	fillh e_EdMovement_dWordRight 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.7
+	fillh e_EdMovement_dPageUp 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.8
+	fillh e_EdMovement_dPageDown 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.9
+	fillh e_EdMovement_dStartOfLine 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.10
+	fillh e_EdMovement_dEndOfLine 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.11
+	fillh e_EdMovement_dStartOfText 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.12
+	fillh e_EdMovement_dEndOfText 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.13
+	fillh e_EdMovement_dStartOfText 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_EdMovement_stoString;5
+.descexp e_EdMovement_dtoString;5 e_EdMovement_ntoString;5 e_EdMovement_ltoString;5 1 0 "toString;5"
+.o 2 0
+e_EdMovement_ltoString;5
+	pop_a 1
+.d 1 0
+	jsr ea6
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 e_EdMovement_dtoString;5
+.o 1 0
+e_EdMovement_ntoString;5
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea6
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea6
+	jsr_eval 0
+.o 1 0
+e_EdMovement_stoString;5
+.o 1 0
+s6
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jmp s129
+.o 1 0
+s129
+	pushD_a 0
+	eqD_b e_EdMovement_dLineUp 0
+	jmp_true case.14
+	eqD_b e_EdMovement_dLineDown 0
+	jmp_true case.15
+	eqD_b e_EdMovement_dCharLeft 0
+	jmp_true case.16
+	eqD_b e_EdMovement_dCharRight 0
+	jmp_true case.17
+	eqD_b e_EdMovement_dWordLeft 0
+	jmp_true case.18
+	eqD_b e_EdMovement_dWordRight 0
+	jmp_true case.19
+	eqD_b e_EdMovement_dPageUp 0
+	jmp_true case.20
+	eqD_b e_EdMovement_dPageDown 0
+	jmp_true case.21
+	eqD_b e_EdMovement_dStartOfLine 0
+	jmp_true case.22
+	eqD_b e_EdMovement_dEndOfLine 0
+	jmp_true case.23
+	eqD_b e_EdMovement_dStartOfText 0
+	jmp_true case.24
+	jmp case.25
+case.14
+	pop_b 1
+	pop_a 1
+	buildAC "previous line"
+.d 1 0
+	rtn
+case.15
+	pop_b 1
+	pop_a 1
+	buildAC "next line"
+.d 1 0
+	rtn
+case.16
+	pop_b 1
+	pop_a 1
+	buildAC "previous character"
+.d 1 0
+	rtn
+case.17
+	pop_b 1
+	pop_a 1
+	buildAC "next character"
+.d 1 0
+	rtn
+case.18
+	pop_b 1
+	pop_a 1
+	buildAC "previous word"
+.d 1 0
+	rtn
+case.19
+	pop_b 1
+	pop_a 1
+	buildAC "next word"
+.d 1 0
+	rtn
+case.20
+	pop_b 1
+	pop_a 1
+	buildAC "previous page"
+.d 1 0
+	rtn
+case.21
+	pop_b 1
+	pop_a 1
+	buildAC "next page"
+.d 1 0
+	rtn
+case.22
+	pop_b 1
+	pop_a 1
+	buildAC "start of line"
+.d 1 0
+	rtn
+case.23
+	pop_b 1
+	pop_a 1
+	buildAC "end of line"
+.d 1 0
+	rtn
+case.24
+	pop_b 1
+	pop_a 1
+	buildAC "start of text"
+.d 1 0
+	rtn
+case.25
+	pop_b 1
+	pop_a 1
+	buildAC "end of text"
+.d 1 0
+	rtn
+case.26
+	pop_a 1
+	buildAC "toString (EdMovement.icl): unknown movement"
+.d 1 0
+	rtn
+.export e_EdMovement_sallMovements
+.export e_EdMovement_eaallMovements
+.descexp e_EdMovement_dallMovements e_EdMovement_nallMovements e_EdMovement_lallMovements 0 0 "allMovements"
+.o 1 0
+e_EdMovement_lallMovements
+	halt
+.n 0 e_EdMovement_dallMovements e_EdMovement_eaallMovements
+.o 1 0
+e_EdMovement_nallMovements
+	push_node _cycle_in_spine 0
+.o 1 0
+e_EdMovement_eaallMovements
+.o 1 0
+e_EdMovement_sallMovements
+.o 1 0
+s4
+	buildh _Nil 0
+	buildh e_EdMovement_dEndOfText 0
+	buildh _Cons 2
+	buildh e_EdMovement_dStartOfText 0
+	buildh _Cons 2
+	buildh e_EdMovement_dEndOfLine 0
+	buildh _Cons 2
+	buildh e_EdMovement_dStartOfLine 0
+	buildh _Cons 2
+	buildh e_EdMovement_dPageDown 0
+	buildh _Cons 2
+	buildh e_EdMovement_dPageUp 0
+	buildh _Cons 2
+	buildh e_EdMovement_dWordRight 0
+	buildh _Cons 2
+	buildh e_EdMovement_dWordLeft 0
+	buildh _Cons 2
+	buildh e_EdMovement_dCharRight 0
+	buildh _Cons 2
+	buildh e_EdMovement_dCharLeft 0
+	buildh _Cons 2
+	buildh e_EdMovement_dLineDown 0
+	buildh _Cons 2
+	buildh e_EdMovement_dLineUp 0
+	fillh _Cons 2 2
+.d 1 0
+	rtn
+.export e_EdMovement_sisVerticalMove
+.descexp e_EdMovement_disVerticalMove e_EdMovement_nisVerticalMove e_EdMovement_lisVerticalMove 1 0 "isVerticalMove"
+.o 2 0
+e_EdMovement_lisVerticalMove
+	pop_a 1
+.d 1 0
+	jsr ea2
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_EdMovement_disVerticalMove
+.o 1 0
+e_EdMovement_nisVerticalMove
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea2
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea2
+	jsr_eval 0
+.o 1 0
+e_EdMovement_sisVerticalMove
+.o 1 0
+s2
+	buildh _Nil 0
+	buildh e_EdMovement_dPageDown 0
+	buildh _Cons 2
+	buildh e_EdMovement_dPageUp 0
+	buildh _Cons 2
+	buildh e_EdMovement_dLineDown 0
+	buildh _Cons 2
+	buildh e_EdMovement_dLineUp 0
+	buildh _Cons 2
+	buildh e_EdMovement_d==;4 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp e_StdList_sisMember
+.export e_EdMovement_s==;4
+.descexp e_EdMovement_d==;4 e_EdMovement_n==;4 e_EdMovement_l==;4 2 0 "==;4"
+.a 0 a5
+.o 2 0
+e_EdMovement_l==;4
+	repl_args 1 1
+.o 2 0
+a5
+.d 2 0
+	jsr ea5
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 e_EdMovement_d==;4
+.o 1 0
+e_EdMovement_n==;4
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea5
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea5
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_EdMovement_s==;4
+.o 2 0
+s5
+	pushD_a 0
+	eqD_b e_EdMovement_dLineUp 0
+	jmp_true case.27
+	eqD_b e_EdMovement_dLineDown 0
+	jmp_true case.28
+	eqD_b e_EdMovement_dCharLeft 0
+	jmp_true case.29
+	eqD_b e_EdMovement_dCharRight 0
+	jmp_true case.30
+	eqD_b e_EdMovement_dWordLeft 0
+	jmp_true case.31
+	eqD_b e_EdMovement_dWordRight 0
+	jmp_true case.32
+	eqD_b e_EdMovement_dPageUp 0
+	jmp_true case.33
+	eqD_b e_EdMovement_dPageDown 0
+	jmp_true case.34
+	eqD_b e_EdMovement_dStartOfLine 0
+	jmp_true case.35
+	eqD_b e_EdMovement_dEndOfLine 0
+	jmp_true case.36
+	eqD_b e_EdMovement_dStartOfText 0
+	jmp_true case.37
+	jmp case.38
+case.27
+	pop_b 1
+	eq_desc e_EdMovement_dLineUp 0 1
+	jmp_true case.40
+	jmp case.39
+case.40
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.28
+	pop_b 1
+	eq_desc e_EdMovement_dLineDown 0 1
+	jmp_true case.41
+	jmp case.39
+case.41
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.29
+	pop_b 1
+	eq_desc e_EdMovement_dCharLeft 0 1
+	jmp_true case.42
+	jmp case.39
+case.42
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.30
+	pop_b 1
+	eq_desc e_EdMovement_dCharRight 0 1
+	jmp_true case.43
+	jmp case.39
+case.43
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.31
+	pop_b 1
+	eq_desc e_EdMovement_dWordLeft 0 1
+	jmp_true case.44
+	jmp case.39
+case.44
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.32
+	pop_b 1
+	eq_desc e_EdMovement_dWordRight 0 1
+	jmp_true case.45
+	jmp case.39
+case.45
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.33
+	pop_b 1
+	eq_desc e_EdMovement_dPageUp 0 1
+	jmp_true case.46
+	jmp case.39
+case.46
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.34
+	pop_b 1
+	eq_desc e_EdMovement_dPageDown 0 1
+	jmp_true case.47
+	jmp case.39
+case.47
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.35
+	pop_b 1
+	eq_desc e_EdMovement_dStartOfLine 0 1
+	jmp_true case.48
+	jmp case.39
+case.48
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.36
+	pop_b 1
+	eq_desc e_EdMovement_dEndOfLine 0 1
+	jmp_true case.49
+	jmp case.39
+case.49
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.37
+	pop_b 1
+	eq_desc e_EdMovement_dStartOfText 0 1
+	jmp_true case.50
+	jmp case.39
+case.50
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.38
+	pop_b 1
+	eq_desc e_EdMovement_dEndOfText 0 1
+	jmp_true case.51
+	jmp case.39
+case.51
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.39
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.export e_EdMovement_spositionAfterMove
+.export e_EdMovement_eapositionAfterMove
+.descexp e_EdMovement_dpositionAfterMove e_EdMovement_npositionAfterMove e_EdMovement_lpositionAfterMove 2 0 "positionAfterMove"
+.a 2 e_EdMovement_eapositionAfterMove
+.o 2 0
+e_EdMovement_lpositionAfterMove
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.d 3 0
+	jmp e_EdMovement_eapositionAfterMove
+.n 2 e_EdMovement_dpositionAfterMove e_EdMovement_eapositionAfterMove
+.o 1 0
+e_EdMovement_npositionAfterMove
+	push_node _cycle_in_spine 2
+.o 3 0
+e_EdMovement_eapositionAfterMove
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 4 0
+e_EdMovement_spositionAfterMove
+.o 4 0
+s1
+	build_r e_EdPosition_rPosition 2 0 1 0
+	push_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp s170
+.o 3 0
+s9
+	buildI 1
+	build _ 1 e_StdInt_n~;15
+	push_a 2
+	push_a 2
+	buildI 0
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 5 0
+	jmp s26
+.o 2 0
+s10
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d116 2 3
+	pop_a 1
+.d 1 0
+	rtn
+.desc d116 _hnf l116 3 0 "<lambda>[line:15];18;158"
+.a 0 a116
+.o 2 0
+l116
+	repl_args 2 2
+.o 3 0
+a116
+.d 3 0
+	jsr ea116
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+ea116
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.o 4 0
+s116
+	push_a 3
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	push_a 4
+	push_a 4
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp s171
+.o 3 0
+s11
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 1
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d115 3 5
+	pop_a 2
+.d 1 0
+	rtn
+.desc d115 _hnf l115 4 0 "<lambda>[line:15];18;157"
+.a 0 a115
+.o 2 0
+l115
+	repl_args 3 3
+.o 4 0
+a115
+.d 4 0
+	jsr ea115
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea115
+	jsr_eval 2
+	pushI_a 2
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.o 3 1 i
+s115
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_b 0
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	updatepop_b 0 1
+.d 3 1 i
+	jmp s172
+.o 2 2 bi
+s127
+	eqB_b TRUE 0
+	jmp_true case.52
+	jmp case.53
+case.52
+	push_a 0
+	buildI_b 1
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 2
+.d 2 0
+	rtn
+case.53
+	buildI 1
+	push_a 1
+	build _ 2 e_StdInt_n-;7
+	push_a 2
+	push_a 2
+	build _ 2 n209
+	build d_S.1 -1 n_S.1
+	build e__SystemArray_dsize;20 1 e__SystemArray_nsize;20
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 2
+.d 2 0
+	rtn
+.n 2 _ ea209
+.o 1 0
+n209
+	push_node _cycle_in_spine 2
+.o 3 0
+ea209
+.o 3 0
+s209
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	updatepop_a 0 2
+.d 1 1 i
+	jsr e_EdLineText_sgetLine
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh ARRAY 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+s58
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s59
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 3 0
+s12
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 1
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d114 3 5
+	pop_a 2
+.d 1 0
+	rtn
+.desc d114 _hnf l114 4 0 "<lambda>[line:15];18;156"
+.a 0 a114
+.o 2 0
+l114
+	repl_args 3 3
+.o 4 0
+a114
+.d 4 0
+	jsr ea114
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea114
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushI_a 2
+	pushI_a 1
+	update_a 0 2
+	pop_a 2
+.o 2 2 ii
+s114
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	push_b 1
+	push_b 1
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 2 2 ii
+	jmp s173
+.o 0 3 bii
+s126
+	eqB_b TRUE 0
+	jmp_true case.54
+	jmp case.55
+case.54
+	buildI_b 2
+	buildI_b 1
+	pop_b 3
+.d 2 0
+	rtn
+case.55
+	buildI 1
+	buildI_b 2
+	build _ 2 e_StdInt_n+;6
+	buildI 0
+	pop_b 3
+.d 2 0
+	rtn
+.o 2 0
+s61
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s62
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 3 0
+s17
+	build_r e_EdPosition_rPosition 2 0 0 0
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d113 4 6
+	pop_a 2
+.d 1 0
+	rtn
+.desc d113 _hnf l113 5 0 "<lambda>[line:15];18;155"
+.a 0 a113
+.o 2 0
+l113
+	repl_args 4 4
+.o 5 0
+a113
+.d 5 0
+	jsr ea113
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 5 0
+ea113
+	jsr_eval 1
+	pushI_a 1
+	update_a 0 1
+	pop_a 1
+.o 4 1 i
+s113
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	push_b 0
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	updatepop_b 0 1
+.d 4 1 i
+	jmp s174
+.o 3 1 b
+s125
+	eqB_b TRUE 0
+	jmp_true case.56
+	jmp case.57
+case.56
+	pop_b 1
+	jsr_eval 0
+	updatepop_a 0 2
+	repl_r_args 2 0
+.d 2 0
+	rtn
+case.57
+	buildI 1
+	push_a 2
+	build _ 2 e_StdInt_n-;7
+	push_a 3
+	push_a 3
+	build _ 2 n206
+	build d_S.1 -1 n_S.1
+	build e__SystemArray_dsize;20 1 e__SystemArray_nsize;20
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	rtn
+.n 2 _ ea206
+.o 1 0
+n206
+	push_node _cycle_in_spine 2
+.o 3 0
+ea206
+.o 3 0
+s206
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	updatepop_a 0 2
+.d 1 1 i
+	jsr e_EdLineText_sgetLine
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh ARRAY 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+s112
+	push_a 1
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s175
+.o 2 0
+s67
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s68
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 3 0
+s18
+	build_r e_EdPosition_rPosition 2 0 0 0
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 2
+	push_a 4
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	fillh d111 4 6
+	pop_a 2
+.d 1 0
+	rtn
+.desc d111 _hnf l111 5 0 "<lambda>[line:15];18;153"
+.a 0 a111
+.o 2 0
+l111
+	repl_args 4 4
+.o 5 0
+a111
+.d 5 0
+	jsr ea111
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 5 0
+ea111
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 0
+	pushI_a 3
+	pushI_a 2
+	update_a 1 3
+	update_a 0 2
+	pop_a 2
+.o 3 2 ii
+s111
+	push_a 2
+	push_a 1
+	update_a 3 4
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	push_b 1
+	push_b 1
+	push_a 3
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	update_b 1 3
+	updatepop_b 0 2
+.d 3 2 ii
+	jmp s176
+.o 1 2 bi
+s124
+	eqB_b TRUE 0
+	jmp_true case.58
+	jmp case.59
+case.58
+	pop_b 2
+	jsr_eval 0
+	repl_r_args 2 0
+.d 2 0
+	rtn
+case.59
+	buildI 1
+	buildI_b 1
+	build _ 2 e_StdInt_n+;6
+	buildI 0
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 2
+.d 2 0
+	rtn
+.o 2 0
+s110
+	push_a 1
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s177
+.export e_EdMovement_sselectWordAt
+.export e_EdMovement_easelectWordAt
+.descexp e_EdMovement_dselectWordAt e_EdMovement_nselectWordAt e_EdMovement_lselectWordAt 1 0 "selectWordAt"
+.o 2 0
+e_EdMovement_lselectWordAt
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_EdMovement_easelectWordAt
+.n 1 e_EdMovement_dselectWordAt e_EdMovement_easelectWordAt
+.o 1 0
+e_EdMovement_nselectWordAt
+	push_node _cycle_in_spine 1
+.o 2 0
+e_EdMovement_easelectWordAt
+	jsr_eval 0
+	repl_r_args 2 0
+.o 3 0
+e_EdMovement_sselectWordAt
+.o 3 0
+s3
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	jmp_false else.60
+	push_a 1
+	buildI 0
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 2
+	buildI 0
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e_EdSelection_rSelection 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	fillh d65 1 3
+	pop_a 2
+.d 1 0
+	rtn
+else.60
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d109 3 5
+	pop_a 2
+.d 1 0
+	rtn
+.desc d109 _hnf l109 4 0 "<lambda>[line:15];18;151"
+.a 0 a109
+.o 2 0
+l109
+	repl_args 3 3
+.o 4 0
+a109
+.d 4 0
+	jsr ea109
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea109
+.o 4 0
+s109
+	push_a 3
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 5
+	push_a 5
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp s178
+.o 2 1 b
+s123
+	eqB_b TRUE 0
+	jmp_true case.61
+	jmp case.62
+case.61
+	fillh d20 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.62
+	push_a 0
+	pop_b 1
+.d 1 0
+	jsr s21
+.o 0 1 b
+	jmp_false else.63
+	fillh d21 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.63
+	push_a 0
+.d 1 0
+	jsr s22
+.o 0 1 b
+	jmp_false else.64
+	fillh d22 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.64
+	push_a 0
+	jsr_eval 0
+	pushC_a 1
+	pop_a 1
+	pop_a 1
+.d 1 1 c
+	jmp s108
+.o 1 1 c
+s108
+	buildC_b 0
+	fillh e_StdChar_d==;18 1 1
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 _
+.o 1 0
+n19
+	push_node _cycle_in_spine 3
+.o 3 0
+ea19
+	push_a 1
+	push_a 3
+	push_a 2
+	build _ 3 n107
+	push_a 2
+	push_a 4
+	push_a 3
+	build _ 3 n106
+	update_a 1 4
+	updatepop_a 0 3
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 3 _
+.o 1 0
+n106
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea106
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea106
+	jsr_eval 2
+	pushI_a 2
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.o 2 1 i
+s106
+	pushI 0
+	push_b 1
+	ltI
+	jmp_false else.65
+	pop_a 2
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+else.65
+	buildI_b 0
+	push_a 2
+	build e__SystemArray_dselect;19 2 e__SystemArray_nselect;19
+	push_a 1
+	jsr_eval 0
+	jsr_ap 1
+	pushB_a 0
+	pop_a 1
+	jmp_false else.66
+	pushI 1
+	push_b 1
+	subI
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 2 1 i
+	jmp s106
+else.66
+	pushI 1
+	push_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 2
+	addI
+.d 0 1 i
+	rtn
+.n 3 _
+.o 1 0
+n107
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea107
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea107
+	jsr_eval 2
+	jsr_eval 1
+	pushI_a 2
+	push_array 1
+	update_a 0 3
+	update_a 1 2
+	pop_a 2
+.o 2 1 i
+s107
+	push_a 1
+	push_arraysize CHAR 0 1
+	push_b 1
+	ltI
+	notB
+	jmp_false else.67
+	push_a 1
+	updatepop_a 0 2
+	pop_b 1
+	push_arraysize CHAR 0 1
+.d 0 1 i
+	rtn
+else.67
+	buildI_b 0
+	push_a 2
+	buildh ARRAY 1
+	build e__SystemArray_dselect;19 2 e__SystemArray_nselect;19
+	push_a 1
+	jsr_eval 0
+	jsr_ap 1
+	pushB_a 0
+	pop_a 1
+	jmp_false else.68
+	pushI 1
+	push_b 1
+	addI
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 2 1 i
+	jmp s107
+else.68
+	pop_a 2
+.d 0 1 i
+	rtn
+.desc d22 _hnf l22 1 0 "isWhiteSpace"
+.o 2 0
+l22
+	pop_a 1
+.d 1 0
+	jsr ea22
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea22
+.o 1 0
+s22
+	buildh _Nil 0
+	buildC '\010'
+	buildh _Cons 2
+	buildC '\f'
+	buildh _Cons 2
+	buildC '\n'
+	buildh _Cons 2
+	buildC '\r'
+	buildh _Cons 2
+	buildC '\t'
+	buildh _Cons 2
+	buildC ' '
+	buildh _Cons 2
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jmp e_StdList_sisMember;52
+.desc d21 _hnf l21 1 0 "isFunnyChar"
+.o 2 0
+l21
+	pop_a 1
+.d 1 0
+	jsr ea21
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea21
+.o 1 0
+s21
+	buildh _Nil 0
+	buildC '.'
+	buildh _Cons 2
+	buildC ':'
+	buildh _Cons 2
+	buildC '='
+	buildh _Cons 2
+	buildC '&'
+	buildh _Cons 2
+	buildC '|'
+	buildh _Cons 2
+	buildC '/'
+	buildh _Cons 2
+	buildC '\\'
+	buildh _Cons 2
+	buildC '>'
+	buildh _Cons 2
+	buildC '<'
+	buildh _Cons 2
+	buildC '*'
+	buildh _Cons 2
+	buildC '-'
+	buildh _Cons 2
+	buildC '+'
+	buildh _Cons 2
+	buildC '!'
+	buildh _Cons 2
+	buildC '?'
+	buildh _Cons 2
+	buildC '^'
+	buildh _Cons 2
+	buildC '%'
+	buildh _Cons 2
+	buildC '$'
+	buildh _Cons 2
+	buildC '#'
+	buildh _Cons 2
+	buildC '@'
+	buildh _Cons 2
+	buildC '~'
+	buildh _Cons 2
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jmp e_StdList_sisMember;52
+.desc d20 _hnf l20 1 0 "isWordChar"
+.o 2 0
+l20
+	pop_a 1
+.d 1 0
+	jsr ea20
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea20
+	jsr_eval 0
+	pushC_a 0
+	pop_a 1
+.o 0 1 c
+s20
+	push_b 0
+.d 0 1 c
+	jsr e_StdChar_sisAlpha
+.o 0 1 b
+	jmp_false else.69
+	pop_b 1
+	pushB TRUE
+.d 0 1 b
+	rtn
+else.69
+	push_b 0
+.d 0 1 c
+	jsr e_StdChar_sisDigit
+.o 0 1 b
+	jmp_false else.70
+	pop_b 1
+	pushB TRUE
+.d 0 1 b
+	rtn
+else.70
+	buildh _Nil 0
+	buildC '_'
+	buildh _Cons 2
+	buildC '`'
+	buildh _Cons 2
+	buildC_b 0
+	pop_b 1
+.d 2 0
+	jmp e_StdList_sisMember;52
+.o 2 0
+s64
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.desc d65 _hnf l65 2 0 "<lambda>[line:11];14;64"
+.a 0 a65
+.o 2 0
+l65
+	repl_args 1 1
+.o 2 0
+a65
+.o 2 0
+ea65
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 2 0
+s71
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s72
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 3 0
+s24
+	build_r e_EdPosition_rPosition 2 0 0 0
+	build e_EdVisualText_dgetViewFrame 0 e_EdVisualText_ngetViewFrame
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d105 3 5
+	pop_a 2
+.d 1 0
+	rtn
+.desc d105 _hnf l105 4 0 "<lambda>[line:15];18;147"
+.a 0 a105
+.o 2 0
+l105
+	repl_args 3 3
+.o 4 0
+a105
+.d 4 0
+	jsr ea105
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea105
+	push_r_args 2 2 0
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+.o 5 0
+s105
+	push_a 4
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 6
+	push_a 6
+	push_a 6
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 5 0
+	jmp s179
+.o 6 0
+s104
+	push_a 5
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 3 7
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 7 13
+	update_a 6 12
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 8 7 iiiibbb
+	jmp s180
+.o 3 2 bi
+s122
+	eqB_b TRUE 0
+	jmp_true case.71
+	jmp case.72
+case.71
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	updatepop_b 0 2
+	pop_a 3
+	negI
+.d 0 1 i
+	rtn
+case.72
+	jsr_eval 1
+	push_r_args_a 1 2 0 1 1
+	repl_r_args 0 2
+	pop_b 1
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 2
+	divI
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 1
+	ltI
+	jmp_false else.73
+	push_b 0
+	updatepop_b 0 1
+	pop_a 1
+	negI
+.d 0 1 i
+	rtn
+else.73
+	pushI_a 0
+	updatepop_b 0 1
+	pop_a 1
+	negI
+.d 0 1 i
+	rtn
+.o 5 0
+s26
+	build_r e_EdPosition_rPosition 2 0 2 0
+	build e_EdMonad_dgetFontInfo 0 e_EdMonad_ngetFontInfo
+	push_a 5
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 3 5
+	update_a 0 3
+	update_a 4 0
+	update_a 2 4
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d103 5 9
+	pop_a 4
+.d 1 0
+	rtn
+.desc d103 _hnf l103 6 0 "<lambda>[line:15];18;145"
+.a 0 a103
+.o 2 0
+l103
+	repl_args 5 5
+.o 6 0
+a103
+.d 6 0
+	jsr ea103
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 6 0
+ea103
+	jsr_eval 4
+	jsr_eval 0
+	pushI_a 4
+	pushI_a 1
+	update_a 3 4
+	update_a 2 3
+	update_a 0 2
+	pop_a 2
+.o 4 2 ii
+s103
+	push_a 3
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 3 7
+	push_b 8
+	push_a 6
+	push_a 6
+	push_b 8
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	update_b 8 10
+	update_b 7 9
+	update_b 6 8
+	update_b 5 7
+	update_b 4 6
+	update_b 3 5
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 9 iiiiiibbb
+	jmp s181
+.o 5 2 ii
+s102
+	push_a 4
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 6
+	push_b 1
+	push_a 6
+	push_a 6
+	push_b 1
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 3
+	updatepop_b 0 2
+.d 5 2 ii
+	jmp s182
+.o 6 2 ii
+s101
+	push_a 5
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 7
+	push_a 7
+	push_b 1
+	push_a 7
+	push_a 7
+	push_b 1
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 ii
+	jmp s183
+.o 3 0
+s100
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s52
+.o 3 0
+s99
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s50
+.n 5 _
+.o 1 0
+n49
+	push_node _cycle_in_spine 5
+.o 5 0
+ea49
+	jsr_eval 4
+	push_r_args 4 3 7
+	update_a 2 7
+	update_a 4 2
+	update_a 6 4
+	update_a 1 6
+	update_a 3 1
+	update_a 5 3
+	update_a 0 5
+	pop_a 1
+.impmod EdMonad
+.impdesc e_EdMonad_rFontInfo
+	build_r e_EdMonad_rFontInfo 3 7 4 0
+	push_a 4
+	push_a 4
+	push_a 4
+	build _ 4 n202
+	build_r e_EdMonad_rFontInfo 3 7 5 0
+	push_a 5
+	push_b 0
+	push_a 3
+	push_a 3
+	build_u _ 4 1 n203
+	build e_EdPosition_dPosition.col -4 e_EdPosition_nPosition.col
+	push_a 1
+	update_a 1 9
+	updatepop_a 0 8
+	pop_b 7
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.nu 4 1 _ _
+.o 1 0
+n203
+	push_node_u _cycle_in_spine 4 1
+.o 5 1 i
+ea203
+.o 5 1 i
+s203
+	push_r_args 3 3 7
+	push_a 5
+	jsr_eval 0
+	push_a 5
+	jsr_eval 0
+	pushI_a 6
+	pop_a 1
+	push_b 8
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	mulI
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	update_b 8 9
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 4 9 iiiiiibbb
+	jsr e_EdVisualText_spointToPosition
+.o 2 0
+	fill_r e_EdPosition_rPosition 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 4 _ ea202
+.o 1 0
+n202
+	push_node _cycle_in_spine 4
+.o 5 0
+ea202
+.o 5 0
+s202
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	push_a 0
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 1 b
+	jsr s121
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 4 1 b
+s121
+	eqB_b TRUE 0
+	jmp_true case.74
+	jmp case.75
+case.74
+	push_r_args 2 3 7
+	push_a 4
+	jsr_eval 0
+	push_a 4
+	jsr_eval 0
+	repl_r_args 2 0
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 6 7 iiiibbb
+	jsr e_EdVisualText_spositionToPoint
+.o 0 2 ii
+	update_b 0 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.75
+	pop_b 1
+	pop_a 3
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+.o 2 0
+s50
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s52
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 3 0
+s25
+	build_r e_EdPosition_rPosition 2 0 0 0
+	build e_EdVisualText_dgetViewFrame 0 e_EdVisualText_ngetViewFrame
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	fillh d98 3 5
+	pop_a 2
+.d 1 0
+	rtn
+.desc d98 _hnf l98 4 0 "<lambda>[line:15];18;140"
+.a 0 a98
+.o 2 0
+l98
+	repl_args 3 3
+.o 4 0
+a98
+.d 4 0
+	jsr ea98
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 4 0
+ea98
+	jsr_eval 2
+	pushI_a 2
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.o 3 1 i
+s98
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_b 0
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	updatepop_b 0 1
+.d 3 1 i
+	jmp s184
+.o 4 1 i
+s97
+	push_a 3
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	repl_r_args 3 7
+	push_a 6
+	push_b 7
+	push_a 6
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 6 8 iiiiibbb
+	jmp s185
+.o 5 2 ii
+s96
+	push_a 4
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+	jsr_ap 1
+	push_arg 0 2 2
+	push_arg 1 2 1
+	jsr_eval 0
+	push_b 1
+	push_a 5
+	push_a 5
+	push_b 1
+	push_a 5
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	update_b 1 3
+	updatepop_b 0 2
+.d 5 2 ii
+	jmp s186
+.o 2 3 bii
+s120
+	eqB_b TRUE 0
+	jmp_true case.76
+	jmp case.77
+case.76
+	push_b 2
+	push_b 2
+	update_b 1 4
+	updatepop_b 0 3
+	pop_a 2
+	subI
+.d 0 1 i
+	rtn
+case.77
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 3
+	subI
+	ltI
+	jmp_false else.78
+	pushI_a 1
+	push_b 2
+	update_b 1 4
+	updatepop_b 0 3
+	pop_a 2
+	subI
+.d 0 1 i
+	rtn
+else.78
+	pop_b 3
+	pushI_a 0
+	pop_a 2
+.d 0 1 i
+	rtn
+.o 1 2 bi
+s119
+	eqB_b TRUE 0
+	jmp_true case.79
+	jmp case.80
+case.79
+	pop_b 2
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+case.80
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+.o 6 2 ii
+s95
+	push_a 5
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 7
+	push_b 1
+	push_a 7
+	push_a 7
+	push_b 1
+	push_a 7
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 ii
+	jmp s187
+.o 1 2 bi
+s118
+	eqB_b TRUE 0
+	jmp_true case.81
+	jmp case.82
+case.81
+	pop_a 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.82
+	pop_b 2
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+.o 3 0
+s94
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s79
+.o 3 0
+s93
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	build d_S.2 -1 n_S.2
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s77
+.n 5 _
+.o 1 0
+n45
+	push_node _cycle_in_spine 5
+.o 5 0
+ea45
+	jsr_eval 4
+	push_r_args 4 3 7
+	update_a 2 7
+	update_a 4 2
+	update_a 6 4
+	update_a 1 6
+	update_a 3 1
+	update_a 5 3
+	update_a 0 5
+	pop_a 1
+	build_r e_EdMonad_rFontInfo 3 7 4 0
+	push_a 4
+	push_a 4
+	push_a 4
+	build _ 4 n198
+	build_r e_EdMonad_rFontInfo 3 7 5 0
+	push_a 5
+	push_b 0
+	push_a 3
+	push_a 3
+	build_u _ 4 1 n199
+	build e_EdPosition_dPosition.col -4 e_EdPosition_nPosition.col
+	push_a 1
+	update_a 1 9
+	updatepop_a 0 8
+	pop_b 7
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.nu 4 1 _ _
+.o 1 0
+n199
+	push_node_u _cycle_in_spine 4 1
+.o 5 1 i
+ea199
+.o 5 1 i
+s199
+	push_r_args 3 3 7
+	push_a 5
+	jsr_eval 0
+	push_a 5
+	jsr_eval 0
+	pushI_a 6
+	pop_a 1
+	push_b 8
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	mulI
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	update_b 8 9
+	update_b 7 8
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 4 9 iiiiiibbb
+	jsr e_EdVisualText_spointToPosition
+.o 2 0
+	fill_r e_EdPosition_rPosition 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 4 _ ea198
+.o 1 0
+n198
+	push_node _cycle_in_spine 4
+.o 5 0
+ea198
+.o 5 0
+s198
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	push_a 0
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 1 b
+	jsr s117
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 4 1 b
+s117
+	eqB_b TRUE 0
+	jmp_true case.83
+	jmp case.84
+case.83
+	push_r_args 2 3 7
+	push_a 4
+	jsr_eval 0
+	push_a 4
+	jsr_eval 0
+	repl_r_args 2 0
+	update_b 6 7
+	update_b 5 6
+	update_b 4 5
+	update_b 3 4
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 6 7 iiiibbb
+	jsr e_EdVisualText_spositionToPoint
+.o 0 2 ii
+	update_b 0 1
+	pop_b 1
+.d 0 1 i
+	rtn
+case.84
+	pop_b 1
+	pop_a 3
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+.o 2 0
+s77
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s79
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 3 0
+s15
+	push_a 1
+	buildI 0
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	fillh d85 1 3
+	pop_a 2
+.d 1 0
+	rtn
+.desc d85 _hnf l85 2 0 "<lambda>[line:11];14;84"
+.a 0 a85
+.o 2 0
+l85
+	repl_args 1 1
+.o 2 0
+a85
+.o 2 0
+ea85
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+s16
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	fillh d92 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.desc d92 _hnf l92 3 0 "<lambda>[line:15];18;134"
+.a 0 a92
+.o 2 0
+l92
+	repl_args 2 2
+.o 3 0
+a92
+.d 3 0
+	jsr ea92
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+ea92
+.o 3 0
+s92
+	push_a 2
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 4
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp s188
+.o 2 0
+s86
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 2 0
+s13
+	buildI 0
+	buildI 0
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	fillh d88 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.desc d88 _hnf l88 2 0 "<lambda>[line:11];14;87"
+.a 0 a88
+.o 2 0
+l88
+	repl_args 1 1
+.o 2 0
+a88
+.o 2 0
+ea88
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 2 0
+s14
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	fillh d91 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.desc d91 _hnf l91 2 0 "<lambda>[line:15];18;133"
+.a 0 a91
+.o 2 0
+l91
+	repl_args 1 1
+.o 2 0
+a91
+.d 2 0
+	jsr ea91
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 2 0
+ea91
+.o 2 0
+s91
+	push_a 1
+	push_a 1
+	build e_system_dAP 2 e_system_nAP
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s189
+.o 2 0
+s89
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+.o 3 0
+s170
+	pushD_a 0
+	eqD_b e_EdMovement_dLineUp 0
+	jmp_true case.85
+	eqD_b e_EdMovement_dLineDown 0
+	jmp_true case.86
+	eqD_b e_EdMovement_dCharLeft 0
+	jmp_true case.87
+	eqD_b e_EdMovement_dCharRight 0
+	jmp_true case.88
+	eqD_b e_EdMovement_dWordLeft 0
+	jmp_true case.89
+	eqD_b e_EdMovement_dWordRight 0
+	jmp_true case.90
+	eqD_b e_EdMovement_dPageUp 0
+	jmp_true case.91
+	eqD_b e_EdMovement_dPageDown 0
+	jmp_true case.92
+	eqD_b e_EdMovement_dStartOfLine 0
+	jmp_true case.93
+	eqD_b e_EdMovement_dEndOfLine 0
+	jmp_true case.94
+	eqD_b e_EdMovement_dStartOfText 0
+	jmp_true case.95
+	jmp case.96
+case.85
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s9
+case.86
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+.d 2 0
+	jmp s10
+case.87
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s11
+case.88
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s12
+case.89
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s17
+case.90
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s18
+case.91
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s24
+case.92
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s25
+case.93
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s15
+case.94
+	pop_b 1
+	push_r_args 1 2 0
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s16
+case.95
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+.d 2 0
+	jmp s13
+case.96
+	pop_b 1
+	push_a 1
+	updatepop_a 0 2
+.d 2 0
+	jmp s14
+case.97
+	buildAC "positionAfterArrow (EdAction.icl): unknown movement"
+	updatepop_a 0 1
+.d 1 0
+	jsr print_string_
+.o 0 0
+	halt
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	jsr_ap 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 4 0
+s171
+	push_a 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 1 0
+	jsr e_EdLineText_stextLength
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_a 3
+	push_a 2
+	push_a 2
+	buildI 1
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 1 i
+	jmp s190
+.o 3 1 i
+s172
+	pushI 0
+	push_b 1
+	eqI
+	jmp_false else.98
+	push_a 1
+	push_b 0
+	push_a 1
+	build_u _ 2 1 n208
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	jmp s58
+else.98
+	buildI 1
+	buildI_b 0
+	build _ 2 e_StdInt_n-;7
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 1
+.d 2 0
+	jmp s59
+.nu 2 1 _ _
+.o 1 0
+n208
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea208
+.o 3 1 i
+s208
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	push_a 1
+	push_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 1 3
+	updatepop_a 0 2
+	update_b 1 2
+	updatepop_b 0 1
+.d 2 2 bi
+	jsr s127
+.o 2 0
+	fill_r e_EdPosition_rPosition 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 2 ii
+s173
+	push_a 0
+	push_b 0
+.d 1 1 i
+	jsr e_EdLineText_sgetLine
+.o 2 0
+	update_a 0 1
+	pop_a 1
+	push_arraysize CHAR 0 1
+	push_b 2
+	eqI
+	jmp_false else.99
+	push_b 1
+	push_a 0
+	push_b 1
+	build_u _ 1 2 n207
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 2
+.d 2 0
+	jmp s61
+else.99
+	buildI 1
+	buildI_b 1
+	build _ 2 e_StdInt_n+;6
+	buildI_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 2
+.d 2 0
+	jmp s62
+.nu 1 2 _ _
+.o 1 0
+n207
+	push_node_u _cycle_in_spine 1 2
+.o 2 2 ii
+ea207
+.o 2 2 ii
+s207
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_EdLineText_stextLength
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_b 1
+	eqI
+	push_b 1
+	push_b 3
+	push_b 2
+	update_b 2 3
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 2 4
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 3 bii
+	jsr s126
+.o 2 0
+	fill_r e_EdPosition_rPosition 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 4 1 i
+s174
+	pushI 0
+	push_b 1
+	eqI
+	jmp_false else.100
+	push_a 2
+	push_a 2
+	push_a 2
+	build _ 3 n205
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 5
+	updatepop_a 0 4
+	pop_b 1
+.d 2 0
+	jmp s68
+else.100
+	push_a 1
+	build e_EdMovement_dselectWordAt 1 e_EdMovement_nselectWordAt
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 5
+	updatepop_a 0 4
+	pop_b 1
+.d 2 0
+	jmp s112
+.n 3 _ ea205
+.o 1 0
+n205
+	push_node _cycle_in_spine 3
+.o 4 0
+ea205
+.o 4 0
+s205
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqI
+	push_a 2
+	push_a 1
+	push_a 3
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 1 b
+	jsr s125
+.o 2 0
+	fill_r e_EdPosition_rPosition 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+s175
+	push_a 0
+	build e_EdSelection_dSelection.start -4 e_EdSelection_nSelection.start
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s67
+.o 3 2 ii
+s176
+	push_a 1
+	push_b 0
+.d 1 1 i
+	jsr e_EdLineText_sgetLine
+.o 2 0
+	update_a 0 1
+	pop_a 1
+	push_arraysize CHAR 0 1
+	push_b 2
+	eqI
+	jmp_false else.101
+	push_a 0
+	push_a 2
+	push_b 0
+	build_u _ 2 1 n204
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 2
+.d 2 0
+	jmp s72
+else.101
+	buildI 1
+	buildI_b 1
+	build _ 2 e_StdInt_n+;6
+	buildI_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build e_EdMovement_dselectWordAt 1 e_EdMovement_nselectWordAt
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 2
+.d 2 0
+	jmp s110
+.nu 2 1 _ _
+.o 1 0
+n204
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea204
+.o 3 1 i
+s204
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_EdLineText_stextLength
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_b 1
+	eqI
+	push_b 1
+	push_a 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 bi
+	jsr s124
+.o 2 0
+	fill_r e_EdPosition_rPosition 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+s177
+	push_a 0
+	build e_EdSelection_dSelection.end -4 e_EdSelection_nSelection.end
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s71
+.o 4 0
+s178
+	push_a 2
+	push_a 2
+	build e_EdLineText_dgetLine 2 e_EdLineText_ngetLine
+	build d_S.1 -1 n_S.1
+	buildI 1
+	push_a 2
+	build _ 2 e_StdInt_n-;7
+	push_a 0
+	push_a 2
+	build e__SystemArray_dselect;19 2 e__SystemArray_nselect;19
+	push_a 0
+	build _ 1 n191
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 3 n19
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 6
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	push_a 7
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e_EdSelection_rSelection 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 8
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 9
+	updatepop_a 0 8
+.d 2 0
+	jmp s64
+.n 1 _ ea191
+.o 1 0
+n191
+	push_node _cycle_in_spine 1
+.o 2 0
+ea191
+.o 2 0
+s191
+	push_a 0
+	jsr_eval 0
+	pushC_a 1
+	pop_a 1
+.d 0 1 c
+	jsr s20
+.o 0 1 b
+	push_a 0
+	updatepop_a 0 1
+.d 2 1 b
+	jmp s123
+.o 5 0
+s179
+	create
+.d 1 0
+	jsr e_EdMonad_sgetFontInfo
+.o 1 0
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 6 0
+	jmp s104
+.o 8 7 iiiibbb
+s180
+	push_a 3
+	build e_StdIOBasic_dRectangle.corner1 -4 e_StdIOBasic_nRectangle.corner1
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	push_a 4
+	build e_StdIOBasic_dRectangle.corner2 -4 e_StdIOBasic_nRectangle.corner2
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	push_b 0
+	build_u _ 2 1 n200
+	push_b 0
+	push_a 4
+	push_a 1
+	push_a 3
+	build_u _ 3 1 n201
+	push_a 9
+	push_a 5
+	push_a 5
+	pushI 0
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 7
+.d 4 1 i
+	jmp s190
+.nu 3 1 _ _
+.o 1 0
+n201
+	push_node_u _cycle_in_spine 3 1
+.o 4 1 i
+ea201
+.o 4 1 i
+s201
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	ltI
+	push_a 1
+	push_b 1
+	push_a 3
+	push_a 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 3 2 bi
+	jsr s122
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 2 1 _ _
+.o 1 0
+n200
+	push_node_u _cycle_in_spine 2 1
+.o 3 1 i
+ea200
+.o 3 1 i
+s200
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	subI
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	divI
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 2
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 6 9 iiiiiibbb
+s181
+	build_r e_EdMonad_rFontInfo 3 7 2 2
+	build e_EdMonad_dgetVirtualX 0 e_EdMonad_ngetVirtualX
+	push_a 7
+	push_b 1
+	push_a 4
+	push_a 4
+	push_b 1
+	push_a 4
+	update_a 3 5
+	update_a 2 3
+	update_a 1 2
+	update_a 4 1
+	update_a 0 4
+	pop_a 1
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 10
+	updatepop_b 0 9
+.d 5 2 ii
+	jmp s102
+.o 5 2 ii
+s182
+	build e_EdMonad_dgetText 0 e_EdMonad_ngetText
+	push_a 5
+	push_a 5
+	push_a 5
+	push_b 1
+	push_a 5
+	push_a 5
+	push_b 1
+	push_a 5
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+	update_b 1 3
+	updatepop_b 0 2
+.d 6 2 ii
+	jmp s101
+.o 6 2 ii
+s183
+	push_b 0
+	push_b 2
+	eqI
+	jmp_false else.102
+	buildI 0
+	build e_EdMonad_dsetVirtualX 1 e_EdMonad_nsetVirtualX
+	push_a 6
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	pop_b 2
+.d 3 0
+	jmp s99
+else.102
+	buildI_b 1
+	push_a 2
+	build _ 2 e_StdInt_n+;6
+	push_a 3
+	push_a 6
+	push_a 3
+	push_a 7
+	push_a 4
+	build _ 5 n49
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	build e_EdMonad_dsetVirtualX 1 e_EdMonad_nsetVirtualX
+	push_a 9
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+	pop_b 2
+.d 3 0
+	jmp s100
+.o 3 1 i
+s184
+	create
+.d 1 0
+	jsr e_EdMonad_sgetFontInfo
+.o 1 0
+	push_a 3
+	push_a 3
+	push_b 0
+	push_a 3
+	push_a 3
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 4 1 i
+	jmp s97
+.o 6 8 iiiiibbb
+s185
+	build_r e_EdMonad_rFontInfo 3 7 2 1
+	create
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 6
+	update_a 0 5
+	pop_a 1
+.d 1 0
+	jsr e_EdMonad_sgetText
+.o 1 0
+	push_a 7
+	push_b 1
+	push_a 4
+	push_b 1
+	push_a 4
+	push_a 4
+	update_a 3 5
+	update_a 2 3
+	update_a 1 2
+	update_a 4 1
+	update_a 0 4
+	pop_a 1
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	update_b 1 9
+	updatepop_b 0 8
+.d 5 2 ii
+	jmp s96
+.o 5 2 ii
+s186
+	push_a 3
+.d 1 0
+	jsr e_EdLineText_slastLineNr
+.o 0 1 i
+	push_a 1
+	build e_StdIOBasic_dRectangle.corner2 -4 e_StdIOBasic_nRectangle.corner2
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	buildI_b 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n193
+	push_a 0
+	push_b 0
+	build_u _ 1 1 n194
+	push_a 3
+	build e_StdIOBasic_dRectangle.corner1 -4 e_StdIOBasic_nRectangle.corner1
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	push_a 4
+	build e_StdIOBasic_dRectangle.corner2 -4 e_StdIOBasic_nRectangle.corner2
+	build e_StdIOBasic_dPoint2.y -3 e_StdIOBasic_nPoint2.y
+	buildI_b 2
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	build _ 3 n195
+	push_a 2
+	push_b 1
+	push_a 1
+	push_a 3
+	build_u _ 3 1 n196
+	build e_EdMonad_dgetVirtualX 0 e_EdMonad_ngetVirtualX
+	push_a 9
+	push_b 0
+	push_a 9
+	push_a 9
+	push_b 2
+	push_a 8
+	push_a 5
+	update_a 4 6
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 5 1
+	update_a 0 5
+	pop_a 1
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+	update_b 1 4
+	updatepop_b 0 3
+.d 6 2 ii
+	jmp s95
+.nu 3 1 _ _
+.o 1 0
+n196
+	push_node_u _cycle_in_spine 3 1
+.o 4 1 i
+ea196
+.o 4 1 i
+s196
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI_a 0
+	subI
+	push_b 2
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	push_a 2
+	push_a 2
+	push_b 2
+	push_b 2
+	update_b 1 3
+	update_b 2 1
+	update_b 0 2
+	pop_b 1
+	update_a 1 4
+	updatepop_a 0 3
+	update_b 2 3
+	update_b 1 2
+	updatepop_b 0 1
+.d 2 3 bii
+	jsr s120
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 _ ea195
+.o 1 0
+n195
+	push_node _cycle_in_spine 3
+.o 4 0
+ea195
+.o 4 0
+s195
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	subI
+	divI
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	pop_a 3
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.nu 1 1 _ _
+.o 1 0
+n194
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea194
+.o 2 1 i
+s194
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 1
+	ltI
+	push_b 1
+	push_a 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 bi
+	jsr s119
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea193
+.o 1 0
+n193
+	push_node _cycle_in_spine 2
+.o 3 0
+ea193
+.o 3 0
+s193
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pop_a 2
+	divI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 6 2 ii
+s187
+	push_b 1
+	push_b 1
+	eqI
+	jmp_false else.103
+	buildI 0
+	build e_EdMonad_dsetVirtualX 1 e_EdMonad_nsetVirtualX
+	push_a 6
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+	pop_b 2
+.d 3 0
+	jmp s93
+else.103
+	buildI_b 0
+	push_a 4
+	build _ 2 e_StdInt_n+;6
+	push_a 0
+	push_b 1
+	build_u _ 1 1 n197
+	push_a 3
+	push_a 5
+	push_a 4
+	push_a 9
+	push_a 4
+	build _ 5 n45
+	push_a 0
+	build d_S.2 -1 n_S.2
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 1
+	build d_S.1 -1 n_S.1
+	build e_EdMonad_dsetVirtualX 1 e_EdMonad_nsetVirtualX
+	push_a 10
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	pop_b 2
+.d 3 0
+	jmp s94
+.nu 1 1 _ _
+.o 1 0
+n197
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea197
+.o 2 1 i
+s197
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_b 1
+	ltI
+	push_a 0
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 bi
+	jsr s118
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+s188
+	push_a 1
+	push_a 1
+	build e_EdLineText_dgetLine 2 e_EdLineText_ngetLine
+	build d_S.1 -1 n_S.1
+	build e__SystemArray_dsize;20 1 e__SystemArray_nsize;20
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s86
+.o 2 0
+s189
+	push_a 0
+	build _ 1 n192
+	push_a 1
+	push_a 1
+	build e_EdLineText_dgetLine 2 e_EdLineText_ngetLine
+	build d_S.1 -1 n_S.1
+	build e__SystemArray_dsize;20 1 e__SystemArray_nsize;20
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jmp s89
+.n 1 _ ea192
+.o 1 0
+n192
+	push_node _cycle_in_spine 1
+.o 2 0
+ea192
+.o 2 0
+s192
+	push_a 0
+	jsr_eval 0
+	updatepop_a 0 1
+.d 1 0
+	jsr e_EdLineText_stextLength
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 4 1 i
+s190
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	build_r e_EdPosition_rPosition 2 0 1 0
+	create
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 4
+	pop_a 1
+.d 1 0
+	jsr e_EdMonad_sgetFontInfo
+.o 1 0
+	push_a 5
+	push_a 3
+	push_b 1
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	update_b 1 2
+	updatepop_b 0 1
+.d 4 2 ii
+	jmp s103

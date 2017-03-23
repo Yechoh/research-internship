@@ -1,0 +1,59 @@
+|| ?module? StdPStClass
+
+
+<{StdPStClass.fopen`}> !fName_0 !fMode_1::I !files_2 = let _x_1_0 = StdFile.fopen_27 fName_0 fMode_1 files_2 in <{_Tuple2!3}> (_Tuple2 (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 1)) (select _x_1_0::_Tuple3 2)
+<{StdPStClass.sfopen`}> !fName_0 !fMode_1::I !files_2 = let _x_1_0 = StdFile.sfopen_28 fName_0 fMode_1 files_2 in <{_Tuple2!3}> (_Tuple2 (select _x_1_0::_Tuple3 0) (select _x_1_0::_Tuple3 1)) (select _x_1_0::_Tuple3 2)
+StdPStClass.handleOSEvent !osEvent_0 !pState_1 = select (scheduler.handleOneEventForDevices (deviceevents.ScheduleOSEvent osEvent_0 _predefined._Nil) pState_1)::_Tuple3 2
+StdPStClass.accFiles_10 !accfun_0 !io_1 = let _x_1_0 = iostate.ioStGetWorld io_1, _x_1_1 = StdFile.accFiles_34 accfun_0 (select _x_1_0::_Tuple2 0) in <{_Tuple2!3}> (select _x_1_1::_Tuple2 0) (iostate.ioStSetWorld (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1))
+StdPStClass.accFiles_8 !accfun_0 !pState_1 = StdPSt.accPIO (StdPStClass.accFiles_10 accfun_0) pState_1
+StdPStClass.fclose_0 !file_0 !pState_1 = StdPStClass.accFiles_8 (StdFile.fclose_26 file_0) pState_1
+StdPStClass.fopen_1 !fName_0 !fMode_1::I !pState_2 = let _x_1_0 = StdPStClass.accFiles_8 (<{StdPStClass.fopen`}> fName_0 fMode_1) pState_2, _x_1_1 = select _x_1_0::_Tuple2 0 in <{_Tuple3!7}> (select _x_1_1::_Tuple2 0) (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1)
+StdPStClass.sfopen_2 !fName_0 !fMode_1::I !pState_2 = let _x_1_0 = StdPStClass.accFiles_8 (<{StdPStClass.sfopen`}> fName_0 fMode_1) pState_2, _x_1_1 = select _x_1_0::_Tuple2 0 in <{_Tuple3!7}> (select _x_1_1::_Tuple2 0) (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1)
+StdPStClass.stdio_3 !pState_0 = StdPStClass.accFiles_8 StdFile.stdio_29 pState_0
+StdPStClass.fclose_4 !file_0 !ioState_1 = StdPStClass.accFiles_10 (StdFile.fclose_26 file_0) ioState_1
+StdPStClass.fopen_5 !fName_0 !fMode_1::I !ioState_2 = let _x_1_0 = StdPStClass.accFiles_10 (<{StdPStClass.fopen`}> fName_0 fMode_1) ioState_2, _x_1_1 = select _x_1_0::_Tuple2 0 in <{_Tuple3!7}> (select _x_1_1::_Tuple2 0) (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1)
+StdPStClass.sfopen_6 !fName_0 !fMode_1::I !ioState_2 = let _x_1_0 = StdPStClass.accFiles_10 (<{StdPStClass.sfopen`}> fName_0 fMode_1) ioState_2, _x_1_1 = select _x_1_0::_Tuple2 0 in <{_Tuple3!7}> (select _x_1_1::_Tuple2 0) (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1)
+StdPStClass.stdio_7 !ioState_0 = StdPStClass.accFiles_10 StdFile.stdio_29 ioState_0
+StdPStClass.appFiles_11 !appfun_0 !io_1 = let _x_1_0 = iostate.ioStGetWorld io_1 in iostate.ioStSetWorld (StdFile.appFiles_35 appfun_0 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1)
+StdPStClass.appFiles_9 !appfun_0 !pState_1 = StdPSt.appPIO (StdPStClass.appFiles_11 appfun_0) pState_1
+StdPStClass.selectDirectory_12 !pState_0 = let _x_1_0 = StdPSt.accPIO iostate.getIOToolbox pState_0, pState_1_1 = select _x_1_0::_Tuple2 1, tb_1_2::I = select _x_1_0::_Tuple2 0, tb_1_3::I = osfileselect.osInitialiseFileSelectors tb_1_2, _x_1_4 = osfileselect.osSelectdirectory StdPStClass.handleOSEvent pState_1_1 tb_1_3, name_1_5 = select _x_1_4::_Tuple4 1 in <{_Tuple2!3}> (<{StdPStClass._if;85;12_69}> (select _x_1_4::_Tuple4 0) name_1_5) (StdPSt.appPIO (iostate.setIOToolbox (select _x_1_4::_Tuple4 3)) (select _x_1_4::_Tuple4 2))
+<{StdPStClass._if;85;12_69}> !_x_0::B name_1 = case _x_0 (True -> Data.Maybe.Just name_1) (_ -> Data.Maybe.Nothing)
+StdPStClass.selectInputFile_13 !pState_0 = let _x_1_0 = StdPSt.accPIO iostate.getIOToolbox pState_0, pState_1_1 = select _x_1_0::_Tuple2 1, tb_1_2::I = select _x_1_0::_Tuple2 0, tb_1_3::I = osfileselect.osInitialiseFileSelectors tb_1_2, _x_1_4 = osfileselect.osSelectinputfile StdPStClass.handleOSEvent pState_1_1 tb_1_3, name_1_5 = select _x_1_4::_Tuple4 1 in <{_Tuple2!3}> (<{StdPStClass._if;73;12_70}> (select _x_1_4::_Tuple4 0) name_1_5) (StdPSt.appPIO (iostate.setIOToolbox (select _x_1_4::_Tuple4 3)) (select _x_1_4::_Tuple4 2))
+<{StdPStClass._if;73;12_70}> !_x_0::B name_1 = case _x_0 (True -> Data.Maybe.Just name_1) (_ -> Data.Maybe.Nothing)
+StdPStClass.selectOutputFile_14 !prompt_0 !originalName_1 !pState_2 = let _x_1_0 = StdPSt.accPIO iostate.getIOToolbox pState_2, pState_1_1 = select _x_1_0::_Tuple2 1, tb_1_2::I = select _x_1_0::_Tuple2 0, tb_1_3::I = osfileselect.osInitialiseFileSelectors tb_1_2, _x_1_4 = osfileselect.osSelectoutputfile StdPStClass.handleOSEvent pState_1_1 prompt_0 originalName_1 tb_1_3, name_1_5 = select _x_1_4::_Tuple4 1 in <{_Tuple2!3}> (<{StdPStClass._if;79;12_71}> (select _x_1_4::_Tuple4 0) name_1_5) (StdPSt.appPIO (iostate.setIOToolbox (select _x_1_4::_Tuple4 3)) (select _x_1_4::_Tuple4 2))
+<{StdPStClass._if;79;12_71}> !_x_0::B name_1 = case _x_0 (True -> Data.Maybe.Just name_1) (_ -> Data.Maybe.Nothing)
+StdPStClass.getBlinkInterval_19 !io_0 = let _x_1_0 = iostate.ioStGetWorld io_0, _x_1_1 = StdTime.getBlinkInterval_4 (select _x_1_0::_Tuple2 0) in <{_Tuple2!3}> (select _x_1_1::_Tuple2 0) (iostate.ioStSetWorld (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1))
+StdPStClass.getBlinkInterval_15 !pState_0 = StdPSt.accPIO StdPStClass.getBlinkInterval_19 pState_0
+StdPStClass.getCurrentDate_20 !io_0 = let _x_1_0 = iostate.ioStGetWorld io_0, _x_1_1 = StdTime.getCurrentDate_5 (select _x_1_0::_Tuple2 0) in <{_Tuple2!3}> (select _x_1_1::_Tuple2 0) (iostate.ioStSetWorld (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1))
+StdPStClass.getCurrentDate_16 !pState_0 = StdPSt.accPIO StdPStClass.getCurrentDate_20 pState_0
+StdPStClass.getCurrentTick_21 !io_0 = let _x_1_0 = iostate.ioStGetWorld io_0, _x_1_1 = StdTime.getCurrentTick_6 (select _x_1_0::_Tuple2 0) in <{_Tuple2!3}> (select _x_1_1::_Tuple2 0) (iostate.ioStSetWorld (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1))
+StdPStClass.getCurrentTick_17 !pState_0 = StdPSt.accPIO StdPStClass.getCurrentTick_21 pState_0
+StdPStClass.getCurrentTime_22 !io_0 = let _x_1_0 = iostate.ioStGetWorld io_0, _x_1_1 = StdTime.getCurrentTime_7 (select _x_1_0::_Tuple2 0) in <{_Tuple2!3}> (select _x_1_1::_Tuple2 0) (iostate.ioStSetWorld (select _x_1_1::_Tuple2 1) (select _x_1_0::_Tuple2 1))
+StdPStClass.getCurrentTime_18 !pState_0 = StdPSt.accPIO StdPStClass.getCurrentTime_22 pState_0
+
+
+|| Converted Records
+:: <{StdPStClass.gEq_s;}> = {!StdPStClass.gEq_s}
+
+:: <{StdPStClass.gEq_ss;}> = {!StdPStClass.gEq_ss}
+
+:: <{StdPStClass.gEq_sss;}> = {!StdPStClass.gEq_sss}
+
+:: <{StdPStClass.gEq_ssss;}> = {!StdPStClass.gEq_ssss}
+
+:: <{StdPStClass.gEq_sssss;}> = {!StdPStClass.gEq_sssss}
+
+:: <{StdPStClass.gEq_ssssss;}> = {!StdPStClass.gEq_ssssss}
+
+:: <{StdPStClass.gEq_sssssss;}> = {!StdPStClass.gEq_sssssss}
+
+:: <{StdPStClass.gEq_ssssssss;}> = {!StdPStClass.gEq_ssssssss}
+
+:: <{StdPStClass.gEq_sssssssss;}> = {!StdPStClass.gEq_sssssssss}
+
+:: <{StdPStClass.bimap_s;}> = {StdPStClass.bimap_s}
+
+:: <{StdPStClass.bimap_ss;}> = {StdPStClass.bimap_ss}
+
+:: <{StdPStClass.bimap_sss;}> = {StdPStClass.bimap_sss}
+
