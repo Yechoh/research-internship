@@ -1,0 +1,199 @@
+|| ?module? shares
+
+
+shares.toGenericSettings_19 !x_0 = case x_0 (shares._Settings x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.FIELD x12_1_1)) (StdGeneric.PAIR (StdGeneric.FIELD x13_1_2) (StdGeneric.PAIR (StdGeneric.FIELD x14_1_3) (StdGeneric.FIELD x15_1_4))))) 
+shares.JSONEncode_FIELD_27 !fx_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.FIELD x_1_0 -> fx_0 True x_1_0) 
+<{shares.++_26}> !_x_0 !list_1 = case _x_0 (_predefined._Cons hd_1_0 tl_1_1 -> _predefined._Cons hd_1_0 (<{shares.++_26}> tl_1_1 list_1)) (_ -> list_1)
+shares.JSONEncode_PAIR_25 !fx_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{shares.++_26}> (fx_0 False x_1_0) (fy_1 False y_1_1)) 
+shares.fli__Settings_11 = _predefined._Cons "dirCpm" (_predefined._Cons "dirClean" (_predefined._Cons "dirClean2" (_predefined._Cons "dirIDEEnvs" (_predefined._Cons "dirCmd" _predefined._Nil))))
+shares.isNotNull_24::B !_x_0 = case _x_0 (Text.JSON.JSONNull -> False) (_ -> True)
+<{shares.c;92;47_23}> !g_l_0 g_l_1 = <{shares.g_c1;92;33_434}> g_l_0 g_l_1
+<{shares.g_c1;92;33_434}> !g_l_0 g_l_1 = case g_l_0 (_predefined._Cons o_1_0 g_t_1_1 -> <{shares.g_c1;92;54_433}> g_l_1 o_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{shares.g_c1;92;54_433}> !g_l_0 o_1 g_t_2 = case g_l_0 (_predefined._Cons name_1_0 g_t_1_1 -> case (shares.isNotNull_24 o_1) (True -> _predefined._Cons (_Tuple2 name_1_0 o_1) (<{shares.c;92;47_23}> g_t_2 g_t_1_1)) (False -> <{shares.c;92;47_23}> g_t_2 g_t_1_1) ) (_ -> _predefined._Nil)
+shares.JSONEncode_RECORD_22 grd_fields_0 fx_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{shares.c;92;47_23}> (fx_1 False x_1_0) grd_fields_0)) _predefined._Nil) 
+shares.JSONEncode_FIELD_410 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode__String_15 True x_1_0) 
+shares.JSONEncode_PAIR_411 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{shares.++_26}> (shares.JSONEncode_FIELD_410 False x_1_0) (fy_0 False y_1_1)) 
+shares.JSONEncode_PAIR_412 !fy_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{shares.++_26}> (shares.JSONEncode_PAIR_411 fy_0 False x_1_0) (fy_1 False y_1_1)) 
+shares.JSONEncode_RECORD_413 grd_fields_0 fy_1 fy_2 !_x_3::B !_x_4 = case _x_4 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{shares.c;92;47_23}> (shares.JSONEncode_PAIR_412 fy_1 fy_2 False x_1_0) grd_fields_0)) _predefined._Nil) 
+shares.JSONEncode_PAIR_414 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{shares.++_26}> (shares.JSONEncode_FIELD_410 False x_1_0) (shares.JSONEncode_FIELD_410 False y_1_1)) 
+shares.JSONEncode_PAIR_415 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{shares.++_26}> (shares.JSONEncode_FIELD_410 False x_1_0) (shares.JSONEncode_PAIR_414 False y_1_1)) 
+shares.JSONEncode_PAIR_417 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{shares.++_26}> (shares.JSONEncode_PAIR_414 False x_1_0) (fy_0 False y_1_1)) 
+shares.JSONEncode_RECORD_416 grd_fields_0 fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{shares.c;92;47_23}> (shares.JSONEncode_PAIR_417 fy_1 False x_1_0) grd_fields_0)) _predefined._Nil) 
+shares.JSONEncode_PAIR_419 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{shares.++_26}> (shares.JSONEncode_PAIR_414 False x_1_0) (shares.JSONEncode_PAIR_415 False y_1_1)) 
+shares.JSONEncode_RECORD_418 grd_fields_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{shares.c;92;47_23}> (shares.JSONEncode_PAIR_419 False x_1_0) grd_fields_0)) _predefined._Nil) 
+shares.JSONEncode_Settings_5 !x1_0::B !x2_1 = shares.JSONEncode_RECORD_418 shares.fli__Settings_11 x1_0 (shares.toGenericSettings_19 x2_1)
+shares.findField_35 !match_0 !_x_1 = case _x_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (_Tuple2 l_2_0 x_2_1 -> case (<{StdString.==_2}> l_2_0 match_0) (True -> _predefined._Cons x_2_1 _predefined._Nil) (False -> shares.findField_35 match_0 xs_1_1) ) ) (_predefined._Nil -> _predefined._Nil) 
+shares.JSONDecode_FIELD_34 gfd_name_0 _x_1::I fx_2 !_x_3::B !l_4 = case l_4 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = shares.findField_35 gfd_name_0 fields_2_0 in <{shares._c;139;5_435}> (fx_2 True field_4_0) l_4) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{shares._c;150;5_436}> (fx_2 True (_predefined._Cons field_4_0 _predefined._Nil)) l_4) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+<{shares._c;150;5_436}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{shares._c;139;5_435}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+shares.d2_33 !x_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 ys_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.PAIR x_0 y_2_0)) ys_1_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+shares.d1_32 !fy_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> shares.d2_33 x_2_0 (fy_0 False xs_1_1) l_2) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+shares.JSONDecode_PAIR_31 !fx_0 !fy_1 !_x_2::B !l_3 = shares.d1_32 fy_1 (fx_0 False l_3) l_3
+shares.d_29 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+shares.d_30 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+shares.JSONDecode_RECORD_28 fx_0 !_x_1::B !l_2 = case l_2 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> shares.d_29 (fx_0 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_2) (Text.JSON.JSONArray fields_2_0 -> shares.d_30 (fx_0 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_2) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+shares.fromGenericSettings_18 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.PAIR c_3_0 c_3_1 -> case c_3_0 (StdGeneric.FIELD x1_4_0 -> case c_3_1 (StdGeneric.FIELD x2_5_0 -> case c_2_1 (StdGeneric.PAIR c_6_0 c_6_1 -> case c_6_0 (StdGeneric.FIELD x3_7_0 -> case c_6_1 (StdGeneric.PAIR c_8_0 c_8_1 -> case c_8_0 (StdGeneric.FIELD x4_9_0 -> case c_8_1 (StdGeneric.FIELD x5_10_0 -> shares._Settings x1_4_0 x2_5_0 x3_7_0 x4_9_0 x5_10_0) ) ) ) ) ) ) ) ) ) 
+shares.bimapFromGeneric_36 !x_0 = shares._f437_437 x_0
+shares._f437_437 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (shares.fromGenericSettings_18 x1_1_0)) 
+shares.bimapFromGeneric_37 !x_0 = shares._f438_438 x_0
+shares._f438_438 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (shares.bimapFromGeneric_36 x1_1_0) x2_1_1) 
+shares.JSONDecode_FIELD_420 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = shares.findField_35 gfd_name_0 fields_2_0 in <{shares._c;139;5_439}> (Text.JSON.JSONDecode__String_39 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{shares._c;150;5_440}> (Text.JSON.JSONDecode__String_39 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{shares._c;150;5_440}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{shares._c;139;5_439}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+shares.JSONDecode_PAIR_421 gfd_name_0 _x_1::I !fy_2 !_x_3::B !l_4 = shares.d1_32 fy_2 (shares.JSONDecode_FIELD_420 gfd_name_0 _x_1 False l_4) l_4
+shares.JSONDecode_PAIR_422 gfd_name_0 _x_1::I !fy_2 !fy_3 !_x_4::B !l_5 = shares.d1_32 fy_3 (shares.JSONDecode_PAIR_421 gfd_name_0 _x_1 fy_2 False l_5) l_5
+shares.JSONDecode_RECORD_423 gfd_name_0 _x_1::I fy_2 fy_3 !_x_4::B !l_5 = case l_5 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> shares.d_29 (shares.JSONDecode_PAIR_422 gfd_name_0 _x_1 fy_2 fy_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) (Text.JSON.JSONArray fields_2_0 -> shares.d_30 (shares.JSONDecode_PAIR_422 gfd_name_0 _x_1 fy_2 fy_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_5)
+shares.d1_425 gfd_name_0 _x_1::I !_x_2 !l_3 = case _x_2 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> shares.d2_33 x_2_0 (shares.JSONDecode_FIELD_420 gfd_name_0 _x_1 False xs_1_1) l_3) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_3) ) 
+shares.JSONDecode_PAIR_424 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = shares.d1_425 gfd_name_2 _x_3 (shares.JSONDecode_FIELD_420 gfd_name_0 _x_1 False l_5) l_5
+shares.d1_427 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4 !l_5 = case _x_4 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> shares.d2_33 x_2_0 (shares.JSONDecode_PAIR_424 gfd_name_0 _x_1 gfd_name_2 _x_3 False xs_1_1) l_5) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_5) ) 
+shares.JSONDecode_PAIR_426 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I !_x_6::B !l_7 = shares.d1_427 gfd_name_2 _x_3 gfd_name_4 _x_5 (shares.JSONDecode_FIELD_420 gfd_name_0 _x_1 False l_7) l_7
+shares.JSONDecode_PAIR_429 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !fy_4 !_x_5::B !l_6 = shares.d1_32 fy_4 (shares.JSONDecode_PAIR_424 gfd_name_0 _x_1 gfd_name_2 _x_3 False l_6) l_6
+shares.JSONDecode_RECORD_428 gfd_name_0 _x_1::I gfd_name_2 _x_3::I fy_4 !_x_5::B !l_6 = case l_6 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> shares.d_29 (shares.JSONDecode_PAIR_429 gfd_name_0 _x_1 gfd_name_2 _x_3 fy_4 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_6) (Text.JSON.JSONArray fields_2_0 -> shares.d_30 (shares.JSONDecode_PAIR_429 gfd_name_0 _x_1 gfd_name_2 _x_3 fy_4 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_6) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_6)
+shares.d1_432 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I !_x_6 !l_7 = case _x_6 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> shares.d2_33 x_2_0 (shares.JSONDecode_PAIR_426 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 False xs_1_1) l_7) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_7) ) 
+shares.JSONDecode_PAIR_431 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I gfd_name_6 _x_7::I gfd_name_8 _x_9::I !_x_10::B !l_11 = shares.d1_432 gfd_name_4 _x_5 gfd_name_6 _x_7 gfd_name_8 _x_9 (shares.JSONDecode_PAIR_424 gfd_name_0 _x_1 gfd_name_2 _x_3 False l_11) l_11
+shares.JSONDecode_RECORD_430 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I gfd_name_6 _x_7::I gfd_name_8 _x_9::I !_x_10::B !l_11 = case l_11 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> shares.d_29 (shares.JSONDecode_PAIR_431 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 gfd_name_6 _x_7 gfd_name_8 _x_9 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_11) (Text.JSON.JSONArray fields_2_0 -> shares.d_30 (shares.JSONDecode_PAIR_431 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 gfd_name_6 _x_7 gfd_name_8 _x_9 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_11) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_11)
+shares.JSONDecode_Settings_6 !x1_0::B !x2_1 = shares.bimapFromGeneric_37 (shares.JSONDecode_RECORD_430 "dirCpm" 0 "dirClean" 1 "dirClean2" 2 "dirIDEEnvs" 3 "dirCmd" 4 x1_0 x2_1)
+shares.settings = iTasks.API.Core.SDSs.sharedStore (<{shares.JSONEncode_s;}> shares.JSONEncode_Settings_5) (<{shares.JSONDecode_s;}> shares.JSONDecode_Settings_6) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{shares.TD;Settings}>)) "settings" (shares._Settings "C:\\Users\\Martin\\Documents\\clean-bundle-itasks-windows-x86-latest\\clean-bundle-itasks\\cpm.exe" "C:UsersMartin\0ocumentsclean-bundle-itasks-windows-x86-latestclean-bundle-itasks" "C:\\Users\\Martin\\Documents\\clean-classic-itasks-windows-x86-20161223" "C:\\UsersMartin\\Documents\\clean-bundle-itasks-windows-x86-latest\\clean-bundle-itasks\\Config\\IDEEnvs" "C:\\WINDOWS\\WinSxS\\wow64_microsoft-windows-commandprompt_31bf3856ad364e35_10.0.10586.0_none_21e70967f9147e9b\\cmd.exe")
+shares.errorstate = iTasks.API.Core.SDSs.sharedStore (<{shares.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{shares.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) "errors" ""
+shares.content = iTasks.API.Core.SDSs.sharedStore (<{shares.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{shares.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) "content" ""
+shares.isoSettings_20 = StdGeneric._Bimap shares.toGenericSettings_19 shares.fromGenericSettings_18
+shares.gEditor_Settings_3 = select (iTasks.UI.Editor.Generic.bimap_Editor_29 shares.isoSettings_20)::StdGeneric._Bimap 1 (iTasks.UI.Editor.Generic.gEditor_RECORD_5 5 (iTasks.UI.Editor.Generic.gEditor_PAIR_2 (iTasks.UI.Editor.Generic.gEditor_PAIR_2 (iTasks.UI.Editor.Generic.gEditor_FIELD_6 "dirCpm" iTasks.UI.Editor.Generic.gEditor__String_11) (iTasks.UI.Editor.Generic.gEditor_FIELD_6 "dirClean" iTasks.UI.Editor.Generic.gEditor__String_11)) (iTasks.UI.Editor.Generic.gEditor_PAIR_2 (iTasks.UI.Editor.Generic.gEditor_FIELD_6 "dirClean2" iTasks.UI.Editor.Generic.gEditor__String_11) (iTasks.UI.Editor.Generic.gEditor_PAIR_2 (iTasks.UI.Editor.Generic.gEditor_FIELD_6 "dirIDEEnvs" iTasks.UI.Editor.Generic.gEditor__String_11) (iTasks.UI.Editor.Generic.gEditor_FIELD_6 "dirCmd" iTasks.UI.Editor.Generic.gEditor__String_11)))))
+shares.bimapToGeneric_21 !x_0 = shares._f441_441 x_0
+shares._f441_441 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (shares.toGenericSettings_19 x1_1_0)) 
+shares.gText_Settings_4 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_RECORD_9 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "dirCpm" iTasks._Framework.Generic.Visualization.gText__String_15) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "dirClean" iTasks._Framework.Generic.Visualization.gText__String_15)) (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "dirClean2" iTasks._Framework.Generic.Visualization.gText__String_15) (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "dirIDEEnvs" iTasks._Framework.Generic.Visualization.gText__String_15) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "dirCmd" iTasks._Framework.Generic.Visualization.gText__String_15)))) x1_0 (shares.bimapToGeneric_21 x2_1)
+shares.gDefault_Settings_7 = shares.fromGenericSettings_18 (iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12)))))
+shares.gEq_Settings_8::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_FIELD_12 GenEq.gEq__String_6)) (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_FIELD_12 GenEq.gEq__String_6)))) (shares.toGenericSettings_19 x1_0) (shares.toGenericSettings_19 x2_1)
+<{shares.TD;Settings}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: shares._Settings = {shares.dirCpm, shares.dirClean, shares.dirClean2, shares.dirIDEEnvs, shares.dirCmd}
+
+:: <{shares.gEditor_s;}> = {shares.gEditor_s}
+
+:: <{shares.gEditor_ss;}> = {shares.gEditor_ss}
+
+:: <{shares.gEditor_sss;}> = {shares.gEditor_sss}
+
+:: <{shares.gText_s;}> = {!shares.gText_s}
+
+:: <{shares.gText_ss;}> = {!shares.gText_ss}
+
+:: <{shares.gText_sss;}> = {!shares.gText_sss}
+
+:: <{shares.JSONEncode_s;}> = {!shares.JSONEncode_s}
+
+:: <{shares.JSONEncode_ss;}> = {!shares.JSONEncode_ss}
+
+:: <{shares.JSONEncode_sss;}> = {!shares.JSONEncode_sss}
+
+:: <{shares.JSONDecode_s;}> = {!shares.JSONDecode_s}
+
+:: <{shares.JSONDecode_ss;}> = {!shares.JSONDecode_ss}
+
+:: <{shares.JSONDecode_sss;}> = {!shares.JSONDecode_sss}
+
+:: <{shares.gDefault_s;}> = {shares.gDefault_s}
+
+:: <{shares.gDefault_ss;}> = {shares.gDefault_ss}
+
+:: <{shares.gDefault_sss;}> = {shares.gDefault_sss}
+
+:: <{shares.gEq_s;}> = {!shares.gEq_s}
+
+:: <{shares.gEq_ss;}> = {!shares.gEq_ss}
+
+:: <{shares.gEq_sss;}> = {!shares.gEq_sss}
+
+:: <{shares.JSONEncode_ssss;}> = {!shares.JSONEncode_ssss}
+
+:: <{shares.JSONDecode_ssss;}> = {!shares.JSONDecode_ssss}
+
+:: <{shares.gEq_ssss;}> = {!shares.gEq_ssss}
+
+:: <{shares.gDefault_ssss;}> = {shares.gDefault_ssss}
+
+:: <{shares.gEq_sssss;}> = {!shares.gEq_sssss}
+
+:: <{shares.gEq_ssssss;}> = {!shares.gEq_ssssss}
+
+:: <{shares.gEq_sssssss;}> = {!shares.gEq_sssssss}
+
+:: <{shares.gEq_ssssssss;}> = {!shares.gEq_ssssssss}
+
+:: <{shares.gEq_sssssssss;}> = {!shares.gEq_sssssssss}
+
+:: <{shares.bimap_s;}> = {shares.bimap_s}
+
+:: <{shares.bimap_ss;}> = {shares.bimap_ss}
+
+:: <{shares.bimap_sss;}> = {shares.bimap_sss}
+
+:: <{shares.JSONEncode_sssss;}> = {!shares.JSONEncode_sssss}
+
+:: <{shares.JSONEncode_ssssss;}> = {!shares.JSONEncode_ssssss}
+
+:: <{shares.JSONEncode_sssssss;}> = {!shares.JSONEncode_sssssss}
+
+:: <{shares.JSONEncode_ssssssss;}> = {!shares.JSONEncode_ssssssss}
+
+:: <{shares.JSONEncode_sssssssss;}> = {!shares.JSONEncode_sssssssss}
+
+:: <{shares.JSONDecode_sssss;}> = {!shares.JSONDecode_sssss}
+
+:: <{shares.JSONDecode_ssssss;}> = {!shares.JSONDecode_ssssss}
+
+:: <{shares.JSONDecode_sssssss;}> = {!shares.JSONDecode_sssssss}
+
+:: <{shares.JSONDecode_ssssssss;}> = {!shares.JSONDecode_ssssssss}
+
+:: <{shares.JSONDecode_sssssssss;}> = {!shares.JSONDecode_sssssssss}
+
+:: <{shares.gLexOrd_s;}> = {!shares.gLexOrd_s}
+
+:: <{shares.gLexOrd_ss;}> = {!shares.gLexOrd_ss}
+
+:: <{shares.gLexOrd_sss;}> = {!shares.gLexOrd_sss}
+
+:: <{shares.gLexOrd_ssss;}> = {!shares.gLexOrd_ssss}
+
+:: <{shares.gLexOrd_sssss;}> = {!shares.gLexOrd_sssss}
+
+:: <{shares.gLexOrd_ssssss;}> = {!shares.gLexOrd_ssssss}
+
+:: <{shares.gLexOrd_sssssss;}> = {!shares.gLexOrd_sssssss}
+
+:: <{shares.gLexOrd_ssssssss;}> = {!shares.gLexOrd_ssssssss}
+
+:: <{shares.gLexOrd_sssssssss;}> = {!shares.gLexOrd_sssssssss}
+
+:: <{shares.gText_ssss;}> = {!shares.gText_ssss}
+
+:: <{shares.gText_sssss;}> = {!shares.gText_sssss}
+
+:: <{shares.gText_ssssss;}> = {!shares.gText_ssssss}
+
+:: <{shares.gText_sssssss;}> = {!shares.gText_sssssss}
+
+:: <{shares.gText_ssssssss;}> = {!shares.gText_ssssssss}
+
+:: <{shares.gText_sssssssss;}> = {!shares.gText_sssssssss}
+
+:: <{shares.gDefault_sssss;}> = {shares.gDefault_sssss}
+
+:: <{shares.gDefault_ssssss;}> = {shares.gDefault_ssssss}
+
+:: <{shares.gDefault_sssssss;}> = {shares.gDefault_sssssss}
+
+:: <{shares.gDefault_ssssssss;}> = {shares.gDefault_ssssssss}
+
+:: <{shares.gDefault_sssssssss;}> = {shares.gDefault_sssssssss}
+
+:: <{shares.gEditor_ssss;}> = {shares.gEditor_ssss}
+
+:: <{shares.gEditor_sssss;}> = {shares.gEditor_sssss}
+
+:: <{shares.gEditor_ssssss;}> = {shares.gEditor_ssssss}
+
+:: <{shares.gEditor_sssssss;}> = {shares.gEditor_sssssss}
+

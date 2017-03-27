@@ -137,3 +137,30 @@ fetchdirectories returnt een task directory
 de continue is veroorzaakt omdat viewinformation een waarde geeft die we nodig hebben. Die wordt gereturnd. Met de continue wordt die stable gemaakt.
 !!! Wat ik nodig heb is een sidestep optie om paths aan te passen.
 
+---
+wat ik wil:
+ik wil een icl die een overzicht geeft van welke pagina's naar welke pagina's wijzen.
+waarom is dit niet makkelijk:
+ik heb het nu opgedeeld in pages en buttons, maar die hebben informatie nodig. Bijv: 
+	- editorPage heeft het path nodig van de icl waar we naar kijken, die zou die moeten krijgen van chooseFile. 
+	- een Button zou een voorwaarde kunnen hebben, waar info voor nodig is
+nieuw plan:
+we hebben pages en pagenodes. pages zijn functies die (action,pagenode) tuples vragen en een pagina opleveren.
+per page is er een pagenode die de page de goede (action,pagenode) tuples geeft (als een x-tuple van 2-tuples).
+
+---
+chooseFile doet meerdere dingen
+- het vraagt om een pad, gebruikmakend van een filetree
+
+---
+hoe werkt >>* precies?
+het type van >>* is 
+	(task a) [TaskCont a (Task b)] -> Task b
+TaskCont a (Task b) is
+	OnAction    Action  ((TaskValue a)  -> Maybe b)
+een voorbeeld hiervan is
+	OnAction (Action "hoi") always (return ())
+het type van always is
+	b (TaskValue a) -> Maybe b
+
+

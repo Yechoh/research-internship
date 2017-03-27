@@ -44,8 +44,6 @@ settings = sharedStore "settings" 	{ dirCpm = "C:\\Users\\Martin\\Documents\\cle
 updSettings 
 	= 		updateSharedInformation "Current Setting: " [] settings
 
-errorstate = sharedStore "errors" ""
-content = sharedStore "content" ""
 
 // utility functions
 
@@ -101,11 +99,11 @@ openLog =
 selectFromTreeWithOption :: String -> Task String
 selectFromTreeWithOption pwd = selectFromTree pwd isCleanFile [OnAction (Action "Change paths")	(always ((updateSharedInformation "paths" [] settings)  >>| selectFromTreeWithOption pwd))]
 
-askPath :: Task (String,String,String)
+askPath :: Task (String,String)
 askPath
 	=							getPwdName
 	>>- \pwd ->					selectFromTreeWithOption pwd
-	>>* [OnAction ActionContinue ((ifValue (isFile "icl") (\path -> return (takeDirectory path, dropDirectory path, pwd))))]
+	>>* [OnAction ActionContinue ((ifValue (isFile "icl") (\path -> return (takeDirectory path, dropDirectory path))))]
 
 setContent :: String String -> Task ()
 setContent path name
@@ -113,8 +111,8 @@ setContent path name
 	>>- \(Just contenttxt) ->		set contenttxt content
 								>>|- return ()
 	
-setProject :: String String String -> Task ()
-setProject path name cur
+setProject :: String String -> Task ()
+setProject path name
 	=							readFromFile (toproj (path </> name))
 	>>- \mprojtxt ->			get settings
 	>>- \settings ->			(case mprojtxt of
@@ -253,8 +251,8 @@ askImports iclloc uppertask =
 
 
 
-editFile :: String String String -> Task () //(({#Char},String),())
-editFile path name cur =
+editFile :: String String -> Task () //(({#Char},String),())
+editFile path name =
 	 		(editor path name 
 	 		-&&-
 	 		viewSharedInformation "errors" [ViewUsing id (textArea 'DM'.newMap)] errorstate) 
@@ -268,7 +266,7 @@ editFile path name cur =
 	 		[	OnAction (Action "Run")		(always (runExec (path </> dropExtension name +++ ".exe") 8080))	
 	 		]
 	 >>*	[   OnAction  ActionQuit    	(always (return ()))
-	 		,	OnAction (Action "Import")	(always (askImports (name) (editFile path name cur)))
+	 		,	OnAction (Action "Import")	(always (askImports (name) (editFile path name)))
 
 		    ]
 where	

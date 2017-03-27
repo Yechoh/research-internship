@@ -1,0 +1,162 @@
+|| ?module? pageAskImportPaths
+
+
+pageAskImportPaths.addPath2Project path_0 cleandir_1 projtxt_2 = let splitted_projtxt_1_0 = Text.split_12 (<{StdString.+++_11}> "Path:\t{Project}" "\r\n") projtxt_2 in Text.join_5 (<{StdString.+++_11}> "Path:\t{Project}" "\r\n") (_predefined._Cons (StdList.hd splitted_projtxt_1_0) (_predefined._Cons (<{StdString.+++_11}> (<{StdString.+++_11}> "\t\tPath:\t{Application}" (System.FilePath.dropFileName (Text.subString_14 (Text.textSize_15 cleandir_1) (Text.textSize_15 path_0) path_0))) (<{StdString.+++_11}> "\r\n" (StdList.hd (StdList.tl splitted_projtxt_1_0)))) _predefined._Nil))
+pageAskImportPaths.gEq_s_58::B !_vgEq_s_0 x1_1 x2_2 = Data.Maybe.gEq_Maybe_13 (select _vgEq_s_0::<{pageAskImportPaths.gEq_s;}> 0) x1_1 x2_2
+pageAskImportPaths.JSONEncode_s_139 !_vJSONEncode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONEncode_Maybe_27 (select _vJSONEncode_s_0::<{pageAskImportPaths.JSONEncode_s;}> 0) x1_1 x2_2
+pageAskImportPaths.JSONDecode_s_178 !_vJSONDecode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONDecode_Maybe_54 (select _vJSONDecode_s_0::<{pageAskImportPaths.JSONDecode_s;}> 0) x1_1 x2_2
+pageAskImportPaths.gText_s_261 !_vgText_s_0 !x1_1 x2_2 = iTasks._Framework.Generic.Visualization.gText_Maybe_27 (select _vgText_s_0::<{pageAskImportPaths.gText_s;}> 0) x1_1 x2_2
+pageAskImportPaths.gDefault_s_333 !_vgDefault_s_0 = iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 (select _vgDefault_s_0::<{pageAskImportPaths.gDefault_s;}> 0)
+pageAskImportPaths.gEditor_s_363 !_vgEditor_s_0 !_vgText_s_1 !_vgDefault_s_2 !_vJSONEncode_s_3 !_vJSONDecode_s_4 = iTasks.UI.Editor.Generic.gEditor_Maybe_21 (select _vgEditor_s_0::<{pageAskImportPaths.gEditor_s;}> 0) (select _vgText_s_1::<{pageAskImportPaths.gText_s;}> 0) (select _vgDefault_s_2::<{pageAskImportPaths.gDefault_s;}> 0) (select _vJSONEncode_s_3::<{pageAskImportPaths.JSONEncode_s;}> 0) (select _vJSONDecode_s_4::<{pageAskImportPaths.JSONDecode_s;}> 0)
+pageAskImportPaths.gEq_s_388::B x1_0 x2_1 = Data.Maybe.gEq_Maybe_13 GenEq.gEq__String_6 x1_0 x2_1
+pageAskImportPaths.gDefault_s_387 = iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault__String_12
+pageAskImportPaths.JSONDecode_s_386 !x1_0::B !x2_1 = Text.JSON.JSONDecode_Maybe_54 Text.JSON.JSONDecode__String_39 x1_0 x2_1
+pageAskImportPaths.JSONEncode_s_385 !x1_0::B !x2_1 = Text.JSON.JSONEncode_Maybe_27 Text.JSON.JSONEncode__String_15 x1_0 x2_1
+pageAskImportPaths.gText_s_384 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_Maybe_27 iTasks._Framework.Generic.Visualization.gText__String_15 x1_0 x2_1
+pageAskImportPaths.gEditor_s_383 !_vgText_s_0 !_vgDefault_s_1 !_vJSONEncode_s_2 !_vJSONDecode_s_3 = iTasks.UI.Editor.Generic.gEditor_Maybe_21 iTasks.UI.Editor.Generic.gEditor__String_11 (select _vgText_s_0::<{pageAskImportPaths.gText_s;}> 0) (select _vgDefault_s_1::<{pageAskImportPaths.gDefault_s;}> 0) (select _vJSONEncode_s_2::<{pageAskImportPaths.JSONEncode_s;}> 0) (select _vJSONDecode_s_3::<{pageAskImportPaths.JSONDecode_s;}> 0)
+pageAskImportPaths.gEditor_s_389 !_vgDefault_s_0 !_vJSONEncode_s_1 !_vJSONDecode_s_2 = iTasks.UI.Editor.Generic.gEditor_Maybe_21 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks._Framework.Generic.Visualization.gText__String_15 (select _vgDefault_s_0::<{pageAskImportPaths.gDefault_s;}> 0) (select _vJSONEncode_s_1::<{pageAskImportPaths.JSONEncode_s;}> 0) (select _vJSONDecode_s_2::<{pageAskImportPaths.JSONDecode_s;}> 0)
+pageAskImportPaths.gEditor_s_390 !_vJSONEncode_s_0 !_vJSONDecode_s_1 = iTasks.UI.Editor.Generic.gEditor_Maybe_21 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks._Framework.Generic.Visualization.gText__String_15 iTasks._Framework.Generic.Defaults.gDefault__String_12 (select _vJSONEncode_s_0::<{pageAskImportPaths.JSONEncode_s;}> 0) (select _vJSONDecode_s_1::<{pageAskImportPaths.JSONDecode_s;}> 0)
+pageAskImportPaths.gEditor_s_391 !_vJSONDecode_s_0 = iTasks.UI.Editor.Generic.gEditor_Maybe_21 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks._Framework.Generic.Visualization.gText__String_15 iTasks._Framework.Generic.Defaults.gDefault__String_12 Text.JSON.JSONEncode__String_15 (select _vJSONDecode_s_0::<{pageAskImportPaths.JSONDecode_s;}> 0)
+pageAskImportPaths.gEditor_s_392 = iTasks.UI.Editor.Generic.gEditor_Maybe_21 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks._Framework.Generic.Visualization.gText__String_15 iTasks._Framework.Generic.Defaults.gDefault__String_12 Text.JSON.JSONEncode__String_15 Text.JSON.JSONDecode__String_39
+pageAskImportPaths.anon_8 iclloc_0 settings_1 path_2 !_x_3 = case _x_3 (Data.Maybe.Just projtxt_1_0 -> <{extraTaskCombinators.>>|-}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (<{extraTaskCombinators.>>|-}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (directoryBrowsing.saveFile (directoryBrowsing.toproj iclloc_0) (pageAskImportPaths.addPath2Project path_2 (select settings_1::shares._Settings 1) projtxt_1_0)) (callCpm.cpmSetErrorstate (directoryBrowsing.toproj iclloc_0))) (pageAskImportPaths.showMapSelector iclloc_0)) 
+pageAskImportPaths.anon_9 iclloc_0 settings_1 path_2 = <{iTasks.API.Common.TaskCombinators.>>-}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> pageAskImportPaths.gEditor_s_392) (<{pageAskImportPaths.gText_s;}> pageAskImportPaths.gText_s_384) (<{pageAskImportPaths.JSONEncode_s;}> pageAskImportPaths.JSONEncode_s_385) (<{pageAskImportPaths.JSONDecode_s;}> pageAskImportPaths.JSONDecode_s_386) (<{pageAskImportPaths.gDefault_s;}> pageAskImportPaths.gDefault_s_387) (<{pageAskImportPaths.gEq_s;}> pageAskImportPaths.gEq_s_388) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Data.Maybe.TD;Maybe}>)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (directoryBrowsing.readFromFile (directoryBrowsing.toproj iclloc_0)) (pageAskImportPaths.anon_8 iclloc_0 settings_1 path_2)
+pageAskImportPaths.anon_10 iclloc_0 settings_1 = <{iTasks.API.Core.Types.>>=_9}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{pageAskImportPaths.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{pageAskImportPaths.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{pageAskImportPaths.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (directoryBrowsing.selectFromTree (select settings_1::shares._Settings 2) (directoryBrowsing.isFile "dcl")) (pageAskImportPaths.anon_9 iclloc_0 settings_1)
+pageAskImportPaths.showMapSelector iclloc_0 = <{iTasks.API.Core.Types.>>=_9}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> shares.gEditor_Settings_3) (<{pageAskImportPaths.gText_s;}> shares.gText_Settings_4) (<{pageAskImportPaths.JSONEncode_s;}> shares.JSONEncode_Settings_5) (<{pageAskImportPaths.JSONDecode_s;}> shares.JSONDecode_Settings_6) (<{pageAskImportPaths.gDefault_s;}> shares.gDefault_Settings_7) (<{pageAskImportPaths.gEq_s;}> shares.gEq_Settings_8) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{shares.TD;Settings}>))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (iTasks.API.Core.Tasks.get (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> shares.gEditor_Settings_3) (<{pageAskImportPaths.gText_s;}> shares.gText_Settings_4) (<{pageAskImportPaths.JSONEncode_s;}> shares.JSONEncode_Settings_5) (<{pageAskImportPaths.JSONDecode_s;}> shares.JSONDecode_Settings_6) (<{pageAskImportPaths.gDefault_s;}> shares.gDefault_Settings_7) (<{pageAskImportPaths.gEq_s;}> shares.gEq_Settings_8) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{shares.TD;Settings}>))) shares.settings) (pageAskImportPaths.anon_10 iclloc_0)
+pageAskImportPaths.anon_6::B !line_0 = Text.endsWith_2 "imported" line_0
+pageAskImportPaths.anon_7 !x_0 = StdList.hd (StdList.tl (StdList.tl x_0))
+pageAskImportPaths.Errors2Imports !errors_0 = Text.join_5 "\n" (StdList.map pageAskImportPaths.anon_7 (StdList.map (Text.split_12 " ") (StdList.filter pageAskImportPaths.anon_6 (Text.split_12 "\r\n" errors_0))))
+pageAskImportPaths.showUnresolvedImports = iTasks.API.Common.InteractionTasks.viewSharedInformation (<{iTasks.UI.Prompt.toPrompt;}> iTasks.UI.Prompt.toPrompt_1) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{pageAskImportPaths.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{pageAskImportPaths.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{pageAskImportPaths.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) "Unresolved imports" (_predefined._Cons (iTasks.API.Common.InteractionTasks.ViewUsing (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{pageAskImportPaths.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{pageAskImportPaths.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{pageAskImportPaths.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) pageAskImportPaths.Errors2Imports (iTasks.UI.Editor.Builtin.textArea Data.Map.newMap)) _predefined._Nil) shares.errorstate
+pageAskImportPaths.anon_5 !_viTask_0 actioncontinue_1 pagenodeEditor_2 actioncancel_3 pagenodeEditor2_4 path_5 name_6 !_x_7 = case _x_7 (Data.Maybe.Just projtxt_1_0 -> <{iTasks.API.Common.TaskCombinators.>>*}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) _viTask_0 (<{iTasks.API.Common.TaskCombinators.||-}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{pageAskImportPaths.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{pageAskImportPaths.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{pageAskImportPaths.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) pageAskImportPaths.showUnresolvedImports (pageAskImportPaths.showMapSelector (<{System.FilePath.</>}> path_5 name_6))) (_predefined._Cons (iTasks.API.Core.TaskCombinators.OnAction actioncontinue_1 (iTasks.API.Common.TaskCombinators.always (pagenodeEditor_2 path_5 name_6))) (_predefined._Cons (iTasks.API.Core.TaskCombinators.OnAction actioncancel_3 (iTasks.API.Common.TaskCombinators.always (<{extraTaskCombinators.>>|-}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{pageAskImportPaths.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{pageAskImportPaths.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{pageAskImportPaths.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) _viTask_0 (directoryBrowsing.writeToFile (<{System.FilePath.</>}> path_5 (directoryBrowsing.toproj name_6)) projtxt_1_0) (pagenodeEditor2_4 path_5 name_6)))) _predefined._Nil))) 
+pageAskImportPaths.anon_393 actioncontinue_0 pagenodeEditor_1 actioncancel_2 pagenodeEditor2_3 path_4 name_5 !_x_6 = case _x_6 (Data.Maybe.Just projtxt_1_0 -> <{iTasks.API.Common.TaskCombinators.>>*}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (<{iTasks.API.Common.TaskCombinators.||-}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{pageAskImportPaths.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{pageAskImportPaths.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{pageAskImportPaths.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) pageAskImportPaths.showUnresolvedImports (pageAskImportPaths.showMapSelector (<{System.FilePath.</>}> path_4 name_5))) (_predefined._Cons (iTasks.API.Core.TaskCombinators.OnAction actioncontinue_0 (iTasks.API.Common.TaskCombinators.always (pagenodeEditor_1 path_4 name_5))) (_predefined._Cons (iTasks.API.Core.TaskCombinators.OnAction actioncancel_2 (iTasks.API.Common.TaskCombinators.always (<{extraTaskCombinators.>>|-}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{pageAskImportPaths.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{pageAskImportPaths.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{pageAskImportPaths.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (directoryBrowsing.writeToFile (<{System.FilePath.</>}> path_4 (directoryBrowsing.toproj name_5)) projtxt_1_0) (pagenodeEditor2_3 path_4 name_5)))) _predefined._Nil))) 
+pageAskImportPaths.pageAskImportPaths path_0 name_1 !_x_2 = case _x_2 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple2 actioncontinue_2_0 pagenodeEditor_2_1 -> case _x_1_1 (_Tuple2 actioncancel_3_0 pagenodeEditor2_3_1 -> <{iTasks.API.Common.TaskCombinators.>>-}> (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> pageAskImportPaths.gEditor_s_392) (<{pageAskImportPaths.gText_s;}> pageAskImportPaths.gText_s_384) (<{pageAskImportPaths.JSONEncode_s;}> pageAskImportPaths.JSONEncode_s_385) (<{pageAskImportPaths.JSONDecode_s;}> pageAskImportPaths.JSONDecode_s_386) (<{pageAskImportPaths.gDefault_s;}> pageAskImportPaths.gDefault_s_387) (<{pageAskImportPaths.gEq_s;}> pageAskImportPaths.gEq_s_388) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Data.Maybe.TD;Maybe}>)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))))) (<{iTasks._Framework.Generic.iTask;}> (<{pageAskImportPaths.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__Unit_13) (<{pageAskImportPaths.gText_s;}> iTasks._Framework.Generic.Visualization.gText__Unit_17) (<{pageAskImportPaths.JSONEncode_s;}> iTasks.API.Core.Types.JSONEncode__Unit_181) (<{pageAskImportPaths.JSONDecode_s;}> iTasks.API.Core.Types.JSONDecode__Unit_187) (<{pageAskImportPaths.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__Unit_14) (<{pageAskImportPaths.gEq_s;}> iTasks.API.Core.Types.gEq__Unit_193) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__Unit))) (directoryBrowsing.readFromFile (<{System.FilePath.</>}> path_0 (directoryBrowsing.toproj name_1))) (pageAskImportPaths.anon_393 actioncontinue_2_0 pagenodeEditor_2_1 actioncancel_3_0 pagenodeEditor2_3_1 path_0 name_1)) ) ) 
+
+
+|| Converted Records
+:: <{pageAskImportPaths.JSONEncode_s;}> = {!pageAskImportPaths.JSONEncode_s}
+
+:: <{pageAskImportPaths.JSONEncode_ss;}> = {!pageAskImportPaths.JSONEncode_ss}
+
+:: <{pageAskImportPaths.JSONEncode_sss;}> = {!pageAskImportPaths.JSONEncode_sss}
+
+:: <{pageAskImportPaths.JSONDecode_s;}> = {!pageAskImportPaths.JSONDecode_s}
+
+:: <{pageAskImportPaths.JSONDecode_ss;}> = {!pageAskImportPaths.JSONDecode_ss}
+
+:: <{pageAskImportPaths.JSONDecode_sss;}> = {!pageAskImportPaths.JSONDecode_sss}
+
+:: <{pageAskImportPaths.gDefault_s;}> = {pageAskImportPaths.gDefault_s}
+
+:: <{pageAskImportPaths.gDefault_ss;}> = {pageAskImportPaths.gDefault_ss}
+
+:: <{pageAskImportPaths.gDefault_sss;}> = {pageAskImportPaths.gDefault_sss}
+
+:: <{pageAskImportPaths.gText_s;}> = {!pageAskImportPaths.gText_s}
+
+:: <{pageAskImportPaths.gText_ss;}> = {!pageAskImportPaths.gText_ss}
+
+:: <{pageAskImportPaths.gText_sss;}> = {!pageAskImportPaths.gText_sss}
+
+:: <{pageAskImportPaths.gEditor_s;}> = {pageAskImportPaths.gEditor_s}
+
+:: <{pageAskImportPaths.gEditor_ss;}> = {pageAskImportPaths.gEditor_ss}
+
+:: <{pageAskImportPaths.gEditor_sss;}> = {pageAskImportPaths.gEditor_sss}
+
+:: <{pageAskImportPaths.gEq_s;}> = {!pageAskImportPaths.gEq_s}
+
+:: <{pageAskImportPaths.gEq_ss;}> = {!pageAskImportPaths.gEq_ss}
+
+:: <{pageAskImportPaths.gEq_sss;}> = {!pageAskImportPaths.gEq_sss}
+
+:: <{pageAskImportPaths.JSONEncode_ssss;}> = {!pageAskImportPaths.JSONEncode_ssss}
+
+:: <{pageAskImportPaths.JSONDecode_ssss;}> = {!pageAskImportPaths.JSONDecode_ssss}
+
+:: <{pageAskImportPaths.gEq_ssss;}> = {!pageAskImportPaths.gEq_ssss}
+
+:: <{pageAskImportPaths.gDefault_ssss;}> = {pageAskImportPaths.gDefault_ssss}
+
+:: <{pageAskImportPaths.gEq_sssss;}> = {!pageAskImportPaths.gEq_sssss}
+
+:: <{pageAskImportPaths.gEq_ssssss;}> = {!pageAskImportPaths.gEq_ssssss}
+
+:: <{pageAskImportPaths.gEq_sssssss;}> = {!pageAskImportPaths.gEq_sssssss}
+
+:: <{pageAskImportPaths.gEq_ssssssss;}> = {!pageAskImportPaths.gEq_ssssssss}
+
+:: <{pageAskImportPaths.gEq_sssssssss;}> = {!pageAskImportPaths.gEq_sssssssss}
+
+:: <{pageAskImportPaths.bimap_s;}> = {pageAskImportPaths.bimap_s}
+
+:: <{pageAskImportPaths.bimap_ss;}> = {pageAskImportPaths.bimap_ss}
+
+:: <{pageAskImportPaths.bimap_sss;}> = {pageAskImportPaths.bimap_sss}
+
+:: <{pageAskImportPaths.JSONEncode_sssss;}> = {!pageAskImportPaths.JSONEncode_sssss}
+
+:: <{pageAskImportPaths.JSONEncode_ssssss;}> = {!pageAskImportPaths.JSONEncode_ssssss}
+
+:: <{pageAskImportPaths.JSONEncode_sssssss;}> = {!pageAskImportPaths.JSONEncode_sssssss}
+
+:: <{pageAskImportPaths.JSONEncode_ssssssss;}> = {!pageAskImportPaths.JSONEncode_ssssssss}
+
+:: <{pageAskImportPaths.JSONEncode_sssssssss;}> = {!pageAskImportPaths.JSONEncode_sssssssss}
+
+:: <{pageAskImportPaths.JSONDecode_sssss;}> = {!pageAskImportPaths.JSONDecode_sssss}
+
+:: <{pageAskImportPaths.JSONDecode_ssssss;}> = {!pageAskImportPaths.JSONDecode_ssssss}
+
+:: <{pageAskImportPaths.JSONDecode_sssssss;}> = {!pageAskImportPaths.JSONDecode_sssssss}
+
+:: <{pageAskImportPaths.JSONDecode_ssssssss;}> = {!pageAskImportPaths.JSONDecode_ssssssss}
+
+:: <{pageAskImportPaths.JSONDecode_sssssssss;}> = {!pageAskImportPaths.JSONDecode_sssssssss}
+
+:: <{pageAskImportPaths.gLexOrd_s;}> = {!pageAskImportPaths.gLexOrd_s}
+
+:: <{pageAskImportPaths.gLexOrd_ss;}> = {!pageAskImportPaths.gLexOrd_ss}
+
+:: <{pageAskImportPaths.gLexOrd_sss;}> = {!pageAskImportPaths.gLexOrd_sss}
+
+:: <{pageAskImportPaths.gLexOrd_ssss;}> = {!pageAskImportPaths.gLexOrd_ssss}
+
+:: <{pageAskImportPaths.gLexOrd_sssss;}> = {!pageAskImportPaths.gLexOrd_sssss}
+
+:: <{pageAskImportPaths.gLexOrd_ssssss;}> = {!pageAskImportPaths.gLexOrd_ssssss}
+
+:: <{pageAskImportPaths.gLexOrd_sssssss;}> = {!pageAskImportPaths.gLexOrd_sssssss}
+
+:: <{pageAskImportPaths.gLexOrd_ssssssss;}> = {!pageAskImportPaths.gLexOrd_ssssssss}
+
+:: <{pageAskImportPaths.gLexOrd_sssssssss;}> = {!pageAskImportPaths.gLexOrd_sssssssss}
+
+:: <{pageAskImportPaths.gText_ssss;}> = {!pageAskImportPaths.gText_ssss}
+
+:: <{pageAskImportPaths.gText_sssss;}> = {!pageAskImportPaths.gText_sssss}
+
+:: <{pageAskImportPaths.gText_ssssss;}> = {!pageAskImportPaths.gText_ssssss}
+
+:: <{pageAskImportPaths.gText_sssssss;}> = {!pageAskImportPaths.gText_sssssss}
+
+:: <{pageAskImportPaths.gText_ssssssss;}> = {!pageAskImportPaths.gText_ssssssss}
+
+:: <{pageAskImportPaths.gText_sssssssss;}> = {!pageAskImportPaths.gText_sssssssss}
+
+:: <{pageAskImportPaths.gDefault_sssss;}> = {pageAskImportPaths.gDefault_sssss}
+
+:: <{pageAskImportPaths.gDefault_ssssss;}> = {pageAskImportPaths.gDefault_ssssss}
+
+:: <{pageAskImportPaths.gDefault_sssssss;}> = {pageAskImportPaths.gDefault_sssssss}
+
+:: <{pageAskImportPaths.gDefault_ssssssss;}> = {pageAskImportPaths.gDefault_ssssssss}
+
+:: <{pageAskImportPaths.gDefault_sssssssss;}> = {pageAskImportPaths.gDefault_sssssssss}
+
+:: <{pageAskImportPaths.gEditor_ssss;}> = {pageAskImportPaths.gEditor_ssss}
+
+:: <{pageAskImportPaths.gEditor_sssss;}> = {pageAskImportPaths.gEditor_sssss}
+
+:: <{pageAskImportPaths.gEditor_ssssss;}> = {pageAskImportPaths.gEditor_ssssss}
+
+:: <{pageAskImportPaths.gEditor_sssssss;}> = {pageAskImportPaths.gEditor_sssssss}
+
