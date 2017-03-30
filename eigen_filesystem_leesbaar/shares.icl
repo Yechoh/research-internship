@@ -1,6 +1,7 @@
 implementation module shares
 
 import iTasks
+import qualified Data.Map as DM
 
 :: Settings = 	{ dirCpm 	:: FilePath
 				, dirClean	:: FilePath
@@ -23,3 +24,6 @@ errorstate = sharedStore "errors" ""
 
 content :: Shared String
 content = sharedStore "content" ""
+
+contents :: Shared (Map String [String])
+contents = sharedStore "contents" 'DM'.newMap

@@ -12,7 +12,7 @@ pageChooseFile pagenodeEditor =
 	askPath					
 	-||
 	updateSharedInformation "paths" [] settings
-	>>- \(path,name) -> pagenodeEditor path name
+	>>- \(path,name) -> setContents >>| setProject >>| pagenodeEditor name
 
 askPath :: Task (String,String)
 askPath
@@ -20,10 +20,11 @@ askPath
 	>>- \pwd ->					selectFromTree pwd isCleanFile
 	>>- \path -> return (takeDirectory path, dropDirectory path)
 
-setContent :: String String -> Task ()
-setContent path name
+setContents :: String String -> Task ()
+setContents path name
 	= 							readFromFile (path </> name)
-	>>- \(Just contenttxt) ->		set contenttxt content
+	>>- \(Just contenttxt) ->	get contents
+	>>- \contentmap ->			set (put name contenttxt contentmap) content
 								>>|- return ()
 	
 setProject :: String String -> Task ()

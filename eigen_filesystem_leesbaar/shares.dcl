@@ -2,6 +2,7 @@ definition module shares
 
 import iTasks
 import System.FilePath
+import qualified Data.Map as DM
 
 :: Settings = 	{ dirCpm 	:: FilePath
 				, dirClean	:: FilePath
@@ -15,3 +16,6 @@ derive class iTask Settings
 settings :: Shared Settings
 errorstate :: Shared String
 content :: Shared String
+
+//contents = ([(filename,[line])],prev_time)
+contents :: Shared (Map String [String])
