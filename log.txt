@@ -182,27 +182,3 @@ ma 27-3
 16:02 dingen duren altijd langer dan verwacht, maar ziet er goed uit. stap 5 van todo verwijderd, omdat het probleem van >&> goed rondomheen te werken is. ik bedenk me net dat ik nog niet helemaal klaar ben. Ik wil nog zorgen dat er makkelijker met de redirecttuples omgegaan kan worden.
 16:52 wat ik wil kan niet. Op dit moment wordt er aan een page een x-tuple meegegeven bestaande uit tuples van de vorm (Action,funDieEenNieuwePageOplevert). Deze noemde ik een redirect en ik wilde deze kunnen geven zonder dat de tuple geopend hoeft te worden door de page. Ik wou dus een functie maken die dit verborg. Soms wil je nog wat een voorfunctie aanroepen voordat je naar de nieuwe page gaat, dus die optie moet er zijn. Ik wou dus de tuple transformeren naar FunDieEenActionPageTupleOplevert en vervolgens een functie maken die gegeven een ActionPageTuple (dus de argumenten zijn al aan de functie gegeven) een optionele voorfunctie en een tasksteputilfunction een TaskCont maakte. Maar soms levert de voorfunctie de argumenten op die je nodig hebt voor FunDieEenActionPageTupleOplevert, dus dit kan niet.
 Nu de taak om alles weer terug te veranderen en dan (eindelijk) beginnen met stap 3, een formele definitie van Page
-17:05 alles teruggezet en gecommit. Document Pages gemaakt op drive
-17:26
-
-wo 29-3
-11:30
-16:52 definitie pages en pagestructuur opgeschreven
-
-18:24 beginnen met stap 6, mijn deel van de editlet maken
-18:47 lenses zoeken
-19:19 halverwege symmetric lens bouwen
-
-do 30-3
-10:28
-11:46 Bas is begonnen met de Ace kant van de EditorRecord. Hij is al weg, maar ik heb een vraag voor hem. Als ik aan mijn kant de tijd wijzig, is dat server side of client side?
-11:57 de symmetric lens is een mapReadWrite over een samenvoeging geworden. Ik ga nu gewoon bovenaan beginnen bij 'plan for the webIDE'. De eerste stap is tabs.
-12:52 tabs bevinden zich in de iTasks/UI/Layout folder. Ik hoop hier een uitleg oid te vinden
-13:46 het is weer eens meuk. Aangezien Layout een Class is, is er niet echt een duidelijk type er van (vind ik). Er is een voorbeeld van Tabs in manageWorkFlows, die gebruikt wordt in BasicAPIExamples, maar hier spelen zoveel dingen tegelijk dat het een hoopje zooi is. Dit gaat m niet worden zonder goede uitleg, dus ik ga zoeken naar papers en als dat niet lukt Tim om hulp vragen.
-14:54 met hulp van Rinus en goede hoop trial-error heb ik tabs werkend! zie tabs.icl. Mijn oorspronkelijke plan was om als je een andere tab aanklikte, de ace editor van lens veranderde. Maar alle tasks in tabs werken parallel. Dus dan zou ik meerdere ace editors open hebben. Dit is niet wat ik wil en hiervoor moet ik een manier vinden om er rondomheen te werken.
-15:04 er valt niet makkelijk rondomheen te werken. Maar mss is het geen probleem dat we meerdere Ace editors hebben, aangezien ze allemaal over dezelfde share(s) werken.
-15:42 tabs zou nu moeten werken. Mijn functies hebben lelijke namen, ik weet hier nog geen goede oplossing voor. Ik kan de applicatie niet testen, want ik heb Bas zijn deel van de Ace editor nog niet. Mss kan ik een mockup maken, maar ik heb hier geen zin in. Next step: using Clean's color syntax.
-18:20 highlight rules gemaakt. Er is ook nog een Mode nodig, maar ik weet niet precies hoe dit moet. Highlight rules opgestuurd naar Bas. Wat jammer is, is dat ik geen manier zie om gedefinieerde functies te highlighten. Next up is completion by library search, maar die skip ik maar even. Next up is foutmeldingen bij de juiste regelnummer geven.
-18:30 er bestaan zogenaamde workers in Ace, die foutmeldingen geven. Hier moet ik het een keer met Bas over hebben. Ze zijn geschreven in (volgens mij JS) niet-Clean, maar mss kunnen we ze wel Clean functies meegeven. Het is mij onduidelijk hoeveel workers kunnen, maar wss zijn ze readOnly error/warning-generators.
-18:35 zu hause
-
