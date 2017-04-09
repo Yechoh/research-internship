@@ -163,33 +163,4 @@ een voorbeeld hiervan is
 het type van always is
 	b (TaskValue a) -> Maybe b
 
----
-workers.
-
-coffee worker:
-	roept mirror aan met als args zichzelf en de sender, wacht 250 Ms
-	run de compiler
-	catch elke error en stop hem in een errorstruc array
-	stuur naar sender
-	
-css worker:
-	roept mirror aan, wacht 400 Ms
-	set Disabled rules, set Info rules
-	doe ongeveer hetzelfde?
-
----
-de errorstruc wordt van verwacht dat hij de volgende velden heeft.
-- row: int
-- column? : int
-- text: string (html?)
-- type: string (error|warning|info) 
-
----
-op dit moment is er een worker die compile aanroept, en foutmeldingen doorgeeft.
-Ik had eerst gekeken naar waar hij die foutmeldingen geeft, om zo te kijken of ik er tussen kon springen
-Ik kijk nu naar wie de worker aanroept, zodat we dat kunnen stoppen.
-Zodra een Mode verandert, maakt onChangeMode in editSession een nieuwe worker aan. In plaats daarvan moet hij een gegeven clean functie aanroepen, die zelf weer this.setAnnotations aanroept.
-Maar als je worker aanmaken vervangt door setAnnotations, dan crasht de sink.
-
-
 
