@@ -2,6 +2,7 @@ implementation module shares
 
 import iTasks
 import qualified Data.Map as DM
+import System.OS
 
 :: Settings = 	{ dirCpm 	:: FilePath
 				, dirClean	:: FilePath
@@ -22,8 +23,18 @@ settings = sharedStore "settings" 	{ dirCpm = "C:\\Users\\Martin\\Documents\\cle
 errorstate :: Shared String									
 errorstate = sharedStore "errors" ""
 
-content :: Shared String
-content = sharedStore "content" ""
-
 contents :: Shared (Map String [String])
 contents = sharedStore "contents" 'DM'.newMap
+
+
+contentLinesOf :: String -> Task [String]
+contentLinesOf filename = 
+	get contents >>- \c.
+	return (fromJust (fst ('DM'.getU filename c )))
+	
+joinWithNewline :: String String -> String
+joinWithNewline a b = a+++OS_NEWLINE+++b
+	
+contentOf :: String -> Task String
+contentOf filename = get contents >>- \c.
+	return (foldr joinWithNewline "" (fromJust (fst ('DM'.getU filename c ))))

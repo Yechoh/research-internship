@@ -76,9 +76,9 @@ pageEditor path name ((actionQuit,pagenodeQuit),(actionAskImportPaths,pagenodeAs
 	 -&&-
 	 viewSharedInformation "errors" [ViewUsing id (textArea 'DM'.newMap)] errorstate) 
 	 -&&-
-	 (repeatEverySecond (cpmSetErrorstate name))
-	 >^*	[	OnAction  ActionSave    	(always (get content >>= \content. saveFile (path </> (name)) content))
-	 		,	OnAction  ActionSaveAs		(always (get content >>= \content. saveFileAs (path </> name)content )) 
+	 (repeatEverySecond (cpmSetErrorstate path name))
+	 >^*	[	//OnAction  ActionSave    	(always (contentOf name >>= \content. saveFile path (name) content))
+	 		/*,*/	OnAction  ActionSaveAs		(always (contentOf name >>= \content. saveFileAs (path </> name) content )) 
 	 		]
 	 		++ 
 	 		if (takeExtension name <> "icl") []

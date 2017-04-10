@@ -15,7 +15,10 @@ derive class iTask Settings
 
 settings :: Shared Settings
 errorstate :: Shared String
-content :: Shared String
 
 //contents = ([(filename,[line])],prev_time)
 contents :: Shared (Map String [String])
+
+//functions to get specific content
+contentLinesOf :: String -> Task [String]
+contentOf :: String -> Task String

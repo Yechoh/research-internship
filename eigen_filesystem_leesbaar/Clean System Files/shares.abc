@@ -96,8 +96,8 @@
 .depend "iTasks" "20170403171220"
 .depend "StdOverloaded" "20170403171239"
 .depend "_SystemDynamic" "20170403171219"
-.depend "shares" "20170410111404"
-.module m_shares "shares" "20170410111404"
+.depend "shares" "20170410142600"
+.module m_shares "shares" "20170410144229"
 .endinfo
 .impmod _system
 .implab _cycle_in_spine
@@ -136,6 +136,10 @@
 .implab _driver
 .impmod iTasks.API.Core.SDSs
 .implab e_iTasks.API.Core.SDSs_ssharedStore
+.impmod iTasks.API.Common.TaskCombinators
+.implab e_iTasks.API.Common.TaskCombinators_s>>-
+.impmod iTasks.API.Core.Tasks
+.implab e_iTasks.API.Core.Tasks_sget
 .impmod iTasks.UI.Editor.Generic
 .impdesc e_iTasks.UI.Editor.Generic_dgEditor_PAIR;2
 .implab e_iTasks.UI.Editor.Generic_ngEditor_PAIR;2
@@ -145,6 +149,8 @@
 .implab e_iTasks.UI.Editor.Generic_ngEditor_FIELD;6
 .impdesc e_iTasks.UI.Editor.Generic_dgEditor__String;11
 .implab e_iTasks.UI.Editor.Generic_ngEditor__String;11
+.implab e_iTasks.UI.Editor.Generic_sgEditor__List;12
+.implab e_iTasks.UI.Editor.Generic_sgEditor_Map;24
 .implab e_iTasks.UI.Editor.Generic_sbimap_Editor;29
 .impmod iTasks._Framework.Generic.Defaults
 .impdesc e_iTasks._Framework.Generic.Defaults_dgDefault_PAIR;2
@@ -154,18 +160,29 @@
 .implab e_iTasks._Framework.Generic.Defaults_ngDefault_FIELD;7 e_iTasks._Framework.Generic.Defaults_eagDefault_FIELD;7
 .impdesc e_iTasks._Framework.Generic.Defaults_dgDefault__String;12
 .implab e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
+.implab e_iTasks._Framework.Generic.Defaults_sgDefault__List;13
+.implab e_iTasks._Framework.Generic.Defaults_sgDefault_Map;27
 .impmod iTasks._Framework.Generic.Visualization
 .impdesc e_iTasks._Framework.Generic.Visualization_dgText_PAIR;5
 .implab e_iTasks._Framework.Generic.Visualization_sgText_RECORD;9
 .impdesc e_iTasks._Framework.Generic.Visualization_dgText_FIELD;10
 .impdesc e_iTasks._Framework.Generic.Visualization_dgText__String;15
+.implab e_iTasks._Framework.Generic.Visualization_sgText__List;16
+.implab e_iTasks._Framework.Generic.Visualization_sgText_Map;30
+.impmod iTasks._Framework.Generic
+.impdesc e_iTasks._Framework.Generic_riTask;
 .impmod Data.Map
 .implab e_Data.Map_snewMap
+.implab e_Data.Map_sgetU
 .implab e_Data.Map_sJSONEncode_Map;35
 .implab e_Data.Map_sJSONDecode_Map;36
+.implab e_Data.Map_sgEq_Map;37
 .impdesc e_Data.Map_dTD;Map
 .impmod StdString
+.impdesc e_StdString_d==;2
 .implab e_StdString_s==;2
+.impdesc e_StdString_d<;3
+.implab e_StdString_s+++;11
 .impmod Text.JSON
 .impdesc e_Text.JSON_dJSONEncode__String;15
 .implab e_Text.JSON_sJSONEncode__String;15
@@ -188,11 +205,19 @@
 .impdesc e_GenEq_dgEq_PAIR;8
 .implab e_GenEq_sgEq_RECORD;11
 .impdesc e_GenEq_dgEq_FIELD;12
+.implab e_GenEq_sgEq__List;16
 .impmod Data.Maybe
+.impdesc e_Data.Maybe_dfromJust
+.implab e_Data.Maybe_nfromJust _
 .impdesc e_Data.Maybe_dNothing
 .impdesc e_Data.Maybe_dJust
+.impmod iTasks.API.Core.Types
+.implab e_iTasks.API.Core.Types_sreturn;8
 .impmod StdList
 .implab e_StdList_s!!
+.impmod StdOverloaded
+.impdesc e_StdOverloaded_r==;
+.impdesc e_StdOverloaded_r<;
 .impmod _SystemDynamic
 .impdesc e__SystemDynamic_rTypeCodeConstructor
 .impdesc e__SystemDynamic_kTypeCons
@@ -272,8 +297,12 @@ e_shares_nSettings.dirCmd
 	pop_a 1
 .d 1 0
 	rtn
-.record r83 a 1 0 "JSONEncode_s;"
-.record r89 a 1 0 "JSONDecode_s;"
+.record r128 a 1 0 "gEditor_s;"
+.record r134 a 1 0 "gText_s;"
+.record r140 a 1 0 "JSONEncode_s;"
+.record r146 a 1 0 "JSONDecode_s;"
+.record r152 a 1 0 "gDefault_s;"
+.record r158 a 1 0 "gEq_s;"
 .export e_shares_sTD;Settings
 .export e_shares_eaTD;Settings
 .descexp e_shares_dTD;Settings e_shares_nTD;Settings e_shares_lTD;Settings 1 0 "TD;Settings"
@@ -294,47 +323,47 @@ e_shares_eaTD;Settings
 .o 2 0
 e_shares_sTD;Settings
 .o 2 0
-s11
+s12
 	fillh _Nil 0 1
 	pop_a 1
 .d 1 0
 	rtn
-.export e_shares_sgEq_Settings;9
-.descexp e_shares_dgEq_Settings;9 e_shares_ngEq_Settings;9 e_shares_lgEq_Settings;9 2 0 "gEq_Settings;9"
-.a 0 a10
+.export e_shares_sgEq_Settings;10
+.descexp e_shares_dgEq_Settings;10 e_shares_ngEq_Settings;10 e_shares_lgEq_Settings;10 2 0 "gEq_Settings;10"
+.a 0 a11
 .o 2 0
-e_shares_lgEq_Settings;9
+e_shares_lgEq_Settings;10
 	repl_args 1 1
 .o 2 0
-a10
+a11
 .d 2 0
-	jsr ea10
+	jsr ea11
 .o 0 1 b
 	buildB_b 0
 	pop_b 1
 .d 1 0
 	rtn
-.n 2 e_shares_dgEq_Settings;9
+.n 2 e_shares_dgEq_Settings;10
 .o 1 0
-e_shares_ngEq_Settings;9
+e_shares_ngEq_Settings;10
 	push_node _cycle_in_spine 2
 .d 2 0
-	jsr ea10
+	jsr ea11
 .o 0 1 b
 	fillB_b 0 0
 	pop_b 1
 .d 1 0
 	rtn
 .o 2 0
-ea10
+ea11
 .o 2 0
-e_shares_sgEq_Settings;9
+e_shares_sgEq_Settings;10
 .o 2 0
-s10
+s11
 	push_a 1
-	build d14 1 n14
+	build d19 1 n19
 	push_a 1
-	build d14 1 n14
+	build d19 1 n19
 	buildh e_GenEq_dgEq__String;6 0
 	buildh e_GenEq_dgEq_FIELD;12 1
 	buildh e_GenEq_dgEq__String;6 0
@@ -354,17 +383,17 @@ s10
 	updatepop_a 0 2
 .d 3 0
 	jmp e_GenEq_sgEq_RECORD;11
-.export e_shares_sgDefault_Settings;8
-.descexp e_shares_dgDefault_Settings;8 e_shares_ngDefault_Settings;8 e_shares_lgDefault_Settings;8 0 0 "gDefault_Settings;8"
+.export e_shares_sgDefault_Settings;9
+.descexp e_shares_dgDefault_Settings;9 e_shares_ngDefault_Settings;9 e_shares_lgDefault_Settings;9 0 0 "gDefault_Settings;9"
 .o 1 0
-e_shares_lgDefault_Settings;8
+e_shares_lgDefault_Settings;9
 	halt
-.n 0 e_shares_dgDefault_Settings;8
+.n 0 e_shares_dgDefault_Settings;9
 .o 1 0
-e_shares_ngDefault_Settings;8
+e_shares_ngDefault_Settings;9
 	push_node _cycle_in_spine 0
 .d 0 0
-	jsr ea9
+	jsr ea10
 .o 5 0
 .impmod shares
 .impdesc e_shares_rSettings
@@ -373,11 +402,11 @@ e_shares_ngDefault_Settings;8
 .d 1 0
 	rtn
 .o 0 0
-ea9
+ea10
 .o 0 0
-e_shares_sgDefault_Settings;8
+e_shares_sgDefault_Settings;9
 .o 0 0
-s9
+s10
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
 	build e_iTasks._Framework.Generic.Defaults_dgDefault_FIELD;7 1 e_iTasks._Framework.Generic.Defaults_ngDefault_FIELD;7
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
@@ -401,33 +430,33 @@ s9
 	jsr e_iTasks._Framework.Generic.Defaults_sgDefault_RECORD;6
 .o 1 0
 .d 1 0
-	jmp s13
-.export e_shares_sgText_Settings;5
-.export e_shares_eagText_Settings;5
-.descexp e_shares_dgText_Settings;5 e_shares_ngText_Settings;5 e_shares_lgText_Settings;5 2 0 "gText_Settings;5"
-.a 2 e_shares_eagText_Settings;5
+	jmp s18
+.export e_shares_sgText_Settings;6
+.export e_shares_eagText_Settings;6
+.descexp e_shares_dgText_Settings;6 e_shares_ngText_Settings;6 e_shares_lgText_Settings;6 2 0 "gText_Settings;6"
+.a 2 e_shares_eagText_Settings;6
 .o 2 0
-e_shares_lgText_Settings;5
+e_shares_lgText_Settings;6
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .d 3 0
-	jmp e_shares_eagText_Settings;5
-.n 2 e_shares_dgText_Settings;5 e_shares_eagText_Settings;5
+	jmp e_shares_eagText_Settings;6
+.n 2 e_shares_dgText_Settings;6 e_shares_eagText_Settings;6
 .o 1 0
-e_shares_ngText_Settings;5
+e_shares_ngText_Settings;6
 	push_node _cycle_in_spine 2
 .o 3 0
-e_shares_eagText_Settings;5
+e_shares_eagText_Settings;6
 	jsr_eval 0
 .o 3 0
-e_shares_sgText_Settings;5
+e_shares_sgText_Settings;6
 .o 3 0
-s6
+s7
 	push_a 1
-	build _ 1 n16
+	build _ 1 n21
 	buildh e_iTasks._Framework.Generic.Visualization_dgText__String;15 0
 	buildAC "dirCmd"
 	buildh ARRAY 1
@@ -462,21 +491,21 @@ s6
 	updatepop_a 0 2
 .d 4 0
 	jmp e_iTasks._Framework.Generic.Visualization_sgText_RECORD;9
-.n 1 _ ea16
+.n 1 _ ea21
 .o 1 0
-n16
+n21
 	push_node _cycle_in_spine 1
 .o 2 0
-ea16
+ea21
 	jsr_eval 0
 .o 2 0
-s16
+s21
 	push_a 0
 	updatepop_a 0 1
 .d 2 0
-	jmp s74
+	jmp s119
 .o 2 0
-s74
+s119
 	eq_desc e_Data.Maybe_dNothing 0 0
 	jmp_true case.1
 	jmp case.2
@@ -488,22 +517,22 @@ case.1
 case.2
 	repl_args 1 1
 	push_a 0
-	build d14 1 n14
+	build d19 1 n19
 	fillh e_Data.Maybe_dJust 1 2
 	pop_a 1
 .d 1 0
 	rtn
-.export e_shares_sgEditor_Settings;4
-.descexp e_shares_dgEditor_Settings;4 e_shares_ngEditor_Settings;4 e_shares_lgEditor_Settings;4 0 0 "gEditor_Settings;4"
+.export e_shares_sgEditor_Settings;5
+.descexp e_shares_dgEditor_Settings;5 e_shares_ngEditor_Settings;5 e_shares_lgEditor_Settings;5 0 0 "gEditor_Settings;5"
 .o 1 0
-e_shares_lgEditor_Settings;4
+e_shares_lgEditor_Settings;5
 	halt
-.n 0 e_shares_dgEditor_Settings;4
+.n 0 e_shares_dgEditor_Settings;5
 .o 1 0
-e_shares_ngEditor_Settings;4
+e_shares_ngEditor_Settings;5
 	push_node _cycle_in_spine 0
 .d 0 0
-	jsr ea5
+	jsr ea6
 .o 3 0
 .impmod iTasks.UI.Editor
 .impdesc e_iTasks.UI.Editor_rEditor
@@ -512,11 +541,11 @@ e_shares_ngEditor_Settings;4
 .d 1 0
 	rtn
 .o 0 0
-ea5
+ea6
 .o 0 0
-e_shares_sgEditor_Settings;4
+e_shares_sgEditor_Settings;5
 .o 0 0
-s5
+s6
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
 	buildAC "dirCmd"
 	buildh ARRAY 1
@@ -543,7 +572,7 @@ s5
 	build e_iTasks.UI.Editor.Generic_dgEditor_PAIR;2 2 e_iTasks.UI.Editor.Generic_ngEditor_PAIR;2
 	buildI 5
 	build e_iTasks.UI.Editor.Generic_dgEditor_RECORD;5 2 e_iTasks.UI.Editor.Generic_ngEditor_RECORD;5
-	build _ 0 n15
+	build _ 0 n20
 .d 1 0
 	jsr e_iTasks.UI.Editor.Generic_sbimap_Editor;29
 .o 2 0
@@ -555,16 +584,780 @@ s5
 	rtn
 .n 0 _
 .o 1 0
-n15
+n20
 	push_node _cycle_in_spine 0
 .o 0 0
-ea15
-	buildh d13 0
-	buildh d14 0
+ea20
+	buildh d18 0
+	buildh d19 0
 	fill_r e_StdGeneric_rBimap 2 0 2 0 0
 	pop_a 2
 .d 1 0
 	rtn
+.export e_shares_scontentOf
+.export e_shares_eacontentOf
+.descexp e_shares_dcontentOf e_shares_ncontentOf e_shares_lcontentOf 1 0 "contentOf"
+.o 2 0
+e_shares_lcontentOf
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_shares_eacontentOf
+.n 1 e_shares_dcontentOf e_shares_eacontentOf
+.o 1 0
+e_shares_ncontentOf
+	push_node _cycle_in_spine 1
+.o 2 0
+e_shares_eacontentOf
+.o 2 0
+e_shares_scontentOf
+.o 2 0
+s5
+	push_a 0
+	buildh d110 1
+	create
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 1 0
+	jsr s3
+.o 1 0
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__List 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_Data.Map_dTD;Map 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d92 0
+	build _ 0 n91
+	buildh d78 0
+	buildh d77 0
+	buildh d90 0
+	build _ 0 n106
+	create
+	push_a 8
+	update_a 1 9
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 0 8
+	pop_a 1
+.d 9 0
+	jsr e_iTasks.API.Core.Tasks_sget
+.o 1 0
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_GenEq_dgEq__String;6 0
+	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
+	buildh e_Text.JSON_dJSONDecode__String;39 0
+	buildh e_Text.JSON_dJSONEncode__String;15 0
+	buildh e_iTasks._Framework.Generic.Visualization_dgText__String;15 0
+	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__List 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_Data.Map_dTD;Map 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d92 0
+	build _ 0 n91
+	buildh d78 0
+	buildh d77 0
+	buildh d90 0
+	build _ 0 n106
+	update_a 15 16
+	update_a 14 15
+	update_a 13 14
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 17 0
+	jmp e_iTasks.API.Common.TaskCombinators_s>>-
+.desc d110 _hnf l110 2 0 "<lambda>[line:39];39;476"
+.a 2 ea110
+.o 2 0
+l110
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea110
+.o 3 0
+s110
+	push_a 1
+	push_a 1
+	build _ 2 n259
+	build d_S.1 -1 n_S.1
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	buildAC ""
+	buildh ARRAY 1
+	build _ 2 n107
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_GenEq_dgEq__String;6 0
+	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
+	buildh e_Text.JSON_dJSONDecode__String;39 0
+	buildh e_Text.JSON_dJSONEncode__String;15 0
+	buildh e_iTasks._Framework.Generic.Visualization_dgText__String;15 0
+	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 9 0
+	jmp e_iTasks.API.Core.Types_sreturn;8
+.n 2 _ ea259
+.o 1 0
+n259
+	push_node _cycle_in_spine 2
+.o 3 0
+ea259
+.o 3 0
+s259
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh e_StdString_d<;3 0
+	buildh e_StdString_d==;2 0
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jsr e_Data.Map_sgetU
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n107
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea107
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+ea107
+	jsr_eval 1
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 2 0
+s107
+	eq_desc _Nil 0 1
+	jmp_true case.3
+	jmp case.4
+case.3
+	updatepop_a 0 1
+.d 1 0
+	rtn
+case.4
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr s107
+.o 1 0
+	push_a 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jmp s13
+.o 2 0
+s13
+	push_a 1
+	buildAC "\r\n"
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr catAC
+.o 1 0
+.d 1 0
+	rtn
+.export e_shares_scontentLinesOf
+.export e_shares_eacontentLinesOf
+.descexp e_shares_dcontentLinesOf e_shares_ncontentLinesOf e_shares_lcontentLinesOf 1 0 "contentLinesOf"
+.o 2 0
+e_shares_lcontentLinesOf
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_shares_eacontentLinesOf
+.n 1 e_shares_dcontentLinesOf e_shares_eacontentLinesOf
+.o 1 0
+e_shares_ncontentLinesOf
+	push_node _cycle_in_spine 1
+.o 2 0
+e_shares_eacontentLinesOf
+.o 2 0
+e_shares_scontentLinesOf
+.o 2 0
+s4
+	push_a 0
+	buildh d99 1
+	create
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 1 0
+	jsr s3
+.o 1 0
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__List 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_Data.Map_dTD;Map 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d92 0
+	build _ 0 n91
+	buildh d78 0
+	buildh d77 0
+	buildh d90 0
+	build _ 0 n106
+	create
+	push_a 8
+	update_a 1 9
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 0 8
+	pop_a 1
+.d 9 0
+	jsr e_iTasks.API.Core.Tasks_sget
+.o 1 0
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__List 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d85 0
+	build _ 0 n81
+	buildh d75 0
+	buildh d73 0
+	buildh d80 0
+	build _ 0 n100
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__List 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_Data.Map_dTD;Map 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d92 0
+	build _ 0 n91
+	buildh d78 0
+	buildh d77 0
+	buildh d90 0
+	build _ 0 n106
+	update_a 15 16
+	update_a 14 15
+	update_a 13 14
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 17 0
+	jmp e_iTasks.API.Common.TaskCombinators_s>>-
+.n 0 _
+.o 1 0
+n106
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea106
+.o 3 0
+	fill_r e_iTasks.UI.Editor_rEditor 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.o 0 0
+ea106
+.o 0 0
+s106
+	buildh d75 0
+	buildh d73 0
+	build _ 0 n81
+	buildh d80 0
+	build _ 0 n100
+	buildh e_Text.JSON_dJSONDecode__String;39 0
+	buildh e_Text.JSON_dJSONEncode__String;15 0
+	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
+	buildh e_iTasks._Framework.Generic.Visualization_dgText__String;15 0
+	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
+.d 10 0
+	jmp e_iTasks.UI.Editor.Generic_sgEditor_Map;24
+.desc d99 _hnf l99 2 0 "<lambda>[line:32];22;465"
+.a 2 ea99
+.o 2 0
+l99
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea99
+.o 3 0
+s99
+	push_a 1
+	push_a 1
+	build _ 2 n258
+	build d_S.1 -1 n_S.1
+	build e_Data.Maybe_dfromJust 1 e_Data.Maybe_nfromJust
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__List 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d85 0
+	build _ 0 n81
+	buildh d75 0
+	buildh d73 0
+	buildh d80 0
+	build _ 0 n100
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 9 0
+	jmp e_iTasks.API.Core.Types_sreturn;8
+.n 2 _ ea258
+.o 1 0
+n258
+	push_node _cycle_in_spine 2
+.o 3 0
+ea258
+.o 3 0
+s258
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	buildh e_StdString_d<;3 0
+	buildh e_StdString_d==;2 0
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jsr e_Data.Map_sgetU
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n100
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea100
+.o 3 0
+	fill_r e_iTasks.UI.Editor_rEditor 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.o 0 0
+ea100
+.o 0 0
+s100
+	buildh e_Text.JSON_dJSONDecode__String;39 0
+	buildh e_Text.JSON_dJSONEncode__String;15 0
+	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
+	buildh e_iTasks._Framework.Generic.Visualization_dgText__String;15 0
+	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
+.d 5 0
+	jmp e_iTasks.UI.Editor.Generic_sgEditor__List;12
+.desc d90 _hnf l90 2 0 "gText_s;456"
+.a 2 ea90
+.o 2 0
+l90
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea90
+	jsr_eval 0
+.o 3 0
+s90
+	buildh d80 0
+	buildh e_iTasks._Framework.Generic.Visualization_dgText__String;15 0
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 5 0
+	jmp e_iTasks._Framework.Generic.Visualization_sgText_Map;30
+.n 0 _ ea91
+.o 1 0
+n91
+	push_node _cycle_in_spine 0
+.o 1 0
+ea91
+.o 1 0
+s91
+	build _ 0 n81
+	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
+.d 3 0
+	jmp e_iTasks._Framework.Generic.Defaults_sgDefault_Map;27
+.desc d92 _hnf l92 2 0 "gEq_s;458"
+.a 0 a92
+.o 2 0
+l92
+	repl_args 1 1
+.o 2 0
+a92
+.d 2 0
+	jsr ea92
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea92
+.o 2 0
+s92
+	buildh d85 0
+	buildh e_GenEq_dgEq__String;6 0
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp e_Data.Map_sgEq_Map;37
+.desc d80 _hnf l80 2 0 "gText_s;446"
+.a 2 ea80
+.o 2 0
+l80
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea80
+	jsr_eval 0
+.o 3 0
+s80
+	buildh e_iTasks._Framework.Generic.Visualization_dgText__String;15 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp e_iTasks._Framework.Generic.Visualization_sgText__List;16
+.n 0 _ ea81
+.o 1 0
+n81
+	push_node _cycle_in_spine 0
+.o 1 0
+ea81
+.o 1 0
+s81
+	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
+.d 2 0
+	jmp e_iTasks._Framework.Generic.Defaults_sgDefault__List;13
+.desc d85 _hnf l85 2 0 "gEq_s;451"
+.a 0 a85
+.o 2 0
+l85
+	repl_args 1 1
+.o 2 0
+a85
+.d 2 0
+	jsr ea85
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea85
+.o 2 0
+s85
+	buildh e_GenEq_dgEq__String;6 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp e_GenEq_sgEq__List;16
 .export e_shares_scontents
 .export e_shares_eacontents
 .descexp e_shares_dcontents e_shares_ncontents e_shares_lcontents 0 0 "contents"
@@ -580,7 +1373,7 @@ e_shares_eacontents
 .o 1 0
 e_shares_scontents
 .o 1 0
-s4
+s3
 	create
 .d 1 0
 	jsr e_Data.Map_snewMap
@@ -624,8 +1417,8 @@ s4
 	build_r e__SystemDynamic_kTypeApp 2 0 0 0
 	update_a 0 2
 	pop_a 2
-	buildh d65 0
-	buildh d64 0
+	buildh d78 0
+	buildh d77 0
 	buildAC "contents"
 	push_a 3
 	update_a 1 4
@@ -635,24 +1428,24 @@ s4
 	pop_a 1
 .d 6 0
 	jmp e_iTasks.API.Core.SDSs_ssharedStore
-.desc d64 _hnf l64 2 0 "JSONEncode_s;438"
-.a 2 ea64
+.desc d77 _hnf l77 2 0 "JSONEncode_s;443"
+.a 2 ea77
 .o 2 0
-l64
+l77
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea64
+ea77
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 2 1 b
-s64
-	buildh d60 0
+s77
+	buildh d73 0
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	push_a 2
 	push_b 0
@@ -667,15 +1460,15 @@ s64
 	updatepop_b 0 1
 .d 4 1 b
 	jmp e_Data.Map_sJSONEncode_Map;35
-.desc d65 _hnf l65 2 0 "JSONDecode_s;439"
-.a 0 a65
+.desc d78 _hnf l78 2 0 "JSONDecode_s;444"
+.a 0 a78
 .o 2 0
-l65
+l78
 	repl_args 1 1
 .o 2 0
-a65
+a78
 .d 2 0
-	jsr ea65
+	jsr ea78
 .o 2 0
 	push_a 1
 	push_a 1
@@ -684,14 +1477,14 @@ a65
 .d 1 0
 	rtn
 .o 2 0
-ea65
+ea78
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 1 1 b
-s65
-	buildh d62 0
+s78
+	buildh d75 0
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	push_a 2
 	push_b 0
@@ -706,23 +1499,23 @@ s65
 	updatepop_b 0 1
 .d 3 1 b
 	jmp e_Data.Map_sJSONDecode_Map;36
-.desc d60 _hnf l60 2 0 "JSONEncode_s;434"
-.a 2 ea60
+.desc d73 _hnf l73 2 0 "JSONEncode_s;439"
+.a 2 ea73
 .o 2 0
-l60
+l73
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea60
+ea73
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 2 1 b
-s60
+s73
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	push_a 1
 	push_b 0
@@ -735,15 +1528,15 @@ s60
 	updatepop_b 0 1
 .d 3 1 b
 	jmp e_Text.JSON_sJSONEncode__List;17
-.desc d62 _hnf l62 2 0 "JSONDecode_s;436"
-.a 0 a62
+.desc d75 _hnf l75 2 0 "JSONDecode_s;441"
+.a 0 a75
 .o 2 0
-l62
+l75
 	repl_args 1 1
 .o 2 0
-a62
+a75
 .d 2 0
-	jsr ea62
+	jsr ea75
 .o 2 0
 	push_a 1
 	push_a 1
@@ -752,13 +1545,13 @@ a62
 .d 1 0
 	rtn
 .o 2 0
-ea62
+ea75
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 1 1 b
-s62
+s75
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	push_a 1
 	push_b 0
@@ -771,49 +1564,6 @@ s62
 	updatepop_b 0 1
 .d 2 1 b
 	jmp e_Text.JSON_sJSONDecode__List;44
-.export e_shares_scontent
-.export e_shares_eacontent
-.descexp e_shares_dcontent e_shares_ncontent e_shares_lcontent 0 0 "content"
-.o 1 0
-e_shares_lcontent
-	halt
-.n 0 e_shares_dcontent e_shares_eacontent
-.o 1 0
-e_shares_ncontent
-	push_node _cycle_in_spine 0
-.o 1 0
-e_shares_eacontent
-.o 1 0
-e_shares_scontent
-.o 1 0
-s3
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e_Text.JSON_dJSONDecode__String;39 0
-	buildh e_Text.JSON_dJSONEncode__String;15 0
-	buildAC ""
-	push_a 0
-	buildh ARRAY 1
-	updatepop_a 0 1
-	buildAC "content"
-	push_a 4
-	update_a 2 5
-	update_a 4 2
-	update_a 1 4
-	update_a 3 1
-	update_a 0 3
-	pop_a 1
-.d 6 0
-	jmp e_iTasks.API.Core.SDSs_ssharedStore
 .export e_shares_serrorstate
 .export e_shares_eaerrorstate
 .descexp e_shares_derrorstate e_shares_nerrorstate e_shares_lerrorstate 0 0 "errorstate"
@@ -889,8 +1639,8 @@ s1
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dJSONDecode_Settings;7 0
-	buildh e_shares_dJSONEncode_Settings;6 0
+	buildh e_shares_dJSONDecode_Settings;8 0
+	buildh e_shares_dJSONEncode_Settings;7 0
 	buildAC "settings"
 	push_a 3
 	update_a 1 4
@@ -900,16 +1650,16 @@ s1
 	pop_a 1
 .d 6 0
 	jmp e_iTasks.API.Core.SDSs_ssharedStore
-.export e_shares_sJSONDecode_Settings;7
-.descexp e_shares_dJSONDecode_Settings;7 e_shares_nJSONDecode_Settings;7 e_shares_lJSONDecode_Settings;7 2 0 "JSONDecode_Settings;7"
-.a 0 a8
+.export e_shares_sJSONDecode_Settings;8
+.descexp e_shares_dJSONDecode_Settings;8 e_shares_nJSONDecode_Settings;8 e_shares_lJSONDecode_Settings;8 2 0 "JSONDecode_Settings;8"
+.a 0 a9
 .o 2 0
-e_shares_lJSONDecode_Settings;7
+e_shares_lJSONDecode_Settings;8
 	repl_args 1 1
 .o 2 0
-a8
+a9
 .d 2 0
-	jsr ea8
+	jsr ea9
 .o 2 0
 	push_a 1
 	push_a 1
@@ -917,12 +1667,12 @@ a8
 	updatepop_a 0 2
 .d 1 0
 	rtn
-.n 2 e_shares_dJSONDecode_Settings;7
+.n 2 e_shares_dJSONDecode_Settings;8
 .o 1 0
-e_shares_nJSONDecode_Settings;7
+e_shares_nJSONDecode_Settings;8
 	push_node _cycle_in_spine 2
 .d 2 0
-	jsr ea8
+	jsr ea9
 .o 2 0
 	push_a 1
 	push_a 1
@@ -931,15 +1681,15 @@ e_shares_nJSONDecode_Settings;7
 .d 1 0
 	rtn
 .o 2 0
-ea8
+ea9
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 1 1 b
-e_shares_sJSONDecode_Settings;7
+e_shares_sJSONDecode_Settings;8
 .o 1 1 b
-s8
+s9
 	push_a 0
 	push_b 0
 	buildI 4
@@ -970,27 +1720,27 @@ s8
 	update_a 1 2
 	updatepop_a 0 1
 .d 11 1 b
-	jsr s57
+	jsr s70
 .o 2 0
 .d 2 0
-	jmp s211
+	jmp s256
 .o 11 1 b
-s57
+s70
 	eq_desc _Cons 2 10
-	jmp_true case.3
-	jmp case.4
-case.3
+	jmp_true case.5
+	jmp case.6
+case.5
 	push_args 10 2 2
 	jsr_eval 0
 	pushD_a 0
 	eqD_b e_Text.JSON_kJSONObject 0
-	jmp_true case.5
+	jmp_true case.7
 	eqD_b e_Text.JSON_kJSONArray 0
-	jmp_true case.6
+	jmp_true case.8
 	pop_a 2
 	pop_b 1
-	jmp case.4
-case.5
+	jmp case.6
+case.7
 	pop_b 1
 	push_args 0 1 1
 	pop_a 1
@@ -1026,7 +1776,7 @@ case.5
 	update_a 0 14
 	pop_a 1
 .d 11 1 b
-	jsr s58
+	jsr s71
 .o 2 0
 	push_a 15
 	push_a 3
@@ -1040,59 +1790,59 @@ case.5
 	update_a 1 14
 	updatepop_a 0 13
 .d 4 0
-	jmp s24
+	jmp s29
+case.8
+	pop_b 1
+	push_args 0 1 1
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	buildh _Nil 0
+	push_a 2
+	buildh _Cons 2
+	pushB FALSE
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	push_a 13
+	updatepop_b 0 1
+	buildh _Nil 0
+	update_a 0 15
+	update_a 0 16
+	update_a 0 17
+	update_a 0 18
+	update_a 0 19
+	update_a 0 20
+	update_a 0 21
+	update_a 0 22
+	update_a 0 23
+	update_a 0 24
+	update_a 0 13
+	update_a 0 14
+	pop_a 1
+.d 11 1 b
+	jsr s71
+.o 2 0
+	push_a 15
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+	update_a 3 16
+	update_a 2 15
+	update_a 1 14
+	updatepop_a 0 13
+.d 4 0
+	jmp s30
 case.6
-	pop_b 1
-	push_args 0 1 1
-	pop_a 1
-	push_a 1
-	jsr_eval 0
-	buildh _Nil 0
-	push_a 2
-	buildh _Cons 2
-	pushB FALSE
-	push_a 13
-	push_a 13
-	push_a 13
-	push_a 13
-	push_a 13
-	push_a 13
-	push_a 13
-	push_a 13
-	push_a 13
-	push_a 13
-	updatepop_b 0 1
-	buildh _Nil 0
-	update_a 0 15
-	update_a 0 16
-	update_a 0 17
-	update_a 0 18
-	update_a 0 19
-	update_a 0 20
-	update_a 0 21
-	update_a 0 22
-	update_a 0 23
-	update_a 0 24
-	update_a 0 13
-	update_a 0 14
-	pop_a 1
-.d 11 1 b
-	jsr s58
-.o 2 0
-	push_a 15
-	push_a 3
-	update_a 1 4
-	update_a 2 1
-	update_a 3 2
-	update_a 0 3
-	pop_a 1
-	update_a 3 16
-	update_a 2 15
-	update_a 1 14
-	updatepop_a 0 13
-.d 4 0
-	jmp s25
-case.4
 	buildh e_Data.Maybe_dNothing 0
 	push_a 11
 	push_a 1
@@ -1105,7 +1855,7 @@ case.4
 .d 2 0
 	rtn
 .o 11 1 b
-s58
+s71
 	push_a 10
 	pushB FALSE
 	push_a 4
@@ -1119,7 +1869,7 @@ s58
 	update_a 1 5
 	updatepop_a 0 4
 .d 5 1 b
-	jsr s51
+	jsr s64
 .o 2 0
 	push_a 8
 	push_a 8
@@ -1143,13 +1893,13 @@ s58
 	update_a 1 8
 	updatepop_a 0 7
 .d 9 0
-	jmp s59
+	jmp s72
 .o 9 0
-s59
+s72
 	eq_desc e_Data.Maybe_dJust 1 6
-	jmp_true case.7
-	jmp case.8
-case.7
+	jmp_true case.9
+	jmp case.10
+case.9
 	push_args 6 1 1
 	buildh _Nil 0
 	update_a 0 8
@@ -1171,7 +1921,7 @@ case.7
 	update_a 1 9
 	updatepop_a 0 8
 .d 7 1 b
-	jsr s53
+	jsr s66
 .o 2 0
 	push_a 2
 	jsr_eval 0
@@ -1187,8 +1937,8 @@ case.7
 	update_a 1 3
 	updatepop_a 0 2
 .d 4 0
-	jmp s28
-case.8
+	jmp s33
+case.10
 	buildh e_Data.Maybe_dNothing 0
 	push_a 9
 	push_a 1
@@ -1200,7 +1950,7 @@ case.8
 .d 2 0
 	rtn
 .o 7 1 b
-s53
+s66
 	push_a 6
 	pushB FALSE
 	push_a 2
@@ -1210,7 +1960,7 @@ s53
 	update_a 1 3
 	updatepop_a 0 2
 .d 3 1 b
-	jsr s47
+	jsr s60
 .o 2 0
 	push_a 6
 	push_a 6
@@ -1230,13 +1980,13 @@ s53
 	update_a 1 6
 	updatepop_a 0 5
 .d 7 0
-	jmp s54
+	jmp s67
 .o 7 0
-s54
+s67
 	eq_desc e_Data.Maybe_dJust 1 4
-	jmp_true case.9
-	jmp case.10
-case.9
+	jmp_true case.11
+	jmp case.12
+case.11
 	push_args 4 1 1
 	buildh _Nil 0
 	update_a 0 6
@@ -1254,7 +2004,7 @@ case.9
 	update_a 1 7
 	updatepop_a 0 6
 .d 5 1 b
-	jsr s51
+	jsr s64
 .o 2 0
 	push_a 2
 	jsr_eval 0
@@ -1270,8 +2020,8 @@ case.9
 	update_a 1 3
 	updatepop_a 0 2
 .d 4 0
-	jmp s28
-case.10
+	jmp s33
+case.12
 	buildh e_Data.Maybe_dNothing 0
 	push_a 7
 	push_a 1
@@ -1283,7 +2033,7 @@ case.10
 .d 2 0
 	rtn
 .o 5 1 b
-s51
+s64
 	push_a 4
 	pushB FALSE
 	push_a 2
@@ -1293,7 +2043,7 @@ s51
 	update_a 1 3
 	updatepop_a 0 2
 .d 3 1 b
-	jsr s47
+	jsr s60
 .o 2 0
 	push_a 4
 	push_a 4
@@ -1309,13 +2059,13 @@ s51
 	update_a 1 4
 	updatepop_a 0 3
 .d 5 0
-	jmp s52
+	jmp s65
 .o 5 0
-s52
+s65
 	eq_desc e_Data.Maybe_dJust 1 2
-	jmp_true case.11
-	jmp case.12
-case.11
+	jmp_true case.13
+	jmp case.14
+case.13
 	push_args 2 1 1
 	buildh _Nil 0
 	update_a 0 4
@@ -1329,7 +2079,7 @@ case.11
 	update_a 1 5
 	updatepop_a 0 4
 .d 3 1 b
-	jsr s47
+	jsr s60
 .o 2 0
 	push_a 2
 	jsr_eval 0
@@ -1345,8 +2095,8 @@ case.11
 	update_a 1 3
 	updatepop_a 0 2
 .d 4 0
-	jmp s28
-case.12
+	jmp s33
+case.14
 	buildh e_Data.Maybe_dNothing 0
 	push_a 5
 	push_a 1
@@ -1358,30 +2108,30 @@ case.12
 .d 2 0
 	rtn
 .o 3 1 b
-s47
+s60
 	eq_desc _Cons 2 2
-	jmp_true case.13
-	jmp case.14
-case.13
+	jmp_true case.15
+	jmp case.16
+case.15
 	push_args 2 2 2
 	jsr_eval 0
 	pushD_a 0
 	eqD_b e_Text.JSON_kJSONObject 0
-	jmp_true case.15
+	jmp_true case.17
 	eqD_b e_Text.JSON_kJSONArray 0
-	jmp_true case.16
+	jmp_true case.18
 	pop_a 2
 	pop_b 1
-	jmp case.14
-case.15
+	jmp case.16
+case.17
 	pop_b 1
 	repl_args 1 1
 	jsr_eval 1
 	eq_desc _Nil 0 1
-	jmp_true case.17
+	jmp_true case.19
 	pop_a 2
-	jmp case.14
-case.17
+	jmp case.16
+case.19
 	push_a 2
 	jsr_eval 0
 	push_array 0
@@ -1398,7 +2148,7 @@ case.17
 	update_a 1 5
 	updatepop_a 0 4
 .d 3 0
-	jsr s30
+	jsr s35
 .o 1 0
 	push_a 0
 	pushB TRUE
@@ -1416,16 +2166,16 @@ case.17
 	update_a 1 2
 	updatepop_a 0 1
 .d 3 0
-	jmp s72
-case.16
+	jmp s117
+case.18
 	pop_b 1
 	repl_args 1 1
 	jsr_eval 1
 	eq_desc _Nil 0 1
-	jmp_true case.18
+	jmp_true case.20
 	pop_a 2
-	jmp case.14
-case.18
+	jmp case.16
+case.20
 	push_a 3
 	jsr_eval 0
 	pushI_a 4
@@ -1454,8 +2204,8 @@ case.18
 	update_a 1 2
 	updatepop_a 0 1
 .d 3 0
-	jmp s73
-case.14
+	jmp s118
+case.16
 	buildh e_Data.Maybe_dNothing 0
 	push_a 3
 	push_a 1
@@ -1468,37 +2218,7 @@ case.14
 .d 2 0
 	rtn
 .o 3 0
-s73
-	eq_desc e_Data.Maybe_dJust 1 0
-	jmp_true case.19
-	jmp case.20
-case.19
-	repl_args 1 1
-	push_a 0
-	buildh e_StdGeneric_dFIELD 1
-	buildh e_Data.Maybe_dJust 1
-	push_a 3
-	push_a 1
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-	update_a 1 4
-	updatepop_a 0 3
-.d 2 0
-	rtn
-case.20
-	buildh e_Data.Maybe_dNothing 0
-	push_a 3
-	push_a 1
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-	update_a 1 4
-	updatepop_a 0 3
-.d 2 0
-	rtn
-.o 3 0
-s72
+s118
 	eq_desc e_Data.Maybe_dJust 1 0
 	jmp_true case.21
 	jmp case.22
@@ -1527,57 +2247,87 @@ case.22
 	updatepop_a 0 3
 .d 2 0
 	rtn
-.o 2 0
-s31
-	push_a 0
-	updatepop_a 0 1
-.d 2 0
-	jmp s70
-.o 2 0
-s70
-	eq_desc e_Data.Maybe_dNothing 0 0
+.o 3 0
+s117
+	eq_desc e_Data.Maybe_dJust 1 0
 	jmp_true case.23
 	jmp case.24
 case.23
+	repl_args 1 1
+	push_a 0
+	buildh e_StdGeneric_dFIELD 1
+	buildh e_Data.Maybe_dJust 1
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+case.24
+	buildh e_Data.Maybe_dNothing 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	rtn
+.o 2 0
+s36
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp s115
+.o 2 0
+s115
+	eq_desc e_Data.Maybe_dNothing 0 0
+	jmp_true case.25
+	jmp case.26
+case.25
 	fillh e_Data.Maybe_dNothing 0 1
 	pop_a 1
 .d 1 0
 	rtn
-case.24
+case.26
 	repl_args 1 1
 	push_a 0
-	build d13 1 n13
+	build d18 1 n18
 	fillh e_Data.Maybe_dJust 1 2
 	pop_a 1
 .d 1 0
 	rtn
-.desc d13 n13 l13 1 0 "fromGenericSettings;19"
+.desc d18 n18 l18 1 0 "fromGenericSettings;24"
 .o 2 0
-l13
+l18
 	pop_a 1
 .d 1 0
-	jsr ea13
+	jsr ea18
 .o 5 0
 	build_r e_shares_rSettings 5 0 0 0
 	updatepop_a 0 5
 .d 1 0
 	rtn
-.n 1 d13
+.n 1 d18
 .o 1 0
-n13
+n18
 	push_node _cycle_in_spine 1
 .d 1 0
-	jsr ea13
+	jsr ea18
 .o 5 0
 	fill_r e_shares_rSettings 5 0 5 0 0
 	pop_a 5
 .d 1 0
 	rtn
 .o 1 0
-ea13
+ea18
 	jsr_eval 0
 .o 1 0
-s13
+s18
 	repl_args 1 1
 	jsr_eval 0
 	repl_args 2 2
@@ -1622,37 +2372,7 @@ s13
 .d 5 0
 	rtn
 .o 4 0
-s25
-	eq_desc e_Data.Maybe_dJust 1 0
-	jmp_true case.25
-	jmp case.26
-case.25
-	repl_args 1 1
-	push_a 0
-	buildh e_StdGeneric_dRECORD 1
-	buildh e_Data.Maybe_dJust 1
-	push_a 3
-	push_a 1
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-	update_a 1 5
-	updatepop_a 0 4
-.d 2 0
-	rtn
-case.26
-	buildh e_Data.Maybe_dNothing 0
-	push_a 4
-	push_a 1
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-	update_a 1 5
-	updatepop_a 0 4
-.d 2 0
-	rtn
-.o 4 0
-s24
+s30
 	eq_desc e_Data.Maybe_dJust 1 0
 	jmp_true case.27
 	jmp case.28
@@ -1682,11 +2402,41 @@ case.28
 .d 2 0
 	rtn
 .o 4 0
-s28
-	eq_desc e_Data.Maybe_dJust 1 1
+s29
+	eq_desc e_Data.Maybe_dJust 1 0
 	jmp_true case.29
 	jmp case.30
 case.29
+	repl_args 1 1
+	push_a 0
+	buildh e_StdGeneric_dRECORD 1
+	buildh e_Data.Maybe_dJust 1
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+case.30
+	buildh e_Data.Maybe_dNothing 0
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	rtn
+.o 4 0
+s33
+	eq_desc e_Data.Maybe_dJust 1 1
+	jmp_true case.31
+	jmp case.32
+case.31
 	push_args 1 1 1
 	buildh _Nil 0
 	update_a 0 3
@@ -1704,7 +2454,7 @@ case.29
 	updatepop_a 0 5
 .d 2 0
 	rtn
-case.30
+case.32
 	buildh e_Data.Maybe_dNothing 0
 	push_a 4
 	push_a 1
@@ -1716,11 +2466,11 @@ case.30
 .d 2 0
 	rtn
 .o 3 0
-s30
+s35
 	eq_desc _Cons 2 1
-	jmp_true case.31
-	jmp case.32
-case.31
+	jmp_true case.33
+	jmp case.34
+case.33
 	push_args 1 2 2
 	buildh _Nil 0
 	update_a 0 4
@@ -1741,45 +2491,45 @@ case.31
 .d 2 0
 	jsr eqAC
 .o 0 1 b	
-	jmp_false else.33
+	jmp_false else.35
 	buildh _Nil 0
 	push_a 1
 	fillh _Cons 2 6
 	pop_a 4
 .d 1 0
 	rtn
-else.33
+else.35
 	push_a 1
 	jsr_eval 0
 	push_a 3
 	update_a 1 5
 	updatepop_a 0 4
 .d 3 0
-	jmp s30
-case.32
+	jmp s35
+case.34
 	fillh _Nil 0 2
 	pop_a 2
 .d 1 0
 	rtn
-.export e_shares_sJSONEncode_Settings;6
-.export e_shares_eaJSONEncode_Settings;6
-.descexp e_shares_dJSONEncode_Settings;6 e_shares_nJSONEncode_Settings;6 e_shares_lJSONEncode_Settings;6 2 0 "JSONEncode_Settings;6"
-.a 2 e_shares_eaJSONEncode_Settings;6
+.export e_shares_sJSONEncode_Settings;7
+.export e_shares_eaJSONEncode_Settings;7
+.descexp e_shares_dJSONEncode_Settings;7 e_shares_nJSONEncode_Settings;7 e_shares_lJSONEncode_Settings;7 2 0 "JSONEncode_Settings;7"
+.a 2 e_shares_eaJSONEncode_Settings;7
 .o 2 0
-e_shares_lJSONEncode_Settings;6
+e_shares_lJSONEncode_Settings;7
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .d 3 0
-	jmp e_shares_eaJSONEncode_Settings;6
-.n 2 e_shares_dJSONEncode_Settings;6 e_shares_eaJSONEncode_Settings;6
+	jmp e_shares_eaJSONEncode_Settings;7
+.n 2 e_shares_dJSONEncode_Settings;7 e_shares_eaJSONEncode_Settings;7
 .o 1 0
-e_shares_nJSONEncode_Settings;6
+e_shares_nJSONEncode_Settings;7
 	push_node _cycle_in_spine 2
 .o 3 0
-e_shares_eaJSONEncode_Settings;6
+e_shares_eaJSONEncode_Settings;7
 	jsr_eval 1
 	jsr_eval 0
 	push_r_args 1 5 0
@@ -1791,9 +2541,9 @@ e_shares_eaJSONEncode_Settings;6
 	update_a 1 3
 	pop_a 2
 .o 6 1 b
-e_shares_sJSONEncode_Settings;6
+e_shares_sJSONEncode_Settings;7
 .o 6 1 b
-s7
+s8
 	create
 	push_a 5
 	push_a 5
@@ -1807,15 +2557,15 @@ s7
 	update_a 1 6
 	updatepop_a 0 5
 .d 6 0
-	jsr s14
+	jsr s19
 .o 1 0
-	build _ 0 n12
+	build _ 0 n17
 	push_b 0
 	updatepop_b 0 1
 .d 3 1 b
-	jmp s45
+	jmp s58
 .o 3 1 b
-s45
+s58
 	push_args 1 1 1
 	buildh _Nil 0
 	update_a 0 3
@@ -1823,30 +2573,30 @@ s45
 	buildh _Nil 0
 	push_a 1
 	buildB FALSE
-	build _ 2 n46
+	build _ 2 n59
 	push_a 3
 	push_a 1
 	update_a 1 2
 	update_a 0 1
 	pop_a 1
-	build _ 2 n18
+	build _ 2 n23
 	build e_Text.JSON_dJSONObject 1 e_Text.JSON_nJSONObject
 	fillh _Cons 2 5
 	pop_a 3
 	pop_b 1
 .d 1 0
 	rtn
-.n 2 _ ea46
+.n 2 _ ea59
 .o 1 0
-n46
+n59
 	push_node _cycle_in_spine 2
 .o 3 0
-ea46
+ea59
 	jsr_eval 1
 	pushB_a 0
 	pop_a 1
 .o 2 1 b
-s46
+s59
 	repl_args 2 2
 	push_a 1
 	jsr_eval 0
@@ -1861,7 +2611,7 @@ s46
 	update_a 1 2
 	updatepop_a 0 1
 .d 2 1 b
-	jsr s42
+	jsr s55
 .o 1 0
 	push_a 1
 	jsr_eval 0
@@ -1875,14 +2625,14 @@ s46
 	update_a 0 4
 	pop_a 1
 .d 2 1 b
-	jsr s41
+	jsr s54
 .o 1 0
 	update_a 1 2
 	updatepop_a 0 1
 .d 3 0
-	jmp s21
+	jmp s26
 .o 2 1 b
-s42
+s55
 	repl_args 2 2
 	push_a 1
 	jsr_eval 0
@@ -1897,7 +2647,7 @@ s42
 	update_a 1 2
 	updatepop_a 0 1
 .d 2 1 b
-	jsr s41
+	jsr s54
 .o 1 0
 	push_a 1
 	jsr_eval 0
@@ -1911,14 +2661,14 @@ s42
 	update_a 0 4
 	pop_a 1
 .d 2 1 b
-	jsr s37
+	jsr s50
 .o 1 0
 	update_a 1 2
 	updatepop_a 0 1
 .d 3 0
-	jmp s21
+	jmp s26
 .o 2 1 b
-s41
+s54
 	repl_args 2 2
 	push_a 1
 	jsr_eval 0
@@ -1933,7 +2683,7 @@ s41
 	update_a 1 2
 	updatepop_a 0 1
 .d 2 1 b
-	jsr s37
+	jsr s50
 .o 1 0
 	push_a 1
 	jsr_eval 0
@@ -1947,14 +2697,14 @@ s41
 	update_a 0 4
 	pop_a 1
 .d 2 1 b
-	jsr s37
+	jsr s50
 .o 1 0
 	update_a 1 2
 	updatepop_a 0 1
 .d 3 0
-	jmp s21
+	jmp s26
 .o 2 1 b
-s37
+s50
 	repl_args 1 1
 	push_a 0
 	jsr_eval 0
@@ -1965,27 +2715,27 @@ s37
 	updatepop_b 0 1
 .d 2 1 b
 	jmp e_Text.JSON_sJSONEncode__String;15
-.n 2 _ ea18
+.n 2 _ ea23
 .o 1 0
-n18
+n23
 	push_node _cycle_in_spine 2
 .o 3 0
-ea18
+ea23
 	jsr_eval 0
 .o 3 0
-s18
+s23
 	push_a 1
 	push_a 1
 	update_a 1 3
 	updatepop_a 0 2
 .d 3 0
-	jmp s67
+	jmp s112
 .o 3 0
-s67
+s112
 	eq_desc _Cons 2 0
-	jmp_true case.34
-	jmp case.35
-case.34
+	jmp_true case.36
+	jmp case.37
+case.36
 	repl_args 2 2
 	push_a 2
 	jsr_eval 0
@@ -2000,28 +2750,28 @@ case.34
 	update_a 1 4
 	updatepop_a 0 3
 .d 4 0
-	jmp s66
-case.35
+	jmp s111
+case.37
 	fillh _Nil 0 2
 	pop_a 2
 .d 1 0
 	rtn
 .o 4 0
-s66
+s111
 	eq_desc _Cons 2 0
-	jmp_true case.36
-	jmp case.37
-case.36
+	jmp_true case.38
+	jmp case.39
+case.38
 	repl_args 2 2
 	push_a 2
 	jsr_eval 0
 .d 1 0
-	jsr s19
+	jsr s24
 .o 0 1 b
-	jmp_false else.38
+	jmp_false else.40
 	push_a 1
 	push_a 4
-	build _ 2 n18
+	build _ 2 n23
 	push_a 3
 	push_a 2
 	buildh _Tuple 2
@@ -2029,7 +2779,7 @@ case.36
 	pop_a 4
 .d 1 0
 	rtn
-else.38
+else.40
 	push_a 3
 	jsr_eval 0
 	push_a 2
@@ -2040,35 +2790,35 @@ else.38
 	update_a 1 5
 	updatepop_a 0 4
 .d 3 0
-	jmp s18
-case.37
+	jmp s23
+case.39
 	fillh _Nil 0 3
 	pop_a 3
 .d 1 0
 	rtn
 .o 1 0
-s19
+s24
 	eq_desc e_Text.JSON_dJSONNull 0 0
-	jmp_true case.39
-	jmp case.40
-case.39
+	jmp_true case.41
+	jmp case.42
+case.41
 	pop_a 1
 	pushB FALSE
 .d 0 1 b
 	rtn
-case.40
+case.42
 	pop_a 1
 	pushB TRUE
 .d 0 1 b
 	rtn
-.n 0 _ ea12
+.n 0 _ ea17
 .o 1 0
-n12
+n17
 	push_node _cycle_in_spine 0
 .o 1 0
-ea12
+ea17
 .o 1 0
-s12
+s17
 	buildh _Nil 0
 	buildAC "dirCmd"
 	buildh ARRAY 1
@@ -2087,52 +2837,52 @@ s12
 	fillh _Cons 2 2
 .d 1 0
 	rtn
-.n 2 _ ea21
+.n 2 _ ea26
 .o 1 0
-n21
+n26
 	push_node _cycle_in_spine 2
 .o 3 0
-ea21
+ea26
 	jsr_eval 0
 .o 3 0
-s21
+s26
 	eq_desc _Cons 2 0
-	jmp_true case.41
-	jmp case.42
-case.41
+	jmp_true case.43
+	jmp case.44
+case.43
 	repl_args 2 2
 	push_a 2
 	push_a 2
-	build _ 2 n21
+	build _ 2 n26
 	push_a 1
 	fillh _Cons 2 5
 	pop_a 3
 .d 1 0
 	rtn
-case.42
+case.44
 	fill_a 1 2
 	pop_a 2
 .d 1 0
 	rtn
-.desc d14 n14 l14 1 0 "toGenericSettings;20"
+.desc d19 n19 l19 1 0 "toGenericSettings;25"
 .o 2 0
-l14
+l19
 	update_a 1 0
 	create
 	update_a 0 2
 	pop_a 1
 .d 2 0
-	jmp ea14
-.n 1 d14 ea14
+	jmp ea19
+.n 1 d19 ea19
 .o 1 0
-n14
+n19
 	push_node _cycle_in_spine 1
 .o 2 0
-ea14
+ea19
 	jsr_eval 0
 	repl_r_args 5 0
 .o 6 0
-s14
+s19
 	push_a 4
 	buildh e_StdGeneric_dFIELD 1
 	push_a 4
@@ -2152,21 +2902,21 @@ s14
 .d 1 0
 	rtn
 .o 2 0
-s211
+s256
 	push_a 1
 	push_a 1
 	update_a 1 3
 	updatepop_a 0 2
 .d 2 0
-	jmp s212
+	jmp s257
 .o 2 0
-s212
+s257
 	create
 	push_a 1
 	update_a 1 2
 	updatepop_a 0 1
 .d 2 0
-	jsr s31
+	jsr s36
 .o 1 0
 	push_a 1
 	push_a 1

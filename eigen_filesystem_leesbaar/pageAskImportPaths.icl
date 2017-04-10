@@ -17,7 +17,7 @@ pageAskImportPaths path name ((actioncontinue,pagenodeEditor),(actioncancel,page
 	readFromFile (path </> (toproj name)) >>- \(Just projtxt).
 	showUnresolvedImports
 	||-
-	showMapSelector (path </> name)
+	showMapSelector path name
 	>>* [   OnAction  actioncontinue   	(always (pagenodeEditor path name))
 		,	OnAction actioncancel		(always (writeToFile (path </> (toproj name)) projtxt >>|- pagenodeEditor2 path name))
 		]
@@ -44,11 +44,11 @@ addPath2Project path cleandir projtxt
 	# newprojtxt = join ("Path:\t{Project}"+++OS_NEWLINE) [(hd splitted_projtxt),newpaths]
 	= newprojtxt
 
-showMapSelector :: String -> Task ()
-showMapSelector iclloc = 
+showMapSelector :: String String -> Task ()
+showMapSelector iclpath iclname = 
 	get settings
 	>>= \settings. selectFromTree settings.dirClean2 (isFile "dcl")
-	>>= \path. readFromFile (toproj iclloc)
-	>>- \(Just projtxt). saveFile (toproj iclloc) (addPath2Project path settings.dirClean projtxt)
-	>>|- cpmSetErrorstate (toproj iclloc)
-	>>|- showMapSelector iclloc
+	>>= \dclpath. readFromFile (toproj (iclpath </> iclname))
+	>>- \(Just projtxt). saveFile (toproj (iclpath </> iclname)) (addPath2Project dclpath settings.dirClean projtxt)
+	>>|- cpmSetErrorstate iclpath iclname
+	>>|- showMapSelector iclpath iclname

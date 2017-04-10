@@ -27,7 +27,13 @@ setContents path name
 	>>- \(Just contenttxt) ->	get contents
 	>>- \contentmap ->			set ('DM'.put name contenttxt contentmap) contents
 								>>|- return ()
-	
+
+//if there do not already exist	a temp icl and temp proj
+	//create temp icl
+	//if a proj already exist
+		//base the temp proj on it
+	//else
+		//create new temp orj
 setProject :: String String -> Task ()
 setProject path name
 	=							readFromFile (toproj (path </> name))
