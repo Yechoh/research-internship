@@ -14,18 +14,18 @@ pagenodeChooseFile :: Task ()
 pagenodeChooseFile =
 	pageChooseFile (ActionContinue, pagenodeEditor)
 
-pagenodeEditor :: Task ()
-pagenodeEditor =
-	pageEditor
+pagenodeEditor :: String String -> Task ()
+pagenodeEditor path name =
+	pageEditor path name
 	(	(ActionQuit,
 			return ())
 	,	(Action "import paths",
 			pagenodeAskImportPaths)
 	)
 		
-pagenodeAskImportPaths :: Task ()
-pagenodeAskImportPaths =
-	pageAskImportPaths
+pagenodeAskImportPaths :: String String -> Task ()
+pagenodeAskImportPaths path name=
+	pageAskImportPaths path name
 	(	(ActionContinue,
 			pagenodeEditor)
 	,	(ActionCancel,

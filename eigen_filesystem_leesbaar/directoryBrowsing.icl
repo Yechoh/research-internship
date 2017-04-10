@@ -10,6 +10,8 @@ import System.Directory
 import System.FilePath
 import Data.Error
 import _SystemArray
+import System.OS
+import Text
 
 
 :: Directory = Dir FileName [Directory] [FileName]
@@ -225,6 +227,12 @@ where
     = case res of
         Error e                 = (Error ("Cannot read File:" +++ path), world)
         Ok content              = (Ok (Just content), world)
+        
+readLinesFromFile :: String -> Task (Maybe [String])
+readLinesFromFile path = 
+	readFromFile path		>>- \r. (case r of
+		(Just content)		-> return (Just (split OS_NEWLINE content))
+		Nothing				-> return Nothing)
 
 writeToFile :: String String -> Task String
 writeToFile path content = worldIO (write path content) 

@@ -6,13 +6,14 @@ import directoryBrowsing
 import shares
 import extraTaskCombinators
 import callCpm
+import qualified Data.Map as DM
 
 pageChooseFile :: ChooseFileRedirects -> Task ()
-pageChooseFile pagenodeEditor =
+pageChooseFile (actionContinue,pagenodeEditor) =
 	askPath					
 	-||
 	updateSharedInformation "paths" [] settings
-	>>- \(path,name) -> setContents >>| setProject >>| pagenodeEditor name
+	>>- \(path,name) -> setContents path name >>| setProject path name >>| (pagenodeEditor path name)
 
 askPath :: Task (String,String)
 askPath
@@ -22,9 +23,9 @@ askPath
 
 setContents :: String String -> Task ()
 setContents path name
-	= 							readFromFile (path </> name)
+	= 							readLinesFromFile (path </> name)
 	>>- \(Just contenttxt) ->	get contents
-	>>- \contentmap ->			set (put name contenttxt contentmap) content
+	>>- \contentmap ->			set ('DM'.put name contenttxt contentmap) contents
 								>>|- return ()
 	
 setProject :: String String -> Task ()

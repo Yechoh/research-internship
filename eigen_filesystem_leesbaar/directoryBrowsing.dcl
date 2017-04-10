@@ -28,7 +28,8 @@ readDir 			:: FilePath  -> Task [FileName]  	// returns all names of files and d
 // File I/O	
 
 createFile 			:: FilePath FileName String -> Task ()	// create new file in directory and store content
-readFromFile 		:: String -> Task (Maybe String)			// read from file. returns Nothing if the file cannot be found.
+readFromFile 		:: String -> Task (Maybe String)		// read from file. returns Nothing if the file cannot be found.
+readLinesFromFile	:: String -> Task (Maybe [String])		// read from file, every element in the list contains a line. return Nothing if the file cannot be found.
 writeToFile 		:: String String -> Task String			// write to file
 
 // specific for cleanfiles

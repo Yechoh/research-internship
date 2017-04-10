@@ -10,6 +10,7 @@ import directoryBrowsing
 import createAndRunExec
 import iTasks.API.Extensions.Editors.Ace
 import iTasks.UI.Editor.Builtin
+import iTasks._Framework.IWorld
 
 :: Shortcut = No_shortcut 
 			| Ctrl_slash 
@@ -38,39 +39,38 @@ import iTasks.UI.Editor.Builtin
 
 :: EditorInfo = 
 	{
-		shortcuts = [Shortcut],
-		selection_position = (Int,Int),
-		position = (Int,Int),
-		theme = String,
-		highlighted = String,
-		readOnly = Bool,
-		prev_time = Time
+		shortcuts :: [Shortcut],
+		selection :: Maybe AceRange,
+		position :: (Int,Int),
+		theme :: String,
+		readOnly :: Bool,
+		prev_time :: Time
 	}
+	
+derive class iTask EditorInfo, Shortcut
 
 editorInfo = 
 	{
 		shortcuts = [],
 		position = (0,0),
-		selection_position = (0,0),
+		selection = Nothing,
 		theme = "",
-		highlighted = "",
 		readOnly = False,
-		prev_time = now
+		prev_time = {Time|hour=0,min=0,sec=0}
 	}
-
+/*
 editorRecord = 
 	{
 		content = [""],
-		prev_time = now,
+		prev_time = iworldLocalTime,
 		shortcuts = [],
 		position = (0,0),
 		selection_position = (0,0),
 		theme = "",
-		highlighted = "",
 		readOnly = False
 	}
-
-pageEditor :: EditorRedirects -> Task ()
+*/
+pageEditor :: String String EditorRedirects -> Task ()
 pageEditor path name ((actionQuit,pagenodeQuit),(actionAskImportPaths,pagenodeAskImportPaths)) =
 	(editor name 
 	 -&&-
@@ -97,38 +97,40 @@ latest t1 t2
  | t1.sec > t2.sec = t1
  | otherwise = t2
 */
-eiAndContents2ErRead :: (EditorInfo,Map String [String]) String -> EditorRecord
-eiAndContents2ErRead (ei,contents) filename =
-	{EditorRecord |
-		content = getU filename contents,
-		prev_time = ei.prev_time,
-		shortcuts=ei.shortcuts,
-		position=ei.position,
-		selection_position=ei.selection_position,
-		theme=ei.theme,
-		highlighted=ei.highlighted,
-		readOnly=ei.readOnly
-	}
+eiAndContents2ErRead :: String (EditorInfo,Map String [String])  -> (!AceOptions,!AceState)
+eiAndContents2ErRead filename (ei,contents)  =
+	(
+		{AceOptions|
+			theme = ei.EditorInfo.theme,
+			mode = "C:\\Users\\Martin\\Documents\\clean-bundle-itasks-windows-x86-latest\\research-internship\\ace\\clean.js"
+		}
+		,
+		{AceState|
+			lines = fromJust (fst ('DM'.getU filename contents)),
+			cursor = ei.EditorInfo.position,
+			selection = ei.EditorInfo.selection,
+			disabled = ei.EditorInfo.readOnly
+		}
+	)
 
-er2EiAndContentsWrite :: EditorRecord (EditorInfo,Map String [String]) String -> Maybe (EditorInfo,(Map String [String],Time))
-er2EiAndContentsWrite er (ei,contents) filename =
+er2EiAndContentsWrite :: String (!AceOptions,!AceState) (EditorInfo,Map String [String]) -> Maybe (EditorInfo,(Map String [String]))
+er2EiAndContentsWrite filename (ao,as) (ei,contents) =
 	Just (
 		{EditorInfo|
-			shortcuts = er.shortcuts,
-			selection_position = er.selection_position,
-			position = er.position,
-			theme = er.theme,
-			highlighted=er.highlighted,
-			readOnly=er.readOnly,
-			prev_time=er.prev_time
+			shortcuts = ei.EditorInfo.shortcuts,
+			selection = as.AceState.selection,
+			position = as.AceState.cursor,
+			theme = ao.AceOptions.theme,
+			readOnly=as.AceState.disabled,
+			prev_time=ei.EditorInfo.prev_time
 		}, 
-		put filename ei.content contents
+		'DM'.put filename as.lines contents
 	)
 		    
-editor :: String -> Task {#Char}
+editor :: String -> Task (!AceOptions,!AceState)
 editor name = withShared editorInfo (\ei. 
-	updateSharedInformation (name) [UpdateUsing id (\_ nsc -> nsc) aceTextArea] er
+	updateSharedInformation (name) [UpdateUsing id (\_ nsc -> nsc) aceEditor] (er ei name))
 	where
-	er filename = mapReadWrite (eiAndContents2ErRead filename) (er2EiAndContentsWrite filename) (ei >*< contents)
+	er ei filename = mapReadWrite ((eiAndContents2ErRead filename), (er2EiAndContentsWrite filename)) (ei >*< contents)
 
 		    
