@@ -249,4 +249,51 @@ ma 10-4
 13:59 bespreking was korter dan verwacht. Maar het hok zat op slot en ik moest eerst een sleutel regelen. Donderdag ochtend ga ik langs ingrid voor een sleutel.
 14:36 errors update weer en irritante cmd window is magisch verdwenen (je hoort mij niet klagen). Maar alle newlines worden er uit gegooid.
 14:46 werkende ide. Maar hij lijkt alleen te updaten als ik iets doe, wat vreemd is, want dat heb ik niet geimplementeerd.
+14:52 aantje gemaakt over tabs. Nu zorgen dat de startpagina afhangt van de sharedstore contents.
+15:02 op dit moment wordt de filename zonder path als key in contents gebruikt, maar met alleen die info kunnen we geen editor starten. Dit moeten we dus wijzigen door het hele project. Ik weet nog steeds niet precies hoe ik de editor wil vormgeven
+15:14 de vormgeving wordt echt een flink stuk anders. Elke file krijgt een eigen save-as button. Voor het gemak kan er maar 1 project onthouden worden. Deze krijgt een eigen share.
+15:35 man man man, ik ben helemaal het overzicht kwijt. als we een allTasks maken, dan willen we er een maken voor elke file in contents. Eigenlijk is het niet nodig om de lines ook te onthouden in contents, aangezien we toch elke keer de files saven. Nee grapje, is wel nodig, want anders moeten we constant saven ipv om de seconde zodat we kunnen compilen. Om zo'n editortask te maken heb je alleen de filename nodig, want de contents moeten verkregen worden uit de sharedstore.
+15:44 als ik het goed heb is mijn allTasks nu niet dynamisch.
+15:49 Aan Bas gevraagd. Wat ik nodig heb is de parallel functie. Deze maakt het aantal tasks dynamisch. De tasks zijn niet shared (dat kan ook niet)
+16:46 In tabs.icl kun je nu parallel taken toevoegen en stoppen, terwijl ze worden weergegeven als tabs.
+16:51 iedereen gaat. ik ook
 
+19:44
+20:06 om te zorgen dat mijn parallel taken updaten als contents verandert, hebben we een mapReadWrite nodig, als ik het goed begrijp.
+20:13 er is een functie voor: taskListState
+20:19 ik heb geen idee hoe ik dit zou moeten doen
+
+do 13-4
+10:19 het lokaal is dicht en iedereen is weg. Ingrid is er vandaag niet. Irritant
+10:24 taskliststate wordt gebruikt in BasicAPIExamples in line 581
+10:26 ah, als ik het goed begrijp maak je een Task specifiek voor het in leven houden van de sharedtasklist. Prima.
+11:25 project werkt weer. Als er nu al files in de contents share zitten, opent het project gelijk de editor. De tabs hebben nog geen namen. Het irritant flashende window is terug. Tabs als het goed is nog niet dynamisch.
+11:44 nieuwe functie gemaakt die het flashende window op zou moeten lossen. het is er nog steeds, maar errorstate is broken. Ik ga kijken hoe Rinus het gedaan heeft.
+11:46 die is bezig. We slaan dit even over en gaan door met tabs
+11:47 de project is oude versies van mijn files aan het opslaan. Dat had ik niet verwacht en is nogal irritant. 
+11:51 De reden hiervoor is dat om te kunnen compilen, hij eerst alle open files opslaat. Het gaat er van uit dat het de laatste versie heeft van de file. Maar dat is wel een aanname die nodig lijkt te zijn, dus dit probleem is niet zomaar op te lossen.
+12:00 er zitten files in contents, maar hij opent nog steeds in choosefile
+12:04 pauze
+
+12:47 Rinus heeft een uitleg gegeven van hoe de tasklist dynamisch kan.
+13:39 dit is echt heel ingewikkeld
+14:52 ik heb geen idee hoe ik dit zou moeten doen. Voor removeTask heb ik een TaskId nodig, maar ik heb geen idee hoe ik die van een task zou moeten vinden. Je hebt namedEmbedded, maar ik weet niet hoe je van name naar TaskId gaat.
+15:08 even nagedacht over hoe ik nu verder moet en of ik niet er rondomheen kan werken. Maar het beste is dit gwn even te laten rusten en te kijken of ik color highlighting werkend kan krijgen.
+15:15 werkt niet. Geen idee. Kijken of ik Rinus de code voor zijn filesystem kan vragen.
+15:55 rinus heeft zijn code opgestuurd en uitleg gegeven. Hij heeft een boel gedaan. En dit ga ik allemaal jatten :p. En hij heeft uitgelegd hoe ik aan de TaskId kan komen. Ze staan namelijk op volgorde. Op deze manier wordt de updateTabs functie wel veeleisend qua computerkracht. Nee, trouwens dat valt wel te fixen met een goede ifValue.
+17:14 ik denk niet dat Rinus' manier werkt. Het probleem ontstaat wanneer de watch functie triggered wanneer de sharedtasklist en de locally shared tabname list verschillen. De tabname list is nodig om van tabnames naar taskids te gaan en andersom. Maar ik bedenk me nu dat ik ook gewoon de taskids in de tabname list kan bijhouden. Er is weer hoop :)
+18:28 het compilet nu, maar de server is te druk met rekenen om iets te laten zien. Als je updateTabs outcomment, doet hij het wel, dus updateTabs is hier op een of andere manier verantwoordelijk voor. updateTabs heeft geen invloed op contents. Mss is hij gewoon heeeeel erg sloom, maar dat vind ik moeilijk te geloven.
+18:37 ja ik heb geen idee. zu hause
+
+do 20-4
+10:27
+12:46 net veel te lang naar een probleem staan staren, samen met Marcus, en we kwamen er niet uit. Wat uiteindelijk de fout bleek te zijn, was dat een functie gedefinieerd in een where een object referencete, waarbij die uitging van een heel ander type. Dus daarom kreeg ik seemingly uit het niets een type error.
+13:31 gegeten
+13:39 werkt, maar je ziet de tab voor de updateTabsfunctie, terwijl deze eigenlijk verborgen moet zijn. Kijken in BasicAPIExamples of dit al eerder opgelost is.
+14:02 ik kan het niet vinden, nu laten rusten en later Bas vragen. Next up, Rinus nieuwe filesystem doorkijken en verbeterpunten doorwerken, daarna zorgen dat hetgene wat geselecteerd wordt, onderaan het scherm in een eigen tab wordt weergegeven, zodat ik daar uiteindelijk Cloogle resultaten kan laten zien, en dan Mart mailen.
+14:27 Rinus filesystem runt niet. Maar we kunnen wel naar de code kijken 
+14:44 dat valt tegen though, zonder werkende code.
+15:38 ik zou zweren dat Rinus automatic error messages had, maar ik heb zijn compile overgenomen en hij genereert een flashing window. Rinus is in bespreking, dus gewoon laten en verdergaan met showen wat geselecteerd is.
+16:15 op een of andere manier, als je de editorpage wil verlaten, dan crasht de >^* operator in updateTabs. Waarschijnlijk komt dit doordat de share die gewatcht wordt dan niet meer bestaat, maar dat is een lousy reden om te gaan crashen. Volgende keer Bas vragen wat ik hier mee moet.
+16:19 oke, mijn oorspronkelijke doel was dat er een local share was met de editor info. Maar met meerdere tabs zijn er dus ook meerdere local shares. Dat is niet erg, zolang we dan maar de local share kunnen krijgen, waar we op dit moment naar kijken. Maar het is helaas niet mogelijk om te zien naar welke tab je kijkt. Dat geeft dus een probleem dat zo ik nu zie op twee manieren op te lossen is. 1) we maken een global share met alle editor info. Dat kan niet, want we hebben mss meerdere sessies en geen manier om die uit elkaar te houden. 2) we maken helpwindows per filenametab
+18:29 tabs gemaakt van de helpwindows en showSelected toegevoegd. op github gezet

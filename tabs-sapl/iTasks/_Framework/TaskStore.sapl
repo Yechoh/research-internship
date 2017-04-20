@@ -11,8 +11,8 @@ iTasks._Framework.TaskStore.newInstanceKey !iworld_0 = case iworld_0 (iTasks._Fr
 <{iTasks._Framework.TaskStore.c;104;57_61}> !g_l_0 = <{iTasks._Framework.TaskStore.g_c1;104;62_1006}> g_l_0
 <{iTasks._Framework.TaskStore.g_c1;104;62_1006}> !g_l_0 = case g_l_0 (_predefined._Cons i_1_0 g_t_1_1 -> _predefined._Cons (StdChar.toChar_21 (<{StdInt.+_6}> 97 (StdInt.abs_13 (StdInt.rem_28 i_1_0 26)))) (<{iTasks._Framework.TaskStore.c;104;57_61}> g_t_1_1)) (_ -> _predefined._Nil)
 iTasks._Framework.TaskStore.newDocumentId !iworld_0 = case iworld_0 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> <{_Tuple2!3}> (StdList.toString_79 (StdList.take 32 (<{iTasks._Framework.TaskStore.c;104;57_61}> random_1_4))) (update iworld_0::iTasks._Framework.IWorld._IWorld [4:StdList.drop 32 random_1_4])) 
-iTasks._Framework.TaskStore.JSONEncode_s_418 !_vJSONEncode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONEncode__List_17 (select _vJSONEncode_s_0::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) x1_1 x2_2
-iTasks._Framework.TaskStore.JSONDecode_s_457 !_vJSONDecode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONDecode__List_44 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_1 x2_2
+iTasks._Framework.TaskStore.JSONEncode_s_459 !_vJSONEncode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONEncode__List_17 (select _vJSONEncode_s_0::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) x1_1 x2_2
+iTasks._Framework.TaskStore.JSONDecode_s_498 !_vJSONDecode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONDecode__List_44 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_1 x2_2
 iTasks._Framework.TaskStore.JSONDecode_s_750 !x1_0::B !x2_1 = Text.JSON.JSONDecode__List_44 iTasks._Framework.TaskState.JSONDecode_TIMeta_4 x1_0 x2_1
 iTasks._Framework.TaskStore.JSONEncode_s_749 !x1_0::B !x2_1 = Text.JSON.JSONEncode__List_17 iTasks._Framework.TaskState.JSONEncode_TIMeta_1 x1_0 x2_1
 iTasks._Framework.TaskStore.taskInstanceIndex = iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.TaskStore.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{iTasks._Framework.TaskStore.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.TaskStore.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{iTasks._Framework.TaskStore.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{iTasks._Framework.TaskStore.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{iTasks._Framework.TaskStore.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) "instances" (iTasks._Framework.Store.cachedJSONFileStore (<{iTasks._Framework.TaskStore.JSONEncode_s;}> iTasks._Framework.TaskStore.JSONEncode_s_749) (<{iTasks._Framework.TaskStore.JSONDecode_s;}> iTasks._Framework.TaskStore.JSONDecode_s_750) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks._Framework.TaskState.TD;TIMeta}>))) "task-instances" False False True (Data.Maybe.Just _predefined._Nil))
@@ -207,12 +207,12 @@ iTasks._Framework.TaskStore.JSONDecode_PAIR_810 !_x_0::B !l_1 = iTasks._Framewor
 iTasks._Framework.TaskStore.d1_813 !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks._Framework.TaskStore.d2_346 x_2_0 (iTasks._Framework.TaskStore.JSONDecode_PAIR_810 False xs_1_1) l_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_1) ) 
 iTasks._Framework.TaskStore.JSONDecode_PAIR_812 !_x_0::B !l_1 = iTasks._Framework.TaskStore.d1_813 (iTasks.API.Core.Types.JSONDecode_TaskId_166 False l_1) l_1
 iTasks._Framework.TaskStore.JSONDecode_Event_199 !x1_0::B !x2_1 = iTasks._Framework.TaskStore.bimapFromGeneric_366 (Text.JSON.JSONDecode_OBJECT_43 (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "EditEvent" iTasks._Framework.TaskStore.JSONDecode_PAIR_812) (Text.JSON.JSONDecode_CONS_42 "ActionEvent" iTasks._Framework.TaskStore.JSONDecode_PAIR_814)) (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "FocusEvent" iTasks.API.Core.Types.JSONDecode_TaskId_166) (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "RefreshEvent" Text.JSON.JSONDecode__String_39) (Text.JSON.JSONDecode_CONS_42 "ResetEvent" Text.JSON.JSONDecode_UNIT_40)))) x1_0 x2_1)
-iTasks._Framework.TaskStore.JSONEncode_s_420 !_vJSONEncode_s_0 !_vJSONEncode_s_1 !x1_2::B !x2_3 = Text.JSON.JSONEncode__Tuple2_18 (select _vJSONEncode_s_0::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) (select _vJSONEncode_s_1::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) x1_2 x2_3
-iTasks._Framework.TaskStore.JSONDecode_s_459 !_vJSONDecode_s_0 !_vJSONDecode_s_1 !x1_2::B !x2_3 = Text.JSON.JSONDecode__Tuple2_45 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) (select _vJSONDecode_s_1::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_2 x2_3
+iTasks._Framework.TaskStore.JSONEncode_s_461 !_vJSONEncode_s_0 !_vJSONEncode_s_1 !x1_2::B !x2_3 = Text.JSON.JSONEncode__Tuple2_18 (select _vJSONEncode_s_0::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) (select _vJSONEncode_s_1::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) x1_2 x2_3
+iTasks._Framework.TaskStore.JSONDecode_s_500 !_vJSONDecode_s_0 !_vJSONDecode_s_1 !x1_2::B !x2_3 = Text.JSON.JSONDecode__Tuple2_45 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) (select _vJSONDecode_s_1::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_2 x2_3
 iTasks._Framework.TaskStore.toGenericQueue_303 !x_0 = case x_0 (Data.Queue.Queue x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1))) 
 iTasks._Framework.TaskStore.JSONEncode_PAIR_816 _x_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks._Framework.TaskStore.++_339}> (Text.JSON.JSONEncode__List_17 _x_0 False x_1_0) (fy_1 False y_1_1)) 
 iTasks._Framework.TaskStore.JSONEncode_PAIR_817 _x_0 _x_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks._Framework.TaskStore.++_339}> (Text.JSON.JSONEncode__List_17 _x_0 False x_1_0) (Text.JSON.JSONEncode__List_17 _x_1 False y_1_1)) 
-iTasks._Framework.TaskStore.JSONEncode_Queue_190 <{JSONEncode_t_16-0_a_0}> !x1_1::B !x2_2 = Text.JSON.JSONEncode_OBJECT_31 (Text.JSON.JSONEncode_CONS_30 "Queue" (iTasks._Framework.TaskStore.JSONEncode_PAIR_817 <{JSONEncode_t_16-0_a_0}> <{JSONEncode_t_16-0_a_0}>)) x1_1 (iTasks._Framework.TaskStore.toGenericQueue_303 x2_2)
+iTasks._Framework.TaskStore.JSONEncode_Queue_190 <{JSONEncode_t_24-0_a_0}> !x1_1::B !x2_2 = Text.JSON.JSONEncode_OBJECT_31 (Text.JSON.JSONEncode_CONS_30 "Queue" (iTasks._Framework.TaskStore.JSONEncode_PAIR_817 <{JSONEncode_t_24-0_a_0}> <{JSONEncode_t_24-0_a_0}>)) x1_1 (iTasks._Framework.TaskStore.toGenericQueue_303 x2_2)
 iTasks._Framework.TaskStore.JSONEncode_s_742 !_vJSONEncode_s_0 !x1_1::B !x2_2 = iTasks._Framework.TaskStore.JSONEncode_Queue_190 (select _vJSONEncode_s_0::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) x1_1 x2_2
 iTasks._Framework.TaskStore.fromGenericQueue_302 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.CONS c_2_0 -> case c_2_0 (StdGeneric.PAIR x1_3_0 x2_3_1 -> Data.Queue.Queue x1_3_0 x2_3_1) ) ) 
 iTasks._Framework.TaskStore.bimapFromGeneric_363 !x_0 = iTasks._Framework.TaskStore._f1036_1036 x_0
@@ -222,7 +222,7 @@ iTasks._Framework.TaskStore._f1037_1037 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -
 iTasks._Framework.TaskStore.JSONDecode_PAIR_818 _x_0 !fy_1 !_x_2::B !l_3 = iTasks._Framework.TaskStore.d1_345 fy_1 (Text.JSON.JSONDecode__List_44 _x_0 False l_3) l_3
 iTasks._Framework.TaskStore.d1_820 _x_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks._Framework.TaskStore.d2_346 x_2_0 (Text.JSON.JSONDecode__List_44 _x_0 False xs_1_1) l_2) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
 iTasks._Framework.TaskStore.JSONDecode_PAIR_819 _x_0 _x_1 !_x_2::B !l_3 = iTasks._Framework.TaskStore.d1_820 _x_1 (Text.JSON.JSONDecode__List_44 _x_0 False l_3) l_3
-iTasks._Framework.TaskStore.JSONDecode_Queue_198 <{JSONDecode_t_16-1_a_0}> !x1_1::B !x2_2 = iTasks._Framework.TaskStore.bimapFromGeneric_364 (Text.JSON.JSONDecode_OBJECT_43 (Text.JSON.JSONDecode_CONS_42 "Queue" (iTasks._Framework.TaskStore.JSONDecode_PAIR_819 <{JSONDecode_t_16-1_a_0}> <{JSONDecode_t_16-1_a_0}>)) x1_1 x2_2)
+iTasks._Framework.TaskStore.JSONDecode_Queue_198 <{JSONDecode_t_24-1_a_0}> !x1_1::B !x2_2 = iTasks._Framework.TaskStore.bimapFromGeneric_364 (Text.JSON.JSONDecode_OBJECT_43 (Text.JSON.JSONDecode_CONS_42 "Queue" (iTasks._Framework.TaskStore.JSONDecode_PAIR_819 <{JSONDecode_t_24-1_a_0}> <{JSONDecode_t_24-1_a_0}>)) x1_1 x2_2)
 iTasks._Framework.TaskStore.JSONDecode_s_744 !_vJSONDecode_s_0 !x1_1::B !x2_2 = iTasks._Framework.TaskStore.JSONDecode_Queue_198 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_1 x2_2
 iTasks._Framework.TaskStore.JSONDecode_s_823 !_vJSONDecode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONDecode__Tuple2_45 Text.JSON.JSONDecode_Int_35 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_1 x2_2
 iTasks._Framework.TaskStore.JSONDecode_s_825 !x1_0::B !x2_1 = Text.JSON.JSONDecode__Tuple2_45 Text.JSON.JSONDecode_Int_35 iTasks._Framework.TaskStore.JSONDecode_Event_199 x1_0 x2_1
@@ -250,8 +250,8 @@ iTasks._Framework.TaskStore.JSONDecode_TIValue_194 !x1_0::B !x2_1 = iTasks._Fram
 iTasks._Framework.TaskStore.anon_832 !t_0::I = <{iTasks._Framework.Generic.Visualization.+++>}> (<{iTasks._Framework.TaskStore.gText_s;}> iTasks._Framework.Generic.Visualization.gText_Int_11) t_0 "-value"
 iTasks._Framework.TaskStore.taskInstanceValue = iTasks.API.Common.SDSCombinators.sdsTranslate (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.TaskStore.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{iTasks._Framework.TaskStore.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.TaskStore.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{iTasks._Framework.TaskStore.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{iTasks._Framework.TaskStore.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{iTasks._Framework.TaskStore.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) "taskInstanceValue" iTasks._Framework.TaskStore.anon_832 (iTasks._Framework.Store.cachedJSONFileStore (<{iTasks._Framework.TaskStore.JSONEncode_s;}> iTasks._Framework.TaskStore.JSONEncode_TIValue_186) (<{iTasks._Framework.TaskStore.JSONDecode_s;}> iTasks._Framework.TaskStore.JSONDecode_TIValue_194) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks._Framework.TaskState.TD;TIValue}>)) "task-instances" True False False Data.Maybe.Nothing)
 iTasks._Framework.TaskStore.anon_55 !<{_vgText*_0}> !t_1 = <{iTasks._Framework.Generic.Visualization.+++>}> <{_vgText*_0}> t_1 "-shares"
-iTasks._Framework.TaskStore.JSONEncode_s_370 !_vJSONEncode_s_0 !_vJSONEncode_s_1 !x1_2::B !x2_3 = Data.Map.JSONEncode_Map_35 (select _vJSONEncode_s_0::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) (select _vJSONEncode_s_1::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) x1_2 x2_3
-iTasks._Framework.TaskStore.JSONDecode_s_372 !_vJSONDecode_s_0 !_vJSONDecode_s_1 !x1_2::B !x2_3 = Data.Map.JSONDecode_Map_36 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) (select _vJSONDecode_s_1::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_2 x2_3
+iTasks._Framework.TaskStore.JSONEncode_s_576 !_vJSONEncode_s_0 !_vJSONEncode_s_1 !x1_2::B !x2_3 = Data.Map.JSONEncode_Map_35 (select _vJSONEncode_s_0::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) (select _vJSONEncode_s_1::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) x1_2 x2_3
+iTasks._Framework.TaskStore.JSONDecode_s_578 !_vJSONDecode_s_0 !_vJSONDecode_s_1 !x1_2::B !x2_3 = Data.Map.JSONDecode_Map_36 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) (select _vJSONDecode_s_1::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_2 x2_3
 iTasks._Framework.TaskStore.JSONDecode_s_835 !_vJSONDecode_s_0 !x1_1::B !x2_2 = Data.Map.JSONDecode_Map_36 iTasks.API.Core.Types.JSONDecode_TaskId_166 (select _vJSONDecode_s_0::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) x1_1 x2_2
 iTasks._Framework.TaskStore.JSONEncode_s_834 !_vJSONEncode_s_0 !x1_1::B !x2_2 = Data.Map.JSONEncode_Map_35 iTasks.API.Core.Types.JSONEncode_TaskId_165 (select _vJSONEncode_s_0::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) x1_1 x2_2
 iTasks._Framework.TaskStore.anon_833 !t_0::I = <{iTasks._Framework.Generic.Visualization.+++>}> (<{iTasks._Framework.TaskStore.gText_s;}> iTasks._Framework.Generic.Visualization.gText_Int_11) t_0 "-shares"
@@ -419,10 +419,10 @@ iTasks._Framework.TaskStore.notify_152 !<{_v==_0}> !_x_1 _x_2 = case _x_1 (_Tupl
 iTasks._Framework.TaskStore.write_151 !_x_0 list_1 pts_2 = case _x_0 (_Tuple3 _x_1_0 task_1_1 _x_1_2 -> Data.Error.Ok (Data.Maybe.Just (<{iTasks._Framework.TaskStore.c;388;93_148}> pts_2 task_1_1 list_1))) 
 iTasks._Framework.TaskStore.read_150 !<{_vgText*_0}> !p_1 !_x_2 = case p_1 (_Tuple3 list_1_0 task_1_1 _x_1_2 -> case _x_2 (_predefined._Nil -> Data.Error.Error (iTasks._Framework.Task.exception (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) (<{StdOverloaded.toString;}> StdString.toString_9) (<{iTasks._Framework.Generic.Visualization.<+++}> <{_vgText*_0}> (<{iTasks._Framework.Generic.Visualization.<+++}> (<{iTasks._Framework.TaskStore.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.Generic.Visualization.<+++}> (<{iTasks._Framework.TaskStore.gText_s;}> iTasks.API.Core.Types.gText_TaskId_164) "Could not find parallel task " task_1_1) " in list ") list_1_0))) (_predefined._Cons x_2_0 xs_2_1 -> case (<{iTasks.API.Core.Types.==_47}> (select x_2_0::iTasks._Framework.TaskState._ParallelTaskState 0) task_1_1) (True -> Data.Error.Ok x_2_0) (False -> iTasks._Framework.TaskStore.read_150 <{_vgText*_0}> p_1 xs_2_1) ) ) 
 iTasks._Framework.TaskStore.param_149 !_x_0 = case _x_0 (_Tuple3 list_1_0 task_1_1 includeValue_1_2 -> _Tuple2 list_1_0 (iTasks.API.Core.Types._TaskListFilter Data.Maybe.Nothing (Data.Maybe.Just (_predefined._Cons task_1_1 _predefined._Nil)) False includeValue_1_2 False False)) 
-iTasks._Framework.TaskStore.gEq_s_380::B !_vgEq_s_0 !_vgEq_s_1 x1_2 x2_3 = GenEq.gEq__Tuple2_17 (select _vgEq_s_0::<{iTasks._Framework.TaskStore.gEq_s;}> 0) (select _vgEq_s_1::<{iTasks._Framework.TaskStore.gEq_s;}> 0) x1_2 x2_3
+iTasks._Framework.TaskStore.gEq_s_421::B !_vgEq_s_0 !_vgEq_s_1 x1_2 x2_3 = GenEq.gEq__Tuple2_17 (select _vgEq_s_0::<{iTasks._Framework.TaskStore.gEq_s;}> 0) (select _vgEq_s_1::<{iTasks._Framework.TaskStore.gEq_s;}> 0) x1_2 x2_3
 iTasks._Framework.TaskStore.gText_s_583 !_vgText_s_0 !_vgText_s_1 !x1_2 x2_3 = iTasks._Framework.Generic.Visualization.gText__Tuple2_18 (select _vgText_s_0::<{iTasks._Framework.TaskStore.gText_s;}> 0) (select _vgText_s_1::<{iTasks._Framework.TaskStore.gText_s;}> 0) x1_2 x2_3
-iTasks._Framework.TaskStore.gDefault_s_664 !_vgDefault_s_0 !_vgDefault_s_1 = iTasks._Framework.Generic.Defaults.gDefault__Tuple2_15 (select _vgDefault_s_0::<{iTasks._Framework.TaskStore.gDefault_s;}> 0) (select _vgDefault_s_1::<{iTasks._Framework.TaskStore.gDefault_s;}> 0)
-iTasks._Framework.TaskStore.gEditor_s_709 !_vgEditor_s_0 !_vgText_s_1 !_vgDefault_s_2 !_vJSONEncode_s_3 !_vJSONDecode_s_4 !_vgEditor_s_5 !_vgText_s_6 !_vgDefault_s_7 !_vJSONEncode_s_8 !_vJSONDecode_s_9 = iTasks.UI.Editor.Generic.gEditor__Tuple2_14 (select _vgEditor_s_0::<{iTasks._Framework.TaskStore.gEditor_s;}> 0) (select _vgText_s_1::<{iTasks._Framework.TaskStore.gText_s;}> 0) (select _vgDefault_s_2::<{iTasks._Framework.TaskStore.gDefault_s;}> 0) (select _vJSONEncode_s_3::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) (select _vJSONDecode_s_4::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) (select _vgEditor_s_5::<{iTasks._Framework.TaskStore.gEditor_s;}> 0) (select _vgText_s_6::<{iTasks._Framework.TaskStore.gText_s;}> 0) (select _vgDefault_s_7::<{iTasks._Framework.TaskStore.gDefault_s;}> 0) (select _vJSONEncode_s_8::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) (select _vJSONDecode_s_9::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0)
+iTasks._Framework.TaskStore.gDefault_s_655 !_vgDefault_s_0 !_vgDefault_s_1 = iTasks._Framework.Generic.Defaults.gDefault__Tuple2_15 (select _vgDefault_s_0::<{iTasks._Framework.TaskStore.gDefault_s;}> 0) (select _vgDefault_s_1::<{iTasks._Framework.TaskStore.gDefault_s;}> 0)
+iTasks._Framework.TaskStore.gEditor_s_700 !_vgEditor_s_0 !_vgText_s_1 !_vgDefault_s_2 !_vJSONEncode_s_3 !_vJSONDecode_s_4 !_vgEditor_s_5 !_vgText_s_6 !_vgDefault_s_7 !_vJSONEncode_s_8 !_vJSONDecode_s_9 = iTasks.UI.Editor.Generic.gEditor__Tuple2_14 (select _vgEditor_s_0::<{iTasks._Framework.TaskStore.gEditor_s;}> 0) (select _vgText_s_1::<{iTasks._Framework.TaskStore.gText_s;}> 0) (select _vgDefault_s_2::<{iTasks._Framework.TaskStore.gDefault_s;}> 0) (select _vJSONEncode_s_3::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) (select _vJSONDecode_s_4::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0) (select _vgEditor_s_5::<{iTasks._Framework.TaskStore.gEditor_s;}> 0) (select _vgText_s_6::<{iTasks._Framework.TaskStore.gText_s;}> 0) (select _vgDefault_s_7::<{iTasks._Framework.TaskStore.gDefault_s;}> 0) (select _vJSONEncode_s_8::<{iTasks._Framework.TaskStore.JSONEncode_s;}> 0) (select _vJSONDecode_s_9::<{iTasks._Framework.TaskStore.JSONDecode_s;}> 0)
 iTasks._Framework.TaskStore.anon_930::B !_x_0 !x_1 = <{iTasks.API.Core.Types.==_47}> _x_0 (iTasks._Framework.TaskStore.snd3_211 x_1)
 iTasks._Framework.TaskStore.notify_929 !_x_0 _x_1 = case _x_0 (_Tuple3 list_1_0 task_1_1 _x_1_2 -> iTasks._Framework.TaskStore.anon_930 task_1_1) 
 iTasks._Framework.TaskStore.read_928 !p_0 !_x_1 = case p_0 (_Tuple3 list_1_0 task_1_1 _x_1_2 -> case _x_1 (_predefined._Nil -> Data.Error.Error (iTasks._Framework.Task.exception (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) (<{StdOverloaded.toString;}> StdString.toString_9) (<{iTasks._Framework.Generic.Visualization.<+++}> (<{iTasks._Framework.TaskStore.gText_s;}> iTasks.API.Core.Types.gText_TaskId_164) (<{iTasks._Framework.Generic.Visualization.<+++}> (<{iTasks._Framework.TaskStore.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.Generic.Visualization.<+++}> (<{iTasks._Framework.TaskStore.gText_s;}> iTasks.API.Core.Types.gText_TaskId_164) "Could not find parallel task " task_1_1) " in list ") list_1_0))) (_predefined._Cons x_2_0 xs_2_1 -> case (<{iTasks.API.Core.Types.==_47}> (select x_2_0::iTasks._Framework.TaskState._ParallelTaskState 0) task_1_1) (True -> Data.Error.Ok x_2_0) (False -> iTasks._Framework.TaskStore.read_928 p_0 xs_2_1) ) ) 
@@ -487,7 +487,7 @@ iTasks._Framework.TaskStore.write_163 !_x_0 states_1 !_x_2 = case _x_0 (_Tuple3 
 iTasks._Framework.TaskStore.anon_158 !stable_0::B !v_1 = iTasks.API.Core.Types.Value v_1 stable_0
 iTasks._Framework.TaskStore.decode_159 !<{_vJSONDecode*_0}> !_x_1 = case _x_1 (iTasks.API.Core.Types.NoValue -> iTasks.API.Core.Types.NoValue) (iTasks.API.Core.Types.Value json_1_0 stable_1_1 -> Data.Maybe.maybe iTasks.API.Core.Types.NoValue (iTasks._Framework.TaskStore.anon_158 stable_1_1) (Text.JSON.fromJSON <{_vJSONDecode*_0}> json_1_0)) 
 iTasks._Framework.TaskStore.gEq_ParallelTaskChange_201::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_CONS_10 iTasks.API.Core.Types.gEq_Dynamic_201)) (iTasks._Framework.TaskStore.toGenericParallelTaskChange_285 x1_0) (iTasks._Framework.TaskStore.toGenericParallelTaskChange_285 x2_1)
-iTasks._Framework.TaskStore.gEq_s_375::B !_vgEq_s_0 x1_1 x2_2 = Data.Maybe.gEq_Maybe_13 (select _vgEq_s_0::<{iTasks._Framework.TaskStore.gEq_s;}> 0) x1_1 x2_2
+iTasks._Framework.TaskStore.gEq_s_416::B !_vgEq_s_0 x1_1 x2_2 = Data.Maybe.gEq_Maybe_13 (select _vgEq_s_0::<{iTasks._Framework.TaskStore.gEq_s;}> 0) x1_1 x2_2
 iTasks._Framework.TaskStore.gEq_s_949::B x1_0 x2_1 = Data.Maybe.gEq_Maybe_13 iTasks._Framework.TaskStore.gEq_ParallelTaskChange_201 x1_0 x2_1
 <{iTasks._Framework.TaskStore.c;416;24_157}> !<{_vJSONDecode*_0}> self_1 list_2 !g_l_3 = <{iTasks._Framework.TaskStore.g_c1;416;87_1086}> g_l_3 list_2 self_1 <{_vJSONDecode*_0}>
 <{iTasks._Framework.TaskStore.g_c1;416;87_1086}> !g_l_0 list_1 self_2 <{_vJSONDecode*_3}> = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{iTasks._Framework.TaskStore.g_c2;416;87_1085}> g_h_1_0 list_1 self_2 <{_vJSONDecode*_3}> g_t_1_1) (_ -> _predefined._Nil)
@@ -517,7 +517,7 @@ iTasks._Framework.TaskStore.anon_63 !instanceNo_0::I !iworld_1 = <{iTasks._Frame
 iTasks._Framework.TaskStore.toJSONTask_72 !<{_vJSONEncode*_0}> !_x_1 = case _x_1 (iTasks._Framework.Task.Task eval_1_0 -> iTasks._Framework.Task.Task (<{iTasks._Framework.TaskStore.eval`_71}> <{_vJSONEncode*_0}> eval_1_0)) 
 iTasks._Framework.TaskStore.createReduct !_viTask_0 !tonicOpts_1 !instanceNo_2::I !task_3 !taskTime_4::I = iTasks._Framework.TaskState._TIReduct (iTasks._Framework.TaskStore.toJSONTask_72 (select _viTask_0::<{iTasks._Framework.Generic.iTask;}> 2) task_3) (iTasks._Framework.TaskState.TCInit (iTasks.API.Core.Types.TaskId instanceNo_2 0) 1) tonicOpts_1 1 1 Data.Map.newMap
 iTasks._Framework.TaskStore.anon_64 !_viTask_0 !task_1 !taskTime_2::I !instanceNo_3::I !iworld_4 = <{iTasks._Framework.TaskStore.`b`}> (iTasks._Framework.SDS.write (iTasks._Framework.TaskStore.createReduct _viTask_0 iTasks._Framework.Task.defaultTonicOpts instanceNo_3 task_1 taskTime_2) (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.TaskStore.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor_Int_7) (<{iTasks._Framework.TaskStore.gText_s;}> iTasks._Framework.Generic.Visualization.gText_Int_11) (<{iTasks._Framework.TaskStore.JSONEncode_s;}> Text.JSON.JSONEncode_Int_11) (<{iTasks._Framework.TaskStore.JSONDecode_s;}> Text.JSON.JSONDecode_Int_35) (<{iTasks._Framework.TaskStore.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault_Int_8) (<{iTasks._Framework.TaskStore.gEq_s;}> GenEq.gEq_Int_2) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Int))) instanceNo_3 iTasks._Framework.TaskStore.taskInstanceReduct) iworld_4) (iTasks._Framework.TaskStore.anon_63 instanceNo_3)
-iTasks._Framework.TaskStore.gDefault_s_706 !_vgDefault_s_0 !_vgDefault_s_1 = iTasks._Framework.Generic.Defaults.gDefault_Map_27 (select _vgDefault_s_0::<{iTasks._Framework.TaskStore.gDefault_s;}> 0) (select _vgDefault_s_1::<{iTasks._Framework.TaskStore.gDefault_s;}> 0)
+iTasks._Framework.TaskStore.gDefault_s_697 !_vgDefault_s_0 !_vgDefault_s_1 = iTasks._Framework.Generic.Defaults.gDefault_Map_27 (select _vgDefault_s_0::<{iTasks._Framework.TaskStore.gDefault_s;}> 0) (select _vgDefault_s_1::<{iTasks._Framework.TaskStore.gDefault_s;}> 0)
 iTasks._Framework.TaskStore.gDefault_s_955 !_vgDefault_s_0 = iTasks._Framework.Generic.Defaults.gDefault_Map_27 iTasks._Framework.Generic.Defaults.gDefault__String_12 (select _vgDefault_s_0::<{iTasks._Framework.TaskStore.gDefault_s;}> 0)
 iTasks._Framework.TaskStore.gDefault_s_956 = iTasks._Framework.Generic.Defaults.gDefault_Map_27 iTasks._Framework.Generic.Defaults.gDefault__String_12 iTasks._Framework.Generic.Defaults.gDefault__String_12
 iTasks._Framework.TaskStore.createClientTaskInstance !_viTask_0 !task_1 !session_2 !instanceNo_3::I !iworld_4 = case iworld_4 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case server_1_0 (iTasks._Framework.IWorld._ServerInfo serverName_2_0 serverURL_2_1 build_2_2 paths_2_3 -> case clocks_1_2 (iTasks._Framework.IWorld._SystemClocks timestamp_3_0 localDate_3_1 localTime_3_2 utcDate_3_3 utcTime_3_4 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_4_0 task_4_1 session_4_2 attachmentChain_4_3 nextTaskNo_4_4 -> <{iTasks._Framework.TaskStore.`b`}> (iTasks._Framework.SDS.write (_Tuple4 instanceNo_3 (Data.Maybe.Just (iTasks.API.Core.Types._InstanceConstants "client" (iTasks.API.Core.Types.TaskId 0 0) True build_2_2 (iTasks.API.Core.Types.toDateTime localDate_3_1 localTime_3_2))) (Data.Maybe.Just (iTasks.API.Core.Types._InstanceProgress iTasks.API.Core.Types.None _predefined._Nil Data.Maybe.Nothing Data.Maybe.Nothing)) (Data.Maybe.Just (iTasks._Framework.Generic.Defaults.defaultValue (<{iTasks._Framework.TaskStore.gDefault_s;}> iTasks._Framework.TaskStore.gDefault_s_956)))) (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.TaskStore.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor_Int_7) (<{iTasks._Framework.TaskStore.gText_s;}> iTasks._Framework.Generic.Visualization.gText_Int_11) (<{iTasks._Framework.TaskStore.JSONEncode_s;}> Text.JSON.JSONEncode_Int_11) (<{iTasks._Framework.TaskStore.JSONDecode_s;}> Text.JSON.JSONDecode_Int_35) (<{iTasks._Framework.TaskStore.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault_Int_8) (<{iTasks._Framework.TaskStore.gEq_s;}> GenEq.gEq_Int_2) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Int))) instanceNo_3 iTasks._Framework.TaskStore.taskInstance) iworld_4) (iTasks._Framework.TaskStore.anon_64 _viTask_0 task_1 taskTime_4_0 instanceNo_3)) ) ) ) 
@@ -619,7 +619,7 @@ iTasks._Framework.TaskStore.JSONEncode_PAIR_975 !_x_0::B !_x_1 = case _x_1 (StdG
 iTasks._Framework.TaskStore.JSONEncode_PAIR_977 _x_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks._Framework.TaskStore.++_339}> (iTasks.API.Core.Types.JSONEncode_TaskValue_121 _x_0 False x_1_0) (iTasks._Framework.TaskStore.JSONEncode_TaskEvalInfo_185 False y_1_1)) 
 iTasks._Framework.TaskStore.JSONEncode_PAIR_976 _x_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks._Framework.TaskStore.++_339}> (iTasks._Framework.TaskStore.JSONEncode_PAIR_977 _x_0 False x_1_0) (fy_1 False y_1_1)) 
 iTasks._Framework.TaskStore.JSONEncode_PAIR_978 _x_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks._Framework.TaskStore.++_339}> (iTasks._Framework.TaskStore.JSONEncode_PAIR_977 _x_0 False x_1_0) (iTasks._Framework.TaskStore.JSONEncode_PAIR_975 False y_1_1)) 
-iTasks._Framework.TaskStore.JSONEncode_TaskResult_184 <{JSONEncode_t_16-0_a_0}> !x1_1::B !x2_2 = Text.JSON.JSONEncode_OBJECT_31 (Text.JSON.JSONEncode_EITHER_29 (Text.JSON.JSONEncode_CONS_30 "ValueResult" (iTasks._Framework.TaskStore.JSONEncode_PAIR_978 <{JSONEncode_t_16-0_a_0}>)) (Text.JSON.JSONEncode_EITHER_29 (Text.JSON.JSONEncode_CONS_30 "ExceptionResult" (Text.JSON.JSONEncode__Tuple2_18 iTasks._Framework.Serialization.JSONEncode_Dynamic_7 Text.JSON.JSONEncode__String_15)) (Text.JSON.JSONEncode_CONS_30 "DestroyedResult" Text.JSON.JSONEncode_UNIT_16))) x1_1 (iTasks._Framework.TaskStore.toGenericTaskResult_243 x2_2)
+iTasks._Framework.TaskStore.JSONEncode_TaskResult_184 <{JSONEncode_t_24-0_a_0}> !x1_1::B !x2_2 = Text.JSON.JSONEncode_OBJECT_31 (Text.JSON.JSONEncode_EITHER_29 (Text.JSON.JSONEncode_CONS_30 "ValueResult" (iTasks._Framework.TaskStore.JSONEncode_PAIR_978 <{JSONEncode_t_24-0_a_0}>)) (Text.JSON.JSONEncode_EITHER_29 (Text.JSON.JSONEncode_CONS_30 "ExceptionResult" (Text.JSON.JSONEncode__Tuple2_18 iTasks._Framework.Serialization.JSONEncode_Dynamic_7 Text.JSON.JSONEncode__String_15)) (Text.JSON.JSONEncode_CONS_30 "DestroyedResult" Text.JSON.JSONEncode_UNIT_16))) x1_1 (iTasks._Framework.TaskStore.toGenericTaskResult_243 x2_2)
 iTasks._Framework.TaskStore.toGenericTIUIState_296 !x_0 = case x_0 (iTasks._Framework.TaskState.UIDisabled -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT))) (iTasks._Framework.TaskState.UIEnabled x21_1_0 x22_1_1 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x21_1_0 x22_1_1))))) (iTasks._Framework.TaskState.UIException x31_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS x31_1_0)))) 
 iTasks._Framework.TaskStore.JSONEncode_PAIR_979 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks._Framework.TaskStore.++_339}> (Text.JSON.JSONEncode_Int_11 False x_1_0) (fy_0 False y_1_1)) 
 iTasks._Framework.TaskStore.JSONEncode_PAIR_980 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks._Framework.TaskStore.++_339}> (Text.JSON.JSONEncode_Int_11 False x_1_0) (iTasks.UI.Definition.JSONEncode_UIChange_153 False y_1_1)) 
@@ -656,7 +656,7 @@ iTasks._Framework.TaskStore.JSONDecode_PAIR_996 _x_0 !_x_1::B !l_2 = iTasks._Fra
 iTasks._Framework.TaskStore.JSONDecode_PAIR_995 _x_0 !fy_1 !_x_2::B !l_3 = iTasks._Framework.TaskStore.d1_345 fy_1 (iTasks._Framework.TaskStore.JSONDecode_PAIR_996 _x_0 False l_3) l_3
 iTasks._Framework.TaskStore.d1_999 !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks._Framework.TaskStore.d2_346 x_2_0 (iTasks._Framework.TaskStore.JSONDecode_PAIR_993 False xs_1_1) l_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_1) ) 
 iTasks._Framework.TaskStore.JSONDecode_PAIR_998 _x_0 !_x_1::B !l_2 = iTasks._Framework.TaskStore.d1_999 (iTasks._Framework.TaskStore.JSONDecode_PAIR_996 _x_0 False l_2) l_2
-iTasks._Framework.TaskStore.JSONDecode_TaskResult_192 <{JSONDecode_t_16-1_a_0}> !x1_1::B !x2_2 = iTasks._Framework.TaskStore.bimapFromGeneric_352 (Text.JSON.JSONDecode_OBJECT_43 (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "ValueResult" (iTasks._Framework.TaskStore.JSONDecode_PAIR_998 <{JSONDecode_t_16-1_a_0}>)) (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "ExceptionResult" (Text.JSON.JSONDecode__Tuple2_45 iTasks._Framework.Serialization.JSONDecode_Dynamic_9 Text.JSON.JSONDecode__String_39)) (Text.JSON.JSONDecode_CONS_42 "DestroyedResult" Text.JSON.JSONDecode_UNIT_40))) x1_1 x2_2)
+iTasks._Framework.TaskStore.JSONDecode_TaskResult_192 <{JSONDecode_t_24-1_a_0}> !x1_1::B !x2_2 = iTasks._Framework.TaskStore.bimapFromGeneric_352 (Text.JSON.JSONDecode_OBJECT_43 (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "ValueResult" (iTasks._Framework.TaskStore.JSONDecode_PAIR_998 <{JSONDecode_t_24-1_a_0}>)) (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "ExceptionResult" (Text.JSON.JSONDecode__Tuple2_45 iTasks._Framework.Serialization.JSONDecode_Dynamic_9 Text.JSON.JSONDecode__String_39)) (Text.JSON.JSONDecode_CONS_42 "DestroyedResult" Text.JSON.JSONDecode_UNIT_40))) x1_1 x2_2)
 iTasks._Framework.TaskStore.fromGenericTIUIState_295 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.LEFT c_2_0 -> case c_2_0 (StdGeneric.CONS c_3_0 -> case c_3_0 (StdGeneric.UNIT -> iTasks._Framework.TaskState.UIDisabled) ) ) (StdGeneric.RIGHT c_2_0 -> case c_2_0 (StdGeneric.LEFT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.PAIR x1_5_0 x2_5_1 -> iTasks._Framework.TaskState.UIEnabled x1_5_0 x2_5_1) ) ) (StdGeneric.RIGHT c_3_0 -> case c_3_0 (StdGeneric.CONS x1_4_0 -> iTasks._Framework.TaskState.UIException x1_4_0) ) ) ) 
 iTasks._Framework.TaskStore.bimapFromGeneric_361 !x_0 = iTasks._Framework.TaskStore._f1126_1126 x_0
 iTasks._Framework.TaskStore._f1126_1126 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (iTasks._Framework.TaskStore.fromGenericTIUIState_295 x1_1_0)) 
@@ -697,54 +697,6 @@ iTasks._Framework.TaskStore.gText_ParallelTaskState_203 !x1_0 x2_1 = iTasks._Fra
 
 :: <{iTasks._Framework.TaskStore.JSONDecode_sss;}> = {!iTasks._Framework.TaskStore.JSONDecode_sss}
 
-:: <{iTasks._Framework.TaskStore.gEq_s;}> = {!iTasks._Framework.TaskStore.gEq_s}
-
-:: <{iTasks._Framework.TaskStore.gEq_ss;}> = {!iTasks._Framework.TaskStore.gEq_ss}
-
-:: <{iTasks._Framework.TaskStore.gEq_sss;}> = {!iTasks._Framework.TaskStore.gEq_sss}
-
-:: <{iTasks._Framework.TaskStore.gEq_ssss;}> = {!iTasks._Framework.TaskStore.gEq_ssss}
-
-:: <{iTasks._Framework.TaskStore.gEq_sssss;}> = {!iTasks._Framework.TaskStore.gEq_sssss}
-
-:: <{iTasks._Framework.TaskStore.gEq_ssssss;}> = {!iTasks._Framework.TaskStore.gEq_ssssss}
-
-:: <{iTasks._Framework.TaskStore.gEq_sssssss;}> = {!iTasks._Framework.TaskStore.gEq_sssssss}
-
-:: <{iTasks._Framework.TaskStore.gEq_ssssssss;}> = {!iTasks._Framework.TaskStore.gEq_ssssssss}
-
-:: <{iTasks._Framework.TaskStore.gEq_sssssssss;}> = {!iTasks._Framework.TaskStore.gEq_sssssssss}
-
-:: <{iTasks._Framework.TaskStore.bimap_s;}> = {iTasks._Framework.TaskStore.bimap_s}
-
-:: <{iTasks._Framework.TaskStore.bimap_ss;}> = {iTasks._Framework.TaskStore.bimap_ss}
-
-:: <{iTasks._Framework.TaskStore.bimap_sss;}> = {iTasks._Framework.TaskStore.bimap_sss}
-
-:: <{iTasks._Framework.TaskStore.JSONEncode_ssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_ssss}
-
-:: <{iTasks._Framework.TaskStore.JSONEncode_sssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_sssss}
-
-:: <{iTasks._Framework.TaskStore.JSONEncode_ssssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_ssssss}
-
-:: <{iTasks._Framework.TaskStore.JSONEncode_sssssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_sssssss}
-
-:: <{iTasks._Framework.TaskStore.JSONEncode_ssssssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_ssssssss}
-
-:: <{iTasks._Framework.TaskStore.JSONEncode_sssssssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_sssssssss}
-
-:: <{iTasks._Framework.TaskStore.JSONDecode_ssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_ssss}
-
-:: <{iTasks._Framework.TaskStore.JSONDecode_sssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_sssss}
-
-:: <{iTasks._Framework.TaskStore.JSONDecode_ssssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_ssssss}
-
-:: <{iTasks._Framework.TaskStore.JSONDecode_sssssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_sssssss}
-
-:: <{iTasks._Framework.TaskStore.JSONDecode_ssssssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_ssssssss}
-
-:: <{iTasks._Framework.TaskStore.JSONDecode_sssssssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_sssssssss}
-
 :: <{iTasks._Framework.TaskStore.gDefault_s;}> = {iTasks._Framework.TaskStore.gDefault_s}
 
 :: <{iTasks._Framework.TaskStore.gDefault_ss;}> = {iTasks._Framework.TaskStore.gDefault_ss}
@@ -763,7 +715,55 @@ iTasks._Framework.TaskStore.gText_ParallelTaskState_203 !x1_0 x2_1 = iTasks._Fra
 
 :: <{iTasks._Framework.TaskStore.gEditor_sss;}> = {iTasks._Framework.TaskStore.gEditor_sss}
 
+:: <{iTasks._Framework.TaskStore.gEq_s;}> = {!iTasks._Framework.TaskStore.gEq_s}
+
+:: <{iTasks._Framework.TaskStore.gEq_ss;}> = {!iTasks._Framework.TaskStore.gEq_ss}
+
+:: <{iTasks._Framework.TaskStore.gEq_sss;}> = {!iTasks._Framework.TaskStore.gEq_sss}
+
+:: <{iTasks._Framework.TaskStore.JSONEncode_ssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_ssss}
+
+:: <{iTasks._Framework.TaskStore.JSONDecode_ssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_ssss}
+
+:: <{iTasks._Framework.TaskStore.gEq_ssss;}> = {!iTasks._Framework.TaskStore.gEq_ssss}
+
 :: <{iTasks._Framework.TaskStore.gDefault_ssss;}> = {iTasks._Framework.TaskStore.gDefault_ssss}
+
+:: <{iTasks._Framework.TaskStore.gEq_sssss;}> = {!iTasks._Framework.TaskStore.gEq_sssss}
+
+:: <{iTasks._Framework.TaskStore.gEq_ssssss;}> = {!iTasks._Framework.TaskStore.gEq_ssssss}
+
+:: <{iTasks._Framework.TaskStore.gEq_sssssss;}> = {!iTasks._Framework.TaskStore.gEq_sssssss}
+
+:: <{iTasks._Framework.TaskStore.gEq_ssssssss;}> = {!iTasks._Framework.TaskStore.gEq_ssssssss}
+
+:: <{iTasks._Framework.TaskStore.gEq_sssssssss;}> = {!iTasks._Framework.TaskStore.gEq_sssssssss}
+
+:: <{iTasks._Framework.TaskStore.bimap_s;}> = {iTasks._Framework.TaskStore.bimap_s}
+
+:: <{iTasks._Framework.TaskStore.bimap_ss;}> = {iTasks._Framework.TaskStore.bimap_ss}
+
+:: <{iTasks._Framework.TaskStore.bimap_sss;}> = {iTasks._Framework.TaskStore.bimap_sss}
+
+:: <{iTasks._Framework.TaskStore.JSONEncode_sssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_sssss}
+
+:: <{iTasks._Framework.TaskStore.JSONEncode_ssssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.TaskStore.JSONEncode_sssssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.TaskStore.JSONEncode_ssssssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.TaskStore.JSONEncode_sssssssss;}> = {!iTasks._Framework.TaskStore.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.TaskStore.JSONDecode_sssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_sssss}
+
+:: <{iTasks._Framework.TaskStore.JSONDecode_ssssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.TaskStore.JSONDecode_sssssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.TaskStore.JSONDecode_ssssssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.TaskStore.JSONDecode_sssssssss;}> = {!iTasks._Framework.TaskStore.JSONDecode_sssssssss}
 
 :: <{iTasks._Framework.TaskStore.gLexOrd_s;}> = {!iTasks._Framework.TaskStore.gLexOrd_s}
 

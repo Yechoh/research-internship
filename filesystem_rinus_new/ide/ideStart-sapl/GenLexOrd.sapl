@@ -1,0 +1,99 @@
+|| ?module? GenLexOrd
+
+
+<{GenLexOrd.=?=}> !<{_vgLexOrd*_0}> x_1 y_2 = select <{_vgLexOrd*_0}>::<{GenLexOrd.gLexOrd_s;}> 0 x_1 y_2
+GenLexOrd.lexord_26 !_vArray_0 !_vArray_1 f_2 !i_3::I !n_4::I xs_5 ys_6 = case (<{StdInt.==_16}> i_3 n_4) (True -> GenLexOrd.EQ) (False -> <{GenLexOrd._c;79;27_175}> (f_2 (select _vArray_0::<{_SystemArray.Array;}> 3 xs_5 i_3) (select _vArray_1::<{_SystemArray.Array;}> 3 ys_6 i_3)) _vArray_0 _vArray_1 f_2 i_3 n_4 xs_5 ys_6) 
+<{GenLexOrd._c;79;27_175}> !_x_0 _vArray_1 _vArray_2 f_3 i_4::I n_5::I xs_6 ys_7 = case _x_0 (GenLexOrd.LT -> GenLexOrd.LT) (GenLexOrd.GT -> GenLexOrd.GT) (GenLexOrd.EQ -> GenLexOrd.lexord_26 _vArray_1 _vArray_2 f_3 (<{StdInt.+_6}> i_4 StdInt.one_11) n_5 xs_6 ys_7) 
+GenLexOrd.lexOrdArray !_vArray_0 !_vArray_1 f_2 xs_3 ys_4 = let !size_xs_1_0::I = select _vArray_0::<{_SystemArray.Array;}> 4 xs_3, !size_ys_1_1::I = select _vArray_1::<{_SystemArray.Array;}> 4 ys_4 in case (<{StdInt.<_17}> size_xs_1_0 size_ys_1_1) (True -> GenLexOrd.LT) (False -> case (<{StdInt.<_17}> size_ys_1_1 size_xs_1_0) (True -> GenLexOrd.GT) (False -> GenLexOrd.lexord_26 _vArray_0 _vArray_1 f_2 0 size_xs_1_0 xs_3 ys_4) ) 
+GenLexOrd.toGenericLexOrd_36 !x_0 = case x_0 (GenLexOrd.LT -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT))) (GenLexOrd.EQ -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT)))) (GenLexOrd.GT -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS StdGeneric.UNIT)))) 
+GenLexOrd.gEq_LexOrd_1::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7))) (GenLexOrd.toGenericLexOrd_36 x1_0) (GenLexOrd.toGenericLexOrd_36 x2_1)
+GenLexOrd.gLexOrd_Char_2 !x_0::C !y_1::C = case (<{StdChar.==_18}> x_0 y_1) (True -> GenLexOrd.EQ) (False -> case (<{StdChar.<_19}> x_0 y_1) (True -> GenLexOrd.LT) (False -> GenLexOrd.GT) ) 
+GenLexOrd.gLexOrd_Bool_3 !_x_0::B !_x_1::B = case _x_0 (True -> case _x_1 (True -> GenLexOrd.EQ) (False -> GenLexOrd.GT) ) (False -> case _x_1 (True -> GenLexOrd.LT) (False -> GenLexOrd.EQ) ) 
+GenLexOrd.gLexOrd_Int_4 !x_0::I !y_1::I = case (<{StdInt.==_16}> x_0 y_1) (True -> GenLexOrd.EQ) (False -> case (<{StdInt.<_17}> x_0 y_1) (True -> GenLexOrd.LT) (False -> GenLexOrd.GT) ) 
+GenLexOrd.gLexOrd_Real_5 !x_0::D !y_1::D = case (<{StdReal.==_11}> x_0 y_1) (True -> GenLexOrd.EQ) (False -> case (<{StdReal.<_12}> x_0 y_1) (True -> GenLexOrd.LT) (False -> GenLexOrd.GT) ) 
+GenLexOrd.gLexOrd__String_6 !x_0 !y_1 = case (<{StdString.==_2}> x_0 y_1) (True -> GenLexOrd.EQ) (False -> case (<{StdString.<_3}> x_0 y_1) (True -> GenLexOrd.LT) (False -> GenLexOrd.GT) ) 
+GenLexOrd.gLexOrd_UNIT_7 !_x_0 !_x_1 = case _x_0 (StdGeneric.UNIT -> case _x_1 (StdGeneric.UNIT -> GenLexOrd.EQ) ) 
+GenLexOrd.gLexOrd_PAIR_8 !fx_0 fy_1 !_x_2 !_x_3 = case _x_2 (StdGeneric.PAIR x1_1_0 y1_1_1 -> case _x_3 (StdGeneric.PAIR x2_2_0 y2_2_1 -> <{GenLexOrd._c;31;51_176}> (fx_0 x1_1_0 x2_2_0) fy_1 y1_1_1 y2_2_1) ) 
+<{GenLexOrd._c;31;51_176}> !_x_0 fy_1 y1_2 y2_3 = case _x_0 (GenLexOrd.EQ -> fy_1 y1_2 y2_3) (GenLexOrd.LT -> GenLexOrd.LT) (GenLexOrd.GT -> GenLexOrd.GT) 
+GenLexOrd.gLexOrd_EITHER_9 fl_0 fr_1 !_x_2 !_x_3 = case _x_2 (StdGeneric.LEFT x_1_0 -> case _x_3 (StdGeneric.LEFT y_2_0 -> fl_0 x_1_0 y_2_0) (StdGeneric.RIGHT y_2_0 -> GenLexOrd.LT) ) (StdGeneric.RIGHT x_1_0 -> case _x_3 (StdGeneric.LEFT y_2_0 -> GenLexOrd.GT) (StdGeneric.RIGHT y_2_0 -> fr_1 x_1_0 y_2_0) ) 
+GenLexOrd.gLexOrd_FIELD_10 !f_0 !_x_1 !_x_2 = case _x_1 (StdGeneric.FIELD x_1_0 -> case _x_2 (StdGeneric.FIELD y_2_0 -> f_0 x_1_0 y_2_0) ) 
+GenLexOrd.gLexOrd_CONS_11 !f_0 !_x_1 !_x_2 = case _x_1 (StdGeneric.CONS x_1_0 -> case _x_2 (StdGeneric.CONS y_2_0 -> f_0 x_1_0 y_2_0) ) 
+GenLexOrd.gLexOrd_OBJECT_12 !f_0 !_x_1 !_x_2 = case _x_1 (StdGeneric.OBJECT x_1_0 -> case _x_2 (StdGeneric.OBJECT y_2_0 -> f_0 x_1_0 y_2_0) ) 
+GenLexOrd.gLexOrd_RECORD_13 !f_0 !_x_1 !_x_2 = case _x_1 (StdGeneric.RECORD x_1_0 -> case _x_2 (StdGeneric.RECORD y_2_0 -> f_0 x_1_0 y_2_0) ) 
+GenLexOrd.gLexOrd__List_14 f_0 !_x_1 !_x_2 = case _x_1 (_predefined._Nil -> case _x_2 (_predefined._Nil -> GenLexOrd.EQ) (_ -> GenLexOrd.LT)) (_ -> case _x_2 (_predefined._Nil -> GenLexOrd.GT) (_predefined._Cons y_1_0 ys_1_1 -> case _x_1 (_predefined._Cons x_2_0 xs_2_1 -> <{GenLexOrd._c;53;7_177}> (f_0 x_2_0 y_1_0) f_0 xs_2_1 ys_1_1) ) )
+<{GenLexOrd._c;53;7_177}> !_x_0 f_1 xs_2 ys_3 = case _x_0 (GenLexOrd.EQ -> GenLexOrd.gLexOrd__List_14 f_1 xs_2 ys_3) (GenLexOrd.LT -> GenLexOrd.LT) (GenLexOrd.GT -> GenLexOrd.GT) 
+GenLexOrd.lexord_168 !_vArray_0 f_1 !i_2::I !n_3::I xs_4 ys_5 = case (<{StdInt.==_16}> i_2 n_3) (True -> GenLexOrd.EQ) (False -> <{GenLexOrd._c;79;27_178}> (f_1 (_SystemArray.select_75 xs_4 i_2) (select _vArray_0::<{_SystemArray.Array;}> 3 ys_5 i_2)) _vArray_0 f_1 i_2 n_3 xs_4 ys_5) 
+<{GenLexOrd._c;79;27_178}> !_x_0 _vArray_1 f_2 i_3::I n_4::I xs_5 ys_6 = case _x_0 (GenLexOrd.LT -> GenLexOrd.LT) (GenLexOrd.GT -> GenLexOrd.GT) (GenLexOrd.EQ -> GenLexOrd.lexord_168 _vArray_1 f_2 (<{StdInt.+_6}> i_3 StdInt.one_11) n_4 xs_5 ys_6) 
+GenLexOrd.lexOrdArray_167 !_vArray_0 f_1 !xs_2 ys_3 = let !size_xs_1_0::I = _SystemArray.size_76 xs_2, !size_ys_1_1::I = select _vArray_0::<{_SystemArray.Array;}> 4 ys_3 in case (<{StdInt.<_17}> size_xs_1_0 size_ys_1_1) (True -> GenLexOrd.LT) (False -> case (<{StdInt.<_17}> size_ys_1_1 size_xs_1_0) (True -> GenLexOrd.GT) (False -> GenLexOrd.lexord_168 _vArray_0 f_1 0 size_xs_1_0 xs_2 ys_3) ) 
+GenLexOrd.lexord_170 f_0 !i_1::I !n_2::I xs_3 ys_4 = case (<{StdInt.==_16}> i_1 n_2) (True -> GenLexOrd.EQ) (False -> <{GenLexOrd._c;79;27_179}> (f_0 (_SystemArray.select_75 xs_3 i_1) (_SystemArray.select_75 ys_4 i_1)) f_0 i_1 n_2 xs_3 ys_4) 
+<{GenLexOrd._c;79;27_179}> !_x_0 f_1 i_2::I n_3::I xs_4 ys_5 = case _x_0 (GenLexOrd.LT -> GenLexOrd.LT) (GenLexOrd.GT -> GenLexOrd.GT) (GenLexOrd.EQ -> GenLexOrd.lexord_170 f_1 (<{StdInt.+_6}> i_2 StdInt.one_11) n_3 xs_4 ys_5) 
+GenLexOrd.lexOrdArray_169 f_0 !xs_1 !ys_2 = let !size_xs_1_0::I = _SystemArray.size_76 xs_1, !size_ys_1_1::I = _SystemArray.size_76 ys_2 in case (<{StdInt.<_17}> size_xs_1_0 size_ys_1_1) (True -> GenLexOrd.LT) (False -> case (<{StdInt.<_17}> size_ys_1_1 size_xs_1_0) (True -> GenLexOrd.GT) (False -> GenLexOrd.lexord_170 f_0 0 size_xs_1_0 xs_1 ys_2) ) 
+GenLexOrd.gLexOrd__Array_15 f_0 !xs_1 !ys_2 = GenLexOrd.lexOrdArray_169 f_0 xs_1 ys_2
+GenLexOrd.lexord_172 !_vArray_0 f_1 !i_2::I !n_3::I xs_4 ys_5 = case (<{StdInt.==_16}> i_2 n_3) (True -> GenLexOrd.EQ) (False -> <{GenLexOrd._c;79;27_180}> (f_1 (_SystemArray.select_3 xs_4 i_2) (select _vArray_0::<{_SystemArray.Array;}> 3 ys_5 i_2)) _vArray_0 f_1 i_2 n_3 xs_4 ys_5) 
+<{GenLexOrd._c;79;27_180}> !_x_0 _vArray_1 f_2 i_3::I n_4::I xs_5 ys_6 = case _x_0 (GenLexOrd.LT -> GenLexOrd.LT) (GenLexOrd.GT -> GenLexOrd.GT) (GenLexOrd.EQ -> GenLexOrd.lexord_172 _vArray_1 f_2 (<{StdInt.+_6}> i_3 StdInt.one_11) n_4 xs_5 ys_6) 
+GenLexOrd.lexOrdArray_171 !_vArray_0 f_1 !xs_2 ys_3 = let !size_xs_1_0::I = _SystemArray.size_4 xs_2, !size_ys_1_1::I = select _vArray_0::<{_SystemArray.Array;}> 4 ys_3 in case (<{StdInt.<_17}> size_xs_1_0 size_ys_1_1) (True -> GenLexOrd.LT) (False -> case (<{StdInt.<_17}> size_ys_1_1 size_xs_1_0) (True -> GenLexOrd.GT) (False -> GenLexOrd.lexord_172 _vArray_0 f_1 0 size_xs_1_0 xs_2 ys_3) ) 
+GenLexOrd.lexord_174 f_0 !i_1::I !n_2::I xs_3 ys_4 = case (<{StdInt.==_16}> i_1 n_2) (True -> GenLexOrd.EQ) (False -> <{GenLexOrd._c;79;27_181}> (f_0 (_SystemArray.select_3 xs_3 i_1) (_SystemArray.select_3 ys_4 i_1)) f_0 i_1 n_2 xs_3 ys_4) 
+<{GenLexOrd._c;79;27_181}> !_x_0 f_1 i_2::I n_3::I xs_4 ys_5 = case _x_0 (GenLexOrd.LT -> GenLexOrd.LT) (GenLexOrd.GT -> GenLexOrd.GT) (GenLexOrd.EQ -> GenLexOrd.lexord_174 f_1 (<{StdInt.+_6}> i_2 StdInt.one_11) n_3 xs_4 ys_5) 
+GenLexOrd.lexOrdArray_173 f_0 !xs_1 !ys_2 = let !size_xs_1_0::I = _SystemArray.size_4 xs_1, !size_ys_1_1::I = _SystemArray.size_4 ys_2 in case (<{StdInt.<_17}> size_xs_1_0 size_ys_1_1) (True -> GenLexOrd.LT) (False -> case (<{StdInt.<_17}> size_ys_1_1 size_xs_1_0) (True -> GenLexOrd.GT) (False -> GenLexOrd.lexord_174 f_0 0 size_xs_1_0 xs_1 ys_2) ) 
+<{GenLexOrd.gLexOrd__!Array_16}> f_0 !xs_1 !ys_2 = GenLexOrd.lexOrdArray_173 f_0 xs_1 ys_2
+GenLexOrd.toGeneric_Tuple2_43 !x_0 = case x_0 (_Tuple2 x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1))) 
+GenLexOrd.gLexOrd__Tuple2_17 !<{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}> !x1_2 !x2_3 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}>)) (GenLexOrd.toGeneric_Tuple2_43 x1_2) (GenLexOrd.toGeneric_Tuple2_43 x2_3)
+GenLexOrd.toGeneric_Tuple3_50 !x_0 = case x_0 (_Tuple3 x11_1_0 x12_1_1 x13_1_2 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)))) 
+GenLexOrd.gLexOrd__Tuple3_18 !<{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}> !x1_3 !x2_4 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a0_0}> (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}>))) (GenLexOrd.toGeneric_Tuple3_50 x1_3) (GenLexOrd.toGeneric_Tuple3_50 x2_4)
+GenLexOrd.toGeneric_Tuple4_57 !x_0 = case x_0 (_Tuple4 x11_1_0 x12_1_1 x13_1_2 x14_1_3 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 x14_1_3)))) 
+GenLexOrd.gLexOrd__Tuple4_19 !<{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}> <{gLexOrd_a_b_42-0_a3_3}> !x1_4 !x2_5 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}>) (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a2_2}> <{gLexOrd_a_b_42-0_a3_3}>))) (GenLexOrd.toGeneric_Tuple4_57 x1_4) (GenLexOrd.toGeneric_Tuple4_57 x2_5)
+GenLexOrd.toGeneric_Tuple5_64 !x_0 = case x_0 (_Tuple5 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 (StdGeneric.PAIR x14_1_3 x15_1_4))))) 
+GenLexOrd.gLexOrd__Tuple5_20 !<{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}> <{gLexOrd_a_b_42-0_a3_3}> <{gLexOrd_a_b_42-0_a4_4}> !x1_5 !x2_6 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}>) (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a2_2}> (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a3_3}> <{gLexOrd_a_b_42-0_a4_4}>)))) (GenLexOrd.toGeneric_Tuple5_64 x1_5) (GenLexOrd.toGeneric_Tuple5_64 x2_6)
+GenLexOrd.toGeneric_Tuple6_71 !x_0 = case x_0 (_Tuple6 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)) (StdGeneric.PAIR x14_1_3 (StdGeneric.PAIR x15_1_4 x16_1_5))))) 
+GenLexOrd.gLexOrd__Tuple6_21 !<{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}> <{gLexOrd_a_b_42-0_a3_3}> <{gLexOrd_a_b_42-0_a4_4}> <{gLexOrd_a_b_42-0_a5_5}> !x1_6 !x2_7 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a0_0}> (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}>)) (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a3_3}> (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a4_4}> <{gLexOrd_a_b_42-0_a5_5}>)))) (GenLexOrd.toGeneric_Tuple6_71 x1_6) (GenLexOrd.toGeneric_Tuple6_71 x2_7)
+GenLexOrd.toGeneric_Tuple7_78 !x_0 = case x_0 (_Tuple7 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 x17_1_6 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)) (StdGeneric.PAIR (StdGeneric.PAIR x14_1_3 x15_1_4) (StdGeneric.PAIR x16_1_5 x17_1_6))))) 
+GenLexOrd.gLexOrd__Tuple7_22 !<{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}> <{gLexOrd_a_b_42-0_a3_3}> <{gLexOrd_a_b_42-0_a4_4}> <{gLexOrd_a_b_42-0_a5_5}> <{gLexOrd_a_b_42-0_a6_6}> !x1_7 !x2_8 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a0_0}> (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}>)) (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a3_3}> <{gLexOrd_a_b_42-0_a4_4}>) (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a5_5}> <{gLexOrd_a_b_42-0_a6_6}>)))) (GenLexOrd.toGeneric_Tuple7_78 x1_7) (GenLexOrd.toGeneric_Tuple7_78 x2_8)
+GenLexOrd.toGeneric_Tuple8_85 !x_0 = case x_0 (_Tuple8 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 x17_1_6 x18_1_7 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 x14_1_3)) (StdGeneric.PAIR (StdGeneric.PAIR x15_1_4 x16_1_5) (StdGeneric.PAIR x17_1_6 x18_1_7))))) 
+GenLexOrd.gLexOrd__Tuple8_23 !<{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}> <{gLexOrd_a_b_42-0_a2_2}> <{gLexOrd_a_b_42-0_a3_3}> <{gLexOrd_a_b_42-0_a4_4}> <{gLexOrd_a_b_42-0_a5_5}> <{gLexOrd_a_b_42-0_a6_6}> <{gLexOrd_a_b_42-0_a7_7}> !x1_8 !x2_9 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a0_0}> <{gLexOrd_a_b_42-0_a1_1}>) (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a2_2}> <{gLexOrd_a_b_42-0_a3_3}>)) (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a4_4}> <{gLexOrd_a_b_42-0_a5_5}>) (GenLexOrd.gLexOrd_PAIR_8 <{gLexOrd_a_b_42-0_a6_6}> <{gLexOrd_a_b_42-0_a7_7}>)))) (GenLexOrd.toGeneric_Tuple8_85 x1_8) (GenLexOrd.toGeneric_Tuple8_85 x2_9)
+<{GenLexOrd.TD;LexOrd}> _x_0::B = _predefined._Nil
+
+:: GenLexOrd.LexOrd = GenLexOrd.LT | GenLexOrd.EQ | GenLexOrd.GT
+
+|| Converted Records
+:: <{GenLexOrd.gEq_s;}> = {!GenLexOrd.gEq_s}
+
+:: <{GenLexOrd.gEq_ss;}> = {!GenLexOrd.gEq_ss}
+
+:: <{GenLexOrd.gEq_sss;}> = {!GenLexOrd.gEq_sss}
+
+:: <{GenLexOrd.gEq_ssss;}> = {!GenLexOrd.gEq_ssss}
+
+:: <{GenLexOrd.gEq_sssss;}> = {!GenLexOrd.gEq_sssss}
+
+:: <{GenLexOrd.gEq_ssssss;}> = {!GenLexOrd.gEq_ssssss}
+
+:: <{GenLexOrd.gEq_sssssss;}> = {!GenLexOrd.gEq_sssssss}
+
+:: <{GenLexOrd.gEq_ssssssss;}> = {!GenLexOrd.gEq_ssssssss}
+
+:: <{GenLexOrd.gEq_sssssssss;}> = {!GenLexOrd.gEq_sssssssss}
+
+:: <{GenLexOrd.bimap_s;}> = {GenLexOrd.bimap_s}
+
+:: <{GenLexOrd.bimap_ss;}> = {GenLexOrd.bimap_ss}
+
+:: <{GenLexOrd.bimap_sss;}> = {GenLexOrd.bimap_sss}
+
+:: <{GenLexOrd.gLexOrd_s;}> = {!GenLexOrd.gLexOrd_s}
+
+:: <{GenLexOrd.gLexOrd_ss;}> = {!GenLexOrd.gLexOrd_ss}
+
+:: <{GenLexOrd.gLexOrd_sss;}> = {!GenLexOrd.gLexOrd_sss}
+
+:: <{GenLexOrd.gLexOrd_ssss;}> = {!GenLexOrd.gLexOrd_ssss}
+
+:: <{GenLexOrd.gLexOrd_sssss;}> = {!GenLexOrd.gLexOrd_sssss}
+
+:: <{GenLexOrd.gLexOrd_ssssss;}> = {!GenLexOrd.gLexOrd_ssssss}
+
+:: <{GenLexOrd.gLexOrd_sssssss;}> = {!GenLexOrd.gLexOrd_sssssss}
+
+:: <{GenLexOrd.gLexOrd_ssssssss;}> = {!GenLexOrd.gLexOrd_ssssssss}
+
+:: <{GenLexOrd.gLexOrd_sssssssss;}> = {!GenLexOrd.gLexOrd_sssssssss}
+

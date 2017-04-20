@@ -168,4 +168,50 @@ wat mist nog aan Bas zijn kant van de Ace Editor?
 shortcuts
 timestamp
 
+---
+met de toevoeging van tabs moeten we nadenken over hoe de webIDE er nu uit komt te zien.
+Zo hoef je niet perse te starten met het selecteren van een file.
+Als er geen files in de sharedstore zijn:
+	vraag aan user om een file te selecteren
+Als er wel files in de sharedstore zijn:
+	Welke file laten we dan zien? we hebben geen userspecific data. Doe maar gewoon de eerste.
+	
+---
+wat is een paralleltask?
+Het krijgt een sharedTaskList van meerdere ietsen en returnt een zo'n iets.
+type sharedtasklist:
+:: SharedTaskList a	:==	RWShared TaskListFilter (!TaskId,![TaskListItem a]) [(!TaskId,!TaskAttributes)]
+---
+
+we hebben een share en een tasklist.
+de share bevat filenames, de tasklist bevat taskids die corresponderen met de filenames.
+We weten in welke volgorde de taskids zijn aangemaakt en daarom weten we de filenames.
+we hebben een share nodig van welke filename local bij welke tab hoort.
+
+---
+als we de functie updatetabs aanroepen, loopt de applicatie vast. Wat gebeurt er allemaal?
+editors wordt aangeroepen om meerdere tabs te maken. Editors maakt meerdere editor functies en de updatetabs functie
+er is een local share tabs, waar elke editor zijn id opslaat met als key zijn filename
+updatetabs watches contents. het krijgt een verouderde versie van utabs en compares de mapsize van die twee
+we kunnen er van uitgaan dat ze meteen al verschillen
+aux_append en aux_remove worden aangeroepen
+
+---
+updateTabs zou pas aangemaakt moeten worden, nadat tabs gemaakt is.
+
+---
+wat wil ik copyen uit Rinus code?
+applicatie haalt locatie van clean en cpm vanzelf op
+hij gebruikt "mode-haskell" als mode, maar dat lijkt net zo min te werken.
+
+---
+dingen die gevraagd moeten worden:
+Rinus:
+	ik kan je filesystem niet runnen
+	ik dacht dat jij automatisch errorchecking deed, want ik krijg nog steeds een flashing window
+Bas:
+	hoe zorg ik ervoor dat mijn tabs namen hebben
+	hoe zorg ik ervoor dat er een van de paralleltasks niet wordt laten gezien (op dit moment maakt hij er een lege tab van)
+	updateTabs crasht als ik de editorpage wil sluiten. Wss omdat de share die gewatcht wordt niet meer bestaat. Hoe voorkom ik dit.
+	
 

@@ -26,6 +26,8 @@ errorstate = sharedStore "errors" ""
 contents :: Shared (Map String [String])
 contents = sharedStore "contents" 'DM'.newMap
 
+project :: Shared String
+project = sharedStore "project" ""
 
 contentLinesOf :: String -> Task [String]
 contentLinesOf filename = 

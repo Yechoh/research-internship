@@ -12,14 +12,15 @@ import Text
 import iTasks.UI.Editor.Builtin
 import callCpm
 
-pageAskImportPaths :: String String AskImportPathsRedirects -> Task ()
-pageAskImportPaths path name ((actioncontinue,pagenodeEditor),(actioncancel,pagenodeEditor2)) =
-	readFromFile (path </> (toproj name)) >>- \(Just projtxt).
+pageAskImportPaths :: AskImportPathsRedirects -> Task ()
+pageAskImportPaths ((actioncontinue,pagenodeEditor),(actioncancel,pagenodeEditor2)) =
+	get project >>- \projname.
+	readFromFile projname >>- \(Just projtxt).
 	showUnresolvedImports
 	||-
-	showMapSelector path name
-	>>* [   OnAction  actioncontinue   	(always (pagenodeEditor path name))
-		,	OnAction actioncancel		(always (writeToFile (path </> (toproj name)) projtxt >>|- pagenodeEditor2 path name))
+	showMapSelector projname
+	>>* [   OnAction  actioncontinue   	(always (pagenodeEditor))
+		,	OnAction actioncancel		(always (writeToFile (projname) projtxt >>|- pagenodeEditor))
 		]
 		
 Errors2Imports :: String -> String
@@ -44,11 +45,11 @@ addPath2Project path cleandir projtxt
 	# newprojtxt = join ("Path:\t{Project}"+++OS_NEWLINE) [(hd splitted_projtxt),newpaths]
 	= newprojtxt
 
-showMapSelector :: String String -> Task ()
-showMapSelector iclpath iclname = 
+showMapSelector :: String -> Task ()
+showMapSelector projname = 
 	get settings
 	>>= \settings. selectFromTree settings.dirClean2 (isFile "dcl")
-	>>= \dclpath. readFromFile (toproj (iclpath </> iclname))
-	>>- \(Just projtxt). saveFile (toproj (iclpath </> iclname)) (addPath2Project dclpath settings.dirClean projtxt)
-	>>|- cpmSetErrorstate iclpath iclname
-	>>|- showMapSelector iclpath iclname
+	>>= \dclpath. readFromFile projname
+	>>- \(Just projtxt). saveFile projname (addPath2Project dclpath settings.dirClean projtxt)
+	>>|- cpmSetErrorstate
+	>>|- showMapSelector projname

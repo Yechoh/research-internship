@@ -19,6 +19,9 @@ errorstate :: Shared String
 //contents = ([(filename,[line])],prev_time)
 contents :: Shared (Map String [String])
 
+project :: Shared String
+
 //functions to get specific content
 contentLinesOf :: String -> Task [String]
+joinWithNewline :: String String -> String
 contentOf :: String -> Task String
