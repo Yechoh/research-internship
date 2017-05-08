@@ -108,6 +108,7 @@ before i a = fst (splitAt i a)
 after :: Int [a] -> [a]
 after i a = snd (splitAt i a)
 
+//adds the interspersed element also as head
 intersperse :: a [a] -> [a]
 intersperse el [] = []
 intersperse el l = foldr (\x y.[el,x: y]) [] l
@@ -115,6 +116,7 @@ intersperse el l = foldr (\x y.[el,x: y]) [] l
 viewSelection :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
 viewSelection filename s = \tasklist. viewSharedInformation "selected" [ViewUsing (\(ei,c). mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) (textArea 'DM'.newMap)] s >>|- return ()
 where
+	mrange2text _ Nothing = ""
 	mrange2text Nothing (Just text) = "-"
 	mrange2text (Just {start=(x1,y1),end=(x2,y2)}) (Just text) = 
 		if (x1==x2) 
@@ -141,7 +143,7 @@ eiAndContents2ErRead filename (ei,contents)  =
 		}
 		,
 		{AceState|
-			lines = fromJust (fst ('DM'.getU filename contents)),
+			lines = maybe ["henkig"] (\id.id) (fst ('DM'.getU filename contents)) ,
 			cursor = ei.EditorInfo.position,
 			selection = ei.EditorInfo.selection,
 			disabled = ei.EditorInfo.readOnly
@@ -180,7 +182,7 @@ editor filename cnt = \tasklist.withShared editorInfo (\ei.
 			saveFile filename content >>|- 
 			get cnt >>- \(ucontents,utabs).
 			set (('DM'.del filename ucontents),('DM'.del filename utabs)) cnt >>|-
-			return ()))
+			return ()))	
 		]
 	where
 	er ei filename = mapReadWrite ((eiAndContents2ErRead filename), (er2EiAndContentsWrite filename)) (ei >*< contents)
@@ -192,7 +194,7 @@ simpleEditor filename = \tasklist.
 editors :: Task [(TaskTime,TaskValue ())]
 editors = 
 	get contents >>- \c. withShared 'DM'.newMap (\tabs.
-	parallel /*[(Embedded,(waitf c tabs (updateTabs tabs))):*/(map (\x.(Embedded,(editor x (contents >*< tabs)))) ('DM'.keys c))/*]*/ [] <<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs))
+	parallel [(Embedded,(waitf c tabs (updateTabs tabs))):(map (\x.(Embedded,(editor x (contents >*< tabs)))) ('DM'.keys c))] [] <<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs))
 	where
 	waitf :: (Map String [String]) (Shared (Map String TaskId)) (ParallelTask ()) -> ParallelTask ()
 	waitf c tabs task = \tasklist.watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. task tasklist))] 
@@ -210,10 +212,16 @@ differentLengths :: (Map String [String]) (Map String TaskId) -> Bool
 differentLengths c utabs =  not ('DM'.mapSize c == 'DM'.mapSize utabs)
 
 updateTabs :: (Shared (Map String TaskId)) -> ParallelTask ()
-updateTabs tabs = \tasklist. watch (cnt tabs)
-	>^* [	OnValue		(ifValue (\(c,utabs). differentLengths c utabs) (\(c,utabs). (auxa utabs c tasklist)))]
-	>>|- return ()
+updateTabs tabs = \tasklist. ut tabs tasklist 
 	where
+	ut :: (Shared (Map String TaskId)) -> ParallelTask ()
+	ut tabs = \tasklist. watch (cnt tabs) 
+		>>* [	OnValue		(ifValue (\(c,utabs). differentLengths c utabs) (\(c,utabs). (auxa utabs c tasklist) >>|- 
+				watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. updateTabs tabs tasklist))]))]
+	
+	waitf :: (Map String [String]) (Shared (Map String TaskId)) (ParallelTask ()) -> ParallelTask ()
+	waitf c tabs task = \tasklist.watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. task tasklist))] 
+	
 	auxa :: (Map String TaskId) (Map String [String]) (SharedTaskList ()) -> Task ()
 	auxa utabs c tasklist = (aux_append utabs c tasklist) 
 		>>|- (aux_remove utabs c tasklist)

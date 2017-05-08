@@ -1,26 +1,27 @@
 .comp 920 000110010001
 .start _nostart_
+.depend "Text" "20170403171231"
+.depend "System.Directory" "20170403171236"
+.depend "iTasks.API.Extensions.Editors.Ace" "20170403171227"
+.depend "projectOptions" "20170404084453"
+.depend "createAndRunExec" "20170323003113"
+.depend "directoryBrowsing" "20170404084453"
+.depend "ideConstants" "20170420144527"
+.depend "System.Environment" "20170403171236"
+.depend "ideUtil" "20170406094009"
+.depend "ideStores" "20170404084453"
 .depend "iTasks._Framework.Tonic" "20170403171231"
 .depend "iTasks._Framework.Tonic.Types" "20170403171231"
 .depend "StdMisc" "20170403171239"
 .depend "StdCharList" "20170403171239"
+.depend "_SystemArray" "20170403171239"
+.depend "StdArray" "20170403171239"
 .depend "StdEnv" "20170403171239"
 .depend "Math.Geometry" "20170403171236"
 .depend "Graphics.Scalable.Internal" "20170403171236"
 .depend "Graphics.Scalable" "20170403171236"
 .depend "iTasks._Framework.Tonic.Images" "20170403171231"
 .depend "iTasks.API.Extensions.Admin.TonicAdmin" "20170403171221"
-.depend "System.Directory" "20170403171236"
-.depend "_SystemArray" "20170403171239"
-.depend "StdArray" "20170403171239"
-.depend "Text" "20170403171231"
-.depend "iTasks.API.Extensions.Editors.Ace" "20170403171227"
-.depend "projectOptions" "20170404084453"
-.depend "createAndRunExec" "20170323003113"
-.depend "directoryBrowsing" "20170404084453"
-.depend "ideUtil" "20170406094009"
-.depend "ideConstants" "20170420144527"
-.depend "System.Environment" "20170403171236"
 .depend "_SystemEnum" "20170403171239"
 .depend "StdEnum" "20170403171239"
 .depend "StdTuple" "20170403171239"
@@ -117,7 +118,6 @@
 .depend "iTasks" "20170403171220"
 .depend "StdOverloaded" "20170403171239"
 .depend "_SystemDynamic" "20170403171219"
-.depend "ideStores" "20170404084453"
 .depend "ideEditor" "20170404142113"
 .module m_ideEditor "ideEditor" "20170411094014"
 .endinfo
@@ -156,7 +156,6 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.impmod _SystemArray
 .impmod Text
 .implab e_Text_sjoin;5
 .implab e_Text_ssplit;12
@@ -228,6 +227,43 @@
 .impdesc e_ideUtil_dmbCancel
 .implab e_ideUtil_smbCancel
 .implab e_ideUtil_nmbCancel e_ideUtil_eambCancel
+.impmod ideStores
+.implab e_ideStores_ssettings
+.impdesc e_ideStores_dproject
+.implab e_ideStores_sproject
+.implab e_ideStores_nproject e_ideStores_eaproject
+.implab e_ideStores_srecentFiles
+.implab e_ideStores_serrorStore
+.impdesc e_ideStores_dparmStore
+.implab e_ideStores_nparmStore e_ideStores_eaparmStore
+.implab e_ideStores_saddToRecentFiles
+.implab e_ideStores_sshowSettings
+.implab e_ideStores_sfindFileInProjectEnv
+.impdesc e_ideStores_dgEditor_Settings;15
+.implab e_ideStores_ngEditor_Settings;15
+.impdesc e_ideStores_dgText_Settings;16
+.impdesc e_ideStores_dJSONEncode_Settings;17
+.impdesc e_ideStores_dJSONDecode_Settings;18
+.impdesc e_ideStores_dgDefault_Settings;19
+.implab e_ideStores_ngDefault_Settings;19
+.impdesc e_ideStores_dgEq_Settings;20
+.impdesc e_ideStores_dgEditor_Project;21
+.implab e_ideStores_ngEditor_Project;21
+.impdesc e_ideStores_dgText_Project;22
+.impdesc e_ideStores_dJSONEncode_Project;23
+.impdesc e_ideStores_dJSONDecode_Project;24
+.impdesc e_ideStores_dgDefault_Project;25
+.implab e_ideStores_ngDefault_Project;25
+.impdesc e_ideStores_dgEq_Project;26
+.impdesc e_ideStores_dTD;Settings
+.impdesc e_ideStores_dTD;Project
+.impdesc e_ideStores_dSettings.cpmDirectory
+.implab e_ideStores_nSettings.cpmDirectory
+.impdesc e_ideStores_dProject.projectName
+.implab e_ideStores_nProject.projectName
+.impdesc e_ideStores_dProject.projectPath
+.implab e_ideStores_nProject.projectPath
+.impmod _SystemArray
 .impmod StdTuple
 .impdesc e_StdTuple_d==;4
 .impmod iTasks.UI.Layout.Common
@@ -494,42 +530,6 @@
 .impdesc e__SystemDynamic_dTC__Tuple3
 .impdesc e__SystemDynamic_dTC__UnboxedArray
 .impdesc e__SystemDynamic_dTC__Unit
-.impmod ideStores
-.implab e_ideStores_ssettings
-.impdesc e_ideStores_dproject
-.implab e_ideStores_sproject
-.implab e_ideStores_nproject e_ideStores_eaproject
-.implab e_ideStores_srecentFiles
-.implab e_ideStores_serrorStore
-.impdesc e_ideStores_dparmStore
-.implab e_ideStores_nparmStore e_ideStores_eaparmStore
-.implab e_ideStores_saddToRecentFiles
-.implab e_ideStores_sshowSettings
-.implab e_ideStores_sfindFileInProjectEnv
-.impdesc e_ideStores_dgEditor_Settings;15
-.implab e_ideStores_ngEditor_Settings;15
-.impdesc e_ideStores_dgText_Settings;16
-.impdesc e_ideStores_dJSONEncode_Settings;17
-.impdesc e_ideStores_dJSONDecode_Settings;18
-.impdesc e_ideStores_dgDefault_Settings;19
-.implab e_ideStores_ngDefault_Settings;19
-.impdesc e_ideStores_dgEq_Settings;20
-.impdesc e_ideStores_dgEditor_Project;21
-.implab e_ideStores_ngEditor_Project;21
-.impdesc e_ideStores_dgText_Project;22
-.impdesc e_ideStores_dJSONEncode_Project;23
-.impdesc e_ideStores_dJSONDecode_Project;24
-.impdesc e_ideStores_dgDefault_Project;25
-.implab e_ideStores_ngDefault_Project;25
-.impdesc e_ideStores_dgEq_Project;26
-.impdesc e_ideStores_dTD;Settings
-.impdesc e_ideStores_dTD;Project
-.impdesc e_ideStores_dSettings.cpmDirectory
-.implab e_ideStores_nSettings.cpmDirectory
-.impdesc e_ideStores_dProject.projectName
-.implab e_ideStores_nProject.projectName
-.impdesc e_ideStores_dProject.projectPath
-.implab e_ideStores_nProject.projectPath
 .record r432 aaaa 4 0 "FindReplace"
 .record r437 aaaaa 5 0 "Error"
 .descs d440 n440 _ 4 0 "Error.line"
@@ -546,11 +546,11 @@ n440
 .d 1 0
 	rtn
 .pe
-.record r443 a 1 0 "gEditor_s;"
-.record r449 a 1 0 "gText_s;"
-.record r455 a 1 0 "JSONEncode_s;"
-.record r461 a 1 0 "JSONDecode_s;"
-.record r467 a 1 0 "gDefault_s;"
+.record r443 a 1 0 "JSONEncode_s;"
+.record r449 a 1 0 "JSONDecode_s;"
+.record r455 a 1 0 "gDefault_s;"
+.record r461 a 1 0 "gText_s;"
+.record r467 a 1 0 "gEditor_s;"
 .record r473 a 1 0 "gEq_s;"
 .export e_ideEditor_sTD;Error
 .export e_ideEditor_eaTD;Error
@@ -673,11 +673,11 @@ s2
 	update_a 0 2
 	pop_a 2
 	build _ 0 n212
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n232
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 4 n574
@@ -686,11 +686,11 @@ s2
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e__SystemDynamic_dTC_Char 0
@@ -726,11 +726,11 @@ s2
 	update_a 0 2
 	pop_a 2
 	build _ 0 n212
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n232
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 7 n573
@@ -1068,11 +1068,11 @@ case.2
 	update_a 0 2
 	pop_a 2
 	build _ 0 n212
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n232
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 4 n646
@@ -1776,11 +1776,11 @@ s38
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 3 n606
@@ -1801,11 +1801,11 @@ s38
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e_Text.HTML_dTD;HtmlTag 0
@@ -1813,11 +1813,11 @@ s38
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault_HtmlTag;29 0 e_iTasks._Framework.Generic.Defaults_ngDefault_HtmlTag;29
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor_HtmlTag;26 0 e_iTasks.UI.Editor.Generic_ngEditor_HtmlTag;26
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 8 n605
@@ -1847,11 +1847,11 @@ s38
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e__SystemDynamic_dTC__Unit 0
@@ -1859,11 +1859,11 @@ s38
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 8 n604
@@ -2946,11 +2946,11 @@ s34
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 3 n599
@@ -2969,11 +2969,11 @@ s34
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 5 n597
@@ -4358,11 +4358,11 @@ s368
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 3 n641
@@ -6631,11 +6631,11 @@ s13
 	update_a 0 2
 	pop_a 2
 	build _ 0 n184
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n193
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 6
@@ -7397,11 +7397,11 @@ s16
 	update_a 0 2
 	pop_a 2
 	build _ 0 n184
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n193
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 4
@@ -7644,11 +7644,11 @@ s15
 	update_a 0 2
 	pop_a 2
 	build _ 0 n184
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n193
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 5
@@ -7920,11 +7920,11 @@ else.84
 	update_a 0 2
 	pop_a 2
 	build _ 0 n331
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n336
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 4 n636
@@ -7951,11 +7951,11 @@ else.84
 	push_a 4
 	build e__SystemDynamic_d_normalise 2 e__SystemDynamic_n_normalise
 	build _ 0 n309
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n314
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e_iTasks.API.Extensions.Editors.Ace_dTD;AceState 0
@@ -7978,11 +7978,11 @@ else.84
 	push_a 7
 	build e__SystemDynamic_d_normalise 2 e__SystemDynamic_n_normalise
 	build _ 0 n309
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n314
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 11
@@ -9208,11 +9208,11 @@ s17
 	update_a 0 2
 	pop_a 2
 	build _ 0 n184
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n193
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 4
@@ -10442,11 +10442,11 @@ s279
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 3 n624
@@ -10463,11 +10463,11 @@ s279
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 4 n623
@@ -10674,11 +10674,11 @@ s43
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 5
@@ -10718,11 +10718,11 @@ s43
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 6
@@ -10746,11 +10746,11 @@ s43
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e__SystemDynamic_dTC_Char 0
@@ -10765,11 +10765,11 @@ s43
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 8 n616
@@ -11028,11 +11028,11 @@ s41
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 4
@@ -11060,11 +11060,11 @@ s41
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e__SystemDynamic_dTC__Unit 0
@@ -11072,11 +11072,11 @@ s41
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 8 n619
@@ -11651,11 +11651,11 @@ s32
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 3 n615
@@ -12216,11 +12216,11 @@ s49
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 4 n612
@@ -12229,11 +12229,11 @@ s49
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e__SystemDynamic_dTC_Char 0
@@ -12248,11 +12248,11 @@ s49
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 7 n611
@@ -12524,11 +12524,11 @@ case.109
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 3 n614
@@ -12545,11 +12545,11 @@ case.109
 	update_a 0 2
 	pop_a 2
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__String;12 0 e_iTasks._Framework.Generic.Defaults_ngDefault__String;12
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	push_a 6
@@ -12767,11 +12767,11 @@ s18
 	update_a 0 1
 	pop_a 1
 	build e_ideStores_dgDefault_Project;25 0 e_ideStores_ngDefault_Project;25
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_ideStores_dgEditor_Project;21 0 e_ideStores_ngEditor_Project;21
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 4 n583
@@ -12780,11 +12780,11 @@ s18
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e_ideStores_dTD;Project 0
@@ -12792,11 +12792,11 @@ s18
 	update_a 0 1
 	pop_a 1
 	build e_ideStores_dgDefault_Project;25 0 e_ideStores_ngDefault_Project;25
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_ideStores_dgEditor_Project;21 0 e_ideStores_ngEditor_Project;21
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 7 n582
@@ -13799,11 +13799,11 @@ s28
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 3 n580
@@ -13842,11 +13842,11 @@ s28
 	update_a 0 2
 	pop_a 2
 	build _ 0 n212
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n232
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 4 n579
@@ -13860,11 +13860,11 @@ s28
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault_HtmlTag;29 0 e_iTasks._Framework.Generic.Defaults_ngDefault_HtmlTag;29
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor_HtmlTag;26 0 e_iTasks.UI.Editor.Generic_ngEditor_HtmlTag;26
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 5 n578
@@ -13901,11 +13901,11 @@ s28
 	update_a 0 2
 	pop_a 2
 	build _ 0 n212
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n232
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e_Text.HTML_dTD;HtmlTag 0
@@ -13913,11 +13913,11 @@ s28
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault_HtmlTag;29 0 e_iTasks._Framework.Generic.Defaults_ngDefault_HtmlTag;29
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor_HtmlTag;26 0 e_iTasks.UI.Editor.Generic_ngEditor_HtmlTag;26
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 8 n577
@@ -13962,11 +13962,11 @@ s28
 	update_a 0 2
 	pop_a 2
 	build _ 0 n212
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n232
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 5 n576
@@ -13975,11 +13975,11 @@ s28
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	buildh e__SystemDynamic_dTC_Char 0
@@ -14015,11 +14015,11 @@ s28
 	update_a 0 2
 	pop_a 2
 	build _ 0 n212
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 0 n232
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 8 n575
@@ -16920,11 +16920,11 @@ s9
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks._Framework.Generic.Defaults_ngDefault__Unit;14
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 3 n587
@@ -16939,11 +16939,11 @@ s9
 	update_a 0 1
 	pop_a 1
 	build e_iTasks._Framework.Generic.Defaults_dgDefault_HtmlTag;29 0 e_iTasks._Framework.Generic.Defaults_ngDefault_HtmlTag;29
-	build_r r467 1 0 0 0
+	build_r r455 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build e_iTasks.UI.Editor.Generic_dgEditor_HtmlTag;26 0 e_iTasks.UI.Editor.Generic_ngEditor_HtmlTag;26
-	build_r r443 1 0 0 0
+	build_r r467 1 0 0 0
 	update_a 0 1
 	pop_a 1
 	build _ 5 n586

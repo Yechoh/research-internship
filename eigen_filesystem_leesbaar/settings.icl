@@ -2,8 +2,8 @@ implementation module settings
 
 import System.FilePath, System.Environment, Text.HTML
 import ideConstants, ideUtil, directoryBrowsing, createAndRunExec, projectOptions
-
-
+-
+-
 settings :: Shared Settings
 settings 	= sharedStore "settings" 	{ cpmDirectory	= ""
 										} 
@@ -75,3 +75,4 @@ where
 		>>- \recent ->	enterChoice "Select previous project to open..." [ChooseFromGrid (\rec -> rec.projectName)] recent
 		>>* 			[ OnAction (Action "Use") (hasValue (\oldProj -> set oldProj project @! () ))
 						]	 
+

@@ -1,0 +1,876 @@
+.comp 920 000110010001
+.start _nostart_
+.depend "_SystemEnum" "20170403171239"
+.depend "StdEnum" "20170403171239"
+.depend "StdTuple" "20170403171239"
+.depend "StdOrdList" "20170403171239"
+.depend "iTasks.API.Extensions.Admin.WorkflowAdmin" "20170403171221"
+.depend "iTasks.API.Extensions.User" "20170403171221"
+.depend "iTasks.API.Extensions.Admin.UserAdmin" "20170403171221"
+.depend "iTasks.UI.Layout.Common" "20170403171227"
+.depend "iTasks.UI.Layout" "20170403171227"
+.depend "iTasks.API.Common.SDSCombinators" "20170403171220"
+.depend "iTasks.API.Core.SDSCombinators" "20170403171220"
+.depend "iTasks.API.Core.SDSs" "20170403171220"
+.depend "iTasks.API.Common.TaskCombinators" "20170403171220"
+.depend "iTasks.API.Core.TaskCombinators" "20170403171221"
+.depend "iTasks.API.Common.ExportTasks" "20170403171220"
+.depend "iTasks.API.Common.ImportTasks" "20170403171220"
+.depend "iTasks.API.Common.DBTasks" "20170403171220"
+.depend "iTasks.UI.Editor.Builtin" "20170403171227"
+.depend "iTasks.API.Common.InteractionTasks" "20170403171220"
+.depend "Text.URI" "20170403171237"
+.depend "iTasks.API.Core.IntegrationTasks" "20170403171220"
+.depend "iTasks.API.Core.Tasks" "20170403171221"
+.depend "iTasks.API" "20170403171220"
+.depend "Internet.HTTP" "20170403171236"
+.depend "Data.IntMap.Base" "20170403171235"
+.depend "Data.IntMap.Strict" "20170403171235"
+.depend "Data.CircularStack" "20170403171232"
+.depend "iTasks._Framework.Tonic.AbsSyn" "20170403171231"
+.depend "iTasks.UI.Prompt" "20170403171227"
+.depend "TCPStringChannelsInternal" "20170403171240"
+.depend "TCPStringChannels" "20170403171240"
+.depend "TCPEvent" "20170403171240"
+.depend "tcp_bytestreams" "20170403171241"
+.depend "TCPDef" "20170403171240"
+.depend "TCPChannels" "20170403171240"
+.depend "tcp" "20170403171240"
+.depend "StdMaybe" "20170403171235"
+.depend "TCPChannelClass" "20170403171240"
+.depend "TCPIP" "20170403171240"
+.depend "Data.Void" "20170403171233"
+.depend "Sapl.SaplStruct" "20170403171238"
+.depend "Sapl.SaplParser" "20170403171238"
+.depend "Sapl.Target.Flavour" "20170403171238"
+.depend "Text.StringAppender" "20170403171237"
+.depend "Text.Unicode.UChar" "20170403171238"
+.depend "Text.Unicode" "20170403171237"
+.depend "Sapl.SaplTokenizer" "20170403171238"
+.depend "Sapl.Linker.SaplLinkerShared" "20170403171238"
+.depend "Sapl.Linker.LazyLinker" "20170403171238"
+.depend "Data.Queue" "20170403171233"
+.depend "iTasks._Framework.TaskState" "20170403171230"
+.depend "iTasks.UI.Editor.Generic" "20170403171227"
+.depend "iTasks._Framework.Generic.Defaults" "20170403171231"
+.depend "iTasks.UI.JS.Interface" "20170403171227"
+.depend "iTasks.UI.Editor" "20170403171227"
+.depend "iTasks._Framework.SDS" "20170403171230"
+.depend "iTasks._Framework.Generic.Visualization" "20170403171231"
+.depend "iTasks._Framework.Generic" "20170403171230"
+.depend "iTasks.UI.Definition" "20170403171227"
+.depend "Data.Set" "20170403171233"
+.depend "iTasks._Framework.IWorld" "20170403171230"
+.depend "Data.List" "20170403171233"
+.depend "StdFunc" "20170403171239"
+.depend "Data.Map" "20170403171233"
+.depend "GenLexOrd" "20170403171219"
+.depend "System.OSError" "20170403171236"
+.depend "System.Time" "20170403171236"
+.depend "System.File" "20170403171236"
+.depend "Data.Error" "20170403171232"
+.depend "Text.HTML" "20170403171237"
+.depend "Data.Either" "20170403171232"
+.depend "StdFile" "20170403171239"
+.depend "StdString" "20170403171239"
+.depend "Text.JSON" "20170403171237"
+.depend "StdGeneric" "20170403171239"
+.depend "GenEq" "20170403171219"
+.depend "Data.Monoid" "20170403171233"
+.depend "Control.Monad" "20170403171232"
+.depend "Control.Applicative" "20170403171231"
+.depend "System.IO" "20170403171236"
+.depend "Data.Functor" "20170403171232"
+.depend "Data.Maybe" "20170403171233"
+.depend "iTasks.API.Core.Types" "20170403171221"
+.depend "iTasks._Framework.Task" "20170403171230"
+.depend "System.OS" "20170403171236"
+.depend "System.FilePath" "20170403171236"
+.depend "StdReal" "20170403171239"
+.depend "StdChar" "20170403171239"
+.depend "StdInt" "20170403171239"
+.depend "StdBool" "20170403171239"
+.depend "StdClass" "20170403171239"
+.depend "StdList" "20170403171239"
+.depend "iTasks._Framework.Engine" "20170403171230"
+.depend "iTasks" "20170403171220"
+.depend "StdOverloaded" "20170403171239"
+.depend "_SystemDynamic" "20170403171219"
+.depend "test" "20170501161210"
+.module m_test "test" "20170501161210"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod iTasks.API.Common.TaskCombinators
+.implab e_iTasks.API.Common.TaskCombinators_s>>*
+.impdesc e_iTasks.API.Common.TaskCombinators_difValue
+.impmod iTasks.API.Core.TaskCombinators
+.impdesc e_iTasks.API.Core.TaskCombinators_dOnAction
+.impmod iTasks.UI.Editor.Generic
+.implab e_iTasks.UI.Editor.Generic_sgEditor_Maybe;21
+.impmod iTasks._Framework.Generic.Defaults
+.implab e_iTasks._Framework.Generic.Defaults_sgDefault_Maybe;24
+.impmod iTasks._Framework.Generic.Visualization
+.implab e_iTasks._Framework.Generic.Visualization_sgText_Maybe;27
+.impmod iTasks._Framework.Generic
+.impdesc e_iTasks._Framework.Generic_riTask;
+.impdesc e_iTasks._Framework.Generic_diTask;.gEditor_s
+.implab e_iTasks._Framework.Generic_niTask;.gEditor_s
+.impdesc e_iTasks._Framework.Generic_diTask;.gText_s
+.implab e_iTasks._Framework.Generic_niTask;.gText_s
+.impdesc e_iTasks._Framework.Generic_diTask;.JSONEncode_s
+.implab e_iTasks._Framework.Generic_niTask;.JSONEncode_s
+.impdesc e_iTasks._Framework.Generic_diTask;.JSONDecode_s
+.implab e_iTasks._Framework.Generic_niTask;.JSONDecode_s
+.impdesc e_iTasks._Framework.Generic_diTask;.gDefault_s
+.implab e_iTasks._Framework.Generic_niTask;.gDefault_s
+.impdesc e_iTasks._Framework.Generic_diTask;.gEq_s
+.implab e_iTasks._Framework.Generic_niTask;.gEq_s
+.impmod Text.JSON
+.implab e_Text.JSON_sJSONEncode_Maybe;27
+.implab e_Text.JSON_sJSONDecode_Maybe;54
+.impmod Data.Maybe
+.implab e_Data.Maybe_sgEq_Maybe;13
+.impdesc e_Data.Maybe_dTD;Maybe
+.impdesc e_Data.Maybe_dNothing
+.impdesc e_Data.Maybe_dJust
+.impmod iTasks.API.Core.Types
+.implab e_iTasks.API.Core.Types_sreturn;8
+.impdesc e_iTasks.API.Core.Types_kAction
+.impmod StdBool
+.implab e_StdBool_snot
+.impmod _SystemDynamic
+.implab e__SystemDynamic_s_initial_unification_environment
+.implab e__SystemDynamic_s_bind_global_type_pattern_var
+.impdesc e__SystemDynamic_d_normalise
+.implab e__SystemDynamic_s_normalise
+.implab e__SystemDynamic_n_normalise e__SystemDynamic_ea_normalise
+.impdesc e__SystemDynamic_rTypeCodeConstructor
+.impdesc e__SystemDynamic_kTypeVar
+.impdesc e__SystemDynamic_kTypeCons
+.impdesc e__SystemDynamic_kTypeApp
+.record r17 a 1 0 "JSONEncode_s;"
+.descs d18 n18 _ 1 0 "JSONEncode_s;.JSONEncode_s"
+.pb "JSONEncode_s"
+.n -4 d18 ea18
+.o 1 0
+n18
+	push_node _cycle_in_spine 1
+.o 2 0
+.pn
+ea18
+	jsr_eval 0
+	repl_r_args_a 1 0 1 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.pe
+.record r23 a 1 0 "JSONDecode_s;"
+.descs d24 n24 _ 1 0 "JSONDecode_s;.JSONDecode_s"
+.pb "JSONDecode_s"
+.n -4 d24 ea24
+.o 1 0
+n24
+	push_node _cycle_in_spine 1
+.o 2 0
+.pn
+ea24
+	jsr_eval 0
+	repl_r_args_a 1 0 1 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.pe
+.record r29 a 1 0 "gDefault_s;"
+.descs d30 n30 _ 1 0 "gDefault_s;.gDefault_s"
+.pb "gDefault_s"
+.n -4 d30 ea30
+.o 1 0
+n30
+	push_node _cycle_in_spine 1
+.o 2 0
+.pn
+ea30
+	jsr_eval 0
+	repl_r_args_a 1 0 1 1
+	jsr_eval 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.pe
+.record r35 a 1 0 "gText_s;"
+.descs d36 n36 _ 1 0 "gText_s;.gText_s"
+.pb "gText_s"
+.n -4 d36 ea36
+.o 1 0
+n36
+	push_node _cycle_in_spine 1
+.o 2 0
+.pn
+ea36
+	jsr_eval 0
+	repl_r_args_a 1 0 1 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.pe
+.record r41 a 1 0 "gEditor_s;"
+.descs d42 n42 _ 1 0 "gEditor_s;.gEditor_s"
+.pb "gEditor_s"
+.n -4 d42 ea42
+.o 1 0
+n42
+	push_node _cycle_in_spine 1
+.o 2 0
+.pn
+ea42
+	jsr_eval 0
+	repl_r_args_a 1 0 1 1
+	jsr_eval 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.pe
+.record r47 a 1 0 "gEq_s;"
+.descs d48 n48 _ 1 0 "gEq_s;.gEq_s"
+.pb "gEq_s"
+.n -4 d48 ea48
+.o 1 0
+n48
+	push_node _cycle_in_spine 1
+.o 2 0
+.pn
+ea48
+	jsr_eval 0
+	repl_r_args_a 1 0 1 1
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.pe
+.export e_test_smyTest
+.export e_test_eamyTest
+.descexp e_test_dmyTest e_test_nmyTest e_test_lmyTest 3 0 "myTest"
+.pb "myTest"
+.pl
+.a 3 e_test_eamyTest
+.o 2 0
+e_test_lmyTest
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.d 4 0
+.pn
+	jmp e_test_eamyTest
+.n 3 e_test_dmyTest e_test_eamyTest
+.o 1 0
+e_test_nmyTest
+	push_node _cycle_in_spine 3
+.d 4 0
+.pn
+	jmp e_test_eamyTest
+.o 10 0
+e_test_smyTest
+	jsr_eval 8
+.d 10 0
+.pt
+	jmp s1
+.o 4 0
+.pn
+e_test_eamyTest
+	jsr_eval 2
+	jsr_eval 0
+	repl_r_args 7 0
+.o 10 0
+s1
+	create
+	pushI 0
+	pushI 2
+.d 1 2 ii
+	jsr e__SystemDynamic_s_initial_unification_environment
+.o 1 0
+	push_a 7
+	pushI 0
+	build_r e__SystemDynamic_kTypeVar 0 1 0 0
+	pop_b 1
+	create
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+.d 4 0
+	jsr e__SystemDynamic_s_bind_global_type_pattern_var
+.o 1 0
+	push_a 7
+	pushI 1
+	build_r e__SystemDynamic_kTypeVar 0 1 0 0
+	pop_b 1
+	create
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+.d 4 0
+	jsr e__SystemDynamic_s_bind_global_type_pattern_var
+.o 1 0
+	buildh _Nil 0
+	build_r e_iTasks._Framework.Generic_riTask; 7 0 2 0
+	buildh d13 1
+	push_a 10
+	buildh d12 1
+	buildh e_iTasks.API.Common.TaskCombinators_difValue 2
+	buildAC "Not Ok"
+	build_r e_iTasks.API.Core.Types_kAction 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e_iTasks.API.Core.TaskCombinators_dOnAction 2
+	buildh _Cons 2
+	buildh e_Data.Maybe_dJust 0
+	build_r e_iTasks._Framework.Generic_riTask; 7 0 3 0
+	pushI 1
+	build_r e__SystemDynamic_kTypeVar 0 1 0 0
+	pop_b 1
+	buildh e_Data.Maybe_dTD;Maybe 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 4
+	build e__SystemDynamic_d_normalise 2 e__SystemDynamic_n_normalise
+	buildh d14 3
+	push_a 10
+	buildh e_iTasks.API.Common.TaskCombinators_difValue 2
+	buildAC "Ok"
+	build_r e_iTasks.API.Core.Types_kAction 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e_iTasks.API.Core.TaskCombinators_dOnAction 2
+	buildh _Cons 2
+	pushI 0
+	build_r e__SystemDynamic_kTypeVar 0 1 0 0
+	pop_b 1
+	buildh e_Data.Maybe_dTD;Maybe 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	create
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 13
+	pop_a 1
+.d 3 0
+	jsr e__SystemDynamic_s_normalise
+.o 1 0
+.impmod StdGeneric
+.impdesc e_StdGeneric_rGenericDict
+	build_r e_StdGeneric_rGenericDict 1 0 8 0
+	buildh d5 1
+.impdesc e_StdGeneric_rGenericDict0
+	build_r e_StdGeneric_rGenericDict0 1 0 8 0
+	build _ 1 n9
+	build_r e_StdGeneric_rGenericDict 1 0 8 0
+	buildh d7 1
+	build_r e_StdGeneric_rGenericDict 1 0 8 0
+	buildh d6 1
+	build_r e_StdGeneric_rGenericDict 1 0 8 0
+	buildh d8 1
+	build_r e_StdGeneric_rGenericDict 1 0 11 0
+	build_r e_StdGeneric_rGenericDict 1 0 11 0
+	build_r e_StdGeneric_rGenericDict0 1 0 14 0
+	build_r e_StdGeneric_rGenericDict 1 0 12 0
+	build_r e_StdGeneric_rGenericDict0 1 0 12 0
+	build _ 5 n10
+	push_a 17
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 16
+	push_a 14
+	update_a 8 15
+	update_a 9 8
+	update_a 10 9
+	update_a 11 10
+	update_a 12 11
+	update_a 13 12
+	update_a 14 13
+	update_a 0 14
+	pop_a 1
+	update_a 15 25
+	update_a 14 24
+	update_a 13 23
+	update_a 12 22
+	update_a 11 21
+	update_a 10 20
+	update_a 9 19
+	update_a 8 18
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 17 0
+	jmp e_iTasks.API.Common.TaskCombinators_s>>*
+.pe
+.desc d14 _hnf l14 4 0 "<lambda>[line:15];13;379"
+.pb "<lambda>[line:15];13;379"
+.pl
+.a 4 ea14
+.o 2 0
+l14
+	push_args 0 3 3
+	update_a 4 3
+	create
+	update_a 0 5
+	pop_a 1
+.o 5 0
+.pn
+ea14
+	jsr_eval 0
+	push_r_args 1 7 0
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	push_a 7
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 11 0
+s14
+	push_a 9
+	push_a 9
+	build e_system_dAP 2 e_system_nAP
+	build_r e_StdGeneric_rGenericDict 1 0 7 0
+	buildh d5 1
+	build_r e_StdGeneric_rGenericDict0 1 0 7 0
+	build _ 1 n9
+	build_r e_StdGeneric_rGenericDict 1 0 7 0
+	buildh d7 1
+	build_r e_StdGeneric_rGenericDict 1 0 7 0
+	buildh d6 1
+	build_r e_StdGeneric_rGenericDict 1 0 7 0
+	buildh d8 1
+	build_r e_StdGeneric_rGenericDict 1 0 10 0
+	build_r e_StdGeneric_rGenericDict 1 0 10 0
+	build_r e_StdGeneric_rGenericDict0 1 0 13 0
+	build_r e_StdGeneric_rGenericDict 1 0 11 0
+	build_r e_StdGeneric_rGenericDict0 1 0 11 0
+	build _ 5 n10
+	push_a 7
+	push_a 6
+	update_a 1 7
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 0 6
+	pop_a 1
+	update_a 7 17
+	update_a 6 16
+	update_a 5 15
+	update_a 4 14
+	update_a 3 13
+	update_a 2 12
+	update_a 1 11
+	updatepop_a 0 10
+.d 9 0
+	jmp e_iTasks.API.Core.Types_sreturn;8
+.pe
+.desc d12 _hnf l12 2 0 "<lambda>[line:15];13;377"
+.pb "<lambda>[line:15];13;377"
+.pld
+.a 0 a12
+.o 2 0
+l12
+	repl_args 1 1
+.o 2 0
+.pn
+a12
+.d 2 0
+	jsr ea12
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+.pn
+ea12
+	jsr_eval 0
+.o 2 0
+s12
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	jsr_ap 1
+	pushB_a 0
+	pop_a 1
+	notB
+.d 0 1 b
+	rtn
+.pe
+.desc d13 _hnf l13 2 0 "<lambda>[line:10];66;378"
+.pb "<lambda>[line:10];66;378"
+.pl
+.a 2 ea13
+.o 2 0
+l13
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+.pn
+ea13
+	repl_r_args 7 0
+.o 9 0
+s13
+	buildh e_Data.Maybe_dNothing 0
+	pushI 0
+	build_r e__SystemDynamic_kTypeVar 0 1 0 0
+	pop_b 1
+	buildh e_Data.Maybe_dTD;Maybe 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	create
+	pushI 0
+	pushI 1
+.d 1 2 ii
+	jsr e__SystemDynamic_s_initial_unification_environment
+.o 1 0
+	push_a 9
+	pushI 0
+	build_r e__SystemDynamic_kTypeVar 0 1 0 0
+	pop_b 1
+	create
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+.d 4 0
+	jsr e__SystemDynamic_s_bind_global_type_pattern_var
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e__SystemDynamic_s_normalise
+.o 1 0
+	build_r e_StdGeneric_rGenericDict 1 0 7 0
+	buildh d5 1
+	build_r e_StdGeneric_rGenericDict0 1 0 7 0
+	build _ 1 n9
+	build_r e_StdGeneric_rGenericDict 1 0 7 0
+	buildh d7 1
+	build_r e_StdGeneric_rGenericDict 1 0 7 0
+	buildh d6 1
+	build_r e_StdGeneric_rGenericDict 1 0 7 0
+	buildh d8 1
+	build_r e_StdGeneric_rGenericDict 1 0 10 0
+	build_r e_StdGeneric_rGenericDict 1 0 10 0
+	build_r e_StdGeneric_rGenericDict0 1 0 13 0
+	build_r e_StdGeneric_rGenericDict 1 0 11 0
+	build_r e_StdGeneric_rGenericDict0 1 0 11 0
+	build _ 5 n10
+	update_a 7 15
+	update_a 6 14
+	update_a 5 13
+	update_a 4 12
+	update_a 3 11
+	update_a 2 10
+	update_a 1 9
+	updatepop_a 0 8
+.d 9 0
+	jmp e_iTasks.API.Core.Types_sreturn;8
+.pe
+.pb "gEditor_s;356"
+.pd
+.n 5 _
+.o 1 0
+n10
+	push_node _cycle_in_spine 5
+.d 5 0
+	jsr ea10
+.o 3 0
+.impmod iTasks.UI.Editor
+.impdesc e_iTasks.UI.Editor_rEditor
+	fill_r e_iTasks.UI.Editor_rEditor 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.o 5 0
+.pn
+ea10
+	jsr_eval 4
+	jsr_eval 3
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 4 1 0
+	push_r_args 4 1 0
+	push_r_args 4 1 0
+	push_r_args 4 1 0
+	push_r_args 4 1 0
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	update_a 0 5
+	pop_a 5
+.o 5 0
+s10
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	push_a 4
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 5 0
+	jmp e_iTasks.UI.Editor.Generic_sgEditor_Maybe;21
+.pe
+.pb "gDefault_s;326"
+.n 1 _ ea9
+.o 1 0
+n9
+	push_node _cycle_in_spine 1
+.o 2 0
+.pn
+ea9
+	jsr_eval 0
+	repl_r_args 1 0
+.o 2 0
+s9
+	push_a 0
+	updatepop_a 0 1
+.d 2 0
+	jmp e_iTasks._Framework.Generic.Defaults_sgDefault_Maybe;24
+.pe
+.desc d8 _hnf l8 3 0 "gText_s;254"
+.pb "gText_s;254"
+.pl
+.a 3 ea8
+.o 2 0
+l8
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.o 4 0
+.pn
+ea8
+	jsr_eval 1
+	jsr_eval 0
+	repl_r_args 1 0
+.o 4 0
+s8
+	push_a 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp e_iTasks._Framework.Generic.Visualization_sgText_Maybe;27
+.pe
+.desc d7 _hnf l7 3 0 "JSONDecode_s;171"
+.pb "JSONDecode_s;171"
+.pld
+.a 0 a7
+.o 2 0
+l7
+	repl_args 2 2
+.o 3 0
+.pn
+a7
+.d 3 0
+	jsr ea7
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+.pn
+ea7
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushB_a 1
+	repl_r_args 1 0
+	update_a 0 1
+	pop_a 1
+.o 2 1 b
+s7
+	push_a 0
+	push_a 2
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 2 1 b
+	jmp e_Text.JSON_sJSONDecode_Maybe;54
+.pe
+.desc d6 _hnf l6 3 0 "JSONEncode_s;132"
+.pb "JSONEncode_s;132"
+.pl
+.a 3 ea6
+.o 2 0
+l6
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.o 4 0
+.pn
+ea6
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushB_a 1
+	repl_r_args 1 0
+	update_a 0 1
+	pop_a 1
+.o 3 1 b
+s6
+	push_a 0
+	push_a 2
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	updatepop_b 0 1
+.d 3 1 b
+	jmp e_Text.JSON_sJSONEncode_Maybe;27
+.pe
+.desc d5 _hnf l5 3 0 "gEq_s;51"
+.pb "gEq_s;51"
+.pld
+.a 0 a5
+.o 2 0
+l5
+	repl_args 2 2
+.o 3 0
+.pn
+a5
+.d 3 0
+	jsr ea5
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+.pn
+ea5
+	jsr_eval 0
+	repl_r_args 1 0
+.o 3 0
+s5
+	push_a 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp e_Data.Maybe_sgEq_Maybe;13
+.pe

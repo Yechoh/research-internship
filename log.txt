@@ -234,10 +234,12 @@ tijd om de mode file te maken.
 Bas heeft zijn kant van de Ace editor af (afgezien van annotations). En nightly built.
 17:10 aan het kopieren. 
 17:24 gekeken naar het nieuwe type van de Ace editor. Annotations en Shortcuts worden nog toegevoegd.
+-- 7 1/2 u
 
 zo 9-4
 17:29
 18:04 nooit vreemde dingen in github proberen als je moe bent. De pagestructuur zorgt ervoor dat informatie verzonden over pages nogal moeilijk te veranderen is. Ik had iets veranderd en wou ipv terug te veranderen gewoon de vorige git commit loaden. Maar nu heb ik vier reverts in mijn geschiedenis en per ongeluk de ace lib weggegooid. En ik ben weer terug waar ik was.
+-- 1/2u
 
 ma 10-4
 10:40
@@ -262,6 +264,7 @@ ma 10-4
 20:06 om te zorgen dat mijn parallel taken updaten als contents verandert, hebben we een mapReadWrite nodig, als ik het goed begrijp.
 20:13 er is een functie voor: taskListState
 20:19 ik heb geen idee hoe ik dit zou moeten doen
+--7u
 
 do 13-4
 10:19 het lokaal is dicht en iedereen is weg. Ingrid is er vandaag niet. Irritant
@@ -284,6 +287,7 @@ do 13-4
 17:14 ik denk niet dat Rinus' manier werkt. Het probleem ontstaat wanneer de watch functie triggered wanneer de sharedtasklist en de locally shared tabname list verschillen. De tabname list is nodig om van tabnames naar taskids te gaan en andersom. Maar ik bedenk me nu dat ik ook gewoon de taskids in de tabname list kan bijhouden. Er is weer hoop :)
 18:28 het compilet nu, maar de server is te druk met rekenen om iets te laten zien. Als je updateTabs outcomment, doet hij het wel, dus updateTabs is hier op een of andere manier verantwoordelijk voor. updateTabs heeft geen invloed op contents. Mss is hij gewoon heeeeel erg sloom, maar dat vind ik moeilijk te geloven.
 18:37 ja ik heb geen idee. zu hause
+-- 7 1/2 u
 
 do 20-4
 10:27
@@ -297,3 +301,29 @@ do 20-4
 16:15 op een of andere manier, als je de editorpage wil verlaten, dan crasht de >^* operator in updateTabs. Waarschijnlijk komt dit doordat de share die gewatcht wordt dan niet meer bestaat, maar dat is een lousy reden om te gaan crashen. Volgende keer Bas vragen wat ik hier mee moet.
 16:19 oke, mijn oorspronkelijke doel was dat er een local share was met de editor info. Maar met meerdere tabs zijn er dus ook meerdere local shares. Dat is niet erg, zolang we dan maar de local share kunnen krijgen, waar we op dit moment naar kijken. Maar het is helaas niet mogelijk om te zien naar welke tab je kijkt. Dat geeft dus een probleem dat zo ik nu zie op twee manieren op te lossen is. 1) we maken een global share met alle editor info. Dat kan niet, want we hebben mss meerdere sessies en geen manier om die uit elkaar te houden. 2) we maken helpwindows per filenametab
 18:29 tabs gemaakt van de helpwindows en showSelected toegevoegd. op github gezet
+-- 8u
+
+ik kan mss het runtime crashen voorkomen door de updateTabs functie eerst te sluiten.
+voor cloogle integreren is het mss beter eerst door te kijken op de cloogle github (zie cloogle.org) om te ontdekken wat al mogelijk is met de API.
+
+ma 1-5
+12:43 late start vandaag. Eerste stap wordt het runtime crashen voorkomen.
+12:58 de updateTabs functie eerst sluiten kan niet op een mooie manier gedaan worden en werkt wss ook niet.
+13:49 het project test_ifvalue_crash gemaakt om de crash te testen. Twee belangrijke tips van Bas gekregen: 1) als je watch niet met >^*, maar met forever en >>* gebruikt, kan hij niet per ongeluk twee keer triggeren en is hij stabieler. Mss fixt dit het crashen. 2) watch met step combinator genereert een window, maar negeer dit, want dit is nog een bugje.
+13:59 als je twee browser instances opent en in een typet, dan delete hij de text. Dit komt wss door slechte mapfuncties bij mapReadWrite.
+14:22 de file test_mapReadWrite gemaakt om te kijken of mapReadWrite inderdaad de oorzaak is of toch de ace editor. mapReadWrite lijkt precies te werken zoals ik verwacht, dus dan is het wss dat de ace editor de schuldige is. Bas is bezig, dus next up wordt api cloogle doorkijken. Eerst wat eten halen.
+14:55 Met Bas er over gehad. de file test_ace_two_browser_instances gemaakt. getest. Het is de ace editors schuld.
+14:58 Als je twee browser instances hebt, en je probeert een file te openen, dan blijft hij hangen bij de choosefile page continue button. Hetzelfde geldt voor de editorpage close button. Hij crasht niet, maar wil gewoon niet verder.
+15:23 Ik heb de updateTabs functie even uitgezet. Op dit moment geeft hij een Data.Maybe.fromJust error. De enige invloedrijke fromJust bevindt zich in eiAndContents2ErRead.
+15:37 Ik heb een case toegevoegd dat de lines alleen maar de tekst "henkig" bevatten als de contents niet gevonden kunnen worden. Maar als ik de app start, start hij nu wel gewoon en dat zonder ergens de tekst "henkig". Als ik op close duw, geeft hij de runtime error: "rule mrange2text in pageEditor does not match"
+15:44 deze nieuwe foutmelding wordt gegeven door viewSelection, een helpwindow. Dit is best logisch, want als je closet, dan gooi je eerst de file uit contents voordat je de task sluit.
+15:49 dat opgelost. Het werkt nu (redelijk), maar updateTabs moet natuurlijk wel aan.
+15:53 en het problem van 14:58 is terug
+16:18 Rinus gevraagd waarom zijn filesystem crasht. Nieuwe versie gekregen, maar die crasht ook. Tim kijkt er nu naar. Terug naar probleem van 14:58. Er moet een makkelijkere testversie van te bedenken zijn die ook crasht.
+16:36 jeuj, rinus filesystem werkt nu. Minder nuttig dan ik me herinnerde. Het probleem was dat Rinus stacktracing aan had staan, wat betekent dat hij op elke andere computer crasht.
+16:57 wss zit er ergens een eternal loop. Een reden zou kunnen zijn dat als updateTabs een editor start, hij niet meteen aan tabs wordt toegevoegd, waardoor updateTabs dubbel triggert.
+17:12 we gaan
+
+ma 8-5
+11:35 om 14:30 heb ik een afspraak met Camil en Mart
+11:54 systeem werkt weer en crasht niet zomaar.

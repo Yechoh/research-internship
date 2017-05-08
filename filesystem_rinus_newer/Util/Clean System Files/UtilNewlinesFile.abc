@@ -1,0 +1,1113 @@
+.comp 920 000110010001
+.start _nostart_
+.depend "StdMisc" "20170403171239"
+.depend "_SystemArray" "20170403171239"
+.depend "StdArray" "20170403171239"
+.depend "StdTuple" "20170403171239"
+.depend "StdFile" "20170403171239"
+.depend "StdString" "20170403171239"
+.depend "StdChar" "20170403171239"
+.depend "StdInt" "20170403171239"
+.depend "StdBool" "20170403171239"
+.depend "StdClass" "20170403171239"
+.depend "StdOverloaded" "20170403171239"
+.depend "_SystemDynamic" "20170403171219"
+.depend "UtilNewlinesFile" "20170403104713"
+.module m_UtilNewlinesFile "UtilNewlinesFile" "20170403104713"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod _SystemArray
+.impdesc e__SystemArray_dupdate;21
+.implab e__SystemArray_nupdate;21
+.impmod StdFile
+.implab e_StdFile_sfreadline
+.implab e_StdFile_sfwrites
+.implab e_StdFile_sfend
+.impmod StdChar
+.implab e_StdChar_s==;18
+.impmod StdInt
+.implab e_StdInt_s-;7
+.implab e_StdInt_sone;11
+.implab e_StdInt_s<;17
+.impmod StdBool
+.implab e_StdBool_snot
+.export e_UtilNewlinesFile_dNewlineConventionNone
+.desc0 e_UtilNewlinesFile_dNewlineConventionNone 0 "NewlineConventionNone"
+.export e_UtilNewlinesFile_dNewlineConventionMac
+.desc0 e_UtilNewlinesFile_dNewlineConventionMac 1 "NewlineConventionMac"
+.export e_UtilNewlinesFile_dNewlineConventionUnix
+.desc0 e_UtilNewlinesFile_dNewlineConventionUnix 2 "NewlineConventionUnix"
+.export e_UtilNewlinesFile_dNewlineConventionDos
+.desc0 e_UtilNewlinesFile_dNewlineConventionDos 3 "NewlineConventionDos"
+.export e_UtilNewlinesFile_sTD;NewlineConvention
+.export e_UtilNewlinesFile_eaTD;NewlineConvention
+.descexp e_UtilNewlinesFile_dTD;NewlineConvention e_UtilNewlinesFile_nTD;NewlineConvention e_UtilNewlinesFile_lTD;NewlineConvention 1 0 "TD;NewlineConvention"
+.pb "TD;NewlineConvention"
+.pl
+.o 2 0
+e_UtilNewlinesFile_lTD;NewlineConvention
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+.pn
+	jmp e_UtilNewlinesFile_eaTD;NewlineConvention
+.n 1 e_UtilNewlinesFile_dTD;NewlineConvention e_UtilNewlinesFile_eaTD;NewlineConvention
+.o 1 0
+e_UtilNewlinesFile_nTD;NewlineConvention
+	push_node _cycle_in_spine 1
+.o 2 0
+.pn
+e_UtilNewlinesFile_eaTD;NewlineConvention
+.o 2 0
+e_UtilNewlinesFile_sTD;NewlineConvention
+.o 2 0
+s7
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.pe
+.export e_UtilNewlinesFile_stoString;5
+.descexp e_UtilNewlinesFile_dtoString;5 e_UtilNewlinesFile_ntoString;5 e_UtilNewlinesFile_ltoString;5 1 0 "toString;5"
+.pb "toString;5"
+.pld
+.o 2 0
+e_UtilNewlinesFile_ltoString;5
+	pop_a 1
+.d 1 0
+	jsr ea6
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.pd
+.n 1 e_UtilNewlinesFile_dtoString;5
+.o 1 0
+e_UtilNewlinesFile_ntoString;5
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea6
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+.pn
+ea6
+	jsr_eval 0
+.o 1 0
+e_UtilNewlinesFile_stoString;5
+.o 1 0
+s6
+	pushD_a 0
+	eqD_b e_UtilNewlinesFile_dNewlineConventionNone 0
+	jmp_true case.1
+	eqD_b e_UtilNewlinesFile_dNewlineConventionMac 0
+	jmp_true case.2
+	eqD_b e_UtilNewlinesFile_dNewlineConventionUnix 0
+	jmp_true case.3
+	jmp case.4
+case.1
+	pop_b 1
+	pop_a 1
+	buildAC ""
+.d 1 0
+	rtn
+case.2
+	pop_b 1
+	pop_a 1
+	buildAC "\r"
+.d 1 0
+	rtn
+case.3
+	pop_b 1
+	pop_a 1
+	buildAC "\n"
+.d 1 0
+	rtn
+case.4
+	pop_b 1
+	pop_a 1
+	buildAC "\r\n"
+.d 1 0
+	rtn
+.pe
+.export e_UtilNewlinesFile_s==;4
+.descexp e_UtilNewlinesFile_d==;4 e_UtilNewlinesFile_n==;4 e_UtilNewlinesFile_l==;4 2 0 "==;4"
+.pb "==;4"
+.pld
+.a 0 a5
+.o 2 0
+e_UtilNewlinesFile_l==;4
+	repl_args 1 1
+.o 2 0
+.pn
+a5
+.d 2 0
+	jsr ea5
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.pd
+.n 2 e_UtilNewlinesFile_d==;4
+.o 1 0
+e_UtilNewlinesFile_n==;4
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea5
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+.pn
+ea5
+	jsr_eval 1
+	jsr_eval 0
+.o 2 0
+e_UtilNewlinesFile_s==;4
+.o 2 0
+s5
+	pushD_a 0
+	eqD_b e_UtilNewlinesFile_dNewlineConventionNone 0
+	jmp_true case.5
+	eqD_b e_UtilNewlinesFile_dNewlineConventionMac 0
+	jmp_true case.6
+	eqD_b e_UtilNewlinesFile_dNewlineConventionUnix 0
+	jmp_true case.7
+	jmp case.8
+case.5
+	pop_b 1
+	eq_desc e_UtilNewlinesFile_dNewlineConventionNone 0 1
+	jmp_true case.10
+	jmp case.9
+case.10
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.6
+	pop_b 1
+	eq_desc e_UtilNewlinesFile_dNewlineConventionMac 0 1
+	jmp_true case.11
+	jmp case.9
+case.11
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.7
+	pop_b 1
+	eq_desc e_UtilNewlinesFile_dNewlineConventionUnix 0 1
+	jmp_true case.12
+	jmp case.9
+case.12
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.8
+	pop_b 1
+	eq_desc e_UtilNewlinesFile_dNewlineConventionDos 0 1
+	jmp_true case.13
+	jmp case.9
+case.13
+	pop_a 2
+	pushB TRUE
+.d 0 1 b
+	rtn
+case.9
+	pop_a 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.pe
+.export e_UtilNewlinesFile_sreadConvLines
+.descexp e_UtilNewlinesFile_dreadConvLines e_UtilNewlinesFile_nreadConvLines e_UtilNewlinesFile_lreadConvLines 1 0 "readConvLines"
+.pb "readConvLines"
+.pld
+.o 2 0
+e_UtilNewlinesFile_lreadConvLines
+	pop_a 1
+.d 1 0
+	jsr ea4
+.o 3 0
+	push_a 2
+	push_a 2
+	push_a 2
+	buildh _Tuple 3
+	updatepop_a 0 3
+.d 1 0
+	rtn
+.pd
+.n 1 e_UtilNewlinesFile_dreadConvLines
+.o 1 0
+e_UtilNewlinesFile_nreadConvLines
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea4
+.o 3 0
+	push_a 2
+	push_a 2
+	push_a 2
+	fillh _Tuple 3 6
+	pop_a 3
+.d 1 0
+	rtn
+.o 1 0
+.pn
+ea4
+	jsr_eval 0
+	pushF_a 0
+	pop_a 1
+.o 0 2 f
+e_UtilNewlinesFile_sreadConvLines
+.o 0 2 f
+s4
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 f
+	jsr s19
+.o 3 2 f
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 f
+	jsr endF
+.o 0 3 b f
+	push_b 0
+	jmp_false else.14
+	push_a 2
+	jsr_eval 0
+	pushB_a 3
+	pop_a 1
+	jmp_false else.15
+	buildh _Nil 0
+	buildAC ""
+	buildh ARRAY 1
+	buildh _Cons 2
+	push_a 2
+	buildh _Cons 2
+	buildF_b 1
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 3
+.d 3 0
+	rtn
+else.15
+	buildh _Nil 0
+	push_a 2
+	buildh _Cons 2
+	buildF_b 1
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 3
+.d 3 0
+	rtn
+else.14
+	buildF_b 1
+	build e_UtilNewlinesFile_dreadConvLines 1 e_UtilNewlinesFile_nreadConvLines
+	push_a 0
+	build d_S.3 -1 n_S.3
+	push_a 1
+	build d_S.2 -1 n_S.2
+	push_a 4
+	buildh _Cons 2
+	push_a 3
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+	pop_b 3
+.d 3 0
+	rtn
+.pe
+.export e_UtilNewlinesFile_swriteAnyLine
+.descexp e_UtilNewlinesFile_dwriteAnyLine e_UtilNewlinesFile_nwriteAnyLine e_UtilNewlinesFile_lwriteAnyLine 3 0 "writeAnyLine"
+.pb "writeAnyLine"
+.pld
+.a 0 a2
+.o 2 0
+e_UtilNewlinesFile_lwriteAnyLine
+	repl_args 2 2
+.o 3 0
+.pn
+a2
+.d 3 0
+	jsr ea2
+.o 0 2 f
+	buildF_b 0
+	pop_b 2
+.d 1 0
+	rtn
+.pd
+.n 3 e_UtilNewlinesFile_dwriteAnyLine
+.o 1 0
+e_UtilNewlinesFile_nwriteAnyLine
+	push_node _cycle_in_spine 3
+.d 3 0
+	jsr ea2
+.o 0 2 f
+	fillF_b 0 0
+	pop_b 2
+.d 1 0
+	rtn
+.o 3 0
+.pn
+ea2
+	jsr_eval 2
+	jsr_eval 1
+	jsr_eval 0
+	pushF_a 2
+	push_array 1
+	push_array 1
+	update_a 1 4
+	update_a 0 3
+	pop_a 3
+.o 2 2 f
+e_UtilNewlinesFile_swriteAnyLine
+.o 2 2 f
+s2
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_b 1
+	ltI
+	notB
+	jmp_false else.16
+	push_b 0
+	push_a 0
+	select CHAR 0 1
+	pushC '\n'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.16
+	pushI 1
+	push_b 1
+	subI
+	pushI 0
+	push_a 0
+	update_b 1 2
+	updatepop_b 0 1
+	updatepop_a 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 1 2 f
+	jsr writeFS
+.o 0 2 f
+	push_a 0
+	updatepop_a 0 1
+.d 1 2 f
+	jsr writeFS
+.o 0 2 f
+.d 0 2 f
+	rtn
+else.16
+	push_b 2
+	push_b 2
+	push_a 0
+	updatepop_a 0 2
+	update_b 1 4
+	updatepop_b 0 3
+.d 1 2 f
+	jsr writeFS
+.o 0 2 f
+.d 0 2 f
+	rtn
+.pe
+.export e_UtilNewlinesFile_sreadAnyLine
+.descexp e_UtilNewlinesFile_dreadAnyLine e_UtilNewlinesFile_nreadAnyLine e_UtilNewlinesFile_lreadAnyLine 1 0 "readAnyLine"
+.pb "readAnyLine"
+.pld
+.o 2 0
+e_UtilNewlinesFile_lreadAnyLine
+	pop_a 1
+.d 1 0
+	jsr ea1
+.o 2 2 f
+	buildF_b 0
+	push_a 2
+	buildh ARRAY 1
+	push_a 2
+	buildh _Tuple 3
+	updatepop_a 0 2
+	pop_b 2
+.d 1 0
+	rtn
+.pd
+.n 1 e_UtilNewlinesFile_dreadAnyLine
+.o 1 0
+e_UtilNewlinesFile_nreadAnyLine
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea1
+.o 2 2 f
+	buildF_b 0
+	push_a 2
+	buildh ARRAY 1
+	push_a 2
+	fillh _Tuple 3 5
+	pop_a 2
+	pop_b 2
+.d 1 0
+	rtn
+.o 1 0
+.pn
+ea1
+	jsr_eval 0
+	pushF_a 0
+	pop_a 1
+.o 0 2 f
+e_UtilNewlinesFile_sreadAnyLine
+.o 0 2 f
+s1
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 f
+	jsr readLineF
+.o 1 2 f
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jsr s18
+.o 2 0
+	push_b 1
+	push_b 1
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+	update_b 1 3
+	updatepop_b 0 2
+.d 2 2 f
+	rtn
+.pe
+.export e_UtilNewlinesFile_sconvertLine
+.descexp e_UtilNewlinesFile_dconvertLine e_UtilNewlinesFile_nconvertLine e_UtilNewlinesFile_lconvertLine 1 0 "convertLine"
+.pb "convertLine"
+.pld
+.o 2 0
+e_UtilNewlinesFile_lconvertLine
+	pop_a 1
+.d 1 0
+	jsr ea3
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.pd
+.n 1 e_UtilNewlinesFile_dconvertLine
+.o 1 0
+e_UtilNewlinesFile_nconvertLine
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea3
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 1 0
+.pn
+ea3
+	jsr_eval 0
+	push_array 0
+	update_a 0 1
+	pop_a 1
+.o 1 0
+e_UtilNewlinesFile_sconvertLine
+.o 1 0
+s3
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_b 1
+	ltI
+	notB
+	jmp_false else.18
+	push_b 0
+	push_a 0
+	select CHAR 0 1
+	pushC '\n'
+	push_b 1
+	eqC
+	jmp_false else.19
+	pushI 1
+	push_b 2
+	ltI
+	notB
+	jmp_false else.20
+	pushI 1
+	push_b 2
+	subI
+	push_a 0
+	updatepop_b 0 1
+	select CHAR 0 1
+	pushC '\r'
+	push_b 1
+	eqC
+	jmp_false else.21
+	push_a 0
+	push_b 1
+	build_u _ 1 1 n20
+	buildh e_UtilNewlinesFile_dNewlineConventionDos 0
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 2
+.d 2 0
+	rtn
+else.21
+	buildC '\n'
+	buildI_b 1
+	push_a 2
+	buildh ARRAY 1
+	build e__SystemArray_dupdate;21 3 e__SystemArray_nupdate;21
+	buildh e_UtilNewlinesFile_dNewlineConventionUnix 0
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 2
+.d 2 0
+	rtn
+else.20
+	buildC '\n'
+	buildI_b 1
+	push_a 2
+	buildh ARRAY 1
+	build e__SystemArray_dupdate;21 3 e__SystemArray_nupdate;21
+	buildh e_UtilNewlinesFile_dNewlineConventionUnix 0
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 2
+.d 2 0
+	rtn
+else.19
+	pushC '\r'
+	push_b 1
+	eqC
+	jmp_false else.22
+	buildC '\n'
+	buildI_b 1
+	push_a 2
+	buildh ARRAY 1
+	build e__SystemArray_dupdate;21 3 e__SystemArray_nupdate;21
+	buildh e_UtilNewlinesFile_dNewlineConventionMac 0
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 2
+.d 2 0
+	rtn
+else.22
+	buildh e_UtilNewlinesFile_dNewlineConventionNone 0
+	push_a 1
+	buildh ARRAY 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 2
+.d 2 0
+	rtn
+else.18
+	buildh e_UtilNewlinesFile_dNewlineConventionNone 0
+	push_a 1
+	buildh ARRAY 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+.pe
+.pb "_f0.convertLine.update;21.downSize.-;7"
+.nu 1 1 _ _
+.o 1 0
+n20
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+.pn
+ea20
+.o 2 1 i
+s20
+	pushI 1
+	push_b 1
+	subI
+	push_a 0
+	push_b 1
+	updatepop_a 0 1
+.d 1 1 i
+	jsr s9
+.o 1 0
+	pushC '\n'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	update CHAR 0 1
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.pe
+.pb "downSize"
+.pd
+.n 2 _
+.o 1 0
+n9
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea9
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.o 2 0
+.pn
+ea9
+	jsr_eval 1
+	jsr_eval 0
+	push_array 1
+	pushI_a 1
+	update_a 0 2
+	pop_a 2
+.o 1 1 i
+s9
+	pushI 1
+	push_b 1
+	subI
+	pushI 0
+	push_a 0
+	updatepop_a 0 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+
+.d 1 0
+	rtn
+.pe
+.pb "%"
+.o 1 2 ii
+s8
+.inline %.
+.d 1 2 ii
+	jsr sliceAC
+.o 1 0
+.end
+
+.d 1 0
+	rtn
+.pe
+.pb "convertLine"
+.o 1 0
+s18
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_b 1
+	ltI
+	notB
+	jmp_false else.23
+	push_b 0
+	push_a 0
+	select CHAR 0 1
+	pushC '\n'
+	push_b 1
+	eqC
+	jmp_false else.24
+	pushI 1
+	push_b 2
+	ltI
+	notB
+	jmp_false else.25
+	pushI 1
+	push_b 2
+	subI
+	push_a 0
+	updatepop_b 0 1
+	select CHAR 0 1
+	pushC '\r'
+	push_b 1
+	eqC
+	jmp_false else.26
+	pushI 1
+	push_b 2
+	subI
+	push_a 0
+	push_b 2
+	updatepop_a 0 1
+.d 1 1 i
+	jsr s9
+.o 1 0
+	pushC '\n'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 3
+	updatepop_b 0 2
+	update CHAR 0 1
+	buildh e_UtilNewlinesFile_dNewlineConventionDos 0
+.d 2 0
+	rtn
+else.26
+	pushC '\n'
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+	update CHAR 0 1
+	buildh e_UtilNewlinesFile_dNewlineConventionUnix 0
+.d 2 0
+	rtn
+else.25
+	pushC '\n'
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+	update CHAR 0 1
+	buildh e_UtilNewlinesFile_dNewlineConventionUnix 0
+.d 2 0
+	rtn
+else.24
+	pushC '\r'
+	push_b 1
+	eqC
+	jmp_false else.27
+	pushC '\n'
+	push_b 2
+	push_a 0
+	update_b 1 3
+	updatepop_b 0 2
+	updatepop_a 0 1
+	update CHAR 0 1
+	buildh e_UtilNewlinesFile_dNewlineConventionMac 0
+.d 2 0
+	rtn
+else.27
+	buildh e_UtilNewlinesFile_dNewlineConventionNone 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 2
+.d 2 0
+	rtn
+else.23
+	buildh e_UtilNewlinesFile_dNewlineConventionNone 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 2 0
+	rtn
+.pe
+.pb "readAnyLine`"
+.o 0 2 f
+s19
+	push_b 1
+	push_b 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 0 2 f
+	jsr readLineF
+.o 1 2 f
+	push_a 0
+	push_arraysize CHAR 0 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	pushI 0
+	push_b 1
+	ltI
+	notB
+	jmp_false else.28
+	push_b 0
+	push_a 0
+	select CHAR 0 1
+	pushC '\n'
+	push_b 1
+	eqC
+	jmp_false else.29
+	pushI 1
+	push_b 2
+	ltI
+	notB
+	jmp_false else.30
+	pushI 1
+	push_b 2
+	subI
+	push_a 0
+	updatepop_b 0 1
+	select CHAR 0 1
+	pushC '\r'
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqC
+	jmp_false else.31
+	push_a 0
+	push_b 0
+	build_u _ 1 1 n21
+	buildh e_UtilNewlinesFile_dNewlineConventionDos 0
+	push_b 2
+	push_b 2
+	buildB TRUE
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 4
+	updatepop_b 0 3
+.d 3 2 f
+	rtn
+else.31
+	push_a 0
+	buildh ARRAY 1
+	buildI_b 0
+	build _ 2 n9
+	buildh e_UtilNewlinesFile_dNewlineConventionUnix 0
+	push_b 2
+	push_b 2
+	buildB TRUE
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 4
+	updatepop_b 0 3
+.d 3 2 f
+	rtn
+else.30
+	push_a 0
+	buildh ARRAY 1
+	buildI_b 1
+	build _ 2 n9
+	buildh e_UtilNewlinesFile_dNewlineConventionUnix 0
+	push_b 3
+	push_b 3
+	buildB TRUE
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 5
+	updatepop_b 0 4
+.d 3 2 f
+	rtn
+else.29
+	pushC '\r'
+	push_b 1
+	eqC
+	jmp_false else.32
+	push_a 0
+	buildh ARRAY 1
+	buildI_b 1
+	build _ 2 n9
+	buildh e_UtilNewlinesFile_dNewlineConventionMac 0
+	push_b 3
+	push_b 3
+	buildB TRUE
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 5
+	updatepop_b 0 4
+.d 3 2 f
+	rtn
+else.32
+	buildh e_UtilNewlinesFile_dNewlineConventionNone 0
+	push_b 3
+	push_b 3
+	buildB FALSE
+	push_a 2
+	buildh ARRAY 1
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 5
+	updatepop_b 0 4
+.d 3 2 f
+	rtn
+else.28
+	buildh e_UtilNewlinesFile_dNewlineConventionNone 0
+	push_b 2
+	push_b 2
+	buildB FALSE
+	push_a 2
+	buildh ARRAY 1
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	update_b 1 4
+	updatepop_b 0 3
+.d 3 2 f
+	rtn
+.pe
+.pb "_f1.readAnyLine`.downSize.-;7.one;11"
+.nu 1 1 _ _
+.o 1 0
+n21
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+.pn
+ea21
+.o 2 1 i
+s21
+	pushI 1
+	push_b 1
+	subI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 1 1 i
+	jsr s9
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.pe
