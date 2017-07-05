@@ -6,34 +6,34 @@ import shares
 import directoryBrowsing
 import extraTaskCombinators
 import qualified Data.Map as DM
-import callCpm
+//import callCpm
 import System.OS
 import Text
 import iTasks.UI.Editor.Builtin
-import callCpm
+import errorHandling
+//import callCpm
 
 pageAskImportPaths :: AskImportPathsRedirects -> Task ()
 pageAskImportPaths ((actioncontinue,pagenodeEditor),(actioncancel,pagenodeEditor2)) =
-	get project >>- \projname.
-	readFromFile projname >>- \(Just projtxt).
+	get project >>- \proj.
+	readFromFile proj.projectName >>- \(Just projtxt).
 	showUnresolvedImports
 	||-
-	showMapSelector projname
+	showMapSelector proj.projectName
 	>>* [   OnAction  actioncontinue   	(always (pagenodeEditor))
-		,	OnAction actioncancel		(always (writeToFile (projname) projtxt >>|- pagenodeEditor))
+		,	OnAction actioncancel		(always (writeToFile (proj.projectName) projtxt >>|- pagenodeEditor))
 		]
 		
-Errors2Imports :: String -> String
-Errors2Imports errors 
-	# lines = split OS_NEWLINE errors
+Errors2Imports :: [String] -> String
+Errors2Imports lines 
 	# importlines = filter (\line. endsWith "imported" line) lines
 	# importlinessplitted = map (split " ") importlines
 	# dclnames = map (\x. hd (tl (tl x))) importlinessplitted
 	=  join "\n" dclnames
 
-showUnresolvedImports :: Task String
+showUnresolvedImports :: Task ()
 showUnresolvedImports = 
-	viewSharedInformation "Unresolved imports"  [ViewUsing Errors2Imports (textArea 'DM'.newMap)] errorstate
+	viewSharedInformation "Unresolved imports"  [ViewUsing Errors2Imports (textArea 'DM'.newMap)] errorStore >>|- return ()
 
 addPath2Project :: String String String -> String
 addPath2Project path cleandir projtxt
@@ -48,8 +48,8 @@ addPath2Project path cleandir projtxt
 showMapSelector :: String -> Task ()
 showMapSelector projname = 
 	get settings
-	>>= \settings. selectFromTree settings.dirClean2 (isFile "dcl")
-	>>= \dclpath. readFromFile projname
-	>>- \(Just projtxt). saveFile projname (addPath2Project dclpath settings.dirClean projtxt)
-	>>|- cpmSetErrorstate
+	>>= \settings. selectFromTree True settings.cpmDirectory (isFile "dcl")
+	>>= \(dclpath,dclname). readFromFile projname
+	>>- \(Just projtxt). saveFile projname (addPath2Project dclpath settings.cpmDirectory projtxt)
+	>>|- build
 	>>|- showMapSelector projname

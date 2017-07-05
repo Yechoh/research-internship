@@ -9,9 +9,9 @@ import StdFile, System.File
 import System.Directory
 import System.FilePath
 import Data.Error
-import _SystemArray
+import StdArray
+import System.File
 import System.OS
-import Text
 
 
 :: Directory = Dir FileName [Directory] [FileName]
@@ -68,7 +68,7 @@ where
 		# cf		= {id = i, label = f, icon = selectIcon pwd (takeExtension f), expanded = False, children = []}
 		# (cfs,j) 	= convFiles (i+1) fs
 		= ([cf:cfs],j) 
-*/
+
 selectFromTree :: FilePath (FileName -> Bool) -> Task FilePath
 selectFromTree pwd isWantedFile
 	=				fetchDirectories pwd isWantedFile
@@ -103,6 +103,26 @@ where
 		# cf		= {id = i, label = f, icon = selectIcon pwd (takeExtension f), expanded = False, children = []}
 		# (cfs,j) 	= convFiles (i+1) fs
 		= ([cf:cfs],j) 
+*/
+
+selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
+selectFromTree show fp isWantedFile
+	=				fetchDirectories fp isWantedFile
+	>>= \dirs ->	withShared dirs (edit dirs)
+		>>* 		[ OnAction (Action "Select")	(ifValue (\mbsel -> isWantedFile (snd (split fp dirs mbsel))) (\mbsel -> return (split fp dirs mbsel)))
+					, OnAction (Action "Up")		(ifCond (snd (splitFileName fp) <> "") (selectFromTree show (takeDirectory fp) isWantedFile))
+					]
+where
+
+	edit dirs sdirs
+		= 				editSelectionWithShared () False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) sdirs (\_ -> [])
+		>&> \mbsel ->	if show (viewSharedInformation "Selected: " [ViewAs (findSelected fp (conv 0 dirs))] mbsel) 
+								(get mbsel)		
+
+split fp dirs mbsel
+	= (takeDirectory selected, dropDirectory selected)
+where
+	selected = findSelected fp (conv 0 dirs) mbsel
 
 findSelected :: FilePath ([ChoiceNode],Int) (Maybe [Int]) -> String
 findSelected pwd (nodes,i) Nothing  =  pwd
@@ -194,6 +214,55 @@ where
 	# names				= fromOk res
 	= (Ok names, world)		// includes "." and ".."
 
+askUserForFile:: !FileName !(FileName -> Bool) -> Task (FilePath,FileName)
+askUserForFile file isWantedFile
+	=						viewInformation ("Where is " +++ file +++ "?") [] ""
+		||-					getPwdName
+ 		>>- \pwd ->			selectFromTreeLocal True pwd isWantedFile
+ 		
+selectFromTreeLocal :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
+selectFromTreeLocal show fp isWantedFile
+	=						readDir fp
+	>>= \all ->				selectDirs fp all isWantedFile
+	>>= \(dnames,fnames) -> let initDir = Dir (dropDirectory fp) [Dir sdir [] [] \\ sdir <- dnames] fnames
+							in withShared initDir (browse fp initDir)
+where
+	browse cursel dirs sdirs
+		=			edit cursel dirs sdirs
+		>>* 		[ OnAction (Action "Found")	 (ifValue (\mbsel -> isWantedFile (snd (split fp dirs mbsel))) (\mbsel -> return (split fp dirs mbsel)))
+					, OnAction (Action "Open") (ifValue (\mbsel -> cursel <> selected mbsel dirs &&
+																	 not (isWantedFile (snd (split fp dirs mbsel))))  (\mbsel -> selectFromTreeLocal show (selected mbsel dirs) isWantedFile))
+					, OnAction (Action "Up")	 (always (selectFromTreeLocal show (takeDirectory fp) isWantedFile))
+					]
+
+	edit cursel dirs sdirs
+		= 				editSelectionWithShared () False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) sdirs (\_ -> [])
+		>&> \mbsel ->	(if show (viewSharedInformation () [ViewAs (findSelected fp (conv 0 dirs))] mbsel)
+								(get mbsel))
+
+	selected mbsel dirs = findSelected fp (conv 0 dirs) mbsel 
+	
+conv :: !Int !Directory -> ([ChoiceNode],Int)
+conv i (Dir pwd dirs files) = convDirs i pwd dirs files
+where
+	convDirs i pwd dirs files
+	# (cds,ii)	= convAllDirs (i+1) dirs
+	# (cfs,iii)	= convFiles ii files
+	= ([{id = i, label = dropDirectory pwd, icon = Nothing, expanded = False, children = cds ++ cfs}],iii)
+
+	convAllDirs	i [] = ([],i)
+	convAllDirs i [Dir pwd dirs fils:ds]
+	# (cd,ii) 	= convDirs i pwd dirs fils
+	# (cds,iii)	= convAllDirs ii ds
+	= (cd++cds,iii)
+
+	convFiles i [] 
+				= ([],i)
+	convFiles i [f:fs]
+	# cf		= {id = i, label = f, icon = selectIcon pwd (takeExtension f), expanded = False, children = []}
+	# (cfs,j) 	= convFiles (i+1) fs
+	= ([cf:cfs],j) 
+
 getPwdName :: Task FilePath
 getPwdName
 	=					worldIO getPwd`
@@ -227,12 +296,22 @@ where
     = case res of
         Error e                 = (Error ("Cannot read File:" +++ path), world)
         Ok content              = (Ok (Just content), world)
-        
+       
 readLinesFromFile :: String -> Task (Maybe [String])
-readLinesFromFile path = 
-	readFromFile path		>>- \r. (case r of
-		(Just content)		-> return (Just (split OS_NEWLINE content))
-		Nothing				-> return Nothing)
+readLinesFromFile path = worldIO (read path) 
+where 
+	read path world
+	# (ok,file,world)			= fopen path FReadData world
+	| not ok					= (Ok Nothing, world) 
+	# (res,file)				= readAllLines file []
+	# (ok,world)				= fclose file world
+	| not ok					= (Error ("Cannot close file: " +++ path), world)
+    =  (Ok (Just res), world)
+
+	readAllLines file accu 
+	# (line,file) 				= freadline file
+	| line == ""				= (reverse accu,file)
+	= readAllLines file [line:accu]
 
 writeToFile :: String String -> Task String
 writeToFile path content = worldIO (write path content) 

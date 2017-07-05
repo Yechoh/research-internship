@@ -5,50 +5,15 @@ import pagetypes
 import shares
 import extraTaskCombinators
 import qualified Data.Map as DM
-import callCpm
+//import callCpm
 import directoryBrowsing
 import createAndRunExec
 import iTasks.API.Extensions.Editors.Ace
 import iTasks.UI.Editor.Builtin
 import iTasks._Framework.IWorld
 import Text
+import errorHandling
 
-:: Shortcut = No_shortcut 
-			| Ctrl_slash 
-			| Ctrl_backslash 
-			| Ctrl_Shift_backslash 
-			| Ctrl_equals 
-			| Ctrl_Shift_equals 
-			| Ctrl_b //
-			| Ctrl_d
-			| Ctrl_Shift_d
-			| Ctrl_e
-			| Ctrl_Shift_e
-			| Ctrl_i
-			| Ctrl_l
-			| Ctrl_m
-			| Ctrl_n
-			| Ctrl_o
-			| Ctrl_r
-			| Ctrl_Shift_r
-			| Ctrl_s
-			| Ctrl_Shift_s
-			| Ctrl_Alt_s
-			| Ctrl_Shift_Alt_s
-			| Ctrl_w
-			| Ctrl_Shift_w
-
-:: EditorInfo = 
-	{
-		shortcuts :: [Shortcut],
-		selection :: Maybe AceRange,
-		position :: (Int,Int),
-		theme :: String,
-		readOnly :: Bool,
-		prev_time :: Time
-	}
-	
-derive class iTask EditorInfo, Shortcut
 
 editorInfo = 
 	{
@@ -74,10 +39,8 @@ editorRecord =
 pageEditor :: EditorRedirects -> Task ()
 pageEditor ((actionOpen,pagenodeChooseFile),(actionAskImportPaths,pagenodeAskImportPaths)) =
 	(editors) 
-	// -&&-
-	// helpwindows) 
-	 //-&&-
-	 //(repeatEverySecond (cpmSetErrorstate))
+	-&&-
+	(repeatEverySecond (build))
 	 >>*	[   OnAction  actionOpen   	(always pagenodeChooseFile)
 	 		,	OnAction actionAskImportPaths	(always (pagenodeAskImportPaths))
 		    ]
@@ -95,8 +58,10 @@ latest t1 t2
 embed :: [ParallelTask a] -> [(ParallelTaskType,ParallelTask a)]
 embed l = map (\t. (Embedded,t)) l
 
+/*
 showErrors :: ParallelTask ()
 showErrors = \tasklist.viewSharedInformation "errors" [ViewUsing id (textArea 'DM'.newMap)] errorstate >>|- return ()
+*/
 
 //j is de lengte
 subset :: Int Int [a] -> [a]
@@ -127,7 +92,7 @@ where
 
 helpwindows :: String (Shared (EditorInfo,Map String [String])) -> Task [(TaskTime,TaskValue ())]
 helpwindows filename s = (parallel (embed
-	[	(showErrors)
+	[	(errorWindow filename s)
 	,	viewSelection filename s	
 	]) [])<<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)
 
@@ -143,7 +108,7 @@ eiAndContents2ErRead filename (ei,contents)  =
 		}
 		,
 		{AceState|
-			lines = maybe ["henkig"] (\id.id) (fst ('DM'.getU filename contents)) ,
+			lines = maybe ["could not get contents"] (\id.id) (fst ('DM'.getU filename contents)) ,
 			cursor = ei.EditorInfo.position,
 			selection = ei.EditorInfo.selection,
 			disabled = ei.EditorInfo.readOnly

@@ -5,7 +5,7 @@ import pagetypes
 import directoryBrowsing
 import shares
 import extraTaskCombinators
-import callCpm
+//import callCpm
 import qualified Data.Map as DM
 
 pageChooseFile :: ChooseFileRedirects -> Task ()
@@ -18,7 +18,8 @@ pageChooseFile (actionContinue,pagenodeEditor) =
 askPath :: Task String
 askPath
 	=							getPwdName
-	>>- \pwd ->					selectFromTree pwd isCleanFile
+	>>- \pwd ->					(selectFromTree True pwd isCleanFile)
+	>>- \(a,b)->				return (a+++b)
 	//>>- \path -> return (takeDirectory path, dropDirectory path)
 
 setContents :: String -> Task ()
@@ -34,7 +35,7 @@ setContents iclloc
 		//base the temp proj on it
 	//else
 		//create new temp orj
-setProject :: String String -> Task ()
+/*setProject :: String String -> Task ()
 setProject path name
 	=							readFromFile (toproj (path </> name))
 	>>- \mprojtxt ->			(case mprojtxt of
@@ -42,4 +43,4 @@ setProject path name
 									>>|- return ())
 		(Just projtxt) ->			return ()
 								)
-
+*/

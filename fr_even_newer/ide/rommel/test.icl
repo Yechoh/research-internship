@@ -10,6 +10,7 @@ myTest pred taska
             ,  OnAction (Action "Not Ok") (ifValue (not o pred) (\_ -> return Nothing))
             ]
 
+Start = 5 + True
 
 
 

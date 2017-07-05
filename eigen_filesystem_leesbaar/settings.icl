@@ -1,22 +1,10 @@
 implementation module settings
 
 import System.FilePath, System.Environment, Text.HTML
-import ideConstants, ideUtil, directoryBrowsing, createAndRunExec, projectOptions
--
--
-settings :: Shared Settings
-settings 	= sharedStore "settings" 	{ cpmDirectory	= ""
-										} 
-environment :: Shared Environment
-environment	= sharedStore "evironment" 	{ environmentName = ""
-										, environmentLibs = []
-										}
-project :: Shared Project
-project 	= sharedStore "project" 	{ projectName		= ""
-										, projectPath 		= ""
-										, projectSources	= [] 
-										}
-
+import directoryBrowsing, createAndRunExec
+import shares
+import extraTaskCombinators
+import qualified Data.Map as DM
 
 setSettings :: Task ()
 setSettings = setSettings` <<@ ApplyLayout frameCompact
@@ -26,10 +14,9 @@ where
 		>>- \mbHome ->  upd (\cs -> {cs & cpmDirectory = if (cs.cpmDirectory == "" && isJust mbHome) (fromJust mbHome) cs.cpmDirectory}) settings 
 		>>|				get settings
 		>>- \curSet ->	get project
-		>>-	\project ->	get recentProjects
-		>>- \recProj -> let isProj 			= project.projectPath <> "" && project.projectName <> ""
+		>>- \recProj -> let isProj 			= recProj.projectPath <> "" && recProj.projectName <> ""
 							isCPM  			= curSet.cpmDirectory <> ""
-							projectPath 	= project.projectPath </> project.projectName +++ ".prj"
+							projectPath 	= recProj.projectPath </> recProj.projectName +++ ".prj"
 							applicationPath = curSet.cpmDirectory
 						in	(if (not isCPM)  (viewInformation () [] "Where is cpm.exe ? Should be in Clean home directory...")
 							(if (not isProj) (viewInformation () [] ("The location of cpm.exe currently set is: " +++ curSet.cpmDirectory )
@@ -38,11 +25,7 @@ where
 					   			(viewInformation () [] "Change Settings..")
 							))
 							>>*		[ OnAction (Action "Set cpm location")	(always 		(mbCancel findCPM <<@ ApplyLayout frameCompact))
-							 		, OnAction (Action "Set Project")		(ifCond isCPM   (mbCancel NewProject <<@ ApplyLayout frameCompact))
-									, OnAction (Action "Use Recent Project")(ifCond (isCPM && recProj <> []) 
-																							(mbCancel useRecentProject <<@ ApplyLayout frameCompact))  
-									, OnAction (Action "Project Options")		(ifCond (isCPM && recProj <> []) 
-																							(projectOptionsEditor projectPath applicationPath))  
+							 		, OnAction (Action "Set Project")		(ifCond isCPM   (mbCancel NewProject <<@ ApplyLayout frameCompact))  
 							 		]
 
 	findCPM 
@@ -55,24 +38,24 @@ where
 														, projectName 		= dropExtension file
 														, projectSources 	= [path]
 				  							}) project
-		>>|					AddStdEvironment
 		>>|					get settings 
 		>>- \curSet ->		get project
 		>>- \myProj ->		createProject (curSet.cpmDirectory </> cpmFile) myProj.projectPath myProj.projectName
-		>>|					addToRecentProjects myProj
-
-	AddStdEvironment :: Task ()
-	AddStdEvironment 
-		=					get settings
-		>>- \curSet ->  	fetchDirectories (curSet.cpmDirectory </> "Libraries") isCleanIclDcl
-		>>- \libs ->		upd (\cs -> {cs & environmentName = "MyLibraries"
-											, environmentLibs = [libs]
-										}) environment @! ()
-								
-	useRecentProject :: Task ()
-	useRecentProject 
-		=				get recentProjects
-		>>- \recent ->	enterChoice "Select previous project to open..." [ChooseFromGrid (\rec -> rec.projectName)] recent
-		>>* 			[ OnAction (Action "Use") (hasValue (\oldProj -> set oldProj project @! () ))
-						]	 
-
+		>>|- setContents (path </> file) 
+		
+setContents :: String -> Task ()
+setContents iclloc
+	= 							readLinesFromFile iclloc
+	>>- \(Just contenttxt) ->	get contents
+	>>- \contentmap ->			set ('DM'.put iclloc contenttxt contentmap) contents
+								>>|- return ()
+		
+mbCancel :: (Task a) -> Task ()
+mbCancel ta 
+	=
+	(		(ta @! ())
+	-||- 	(	viewInformation () [] ()
+			>>*	[OnAction ActionCancel (always (return ()))]
+			)
+	)
+	>>|- return ()

@@ -16,7 +16,7 @@ fetchDirectories 	::  FilePath (FileName -> Bool) -> Task Directory
 
 // directory browsing
 
-selectFromTree 		:: FilePath (FileName -> Bool) -> Task FilePath
+selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
 browseDirectory 	:: (FilePath -> Bool) -> Task ((FilePath,[FilePath]),Maybe FilePath)
 
 // 
@@ -24,6 +24,8 @@ browseDirectory 	:: (FilePath -> Bool) -> Task ((FilePath,[FilePath]),Maybe File
 getPwdName 			:: Task FilePath					// return present working directory name
 isDirectory 		:: FilePath -> Task Bool			// True if file is a directory
 readDir 			:: FilePath  -> Task [FileName]  	// returns all names of files and directories in given directory
+
+askUserForFile:: !FileName !(FileName -> Bool) -> Task (FilePath,FileName)
 
 // File I/O	
 

@@ -10,7 +10,7 @@ import qualified Data.Map as DM
 cpmCreateProject :: String -> Task ()
 cpmCreateProject projname =
 	get settings >>- \settings ->
-	(appWorld (\w. snd ('SP'.callProcess settings.dirCpm ["project",projname,"create"] Nothing w))) 
+	(appWorld (\w. snd ('SP'.callProcess settings.cpmDir ["project",projname,"create"] Nothing w))) 
 	
 cpmSetErrorstateWithErrlog :: Task ()
 cpmSetErrorstateWithErrlog =
@@ -28,7 +28,7 @@ cpmSetErrorstate :: Task ()
 cpmSetErrorstate = 		
 	get settings >>- \sett.
 	get project >>- \p.
-	compile sett.dirCpm (projdir p) (projname p) >>|
+	compile sett.dirCpm (projdir p) (projname p) sett.dirIDEEnvs >>|
 	readFromFile (errordir sett) >>- \(Just errors).
 	set errors errorstate >>|
 	return ()
@@ -37,9 +37,9 @@ cpmSetErrorstate =
 	projdir p = takeDirectory p 
 	errordir sett = (takeDirectory sett.dirCpm) </> "Temp" </> "errors"
 	
-compile :: String String String   -> Task ()
-compile cpmBin buildDir mainModule
-		= appWorld (\w. snd ('SP'.callProcess cpmBin [mainModule] (Just buildDir) w)) @! ()
+compile :: String String String String  -> Task ()
+compile cpmBin buildDir mainModule env
+		= appWorld (\w. snd ('SP'.callProcess cpmBin [mainModule,"--envs="+++env] (Just buildDir) w)) @! ()
 	
 	
 cpmSetErrorstateUsingCmd :: Task ()
