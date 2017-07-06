@@ -4,3 +4,5 @@ import iTasks
 import pagetypes
 
 pageEditor :: EditorRedirects -> Task ()
+
+vbselecties :: String

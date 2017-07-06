@@ -7,6 +7,7 @@ import iTasks
 
 //calls the given task every second
 repeatEverySecond :: (Task ()) -> Task ()
+repeatEveryTwoMinutes :: (Task ()) -> Task ()
 
 //very similar to waitForTime in taskCombinators
 //given a time, it waits until that time

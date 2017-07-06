@@ -8,8 +8,8 @@ import qualified Data.Map as DM
 import shares
 import settings
 
-Start :: *World -> *World
-Start world = startEngine
+Start world = //vbselecties//
+	startEngine
 	(startTask)
 	world
 	

@@ -5,6 +5,8 @@ import shares
 import System.File
 import directoryBrowsing
 import _SystemArray
+import extraTaskCombinators
+import qualified Data.Map as DM
 
 //!String !(Shared (!AceOptions,!AceState))
 
@@ -12,7 +14,10 @@ errorWindow :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask 
 errorWindow nameOfFileInEditor editorStore
 	=				\tasklist.get project
 	>>- \myProj ->	accWorld (fileExists (myProj.projectPath </> myProj.projectName +++ ".exe"))
-	>>- \isExe ->	enterChoiceWithShared  (Title ("Errors & Warnings")) [ChooseFromGrid id] errorStore >>| return ()
+	>>- \isExe -> get contents 
+	>>- \c -> 'DM'.foldrWithKey (\k v t -> t >>|- saveFile k (foldr joinWithNewline "" v)) (return ()) c
+	>>|-	
+		enterChoiceWithShared  (Title ("Errors & Warnings")) [ChooseFromGrid id] errorStore >>|- return ()
 	/*>^*				[ OnAction (Action "/File/Open File") (ifValue (\err -> fileName err <> dropDirectory nameOfFileInEditor) (findAndOpenFile myProj))
 					, OnAction (Action "Goto Error") 	  (ifValue (\err -> fileName err == dropDirectory nameOfFileInEditor) (showError editorStore))
 					]
