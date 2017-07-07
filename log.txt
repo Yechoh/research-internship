@@ -369,3 +369,20 @@ Ook todotje gemaakt en aant cloogle doorgekeken. Deze aant zijn sparse, dus dat 
 15:46 hehe, we zijn nu op een punt waar cpm weer gewoon errors geeft en onze flashende window weer terug is. Ik heb een flink stuk code van Rinus overgenomen. Ik heb het vermoeden dat pageChooseFile gebroken is, maar ik heb geen zin om daar nu naar te kijken. Next up is de flashende window verbergen.
 16:17 en gecommit. altijd een gedoe lijkt het wel. Flashende window lijkt me niet te verhelpen, aangezien je een exe bestand niet kan verbergen, tenzij je iets in de code van de exe aanpast. En ik moest cpm.exe behandelen als een black box. Ik zet hem op 'update maar 1 keer in de 2 minuten' en laat het daar op het moment bij.
 16:25 eigenlijk geeft het een error zodra ik typ, maar ik ga nu naar huis.
+--7u
+
+do 6-7
+9:13 waarom geeft het een error zodra ik typ? subscript error in !!, index too large. Het gebeurt in het tekstselecteren gedeelte in pageEditor.
+9:39 de functie vbselectie gemaakt en getest dat selectText precies zo werkt als ik verwacht. Het probleem is waarschijnlijk dat als ik iets typ, ace sneller updates dan de contentstore, waar de selectie op uitgevoerd wordt. Gewoon guards opzetten dat niets out of bounds gaat.
+10:06 dat opgelost, maar errorHandling werkt nog niet zoals het moet. De errors worden niet geupdatet. Verder sluit de contentwindow voor wat voor reden dan ook elke keer als cpm wordt aangeroepen
+10:30 pauze
+
+13:40
+13:49 ah, ik heb hem. De files worden niet gesaved voordat cpm aangeroepen wordt. Maar het leek wel alsof ze gesaved werden, aangezien de contentstore wel hun nieuwe inhoud onthield.
+14:14 en committen
+14:20 en beginnen met cloogle integreren
+15:17 cloogle doorgekeken en geprobeerd cloogle.org te runnen, maar het importeert een niet-bestaand general.dcl, beweert de compiler
+
+vr 7-7
+9:57 vandaag na 12 zou ingrid berenbroek op de uni moeten zijn, dus dan heb ik een sleutel. ik ga overal de ref naar general.dcl verwijderen en dan kijken welke functies missen.
+10:29 hij mist wel meer files, o.a. typeproperties. Peter gevraagd of hij het wist (nope) en vervolgens een mailtje naar mart en camil gestuurd. De vraag is wat ik nu kan gaan doen. Ik ga een nieuwe branch maken waarin ik alvast cloogle aanroep alsof die werkt. En in een andere branch ga ik (later) gewoon het google drive lijstje afwerken.
