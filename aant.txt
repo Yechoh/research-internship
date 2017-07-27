@@ -215,5 +215,16 @@ Bas:
 	updateTabs crasht als ik de editorpage wil sluiten. Wss omdat de share die gewatcht wordt niet meer bestaat. Hoe voorkom ik dit.
 
 ---
+selectFromTree niet modulair
 
+Ik heb een task waarmee ik bepaalde informatie kan selecteren/maken. Hiervoor heb ik een aantal knoppen. Nu moet deze task ook een continue-/finalize-knop hebben, anders kan het de data niet doorspelen. Vergelijk dit met een soortgelijke task waar ik geen knoppen heb (bijvoorbeeld enterInformation). Deze geeft de data op elk moment door.
+Een voorbeeld van zo'n task die een continueknop nodig heeft, is selectFromTree, die een up-knop heeft om een directory hoger te gaan.
+Een ander voorbeeld is een implementatie van een woordenboek, waarbij een boekpagina wordt weergegeven als een chooseList van woorden, met twee knoppen 'previous page' en 'next page'.
+
+Maar dit zorgt voor unmodulair gedrag. Bij de enterInformation task kan ik namelijk later er voor kiezen knoppen aan toe te voegen in een functie die enterInformation aanroept. Bij een task die al een continueknop heeft, als ik dan knoppen toe wil voegen in een functie die die functie aanroept, dan zal ik eerst op continue moeten klikken (waardoor het window verdwijnt) voordat ik op de knoppen kan drukken.
+Voorbeelden waarbij ik dit niet zou willen, is bij een cancel knop (maar die kan op zich nog wel zonder continue) en bij een keuze wat ik met de informatie wil doen (bijvoorbeeld: save,use,edit).
+
+Ik zie hiervoor twee oplossingen, de simpele en de moeilijke.
+De simpele oplossing is een WithShared gebruiken over het datatype waarin we de data selecteren/maken. Dit geeft ons de mogelijkheid >^* te gebruiken ipv van >>*. Dit lijkt me een elegante oplossing, omdat de operatie die we willen doen (het datatype anders bekijken/de data transformeren) ook voelt als een zijstap in plaats van een hoofdstap. Maar tegelijkertijd is bij een enterInformation geen WithShared nodig en heb ik het gevoel dat dat hier ook niet nodig zou moeten zijn.
+Dus de moeilijke oplossing is iTasks op een of andere manier aanpassen, zodat de functie ook een waarde teruggeeft als er geen continueknop bestaat. Ik weet niet of dat haalbaar is.
 

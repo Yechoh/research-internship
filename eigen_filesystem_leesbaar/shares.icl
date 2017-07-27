@@ -4,6 +4,7 @@ import iTasks
 import qualified Data.Map as DM
 import System.OS
 import iTasks.API.Extensions.Editors.Ace
+import System.FilePath
 
 
 derive class iTask Settings, Project
@@ -30,9 +31,14 @@ contents :: Shared (Map String [String])
 contents = sharedStore "contents" 'DM'.newMap
 
 contentLinesOf :: String -> Task [String]
-contentLinesOf filename = 
+contentLinesOf filepath = 
 	get contents >>- \c.
-	return (fromJust (fst ('DM'.getU filename c )))
+	case (fst ('DM'.getU filepath c )) of 
+		Nothing = viewInformation "not found" [] (filepath,c) >>| return ["not found!"]
+		Just lines = return ["found: ":lines]
+	
+setContent :: String [String] -> Task (Map String [String])
+setContent filepath content = upd (\c. 'DM'.put filepath content c) contents
 	
 joinWithNewline :: String String -> String
 joinWithNewline a b = a+++OS_NEWLINE+++b
@@ -40,6 +46,21 @@ joinWithNewline a b = a+++OS_NEWLINE+++b
 contentOf :: String -> Task String
 contentOf filename = get contents >>- \c.
 	return (foldr joinWithNewline "" (fromJust (fst ('DM'.getU filename c ))))
+
+/*contents uses the complete filepath as filename. 
+This is because a user is allowed to have two files open with the same name but on different locations.
+But sometimes we only know the filename.
+This function finds the corresponding filepath*/
+filenameToFilepath :: String -> Task (Maybe String)
+filenameToFilepath filename =
+	get contents >>- \c.
+	case ('DM'.mapSize ('DM'.filterWithKey (\k a. takeFileName k == filename) c)) of
+		1 = return (Just (hd ('DM'.keys ('DM'.filterWithKey (\k a. takeFileName k == filename) c))))
+		0 = return Nothing
+		a = enterChoice "Multiple files found with this name. Choose one:" [] ('DM'.keys ('DM'.filterWithKey (\k a. takeFileName k == filename) c))
+			>>* [	OnAction ActionCancel (always (return Nothing))
+				,	OnAction (Action "Choose") (hasValue \name. return (Just name))
+				]
 	
 :: Shortcut = No_shortcut 
 			| Ctrl_slash 

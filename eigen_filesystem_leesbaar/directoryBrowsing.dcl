@@ -16,6 +16,9 @@ fetchDirectories 	::  FilePath (FileName -> Bool) -> Task Directory
 
 // directory browsing
 
+selectFromTreeMaybe :: !Bool !FilePath !(FileName -> Bool) -> Task (Maybe (FilePath,String))
+selectFolder 		:: !FilePath -> Task (String,String)
+//selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task [Int]
 selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
 browseDirectory 	:: (FilePath -> Bool) -> Task ((FilePath,[FilePath]),Maybe FilePath)
 

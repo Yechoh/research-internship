@@ -7,9 +7,17 @@ import pageAskImportPaths
 import qualified Data.Map as DM
 import shares
 import settings
+import pageCreateFile
+import errorHandling
 
-Start world = //vbselecties//
+Start world = //isAFunctionLineTest//vbselecties//
 	startEngine
+	//(return () >>* [OnAction (Action "a") (always (return ()))])//
+	/*(viewSharedInformation "" [] contents -&&- (forever (enterInformation "" [] 
+	>>= (\a. placeText "aaa" 0 a) 
+	>>| contentLinesOf "aaa"
+	>>= \a. (viewInformation "tada!" [] a) 
+	>>| return ())))*/
 	(startTask)
 	world
 	
@@ -27,6 +35,15 @@ startTask
 pagenodeChooseFile :: Task ()
 pagenodeChooseFile =
 	pageChooseFile (ActionContinue, pagenodeEditor)
+	
+pagenodeCreateFile :: Task ()
+pagenodeCreateFile = 
+	pageCreateFile 
+	(	(Action "Create",
+			 pagenodeEditor)
+	,	(ActionCancel,
+			pagenodeEditor)
+	)
 
 pagenodeEditor :: Task ()
 pagenodeEditor =
@@ -36,8 +53,10 @@ pagenodeEditor =
 	(pageEditor
 	(	(ActionOpen,
 			pagenodeChooseFile)
-	,	(Action "import paths",
+	,	(Action "Import Paths",
 			pagenodeAskImportPaths)
+	,	(Action "/File/New",
+			pagenodeCreateFile)
 	))
 		
 pagenodeAskImportPaths :: Task ()

@@ -16,13 +16,15 @@ import errorHandling
 pageAskImportPaths :: AskImportPathsRedirects -> Task ()
 pageAskImportPaths ((actioncontinue,pagenodeEditor),(actioncancel,pagenodeEditor2)) =
 	get project >>- \proj.
-	readFromFile proj.projectName >>- \(Just projtxt).
-	showUnresolvedImports
-	||-
-	showMapSelector proj.projectName
-	>>* [   OnAction  actioncontinue   	(always (pagenodeEditor))
-		,	OnAction actioncancel		(always (writeToFile (proj.projectName) projtxt >>|- pagenodeEditor))
-		]
+	readFromFile ((proj.projectPath </> proj.projectName)+++".prj") >>- \mprojtxt. case mprojtxt of
+	Nothing = viewInformation "" [] (proj.projectPath +++ "   " +++ proj.projectName) >>| return ()
+	(Just projtxt) = 
+		showUnresolvedImports
+		||-
+		showMapSelector proj.projectName
+		>>* [   OnAction  actioncontinue   	(always (pagenodeEditor))
+			,	OnAction actioncancel		(always (writeToFile (proj.projectName) projtxt >>|- pagenodeEditor))
+			]
 		
 Errors2Imports :: [String] -> String
 Errors2Imports lines 

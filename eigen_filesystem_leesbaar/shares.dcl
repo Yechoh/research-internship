@@ -25,8 +25,10 @@ contents :: Shared (Map String [String])
 
 //functions to get specific content
 contentLinesOf :: String -> Task [String]
+setContent :: String [String] -> Task (Map String [String])
 joinWithNewline :: String String -> String
 contentOf :: String -> Task String
+filenameToFilepath :: String -> Task (Maybe String)
 
 :: Shortcut = No_shortcut 
 			| Ctrl_slash 

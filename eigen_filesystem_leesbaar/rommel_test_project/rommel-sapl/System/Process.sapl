@@ -1,0 +1,46 @@
+|| ?module? System.Process
+
+
+System.Process.foldr_10 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> op_0 a_1_0 (System.Process.foldr_10 op_0 r_1 x_1_1)) 
+System.Process.escape_9 !s_0 = case (<{StdInt.==_16}> (Text.indexOf_3 " " s_0) -1) (True -> s_0) (False -> case (case (StdBool.not (<{StdInt.<_17}> (_SystemArray.size_20 s_0) 2)) (True -> case (<{StdChar.==_18}> (_SystemArray.select_19 s_0 0) '"') (True -> <{StdChar.==_18}> (_SystemArray.select_19 s_0 (<{StdInt.-_7}> (_SystemArray.size_20 s_0) 1)) '"') (False -> False) ) (False -> False) ) (True -> s_0) (False -> <{StdString.+++_11}> "\"" (<{StdString.+++_11}> s_0 "\"")) ) 
+System.Process.anon_8 !a_0 !b_1 = <{StdString.+++_11}> a_0 (<{StdString.+++_11}> " " b_1)
+System.Process.foldr_54 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> System.Process.anon_8 a_1_0 (System.Process.foldr_54 r_0 x_1_1)) 
+System.Process.runProcess !path_0 !args_1 !mCurrentDirectory_2 !world_3 = let _x_1_0 = <{System.Process._c;32;21_55}> mCurrentDirectory_2 path_0 commandLine_1_3 startup_1_2 process_1_1 world_3, process_1_1 = _SystemArray.createArray_9 4 0, startup_1_2 = _SystemArray.update_13 (_SystemArray.update_13 (_SystemArray.createArray_9 17 0) 0 68) 11 256, commandLine_1_3 = System._Pointer.packString (System.Process.foldr_54 "" (StdList.map System.Process.escape_9 (_predefined._Cons path_0 args_1))) in case (StdBool.not (select _x_1_0::_Tuple2 0)) (True -> System.OSError.getLastOSError (select _x_1_0::_Tuple2 1)) (False -> _Tuple2 (Data.Error.Ok (System.Process._ProcessHandle (_SystemArray.select_11 process_1_1 0) (_SystemArray.select_11 process_1_1 1))) (select _x_1_0::_Tuple2 1)) 
+<{System.Process._c;32;21_55}> !mCurrentDirectory_0 !path_1 !commandLine_2 !startup_3 !process_4 !world_5 = case mCurrentDirectory_0 (Data.Maybe.Just dir_1_0 -> System._WinBase.createProcessA_dir (System._Pointer.packString path_1) commandLine_2 0 0 True 8 0 (System._Pointer.packString dir_1_0) startup_3 process_4 world_5) (Data.Maybe.Nothing -> System._WinBase.createProcessA (System._Pointer.packString path_1) commandLine_2 0 0 True 8 0 0 startup_3 process_4 world_5) 
+System.Process.closeProcessHandle !handle_0 !world_1 = let _x_1_0 = System._WinBase.closeHandle (select handle_0::System.Process._ProcessHandle 0) world_1 in case (StdBool.not (select _x_1_0::_Tuple2 0)) (True -> System.OSError.getLastOSError (select _x_1_0::_Tuple2 1)) (False -> let world_3_0 = select _x_1_0::_Tuple2 1, _x_3_1 = System._WinBase.closeHandle (select handle_0::System.Process._ProcessHandle 1) world_3_0 in case (StdBool.not (select _x_3_1::_Tuple2 0)) (True -> System.OSError.getLastOSError (select _x_3_1::_Tuple2 1)) (False -> _Tuple2 (Data.Error.Ok _predefined._Unit) (select _x_3_1::_Tuple2 1)) ) 
+System.Process.checkProcess !handle_0 !world_1 = case handle_0 (System.Process._ProcessHandle processHandle_1_0 threadHandle_1_1 -> let _x_2_0 = System._WinBase.getExitCodeProcess processHandle_1_0 world_1 in case (StdBool.not (select _x_2_0::_Tuple3 0)) (True -> System.OSError.getLastOSError (select _x_2_0::_Tuple3 2)) (False -> let exitCode_4_0::I = select _x_2_0::_Tuple3 1 in case (<{StdInt.==_16}> exitCode_4_0 259) (True -> _Tuple2 (Data.Error.Ok Data.Maybe.Nothing) (select _x_2_0::_Tuple3 2)) (False -> _Tuple2 (Data.Error.Ok (Data.Maybe.Just exitCode_4_0)) (select (System.Process.closeProcessHandle handle_0 (select _x_2_0::_Tuple3 2))::_Tuple2 1)) ) ) 
+System.Process.waitForProcess !handle_0 !world_1 = case handle_0 (System.Process._ProcessHandle processHandle_1_0 threadHandle_1_1 -> let _x_2_0 = System._WinBase.waitForSingleObject processHandle_1_0 -1 world_1, world_2_1 = select _x_2_0::_Tuple2 1, _x_2_2 = System._WinBase.getExitCodeProcess processHandle_1_0 world_2_1 in case (StdBool.not (select _x_2_2::_Tuple3 0)) (True -> System.OSError.getLastOSError (select _x_2_2::_Tuple3 2)) (False -> _Tuple2 (Data.Error.Ok (select _x_2_2::_Tuple3 1)) (select (System.Process.closeProcessHandle handle_0 (select _x_2_2::_Tuple3 2))::_Tuple2 1)) ) 
+System.Process.callProcess !path_0 !args_1 !mCurrentDirectory_2 !world_3 = let _x_1_0 = System.Process.runProcess path_0 args_1 mCurrentDirectory_2 world_3, world_1_1 = select _x_1_0::_Tuple2 1 in <{System.Process._c;73;7_56}> (select _x_1_0::_Tuple2 0) world_1_1
+<{System.Process._c;73;7_56}> !_x_0 world_1 = case _x_0 (Data.Error.Error e_1_0 -> _Tuple2 (Data.Error.Error e_1_0) world_1) (Data.Error.Ok handle_1_0 -> System.Process.waitForProcess handle_1_0 world_1) 
+System.Process.undef = System.Process.undef
+System.Process.exit !_x_0::I !world_1 = <{_Tuple2!2}> System.Process.undef world_1
+<{System.Process.TD;ProcessHandle}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: System.Process._ProcessHandle = {System.Process.processHandle::I, System.Process.threadHandle::I}
+
+:: <{System.Process.gEq_s;}> = {!System.Process.gEq_s}
+
+:: <{System.Process.gEq_ss;}> = {!System.Process.gEq_ss}
+
+:: <{System.Process.gEq_sss;}> = {!System.Process.gEq_sss}
+
+:: <{System.Process.gEq_ssss;}> = {!System.Process.gEq_ssss}
+
+:: <{System.Process.gEq_sssss;}> = {!System.Process.gEq_sssss}
+
+:: <{System.Process.gEq_ssssss;}> = {!System.Process.gEq_ssssss}
+
+:: <{System.Process.gEq_sssssss;}> = {!System.Process.gEq_sssssss}
+
+:: <{System.Process.gEq_ssssssss;}> = {!System.Process.gEq_ssssssss}
+
+:: <{System.Process.gEq_sssssssss;}> = {!System.Process.gEq_sssssssss}
+
+:: <{System.Process.bimap_s;}> = {System.Process.bimap_s}
+
+:: <{System.Process.bimap_ss;}> = {System.Process.bimap_ss}
+
+:: <{System.Process.bimap_sss;}> = {System.Process.bimap_sss}
+

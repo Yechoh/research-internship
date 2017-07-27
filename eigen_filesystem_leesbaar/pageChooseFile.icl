@@ -13,20 +13,24 @@ pageChooseFile (actionContinue,pagenodeEditor) =
 	askPath					
 	-||
 	updateSharedInformation "paths" [] settings
-	>>- \iclloc -> setContents iclloc >>| /*setProject iclloc >>|*/ (pagenodeEditor)
+	>>- \miclloc -> case miclloc of
+		Nothing = pagenodeEditor
+		(Just (a,b)) = setContents (a </> b) >>|- /*setProject iclloc >>|*/ (pagenodeEditor)
 
-askPath :: Task String
+askPath :: Task (Maybe (String,String))
 askPath
 	=							getPwdName
-	>>- \pwd ->					(selectFromTree True pwd isCleanFile)
-	>>- \(a,b)->				return (a+++b)
+	>>- \pwd ->					(selectFromTreeMaybe True pwd isCleanFile)
+	//>>- \(a,b)->				return (Just (a </> b))
 	//>>- \path -> return (takeDirectory path, dropDirectory path)
 
 setContents :: String -> Task ()
 setContents iclloc
-	= 							readLinesFromFile iclloc
-	>>- \(Just contenttxt) ->	get contents
-	>>- \contentmap ->			set ('DM'.put iclloc contenttxt contentmap) contents
+	= 							readLinesFromFile (iclloc)
+	>>- \mct -> case mct of
+		Nothing = viewInformation "" [] iclloc >>| return ()
+		(Just contenttxt) =	get contents
+				>>- \contentmap ->			set ('DM'.put iclloc contenttxt contentmap) contents
 								>>|- return ()
 
 //if there do not already exist	a temp icl and temp proj

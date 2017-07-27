@@ -6,3 +6,5 @@ import pagetypes
 pageEditor :: EditorRedirects -> Task ()
 
 vbselecties :: String
+
+isAFunctionLineTest :: [Bool]	

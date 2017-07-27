@@ -15,7 +15,7 @@ repeatEverySecond task =
 repeatEveryTwoMinutes :: (Task ()) -> Task ()
 repeatEveryTwoMinutes task =
 							get currentTime 
-	>>= \now.				waitForTime2 {Time | now & min=now.Time.min+1} 
+	>>= \now.				waitForTime2 {Time | now & sec=now.Time.sec+10} //waitForTime2 {Time | now & min=now.Time.min+1} 
 	>>|-					task
 	>>|-					repeatEveryTwoMinutes task	
 	

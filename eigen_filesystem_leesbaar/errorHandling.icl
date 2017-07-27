@@ -7,6 +7,7 @@ import directoryBrowsing
 import _SystemArray
 import extraTaskCombinators
 import qualified Data.Map as DM
+import Text
 
 //!String !(Shared (!AceOptions,!AceState))
 
@@ -17,20 +18,16 @@ errorWindow nameOfFileInEditor editorStore
 	>>- \isExe -> get contents 
 	>>- \c -> 'DM'.foldrWithKey (\k v t -> t >>|- saveFile k (foldr joinWithNewline "" v)) (return ()) c
 	>>|-	
-		enterChoiceWithShared  (Title ("Errors & Warnings")) [ChooseFromGrid id] errorStore >>|- return ()
-	/*>^*				[ OnAction (Action "/File/Open File") (ifValue (\err -> fileName err <> dropDirectory nameOfFileInEditor) (findAndOpenFile myProj))
-					, OnAction (Action "Goto Error") 	  (ifValue (\err -> fileName err == dropDirectory nameOfFileInEditor) (showError editorStore))
-					]
-	>>*				[ OnAction (Action "/Project/Build")			(always  Build)
-				 	, OnAction (Action "/Project/Run")				(ifCond  isExe RunProject)
-					, OnAction (Action "/Project/Set Settings")		(always  jumpToSetSettings)
-				 	]*/						
-	/*where
-		findAndOpenFile myProj errorMessage 
-			= 				findFileInProjectEnv (fileName errorMessage)
-			>>- \mbFound -> case mbFound of
-								Nothing 				-> viewInformation "Cannot find file " [] (fileName errorMessage) @! ()
-								Just (readOnly,path)	-> jumpToEditorPage readOnly False path*/
+		(enterChoiceWithShared  (Title ("Errors & Warnings")) [ChooseFromGrid id] errorStore 
+	>&^
+	(offerSolutions editorStore)) <<@ ApplyLayout (arrangeHorizontal) >>|- return ()  
+
+/*showErrorsAndSolutions :: (Shared (EditorInfo,Map String [String])) -> Task ()
+showErrorsAndSolutions editorStore = 
+	(enterChoiceWithShared  (Title ("Errors & Warnings")) [ChooseFromGrid id] errorStore 
+	>&^
+	\choice.((showErrorsAndSolutions editorStore) ||- (offerSolutions editorStore choice)))  <<@ ApplyLayout (arrangeHorizontal)
+*/	
 
 		/*fileName :: String -> String
 		fileName errorMessage = {c \\ c <- (takeWhile ((<>) ',') (tl (dropWhile ((<>) '[' ) [c \\ c <-: errorMessage])))}
@@ -39,13 +36,84 @@ errorWindow nameOfFileInEditor editorStore
 			= 				get project 
 			>>- \myProj ->	runExec (myProj.projectPath </> myProj.projectName +++ ".exe") 8080 @! ()*/
 
+:: DiagnosedError = UndefinedVar String Int String | Unknown String Int
+
+splitOnce :: !String !String -> (String,String)
+splitOnce sep s 
+	# index = indexOf sep s
+	= (s%(0,index-1),s%(index+1,size s-1))
+
+getErrorLineNr :: String -> Int
+getErrorLineNr err 
+	#(rest,err) = splitOnce "[" err
+	#(errinfo,errmessage) = splitOnce "]" err
+	#[filename,line,obj:rest] = split "," errinfo
+	= (toInt line) - 1
+
+diagnose :: String -> DiagnosedError
+diagnose err
+	#(rest,err) = splitOnce "[" err
+	#(errinfo,errmessage) = splitOnce "]" err
+	#[filename,line,obj:rest] = split "," errinfo
+	#errwords = split " " (dropChars 2 errmessage)
+	#line = (toInt line) - 1
+	| length errwords == 2
+		| indexOf "undefined" (errwords!!1) <> -1
+			= UndefinedVar filename line (errwords!!0)
+		| otherwise = Unknown (filename+++" "+++errwords!!1) line
+	| otherwise = Unknown (filename) line
+
+showButtons :: [(Action,Task ())] -> Task ()
+showButtons l = viewInformation "" [] "" >>*
+		(map (\(a,t). OnAction a (always t)) l)
+
+startOfFunction :: String Int -> Task Int
+startOfFunction filepath i = contentLinesOf filepath >>- \l. return (sof l i)
+	where
+	sof :: [String] Int -> Int
+	sof l 0 = 0
+	sof l i
+		| (indexOf "::" (l!!i)) == -1 && (indexOf "Start" (l!!i)) == -1	=  sof l (i-1)
+		| otherwise						= i
+		
+placeText :: String Int [String] -> Task ()
+placeText filepath i text = viewInformation "placetext" [] i >>|
+	contentLinesOf filepath >>- \l.
+	setContent filepath ((\(a,b).a++text++b) (splitAt i l)) >>| return ()
+	
+jumpToLine :: (Shared (EditorInfo,Map String [String])) Int -> Task ()
+jumpToLine editorstore i = viewInformation "jumptoline" [] i >>|
+	upd (\(ei,c). ({ei & position = (i, snd ei.EditorInfo.position)},c)) editorstore >>| return ()
+
+createVarSolution :: String (Shared (EditorInfo,Map String [String])) Int String -> Task ()
+createVarSolution filename editorstore i var = filenameToFilepath filename >>- (\a. case a of
+	Nothing = viewInformation "" [] "cannot find file" >>| return ()
+	Just filepath = 
+		
+		startOfFunction filepath i >>- \funi. 
+		placeText filepath funi [var+++" :: ",""] >>| 
+		jumpToLine editorstore funi
+	)
+
+//offerSolutions shows possible actions on selecting an error.
+offerSolutions ::(Shared (EditorInfo,Map String [String])) (ReadOnlyShared (Maybe String)) -> Task ()
+offerSolutions editorstore error = forever ((viewSharedInformation "" [] error ||- watch error) >>*
+	[ OnValue (ifValue (\mstr. isJust mstr) (\(Just err). jumpToLine editorstore (getErrorLineNr err) >>| case diagnose err of
+		UndefinedVar filename i var = showButtons [(Action ("Create "+++var), createVarSolution filename editorstore i var)]
+		Unknown filename i = (viewInformation "" [] filename) >>|- return ()
+		))])
+
 build :: Task ()
 build 
 			= 				get settings 
 			>>- \curSet ->	get project
-			>>- \myProj ->	compile (curSet.cpmDirectory </> cpmFile) myProj.projectPath myProj.projectName
+			>>- \myProj ->	get contents 
+			>>- \c -> 'DM'.foldrWithKey (\k v t -> t >>|- saveFile k (foldr joinWithNewline "" v)) (return ()) c
+			>>|- 			compile (curSet.cpmDirectory </> cpmFile) myProj.projectPath myProj.projectName
 			>>|				readLinesFromFile (curSet.cpmDirectory </> errorFile) 
-			>>- \(Just errors) ->  set errors errorStore @! ()	
+			>>- \(merr) ->  case merr of
+				Nothing = viewInformation "" [] "can't find errorfile" @! () 
+				Just errors = set errors errorStore @! ()	
 			
 compile :: String String String   -> Task ()
 compile cpmBin buildDir mainModule

@@ -1,11 +1,11 @@
 .comp 920 000111010001
 .start _nostart_
-.depend "System.Environment" "20170403171236"
 .depend "createAndRunExec" "20170705153337"
+.depend "System.Environment" "20170403171236"
 .depend "extraTaskCombinators" "20170705162321"
-.depend "iTasks.API.Extensions.Editors.Ace" "20170403171227"
-.depend "shares" "20170705132905"
-.depend "directoryBrowsing" "20170705151856"
+.depend "directoryBrowsing" "20170713095649"
+.depend "iTasks.API.Extensions.Editors.Ace" "20170727112337"
+.depend "shares" "20170727135208"
 .depend "_SystemEnum" "20170403171239"
 .depend "StdEnum" "20170403171239"
 .depend "StdTuple" "20170403171239"
@@ -18,8 +18,8 @@
 .depend "iTasks.API.Common.SDSCombinators" "20170403171220"
 .depend "iTasks.API.Core.SDSCombinators" "20170403171220"
 .depend "iTasks.API.Core.SDSs" "20170403171220"
-.depend "iTasks.API.Common.TaskCombinators" "20170403171220"
-.depend "iTasks.API.Core.TaskCombinators" "20170403171221"
+.depend "iTasks.API.Common.TaskCombinators" "20170727112337"
+.depend "iTasks.API.Core.TaskCombinators" "20170727112337"
 .depend "iTasks.API.Common.ExportTasks" "20170403171220"
 .depend "iTasks.API.Common.ImportTasks" "20170403171220"
 .depend "iTasks.API.Common.DBTasks" "20170403171220"
@@ -69,7 +69,7 @@
 .depend "iTasks._Framework.IWorld" "20170403171230"
 .depend "Data.List" "20170403171233"
 .depend "StdFunc" "20170403171239"
-.depend "Data.Map" "20170403171233"
+.depend "Data.Map" "20170727132427"
 .depend "GenLexOrd" "20170403171219"
 .depend "System.OSError" "20170403171236"
 .depend "System.Time" "20170403171236"
@@ -78,7 +78,7 @@
 .depend "Text.HTML" "20170403171237"
 .depend "Data.Either" "20170403171232"
 .depend "StdFile" "20170403171239"
-.depend "StdString" "20170403171239"
+.depend "StdString" "20170727112337"
 .depend "Text.JSON" "20170403171237"
 .depend "StdGeneric" "20170403171239"
 .depend "GenEq" "20170403171219"
@@ -94,7 +94,7 @@
 .depend "System.FilePath" "20170403171236"
 .depend "StdReal" "20170403171239"
 .depend "StdChar" "20170403171239"
-.depend "StdInt" "20170403171239"
+.depend "StdInt" "20170727112337"
 .depend "StdBool" "20170403171239"
 .depend "StdClass" "20170403171239"
 .depend "StdList" "20170403171239"
@@ -140,13 +140,17 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.impmod System.Environment
-.impdesc e_System.Environment_dgetEnvironmentVariable
 .impmod createAndRunExec
 .impdesc e_createAndRunExec_dcreateProject
 .implab e_createAndRunExec_ncreateProject e_createAndRunExec_eacreateProject
+.impmod System.Environment
+.impdesc e_System.Environment_dgetEnvironmentVariable
 .impmod extraTaskCombinators
 .implab e_extraTaskCombinators_s>>|-
+.impmod directoryBrowsing
+.impdesc e_directoryBrowsing_daskUserForFile
+.implab e_directoryBrowsing_naskUserForFile e_directoryBrowsing_eaaskUserForFile
+.implab e_directoryBrowsing_sreadLinesFromFile
 .impmod shares
 .impdesc e_shares_dsettings
 .implab e_shares_ssettings
@@ -157,22 +161,22 @@
 .impdesc e_shares_dcontents
 .implab e_shares_scontents
 .implab e_shares_ncontents e_shares_eacontents
-.impdesc e_shares_dgEditor_Settings;7
-.implab e_shares_ngEditor_Settings;7
-.impdesc e_shares_dgText_Settings;8
-.impdesc e_shares_dJSONEncode_Settings;9
-.impdesc e_shares_dJSONDecode_Settings;10
-.impdesc e_shares_dgDefault_Settings;11
-.implab e_shares_ngDefault_Settings;11
-.impdesc e_shares_dgEq_Settings;12
-.impdesc e_shares_dgEditor_Project;13
-.implab e_shares_ngEditor_Project;13
-.impdesc e_shares_dgText_Project;14
-.impdesc e_shares_dJSONEncode_Project;15
-.impdesc e_shares_dJSONDecode_Project;16
-.impdesc e_shares_dgDefault_Project;17
-.implab e_shares_ngDefault_Project;17
-.impdesc e_shares_dgEq_Project;18
+.impdesc e_shares_dgEditor_Settings;9
+.implab e_shares_ngEditor_Settings;9
+.impdesc e_shares_dgText_Settings;10
+.impdesc e_shares_dJSONEncode_Settings;11
+.impdesc e_shares_dJSONDecode_Settings;12
+.impdesc e_shares_dgDefault_Settings;13
+.implab e_shares_ngDefault_Settings;13
+.impdesc e_shares_dgEq_Settings;14
+.impdesc e_shares_dgEditor_Project;15
+.implab e_shares_ngEditor_Project;15
+.impdesc e_shares_dgText_Project;16
+.impdesc e_shares_dJSONEncode_Project;17
+.impdesc e_shares_dJSONDecode_Project;18
+.impdesc e_shares_dgDefault_Project;19
+.implab e_shares_ngDefault_Project;19
+.impdesc e_shares_dgEq_Project;20
 .impdesc e_shares_dTD;Settings
 .impdesc e_shares_dTD;Project
 .impdesc e_shares_dSettings.cpmDirectory
@@ -181,10 +185,6 @@
 .implab e_shares_nProject.projectName
 .impdesc e_shares_dProject.projectPath
 .implab e_shares_nProject.projectPath
-.impmod directoryBrowsing
-.impdesc e_directoryBrowsing_daskUserForFile
-.implab e_directoryBrowsing_naskUserForFile e_directoryBrowsing_eaaskUserForFile
-.implab e_directoryBrowsing_sreadLinesFromFile
 .impmod iTasks.UI.Layout.Common
 .impdesc e_iTasks.UI.Layout.Common_dframeCompact
 .implab e_iTasks.UI.Layout.Common_nframeCompact e_iTasks.UI.Layout.Common_eaframeCompact
@@ -384,11 +384,11 @@ s1
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
 	build_r r130 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	build_r r142 1 0 0 0
 	update_a 0 1
 	pop_a 1
@@ -602,13 +602,13 @@ s246
 	jsr_eval 0
 	push_a 7
 	jsr_eval 0
-	buildh e_shares_dgEq_Settings;12 0
+	buildh e_shares_dgEq_Settings;14 0
 	push_a 8
 	jsr_eval 0
 	repl_r_args 1 0
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
 	push_a 11
 	jsr_eval 0
 	repl_r_args 1 0
@@ -1014,11 +1014,11 @@ s13
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
 	build_r r130 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	build_r r142 1 0 0 0
 	update_a 0 1
 	pop_a 1
@@ -1031,11 +1031,11 @@ s13
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgDefault_Project;17 0 e_shares_ngDefault_Project;17
+	build e_shares_dgDefault_Project;19 0 e_shares_ngDefault_Project;19
 	build_r r130 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgEditor_Project;13 0 e_shares_ngEditor_Project;13
+	build e_shares_dgEditor_Project;15 0 e_shares_ngEditor_Project;15
 	build_r r142 1 0 0 0
 	update_a 0 1
 	pop_a 1
@@ -1043,11 +1043,11 @@ s13
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgDefault_Project;17 0 e_shares_ngDefault_Project;17
+	build e_shares_dgDefault_Project;19 0 e_shares_ngDefault_Project;19
 	build_r r130 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgEditor_Project;13 0 e_shares_ngEditor_Project;13
+	build e_shares_dgEditor_Project;15 0 e_shares_ngEditor_Project;15
 	build_r r142 1 0 0 0
 	update_a 0 1
 	pop_a 1
@@ -1056,22 +1056,22 @@ s13
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;14 0
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	buildh e_shares_dTD;Project 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Project;18 0
-	build e_shares_dgDefault_Project;17 0 e_shares_ngDefault_Project;17
-	buildh e_shares_dJSONDecode_Project;16 0
-	buildh e_shares_dJSONEncode_Project;15 0
-	buildh e_shares_dgText_Project;14 0
-	build e_shares_dgEditor_Project;13 0 e_shares_ngEditor_Project;13
+	buildh e_shares_dgEq_Project;20 0
+	build e_shares_dgDefault_Project;19 0 e_shares_ngDefault_Project;19
+	buildh e_shares_dJSONDecode_Project;18 0
+	buildh e_shares_dJSONEncode_Project;17 0
+	buildh e_shares_dgText_Project;16 0
+	build e_shares_dgEditor_Project;15 0 e_shares_ngEditor_Project;15
 	create
 	push_a 16
 	update_a 1 17
@@ -1113,12 +1113,12 @@ s13
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;14 0
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	update_a 15 17
 	update_a 14 16
 	update_a 13 15
@@ -1149,13 +1149,13 @@ s249
 	jsr_eval 0
 	push_a 3
 	jsr_eval 0
-	buildh e_shares_dgEq_Settings;12 0
+	buildh e_shares_dgEq_Settings;14 0
 	push_a 4
 	jsr_eval 0
 	repl_r_args 1 0
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
 	push_a 7
 	jsr_eval 0
 	repl_r_args 1 0
@@ -1181,25 +1181,25 @@ s248
 	jsr_eval 0
 	push_a 6
 	jsr_eval 0
-	buildh e_shares_dgEq_Project;18 0
+	buildh e_shares_dgEq_Project;20 0
 	push_a 7
 	jsr_eval 0
 	repl_r_args 1 0
-	buildh e_shares_dJSONDecode_Project;16 0
-	buildh e_shares_dJSONEncode_Project;15 0
-	buildh e_shares_dgText_Project;14 0
+	buildh e_shares_dJSONDecode_Project;18 0
+	buildh e_shares_dJSONEncode_Project;17 0
+	buildh e_shares_dgText_Project;16 0
 	push_a 10
 	jsr_eval 0
 	repl_r_args 1 0
 	push_a 10
 	jsr_eval 0
-	buildh e_shares_dgEq_Project;18 0
+	buildh e_shares_dgEq_Project;20 0
 	push_a 11
 	jsr_eval 0
 	repl_r_args 1 0
-	buildh e_shares_dJSONDecode_Project;16 0
-	buildh e_shares_dJSONEncode_Project;15 0
-	buildh e_shares_dgText_Project;14 0
+	buildh e_shares_dJSONDecode_Project;18 0
+	buildh e_shares_dJSONEncode_Project;17 0
+	buildh e_shares_dgText_Project;16 0
 	push_a 14
 	jsr_eval 0
 	repl_r_args 1 0
@@ -1308,12 +1308,12 @@ s12
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Project;18 0
-	build e_shares_dgDefault_Project;17 0 e_shares_ngDefault_Project;17
-	buildh e_shares_dJSONDecode_Project;16 0
-	buildh e_shares_dJSONEncode_Project;15 0
-	buildh e_shares_dgText_Project;14 0
-	build e_shares_dgEditor_Project;13 0 e_shares_ngEditor_Project;13
+	buildh e_shares_dgEq_Project;20 0
+	build e_shares_dgDefault_Project;19 0 e_shares_ngDefault_Project;19
+	buildh e_shares_dJSONDecode_Project;18 0
+	buildh e_shares_dJSONEncode_Project;17 0
+	buildh e_shares_dgText_Project;16 0
+	build e_shares_dgEditor_Project;15 0 e_shares_ngEditor_Project;15
 	create
 	push_a 8
 	update_a 1 9
@@ -1343,12 +1343,12 @@ s12
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Project;18 0
-	build e_shares_dgDefault_Project;17 0 e_shares_ngDefault_Project;17
-	buildh e_shares_dJSONDecode_Project;16 0
-	buildh e_shares_dJSONEncode_Project;15 0
-	buildh e_shares_dgText_Project;14 0
-	build e_shares_dgEditor_Project;13 0 e_shares_ngEditor_Project;13
+	buildh e_shares_dgEq_Project;20 0
+	build e_shares_dgDefault_Project;19 0 e_shares_ngDefault_Project;19
+	buildh e_shares_dJSONDecode_Project;18 0
+	buildh e_shares_dJSONEncode_Project;17 0
+	buildh e_shares_dgText_Project;16 0
+	build e_shares_dgEditor_Project;15 0 e_shares_ngEditor_Project;15
 	update_a 15 18
 	update_a 14 17
 	update_a 13 16
@@ -2437,22 +2437,22 @@ s9
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;14 0
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	buildh e_shares_dTD;Settings 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;14 0
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	update_a 15 16
 	update_a 14 15
 	update_a 13 14
@@ -2513,11 +2513,11 @@ s7
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
 	build_r r130 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	build_r r142 1 0 0 0
 	update_a 0 1
 	pop_a 1
@@ -2529,11 +2529,11 @@ s7
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
 	build_r r130 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	build_r r142 1 0 0 0
 	update_a 0 1
 	pop_a 1
@@ -2541,11 +2541,11 @@ s7
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
 	build_r r130 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	build_r r142 1 0 0 0
 	update_a 0 1
 	pop_a 1
@@ -2554,22 +2554,22 @@ s7
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;14 0
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	buildh e_shares_dTD;Settings 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;14 0
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	create
 	push_a 16
 	update_a 1 17
@@ -2612,12 +2612,12 @@ s7
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;14 0
+	build e_shares_dgDefault_Settings;13 0 e_shares_ngDefault_Settings;13
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
+	build e_shares_dgEditor_Settings;9 0 e_shares_ngEditor_Settings;9
 	update_a 15 18
 	update_a 14 17
 	update_a 13 16
@@ -2648,13 +2648,13 @@ s254
 	jsr_eval 0
 	push_a 3
 	jsr_eval 0
-	buildh e_shares_dgEq_Settings;12 0
+	buildh e_shares_dgEq_Settings;14 0
 	push_a 4
 	jsr_eval 0
 	repl_r_args 1 0
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
 	push_a 7
 	jsr_eval 0
 	repl_r_args 1 0
@@ -2680,25 +2680,25 @@ s253
 	jsr_eval 0
 	push_a 6
 	jsr_eval 0
-	buildh e_shares_dgEq_Settings;12 0
+	buildh e_shares_dgEq_Settings;14 0
 	push_a 7
 	jsr_eval 0
 	repl_r_args 1 0
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
 	push_a 10
 	jsr_eval 0
 	repl_r_args 1 0
 	push_a 10
 	jsr_eval 0
-	buildh e_shares_dgEq_Settings;12 0
+	buildh e_shares_dgEq_Settings;14 0
 	push_a 11
 	jsr_eval 0
 	repl_r_args 1 0
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
+	buildh e_shares_dJSONDecode_Settings;12 0
+	buildh e_shares_dJSONEncode_Settings;11 0
+	buildh e_shares_dgText_Settings;10 0
 	push_a 14
 	jsr_eval 0
 	repl_r_args 1 0
@@ -2877,12 +2877,12 @@ s6
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Project;18 0
-	build e_shares_dgDefault_Project;17 0 e_shares_ngDefault_Project;17
-	buildh e_shares_dJSONDecode_Project;16 0
-	buildh e_shares_dJSONEncode_Project;15 0
-	buildh e_shares_dgText_Project;14 0
-	build e_shares_dgEditor_Project;13 0 e_shares_ngEditor_Project;13
+	buildh e_shares_dgEq_Project;20 0
+	build e_shares_dgDefault_Project;19 0 e_shares_ngDefault_Project;19
+	buildh e_shares_dJSONDecode_Project;18 0
+	buildh e_shares_dJSONEncode_Project;17 0
+	buildh e_shares_dgText_Project;16 0
+	build e_shares_dgEditor_Project;15 0 e_shares_ngEditor_Project;15
 	create
 	push_a 8
 	update_a 1 9
@@ -2912,12 +2912,12 @@ s6
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Project;18 0
-	build e_shares_dgDefault_Project;17 0 e_shares_ngDefault_Project;17
-	buildh e_shares_dJSONDecode_Project;16 0
-	buildh e_shares_dJSONEncode_Project;15 0
-	buildh e_shares_dgText_Project;14 0
-	build e_shares_dgEditor_Project;13 0 e_shares_ngEditor_Project;13
+	buildh e_shares_dgEq_Project;20 0
+	build e_shares_dgDefault_Project;19 0 e_shares_ngDefault_Project;19
+	buildh e_shares_dJSONDecode_Project;18 0
+	buildh e_shares_dJSONEncode_Project;17 0
+	buildh e_shares_dgText_Project;16 0
+	build e_shares_dgEditor_Project;15 0 e_shares_ngEditor_Project;15
 	update_a 15 18
 	update_a 14 17
 	update_a 13 16

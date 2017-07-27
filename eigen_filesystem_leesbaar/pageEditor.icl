@@ -14,7 +14,6 @@ import iTasks._Framework.IWorld
 import Text
 import errorHandling
 
-
 editorInfo = 
 	{
 		shortcuts = [],
@@ -37,12 +36,13 @@ editorRecord =
 	}
 */
 pageEditor :: EditorRedirects -> Task ()
-pageEditor ((actionOpen,pagenodeChooseFile),(actionAskImportPaths,pagenodeAskImportPaths)) =
+pageEditor ((actionOpen,pagenodeChooseFile),(actionAskImportPaths,pagenodeAskImportPaths),(actionNew,pagenodeCreateFile)) =
 	(editors) 
 	-&&-
 	(repeatEveryTwoMinutes (build))
-	 >>*	[   OnAction  actionOpen   	(always pagenodeChooseFile)
+	 >>*	[   OnAction  actionOpen   			(always pagenodeChooseFile)
 	 		,	OnAction actionAskImportPaths	(always (pagenodeAskImportPaths))
+	 		,	OnAction ActionNew 				(always pagenodeCreateFile)
 		    ]
 /*
 latest :: Time Time -> Time
@@ -79,7 +79,7 @@ intersperse el [] = []
 intersperse el l = foldr (\x y.[el,x: y]) [] l
 
 viewSelection :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
-viewSelection filename s = \tasklist. viewSharedInformation "selected" [ViewUsing (\(ei,c). mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) (textArea 'DM'.newMap)] s >>|- return ()
+viewSelection filename s = \tasklist. (viewSharedInformation "selected" [ViewUsing (\(ei,c). mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) (textArea 'DM'.newMap)] s >>|- return ())<<@ Title "View Selection"
 where
 	mrange2text _ Nothing = ""
 	mrange2text Nothing (Just text) = "-"
@@ -150,15 +150,60 @@ er2EiAndContentsWrite filename (ao,as) (ei,contents) =
 		}, 
 		'DM'.put filename as.lines contents
 	)
+
+//autoWrite automatically writes at certain conditions. At the moment those are:
+// - when the cursor is on a function line (a word followed by ::), the function name is put underneath it, if it isn't already.
+autoWrite :: String (Shared (EditorInfo,Map String [String])) -> Task ()
+autoWrite filename s = 
+	watch s >>* [OnValue (ifValue (\(ei,c).case ('DM'.get filename c) of
+		Nothing = False
+		(Just content) = isAFunctionLine (content!!(fst ei.position)) if (((fst ei.position)+1)>=(length content)) "" (content!!((fst ei.position)+1)))
+	(\(ei,c).check "1" >>| case ('DM'.get filename c) of
+		Nothing = return ()
+		(Just content) = check "2" >>|
+			addFunctionName content filename (fst ei.position) s >>|- check "6" >>| autoWrite filename s)) ]
+
+check :: String -> Task String
+check s = viewInformation "" [] s
+
+isAFunctionLine :: String String -> Bool
+isAFunctionLine line nextline
+	# splitted = split "::" line
+	#fname = if (splitted==[]) "" (trim (splitted!!0))
+	#alreadyThere = (indexOf fname (trim nextline))==0
+	= (trim nextline <> "") && (length splitted==2) && (not alreadyThere)
+
+isAFunctionLineTest :: [Bool]	
+isAFunctionLineTest = [
+	isAFunctionLine "" "",
+	isAFunctionLine "::" "",
+	isAFunctionLine "::" " ",
+	isAFunctionLine " ::" "",
+	isAFunctionLine "henk :: kaas saak" "",
+	isAFunctionLine "henk :: kaas saak" " ",
+	isAFunctionLine "henk :: kaas saak" "henk ",
+	isAFunctionLine "henk :: kaas saak" "henkje ",
+	isAFunctionLine "henk :: kaas saak" "appelsap"
+	]
+	
+addFunctionName :: [String] String Int (Shared (EditorInfo,Map String [String])) -> Task ()
+addFunctionName content filename findex s
+	# fname = trim ((split "::" (content!!findex))!!0)
+	# splitted = split " " (content!!(findex+1))
+	# newline = if (length splitted>0) (fname+++" "+++(join " " (tl splitted))) (fname)
+	= check "3" >>| upd (\c.'DM'.put filename (updateAt (findex+1) newline content) c) contents 
+		>>|- check "4" >>| upd (\(ei,c). ({EditorInfo| ei & position = (findex,snd ei.position)},c)) s >>|- check "5" >>| return ()
+	
+	
 		    
 editor :: String (Shared ((Map String [String]),(Map String TaskId))) -> ParallelTask ()
-editor filename cnt = \tasklist.withShared editorInfo (\ei. 
+editor filename cnt = \tasklist.(withShared editorInfo (\ei. 
 	get cnt >>- \(c,utabs).
 	get (taskListSelfId tasklist) >>- \selfid.
 	set (c,'DM'.put filename selfid utabs) cnt >>|-
 	(updateSharedInformation (name) [UpdateUsing id (\_ nsc -> nsc) aceEditor] (er ei filename))
 	-&&-
-	helpwindows filename (ei >*< contents)
+	helpwindows filename (ei >*< contents) //-|| autoWrite filename (ei >*< contents) -|| viewSharedInformation "" [] ei 
 	)
 	>^*[	OnAction ActionSaveAs		(always 
 			(contentOf filename >>- \content. 
@@ -169,8 +214,10 @@ editor filename cnt = \tasklist.withShared editorInfo (\ei.
 			saveFile filename content >>|- 
 			get cnt >>- \(ucontents,utabs).
 			set (('DM'.del filename ucontents),('DM'.del filename utabs)) cnt >>|-
-			return ()))	
-		]
+			return ()))
+		,
+			OnAction (Action "placeText") (always (enterInformation "" [] >>= \s.placeText filename 2 s))	
+		])<<@ Title name
 	where
 	er ei filename = mapReadWrite ((eiAndContents2ErRead filename), (er2EiAndContentsWrite filename)) (ei >*< contents)
 	name = dropDirectory filename

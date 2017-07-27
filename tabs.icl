@@ -23,8 +23,8 @@ page = list
 	
 
 phw :: (SharedTaskList ()) -> Task ()
-phw a = helloWorld >^*[(OnAction (Action "addTask") (always (appendTask Embedded phw a)))]
-	 >>| (return ())
+phw a = ((helloWorld >^*[(OnAction (Action "addTask") (always (appendTask Embedded phw a)))])
+	 >>| (return ()))<<@ Title "henk"
 
 the_workflow :: [Workflow]
 the_workflow = 

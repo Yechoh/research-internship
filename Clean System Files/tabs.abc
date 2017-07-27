@@ -96,7 +96,7 @@
 .depend "iTasks" "20170403171220"
 .depend "StdOverloaded" "20170403171239"
 .depend "_SystemDynamic" "20170403171219"
-.module m_tabs "tabs" "20170410164738"
+.module m_tabs "tabs" "20170707142659"
 .endinfo
 .impmod _system
 .implab _cycle_in_spine
@@ -136,6 +136,7 @@
 .impmod iTasks.UI.Layout.Common
 .impdesc e_iTasks.UI.Layout.Common_darrangeWithTabs
 .implab e_iTasks.UI.Layout.Common_narrangeWithTabs e_iTasks.UI.Layout.Common_eaarrangeWithTabs
+.impdesc e_iTasks.UI.Layout.Common_dtune;22
 .impmod iTasks.UI.Layout
 .impdesc e_iTasks.UI.Layout_dlayoutSubs
 .implab e_iTasks.UI.Layout_nlayoutSubs e_iTasks.UI.Layout_ealayoutSubs
@@ -156,6 +157,7 @@
 .impmod iTasks.UI.Prompt
 .impdesc e_iTasks.UI.Prompt_dtoPrompt;1
 .impdesc e_iTasks.UI.Prompt_rtoPrompt;
+.impdesc e_iTasks.UI.Prompt_kTitle
 .impmod iTasks.UI.Editor.Generic
 .impdesc e_iTasks.UI.Editor.Generic_dgEditor_Int;7
 .implab e_iTasks.UI.Editor.Generic_ngEditor_Int;7
@@ -879,6 +881,10 @@ l3
 ea3
 .o 2 0
 s3
+	buildAC "henk"
+	build_r e_iTasks.UI.Prompt_kTitle 1 0 0 0
+	update_a 0 1
+	pop_a 1
 	buildh e__SystemDynamic_dTC__Unit 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
@@ -905,7 +911,7 @@ s3
 	build_r r92 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	push_a 5
+	push_a 6
 	push_a 3
 	update_a 1 4
 	update_a 2 1
@@ -980,24 +986,38 @@ s3
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	buildh e_iTasks._Framework.Generic.Visualization_dgText__String;15 0
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	update_a 15 16
-	update_a 14 15
-	update_a 13 14
-	update_a 12 13
-	update_a 11 12
-	update_a 10 11
-	update_a 9 10
-	update_a 8 9
-	update_a 7 8
-	update_a 6 7
-	update_a 5 6
-	update_a 4 5
-	update_a 3 4
+	create
+	push_a 16
+	update_a 1 17
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 11 10
+	update_a 12 11
+	update_a 13 12
+	update_a 14 13
+	update_a 15 14
+	update_a 16 15
+	update_a 0 16
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 19
+	pop_a 1
+.d 17 0
+	jsr e_iTasks.API.Core.Types_s>>|;10
+.o 1 0
+	buildh e_iTasks.UI.Layout.Common_dtune;22 0
 	update_a 2 3
 	update_a 1 2
 	updatepop_a 0 1
-.d 17 0
-	jmp e_iTasks.API.Core.Types_s>>|;10
+.d 4 0
+	jmp e_iTasks.API.Common.TaskCombinators_s<<@
 .n 3 _ ea198
 .o 1 0
 n198
