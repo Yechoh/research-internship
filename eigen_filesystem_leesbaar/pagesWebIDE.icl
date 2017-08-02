@@ -10,20 +10,22 @@ import settings
 
 Start world = //vbselecties//
 	startEngine
-	(startTask)
+	//(startTask)
+	pagenodeEditor
+	//(viewInformation "" [] "henk")
 	world
-	
+
 // first force settings after which by default we open an editor onn the main .icl file
 startTask :: Task ()
-startTask 
+startTask
 	=				get settings
 	>>- \curSet ->	get project
 	>>- \curProj ->	let isProj = curProj.projectPath <> "" && curProj.projectName <> ""
 					    isCPM  = curSet.cpmDirectory <> ""
-					in if (not isProj || not isCPM) 
+					in if (not isProj || not isCPM)
 							(setSettings  >>| startTask)
-					   		(pagenodeEditor) 	
-	
+					   		(pagenodeEditor)
+
 pagenodeChooseFile :: Task ()
 pagenodeChooseFile =
 	pageChooseFile (ActionContinue, pagenodeEditor)
@@ -39,7 +41,7 @@ pagenodeEditor =
 	,	(Action "import paths",
 			pagenodeAskImportPaths)
 	))
-		
+
 pagenodeAskImportPaths :: Task ()
 pagenodeAskImportPaths=
 	pageAskImportPaths
@@ -48,6 +50,3 @@ pagenodeAskImportPaths=
 	,	(ActionCancel,
 			pagenodeEditor)
 	)
-	
-
-

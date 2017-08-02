@@ -10,12 +10,12 @@ itasks.Panel = {
 	cssCls: 'panel',
 	initDOMEl: function() {
 		var me = this,
-			isTab = (me.parentCmp && me.parentCmp.xtype == 'TabSet');
+			isTab = (me.parentCmp && me.parentCmp.type == 'TabSet');
 		//Create header
-		if(me.title && !isTab) {
+		if(me.attributes.title && !isTab) {
 			me.headerEl = document.createElement('div');
 			me.headerEl.classList.add(me.cssPrefix + 'header');
-			me.headerEl.innerHTML = '<span>' + me.title + '</span>';
+			me.headerEl.innerHTML = '<span>' + me.attributes.title + '</span>';
 			me.domEl.appendChild(me.headerEl);
 		}
 		//Create separate container div
@@ -27,16 +27,17 @@ itasks.Panel = {
 			me.domEl.classList.add(me.cssPrefix + 'framed');
 		}
 		if(me.baseCls) {
-			me.domEl.classList.add(me.baseCls);
+			me.domEl.classList.add(me.attributes.baseCls);
 		}
 	}
 };
 itasks.TabSet = {
 	cssCls: 'tabset',
     activeTab: 0,
-	height: 'flex',
-	width: 'flex',
-
+	attributes: {
+		height: 'flex',
+		width: 'flex'
+	},
 	initComponent: function() {
 		var me = this;
 		me.children.forEach(function(child,i) {
@@ -66,7 +67,7 @@ itasks.TabSet = {
 
 		tab = document.createElement('li');
         label = document.createElement('a');
-		label.innerHTML = '<span>'+ (cmp.title || '-')+'</span>';
+		label.innerHTML = '<span>'+ (cmp.attributes.title || '-')+'</span>';
 		label.href = '#';
 
 		label.addEventListener('click',function(e) {
@@ -78,21 +79,21 @@ itasks.TabSet = {
             e.preventDefault();
 		},me);
 
-        if(cmp.iconCls) {
+        if(cmp.attributes.iconCls) {
             icon = document.createElement('div');
             icon.classList.add(me.cssPrefix + 'tabicon');
-            icon.classList.add(cmp.iconCls);
+            icon.classList.add(cmp.attributes.iconCls);
             label.insertBefore(icon,label.childNodes[0]);
         }
         tab.appendChild(label);
 
-        if(cmp.closeTaskId) {
+        if(cmp.attributes.closeTaskId) {
             closeLink = document.createElement('a');
             closeLink.innerHTML = 'x';
             closeLink.href = '#';
             closeLink.classList.add(me.cssPrefix + 'tabclose');
             closeLink.addEventListener('click',function(e) {
-                me.doEditEvent(cmp.closeTaskId,null,'Close');
+                me.doEditEvent(cmp.attributes.closeTaskId,null,'Close');
                 e.preventDefault();
             },me);
 
@@ -164,63 +165,72 @@ itasks.TabSet = {
 }
 
 itasks.Window = {
-    marginTop: 10, marginRight: 10, marginBottom: 10, marginLeft: 10,
-	movable: true,
-	modal: false,
-	windowType: 'bubble',
-	hpos: 'center',
-	vpos: 'top',
+	attributes: {
+    	marginTop: 10, marginRight: 10, marginBottom: 10, marginLeft: 10,
+		movable: true,
+		resizable: true,
+		windowType: 'floating',
+		hpos: 'center',
+		vpos: 'top',
+	},
 
     initDOMEl: function() {
         var me = this,left,top;
 
-        switch(me.windowType) {
-            case 'modal':
-                me.modal = true;
-                me.domEl.classList.add(me.cssPrefix + 'modal-window');
-                break;
+        switch(me.attributes.windowType) {
             case 'bubble':
                 me.domEl.classList.add(me.cssPrefix + 'notification-bubble');
                 break;
             default:
-                me.movable = true;
                 me.domEl.classList.add(me.cssPrefix + 'floating-window');
         }
-/*
-        me.setCloseTaskId(me.definition.closeTaskId);
-*/
 		//Create header
-		if(me.title) {
+		if(me.attributes.windowType === 'floating' || me.attributes.title) {
 			me.headerEl = document.createElement('div');
 			me.headerEl.classList.add(me.cssPrefix + 'header');
-			me.headerEl.innerHTML = '<span>' + me.title + '</span>';
+			me.headerEl.innerHTML = '<span>' + (me.attributes.title || '') + '</span>';
 			me.domEl.appendChild(me.headerEl);
 
-        	if(me.movable) {
+        	if(me.attributes.movable) {
             	me.headerEl.addEventListener('mousedown', me.onStartDrag.bind(me));
 	            me.headerEl.style.cursor = 'move';
 			}
+		}
+		if(me.attributes.resizable) {
+			me.domEl.style.resize = 'both';
+			me.domEl.style.overflow = 'scroll';
 		}
 		//Create separate container div
 		me.containerEl = document.createElement('div');
 		me.containerEl.classList.add(me.cssPrefix + 'inner');
 		me.domEl.appendChild(me.containerEl);
 
-		//Position window
-		switch(me.vpos) {
-			case 'top': top = me.marginTop; break;
-			case 'middle': top = (document.body.offsetHeight / 2) - (me.domEl.offsetHeight / 2); break;
-			case 'bottom': top = document.body.offsetHeight - me.domEl.offsetHeight - me.marginBottom; break;
-		}
-		switch(me.hpos) {
-			case 'left': left = me.marginLeft; break;
-			case 'center': left = ((document.body.offsetWidth / 2) - (me.domEl.offsetWidth / 2)); break;
-			case 'right': left = document.body.offsetWidth - me.domEl.offsetWidth - me.marginRight; break;
-		}
-		me.domEl.style.top = top + 'px';
-		me.domEl.style.left = left + 'px';
+		//Intially position the window offscreen, it will be repositioned once its dimensions are known
+		me.domEl.style.top = '-10000px';
+		me.domEl.style.left = '-10000px';
 	},
     initSize: function() {},
+	onShow: function() {
+		//Position the window when it is is first shown
+		var me = this, top, left;
+
+		if(!me.positioned) {	
+			switch(me.attributes.vpos) {
+				case 'top': top = me.attributes.marginTop; break;
+				case 'middle': top = (document.body.offsetHeight / 2) - (me.domEl.offsetHeight / 2); break;
+				case 'bottom': top = document.body.offsetHeight - me.domEl.offsetHeight - me.attributes.marginBottom; break;
+			}
+			switch(me.attributes.hpos) {
+				case 'left': left = me.attributes.marginLeft; break;
+				case 'center': left = (document.body.offsetWidth / 2) - (me.domEl.offsetWidth / 2); break;
+				case 'right': left = document.body.offsetWidth - me.domEl.offsetWidth - me.attributes.marginRight; break;
+			}
+
+			me.domEl.style.top = top + 'px';
+			me.domEl.style.left = left + 'px';
+			me.positioned = true;
+		}
+	},
     onStartDrag: function(e) {
         var me = this;
         e.preventDefault();
@@ -255,34 +265,47 @@ itasks.Window = {
 };
 itasks.ToolBar  = {
 	cssCls: 'toolbar',
-	height: 'wrap',
-	width: 'flex',
-	direction: 'horizontal',
-	halign: 'left',
-	padding: '2 2 2 2'
+	attributes: {
+		height: 'wrap',
+		width: 'flex',
+		direction: 'horizontal',
+		halign: 'left',
+		padding: '2 2 2 2'
+	}
 };
 
 itasks.ButtonBar  = {
 	cssCls: 'buttonbar',
-	height: 'wrap',
-	width: 'flex',
-	direction: 'horizontal',
-	halign: 'right',
-	padding: '2 2 2 0'
+	attributes: {
+		height: 'wrap',
+		width: 'flex',
+		direction: 'horizontal',
+		halign: 'right',
+		padding: '2 2 2 0'
+	}
+};
+itasks.List = {
+	cssCls: 'list'
+};
+itasks.ListItem = {
+	cssCls: 'listitem'
 };
 itasks.Debug = {
 	cssCls: 'debug'
 };
+
 itasks.Menu = {
 	cssCls: 'menu',
-	height: 'wrap',
+	attributes: {
+		height: 'wrap'
+	},
     initDOMEl: function() {
 		var me = this;	
 
 		me.labelEl = document.createElement('a');
 		me.labelEl.classList.add(me.cssPrefix + 'menu-label');
 		me.innerLabelEl = document.createElement('span');
-		me.innerLabelEl.innerHTML = me.text;
+		me.innerLabelEl.innerHTML = me.attributes.text;
 		me.labelEl.appendChild(me.innerLabelEl);
 		me.domEl.appendChild(me.labelEl);
 

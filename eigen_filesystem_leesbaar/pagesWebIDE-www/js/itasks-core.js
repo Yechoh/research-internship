@@ -13,9 +13,11 @@ itasks.Component = {
 	cssPrefix: 'itasks-',
 	cssCls: 'component',
 
-	width: 'flex',
-	height: 'flex',
-	direction: 'vertical',
+	attributes: {
+		width: 'flex',
+		height: 'flex',
+		direction: 'vertical'
+	},
 
 	parentCmp: null,
 	children: [],
@@ -35,12 +37,12 @@ itasks.Component = {
 	initSaplCustomization: function() { //When necessary, apply customizatons for Check if some of the component's methods are custom defined using sapl/js
 		var me = this, fun, evalfun;
 		//Initialize linked sapl functions 
-		if(me.saplDeps != null && me.saplDeps != '') {
-			me.saplDeps = me.evalJs(me.saplDeps);
+		if(me.attributes.saplDeps != null && me.attributes.saplDeps != '') {
+			me.evalJs(me.attributes.saplDeps);
         }
 		//Decode and evaluate the sapl initialization function
-		if(me.saplInit !=null && me.saplInit!= '') {
-			Sapl.feval([me.evalJsVal(me.saplInit),[___wrapJS(me),"JSWorld"]]);
+		if(me.attributes.saplInit !=null && me.attributes.saplInit!= '') {
+			Sapl.feval([me.evalJsVal(me.attributes.saplInit),[___wrapJS(me),"JSWorld"]]);
 		}
 	},
 	initComponent: function() {}, //Abstract method: every component implements this differently
@@ -50,7 +52,7 @@ itasks.Component = {
 			me.beforeChildInsert(i,spec);
 			me.children[i] = me.createChild(spec);
 			me.children[i].init();
-			me.afterChildInsert(i);
+			me.afterChildInsert(i,me.children[i]);
 		});
 	},
 	renderComponent: function() {
@@ -65,8 +67,11 @@ itasks.Component = {
 			
 		//Style the dom element
 		me.domEl.classList.add(me.cssPrefix + me.cssCls);
-		if(me.style) {
-			me.domEl.style = me.style;
+		if(me.attributes['style']) {
+			me.domEl.style = me.attributes['style'];
+		}
+		if(me.attributes['class']) {
+			me.domEl.classList.add(me.attributes['class']);
 		}
 		//Custom initialization after the dom element has been rendered
 		me.initDOMEl();
@@ -78,7 +83,9 @@ itasks.Component = {
 
 		//Add the the child renderings 
 		me.children.forEach(function(child) {
-			me.containerEl.appendChild(child.domEl);
+			if(child.domEl) {
+				me.containerEl.appendChild(child.domEl);
+			}
 		});
 	},
 	initDOMEl: function() {},
@@ -86,9 +93,9 @@ itasks.Component = {
 	initDOMElSize: function() {
 		var me = this,
 			el = me.domEl,
-			width = me.width,
-			height = me.height,
-			direction = (me.parentCmp && me.parentCmp.direction) || 'vertical';
+			width = me.attributes.width,
+			height = me.attributes.height,
+			direction = (me.parentCmp && me.parentCmp.attributes.direction) || 'vertical';
 
 		//Set width
 		if(width === 'flex') {
@@ -130,31 +137,31 @@ itasks.Component = {
 	initDOMElMargins: function() {
 		var me = this,
 			el = me.domEl,
-            width = me.width,
-            height = me.height;
+            width = me.attributes.width,
+            height = me.attributes.height;
 
 		if(!me.parentCmp) { //Do not set margins on the root component, let the embedding page handle that
 			return;
 		}
-		var parentDirection = (me.parentCmp && me.parentCmp.direction) || 'vertical',
-            parentVAlign = (me.parentCmp && me.parentCmp.valign) || 'top',
-            parentHAlign = (me.parentCmp && me.parentCmp.halign) || 'left',
+		var parentDirection = (me.parentCmp && me.parentCmp.attributes.direction) || 'vertical',
+            parentVAlign = (me.parentCmp && me.parentCmp.attributes.valign) || 'top',
+            parentHAlign = (me.parentCmp && me.parentCmp.attributes.halign) || 'left',
 			curIdx = me.parentCmp.findChild(me),
 			lastIdx = me.parentCmp.children.length - 1,
 			isFirst = (curIdx == 0),
 			isLast = (curIdx == lastIdx);
 
         //Set left and right margins as specified
-		if(me.marginLeft) { el.style.marginLeft = me.marginLeft + 'px'; }
-		if(me.marginRight) { el.style.marginRight = me.marginRight + 'px' ; }
+		if('marginLeft' in me.attributes) { el.style.marginLeft = me.attributes.marginLeft + 'px'; }
+		if('marginRight' in me.attributes) { el.style.marginRight = me.attributes.marginRight + 'px' ; }
 	
 		//Because vertical borders 'collapse' into each other, we never set the
 		//bottom-margin, but set top-margin's that also include the bottom margin of
 		//the previous element
-		if(!isFirst) {
+		if(parentDirection == 'vertical' && !isFirst) {
 			//The first element never sets a top-margin. Its top-margin is added to the parent's padding
 			//and its bottom margin is added to the next elements top-margin 
-			el.style.marginTop = ((me.marginTop || 0) + (me.parentCmp.children[curIdx - 1].marginBottom || 0)) + 'px';
+			el.style.marginTop = ((me.attributes.marginTop || 0) + (me.parentCmp.children[curIdx - 1].attributes.marginBottom || 0)) + 'px';
 		}
 
 		//Set margins to auto based on alignment of parent
@@ -195,20 +202,20 @@ itasks.Component = {
 	initContainerEl: function() {
 		var me = this,
             el = me.containerEl,
-            horizontal = (me.direction && (me.direction === 'horizontal')) || false,
+            horizontal = (me.attributes.direction && (me.attributes.direction === 'horizontal')) || false,
 			paddingTop, paddingBottom;
 
         el.classList.add(me.cssPrefix + (horizontal ? 'hcontainer' : 'vcontainer'));
 
 		//Set padding
-		if(me.paddingRight) { el.style.paddingRight = me.paddingRight + 'px' ; }
-		if(me.paddingLeft) { el.style.paddingLeft = me.paddingLeft + 'px' ; }
+		if(me.attributes.paddingRight) { el.style.paddingRight = me.attributes.paddingRight + 'px' ; }
+		if(me.attributes.paddingLeft) { el.style.paddingLeft = me.attributes.paddingLeft + 'px' ; }
 
-		paddingTop = me.paddingTop || 0;			
-		paddingBottom = me.paddingBottom || 0;
+		paddingTop = me.attributes.paddingTop || 0;			
+		paddingBottom = me.attributes.paddingBottom || 0;
 		if(me.children.length > 0) {
-			paddingTop += (me.children[0].marginBottom || 0);
-			paddingBottom += (me.children[me.children.length - 1].marginTop || 0);
+			paddingTop += (me.children[0].attributes.marginBottom || 0);
+			paddingBottom += (me.children[me.children.length - 1].attributes.marginTop || 0);
 		}
 		el.style.paddingTop = paddingTop + 'px';
 		el.style.paddingBottom = paddingBottom + 'px';
@@ -229,12 +236,28 @@ itasks.Component = {
 	},
 	createChild: function(spec) {
 		var me = this,
-			type = spec.xtype || 'Component';
-		if(itasks[type]) {
-			return Object.assign(Object.create(itasks.Component),itasks[type],{parentCmp:me,children:[]},spec);
-		} else {
-			return Object.assign(Object.create(itasks.Component),{parentCmp:me,children:[]},spec);
+			type = spec.type || 'Component',
+			child = {};
+
+		if(type !== 'Data') {
+			me.addSpec_(child, itasks.Component);
 		}
+				
+		if(itasks[type]) {
+			me.addSpec_(child,itasks[type]);
+		}
+		child.parentCmp = me;
+		child.children = [];
+
+		me.addSpec_(child,spec);
+
+		return child;
+	},
+	addSpec_:function(obj,spec) {
+		var attributes = {};
+		Object.assign(attributes,obj.attributes,spec.attributes);
+		Object.assign(obj,spec);
+		obj.attributes = attributes;
 	},
 	insertChild: function(idx = 0, spec = {}) {
 		var me = this,
@@ -253,22 +276,31 @@ itasks.Component = {
 			//Initialize, if we are already initialized
 			child.init();
 			//Add the child to the dom
-			if(isLast) {
-				me.containerEl.appendChild(child.domEl);
-			} else {
-				me.containerEl.insertBefore(child.domEl,me.containerEl.childNodes[idx]);
+			if(child.domEl) {
+				if(isLast) {
+					me.containerEl.appendChild(child.domEl);
+				} else {
+					me.containerEl.insertBefore(child.domEl,me.containerEl.childNodes[idx]);
+				}
+				child.onShow();
 			}
 		} 
-		me.afterChildInsert(idx);
+		me.afterChildInsert(idx,child);
+
+		//When the child is first added, we trigger a resize event
+		if(child.onResize) {
+			child.onResize();
+		}
 	},
 	beforeChildInsert: function(idx,spec) {},
-	afterChildInsert: function(idx) {},
+	afterChildInsert: function(idx,child) {},
 	removeChild: function(idx = 0) {
-		var me = this;
+		var me = this, child = me.children[idx];
 
-		me.beforeChildRemove(idx);
+		child.beforeRemove();
+		me.beforeChildRemove(idx,child);
 
-		if(me.initialized) {
+		if(me.initialized && child.domEl) {
 			me.containerEl.removeChild(me.containerEl.childNodes[idx]);
 		}
 		me.children.splice(idx,1);	
@@ -276,7 +308,7 @@ itasks.Component = {
 	moveChild: function(sidx,didx) {
 		var me = this, child;
 
-		if(me.initialized) {
+		if(me.initialized && me.children[sidx].domEl) {
 			if(didx == (me.containerEl.children.length - 1)) {
 				me.containerEl.appendChild(me.containerEl.children[sidx]);
 			} else {
@@ -287,11 +319,12 @@ itasks.Component = {
 		child = me.children.splice(sidx,1)[0]; //Remove followed by insert...
 		me.children.splice(didx, 0, child);
 	},
-	beforeChildRemove: function(idx) {},
+	beforeChildRemove: function(idx,child) {},
+	beforeRemove: function() {},
 	setAttribute: function(name,value) {
 		var me = this;
 	
-		me[name] = value;	
+		me.attributes[name] = value;	
 		me.onAttributeChange(name,value);
 	},
 	onAttributeChange: function(name,value) {},
@@ -352,10 +385,13 @@ itasks.Component = {
 		});
 	},
 	onShow: function() {
-		this.children.forEach(function(child) { child.onShow(); });
+		this.children.forEach(function(child) { if(child.onShow) {child.onShow();}});
 	},
 	onHide: function() {
-		this.children.forEach(function(child) { child.onHide(); });
+		this.children.forEach(function(child) { if(child.onHide) {child.onHide();}});
+	},
+	onResize: function() {
+		this.children.forEach(function(child) { if(child.onResize) {child.onResize();}});
 	},
 	/* Utility methods */
 	evalJs: function(js) {
@@ -404,7 +440,7 @@ itasks.Viewport = {
 		}
 			
 		//Create a temporary root element
-		me.insertChild(0,{xtype:'Loader', parentCmp: me});
+		me.insertChild(0,{type:'Loader', parentCmp: me});
 
 		//Register the viewport with the iTasks service
 		me.service = itasks.Service.getInstance();
@@ -430,8 +466,8 @@ itasks.Viewport = {
 		me.children[0].onUIChange(change);
 		//Sync title of the top level element
 		if(me.syncTitle) {
-			if(change.type == 'replace' && change.definition.title) {
-				document.title = change.definition.title;
+			if(change.type == 'replace' && change.definition.attributes.title) {
+				document.title = change.definition.attributes.title;
 			}
 			if(change.type == 'change' && change.attributes.length > 0) {
 				change.attributes.forEach(function(change) {
@@ -441,12 +477,31 @@ itasks.Viewport = {
             	});
 			}
 		}
+	},
+	beforeRemove: function() {
+		var me = this;	
+		me.service.unregister(me);
 	}
+};
+
+//Data components are elements in the tree that don't render themselves, but make it possible to
+//use the generic incremental change mechanism to update parts of a Component
+//This can be used for example to incrementally update the list of options in a dropdown component
+itasks.Data = {
+	init: function () { return this; },
+    beforeRemove: function() {}
 };
 
 //Convenience function for concisely creating viewports
 itasks.viewport = function(spec,domEl) {
-	return Object.assign(Object.create(itasks.Component), itasks.Viewport, spec, {domEl:domEl}).init();
+	var vp = {}, vpattr = {};
+
+	Object.assign(vpattr,itasks.Component.attributes,itasks.Viewport.attributes,spec.attributes);
+	Object.assign(vp,itasks.Component,itasks.Viewport,spec);
+	
+	vp.attributes = vpattr;
+	vp.domEl = domEl;
+	vp.init();
 };
 
 //Web service proxy/multiplexer class
@@ -456,36 +511,38 @@ itasks.viewport = function(spec,domEl) {
 itasks.Service = {
 	instances: {},
 	register: function(viewport) {
-		var me = this,
-			taskUrl, parentViewport, taskInstance, connection;
+		var me = this;
 
-		if(taskInstance = viewport.instanceNo) {
+		if("instanceNo" in viewport.attributes) {
 			//Connect to an existing task instance
 			me.registerInstance_(viewport);	
 			
-		} else if(taskUrl = viewport.taskUrl) {
+		} else if("taskUrl" in viewport) {
 			//Create a new session
 			me.createSession_(viewport);
 		}
 	},
 	createSession_:function(viewport) {
 		var me = this, connection;
+		
 		connection = me.getViewportConnection_(viewport);	
 		connection.newSession(function(instanceNo,instanceKey) {
 			//Store the instanceNo and key on the viewport
-			viewport.instanceNo = instanceNo;
-			viewport.instanceKey = instanceKey;
+			viewport.attributes.instanceNo = instanceNo;
+			viewport.attributes.instanceKey = instanceKey;
 
 			//Register the instance
 			me.instances[instanceNo] = {connection: connection, viewport: viewport}
-			connection.attachTaskInstance(instanceNo, viewport.onInstanceUIChange.bind(viewport));
+			connection.attachTaskInstance(instanceNo, instanceKey, viewport.onInstanceUIChange.bind(viewport));
 		});
 	},
 	registerInstance_: function(viewport) {
-		var me = this, connection, instanceNo = viewport.instanceNo;
+		var me = this, connection,
+			instanceNo = viewport.attributes.instanceNo,
+			instanceKey = viewport.attributes.instanceKey;
 	
 		connection = me.getViewportConnection_(viewport);	
-		connection.attachTaskInstance(instanceNo, viewport.onInstanceUIChange.bind(viewport));
+		connection.attachTaskInstance(instanceNo, instanceKey, viewport.onInstanceUIChange.bind(viewport));
 
 		//Register the instance
 		me.instances[instanceNo] = {connection: connection, viewport: viewport}
@@ -494,7 +551,7 @@ itasks.Service = {
 		var me = this, parentViewport, connection;
 		//If the viewport is embedded in another viewport, reuse its connection
 		if(parentViewport = viewport.getParentViewport()) {
-			return me.instances[parentViewport.instanceNo].connection;
+			return me.instances[parentViewport.attributes.instanceNo].connection;
 		} else {
 			//Create the connection
 			connection = Object.assign(Object.create(itasks.Connection),{taskUrl:viewport.taskUrl});
@@ -509,6 +566,12 @@ itasks.Service = {
 		me.instances[instanceNo].connection.sendEvent(instanceNo,[taskId,editorId,value]);
 	},
 	unregister: function(viewport) {
+		var me = this, connection, instanceNo = viewport.attributes.instanceNo;
+	
+		connection = me.getViewportConnection_(viewport);	
+		connection.detachTaskInstance(instanceNo);
+
+		delete(me.instances[instanceNo]);
 	},
 	getInstance: function() {
 		if(typeof itasks.Service.INSTANCE === 'undefined') {
@@ -522,7 +585,8 @@ itasks.Service = {
 itasks.Connection = {
 	wsock: null,
 	taskUrl: '',
-	taskInstances: {},
+	taskInstanceCallbacks: {},
+	taskInstanceKeys: {},
 	reqId: 1,
 	reqCallbacks: {},
 	reqDeferred: [],
@@ -537,8 +601,8 @@ itasks.Connection = {
 				me.wsock.send(msg);
 			});
 			//Attach currently added instances
-			Object.keys(me.taskInstances).forEach(function(instanceNo) {
-				me.wsock.send(JSON.stringify(["attach",parseInt(instanceNo),"dummykey"]));
+			Object.keys(me.taskInstanceKeys).forEach(function(instanceNo,instanceKey) {
+				me.wsock.send(JSON.stringify(["attach",parseInt(instanceNo),instanceKey]));
 			});
 		};	
 		me.wsock.onmessage = me.onMessage_.bind(me);
@@ -554,19 +618,21 @@ itasks.Connection = {
 			me.reqDeferred.push(JSON.stringify([parseInt(reqId),"new"]));
 		}
 	},
-	attachTaskInstance: function(taskInstance, callback) {
+	attachTaskInstance: function(taskInstance, taskInstanceKey, callback) {
 		var me = this;
-		me.taskInstances[taskInstance] = callback;
+		me.taskInstanceCallbacks[taskInstance] = callback;
 
 		if(me.wsock !== null) {
-			me.wsock.send(JSON.stringify(["attach",parseInt(taskInstance),"dummykey"]));
+			me.wsock.send(JSON.stringify(["attach",parseInt(taskInstance),taskInstanceKey]));
 		}
 	},
-	removeTaskInstance: function(taskInstance) {
-		delete(me.taskInstances[taskInstance]);
+	detachTaskInstance: function(taskInstance) {
+		var me = this;
+		delete(me.taskInstanceKeys[taskInstance]);
+		delete(me.taskInstanceCallbacks[taskInstance]);
 
 		if(me.wsock !== null) {
-			me.wsock.send(JSON.stringify(["detach",taskInstance,"dummykey"]));
+			me.wsock.send(JSON.stringify(["detach",taskInstance]));
 		}
 	},
 	sendEvent: function(taskInstance, event) {
@@ -604,8 +670,8 @@ itasks.Connection = {
 			var taskInstance = msg.instance,
 				change = msg.change;
 
-			if(me.taskInstances[taskInstance]) {
-				me.taskInstances[taskInstance](change);
+			if(taskInstance in me.taskInstanceCallbacks) {
+				me.taskInstanceCallbacks[taskInstance](change);
 			} 
 		}
 	}

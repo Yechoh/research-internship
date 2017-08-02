@@ -10,21 +10,21 @@ import qualified Data.Map as DM
 
 pageChooseFile :: ChooseFileRedirects -> Task ()
 pageChooseFile (actionContinue,pagenodeEditor) =
-	askPath					
+	askPath
 	-||
 	updateSharedInformation "paths" [] settings
-	>>- \iclloc -> setContents iclloc >>| /*setProject iclloc >>|*/ (pagenodeEditor)
+	>>- \iclloc -> setContents iclloc >>| (pagenodeEditor)
 
 askPath :: Task String
 askPath
 	=							getPwdName
 	>>- \pwd ->					(selectFromTree True pwd isCleanFile)
-	>>- \(a,b)->				return (a+++b)
+	>>- \(a,b)->				return (a</>b)
 	//>>- \path -> return (takeDirectory path, dropDirectory path)
 
 setContents :: String -> Task ()
 setContents iclloc
-	= 							readLinesFromFile iclloc
+	= 							/*viewInformation "" [] iclloc >>|*/ readLinesFromFile iclloc
 	>>- \(Just contenttxt) ->	get contents
 	>>- \contentmap ->			set ('DM'.put iclloc contenttxt contentmap) contents
 								>>|- return ()
@@ -39,7 +39,7 @@ setContents iclloc
 setProject path name
 	=							readFromFile (toproj (path </> name))
 	>>- \mprojtxt ->			(case mprojtxt of
-		Nothing ->					(cpmCreateProject (toproj name) 
+		Nothing ->					(cpmCreateProject (toproj name)
 									>>|- return ())
 		(Just projtxt) ->			return ()
 								)

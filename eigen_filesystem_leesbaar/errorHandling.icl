@@ -7,6 +7,7 @@ import directoryBrowsing
 import _SystemArray
 import extraTaskCombinators
 import qualified Data.Map as DM
+import iTasks.Extensions.Process
 
 //!String !(Shared (!AceOptions,!AceState))
 

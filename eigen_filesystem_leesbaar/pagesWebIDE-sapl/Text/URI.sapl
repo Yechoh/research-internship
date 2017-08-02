@@ -191,11 +191,11 @@ Text.URI.charToHex_68 !c_0::C = let i_1_0::I = StdInt.toInt_20 c_0 in <{_Tuple2!
 Text.URI.escapeChar !f_0 c_1::C = case (case (f_0 c_1) (True -> StdBool.not (<{StdChar.==_18}> c_1 '%')) (False -> False) ) (True -> _predefined._Cons c_1 _predefined._Nil) (False -> let _x_2_0 = Text.URI.charToHex_68 c_1 in _predefined._Cons '%' (_predefined._Cons (select _x_2_0::_Tuple2 0) (_predefined._Cons (select _x_2_0::_Tuple2 1) _predefined._Nil))) 
 Text.URI.escapeString f_0 s_1 = StdList.toString_79 (Data.List.concatMap (Text.URI.escapeChar f_0) (StdList.fromString_78 s_1))
 Text.URI.uriQueryItems !u_0 = Data.Maybe.maybe _predefined._Nil Text.Encodings.UrlEncoding.urlDecodePairs (select u_0::Text.URI._URI 5)
-Text.URI.pathToSegments !p_0 = Text.split_12 "/" p_0
+Text.URI.pathToSegments !p_0 = Text.split_13 "/" p_0
 Text.URI.uriPathSegments !u_0 = Text.URI.pathToSegments (select u_0::Text.URI._URI 4)
-Text.URI.segmentsToPath !_x_0 = case _x_0 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 ("" -> case _x_1_1 (_predefined._Nil -> "/") ) ) (_ -> Text.join_5 "/" (StdList.map (Text.URI.escapeString Text.URI.okInPathSegment) _x_0))
+Text.URI.segmentsToPath !_x_0 = case _x_0 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 ("" -> case _x_1_1 (_predefined._Nil -> "/") ) ) (_ -> Text.join_6 "/" (StdList.map (Text.URI.escapeString Text.URI.okInPathSegment) _x_0))
 Text.URI.isReference::B u_0 = StdList.all Data.Maybe.isNothing (_predefined._Cons (select u_0::Text.URI._URI 2) (_predefined._Cons (select u_0::Text.URI._URI 0) _predefined._Nil))
-Text.URI.isRelative::B u_0 = case (Text.URI.isReference u_0) (True -> StdBool.not (Text.startsWith_13 "/" (select u_0::Text.URI._URI 4))) (False -> False) 
+Text.URI.isRelative::B u_0 = case (Text.URI.isReference u_0) (True -> StdBool.not (Text.startsWith_14 "/" (select u_0::Text.URI._URI 4))) (False -> False) 
 Text.URI.isGenDelim::B c_0::C = Data.List.elem (<{StdOverloaded.==;}> <{StdChar.==_18}>) c_0 (_predefined._Cons ':' (_predefined._Cons '/' (_predefined._Cons '?' (_predefined._Cons '#' (_predefined._Cons '[' (_predefined._Cons ']' (_predefined._Cons '@' _predefined._Nil)))))))
 Text.URI.isReserved::B c_0::C = case (Text.URI.isGenDelim c_0) (True -> True) (False -> Text.URI.isSubDelim c_0) 
 Text.URI.hdi_77::I !d_0::C = case (StdChar.isDigit d_0) (True -> StdChar.digitToInt d_0) (False -> <{StdInt.+_6}> (<{StdInt.-_7}> (StdInt.toInt_20 (StdChar.toLower d_0)) (StdInt.toInt_20 'a')) 10) 
@@ -209,9 +209,9 @@ Text.URI.anon_152 !_vtoString_0 s_1 = <{StdString.+++_11}> ":" (select _vtoStrin
 Text.URI.anon_151 !s_0 = <{StdString.+++_11}> s_0 "@"
 Text.URI.anon_150 !s_0 = <{StdString.+++_11}> s_0 ":"
 Text.URI.anon_250 !s_0::I = <{StdString.+++_11}> ":" (StdString.toString_5 s_0)
-Text.URI.toString_15 !u_0 = Text.join_5 "" (_predefined._Cons (Data.Maybe.maybe "" Text.URI.anon_150 (select u_0::Text.URI._URI 0)) (_predefined._Cons (<{Text.URI._if;29;11_253}> (Data.Maybe.isJust (select u_0::Text.URI._URI 2))) (_predefined._Cons (Data.Maybe.maybe "" Text.URI.anon_151 (select u_0::Text.URI._URI 1)) (_predefined._Cons (Data.Maybe.fromMaybe "" (select u_0::Text.URI._URI 2)) (_predefined._Cons (Data.Maybe.maybe "" Text.URI.anon_250 (select u_0::Text.URI._URI 3)) (_predefined._Cons (<{Text.URI._if;33;11_256}> (Text.URI._f255_255 (Data.Maybe.isJust (select u_0::Text.URI._URI 2)) u_0) u_0) (_predefined._Cons (Data.Maybe.maybe "" (<{StdString.+++_11}> "?") (select u_0::Text.URI._URI 5)) (_predefined._Cons (Data.Maybe.maybe "" (<{StdString.+++_11}> "#") (select u_0::Text.URI._URI 6)) _predefined._Nil))))))))
+Text.URI.toString_15 !u_0 = Text.join_6 "" (_predefined._Cons (Data.Maybe.maybe "" Text.URI.anon_150 (select u_0::Text.URI._URI 0)) (_predefined._Cons (<{Text.URI._if;29;11_253}> (Data.Maybe.isJust (select u_0::Text.URI._URI 2))) (_predefined._Cons (Data.Maybe.maybe "" Text.URI.anon_151 (select u_0::Text.URI._URI 1)) (_predefined._Cons (Data.Maybe.fromMaybe "" (select u_0::Text.URI._URI 2)) (_predefined._Cons (Data.Maybe.maybe "" Text.URI.anon_250 (select u_0::Text.URI._URI 3)) (_predefined._Cons (<{Text.URI._if;33;11_256}> (Text.URI._f255_255 (Data.Maybe.isJust (select u_0::Text.URI._URI 2)) u_0) u_0) (_predefined._Cons (Data.Maybe.maybe "" (<{StdString.+++_11}> "?") (select u_0::Text.URI._URI 5)) (_predefined._Cons (Data.Maybe.maybe "" (<{StdString.+++_11}> "#") (select u_0::Text.URI._URI 6)) _predefined._Nil))))))))
 <{Text.URI._if;33;11_256}> !_x_0::B !u_1 = case _x_0 (True -> <{StdString.+++_11}> "/" (select u_1::Text.URI._URI 4)) (_ -> select u_1::Text.URI._URI 4)
-Text.URI._f255_255::B !_x_0::B u_1 = case _x_0 (True -> StdBool.not (Text.URI._f254_254 (Text.startsWith_13 "/" (select u_1::Text.URI._URI 4)) u_1)) (_ -> False)
+Text.URI._f255_255::B !_x_0::B u_1 = case _x_0 (True -> StdBool.not (Text.URI._f254_254 (Text.startsWith_14 "/" (select u_1::Text.URI._URI 4)) u_1)) (_ -> False)
 Text.URI._f254_254::B !_x_0::B u_1 = case _x_0 (True -> True) (_ -> <{StdString.==_2}> (select u_1::Text.URI._URI 4) "")
 <{Text.URI._if;29;11_253}> !_x_0::B = case _x_0 (True -> "//") (_ -> "")
 <{Text.URI.TD;URI}> _x_0::B = _predefined._Nil

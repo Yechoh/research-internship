@@ -2,6 +2,9 @@ implementation module createAndRunExec
 
 import iTasks
 import Text, Text.HTML
+import iTasks.Extensions.Process
+import iTasks.Extensions.TextFile
+import System.FilePath
 
 createExec :: String String String   -> Task ()
 createExec cpmBin buildDir mainModule

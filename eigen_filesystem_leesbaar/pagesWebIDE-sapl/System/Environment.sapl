@@ -1,12 +1,12 @@
 || ?module? System.Environment
 
 
-System.Environment.getenvC_3::I !a0_0 !a1_1 !a2_2::I = error "no AnyCodeExpr"
-System.Environment.getEnvironmentVariable !name_0 !world_1 = let buf_1_0::I = _SystemArray.createArray_17 32767 '\0', len_1_1 = System.Environment.getenvC_3 (System._Pointer.packString name_0) buf_1_0 32767 in case (<{StdInt.==_16}> len_1_1 0) (True -> _Tuple2 Data.Maybe.Nothing world_1) (False -> _Tuple2 (Data.Maybe.Just (<{StdString.%_10}> buf_1_0 (_Tuple2 0 (<{StdInt.-_7}> len_1_1 1)))) world_1) 
-System.Environment.setenvC_4 !a0_0 !a1_1 !a2_2 = error "no AnyCodeExpr"
-System.Environment.setEnvironmentVariable !name_0 !value_1 !world_2 = select (System.Environment.setenvC_4 (System._Pointer.packString name_0) (System._Pointer.packString value_1) world_2)::_Tuple2 1
-System.Environment.unsetenvC_5 !a0_0 !a1_1::I !a2_2 = error "no AnyCodeExpr"
-System.Environment.unsetEnvironmentVariable !name_0 !world_1 = select (System.Environment.unsetenvC_5 (System._Pointer.packString name_0) 0 world_1)::_Tuple2 1
+System.Environment.getenvC_3::I !a0_0 = error "no AnyCodeExpr"
+System.Environment.getEnvironmentVariable !name_0 !world_1 = let ptr_1_0::I = System.Environment.getenvC_3 (System._Pointer.packString name_0) in case (<{StdInt.==_16}> ptr_1_0 0) (True -> _Tuple2 Data.Maybe.Nothing world_1) (False -> _Tuple2 (Data.Maybe.Just (System._Pointer.derefString ptr_1_0)) world_1) 
+System.Environment.setenvC_4 !a0_0 !a1_1 !a2_2::I !a3_3 = error "no AnyCodeExpr"
+System.Environment.setEnvironmentVariable !name_0 !value_1 !world_2 = select (System.Environment.setenvC_4 (System._Pointer.packString name_0) (System._Pointer.packString value_1) 1 world_2)::_Tuple2 1
+System.Environment.unsetenvC_5 !a0_0 !a1_1 = error "no AnyCodeExpr"
+System.Environment.unsetEnvironmentVariable !name_0 !world_1 = select (System.Environment.unsetenvC_5 (System._Pointer.packString name_0) world_1)::_Tuple2 1
 
 
 || Converted Records

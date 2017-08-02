@@ -386,3 +386,89 @@ do 6-7
 vr 7-7
 9:57 vandaag na 12 zou ingrid berenbroek op de uni moeten zijn, dus dan heb ik een sleutel. ik ga overal de ref naar general.dcl verwijderen en dan kijken welke functies missen.
 10:29 hij mist wel meer files, o.a. typeproperties. Peter gevraagd of hij het wist (nope) en vervolgens een mailtje naar mart en camil gestuurd. De vraag is wat ik nu kan gaan doen. Ik ga een nieuwe branch maken waarin ik alvast cloogle aanroep alsof die werkt. En in een andere branch ga ik (later) gewoon het google drive lijstje afwerken.
+10:37 damn dat is een snel antwoord
+10:45 ik begin het gevoel te krijgen dat cloogle alleen/het best werkt op linux, dus dan kan ik beter nu die overstap maken. 
+12:34 op linux, ik krijg het niet voor elkaar om cpm juist aan te roepen. John om hulp gevraagd, die ga ik zo weer om hulp vragen.
+12:55 het volgende commando werkt: /home/martin/Documents/clean-bundle-itasks/bin/cpm ./pagesWebIDE.prj
+hij kan ace niet vinden, maar die is er wel gewoon
+13:23 hij herkent worldIO niet als term. Ik heb geprobeerd syntax highlighting toe te voegen. Tim had een file waar het mee kon, maar die is er niet en ik heb geen zin om een mailtje te sturen. Ik heb ook nog een file, even kijken wat voor type dat is, en of die te gebruiken is.
+13:28 die van mij werkt alleen voor ace webbased en is dus niet te gebruiken in gedit ofzo. toch maar een mailtje sturen
+13:41 het lijkt alsof worldIO niet nodig is omdat Linux file IO op een heel andere manier oplost. Ik hoop te vinden hoe in de cloogle files
+13:52 ik weet niet hoe dit gebeurt, ik wil het vragen als er mensen zijn en er weer aan werken als ik syntaxhighlighting heb. tijd om te comitten op github en door te gaan met de qol branch. opmerking: find in files is hier: grep -r term ./ in de juiste map.
+13:58 ik weet niet hoe ik dit commit, aangezien ik het niet van github afgehaald heb. Dus laat maar even zitten, want ik heb toch nog niet echt iets bereikt.
+14:03 weer terug op windows. Laten we tabs namen geven.
+14:30 dat viel best mee. Lekkere trial and error. Volgende probleem: als ik op import paths click, crasht de app meteen.
+14:43 opgelost. next: chooseFile heeft geen cancelbutton
+15:03 wth, als ik een file open in choosefile herkent die hem niet, maar als ik het pad bekijk, is het gewoon een compleet legitiem pad.
+15:11 ah, verschilletje tussen wat ik meegaf en wat ik liet zien als pad
+15:25 chooseFile heeft nu een cancelbutton. Next: create new file in de webide
+15:51 ik ga nu naar huis. Todo: maak file pageCreateFile, waar je een path en een filename geeft, en hij een implementation module en een definition module aanmaakt en de implementation module vult met wat standaardtekst.
+-- 6u
+
+ma 10-7
+10:11 volgens ingrid komen er wel nog mensen, maar wss later pas. Rinus is er wel. Ik ga er vanuit dat Rinus het worldIO probleem niet kent (hij doet geen Linux), dus we gaan lekker verder met de qol-branch.
+11:35 de uitdaging is om een folder te selecteren en een filenaam in te kunnen vullen, zonder dat je op continue bij de folder moet klikken, want dan verdwijnt dat window en dat is lelijk.
+De reden dat de folderselection task eerst klaar moet zijn voordat het de value door kan geven, is omdat het eindigt met een knop. Deze knop moeten we dus naar buiten brengen naar na folder en filenaam selecteren. Dat voelt niet helemaal modulair. Ik heb nu al 5 searchInTree functies en dit zou modulairder moeten kunnen. Ik ga hier een aantje over maken, misschien vindt Bas dit interessant.
+12:45 woordenboek.prj gemaakt om even wat te experimenteren, en een aantje gemaakt. De conclusie is wss toch dat ik gewoon de functie aan moet passen zodat het een withShared gebruikt. Toch zou ik het wel leuk vinden om iemands mening hierover te krijgen.
+13:00 snel even eten gehaald. de selectFromTree functie gebruikt al een withShared. Dat maakt het alleen maar vreemder, want waarom is die laatste stap dan niet gemaakt.
+14:00 moeilijker dan verwacht. Bas is er. Zodra hij tijd heeft eens vragen wat het verschil is tussen editSharedSelection en editSelectionWithShared. In de tussentijd weet ik eigk niet zo goed wat ik kan doen. Alvast volgende stappen uitzoeken? Vraag aan Bas: wat is er gebeurd met de menus? Zijn die stuk?
+14:14 duurt te lang dit. Ik heb iemands expertise nodig.
+14:21 er is facking niemand hier! Waarom ben ik hier dan! Ik kan hier niet uit mijn neus gaan zitten vreten, dus ik comment mijn selectFromTree, plak de oude er weer en ga verder met iets anders.
+14:30 was het mogelijk om foutmeldingen te geven in Ace? Zoja, dan heb ik dat nodig. De cleanversie van Ace die we nu hebben kan het niet.
+14:45 een tijd geleden moest ik uitzoeken hoe workers werken, maar ik heb daar geen conclusie over. Ook staat er op de drive in wat ik aan Bas voor Ace vroeg, dat ik dit via Clean ging regelen. Natuurlijk ontdekte ik de workers pas later, maar ik denk dat dit de beste optie is. Dan is nu mijn taak vakjes te maken onder elkaar van dezelfde grootte als een tekstregel, en die kunnen vullen met functies. Nu ik er over nadenk is dat zonder hulp niet haalbaar. We kijken verder.
+15:48 bas is er en beantwoord vragen! De menus die missen is bekend, en staat niet hoog in het todolijstje.
+~16:50 ik weet dat ik rond deze tijd naar huis ging, maar ben het wss vergeten te noteren
+
+do 13-7 
+7:32 dit is de laatste dag voor kamp dat ik hieraan werk. Er mist een deel van mijn log, dus ik weet niet precies waar ik mee bezig was. oh right, ik had alleen Atom werkend toen mijn tijd al weer op was.
+7:44 directory functions werken niet helemaal lekker. Ik ga de locatie van cpm dus maar even hardcoden, totdat ik een oplossing heb.
+8:21 WARNING: Cannot get directory info from file: /home/martin/Documents/clean-bundle-itasks-windows-x86-latest/research-internship/eigen_filesystem_leesbaar/pagesWebIDE-sapl/../pagesWebIDE-sapl/../pagesWebIDE-sapl/graph_to_string_and_descriptors.sapl
+
+ma 24-7
+8:09 ik moet een betere logstructuur regelen. Ik zit nu op ubuntu en kan nu niet bij de windows partition aangezien die aan het hibernaten is. Dat betekent dat ik niet bij de log kan. Ook wil ik de beschrijving van dit vak wel weer eens een keer zien. Daarna wil ik kijken waar ik gebleven ben.
+8:32 awkward. Ik ben me vergeten in te schrijven voor het vak. Blijkbaar had ik in week 1 een mail moeten krijgen waarin ik aangaf wie mijn supervisor was en wat ik wil doen. Zodra Tim er is, het hier eens met hem over hebben. En hopen dat dit geen problemen (zoals invalidatie van mijn werk) oplevert.
+8:36 project gerund. Ons laatste probleem was dat we ergens een file aanroepen die niet bestaat. Taak is nu om alle files die aangeroepen worden van te voren te checken.
+9:05 als het goed is checkt directoryBrowsing nu al van te voren of de file bestaat. Toch geeft dit de error. CloogleDBFactory.icl doet niet aan checken, toch werkt deze wel zonder problemen. En StdFile doet ook niet aan checken. Nog even directoryBrowsing doorkijken en daarna wat testen met een kleiner project.
+9:36 oke, test_fileIO.prj gemaakt. Deze probeert een file te lezen waarvan ik van uit ga dat die bestaat (".\tabs.icl") en output deze. Maar de uitkomst is leeg. Er zijn twee mogelijkheden: oftewel, de file werd gevonden, maar kon niet gelezen worden, ofwel, de file is niet gevonden. We testen het onderscheid door een file aan te roepen waarvan we zeker weten dat hij niet bestaat.
+9:43 hij herkent de file niet.
+9:48 oke, we hebben een werkende fileIO. En we hebben de error niet kunnen recreeren. Dus we hebben nog geen idee waar de error vandaan komt. Next step is parts van ons project uitschakelen totdat het weer werkt.
+10:15 het probleem zit (minstens) in pageChooseFile
+11:22 het probleem zit in de functie fetchDirectories (maar niet in readDir)
+11:55 ugh, geprobeerd de definitie van fetch te vinden, door een mooie grep te schrijven, maar niet gevonden, dus wss is fetch een macro. Ik mis de ctrl-l functionaliteit.
+11:59 -__- fetch was als hulpfunctie gedefinieerd recht eronder. pauze
+
+12:46 eind pauze.
+12:52 we gaan gewoon stap voor stap uitschrijven wat er gebeurt.
+13:30 ik heb hem. readDir geeft ook . en .. mee. Next up is alles wat ik gecomment heb weer aan zetten en kijken of dit ook daadwerkelijk het probleem heeft opgelost.
+13:48 het lost het probleem niet op. Ik ga kijken hoe het komt dat readDir in deze map komt. Maar atom crasht constant, dus we gaan kijken of de computer updaten dat oplost.
+13:52 goh, blijkbaar kun je gewoon doorgaan als ubuntu update. ik laat mijn project wat meer op het scherm laten zien en suddenly crasht hij niet meer. Eens kijken of hij nu opeens werkt als we dat weghalen. ja hoor, nu werkt die gewoon. Blijkbaar moest mijn computer gewoon een keer restarten? klinkt onlogisch. Mijn atom is helaas nog steeds heel goed in crashen. Mss omdat ik een prj file er in geopend heb?
+14:22 crasht in functie getContents in pageChooseFile
+14:29 </> ipv +++
+14:37 tabs zijn gebroken in ubuntu. Hij geeft ze ipdv gewoon onder elkaar weer. Maar laten we visuele problemen uitstellen. Waar waren we voordat ons project constant crashte?
+14:43 beetje teruggelezen en we waren niet echt ergens. De eerste stap naar cloogle moet nog gemaakt worden. Next up: cloogle aant doorlezen en kijken of we een db kunnen maken.
+14:58 docker-compose is zijn ding aan het doen om een cloogle server te maken. fancy fancy.
+15:34 er ging iets fout. onduidelijke foutmelding, maar ik ga er van uit dat de reden is dat ik er al op windows een beetje mee gekloot heb. Nieuwe fresh copy gedownload. Maar eerst geleerd over git op ubuntu
+16:15 faalt nog steeds. Een tijd voor me uitgestaard, errors doorgekeken, opgezocht wat Bash is, en mart en camil een mailtje gestuurd. Next up: dit laten voor wat het is en verdergaan op windows.
+
+di 25-7
+8:03 op ubuntu. Ik heb een mail van Camil over wat er fout ging bij cloogle.
+8:15 het lijkt er op dat het werkt!
+8:41 het is nog steeds bezig en ik kan niet echt iets anders doen
+8:44 het werkt! ik heb een werkende frontend. next up:
+	uitvinden hoe ik vanuit mijn eigen project bij de gemaakte db kom.
+	uitvinden hoe ik dan vragen stuur en de antwoorden weergeef
+	uitvinden hoe ik dingen toevoeg aan en verwijder uit de db
+9:07 ik heb findfunction nodig om een vraag te sturen (dat is iig een goed begin), maar die heeft een db nodig, die ik dus ergens vandaan moet krijgen.
+10:47 mailtje gestuurd naar mart en camil over waar hoe ik een database laad en geprobeerd ipdv in mijn project een database te maken. De db is een derived abstract type (volgens mij betekent dat dat er zo'n ! voor staat) en mag dus niet als itask gebruikt worden. Ik kan nu de ! overal verwijderen, maar het lijkt mij slimmer om gewoon even te wachten op wat mart en camil te zeggen hebben. Dus door op windows.
+
+wo 26-7
+10:38 Camil heet Staps en niet Stappen
+11:00 bezig met de CloogleDB laten zien in mijn project. Net ontdekt dat het ook mogelijk is om een record type abstract te laten zien. Dus dan kun je niet in de recordfields kijken als daar geen hulpfunctie voor in dezelfde file voor is. Dit is een optie die we toe moeten voegen als we de dcl gaan abstraheren.
+11:27 ik heb het probleem dat als ik alle dependencies van een CloogleDB wil classderiven naar een iTask, ik dan opeens Type en Kind moet deriven, wat natuurlijk niet kan. Ik heb hier een tijd naar zitten staren, maar herinner me opeens dat ik dit probleem een keer gehad had tijdens de koningsdagpuzzel en dat Markus me toen hielp het op te lossen. Ik weet niet meer wat de oplossing was, maar hopelijk kunnen we het terugvinden in de koningsdagpuzzel.
+11:32 nope
+11:36 mail naar Bas gestuurd. Wachten op antwoord of wachten op Markus om het hem te vragen. Door op Windows
+
+find: grep -rn term ./
+compile: /home/martin/Documents/clean-bundle-itasks/bin/cpm ./pagesWebIDE.prj
+ctrl-L: grep -rn 'term [^\n]*::'  ./
+

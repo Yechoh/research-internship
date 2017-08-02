@@ -3,7 +3,7 @@ implementation module shares
 import iTasks
 import qualified Data.Map as DM
 import System.OS
-import iTasks.API.Extensions.Editors.Ace
+import iTasks.Extensions.Editors.Ace
 
 
 derive class iTask Settings, Project

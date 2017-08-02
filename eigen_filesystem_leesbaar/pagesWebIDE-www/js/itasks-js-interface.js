@@ -11,6 +11,78 @@ function ___unwrapJS(ptr){
 	return ptr[2];
 }
 
+//This function encodes an expression to a fixed format that is decoded on the server
+//by the iTasks.UI.JS.Encoding.decodeOnServer function
+function ___encodeJS(expr) {
+    if (expr instanceof Array) {
+        // Constructors
+        if (typeof expr[0] === "number") {
+            var consname = expr[1];			
+
+            //Specifal cases:
+            if(consname === "JSVal"){
+                 //Don't try to encode references to javascript objects
+                 console.warn('Trying to encode a JSVal object');
+                 return null;
+            } else if(consname  === "ARRAY"){
+                 //Arrays are encoded as standard JSON arrays
+                 var ret = [];
+                 for(var i=2; i<expr.length; i++){
+                     ret.push(___encodeJS(expr[i]));
+                 }
+                 return ret;
+            }
+
+            // Records
+            // Very important! Do NOT use splice here! 	
+            var consfunc = eval(Sapl.escapeName(consname));
+            if (consfunc.$f instanceof Array) {
+                var args = expr.slice(2, expr.length);
+                var res = {};
+                var aarg;
+
+                for (var i = 0; i < args.length; i++) {
+                    aarg = ___encodeJS(Sapl.feval(args[i]));
+                    if(aarg != null) {
+                        res[Sapl.print_consname(consfunc.$f[i])] = aarg;
+                    }
+                    return res;
+				} 
+             }
+
+			// Normal ADTs with special cases for lists and tuples
+			var isNil = Sapl.isNil(consname),
+                isCons = Sapl.isCons(consname),
+                isTuple = consname.startsWith("_Tuple"),
+                res = [];
+
+			if (isNil) {
+                 return res;
+            }
+            if (!isCons && !isTuple) {
+                res.push(Sapl.print_consname(consname));
+            }
+            if (isCons) { //Lists: read the whole list
+               while(Sapl.isCons(expr[1])){
+                   res.push(___encodeJS(Sapl.feval(expr[2])));
+                   expr = Sapl.feval(expr[3]);
+               }
+            } else { //ADTs: eval all aruguments
+                for (var i = 2; i < expr.length; i++) {
+                    res.push(___encodeJS(Sapl.feval(expr[i])));
+				}
+            }
+            return res;
+
+        } else if (expr[0] === "function" && expr[1] instanceof Array) {
+            console.warn('Trying to encode a js function');
+            return null;
+        }
+    } else {
+		return expr;
+    }
+}
+	
 //jsNull :: (JSVal a)
 function __iTasks_UI_JS_Interface_jsNull() {
 	return ___wrapJS(null);
@@ -80,9 +152,6 @@ function __iTasks_UI_JS_Interface_jsGetObjectAttr(attr,obj,world) {
 	}catch(err){
 		value = undefined;
 	}
-    if(typeof value	=== 'undefined') {
-        console.warn("jsGetObjectAttr: accessed undefined attribute: "+attr);
-    }
 	return ___Tuple2(___wrapJS(value), world);
 }
 
@@ -296,3 +365,18 @@ function __iTasks_UI_JS_Interface_jsGetCleanVal(key,obj,world) {
 	world = Sapl.feval(world);
     return ___Tuple2(obj[key], world);
 }
+
+// decodeOnClient :: !(JSVal a) !*JSWorld -> *(!a, !*JSWorld)
+function __iTasks_UI_JS_Encoding_decodeOnClient(val,world) {
+	// Do nothing. The value is already in the right representation
+	val = ___unwrapJS(Sapl.feval(val));
+	world = Sapl.feval(world);
+    return ___Tuple2(val, world);
+}
+// encodeOnClient :: !a *JSWorld -> (!JSVal a, !*JSWorld)
+function __iTasks_UI_JS_Encoding_encodeOnClient(val,world) {
+    val = ___wrapJS(___encodeJS(Sapl.feval(val)));
+	world = Sapl.feval(world);
+    return ___Tuple2(val, world);
+}
+

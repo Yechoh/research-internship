@@ -3,22 +3,16 @@
 
 ostcp.os_eom32 !er_0::I !e_1 = error "no AnyCodeExpr"
 ostcp.os_eom64 !er_0::I !e_1 = error "no AnyCodeExpr"
-ostcp.os_eom !er_0::I !e_1 = ostcp.os_eom32 er_0 e_1
+ostcp.os_eom !er_0::I !e_1 = ostcp.os_eom64 er_0 e_1
 ostcp.os_disconnected32 !er_0::I !e_1 = error "no AnyCodeExpr"
 ostcp.os_disconnected64 !er_0::I !e_1 = error "no AnyCodeExpr"
-ostcp.os_disconnected !er_0::I !e_1 = ostcp.os_disconnected32 er_0 e_1
+ostcp.os_disconnected !er_0::I !e_1 = ostcp.os_disconnected64 er_0 e_1
 ostcp.os_connectrequestavailable32 !er_0::I !e_1 = error "no AnyCodeExpr"
 ostcp.os_connectrequestavailable64 !er_0::I !e_1 = error "no AnyCodeExpr"
-ostcp.os_connectrequestavailable !er_0::I !e_1 = ostcp.os_connectrequestavailable32 er_0 e_1
+ostcp.os_connectrequestavailable !er_0::I !e_1 = ostcp.os_connectrequestavailable64 er_0 e_1
 ostcp.os_connectTCP_sync32 !onlyForMac_0::I !time_1 !addr_2 !e_3 = error "no AnyCodeExpr"
 ostcp.os_connectTCP_sync64 !onlyForMac_0::I !time_1 !addr_2 !e_3 = error "no AnyCodeExpr"
-ostcp.os_connectTCP_sync !onlyForMac_0::I !time_1 !addr_2 !e_3 = ostcp.os_connectTCP_sync32 onlyForMac_0 time_1 addr_2 e_3
-ostcp.os_connectTCP_async32 !onlyForMac_0::I !addr_1 !e_2 = error "no AnyCodeExpr"
-ostcp.os_connectTCP_async64 !onlyForMac_0::I !addr_1 !e_2 = error "no AnyCodeExpr"
-ostcp.os_connectTCP_async !onlyForMac_0::I !addr_1 !e_2 = ostcp.os_connectTCP_async32 onlyForMac_0 addr_1 e_2
-ostcp.os_select_inetevents32 !endpointRef_0::I !receiverType_1::I !referenceCount_2::I !get_receive_events_3::B !get_sendable_events_4::B !alreadyEom_5::B !env_6 = error "no AnyCodeExpr"
-ostcp.os_select_inetevents64 !endpointRef_0::I !receiverType_1::I !referenceCount_2::I !get_receive_events_3::B !get_sendable_events_4::B !alreadyEom_5::B !env_6 = error "no AnyCodeExpr"
-ostcp.os_select_inetevents !endpointRef_0::I !receiverType_1::I !referenceCount_2::I !get_receive_events_3::B !get_sendable_events_4::B !alreadyEom_5::B !env_6 = ostcp.os_select_inetevents32 endpointRef_0 receiverType_1 referenceCount_2 get_receive_events_3 get_sendable_events_4 alreadyEom_5 env_6
+ostcp.os_connectTCP_sync !onlyForMac_0::I !time_1 !addr_2 !e_3 = ostcp.os_connectTCP_sync64 onlyForMac_0 time_1 addr_2 e_3
 ostcp.getMbStopTime !_vChannelEnv_0 !_x_1 !env_2 = case _x_1 (Data.Maybe.Nothing -> <{_Tuple2!3}> (_Tuple2 False 0) env_2) (Data.Maybe.Just timeout_1_0 -> let _x_2_0 = select _vChannelEnv_0::<{tcp.ChannelEnv;}> 1 env_2 in <{_Tuple2!3}> (_Tuple2 True (<{StdInt.+_6}> timeout_1_0 (select _x_2_0::_Tuple2 0))) (select _x_2_0::_Tuple2 1)) 
 ostcp.GetTickCount::I = error "no AnyCodeExpr"
 ostcp.tcp_getcurrenttick !world_0 = <{_Tuple2!3}> ostcp.GetTickCount world_0

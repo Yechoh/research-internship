@@ -3,7 +3,7 @@ definition module shares
 import iTasks
 import System.FilePath
 import qualified Data.Map as DM
-import iTasks.API.Extensions.Editors.Ace
+import iTasks.Extensions.Editors.Ace
 import StdString, StdList
 
 :: Settings 	= 	{ cpmDirectory 		:: FilePath			// directory of cpm.exe

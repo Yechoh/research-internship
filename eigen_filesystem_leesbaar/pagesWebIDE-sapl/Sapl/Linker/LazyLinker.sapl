@@ -12,7 +12,7 @@ Sapl.Linker.LazyLinker.fst_29 !tuple_0 = select tuple_0::_Tuple2 0
 Sapl.Linker.LazyLinker.anon_28 !<{_v<_0}> !k_1 !m_2 = Data.Map.del <{_v<_0}> k_1 m_2
 Sapl.Linker.LazyLinker.foldr_27 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> op_0 a_1_0 (Sapl.Linker.LazyLinker.foldr_27 op_0 r_1 x_1_1)) 
 Sapl.Linker.LazyLinker.foldl_26 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Linker.LazyLinker.foldl_26 op_0 (op_0 r_1 a_1_0) x_1_1) 
-Sapl.Linker.LazyLinker.anon_11::B !f_0 = Text.endsWith_2 ".sapl" f_0
+Sapl.Linker.LazyLinker.anon_11::B !f_0 = Text.endsWith_3 ".sapl" f_0
 Sapl.Linker.LazyLinker.handlerr !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> case _x_1_0 (_Tuple2 c_2_0 str_2_1 -> StdMisc.abort (<{StdString.+++_11}> "LazyLinker.icl: " str_2_1)) ) (Data.Error.Ok a_1_0 -> a_1_0) 
 Sapl.Linker.LazyLinker.anon_8 !fullPath_0 !m_1 = <{System.FilePath.</>}> fullPath_0 (System.FilePath.dropDirectory m_1)
 Sapl.Linker.LazyLinker.isDirectory !path_0 !world_1 = <{Sapl.Linker.LazyLinker._c;26;7_185}> (System.File.getFileInfo path_0 world_1)
@@ -24,8 +24,8 @@ Sapl.Linker.LazyLinker.anon_25 !f_0 g_1 x_2 = f_0 (g_1 x_2)
 Sapl.Linker.LazyLinker.anon_22 !f_0 g_1 x_2 = f_0 (g_1 x_2)
 Sapl.Linker.LazyLinker.anon_167::B !g_0 x_1 = StdBool.not (g_0 x_1)
 Sapl.Linker.LazyLinker.anon_168::B !_x_0 !x_1 = StdBool.not (<{StdString.==_2}> _x_0 x_1)
-Sapl.Linker.LazyLinker.toModuleName_15 !module_directory_0 !path_1 = let moduleDirs_1_0 = StdList.filter (Sapl.Linker.LazyLinker.anon_168 "_override_") (Text.split_12 (StdString.toString_6 System.FilePath.pathSeparator) (<{Sapl.Linker.LazyLinker._if;93;23_187}> (<{StdString.==_2}> module_directory_0 "") path_1 module_directory_0)) in Text.join_5 "." (<{StdList.++}> (StdList.init moduleDirs_1_0) (_predefined._Cons (StdList.last (Text.split_12 ";" (StdList.last moduleDirs_1_0))) _predefined._Nil))
-<{Sapl.Linker.LazyLinker._if;93;23_187}> !_x_0::B !path_1 module_directory_2 = case _x_0 (True -> path_1) (_ -> Text.subString_14 (<{StdInt.+_6}> (_SystemArray.size_20 module_directory_2) 1) (_SystemArray.size_20 path_1) path_1)
+Sapl.Linker.LazyLinker.toModuleName_15 !module_directory_0 !path_1 = let moduleDirs_1_0 = StdList.filter (Sapl.Linker.LazyLinker.anon_168 "_override_") (Text.split_13 (StdString.toString_6 System.FilePath.pathSeparator) (<{Sapl.Linker.LazyLinker._if;93;23_187}> (<{StdString.==_2}> module_directory_0 "") path_1 module_directory_0)) in Text.join_6 "." (<{StdList.++}> (StdList.init moduleDirs_1_0) (_predefined._Cons (StdList.last (Text.split_13 ";" (StdList.last moduleDirs_1_0))) _predefined._Nil))
+<{Sapl.Linker.LazyLinker._if;93;23_187}> !_x_0::B !path_1 module_directory_2 = case _x_0 (True -> path_1) (_ -> Text.subString_15 (<{StdInt.+_6}> (_SystemArray.size_20 module_directory_2) 1) (_SystemArray.size_20 path_1) path_1)
 Sapl.Linker.LazyLinker.anon_169 !module_directory_0 !g_1 x_2 = Sapl.Linker.LazyLinker.toModuleName_15 module_directory_0 (g_1 x_2)
 Sapl.Linker.LazyLinker.anon_170 !module_directory_0 !x_1 = Sapl.Linker.LazyLinker.toModuleName_15 module_directory_0 (System.FilePath.dropExtension x_1)
 Sapl.Linker.LazyLinker.toPair_13 module_directory_0 !ms_1 = StdList.zip2 (StdList.map (Sapl.Linker.LazyLinker.anon_170 module_directory_0) ms_1) ms_1
@@ -64,6 +64,18 @@ Sapl.Linker.LazyLinker.getWarnings !_x_0 = case _x_0 (_Tuple3 _x_1_0 _x_1_1 _x_1
 
 
 || Converted Records
+:: <{Sapl.Linker.LazyLinker.JSONEncode_s;}> = {!Sapl.Linker.LazyLinker.JSONEncode_s}
+
+:: <{Sapl.Linker.LazyLinker.JSONEncode_ss;}> = {!Sapl.Linker.LazyLinker.JSONEncode_ss}
+
+:: <{Sapl.Linker.LazyLinker.JSONEncode_sss;}> = {!Sapl.Linker.LazyLinker.JSONEncode_sss}
+
+:: <{Sapl.Linker.LazyLinker.JSONDecode_s;}> = {!Sapl.Linker.LazyLinker.JSONDecode_s}
+
+:: <{Sapl.Linker.LazyLinker.JSONDecode_ss;}> = {!Sapl.Linker.LazyLinker.JSONDecode_ss}
+
+:: <{Sapl.Linker.LazyLinker.JSONDecode_sss;}> = {!Sapl.Linker.LazyLinker.JSONDecode_sss}
+
 :: <{Sapl.Linker.LazyLinker.gEq_s;}> = {!Sapl.Linker.LazyLinker.gEq_s}
 
 :: <{Sapl.Linker.LazyLinker.gEq_ss;}> = {!Sapl.Linker.LazyLinker.gEq_ss}
@@ -88,12 +100,6 @@ Sapl.Linker.LazyLinker.getWarnings !_x_0 = case _x_0 (_Tuple3 _x_1_0 _x_1_1 _x_1
 
 :: <{Sapl.Linker.LazyLinker.bimap_sss;}> = {Sapl.Linker.LazyLinker.bimap_sss}
 
-:: <{Sapl.Linker.LazyLinker.JSONEncode_s;}> = {!Sapl.Linker.LazyLinker.JSONEncode_s}
-
-:: <{Sapl.Linker.LazyLinker.JSONEncode_ss;}> = {!Sapl.Linker.LazyLinker.JSONEncode_ss}
-
-:: <{Sapl.Linker.LazyLinker.JSONEncode_sss;}> = {!Sapl.Linker.LazyLinker.JSONEncode_sss}
-
 :: <{Sapl.Linker.LazyLinker.JSONEncode_ssss;}> = {!Sapl.Linker.LazyLinker.JSONEncode_ssss}
 
 :: <{Sapl.Linker.LazyLinker.JSONEncode_sssss;}> = {!Sapl.Linker.LazyLinker.JSONEncode_sssss}
@@ -105,12 +111,6 @@ Sapl.Linker.LazyLinker.getWarnings !_x_0 = case _x_0 (_Tuple3 _x_1_0 _x_1_1 _x_1
 :: <{Sapl.Linker.LazyLinker.JSONEncode_ssssssss;}> = {!Sapl.Linker.LazyLinker.JSONEncode_ssssssss}
 
 :: <{Sapl.Linker.LazyLinker.JSONEncode_sssssssss;}> = {!Sapl.Linker.LazyLinker.JSONEncode_sssssssss}
-
-:: <{Sapl.Linker.LazyLinker.JSONDecode_s;}> = {!Sapl.Linker.LazyLinker.JSONDecode_s}
-
-:: <{Sapl.Linker.LazyLinker.JSONDecode_ss;}> = {!Sapl.Linker.LazyLinker.JSONDecode_ss}
-
-:: <{Sapl.Linker.LazyLinker.JSONDecode_sss;}> = {!Sapl.Linker.LazyLinker.JSONDecode_sss}
 
 :: <{Sapl.Linker.LazyLinker.JSONDecode_ssss;}> = {!Sapl.Linker.LazyLinker.JSONDecode_ssss}
 

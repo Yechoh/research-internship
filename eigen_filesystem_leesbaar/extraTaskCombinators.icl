@@ -1,6 +1,7 @@
 implementation module extraTaskCombinators
 
 import iTasks
+import iTasks.Extensions.DateTime
 
 (>>|-) infixl 1 :: (Task a) (Task b) -> Task b | iTask a & iTask b
 (>>|-) ma mb = ma >>- \_ -> mb

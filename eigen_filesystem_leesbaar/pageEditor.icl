@@ -7,15 +7,19 @@ import extraTaskCombinators
 import qualified Data.Map as DM
 //import callCpm
 import directoryBrowsing
-import createAndRunExec
-import iTasks.API.Extensions.Editors.Ace
-import iTasks.UI.Editor.Builtin
-import iTasks._Framework.IWorld
+//import createAndRunExec
+import iTasks.Extensions.Editors.Ace
+import iTasks.UI.Editor.Builtin, iTasks.UI.Layout
 import Text
 import errorHandling
+import iTasks.Extensions.DateTime
+import iTasks.Internal.TaskEval
+import builddb
+import CloogleDB
 
 
-editorInfo = 
+
+editorInfo =
 	{
 		shortcuts = [],
 		position = (0,0),
@@ -25,7 +29,7 @@ editorInfo =
 		prev_time = {Time|hour=0,min=0,sec=0}
 	}
 /*
-editorRecord = 
+editorRecord =
 	{
 		content = [""],
 		prev_time = iworldLocalTime,
@@ -36,9 +40,14 @@ editorRecord =
 		readOnly = False
 	}
 */
+clooglestore :: Shared (CloogleDB)
+clooglestore = sharedStore "clooglestore" zero
+
 pageEditor :: EditorRedirects -> Task ()
-pageEditor ((actionOpen,pagenodeChooseFile),(actionAskImportPaths,pagenodeAskImportPaths)) =
-	(editors) 
+pageEditor ((actionOpen,pagenodeChooseFile),(actionAskImportPaths,pagenodeAskImportPaths)) = accWorld(buildit) >>= \a. set a clooglestore >>| //return ()
+	//viewInformation "" [] a
+	//||-
+	(editors)
 	-&&-
 	(repeatEveryTwoMinutes (build))
 	 >>*	[   OnAction  actionOpen   	(always pagenodeChooseFile)
@@ -78,23 +87,47 @@ intersperse :: a [a] -> [a]
 intersperse el [] = []
 intersperse el l = foldr (\x y.[el,x: y]) [] l
 
+cloogleFind :: ParallelTask ()
+cloogleFind = \tasklist. cloogleFind`
+	where
+	cloogleFind` =
+		enterInformation "" []
+			>>*
+			[OnAction (Action "CloogleFind") (hasValue (\a.
+				cloogleFind`
+				-||
+				(
+					get clooglestore >>-
+					\db. (viewInformation "" [] (findType a db)) >>| return ())))]
+
 viewSelection :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
-viewSelection filename s = \tasklist. viewSharedInformation "selected" [ViewUsing (\(ei,c). mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) (textArea 'DM'.newMap)] s >>|- return ()
-where
+viewSelection filename s = \tasklist. viewSelection` filename s
+	where
+	viewSelection` filename s =
+		viewSharedInformation "selected" [ViewUsing (\(ei,c). mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) (textArea 'DM'.newMap)] s
+			>>*
+			[OnAction (Action "CloogleFind") (hasValue (\(ei,c).
+				viewSelection` filename s
+				-||
+				(
+					get clooglestore >>-
+					\db. (viewInformation "" [] (findType (mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) db) >>| return ()))))]
+
 	mrange2text _ Nothing = ""
 	mrange2text Nothing (Just text) = "-"
-	mrange2text (Just acerange) (Just text) = 
+	mrange2text (Just acerange) (Just text) =
 		selectText acerange text
-		
+
+
 selectText :: AceRange [String] -> String
 selectText {start=(x1a,y1a),end=(x2a,y2a)} text
 	#x1 = max 0 (min x1a ((length text) - 1))
 	#x2 = max 0 (min x2a ((length text) - 1))
 	#y1 = max 0 (min y1a ((textSize (text !! x1))))
 	#y2 = max 0 (min y2a ((textSize (text !! x2))))
-	= if (x1==x2) 
+	= if (x1==x2)
 	(subString y1 (y2-y1) (text !! x1))
-	((subString y1 (textSize (text !! x1)) (text !! x1)) +++ (concat (intersperse "\n" (subset (x1+1) (x2-x1-1) text))) +++ "\n" +++ (subString 0 y2 (text !! x2) )) 
+	((subString y1 (textSize (text !! x1)) (text !! x1)) +++ (concat (intersperse "\n" (subset (x1+1) (x2-x1-1) text))) +++ "\n" +++ (subString 0 y2 (text !! x2) ))
 
 vbtekst = ["Lorem Ipsum is slechts een proeftekst uit \n" ,
 	"het drukkerij- en zetterijwezen. Lorem Ipsum is \n" ,
@@ -104,19 +137,20 @@ vbtekst = ["Lorem Ipsum is slechts een proeftekst uit \n" ,
 	"te maken. Het heeft niet alleen vijf eeuwen overleefd maar \n" ,
 	"is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting."]
 
-/*de onderste zin is 74 lang*/  
+/*de onderste zin is 74 lang*/
 vbselecties :: String
-vbselecties = 
+vbselecties =
 	(selectText {start=(-1,-1), end=(7,100)} vbtekst) +++ "\n\n\n" +++
 	(selectText {start=(1,5), end=(1,5)} vbtekst) +++ "\n\n\n" +++
 	(selectText {start=(1,5), end=(1,6)} vbtekst) +++ "\n\n\n" +++
 	(selectText {start=(1,5), end=(2,9)} vbtekst)
-      
+
 helpwindows :: String (Shared (EditorInfo,Map String [String])) -> Task [(TaskTime,TaskValue ())]
 helpwindows filename s = (parallel (embed
 	[	(errorWindow filename s)
-	,	viewSelection filename s	
-	]) [])<<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)
+	,	viewSelection filename s
+	,	cloogleFind
+	]) []) //<<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)
 
 
 
@@ -147,12 +181,12 @@ er2EiAndContentsWrite filename (ao,as) (ei,contents) =
 			theme = ao.AceOptions.theme,
 			readOnly=as.AceState.disabled,
 			prev_time=ei.EditorInfo.prev_time
-		}, 
+		},
 		'DM'.put filename as.lines contents
 	)
-		    
+
 editor :: String (Shared ((Map String [String]),(Map String TaskId))) -> ParallelTask ()
-editor filename cnt = \tasklist.withShared editorInfo (\ei. 
+editor filename cnt = \tasklist.withShared editorInfo (\ei.
 	get cnt >>- \(c,utabs).
 	get (taskListSelfId tasklist) >>- \selfid.
 	set (c,'DM'.put filename selfid utabs) cnt >>|-
@@ -160,32 +194,32 @@ editor filename cnt = \tasklist.withShared editorInfo (\ei.
 	-&&-
 	helpwindows filename (ei >*< contents)
 	)
-	>^*[	OnAction ActionSaveAs		(always 
-			(contentOf filename >>- \content. 
+	>^*[	OnAction ActionSaveAs		(always
+			(contentOf filename >>- \content.
 			saveFileAs filename content ))
 	 	]
 	>>*[	OnAction ActionClose		(always (
-			contentOf filename >>- \content. 
-			saveFile filename content >>|- 
+			contentOf filename >>- \content.
+			saveFile filename content >>|-
 			get cnt >>- \(ucontents,utabs).
 			set (('DM'.del filename ucontents),('DM'.del filename utabs)) cnt >>|-
-			return ()))	
+			return ()))
 		]
 	where
 	er ei filename = mapReadWrite ((eiAndContents2ErRead filename), (er2EiAndContentsWrite filename)) (ei >*< contents)
 	name = dropDirectory filename
 /*
 simpleEditor :: String -> ParallelTask ()
-simpleEditor filename = \tasklist. 
+simpleEditor filename = \tasklist.
 	*/
 editors :: Task [(TaskTime,TaskValue ())]
-editors = 
+editors =
 	get contents >>- \c. withShared 'DM'.newMap (\tabs.
-	parallel [(Embedded,(waitf c tabs (updateTabs tabs))):(map (\x.(Embedded,(editor x (contents >*< tabs)))) ('DM'.keys c))] [] <<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs))
+	parallel [(Embedded,(waitf c tabs (updateTabs tabs))):(map (\x.(Embedded,(editor x (contents >*< tabs)))) ('DM'.keys c))] [] /*<<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)*/)
 	where
 	waitf :: (Map String [String]) (Shared (Map String TaskId)) (ParallelTask ()) -> ParallelTask ()
-	waitf c tabs task = \tasklist.watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. task tasklist))] 
-	
+	waitf c tabs task = \tasklist.watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. task tasklist))]
+
 containsElsNotIn :: [a] [a] -> Bool | Eq a
 containsElsNotIn a b = not(removeMembers a b == [])
 
@@ -199,23 +233,22 @@ differentLengths :: (Map String [String]) (Map String TaskId) -> Bool
 differentLengths c utabs =  not ('DM'.mapSize c == 'DM'.mapSize utabs)
 
 updateTabs :: (Shared (Map String TaskId)) -> ParallelTask ()
-updateTabs tabs = \tasklist. ut tabs tasklist 
+updateTabs tabs = \tasklist. ut tabs tasklist
 	where
 	ut :: (Shared (Map String TaskId)) -> ParallelTask ()
-	ut tabs = \tasklist. watch (cnt tabs) 
-		>>* [	OnValue		(ifValue (\(c,utabs). differentLengths c utabs) (\(c,utabs). (auxa utabs c tasklist) >>|- 
+	ut tabs = \tasklist. watch (cnt tabs)
+		>>* [	OnValue		(ifValue (\(c,utabs). differentLengths c utabs) (\(c,utabs). (auxa utabs c tasklist) >>|-
 				watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. updateTabs tabs tasklist))]))]
-	
+
 	waitf :: (Map String [String]) (Shared (Map String TaskId)) (ParallelTask ()) -> ParallelTask ()
-	waitf c tabs task = \tasklist.watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. task tasklist))] 
-	
+	waitf c tabs task = \tasklist.watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. task tasklist))]
+
 	auxa :: (Map String TaskId) (Map String [String]) (SharedTaskList ()) -> Task ()
-	auxa utabs c tasklist = (aux_append utabs c tasklist) 
+	auxa utabs c tasklist = (aux_append utabs c tasklist)
 		>>|- (aux_remove utabs c tasklist)
-	
+
 	aux_append :: (Map String TaskId) (Map String [String]) (SharedTaskList ()) -> Task ()
 	aux_append utabs c tasklist = mapTasksSequentially (\name.appendTask Embedded (editor name (cnt tabs)) tasklist >>|- return ()) ('DM'.keys ('DM'.difference c utabs))
-	
+
 	aux_remove :: (Map String TaskId) (Map String [String]) (SharedTaskList ()) -> Task ()
 	aux_remove utabs c tasklist = mapTasksSequentially (\taskid. removeTask taskid tasklist) ('DM'.elems ('DM'.difference utabs c))
-			    

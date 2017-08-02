@@ -2,9 +2,9 @@ implementation module directoryBrowsing
 
 import iTasks
 
-import iTasks.API.Extensions.Admin.WorkflowAdmin
+import iTasks.Extensions.Admin.WorkflowAdmin
 import iTasks.UI.Layout, iTasks.UI.Definition, iTasks.UI.Editor.Builtin
-import iTasks.API.Extensions.Editors.Ace
+import iTasks.Extensions.Editors.Ace
 import StdFile, System.File
 import System.Directory
 import System.FilePath
@@ -39,7 +39,7 @@ selectFromTree2 pwd isWantedFile
 	=				fetchDirectories pwd isWantedFile
 	>>- \dirs ->	set dirs shareddir
 	>>- \dir ->		editSelectionWithShared "dirs" False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) dir (\_ -> [])
-	-&&- 			viewSharedInformation "Selected: " [ViewAs (findSelected pwd (conv 0 dirs))] shareddir			
+	-&&- 			viewSharedInformation "Selected: " [ViewAs (findSelected pwd (conv 0 dirs))] shareddir
 	>>= 		 	return (findSelected pwd (conv 0 dirs) shareddir)
 
 where
@@ -55,26 +55,26 @@ where
 		# (cds,ii)	= convAllDirs (i+1) dirs
 		# (cfs,iii)	= convFiles ii files
 		= ([{id = i, label = dropDirectory pwd, icon = Nothing, expanded = False, children = cds ++ cfs}],iii)
-	
+
 		convAllDirs	i [] = ([],i)
 		convAllDirs i [Dir pwd dirs fils:ds]
 		# (cd,ii) 	= convDirs i pwd dirs fils
 		# (cds,iii)	= convAllDirs ii ds
 		= (cd++cds,iii)
-	
-		convFiles i [] 
+
+		convFiles i []
 					= ([],i)
 		convFiles i [f:fs]
 		# cf		= {id = i, label = f, icon = selectIcon pwd (takeExtension f), expanded = False, children = []}
 		# (cfs,j) 	= convFiles (i+1) fs
-		= ([cf:cfs],j) 
+		= ([cf:cfs],j)
 
 selectFromTree :: FilePath (FileName -> Bool) -> Task FilePath
 selectFromTree pwd isWantedFile
 	=				fetchDirectories pwd isWantedFile
-	>>= \dirs ->	withShared dirs (\dir -> 
+	>>= \dirs ->	withShared dirs (\dir ->
 		(editSelectionWithShared "dirs" False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) dir (\_ -> []) ))
-	>&> \mbsel ->	viewSharedInformation "Selected: " [ViewAs (findSelected pwd (conv 0 dirs))] mbsel			
+	>&> \mbsel ->	viewSharedInformation "Selected: " [ViewAs (findSelected pwd (conv 0 dirs))] mbsel
 	>>* [OnAction ActionContinue (ifValue (\mbsel -> isWantedFile (findSelected pwd (conv 0 dirs) mbsel)) (\mbsel -> 	return (findSelected pwd (conv 0 dirs) mbsel)))]
 
 where
@@ -90,19 +90,19 @@ where
 		# (cds,ii)	= convAllDirs (i+1) dirs
 		# (cfs,iii)	= convFiles ii files
 		= ([{id = i, label = dropDirectory pwd, icon = Nothing, expanded = False, children = cds ++ cfs}],iii)
-	
+
 		convAllDirs	i [] = ([],i)
 		convAllDirs i [Dir pwd dirs fils:ds]
 		# (cd,ii) 	= convDirs i pwd dirs fils
 		# (cds,iii)	= convAllDirs ii ds
 		= (cd++cds,iii)
-	
-		convFiles i [] 
+
+		convFiles i []
 					= ([],i)
 		convFiles i [f:fs]
 		# cf		= {id = i, label = f, icon = selectIcon pwd (takeExtension f), expanded = False, children = []}
 		# (cfs,j) 	= convFiles (i+1) fs
-		= ([cf:cfs],j) 
+		= ([cf:cfs],j)
 */
 
 selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
@@ -116,8 +116,8 @@ where
 
 	edit dirs sdirs
 		= 				editSelectionWithShared () False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) sdirs (\_ -> [])
-		>&> \mbsel ->	if show (viewSharedInformation "Selected: " [ViewAs (findSelected fp (conv 0 dirs))] mbsel) 
-								(get mbsel)		
+		>&> \mbsel ->	if show (viewSharedInformation "Selected: " [ViewAs (findSelected fp (conv 0 dirs))] mbsel)
+								(get mbsel)
 
 split fp dirs mbsel
 	= (takeDirectory selected, dropDirectory selected)
@@ -136,7 +136,7 @@ where
 	travers pwd [n1] i
 	| n1.ChoiceNode.id == i 	= pwd </> n1.ChoiceNode.label
 	| otherwise					= travers (pwd </> n1.ChoiceNode.label) n1.ChoiceNode.children i
-	travers pwd [n1,n2:ns] i 
+	travers pwd [n1,n2:ns] i
 	| i >= n2.ChoiceNode.id 	= travers pwd [n2:ns] i
 	| otherwise					= travers pwd [n1] i
 
@@ -153,11 +153,11 @@ where
 	selectFile :: FilePath (FilePath -> Bool) -> Task ((FilePath,[FilePath]),Maybe FilePath)
 	selectFile pwd pred
 	 	=					readDir pwd
-		>>- \all ->			selectDirs pwd all pred // only show wanted files 
+		>>- \all ->			selectDirs pwd all pred // only show wanted files
 		>>- \(dirs,files) ->
-		let all = dirs ++ files in		
-		(					enterChoice  pwd [ChooseFromGrid id] all 
-		>>*					[ OnAction (Action "Up") (always (selectFile (takeDirectory pwd) pred))	
+		let all = dirs ++ files in
+		(					enterChoice  pwd [ChooseFromGrid id] all
+		>>*					[ OnAction (Action "Up") (always (selectFile (takeDirectory pwd) pred))
 							, OnAction  ActionCancel (always (return ((pwd,all),Nothing)))
 							, OnAction  ActionOpen   (hasValue (continue pwd dirs files pred))
 							, OnAction  ActionNew    (always (createNewFile pwd >>| selectFile pwd pred))
@@ -165,32 +165,33 @@ where
 		)
 	where
 	 continue pwd dirs files pred chosen
-		= if (isMember chosen dirs)  	
+		= if (isMember chosen dirs)
 				(selectFile (pwd </> chosen) pred)
 				(return ((pwd,dirs ++ files),Just chosen))
-				
-	 createNewFile pwd 
+
+	 createNewFile pwd
 	 	= 				updateInformation "Give new file name: " [] "name.icl"
 	 	>>= \name ->	createFile pwd name ""
 
 fetchDirectories ::  FilePath (FileName -> Bool) -> Task Directory
 fetchDirectories pwd pred
 	= 						readDir pwd
-	>>= \fnames ->			selectDirs pwd fnames pred
+	>>= \fnames ->			/*viewInformation "" [] (pwd,fnames)
+    >>|                     */selectDirs pwd (filter (\a. a<> "." && a<> "..") fnames) pred
 	>>= \(dnames,fnames) ->	fetch pwd dnames
 	>>= \dirs -> 			return (Dir pwd dirs fnames)
 where
-  fetch pwd []  
+  fetch pwd []
 	= 						return []
-  fetch pwd [d:ds]   
+  fetch pwd [d:ds]
 	=						fetchDirectories (pwd </> d) pred
-	>>= \dir ->				fetch pwd ds 
-	>>= \dirs ->			return [dir:dirs]
-	
+	>>= \dir ->				fetch pwd ds
+    	>>= \dirs ->			return [dir:dirs]
+
 selectDirs :: FilePath [FileName] (FileName -> Bool) -> Task ([FileName],[FileName])
-selectDirs pwd paths pred = selDirs` paths ([],[]) 
+selectDirs pwd paths pred = selDirs` paths ([],[])
 where
-	selDirs` [] (dirs,nodirs) 
+	selDirs` [] (dirs,nodirs)
 		= return (drop 2 (reverse dirs),sort (filter pred nodirs))
 	selDirs` [f:fs] (dirs,nodirs)
 		=			isDirectory (pwd </> f)
@@ -198,15 +199,15 @@ where
 						   (selDirs` fs (dirs,[f:nodirs]))
 
 isDirectory :: FilePath -> Task Bool
-isDirectory file = worldIO isDir
+isDirectory file = accWorldError isDir id
 where
 	isDir world
 	# (res,world) 	=	getFileInfo file world
-	| isError res	=	(Error ("Cannot get directory info from file: " +++ file), world) 
+	| isError res	=	(Error ("Cannot get directory info from file: " +++ file), world)
 	= (Ok (fromOk res).directory,world)
 
 readDir :: FilePath  -> Task [FileName]  // returns file names (no path)
-readDir pwd  = worldIO readDir`
+readDir pwd  = accWorldError readDir` id
 where
 	readDir` world
 	# (res,	world)		= readDirectory pwd world
@@ -219,7 +220,7 @@ askUserForFile file isWantedFile
 	=						viewInformation ("Where is " +++ file +++ "?") [] ""
 		||-					getPwdName
  		>>- \pwd ->			selectFromTreeLocal True pwd isWantedFile
- 		
+
 selectFromTreeLocal :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
 selectFromTreeLocal show fp isWantedFile
 	=						readDir fp
@@ -240,8 +241,8 @@ where
 		>&> \mbsel ->	(if show (viewSharedInformation () [ViewAs (findSelected fp (conv 0 dirs))] mbsel)
 								(get mbsel))
 
-	selected mbsel dirs = findSelected fp (conv 0 dirs) mbsel 
-	
+	selected mbsel dirs = findSelected fp (conv 0 dirs) mbsel
+
 conv :: !Int !Directory -> ([ChoiceNode],Int)
 conv i (Dir pwd dirs files) = convDirs i pwd dirs files
 where
@@ -256,25 +257,25 @@ where
 	# (cds,iii)	= convAllDirs ii ds
 	= (cd++cds,iii)
 
-	convFiles i [] 
+	convFiles i []
 				= ([],i)
 	convFiles i [f:fs]
 	# cf		= {id = i, label = f, icon = selectIcon pwd (takeExtension f), expanded = False, children = []}
 	# (cfs,j) 	= convFiles (i+1) fs
-	= ([cf:cfs],j) 
+	= ([cf:cfs],j)
 
 getPwdName :: Task FilePath
 getPwdName
-	=					worldIO getPwd`
+	=					accWorldError getPwd` id
 where
-	getPwd` world 	
-	# (res, world)	= 	getCurrentDirectory world 
+	getPwd` world
+	# (res, world)	= 	getCurrentDirectory world
 	| isError res	= 	(Error "Cannot open current directory", world)
 	# pwd			= 	fromOk res
 	= (Ok pwd, world)
 
 createFile :: FilePath FileName String -> Task ()
-createFile path name content = worldIO (create (path </> name) content)
+createFile path name content = accWorldError (create (path </> name) content) id
 where
 	create filename content world
 	# (ok,file,world)			= fopen filename FWriteText world
@@ -282,40 +283,40 @@ where
 	# file						= fwrites content file
 	# (ok,world)				= fclose file world
 	| not ok					= (Error ("Cannot open file: " +++ filename),world)
-	= (Ok (),world)	
-	
+	= (Ok (),world)
+
 readFromFile :: String -> Task (Maybe String)
-readFromFile path = worldIO (read path) 
-where 
+readFromFile path = accWorldError (read path) id
+where
 	read path world
 	# (ok,file,world)			= fopen path FReadData world
-	| not ok					= (Ok Nothing, world) 
+	| not ok					= (Ok Nothing, world)
 	# (res,file)				= readAll file
 	# (ok,world)				= fclose file world
 	| not ok					= (Error ("Cannot close file: " +++ path), world)
     = case res of
         Error e                 = (Error ("Cannot read File:" +++ path), world)
         Ok content              = (Ok (Just content), world)
-       
+
 readLinesFromFile :: String -> Task (Maybe [String])
-readLinesFromFile path = worldIO (read path) 
-where 
+readLinesFromFile path = accWorldError (read path) id
+where
 	read path world
 	# (ok,file,world)			= fopen path FReadData world
-	| not ok					= (Ok Nothing, world) 
+	| not ok					= (Ok Nothing, world)
 	# (res,file)				= readAllLines file []
 	# (ok,world)				= fclose file world
 	| not ok					= (Error ("Cannot close file: " +++ path), world)
     =  (Ok (Just res), world)
 
-	readAllLines file accu 
+	readAllLines file accu
 	# (line,file) 				= freadline file
 	| line == ""				= (reverse accu,file)
 	= readAllLines file [line:accu]
 
 writeToFile :: String String -> Task String
-writeToFile path content = worldIO (write path content) 
-where 
+writeToFile path content = accWorldError (write path content) id
+where
 	write path content world
 	# (ok,file,world)			= fopen path FWriteText world
 	| not ok					= (Error ("Cannot open file: " +++ path), world)
@@ -337,7 +338,7 @@ remove_double_enters :: String -> String
 remove_double_enters str = {c \\ c <-: str | c <> '\r'}
 
 saveFile :: String String -> Task ()
-saveFile path content = writeToFile path (remove_double_enters content) /*>>- ReadFromFile*/ @! () 
+saveFile path content = writeToFile path (remove_double_enters content) /*>>- ReadFromFile*/ @! ()
 
 saveFileAs :: String String -> Task ()
 saveFileAs path content
@@ -345,4 +346,3 @@ saveFileAs path content
 		>>*		[	OnAction ActionSave		(hasValue (\name -> saveFile name content))
 			 	,	OnAction ActionCancel	(always (return ()))
 			 	]
-

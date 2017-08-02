@@ -1,23 +1,23 @@
 || ?module? System.FilePath
 
 
-System.FilePath.pathSeparator::C = '\\'
+System.FilePath.pathSeparator::C = '/'
 System.FilePath.pathSeparators = _predefined._Cons '\\' (_predefined._Cons '/' _predefined._Nil)
 System.FilePath.extSeparator::C = '.'
 System.FilePath.hasTrailingPathSeparator::B !_x_0 = case _x_0 ("" -> False) (_ -> StdList.isMember_52 (_SystemArray.select_19 _x_0 (<{StdInt.-_7}> (_SystemArray.size_20 _x_0) 1)) System.FilePath.pathSeparators)
 System.FilePath.addTrailingPathSeparator !path_0 = case (System.FilePath.hasTrailingPathSeparator path_0) (True -> path_0) (False -> <{StdString.+++_11}> path_0 (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 System.FilePath.pathSeparator)) 
 <{System.FilePath.</>}> !x_0 !y_1 = <{StdString.+++_11}> (System.FilePath.addTrailingPathSeparator x_0) y_1
-System.FilePath.splitExtension !path_0 = let i_1_0::I = Text.lastIndexOf_6 (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 System.FilePath.extSeparator) path_0 in <{System.FilePath._c;25;5_18}> i_1_0 path_0
-<{System.FilePath._c;25;5_18}> !i_0::I path_1 = case i_0 (-1 -> _Tuple2 path_1 "") (_ -> _Tuple2 (Text.subString_14 0 i_0 path_1) (Text.subString_14 (<{StdInt.+_6}> i_0 1) (<{StdInt.-_7}> (<{StdInt.-_7}> (_SystemArray.size_20 path_1) i_0) 1) path_1))
+System.FilePath.splitExtension !path_0 = let i_1_0::I = Text.lastIndexOf_7 (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 System.FilePath.extSeparator) path_0 in <{System.FilePath._c;25;5_18}> i_1_0 path_0
+<{System.FilePath._c;25;5_18}> !i_0::I path_1 = case i_0 (-1 -> _Tuple2 path_1 "") (_ -> _Tuple2 (Text.subString_15 0 i_0 path_1) (Text.subString_15 (<{StdInt.+_6}> i_0 1) (<{StdInt.-_7}> (<{StdInt.-_7}> (_SystemArray.size_20 path_1) i_0) 1) path_1))
 System.FilePath.takeExtension !path_0 = select (System.FilePath.splitExtension path_0)::_Tuple2 1
 System.FilePath.dropExtension !path_0 = select (System.FilePath.splitExtension path_0)::_Tuple2 0
 System.FilePath.addExtension !path_0 !_x_1 = case _x_1 ("" -> path_0) (_ -> case (<{StdChar.==_18}> (_SystemArray.select_19 path_0 (<{StdInt.-_7}> (_SystemArray.size_20 path_0) 1)) System.FilePath.extSeparator) (True -> <{StdString.+++_11}> path_0 _x_1) (False -> <{StdString.+++_11}> path_0 (<{StdString.+++_11}> (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 System.FilePath.extSeparator) _x_1)) )
 System.FilePath.replaceExtension !path_0 !ext_1 = System.FilePath.addExtension (System.FilePath.dropExtension path_0) ext_1
-System.FilePath.splitFileName !path_0 = let i_1_0::I = Text.lastIndexOf_6 (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 System.FilePath.pathSeparator) path_0 in <{System.FilePath._c;52;5_19}> i_1_0 path_0
-<{System.FilePath._c;52;5_19}> !i_0::I path_1 = case i_0 (-1 -> _Tuple2 path_1 "") (_ -> _Tuple2 (Text.subString_14 0 i_0 path_1) (Text.subString_14 (<{StdInt.+_6}> i_0 1) (<{StdInt.-_7}> (<{StdInt.-_7}> (_SystemArray.size_20 path_1) i_0) 1) path_1))
+System.FilePath.splitFileName !path_0 = let i_1_0::I = Text.lastIndexOf_7 (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 System.FilePath.pathSeparator) path_0 in <{System.FilePath._c;52;5_19}> i_1_0 path_0
+<{System.FilePath._c;52;5_19}> !i_0::I path_1 = case i_0 (-1 -> _Tuple2 path_1 "") (_ -> _Tuple2 (Text.subString_15 0 i_0 path_1) (Text.subString_15 (<{StdInt.+_6}> i_0 1) (<{StdInt.-_7}> (<{StdInt.-_7}> (_SystemArray.size_20 path_1) i_0) 1) path_1))
 System.FilePath.takeDirectory !path_0 = select (System.FilePath.splitFileName path_0)::_Tuple2 0
-System.FilePath.dropDirectory !path_0 = let i_1_0::I = Text.lastIndexOf_6 (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 System.FilePath.pathSeparator) path_0 in <{System.FilePath._c;61;5_20}> i_1_0 path_0
-<{System.FilePath._c;61;5_20}> !i_0::I !path_1 = case i_0 (-1 -> path_1) (_ -> Text.subString_14 (<{StdInt.+_6}> i_0 1) (<{StdInt.-_7}> (<{StdInt.-_7}> (_SystemArray.size_20 path_1) i_0) 1) path_1)
+System.FilePath.dropDirectory !path_0 = let i_1_0::I = Text.lastIndexOf_7 (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 System.FilePath.pathSeparator) path_0 in <{System.FilePath._c;61;5_20}> i_1_0 path_0
+<{System.FilePath._c;61;5_20}> !i_0::I !path_1 = case i_0 (-1 -> path_1) (_ -> Text.subString_15 (<{StdInt.+_6}> i_0 1) (<{StdInt.-_7}> (<{StdInt.-_7}> (_SystemArray.size_20 path_1) i_0) 1) path_1)
 System.FilePath.takeFileName !path_0 = select (System.FilePath.splitFileName path_0)::_Tuple2 1
 System.FilePath.replaceFileName !path_0 !fn_1 = <{System.FilePath.</>}> (System.FilePath.takeDirectory path_0) fn_1
 System.FilePath.dropFileName !path_0 = System.FilePath.takeDirectory path_0
