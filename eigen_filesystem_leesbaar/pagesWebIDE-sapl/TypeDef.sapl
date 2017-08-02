@@ -1,0 +1,133 @@
+|| ?module? TypeDef
+
+
+TypeDef.toGenericType_84 !x_0 = case x_0 (TypeDef.Type x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1))))) (TypeDef.Func x21_1_0 x22_1_1 x23_1_2 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x21_1_0 (StdGeneric.PAIR x22_1_1 x23_1_2))))))) (TypeDef.Var x31_1_0 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS x31_1_0))))) (TypeDef.Cons x41_1_0 x42_1_1 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x41_1_0 x42_1_1)))))) (TypeDef.Uniq x51_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.RIGHT (StdGeneric.CONS x51_1_0))))) (TypeDef.Forall x61_1_0 x62_1_1 x63_1_2 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x61_1_0 (StdGeneric.PAIR x62_1_1 x63_1_2))))))) (TypeDef.Arrow x71_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS x71_1_0))))) 
+TypeDef.toGenericClassOrGeneric_65 !x_0 = case x_0 (TypeDef.Class x11_1_0 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS x11_1_0))) (TypeDef.Generic x21_1_0 x22_1_1 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.CONS (StdGeneric.PAIR x21_1_0 x22_1_1)))) 
+TypeDef.toGenericKind_100 !x_0 = case x_0 (TypeDef.KindConst -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT))) (TypeDef.KindArrow x21_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.CONS x21_1_0))) 
+TypeDef.gEq_Kind_54::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_CONS_10 (GenEq.gEq__List_16 TypeDef.gEq_Kind_54))) (TypeDef.toGenericKind_100 x1_0) (TypeDef.toGenericKind_100 x2_1)
+TypeDef.gEq_ClassOrGeneric_51::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq__String_6) (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 GenEq.gEq__String_6 TypeDef.gEq_Kind_54))) (TypeDef.toGenericClassOrGeneric_65 x1_0) (TypeDef.toGenericClassOrGeneric_65 x2_1)
+TypeDef.gEq_Type_52::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 GenEq.gEq__String_6 (GenEq.gEq__List_16 TypeDef.gEq_Type_52))) (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 (GenEq.gEq__List_16 TypeDef.gEq_Type_52) (GenEq.gEq_PAIR_8 TypeDef.gEq_Type_52 (GenEq.gEq__List_16 (GenEq.gEq__Tuple2_17 TypeDef.gEq_ClassOrGeneric_51 TypeDef.gEq_Type_52))))) (GenEq.gEq_CONS_10 GenEq.gEq__String_6))) (GenEq.gEq_EITHER_9 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 GenEq.gEq__String_6 (GenEq.gEq__List_16 TypeDef.gEq_Type_52))) (GenEq.gEq_CONS_10 TypeDef.gEq_Type_52)) (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 (GenEq.gEq__List_16 TypeDef.gEq_Type_52) (GenEq.gEq_PAIR_8 TypeDef.gEq_Type_52 (GenEq.gEq__List_16 (GenEq.gEq__Tuple2_17 TypeDef.gEq_ClassOrGeneric_51 TypeDef.gEq_Type_52))))) (GenEq.gEq_CONS_10 (Data.Maybe.gEq_Maybe_13 TypeDef.gEq_Type_52))))) (TypeDef.toGenericType_84 x1_0) (TypeDef.toGenericType_84 x2_1)
+<{TypeDef.==_22}>::B !a_0 !b_1 = <{GenEq.===}> (<{TypeDef.gEq_s;}> TypeDef.gEq_Type_52) a_0 b_1
+TypeDef.subtypes !t_0 = case t_0 (TypeDef.Type s_1_0 ts_1_1 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{TypeDef.==_22}>)) (_predefined._Cons t_0 (StdList.flatten (StdList.map TypeDef.subtypes ts_1_1)))) (TypeDef.Func is_1_0 r_1_1 cc_1_2 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{TypeDef.==_22}>)) (_predefined._Cons t_0 (StdList.flatten (StdList.map TypeDef.subtypes (_predefined._Cons r_1_1 is_1_0))))) (TypeDef.Cons c_1_0 ts_1_1 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{TypeDef.==_22}>)) (_predefined._Cons t_0 (StdList.flatten (StdList.map TypeDef.subtypes ts_1_1)))) (TypeDef.Uniq t`_1_0 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{TypeDef.==_22}>)) (_predefined._Cons t_0 (TypeDef.subtypes <{t`_1_0}>))) (TypeDef.Forall vs_1_0 t`_1_1 cc_1_2 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{TypeDef.==_22}>)) (_predefined._Cons t_0 (StdList.flatten (StdList.map TypeDef.subtypes (_predefined._Cons <{t`_1_1}> vs_1_0))))) (TypeDef.Var _x_1_0 -> _predefined._Cons t_0 _predefined._Nil) 
+TypeDef.anon_57 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+TypeDef.anon_56 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+TypeDef.anon_55 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+TypeDef.isVar::B !_x_0 = case _x_0 (TypeDef.Var _x_1_0 -> True) (_ -> False)
+TypeDef.isCons::B !_x_0 = case _x_0 (TypeDef.Cons _x_1_0 _x_1_1 -> True) (_ -> False)
+TypeDef.anon_46::B !t_0 = case (TypeDef.isCons t_0) (True -> True) (False -> TypeDef.isVar t_0) 
+TypeDef.name_47 !_x_0 = case _x_0 (TypeDef.Cons v_1_0 _x_1_1 -> v_1_0) (TypeDef.Var v_1_0 -> v_1_0) 
+TypeDef.anon_145 _x_0 !g_1 x_2 = StdList.filter _x_0 (g_1 x_2)
+TypeDef.anon_146 _x_0 !g_1 x_2 = StdList.map _x_0 (g_1 x_2)
+TypeDef.anon_147 !_x_0 !g_1 x_2 = StdList.removeDup _x_0 (g_1 x_2)
+TypeDef.anon_148 _x_0 !x_1 = StdList.filter _x_0 (TypeDef.subtypes x_1)
+TypeDef.anon_149 _x_0 _x_1 !x_2 = StdList.map _x_0 (TypeDef.anon_148 _x_1 x_2)
+TypeDef.anon_150 !g_0 x_1 = StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) (g_0 x_1)
+TypeDef.anon_151 _x_0 _x_1 !x_2 = StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) (TypeDef.anon_149 _x_0 _x_1 x_2)
+TypeDef.allVars = TypeDef.anon_151 TypeDef.name_47 TypeDef.anon_46
+TypeDef.allUniversalVars !_x_0 = case _x_0 (TypeDef.Forall vs_1_0 t_1_1 cc_1_2 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) (<{StdList.++}> (StdList.flatten (StdList.map TypeDef.allVars vs_1_0)) (TypeDef.allUniversalVars t_1_1))) (TypeDef.Type _x_1_0 ts_1_1 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) (StdList.flatten (StdList.map TypeDef.allUniversalVars ts_1_1))) (TypeDef.Func is_1_0 r_1_1 _x_1_2 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) (StdList.flatten (StdList.map TypeDef.allUniversalVars (_predefined._Cons r_1_1 is_1_0)))) (TypeDef.Cons _x_1_0 ts_1_1 -> StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) (StdList.flatten (StdList.map TypeDef.allUniversalVars ts_1_1))) (TypeDef.Uniq t_1_0 -> TypeDef.allUniversalVars t_1_0) (TypeDef.Var _x_1_0 -> _predefined._Nil) 
+TypeDef.fromVar !_x_0 = case _x_0 (TypeDef.Var v_1_0 -> v_1_0) 
+TypeDef.fromVarLenient !_x_0 = case _x_0 (TypeDef.Var v_1_0 -> v_1_0) (TypeDef.Cons v_1_0 _x_1_1 -> v_1_0) (TypeDef.Uniq t_1_0 -> TypeDef.fromVarLenient t_1_0) 
+<{TypeDef.isCons`}>::B v_0 !_x_1 = case _x_1 (TypeDef.Cons v`_1_0 _x_1_1 -> <{StdString.==_2}> v_0 <{v`_1_0}>) (_ -> False)
+<{TypeDef.isVarOrCons`}>::B v_0 !_x_1 = case _x_1 (TypeDef.Var v`_1_0 -> <{StdString.==_2}> v_0 <{v`_1_0}>) (TypeDef.Cons v`_1_0 _x_1_1 -> <{StdString.==_2}> v_0 <{v`_1_0}>) (_ -> False)
+TypeDef.isType::B !_x_0 = case _x_0 (TypeDef.Type _x_1_0 _x_1_1 -> True) (_ -> False)
+TypeDef.isFunc::B !_x_0 = case _x_0 (TypeDef.Func _x_1_0 _x_1_1 _x_1_2 -> True) (_ -> False)
+TypeDef.isUniq::B !_x_0 = case _x_0 (TypeDef.Uniq _x_1_0 -> True) (_ -> False)
+TypeDef.isForall::B !_x_0 = case _x_0 (TypeDef.Forall _x_1_0 _x_1_1 _x_1_2 -> True) (_ -> False)
+TypeDef.fromForall !_x_0 = case _x_0 (TypeDef.Forall _x_1_0 t_1_1 _x_1_2 -> t_1_1) 
+TypeDef.arity::I !_x_0 = case _x_0 (TypeDef.Type _x_1_0 ts_1_1 -> StdList.length_47 ts_1_1) (TypeDef.Func is_1_0 _x_1_1 _x_1_2 -> StdList.length_47 is_1_0) (TypeDef.Var _x_1_0 -> 0) (TypeDef.Cons _x_1_0 ts_1_1 -> StdList.length_47 ts_1_1) 
+<{TypeDef.c;88;79_48}> return_0 !g_l_1 = <{TypeDef.g_c1;88;84_152}> g_l_1 return_0
+<{TypeDef.g_c1;88;84_152}> !g_l_0 return_1 = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> _predefined._Cons (_Tuple3 (select c_1_0::TypeDef._Constructor 0) (TypeDef.Func (select c_1_0::TypeDef._Constructor 1) return_1 (select c_1_0::TypeDef._Constructor 3)) (select c_1_0::TypeDef._Constructor 4)) (<{TypeDef.c;88;79_48}> return_1 g_t_1_1)) (_ -> _predefined._Nil)
+TypeDef.constructorsToFunctions !_x_0 = case _x_0 (TypeDef._TypeDef td_name_1_0 td_uniq_1_1 td_args_1_2 _x_1_3 -> case _x_1_3 (TypeDef.TDRCons _x_2_0 conses_2_1 -> <{TypeDef.c;88;79_48}> (<{TypeDef._if;89;16_153}> td_uniq_1_1 (TypeDef.Type td_name_1_0 td_args_1_2)) conses_2_1) ) (_ -> _predefined._Nil)
+<{TypeDef._if;89;16_153}> !td_uniq_0::B = case td_uniq_0 (True -> TypeDef.Uniq) (_ -> StdFunc.id)
+<{TypeDef.c;94;45_49}> arg_0 !g_l_1 = <{TypeDef.g_c1;94;50_154}> g_l_1 arg_0
+<{TypeDef.g_c1;94;50_154}> !g_l_0 arg_1 = case g_l_0 (_predefined._Cons f_1_0 g_t_1_1 -> _predefined._Cons (_Tuple2 (select f_1_0::TypeDef._RecordField 0) (TypeDef.Func (_predefined._Cons arg_1 _predefined._Nil) (select f_1_0::TypeDef._RecordField 1) _predefined._Nil)) (<{TypeDef.c;94;45_49}> arg_1 g_t_1_1)) (_ -> _predefined._Nil)
+TypeDef.recordsToFunctions !_x_0 = case _x_0 (TypeDef._TypeDef td_name_1_0 td_uniq_1_1 td_args_1_2 _x_1_3 -> case _x_1_3 (TypeDef.TDRRecord _x_2_0 _x_2_1 fields_2_2 -> <{TypeDef.c;94;45_49}> (<{TypeDef._if;95;13_155}> td_uniq_1_1 (TypeDef.Type td_name_1_0 td_args_1_2)) fields_2_2) ) (_ -> _predefined._Nil)
+<{TypeDef._if;95;13_155}> !td_uniq_0::B = case td_uniq_0 (True -> TypeDef.Uniq) (_ -> StdFunc.id)
+TypeDef.td_name !_x_0 = case _x_0 (TypeDef._TypeDef td_name_1_0 td_uniq_1_1 td_args_1_2 td_rhs_1_3 -> td_name_1_0) 
+TypeDef.typedef name_0 uniq_1::B args_2 rhs_3 = TypeDef._TypeDef name_0 uniq_1 args_2 rhs_3
+TypeDef.constructor name_0 args_1 exi_vars_2 cc_3 pri_4 = TypeDef._Constructor name_0 args_1 exi_vars_2 cc_3 pri_4
+TypeDef.recordfield selector_0 type_1 = TypeDef._RecordField selector_0 type_1
+TypeDef.anon_50::B !td_0 !d_1 = StdBool.not (<{StdString.==_2}> (select d_1::TypeDef._TypeDef 0) (select td_0::TypeDef._TypeDef 0))
+TypeDef.removeDupTypedefs !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons td_1_0 tds_1_1 -> _predefined._Cons td_1_0 (TypeDef.removeDupTypedefs (StdList.filter (TypeDef.anon_50 td_1_0) tds_1_1))) 
+TypeDef.toGenericInstance_91 !x_0 = case x_0 (TypeDef.Instance x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1))) 
+TypeDef.gEq_Instance_53::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 GenEq.gEq__String_6 (GenEq.gEq__List_16 TypeDef.gEq_Type_52))) (TypeDef.toGenericInstance_91 x1_0) (TypeDef.toGenericInstance_91 x2_1)
+<{TypeDef.==_23}>::B !a_0 !b_1 = <{GenEq.===}> (<{TypeDef.gEq_s;}> TypeDef.gEq_Instance_53) a_0 b_1
+<{TypeDef.TD;Type}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;TypeVar}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;TVAssignment}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;Unifier}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;ClassContext}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;ClassRestriction}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;ClassOrGeneric}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;Kind}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;Instance}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;TypeDef}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;TypeDefRhs}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;Constructor}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;Priority}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;RecordField}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;toType;}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;toTypeVar;}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;toClassContext;}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;toTypeDef;}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;toTypeDefRhs;}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;toConstructor;}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;toMaybePriority;}> _x_0::B = _predefined._Nil
+<{TypeDef.TD;toRecordField;}> _x_0::B = _predefined._Nil
+
+:: TypeDef.Type = TypeDef.Type a1 a2 | TypeDef.Func a1 a2 a3 | TypeDef.Var a1 | TypeDef.Cons a1 a2 | TypeDef.Uniq a1 | TypeDef.Forall a1 a2 a3 | TypeDef.Arrow a1
+:: TypeDef.ClassOrGeneric = TypeDef.Class a1 | TypeDef.Generic a1 a2
+:: TypeDef.Kind = TypeDef.KindConst | TypeDef.KindArrow a1
+:: TypeDef.Instance = TypeDef.Instance a1 a2
+:: TypeDef.TypeDefRhs = TypeDef.TDRCons a1::B a2 | TypeDef.TDRRecord a1 a2 a3 | TypeDef.TDRSynonym a1 | TypeDef.TDRAbstract | TypeDef.TDRAbstractSynonym a1
+:: TypeDef.Priority = TypeDef.LeftAssoc a1::I | TypeDef.RightAssoc a1::I | TypeDef.NoAssoc a1::I
+
+|| Converted Records
+:: TypeDef._Unifier = {TypeDef.left_to_right, TypeDef.right_to_left, TypeDef.used_synonyms}
+
+:: TypeDef._TypeDef = {TypeDef.td_name, TypeDef.td_uniq::B, TypeDef.td_args, TypeDef.td_rhs}
+
+:: TypeDef._Constructor = {TypeDef.cons_name, TypeDef.cons_args, TypeDef.cons_exi_vars, TypeDef.cons_context, TypeDef.cons_priority}
+
+:: TypeDef._RecordField = {TypeDef.rf_name, TypeDef.rf_type}
+
+:: <{TypeDef.toType;}> = {!TypeDef.toType}
+
+:: <{TypeDef.toTypeVar;}> = {!TypeDef.toTypeVar}
+
+:: <{TypeDef.toClassContext;}> = {!TypeDef.toClassContext}
+
+:: <{TypeDef.toTypeDef;}> = {!TypeDef.toTypeDef}
+
+:: <{TypeDef.toTypeDefRhs;}> = {!TypeDef.toTypeDefRhs}
+
+:: <{TypeDef.toConstructor;}> = {!TypeDef.toConstructor}
+
+:: <{TypeDef.toMaybePriority;}> = {!TypeDef.toMaybePriority}
+
+:: <{TypeDef.toRecordField;}> = {!TypeDef.toRecordField}
+
+:: <{TypeDef.gEq_s;}> = {!TypeDef.gEq_s}
+
+:: <{TypeDef.gEq_ss;}> = {!TypeDef.gEq_ss}
+
+:: <{TypeDef.gEq_sss;}> = {!TypeDef.gEq_sss}
+
+:: <{TypeDef.gEq_ssss;}> = {!TypeDef.gEq_ssss}
+
+:: <{TypeDef.gEq_sssss;}> = {!TypeDef.gEq_sssss}
+
+:: <{TypeDef.gEq_ssssss;}> = {!TypeDef.gEq_ssssss}
+
+:: <{TypeDef.gEq_sssssss;}> = {!TypeDef.gEq_sssssss}
+
+:: <{TypeDef.gEq_ssssssss;}> = {!TypeDef.gEq_ssssssss}
+
+:: <{TypeDef.gEq_sssssssss;}> = {!TypeDef.gEq_sssssssss}
+
+:: <{TypeDef.bimap_s;}> = {TypeDef.bimap_s}
+
+:: <{TypeDef.bimap_ss;}> = {TypeDef.bimap_ss}
+
+:: <{TypeDef.bimap_sss;}> = {TypeDef.bimap_sss}
+

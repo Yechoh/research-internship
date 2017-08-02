@@ -1,0 +1,164 @@
+|| ?module? iTasks.Extensions.CSVFile
+
+
+iTasks.Extensions.CSVFile.openException s_0 = let e_1_0 = iTasks.Extensions.Document.FileException s_0 System.File.CannotOpen in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;FileException}>))) (iTasks.Extensions.Document.toString_4 e_1_0))
+iTasks.Extensions.CSVFile.closeException s_0 = let e_1_0 = iTasks.Extensions.Document.FileException s_0 System.File.CannotClose in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;FileException}>))) (iTasks.Extensions.Document.toString_4 e_1_0))
+iTasks.Extensions.CSVFile.fileTaskRead task_0 !filename_1 f_2 !iworld_3 = case iworld_3 (iTasks.Internal.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks.Internal.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let _x_3_0 = StdFile.fopen_31 filename_1 3 world_1_12 in case (StdBool.not (select _x_3_0::_Tuple3 0)) (True -> _Tuple2 (iTasks.Extensions.CSVFile.openException filename_1) (update iworld_3::iTasks.Internal.IWorld._IWorld [12:select _x_3_0::_Tuple3 2])) (False -> let file_5_0 = select _x_3_0::_Tuple3 1, _x_5_1 = f_2 file_5_0, file_5_2 = select _x_5_1::_Tuple2 1, world_5_3 = select _x_3_0::_Tuple3 2, _x_5_4 = StdFile.fclose_30 file_5_2 world_5_3 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> _Tuple2 (iTasks.Extensions.CSVFile.closeException filename_1) (update iworld_3::iTasks.Internal.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) (False -> _Tuple2 (Data.Error.Ok (select _x_5_1::_Tuple2 0)) (update iworld_3::iTasks.Internal.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) ) ) ) 
+iTasks.Extensions.CSVFile.eval_14 !filename_0 task_1 !iworld_2 = iTasks.Extensions.CSVFile.fileTaskRead task_1 filename_0 Text.CSV.readCSVFile iworld_2
+iTasks.Extensions.CSVFile.gEq_s_36::B !_vgEq_s_0 x1_1 x2_2 = GenEq.gEq__List_16 (select _vgEq_s_0::<{iTasks.Extensions.CSVFile.gEq_s;}> 0) x1_1 x2_2
+iTasks.Extensions.CSVFile.JSONEncode_s_76 !_vJSONEncode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONEncode__List_17 (select _vJSONEncode_s_0::<{iTasks.Extensions.CSVFile.JSONEncode_s;}> 0) x1_1 x2_2
+iTasks.Extensions.CSVFile.JSONDecode_s_115 !_vJSONDecode_s_0 !x1_1::B !x2_2 = Text.JSON.JSONDecode__List_44 (select _vJSONDecode_s_0::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0) x1_1 x2_2
+iTasks.Extensions.CSVFile.gText_s_154 !_vgText_s_0 !x1_1 x2_2 = iTasks.Internal.Generic.Visualization.gText__List_16 (select _vgText_s_0::<{iTasks.Extensions.CSVFile.gText_s;}> 0) x1_1 x2_2
+iTasks.Extensions.CSVFile.gDefault_s_202 !_vgDefault_s_0 = iTasks.Internal.Generic.Defaults.gDefault__List_13 (select _vgDefault_s_0::<{iTasks.Extensions.CSVFile.gDefault_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_247 !_vgEditor_s_0 !_vgText_s_1 !_vgDefault_s_2 !_vJSONEncode_s_3 !_vJSONDecode_s_4 = iTasks.UI.Editor.Generic.gEditor__List_12 (select _vgEditor_s_0::<{iTasks.Extensions.CSVFile.gEditor_s;}> 0) (select _vgText_s_1::<{iTasks.Extensions.CSVFile.gText_s;}> 0) (select _vgDefault_s_2::<{iTasks.Extensions.CSVFile.gDefault_s;}> 0) (select _vJSONEncode_s_3::<{iTasks.Extensions.CSVFile.JSONEncode_s;}> 0) (select _vJSONDecode_s_4::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEq_s_374::B x1_0 x2_1 = GenEq.gEq__List_16 GenEq.gEq__String_6 x1_0 x2_1
+iTasks.Extensions.CSVFile.gEq_s_375::B x1_0 x2_1 = GenEq.gEq__List_16 iTasks.Extensions.CSVFile.gEq_s_374 x1_0 x2_1
+iTasks.Extensions.CSVFile.gDefault_s_366 = iTasks.Internal.Generic.Defaults.gDefault__List_13 iTasks.Internal.Generic.Defaults.gDefault__String_12
+iTasks.Extensions.CSVFile.gDefault_s_373 = iTasks.Internal.Generic.Defaults.gDefault__List_13 iTasks.Extensions.CSVFile.gDefault_s_366
+iTasks.Extensions.CSVFile.JSONDecode_s_368 !x1_0::B !x2_1 = Text.JSON.JSONDecode__List_44 Text.JSON.JSONDecode__String_39 x1_0 x2_1
+iTasks.Extensions.CSVFile.JSONDecode_s_372 !x1_0::B !x2_1 = Text.JSON.JSONDecode__List_44 iTasks.Extensions.CSVFile.JSONDecode_s_368 x1_0 x2_1
+iTasks.Extensions.CSVFile.JSONEncode_s_367 !x1_0::B !x2_1 = Text.JSON.JSONEncode__List_17 Text.JSON.JSONEncode__String_15 x1_0 x2_1
+iTasks.Extensions.CSVFile.JSONEncode_s_371 !x1_0::B !x2_1 = Text.JSON.JSONEncode__List_17 iTasks.Extensions.CSVFile.JSONEncode_s_367 x1_0 x2_1
+iTasks.Extensions.CSVFile.gText_s_365 !x1_0 x2_1 = iTasks.Internal.Generic.Visualization.gText__List_16 iTasks.Internal.Generic.Visualization.gText__String_15 x1_0 x2_1
+iTasks.Extensions.CSVFile.gText_s_370 !x1_0 x2_1 = iTasks.Internal.Generic.Visualization.gText__List_16 iTasks.Extensions.CSVFile.gText_s_365 x1_0 x2_1
+iTasks.Extensions.CSVFile.gEditor_s_364 !_vgText_s_0 !_vgDefault_s_1 !_vJSONEncode_s_2 !_vJSONDecode_s_3 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 (select _vgText_s_0::<{iTasks.Extensions.CSVFile.gText_s;}> 0) (select _vgDefault_s_1::<{iTasks.Extensions.CSVFile.gDefault_s;}> 0) (select _vJSONEncode_s_2::<{iTasks.Extensions.CSVFile.JSONEncode_s;}> 0) (select _vJSONDecode_s_3::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_376 !_vgDefault_s_0 !_vJSONEncode_s_1 !_vJSONDecode_s_2 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks.Internal.Generic.Visualization.gText__String_15 (select _vgDefault_s_0::<{iTasks.Extensions.CSVFile.gDefault_s;}> 0) (select _vJSONEncode_s_1::<{iTasks.Extensions.CSVFile.JSONEncode_s;}> 0) (select _vJSONDecode_s_2::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_377 !_vJSONEncode_s_0 !_vJSONDecode_s_1 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks.Internal.Generic.Visualization.gText__String_15 iTasks.Internal.Generic.Defaults.gDefault__String_12 (select _vJSONEncode_s_0::<{iTasks.Extensions.CSVFile.JSONEncode_s;}> 0) (select _vJSONDecode_s_1::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_378 !_vJSONDecode_s_0 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks.Internal.Generic.Visualization.gText__String_15 iTasks.Internal.Generic.Defaults.gDefault__String_12 Text.JSON.JSONEncode__String_15 (select _vJSONDecode_s_0::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_379 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks.Internal.Generic.Visualization.gText__String_15 iTasks.Internal.Generic.Defaults.gDefault__String_12 Text.JSON.JSONEncode__String_15 Text.JSON.JSONDecode__String_39
+iTasks.Extensions.CSVFile.gEditor_s_369 !_vgText_s_0 !_vgDefault_s_1 !_vJSONEncode_s_2 !_vJSONDecode_s_3 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.Extensions.CSVFile.gEditor_s_379 (select _vgText_s_0::<{iTasks.Extensions.CSVFile.gText_s;}> 0) (select _vgDefault_s_1::<{iTasks.Extensions.CSVFile.gDefault_s;}> 0) (select _vJSONEncode_s_2::<{iTasks.Extensions.CSVFile.JSONEncode_s;}> 0) (select _vJSONDecode_s_3::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_380 !_vgDefault_s_0 !_vJSONEncode_s_1 !_vJSONDecode_s_2 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.Extensions.CSVFile.gEditor_s_379 iTasks.Extensions.CSVFile.gText_s_365 (select _vgDefault_s_0::<{iTasks.Extensions.CSVFile.gDefault_s;}> 0) (select _vJSONEncode_s_1::<{iTasks.Extensions.CSVFile.JSONEncode_s;}> 0) (select _vJSONDecode_s_2::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_381 !_vJSONEncode_s_0 !_vJSONDecode_s_1 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.Extensions.CSVFile.gEditor_s_379 iTasks.Extensions.CSVFile.gText_s_365 iTasks.Extensions.CSVFile.gDefault_s_366 (select _vJSONEncode_s_0::<{iTasks.Extensions.CSVFile.JSONEncode_s;}> 0) (select _vJSONDecode_s_1::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_382 !_vJSONDecode_s_0 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.Extensions.CSVFile.gEditor_s_379 iTasks.Extensions.CSVFile.gText_s_365 iTasks.Extensions.CSVFile.gDefault_s_366 iTasks.Extensions.CSVFile.JSONEncode_s_367 (select _vJSONDecode_s_0::<{iTasks.Extensions.CSVFile.JSONDecode_s;}> 0)
+iTasks.Extensions.CSVFile.gEditor_s_383 = iTasks.UI.Editor.Generic.gEditor__List_12 iTasks.Extensions.CSVFile.gEditor_s_379 iTasks.Extensions.CSVFile.gText_s_365 iTasks.Extensions.CSVFile.gDefault_s_366 iTasks.Extensions.CSVFile.JSONEncode_s_367 iTasks.Extensions.CSVFile.JSONDecode_s_368
+iTasks.Extensions.CSVFile.importCSVFile !filename_0 = iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.CSVFile.gEditor_s;}> iTasks.Extensions.CSVFile.gEditor_s_383) (<{iTasks.Extensions.CSVFile.gText_s;}> iTasks.Extensions.CSVFile.gText_s_370) (<{iTasks.Extensions.CSVFile.JSONEncode_s;}> iTasks.Extensions.CSVFile.JSONEncode_s_371) (<{iTasks.Extensions.CSVFile.JSONDecode_s;}> iTasks.Extensions.CSVFile.JSONDecode_s_372) (<{iTasks.Extensions.CSVFile.gDefault_s;}> iTasks.Extensions.CSVFile.gDefault_s_373) (<{iTasks.Extensions.CSVFile.gEq_s;}> iTasks.Extensions.CSVFile.gEq_s_375) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.Extensions.CSVFile.eval_14 filename_0)
+iTasks.Extensions.CSVFile.eval_15 !document_0 task_1 !iworld_2 = let _x_1_0 = iTasks.Internal.TaskStore.documentLocation document_0 iworld_2 in iTasks.Extensions.CSVFile.fileTaskRead task_1 (select _x_1_0::_Tuple2 0) Text.CSV.readCSVFile (select _x_1_0::_Tuple2 1)
+iTasks.Extensions.CSVFile.importCSVDocument !_x_0 = case _x_0 (iTasks.Extensions.Document._Document document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4 -> iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.CSVFile.gEditor_s;}> iTasks.Extensions.CSVFile.gEditor_s_383) (<{iTasks.Extensions.CSVFile.gText_s;}> iTasks.Extensions.CSVFile.gText_s_370) (<{iTasks.Extensions.CSVFile.JSONEncode_s;}> iTasks.Extensions.CSVFile.JSONEncode_s_371) (<{iTasks.Extensions.CSVFile.JSONDecode_s;}> iTasks.Extensions.CSVFile.JSONDecode_s_372) (<{iTasks.Extensions.CSVFile.gDefault_s;}> iTasks.Extensions.CSVFile.gDefault_s_373) (<{iTasks.Extensions.CSVFile.gEq_s;}> iTasks.Extensions.CSVFile.gEq_s_375) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.Extensions.CSVFile.eval_15 document_1_0)) 
+iTasks.Extensions.CSVFile.eval_16 !filename_0 delimitChar_1::C quoteChar_2::C escapeChar_3::C task_4 !iworld_5 = iTasks.Extensions.CSVFile.fileTaskRead task_4 filename_0 (Text.CSV.readCSVFileWith delimitChar_1 quoteChar_2 escapeChar_3) iworld_5
+iTasks.Extensions.CSVFile.importCSVFileWith !delimitChar_0::C !quoteChar_1::C !escapeChar_2::C !filename_3 = iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.CSVFile.gEditor_s;}> iTasks.Extensions.CSVFile.gEditor_s_383) (<{iTasks.Extensions.CSVFile.gText_s;}> iTasks.Extensions.CSVFile.gText_s_370) (<{iTasks.Extensions.CSVFile.JSONEncode_s;}> iTasks.Extensions.CSVFile.JSONEncode_s_371) (<{iTasks.Extensions.CSVFile.JSONDecode_s;}> iTasks.Extensions.CSVFile.JSONDecode_s_372) (<{iTasks.Extensions.CSVFile.gDefault_s;}> iTasks.Extensions.CSVFile.gDefault_s_373) (<{iTasks.Extensions.CSVFile.gEq_s;}> iTasks.Extensions.CSVFile.gEq_s_375) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.Extensions.CSVFile.eval_16 filename_3 delimitChar_0 quoteChar_1 escapeChar_2)
+iTasks.Extensions.CSVFile.eval_17 delimitChar_0::C quoteChar_1::C escapeChar_2::C !document_3 task_4 !iworld_5 = let _x_1_0 = iTasks.Internal.TaskStore.documentLocation document_3 iworld_5 in iTasks.Extensions.CSVFile.fileTaskRead task_4 (select _x_1_0::_Tuple2 0) (Text.CSV.readCSVFileWith delimitChar_0 quoteChar_1 escapeChar_2) (select _x_1_0::_Tuple2 1)
+iTasks.Extensions.CSVFile.importCSVDocumentWith !delimitChar_0::C !quoteChar_1::C !escapeChar_2::C !_x_3 = case _x_3 (iTasks.Extensions.Document._Document document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4 -> iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.CSVFile.gEditor_s;}> iTasks.Extensions.CSVFile.gEditor_s_383) (<{iTasks.Extensions.CSVFile.gText_s;}> iTasks.Extensions.CSVFile.gText_s_370) (<{iTasks.Extensions.CSVFile.JSONEncode_s;}> iTasks.Extensions.CSVFile.JSONEncode_s_371) (<{iTasks.Extensions.CSVFile.JSONDecode_s;}> iTasks.Extensions.CSVFile.JSONDecode_s_372) (<{iTasks.Extensions.CSVFile.gDefault_s;}> iTasks.Extensions.CSVFile.gDefault_s_373) (<{iTasks.Extensions.CSVFile.gEq_s;}> iTasks.Extensions.CSVFile.gEq_s_375) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.Extensions.CSVFile.eval_17 delimitChar_0 quoteChar_1 escapeChar_2 document_1_0)) 
+iTasks.Extensions.CSVFile.eval_18 !filename_0 !content_1 task_2 !iworld_3 = case iworld_3 (iTasks.Internal.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks.Internal.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let csv_3_0 = Text.join_6 "\n" (StdList.map (Text.join_6 ",") content_1), _x_3_1 = iTasks.Internal.TaskStore.createDocument filename_0 "text/csv" csv_3_0 iworld_3, iworld_3_2 = select _x_3_1::_Tuple2 1 in <{iTasks.Extensions.CSVFile._c;37;11_384}> (select _x_3_1::_Tuple2 0) iworld_3_2) ) 
+<{iTasks.Extensions.CSVFile._c;37;11_384}> !_x_0 iworld_1 = case _x_0 (Data.Error.Ok doc_1_0 -> _Tuple2 (Data.Error.Ok doc_1_0) iworld_1) (Data.Error.Error e_1_0 -> _Tuple2 (Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{System.File.TD;FileError}>))) (System.File.toString_10 e_1_0))) iworld_1) 
+iTasks.Extensions.CSVFile.createCSVFile !filename_0 !content_1 = iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.CSVFile.gEditor_s;}> iTasks.Extensions.Document.gEditor_Document_10) (<{iTasks.Extensions.CSVFile.gText_s;}> iTasks.Extensions.Document.gText_Document_9) (<{iTasks.Extensions.CSVFile.JSONEncode_s;}> iTasks.Extensions.Document.JSONEncode_Document_5) (<{iTasks.Extensions.CSVFile.JSONDecode_s;}> iTasks.Extensions.Document.JSONDecode_Document_6) (<{iTasks.Extensions.CSVFile.gDefault_s;}> iTasks.Extensions.Document.gDefault_Document_7) (<{iTasks.Extensions.CSVFile.gEq_s;}> iTasks.Extensions.Document.gEq_Document_8) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;Document}>))) (iTasks.Extensions.CSVFile.eval_18 filename_0 content_1)
+iTasks.Extensions.CSVFile.fileTaskWrite task_0 !filename_1 content_2 f_3 !iworld_4 = case iworld_4 (iTasks.Internal.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks.Internal.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let _x_3_0 = StdFile.fopen_31 filename_1 4 world_1_12 in case (StdBool.not (select _x_3_0::_Tuple3 0)) (True -> _Tuple2 (iTasks.Extensions.CSVFile.openException filename_1) (update iworld_4::iTasks.Internal.IWorld._IWorld [12:select _x_3_0::_Tuple3 2])) (False -> let file_5_0 = select _x_3_0::_Tuple3 1, file_5_1 = f_3 content_2 file_5_0, world_5_2 = select _x_3_0::_Tuple3 2, _x_5_3 = StdFile.fclose_30 file_5_1 world_5_2 in case (StdBool.not (select _x_5_3::_Tuple2 0)) (True -> _Tuple2 (iTasks.Extensions.CSVFile.closeException filename_1) (update iworld_4::iTasks.Internal.IWorld._IWorld [12:select _x_5_3::_Tuple2 1])) (False -> _Tuple2 (Data.Error.Ok content_2) (update iworld_4::iTasks.Internal.IWorld._IWorld [12:select _x_5_3::_Tuple2 1])) ) ) ) 
+iTasks.Extensions.CSVFile.eval_19 !filename_0 content_1 task_2 !iworld_3 = iTasks.Extensions.CSVFile.fileTaskWrite task_2 filename_0 content_1 Text.CSV.writeCSVFile iworld_3
+iTasks.Extensions.CSVFile.exportCSVFile !filename_0 !content_1 = iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.CSVFile.gEditor_s;}> iTasks.Extensions.CSVFile.gEditor_s_383) (<{iTasks.Extensions.CSVFile.gText_s;}> iTasks.Extensions.CSVFile.gText_s_370) (<{iTasks.Extensions.CSVFile.JSONEncode_s;}> iTasks.Extensions.CSVFile.JSONEncode_s_371) (<{iTasks.Extensions.CSVFile.JSONDecode_s;}> iTasks.Extensions.CSVFile.JSONDecode_s_372) (<{iTasks.Extensions.CSVFile.gDefault_s;}> iTasks.Extensions.CSVFile.gDefault_s_373) (<{iTasks.Extensions.CSVFile.gEq_s;}> iTasks.Extensions.CSVFile.gEq_s_375) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.Extensions.CSVFile.eval_19 filename_0 content_1)
+iTasks.Extensions.CSVFile.eval_20 !filename_0 content_1 delimitChar_2::C quoteChar_3::C escapeChar_4::C task_5 !iworld_6 = iTasks.Extensions.CSVFile.fileTaskWrite task_5 filename_0 content_1 (Text.CSV.writeCSVFileWith delimitChar_2 quoteChar_3 escapeChar_4) iworld_6
+iTasks.Extensions.CSVFile.exportCSVFileWith !delimitChar_0::C !quoteChar_1::C !escapeChar_2::C !filename_3 !content_4 = iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.CSVFile.gEditor_s;}> iTasks.Extensions.CSVFile.gEditor_s_383) (<{iTasks.Extensions.CSVFile.gText_s;}> iTasks.Extensions.CSVFile.gText_s_370) (<{iTasks.Extensions.CSVFile.JSONEncode_s;}> iTasks.Extensions.CSVFile.JSONEncode_s_371) (<{iTasks.Extensions.CSVFile.JSONDecode_s;}> iTasks.Extensions.CSVFile.JSONDecode_s_372) (<{iTasks.Extensions.CSVFile.gDefault_s;}> iTasks.Extensions.CSVFile.gDefault_s_373) (<{iTasks.Extensions.CSVFile.gEq_s;}> iTasks.Extensions.CSVFile.gEq_s_375) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__List)) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))))) (iTasks.Extensions.CSVFile.eval_20 filename_3 content_4 delimitChar_0 quoteChar_1 escapeChar_2)
+iTasks.Extensions.CSVFile.writeAll !content_0 !file_1 = StdFile.fwrites content_0 file_1
+iTasks.Extensions.CSVFile.writeJSON !_vtoString_0 encoder_1 content_2 !file_3 = StdFile.fwrites (select _vtoString_0::<{StdOverloaded.toString;}> 0 (encoder_1 content_2)) file_3
+iTasks.Extensions.CSVFile.ioException s_0 = let e_1_0 = iTasks.Extensions.Document.FileException s_0 System.File.IOError in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;FileException}>))) (iTasks.Extensions.Document.toString_4 e_1_0))
+
+
+|| Converted Records
+:: <{iTasks.Extensions.CSVFile.JSONEncode_s;}> = {!iTasks.Extensions.CSVFile.JSONEncode_s}
+
+:: <{iTasks.Extensions.CSVFile.JSONEncode_ss;}> = {!iTasks.Extensions.CSVFile.JSONEncode_ss}
+
+:: <{iTasks.Extensions.CSVFile.JSONEncode_sss;}> = {!iTasks.Extensions.CSVFile.JSONEncode_sss}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_s;}> = {!iTasks.Extensions.CSVFile.JSONDecode_s}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_ss;}> = {!iTasks.Extensions.CSVFile.JSONDecode_ss}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_sss;}> = {!iTasks.Extensions.CSVFile.JSONDecode_sss}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_s;}> = {iTasks.Extensions.CSVFile.gDefault_s}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_ss;}> = {iTasks.Extensions.CSVFile.gDefault_ss}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_sss;}> = {iTasks.Extensions.CSVFile.gDefault_sss}
+
+:: <{iTasks.Extensions.CSVFile.gText_s;}> = {!iTasks.Extensions.CSVFile.gText_s}
+
+:: <{iTasks.Extensions.CSVFile.gText_ss;}> = {!iTasks.Extensions.CSVFile.gText_ss}
+
+:: <{iTasks.Extensions.CSVFile.gText_sss;}> = {!iTasks.Extensions.CSVFile.gText_sss}
+
+:: <{iTasks.Extensions.CSVFile.gEditor_s;}> = {iTasks.Extensions.CSVFile.gEditor_s}
+
+:: <{iTasks.Extensions.CSVFile.gEditor_ss;}> = {iTasks.Extensions.CSVFile.gEditor_ss}
+
+:: <{iTasks.Extensions.CSVFile.gEditor_sss;}> = {iTasks.Extensions.CSVFile.gEditor_sss}
+
+:: <{iTasks.Extensions.CSVFile.gEq_s;}> = {!iTasks.Extensions.CSVFile.gEq_s}
+
+:: <{iTasks.Extensions.CSVFile.gEq_ss;}> = {!iTasks.Extensions.CSVFile.gEq_ss}
+
+:: <{iTasks.Extensions.CSVFile.gEq_sss;}> = {!iTasks.Extensions.CSVFile.gEq_sss}
+
+:: <{iTasks.Extensions.CSVFile.gEq_ssss;}> = {!iTasks.Extensions.CSVFile.gEq_ssss}
+
+:: <{iTasks.Extensions.CSVFile.gEq_sssss;}> = {!iTasks.Extensions.CSVFile.gEq_sssss}
+
+:: <{iTasks.Extensions.CSVFile.gEq_ssssss;}> = {!iTasks.Extensions.CSVFile.gEq_ssssss}
+
+:: <{iTasks.Extensions.CSVFile.gEq_sssssss;}> = {!iTasks.Extensions.CSVFile.gEq_sssssss}
+
+:: <{iTasks.Extensions.CSVFile.gEq_ssssssss;}> = {!iTasks.Extensions.CSVFile.gEq_ssssssss}
+
+:: <{iTasks.Extensions.CSVFile.gEq_sssssssss;}> = {!iTasks.Extensions.CSVFile.gEq_sssssssss}
+
+:: <{iTasks.Extensions.CSVFile.bimap_s;}> = {iTasks.Extensions.CSVFile.bimap_s}
+
+:: <{iTasks.Extensions.CSVFile.bimap_ss;}> = {iTasks.Extensions.CSVFile.bimap_ss}
+
+:: <{iTasks.Extensions.CSVFile.bimap_sss;}> = {iTasks.Extensions.CSVFile.bimap_sss}
+
+:: <{iTasks.Extensions.CSVFile.JSONEncode_ssss;}> = {!iTasks.Extensions.CSVFile.JSONEncode_ssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONEncode_sssss;}> = {!iTasks.Extensions.CSVFile.JSONEncode_sssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONEncode_ssssss;}> = {!iTasks.Extensions.CSVFile.JSONEncode_ssssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONEncode_sssssss;}> = {!iTasks.Extensions.CSVFile.JSONEncode_sssssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONEncode_ssssssss;}> = {!iTasks.Extensions.CSVFile.JSONEncode_ssssssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONEncode_sssssssss;}> = {!iTasks.Extensions.CSVFile.JSONEncode_sssssssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_ssss;}> = {!iTasks.Extensions.CSVFile.JSONDecode_ssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_sssss;}> = {!iTasks.Extensions.CSVFile.JSONDecode_sssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_ssssss;}> = {!iTasks.Extensions.CSVFile.JSONDecode_ssssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_sssssss;}> = {!iTasks.Extensions.CSVFile.JSONDecode_sssssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_ssssssss;}> = {!iTasks.Extensions.CSVFile.JSONDecode_ssssssss}
+
+:: <{iTasks.Extensions.CSVFile.JSONDecode_sssssssss;}> = {!iTasks.Extensions.CSVFile.JSONDecode_sssssssss}
+
+:: <{iTasks.Extensions.CSVFile.gText_ssss;}> = {!iTasks.Extensions.CSVFile.gText_ssss}
+
+:: <{iTasks.Extensions.CSVFile.gText_sssss;}> = {!iTasks.Extensions.CSVFile.gText_sssss}
+
+:: <{iTasks.Extensions.CSVFile.gText_ssssss;}> = {!iTasks.Extensions.CSVFile.gText_ssssss}
+
+:: <{iTasks.Extensions.CSVFile.gText_sssssss;}> = {!iTasks.Extensions.CSVFile.gText_sssssss}
+
+:: <{iTasks.Extensions.CSVFile.gText_ssssssss;}> = {!iTasks.Extensions.CSVFile.gText_ssssssss}
+
+:: <{iTasks.Extensions.CSVFile.gText_sssssssss;}> = {!iTasks.Extensions.CSVFile.gText_sssssssss}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_ssss;}> = {iTasks.Extensions.CSVFile.gDefault_ssss}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_sssss;}> = {iTasks.Extensions.CSVFile.gDefault_sssss}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_ssssss;}> = {iTasks.Extensions.CSVFile.gDefault_ssssss}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_sssssss;}> = {iTasks.Extensions.CSVFile.gDefault_sssssss}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_ssssssss;}> = {iTasks.Extensions.CSVFile.gDefault_ssssssss}
+
+:: <{iTasks.Extensions.CSVFile.gDefault_sssssssss;}> = {iTasks.Extensions.CSVFile.gDefault_sssssssss}
+
+:: <{iTasks.Extensions.CSVFile.gEditor_ssss;}> = {iTasks.Extensions.CSVFile.gEditor_ssss}
+
+:: <{iTasks.Extensions.CSVFile.gEditor_sssss;}> = {iTasks.Extensions.CSVFile.gEditor_sssss}
+
+:: <{iTasks.Extensions.CSVFile.gEditor_ssssss;}> = {iTasks.Extensions.CSVFile.gEditor_ssssss}
+
+:: <{iTasks.Extensions.CSVFile.gEditor_sssssss;}> = {iTasks.Extensions.CSVFile.gEditor_sssssss}
+

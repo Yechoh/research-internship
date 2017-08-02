@@ -1,0 +1,87 @@
+|| ?module? iTasks.Internal.HtmlUtil
+
+
+iTasks.Internal.HtmlUtil.embeddedStyle = Text.HTML.StyleTag (_predefined._Cons (Text.HTML.TypeAttr "text/css") _predefined._Nil) (_predefined._Cons (Text.HTML.Html (<{StdString.+++_11}> "body { background: #fff; font-family: Verdana, Arial, sans-serif; font-size: 12px;} th { text-align: left; } " (<{StdString.+++_11}> ".field-error em {color: #f00; font-weight: bold} .field-error input {border-color: #f00;} " (<{StdString.+++_11}> "#main {margin: 20px; background: #d1dded; border: solid 2px #3a81ad; -moz-border-radius: 5px; background: -moz-linear-gradient(bottom,  #d1dded,  #fff);} " (<{StdString.+++_11}> "#content { padding: 10px; } " (<{StdString.+++_11}> ".buttons { padding: 5px; background-color: #3a81ad; } " (<{StdString.+++_11}> ".section { margin: 10px; padding: 5px; overflow: auto;} " (<{StdString.+++_11}> ".description { margin: 0px 15px 0px 15px; } " (<{StdString.+++_11}> ".parameters th, { width: 150px; } " (<{StdString.+++_11}> ".json { font-family: Courier, monotype; font-size: 12px;} " (<{StdString.+++_11}> ".json ul { padding-left: 15px;} " (<{StdString.+++_11}> "h1 { margin: 10px 15px 10px 15px; font-weight: normal; font-size: 24px;} " (<{StdString.+++_11}> "h2 { margin: 5px 5px 5px 0px; font-weight: bold; font-size: 14px;  border: solid #999; border-width: 0px 0px 1px 0px;} " (<{StdString.+++_11}> "p { margin: 0px 0px 10px 0px; } " "button {-moz-border-radius: 3px; }")))))))))))))) _predefined._Nil)
+iTasks.Internal.HtmlUtil.pageLayout !title_0 !description_1 !content_2 = Text.HTML.HtmlTag _predefined._Nil (_predefined._Cons (Text.HTML.HeadTag _predefined._Nil (_predefined._Cons (Text.HTML.TitleTag _predefined._Nil (_predefined._Cons (Text.HTML.Text title_0) _predefined._Nil)) (_predefined._Cons iTasks.Internal.HtmlUtil.embeddedStyle _predefined._Nil))) (_predefined._Cons (Text.HTML.BodyTag _predefined._Nil (_predefined._Cons (Text.HTML.DivTag (_predefined._Cons (Text.HTML.IdAttr "main") _predefined._Nil) (<{StdList.++}> (_predefined._Cons (Text.HTML.H1Tag _predefined._Nil (_predefined._Cons (Text.HTML.Text title_0) _predefined._Nil)) (_predefined._Cons (Text.HTML.PTag _predefined._Nil (_predefined._Cons (Text.HTML.DivTag (_predefined._Cons (Text.HTML.ClassAttr "description") _predefined._Nil) (_predefined._Cons (Text.HTML.Html description_1) _predefined._Nil)) _predefined._Nil)) _predefined._Nil)) content_2)) _predefined._Nil)) _predefined._Nil))
+iTasks.Internal.HtmlUtil.notFoundPage !req_0 = iTasks.Internal.HtmlUtil.pageLayout "404 - Not Found" "" (_predefined._Cons (Text.HTML.DivTag (_predefined._Cons (Text.HTML.IdAttr "content") _predefined._Nil) (_predefined._Cons (Text.HTML.Text "The resource you tried to access ") (_predefined._Cons (Text.HTML.StrongTag _predefined._Nil (_predefined._Cons (Text.HTML.Text (select req_0::Internet.HTTP._HTTPRequest 1)) _predefined._Nil)) (_predefined._Cons (Text.HTML.Text " could not be found.") _predefined._Nil)))) _predefined._Nil)
+iTasks.Internal.HtmlUtil.notFoundResponse !req_0 = update Internet.HTTP.notfoundResponse::Internet.HTTP._HTTPResponse [4:Text.HTML.toString_7 (iTasks.Internal.HtmlUtil.notFoundPage req_0)]
+<{iTasks.Internal.HtmlUtil.get`_11}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.Internal.HtmlUtil.get`_11}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.Internal.HtmlUtil.get`_11}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.Internal.HtmlUtil.get`_10}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.Internal.HtmlUtil.get`_10}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.Internal.HtmlUtil.get`_10}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.Internal.HtmlUtil.get`_141}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.Internal.HtmlUtil.get`_141}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.Internal.HtmlUtil.get`_141}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.Internal.HtmlUtil.get`_142}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.Internal.HtmlUtil.get`_142}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.Internal.HtmlUtil.get`_142}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.Internal.HtmlUtil.paramValue !name_0 !req_1 = <{iTasks.Internal.HtmlUtil._c;45;7_146}> (<{iTasks.Internal.HtmlUtil.get`_141}> name_0 (select req_1::Internet.HTTP._HTTPRequest 8)) name_0 req_1
+<{iTasks.Internal.HtmlUtil._c;45;7_146}> !_x_0 name_1 req_2 = case _x_0 (Data.Maybe.Just val_1_0 -> val_1_0) (Data.Maybe.Nothing -> <{iTasks.Internal.HtmlUtil._c;47;23_145}> (<{iTasks.Internal.HtmlUtil.get`_142}> name_1 (select req_2::Internet.HTTP._HTTPRequest 7))) 
+<{iTasks.Internal.HtmlUtil._c;47;23_145}> !_x_0 = case _x_0 (Data.Maybe.Just val_1_0 -> val_1_0) (Data.Maybe.Nothing -> "") 
+<{iTasks.Internal.HtmlUtil.get`_13}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.Internal.HtmlUtil.get`_13}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.Internal.HtmlUtil.get`_13}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.Internal.HtmlUtil.get`_12}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.Internal.HtmlUtil.get`_12}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.Internal.HtmlUtil.get`_12}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.Internal.HtmlUtil.get`_144}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.Internal.HtmlUtil.get`_144}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.Internal.HtmlUtil.get`_144}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.Internal.HtmlUtil.get`_143}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.Internal.HtmlUtil.get`_143}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.Internal.HtmlUtil.get`_143}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.Internal.HtmlUtil.hasParam::B !name_0 !req_1 = case (Data.Maybe.isJust (<{iTasks.Internal.HtmlUtil.get`_143}> name_0 (select req_1::Internet.HTTP._HTTPRequest 8))) (True -> True) (False -> Data.Maybe.isJust (<{iTasks.Internal.HtmlUtil.get`_144}> name_0 (select req_1::Internet.HTTP._HTTPRequest 7))) 
+<{iTasks.Internal.HtmlUtil.c;55;40_8}> !g_l_0 = <{iTasks.Internal.HtmlUtil.g_c1;55;48_147}> g_l_0
+<{iTasks.Internal.HtmlUtil.g_c1;55;48_147}> !g_l_0 = case g_l_0 (_predefined._Cons line_1_0 g_t_1_1 -> _predefined._Cons (_predefined._Cons (Text.HTML.Text line_1_0) (_predefined._Cons (Text.HTML.BrTag _predefined._Nil) _predefined._Nil)) (<{iTasks.Internal.HtmlUtil.c;55;40_8}> g_t_1_1)) (_ -> _predefined._Nil)
+iTasks.Internal.HtmlUtil.nl2br !str_0 = Text.HTML.html_30 (<{Text.HTML.html;}> (Text.HTML.html_30 (<{Text.HTML.html;}> Text.HTML.html_29))) (<{iTasks.Internal.HtmlUtil.c;55;40_8}> (Text.split_13 "\n" str_0))
+iTasks.Internal.HtmlUtil.stripHtmlTags_9 !s_0 = let fstOpen_1_0::I = Text.indexOf_4 "<" s_0, fstClose_1_1::I = Text.indexOf_4 ">" s_0 in case (case (StdBool.not (<{StdInt.==_16}> fstOpen_1_0 -1)) (True -> case (StdBool.not (<{StdInt.==_16}> fstClose_1_1 -1)) (True -> <{StdInt.<_17}> fstOpen_1_0 fstClose_1_1) (False -> False) ) (False -> False) ) (True -> iTasks.Internal.HtmlUtil.stripHtmlTags_9 (<{StdString.+++_11}> (Text.subString_15 0 fstOpen_1_0 s_0) (Text.subString_15 (<{StdInt.+_6}> fstClose_1_1 1) (<{StdInt.-_7}> (Text.textSize_16 s_0) fstClose_1_1) s_0))) (False -> s_0) 
+iTasks.Internal.HtmlUtil.html2text !s_0 = Text.replaceSubString_10 "&amp;" "&" (Text.replaceSubString_10 "&gt;" ">" (Text.replaceSubString_10 "&lt;" "<" (Text.replaceSubString_10 "&nbsp;" " " (iTasks.Internal.HtmlUtil.stripHtmlTags_9 (Text.replaceSubString_10 "</li>" "\n" (Text.replaceSubString_10 "<BR/>" "\n" (Text.replaceSubString_10 "<br/>" "\n" (Text.replaceSubString_10 "<BR>" "\n" (Text.replaceSubString_10 "<br>" "\n" s_0)))))))))
+
+
+|| Converted Records
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_s;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_s}
+
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_ss;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_ss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_sss;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_sss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_s;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_s}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_ss;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_ss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_sss;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_sss}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_s;}> = {!iTasks.Internal.HtmlUtil.gEq_s}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_ss;}> = {!iTasks.Internal.HtmlUtil.gEq_ss}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_sss;}> = {!iTasks.Internal.HtmlUtil.gEq_sss}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_ssss;}> = {!iTasks.Internal.HtmlUtil.gEq_ssss}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_sssss;}> = {!iTasks.Internal.HtmlUtil.gEq_sssss}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_ssssss;}> = {!iTasks.Internal.HtmlUtil.gEq_ssssss}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_sssssss;}> = {!iTasks.Internal.HtmlUtil.gEq_sssssss}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_ssssssss;}> = {!iTasks.Internal.HtmlUtil.gEq_ssssssss}
+
+:: <{iTasks.Internal.HtmlUtil.gEq_sssssssss;}> = {!iTasks.Internal.HtmlUtil.gEq_sssssssss}
+
+:: <{iTasks.Internal.HtmlUtil.bimap_s;}> = {iTasks.Internal.HtmlUtil.bimap_s}
+
+:: <{iTasks.Internal.HtmlUtil.bimap_ss;}> = {iTasks.Internal.HtmlUtil.bimap_ss}
+
+:: <{iTasks.Internal.HtmlUtil.bimap_sss;}> = {iTasks.Internal.HtmlUtil.bimap_sss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_ssss;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_ssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_sssss;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_sssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_ssssss;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_ssssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_sssssss;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_sssssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_ssssssss;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_ssssssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONEncode_sssssssss;}> = {!iTasks.Internal.HtmlUtil.JSONEncode_sssssssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_ssss;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_ssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_sssss;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_sssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_ssssss;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_ssssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_sssssss;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_sssssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_ssssssss;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_ssssssss}
+
+:: <{iTasks.Internal.HtmlUtil.JSONDecode_sssssssss;}> = {!iTasks.Internal.HtmlUtil.JSONDecode_sssssssss}
+

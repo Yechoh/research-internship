@@ -1,0 +1,287 @@
+|| ?module? iTasks.UI.JS.Encoding
+
+
+iTasks.UI.JS.Encoding.encodeOnServer !<{_vJSEncode*_0}> !x_1 = <{iTasks.UI.JS.Encoding._c;26;20_549}> (select <{_vJSEncode*_0}>::<{iTasks.UI.JS.Encoding.JSEncode_s;}> 0 x_1)
+<{iTasks.UI.JS.Encoding._c;26;20_549}> !_x_0 = case _x_0 (_predefined._Cons node_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> node_1_0) ) (_ -> Text.JSON.JSONError)
+iTasks.UI.JS.Encoding.decodeOnClient !val_0 !world_1 = StdMisc.undef
+iTasks.UI.JS.Encoding.encodeOnClient !val_0 !world_1 = StdMisc.undef
+iTasks.UI.JS.Encoding.decodeOnServer !<{_vJSDecode*_0}> !node_1 = select (select <{_vJSDecode*_0}>::<{iTasks.UI.JS.Encoding.JSDecode_s;}> 0 (_predefined._Cons node_1 _predefined._Nil))::_Tuple2 0
+iTasks.UI.JS.Encoding.decodeItems !fx_0 !_x_1 = case _x_1 (_predefined._Nil -> Data.Maybe.Just _predefined._Nil) (_predefined._Cons ox_1_0 oxs_1_1 -> <{iTasks.UI.JS.Encoding._c;264;27_551}> (fx_0 (_predefined._Cons ox_1_0 _predefined._Nil)) fx_0 oxs_1_1) 
+<{iTasks.UI.JS.Encoding._c;264;27_551}> !_x_0 fx_1 oxs_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{iTasks.UI.JS.Encoding._c;265;19_550}> (iTasks.UI.JS.Encoding.decodeItems fx_1 oxs_2) x_2_0) ) (_ -> Data.Maybe.Nothing)
+<{iTasks.UI.JS.Encoding._c;265;19_550}> !_x_0 x_1 = case _x_0 (Data.Maybe.Just xs_1_0 -> Data.Maybe.Just (_predefined._Cons x_1 xs_1_0)) (_ -> Data.Maybe.Nothing)
+iTasks.UI.JS.Encoding.JSEncode_Int_4 !x_0::I = _predefined._Cons (Text.JSON.JSONArray (_predefined._Cons (Text.JSON.JSONInt x_0) _predefined._Nil)) _predefined._Nil
+iTasks.UI.JS.Encoding.JSEncode_Real_5 !x_0::D = _predefined._Cons (Text.JSON.JSONArray (_predefined._Cons (Text.JSON.JSONReal x_0) _predefined._Nil)) _predefined._Nil
+iTasks.UI.JS.Encoding.JSEncode_Char_6 !x_0::C = _predefined._Cons (Text.JSON.JSONArray (_predefined._Cons (Text.JSON.JSONString (_SystemArray.update_21 (_SystemArray._createArray_16 1) 0 x_0)) _predefined._Nil)) _predefined._Nil
+iTasks.UI.JS.Encoding.JSEncode_Bool_7 !x_0::B = _predefined._Cons (Text.JSON.JSONArray (_predefined._Cons (Text.JSON.JSONBool x_0) _predefined._Nil)) _predefined._Nil
+iTasks.UI.JS.Encoding.JSEncode__String_8 !x_0 = _predefined._Cons (Text.JSON.JSONArray (_predefined._Cons (Text.JSON.JSONString x_0) _predefined._Nil)) _predefined._Nil
+iTasks.UI.JS.Encoding.JSEncode_UNIT_9 !_x_0 = case _x_0 (StdGeneric.UNIT -> _predefined._Nil) 
+iTasks.UI.JS.Encoding.toGeneric_List_69 !x_0 = case x_0 (_predefined._Cons x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1)))) (_predefined._Nil -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.CONS StdGeneric.UNIT))) 
+iTasks.UI.JS.Encoding.JSEncode_CONS_23 gcd_name_0 gcd_index_1::I fx_2 !_x_3 = case _x_3 (StdGeneric.CONS x_1_0 -> _predefined._Cons (Text.JSON.JSONArray (_predefined._Cons (Text.JSON.JSONInt gcd_index_1) (_predefined._Cons (Text.JSON.JSONString gcd_name_0) (fx_2 x_1_0)))) _predefined._Nil) 
+<{iTasks.UI.JS.Encoding.++_50}> !_x_0 !list_1 = case _x_0 (_predefined._Cons hd_1_0 tl_1_1 -> _predefined._Cons hd_1_0 (<{iTasks.UI.JS.Encoding.++_50}> tl_1_1 list_1)) (_ -> list_1)
+iTasks.UI.JS.Encoding.JSEncode_PAIR_26 !fx_0 !fy_1 !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.UI.JS.Encoding.++_50}> (fx_0 x_1_0) (fy_1 y_1_1)) 
+iTasks.UI.JS.Encoding.JSEncode_EITHER_21 fx_0 fy_1 !_x_2 = case _x_2 (StdGeneric.LEFT x_1_0 -> fx_0 x_1_0) (StdGeneric.RIGHT y_1_0 -> fy_1 y_1_0) 
+iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 !fx_0 !_x_1 = case _x_1 (StdGeneric.OBJECT x_1_0 -> fx_0 x_1_0) 
+iTasks.UI.JS.Encoding.JSEncode__List_10 <{JSEncode_t_153-0_a0_0}> !x1_1 = iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 (iTasks.UI.JS.Encoding.JSEncode_EITHER_21 (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Cons" 0 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a0_0}> (iTasks.UI.JS.Encoding.JSEncode__List_10 <{JSEncode_t_153-0_a0_0}>))) (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Nil" 1 iTasks.UI.JS.Encoding.JSEncode_UNIT_9)) (iTasks.UI.JS.Encoding.toGeneric_List_69 x1_1)
+iTasks.UI.JS.Encoding.toGeneric_Tuple2_76 !x_0 = case x_0 (_Tuple2 x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1))) 
+iTasks.UI.JS.Encoding.JSEncode__Tuple2_11 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}> !x1_2 = iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Tuple2" 0 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}>)) (iTasks.UI.JS.Encoding.toGeneric_Tuple2_76 x1_2)
+iTasks.UI.JS.Encoding.toGeneric_Tuple3_83 !x_0 = case x_0 (_Tuple3 x11_1_0 x12_1_1 x13_1_2 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)))) 
+iTasks.UI.JS.Encoding.JSEncode__Tuple3_12 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}> !x1_3 = iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Tuple3" 0 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a0_0}> (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}>))) (iTasks.UI.JS.Encoding.toGeneric_Tuple3_83 x1_3)
+iTasks.UI.JS.Encoding.toGeneric_Tuple4_90 !x_0 = case x_0 (_Tuple4 x11_1_0 x12_1_1 x13_1_2 x14_1_3 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 x14_1_3)))) 
+iTasks.UI.JS.Encoding.JSEncode__Tuple4_13 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}> <{JSEncode_t_153-0_a3_3}> !x1_4 = iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Tuple4" 0 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}>) (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a2_2}> <{JSEncode_t_153-0_a3_3}>))) (iTasks.UI.JS.Encoding.toGeneric_Tuple4_90 x1_4)
+iTasks.UI.JS.Encoding.toGeneric_Tuple5_97 !x_0 = case x_0 (_Tuple5 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 (StdGeneric.PAIR x14_1_3 x15_1_4))))) 
+iTasks.UI.JS.Encoding.JSEncode__Tuple5_14 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}> <{JSEncode_t_153-0_a3_3}> <{JSEncode_t_153-0_a4_4}> !x1_5 = iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Tuple5" 0 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}>) (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a2_2}> (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a3_3}> <{JSEncode_t_153-0_a4_4}>)))) (iTasks.UI.JS.Encoding.toGeneric_Tuple5_97 x1_5)
+iTasks.UI.JS.Encoding.toGeneric_Tuple6_104 !x_0 = case x_0 (_Tuple6 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)) (StdGeneric.PAIR x14_1_3 (StdGeneric.PAIR x15_1_4 x16_1_5))))) 
+iTasks.UI.JS.Encoding.JSEncode__Tuple6_15 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}> <{JSEncode_t_153-0_a3_3}> <{JSEncode_t_153-0_a4_4}> <{JSEncode_t_153-0_a5_5}> !x1_6 = iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Tuple6" 0 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a0_0}> (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}>)) (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a3_3}> (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a4_4}> <{JSEncode_t_153-0_a5_5}>)))) (iTasks.UI.JS.Encoding.toGeneric_Tuple6_104 x1_6)
+iTasks.UI.JS.Encoding.toGeneric_Tuple7_111 !x_0 = case x_0 (_Tuple7 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 x17_1_6 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)) (StdGeneric.PAIR (StdGeneric.PAIR x14_1_3 x15_1_4) (StdGeneric.PAIR x16_1_5 x17_1_6))))) 
+iTasks.UI.JS.Encoding.JSEncode__Tuple7_16 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}> <{JSEncode_t_153-0_a3_3}> <{JSEncode_t_153-0_a4_4}> <{JSEncode_t_153-0_a5_5}> <{JSEncode_t_153-0_a6_6}> !x1_7 = iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Tuple7" 0 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a0_0}> (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}>)) (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a3_3}> <{JSEncode_t_153-0_a4_4}>) (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a5_5}> <{JSEncode_t_153-0_a6_6}>)))) (iTasks.UI.JS.Encoding.toGeneric_Tuple7_111 x1_7)
+iTasks.UI.JS.Encoding.toGeneric_Tuple8_118 !x_0 = case x_0 (_Tuple8 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 x17_1_6 x18_1_7 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 x14_1_3)) (StdGeneric.PAIR (StdGeneric.PAIR x15_1_4 x16_1_5) (StdGeneric.PAIR x17_1_6 x18_1_7))))) 
+iTasks.UI.JS.Encoding.JSEncode__Tuple8_17 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}> <{JSEncode_t_153-0_a2_2}> <{JSEncode_t_153-0_a3_3}> <{JSEncode_t_153-0_a4_4}> <{JSEncode_t_153-0_a5_5}> <{JSEncode_t_153-0_a6_6}> <{JSEncode_t_153-0_a7_7}> !x1_8 = iTasks.UI.JS.Encoding.JSEncode_OBJECT_22 (iTasks.UI.JS.Encoding.JSEncode_CONS_23 "_Tuple8" 0 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a0_0}> <{JSEncode_t_153-0_a1_1}>) (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a2_2}> <{JSEncode_t_153-0_a3_3}>)) (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a4_4}> <{JSEncode_t_153-0_a5_5}>) (iTasks.UI.JS.Encoding.JSEncode_PAIR_26 <{JSEncode_t_153-0_a6_6}> <{JSEncode_t_153-0_a7_7}>)))) (iTasks.UI.JS.Encoding.toGeneric_Tuple8_118 x1_8)
+<{iTasks.UI.JS.Encoding.c;52;49_51}> !_vArray_0 fx_1 !g_i_2::I !g_s_3::I g_a_4 = case (StdBool.not (<{StdInt.<_17}> g_s_3 g_i_2)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = select _vArray_0::<{_SystemArray.Array;}> 6 g_a_4 g_i_2 in _predefined._Cons (fx_1 (select _x_2_1::_Tuple2 0)) (<{iTasks.UI.JS.Encoding.c;52;49_51}> _vArray_0 fx_1 (<{StdInt.+_6}> g_i_2 StdInt.one_11) g_s_3 g_a_2_0)) (False -> _predefined._Nil) 
+<{iTasks.UI.JS.Encoding.c;52;49_541}> fx_0 !g_i_1::I !g_s_2::I g_a_3 = case (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = _SystemArray.uselect_78 g_a_3 g_i_1 in _predefined._Cons (fx_0 (select _x_2_1::_Tuple2 0)) (<{iTasks.UI.JS.Encoding.c;52;49_541}> fx_0 (<{StdInt.+_6}> g_i_1 StdInt.one_11) g_s_2 g_a_2_0)) (False -> _predefined._Nil) 
+iTasks.UI.JS.Encoding.JSEncode__Array_18 fx_0 !x_1 = let _x_1_0 = _SystemArray.usize_79 x_1 in _predefined._Cons (Text.JSON.JSONArray (StdList.flatten (<{iTasks.UI.JS.Encoding.c;52;49_541}> fx_0 0 (<{StdInt.-_7}> (select _x_1_0::_Tuple2 0) 1) (select _x_1_0::_Tuple2 1)))) _predefined._Nil
+<{iTasks.UI.JS.Encoding.c;53;50_52}> !_vArray_0 fx_1 !g_i_2::I !g_s_3::I g_a_4 = case (StdBool.not (<{StdInt.<_17}> g_s_3 g_i_2)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = select _vArray_0::<{_SystemArray.Array;}> 6 g_a_4 g_i_2 in _predefined._Cons (fx_1 (select _x_2_1::_Tuple2 0)) (<{iTasks.UI.JS.Encoding.c;53;50_52}> _vArray_0 fx_1 (<{StdInt.+_6}> g_i_2 StdInt.one_11) g_s_3 g_a_2_0)) (False -> _predefined._Nil) 
+<{iTasks.UI.JS.Encoding.c;53;50_542}> fx_0 !g_i_1::I !g_s_2::I g_a_3 = case (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) (True -> let !g_a_2_0 = _predefined._dummyForStrictAlias (select _x_2_1::_Tuple2 1), _x_2_1 = _SystemArray.uselect_6 g_a_3 g_i_1 in _predefined._Cons (fx_0 (select _x_2_1::_Tuple2 0)) (<{iTasks.UI.JS.Encoding.c;53;50_542}> fx_0 (<{StdInt.+_6}> g_i_1 StdInt.one_11) g_s_2 g_a_2_0)) (False -> _predefined._Nil) 
+<{iTasks.UI.JS.Encoding.JSEncode__!Array_19}> fx_0 !x_1 = let _x_1_0 = _SystemArray.usize_7 x_1 in _predefined._Cons (Text.JSON.JSONArray (StdList.flatten (<{iTasks.UI.JS.Encoding.c;53;50_542}> fx_0 0 (<{StdInt.-_7}> (select _x_1_0::_Tuple2 0) 1) (select _x_1_0::_Tuple2 1)))) _predefined._Nil
+iTasks.UI.JS.Encoding.JSEncode_ARROW_20 fx_0 fy_1 !x_2 = _predefined._Cons (Text.JSON.JSONString "error") _predefined._Nil
+iTasks.UI.JS.Encoding.JSEncode_RECORD_24 grd_name_0 fx_1 !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONArray (_predefined._Cons (Text.JSON.JSONInt 0) (_predefined._Cons (Text.JSON.JSONString (<{StdString.+++_11}> "_" grd_name_0)) (fx_1 x_1_0)))) _predefined._Nil) 
+iTasks.UI.JS.Encoding.JSEncode_FIELD_25 !fx_0 !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> fx_0 x_1_0) 
+iTasks.UI.JS.Encoding.JSDecode_Int_27 !_x_0 = case _x_0 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONInt i_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just i_2_0) xs_1_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing _x_0)
+iTasks.UI.JS.Encoding.JSDecode_Real_28 !_x_0 = case _x_0 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONReal r_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just r_2_0) xs_1_1) (Text.JSON.JSONInt i_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdReal.toReal_13 i_2_0)) xs_1_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing _x_0)
+iTasks.UI.JS.Encoding.JSDecode_Char_29 !l_0 = case l_0 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONString s_2_0 -> case (<{StdInt.==_16}> (_SystemArray.size_20 s_2_0) 1) (True -> <{_Tuple2!3}> (Data.Maybe.Just (_SystemArray.select_19 s_2_0 0)) xs_1_1) (False -> <{_Tuple2!3}> Data.Maybe.Nothing l_0) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_0)
+iTasks.UI.JS.Encoding.JSDecode_Bool_30 !_x_0 = case _x_0 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONBool b_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just b_2_0) xs_1_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing _x_0)
+iTasks.UI.JS.Encoding.JSDecode__String_31 !_x_0 = case _x_0 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONString s_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just s_2_0) xs_1_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing _x_0)
+iTasks.UI.JS.Encoding.JSDecode_UNIT_32 !l_0 = <{_Tuple2!3}> (Data.Maybe.Just StdGeneric.UNIT) l_0
+iTasks.UI.JS.Encoding.JSDecode_EITHER_33 !fx_0 fy_1 !l_2 = <{iTasks.UI.JS.Encoding._c;99;30_553}> (fx_0 l_2) fy_1 l_2
+<{iTasks.UI.JS.Encoding._c;99;30_553}> !_x_0 fy_1 l_2 = case _x_0 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.LEFT x_2_0)) xs_1_1) (Data.Maybe.Nothing -> <{iTasks.UI.JS.Encoding._c;101;35_552}> (fy_1 l_2) l_2) ) 
+<{iTasks.UI.JS.Encoding._c;101;35_552}> !_x_0 l_1 = case _x_0 (_Tuple2 _x_1_0 ys_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RIGHT y_2_0)) ys_1_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_1) ) 
+iTasks.UI.JS.Encoding.JSDecode_CONS_34 gcd_name_0 fx_1 !l_2 = case l_2 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray _x_2_0 -> case _x_2_0 (_predefined._Cons _x_3_0 fields_3_1 -> case _x_3_0 (Text.JSON.JSONString name_4_0 -> case (<{StdString.==_2}> name_4_0 gcd_name_0) (True -> <{iTasks.UI.JS.Encoding._c;110;39_554}> (fx_1 fields_3_1) xs_1_1 l_2) (False -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) ) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+<{iTasks.UI.JS.Encoding._c;110;39_554}> !_x_0 xs_1 l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.CONS x_2_0)) xs_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+iTasks.UI.JS.Encoding.JSDecode_OBJECT_35 !fx_0 !l_1 = <{iTasks.UI.JS.Encoding._c;105;27_555}> (fx_0 l_1) l_1
+<{iTasks.UI.JS.Encoding._c;105;27_555}> !_x_0 l_1 = case _x_0 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.OBJECT x_2_0)) xs_1_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)
+iTasks.UI.JS.Encoding.JSDecode__List_36 fx_0 !l_1 = case l_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray items_2_0 -> <{iTasks.UI.JS.Encoding._c;147;7_556}> (iTasks.UI.JS.Encoding.decodeItems fx_0 items_2_0) xs_1_1 l_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)
+<{iTasks.UI.JS.Encoding._c;147;7_556}> !_x_0 xs_1 l_2 = case _x_0 (Data.Maybe.Just x_1_0 -> <{_Tuple2!3}> (Data.Maybe.Just x_1_0) xs_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+iTasks.UI.JS.Encoding.JSDecode__Tuple2_37 fx_0 fy_1 !l_2 = case l_2 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray _x_2_0 -> case _x_2_0 (_predefined._Cons xo_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons yo_4_0 _x_4_1 -> case _x_4_1 (_predefined._Nil -> <{iTasks.UI.JS.Encoding._c;153;7_558}> (fx_0 (_predefined._Cons xo_3_0 _predefined._Nil)) fy_1 yo_4_0 xs_1_1 l_2) ) ) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+<{iTasks.UI.JS.Encoding._c;153;7_558}> !_x_0 fy_1 yo_2 xs_3 l_4 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{iTasks.UI.JS.Encoding._c;154;23_557}> (fy_1 (_predefined._Cons yo_2 _predefined._Nil)) x_2_0 xs_3 l_4) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+<{iTasks.UI.JS.Encoding._c;154;23_557}> !_x_0 x_1 xs_2 l_3 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (_Tuple2 x_1 y_2_0)) xs_2) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+iTasks.UI.JS.Encoding.JSDecode__Tuple3_38 fx_0 fy_1 fz_2 !l_3 = case l_3 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray _x_2_0 -> case _x_2_0 (_predefined._Cons xo_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons yo_4_0 _x_4_1 -> case _x_4_1 (_predefined._Cons zo_5_0 _x_5_1 -> case _x_5_1 (_predefined._Nil -> <{iTasks.UI.JS.Encoding._c;161;7_561}> (fx_0 (_predefined._Cons xo_3_0 _predefined._Nil)) fy_1 yo_4_0 fz_2 zo_5_0 xs_1_1 l_3) ) ) ) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{iTasks.UI.JS.Encoding._c;161;7_561}> !_x_0 fy_1 yo_2 fz_3 zo_4 xs_5 l_6 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{iTasks.UI.JS.Encoding._c;162;23_560}> (fy_1 (_predefined._Cons yo_2 _predefined._Nil)) fz_3 zo_4 x_2_0 xs_5 l_6) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_6)
+<{iTasks.UI.JS.Encoding._c;162;23_560}> !_x_0 fz_1 zo_2 x_3 xs_4 l_5 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{iTasks.UI.JS.Encoding._c;163;35_559}> (fz_1 (_predefined._Cons zo_2 _predefined._Nil)) x_3 y_2_0 xs_4 l_5) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_5)
+<{iTasks.UI.JS.Encoding._c;163;35_559}> !_x_0 x_1 y_2 xs_3 l_4 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just z_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (_Tuple3 x_1 y_2 z_2_0)) xs_3) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+iTasks.UI.JS.Encoding.JSDecode__Tuple4_39 fx_0 fy_1 fz_2 fi_3 !l_4 = case l_4 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray _x_2_0 -> case _x_2_0 (_predefined._Cons xo_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons yo_4_0 _x_4_1 -> case _x_4_1 (_predefined._Cons zo_5_0 _x_5_1 -> case _x_5_1 (_predefined._Cons io_6_0 _x_6_1 -> case _x_6_1 (_predefined._Nil -> <{iTasks.UI.JS.Encoding._c;171;7_565}> (fx_0 (_predefined._Cons xo_3_0 _predefined._Nil)) fy_1 yo_4_0 fz_2 zo_5_0 fi_3 io_6_0 xs_1_1 l_4) ) ) ) ) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+<{iTasks.UI.JS.Encoding._c;171;7_565}> !_x_0 fy_1 yo_2 fz_3 zo_4 fi_5 io_6 xs_7 l_8 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{iTasks.UI.JS.Encoding._c;172;22_564}> (fy_1 (_predefined._Cons yo_2 _predefined._Nil)) fz_3 zo_4 fi_5 io_6 x_2_0 xs_7 l_8) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_8)
+<{iTasks.UI.JS.Encoding._c;172;22_564}> !_x_0 fz_1 zo_2 fi_3 io_4 x_5 xs_6 l_7 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{iTasks.UI.JS.Encoding._c;173;27_563}> (fz_1 (_predefined._Cons zo_2 _predefined._Nil)) fi_3 io_4 x_5 y_2_0 xs_6 l_7) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_7)
+<{iTasks.UI.JS.Encoding._c;173;27_563}> !_x_0 fi_1 io_2 x_3 y_4 xs_5 l_6 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just z_2_0 -> <{iTasks.UI.JS.Encoding._c;174;30_562}> (fi_1 (_predefined._Cons io_2 _predefined._Nil)) x_3 y_4 z_2_0 xs_5 l_6) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_6)
+<{iTasks.UI.JS.Encoding._c;174;30_562}> !_x_0 x_1 y_2 z_3 xs_4 l_5 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just i_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (_Tuple4 x_1 y_2 z_3 i_2_0)) xs_4) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_5)
+iTasks.UI.JS.Encoding.JSDecode__Tuple5_40 fx_0 fy_1 fz_2 fi_3 fj_4 !l_5 = case l_5 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray _x_2_0 -> case _x_2_0 (_predefined._Cons xo_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons yo_4_0 _x_4_1 -> case _x_4_1 (_predefined._Cons zo_5_0 _x_5_1 -> case _x_5_1 (_predefined._Cons io_6_0 _x_6_1 -> case _x_6_1 (_predefined._Cons jo_7_0 _x_7_1 -> case _x_7_1 (_predefined._Nil -> <{iTasks.UI.JS.Encoding._c;183;7_570}> (fx_0 (_predefined._Cons xo_3_0 _predefined._Nil)) fy_1 yo_4_0 fz_2 zo_5_0 fi_3 io_6_0 fj_4 jo_7_0 xs_1_1 l_5) ) ) ) ) ) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_5)
+<{iTasks.UI.JS.Encoding._c;183;7_570}> !_x_0 fy_1 yo_2 fz_3 zo_4 fi_5 io_6 fj_7 jo_8 xs_9 l_10 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{iTasks.UI.JS.Encoding._c;184;23_569}> (fy_1 (_predefined._Cons yo_2 _predefined._Nil)) fz_3 zo_4 fi_5 io_6 fj_7 jo_8 x_2_0 xs_9 l_10) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_10)
+<{iTasks.UI.JS.Encoding._c;184;23_569}> !_x_0 fz_1 zo_2 fi_3 io_4 fj_5 jo_6 x_7 xs_8 l_9 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{iTasks.UI.JS.Encoding._c;185;27_568}> (fz_1 (_predefined._Cons zo_2 _predefined._Nil)) fi_3 io_4 fj_5 jo_6 x_7 y_2_0 xs_8 l_9) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_9)
+<{iTasks.UI.JS.Encoding._c;185;27_568}> !_x_0 fi_1 io_2 fj_3 jo_4 x_5 y_6 xs_7 l_8 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just z_2_0 -> <{iTasks.UI.JS.Encoding._c;186;30_567}> (fi_1 (_predefined._Cons io_2 _predefined._Nil)) fj_3 jo_4 x_5 y_6 z_2_0 xs_7 l_8) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_8)
+<{iTasks.UI.JS.Encoding._c;186;30_567}> !_x_0 fj_1 jo_2 x_3 y_4 z_5 xs_6 l_7 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just i_2_0 -> <{iTasks.UI.JS.Encoding._c;187;35_566}> (fj_1 (_predefined._Cons jo_2 _predefined._Nil)) x_3 y_4 z_5 i_2_0 xs_6 l_7) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_7)
+<{iTasks.UI.JS.Encoding._c;187;35_566}> !_x_0 x_1 y_2 z_3 i_4 xs_5 l_6 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just j_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (_Tuple5 x_1 y_2 z_3 i_4 j_2_0)) xs_5) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_6)
+iTasks.UI.JS.Encoding.JSDecode__Tuple6_41 fx_0 fy_1 fz_2 fi_3 fj_4 fk_5 !l_6 = case l_6 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray _x_2_0 -> case _x_2_0 (_predefined._Cons xo_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons yo_4_0 _x_4_1 -> case _x_4_1 (_predefined._Cons zo_5_0 _x_5_1 -> case _x_5_1 (_predefined._Cons io_6_0 _x_6_1 -> case _x_6_1 (_predefined._Cons jo_7_0 _x_7_1 -> case _x_7_1 (_predefined._Cons ko_8_0 _x_8_1 -> case _x_8_1 (_predefined._Nil -> <{iTasks.UI.JS.Encoding._c;197;7_576}> (fx_0 (_predefined._Cons xo_3_0 _predefined._Nil)) fy_1 yo_4_0 fz_2 zo_5_0 fi_3 io_6_0 fj_4 jo_7_0 fk_5 ko_8_0 xs_1_1 l_6) ) ) ) ) ) ) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_6)
+<{iTasks.UI.JS.Encoding._c;197;7_576}> !_x_0 fy_1 yo_2 fz_3 zo_4 fi_5 io_6 fj_7 jo_8 fk_9 ko_10 xs_11 l_12 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{iTasks.UI.JS.Encoding._c;198;23_575}> (fy_1 (_predefined._Cons yo_2 _predefined._Nil)) fz_3 zo_4 fi_5 io_6 fj_7 jo_8 fk_9 ko_10 x_2_0 xs_11 l_12) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_12)
+<{iTasks.UI.JS.Encoding._c;198;23_575}> !_x_0 fz_1 zo_2 fi_3 io_4 fj_5 jo_6 fk_7 ko_8 x_9 xs_10 l_11 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{iTasks.UI.JS.Encoding._c;199;27_574}> (fz_1 (_predefined._Cons zo_2 _predefined._Nil)) fi_3 io_4 fj_5 jo_6 fk_7 ko_8 x_9 y_2_0 xs_10 l_11) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_11)
+<{iTasks.UI.JS.Encoding._c;199;27_574}> !_x_0 fi_1 io_2 fj_3 jo_4 fk_5 ko_6 x_7 y_8 xs_9 l_10 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just z_2_0 -> <{iTasks.UI.JS.Encoding._c;200;30_573}> (fi_1 (_predefined._Cons io_2 _predefined._Nil)) fj_3 jo_4 fk_5 ko_6 x_7 y_8 z_2_0 xs_9 l_10) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_10)
+<{iTasks.UI.JS.Encoding._c;200;30_573}> !_x_0 fj_1 jo_2 fk_3 ko_4 x_5 y_6 z_7 xs_8 l_9 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just i_2_0 -> <{iTasks.UI.JS.Encoding._c;201;35_572}> (fj_1 (_predefined._Cons jo_2 _predefined._Nil)) fk_3 ko_4 x_5 y_6 z_7 i_2_0 xs_8 l_9) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_9)
+<{iTasks.UI.JS.Encoding._c;201;35_572}> !_x_0 fk_1 ko_2 x_3 y_4 z_5 i_6 xs_7 l_8 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just j_2_0 -> <{iTasks.UI.JS.Encoding._c;202;43_571}> (fk_1 (_predefined._Cons ko_2 _predefined._Nil)) x_3 y_4 z_5 i_6 j_2_0 xs_7 l_8) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_8)
+<{iTasks.UI.JS.Encoding._c;202;43_571}> !_x_0 x_1 y_2 z_3 i_4 j_5 xs_6 l_7 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just k_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (_Tuple6 x_1 y_2 z_3 i_4 j_5 k_2_0)) xs_6) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_7)
+iTasks.UI.JS.Encoding.JSDecode__Tuple7_42 fx_0 fy_1 fz_2 fi_3 fj_4 fk_5 fm_6 !l_7 = case l_7 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray _x_2_0 -> case _x_2_0 (_predefined._Cons xo_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons yo_4_0 _x_4_1 -> case _x_4_1 (_predefined._Cons zo_5_0 _x_5_1 -> case _x_5_1 (_predefined._Cons io_6_0 _x_6_1 -> case _x_6_1 (_predefined._Cons jo_7_0 _x_7_1 -> case _x_7_1 (_predefined._Cons ko_8_0 _x_8_1 -> case _x_8_1 (_predefined._Cons mo_9_0 _x_9_1 -> case _x_9_1 (_predefined._Nil -> <{iTasks.UI.JS.Encoding._c;213;7_583}> (fx_0 (_predefined._Cons xo_3_0 _predefined._Nil)) fy_1 yo_4_0 fz_2 zo_5_0 fi_3 io_6_0 fj_4 jo_7_0 fk_5 ko_8_0 fm_6 mo_9_0 xs_1_1 l_7) ) ) ) ) ) ) ) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_7)
+<{iTasks.UI.JS.Encoding._c;213;7_583}> !_x_0 fy_1 yo_2 fz_3 zo_4 fi_5 io_6 fj_7 jo_8 fk_9 ko_10 fm_11 mo_12 xs_13 l_14 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{iTasks.UI.JS.Encoding._c;214;23_582}> (fy_1 (_predefined._Cons yo_2 _predefined._Nil)) fz_3 zo_4 fi_5 io_6 fj_7 jo_8 fk_9 ko_10 fm_11 mo_12 x_2_0 xs_13 l_14) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_14)
+<{iTasks.UI.JS.Encoding._c;214;23_582}> !_x_0 fz_1 zo_2 fi_3 io_4 fj_5 jo_6 fk_7 ko_8 fm_9 mo_10 x_11 xs_12 l_13 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{iTasks.UI.JS.Encoding._c;215;27_581}> (fz_1 (_predefined._Cons zo_2 _predefined._Nil)) fi_3 io_4 fj_5 jo_6 fk_7 ko_8 fm_9 mo_10 x_11 y_2_0 xs_12 l_13) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_13)
+<{iTasks.UI.JS.Encoding._c;215;27_581}> !_x_0 fi_1 io_2 fj_3 jo_4 fk_5 ko_6 fm_7 mo_8 x_9 y_10 xs_11 l_12 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just z_2_0 -> <{iTasks.UI.JS.Encoding._c;216;30_580}> (fi_1 (_predefined._Cons io_2 _predefined._Nil)) fj_3 jo_4 fk_5 ko_6 fm_7 mo_8 x_9 y_10 z_2_0 xs_11 l_12) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_12)
+<{iTasks.UI.JS.Encoding._c;216;30_580}> !_x_0 fj_1 jo_2 fk_3 ko_4 fm_5 mo_6 x_7 y_8 z_9 xs_10 l_11 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just i_2_0 -> <{iTasks.UI.JS.Encoding._c;217;34_579}> (fj_1 (_predefined._Cons jo_2 _predefined._Nil)) fk_3 ko_4 fm_5 mo_6 x_7 y_8 z_9 i_2_0 xs_10 l_11) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_11)
+<{iTasks.UI.JS.Encoding._c;217;34_579}> !_x_0 fk_1 ko_2 fm_3 mo_4 x_5 y_6 z_7 i_8 xs_9 l_10 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just j_2_0 -> <{iTasks.UI.JS.Encoding._c;218;38_578}> (fk_1 (_predefined._Cons ko_2 _predefined._Nil)) fm_3 mo_4 x_5 y_6 z_7 i_8 j_2_0 xs_9 l_10) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_10)
+<{iTasks.UI.JS.Encoding._c;218;38_578}> !_x_0 fm_1 mo_2 x_3 y_4 z_5 i_6 j_7 xs_8 l_9 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just k_2_0 -> <{iTasks.UI.JS.Encoding._c;219;43_577}> (fm_1 (_predefined._Cons mo_2 _predefined._Nil)) x_3 y_4 z_5 i_6 j_7 k_2_0 xs_8 l_9) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_9)
+<{iTasks.UI.JS.Encoding._c;219;43_577}> !_x_0 x_1 y_2 z_3 i_4 j_5 k_6 xs_7 l_8 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just m_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (_Tuple7 x_1 y_2 z_3 i_4 j_5 k_6 m_2_0)) xs_7) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_8)
+iTasks.UI.JS.Encoding.JSDecode__Tuple8_43 fx_0 fy_1 fz_2 fi_3 fj_4 fk_5 fm_6 fn_7 !l_8 = case l_8 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray _x_2_0 -> case _x_2_0 (_predefined._Cons xo_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons yo_4_0 _x_4_1 -> case _x_4_1 (_predefined._Cons zo_5_0 _x_5_1 -> case _x_5_1 (_predefined._Cons io_6_0 _x_6_1 -> case _x_6_1 (_predefined._Cons jo_7_0 _x_7_1 -> case _x_7_1 (_predefined._Cons ko_8_0 _x_8_1 -> case _x_8_1 (_predefined._Cons mo_9_0 _x_9_1 -> case _x_9_1 (_predefined._Cons no_10_0 _x_10_1 -> case _x_10_1 (_predefined._Nil -> <{iTasks.UI.JS.Encoding._c;231;7_591}> (fx_0 (_predefined._Cons xo_3_0 _predefined._Nil)) fy_1 yo_4_0 fz_2 zo_5_0 fi_3 io_6_0 fj_4 jo_7_0 fk_5 ko_8_0 fm_6 mo_9_0 fn_7 no_10_0 xs_1_1 l_8) ) ) ) ) ) ) ) ) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_8)
+<{iTasks.UI.JS.Encoding._c;231;7_591}> !_x_0 fy_1 yo_2 fz_3 zo_4 fi_5 io_6 fj_7 jo_8 fk_9 ko_10 fm_11 mo_12 fn_13 no_14 xs_15 l_16 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{iTasks.UI.JS.Encoding._c;232;23_590}> (fy_1 (_predefined._Cons yo_2 _predefined._Nil)) fz_3 zo_4 fi_5 io_6 fj_7 jo_8 fk_9 ko_10 fm_11 mo_12 fn_13 no_14 x_2_0 xs_15 l_16) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_16)
+<{iTasks.UI.JS.Encoding._c;232;23_590}> !_x_0 fz_1 zo_2 fi_3 io_4 fj_5 jo_6 fk_7 ko_8 fm_9 mo_10 fn_11 no_12 x_13 xs_14 l_15 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{iTasks.UI.JS.Encoding._c;233;27_589}> (fz_1 (_predefined._Cons zo_2 _predefined._Nil)) fi_3 io_4 fj_5 jo_6 fk_7 ko_8 fm_9 mo_10 fn_11 no_12 x_13 y_2_0 xs_14 l_15) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_15)
+<{iTasks.UI.JS.Encoding._c;233;27_589}> !_x_0 fi_1 io_2 fj_3 jo_4 fk_5 ko_6 fm_7 mo_8 fn_9 no_10 x_11 y_12 xs_13 l_14 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just z_2_0 -> <{iTasks.UI.JS.Encoding._c;234;30_588}> (fi_1 (_predefined._Cons io_2 _predefined._Nil)) fj_3 jo_4 fk_5 ko_6 fm_7 mo_8 fn_9 no_10 x_11 y_12 z_2_0 xs_13 l_14) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_14)
+<{iTasks.UI.JS.Encoding._c;234;30_588}> !_x_0 fj_1 jo_2 fk_3 ko_4 fm_5 mo_6 fn_7 no_8 x_9 y_10 z_11 xs_12 l_13 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just i_2_0 -> <{iTasks.UI.JS.Encoding._c;235;34_587}> (fj_1 (_predefined._Cons jo_2 _predefined._Nil)) fk_3 ko_4 fm_5 mo_6 fn_7 no_8 x_9 y_10 z_11 i_2_0 xs_12 l_13) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_13)
+<{iTasks.UI.JS.Encoding._c;235;34_587}> !_x_0 fk_1 ko_2 fm_3 mo_4 fn_5 no_6 x_7 y_8 z_9 i_10 xs_11 l_12 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just j_2_0 -> <{iTasks.UI.JS.Encoding._c;236;38_586}> (fk_1 (_predefined._Cons ko_2 _predefined._Nil)) fm_3 mo_4 fn_5 no_6 x_7 y_8 z_9 i_10 j_2_0 xs_11 l_12) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_12)
+<{iTasks.UI.JS.Encoding._c;236;38_586}> !_x_0 fm_1 mo_2 fn_3 no_4 x_5 y_6 z_7 i_8 j_9 xs_10 l_11 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just k_2_0 -> <{iTasks.UI.JS.Encoding._c;237;43_585}> (fm_1 (_predefined._Cons mo_2 _predefined._Nil)) fn_3 no_4 x_5 y_6 z_7 i_8 j_9 k_2_0 xs_10 l_11) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_11)
+<{iTasks.UI.JS.Encoding._c;237;43_585}> !_x_0 fn_1 no_2 x_3 y_4 z_5 i_6 j_7 k_8 xs_9 l_10 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just m_2_0 -> <{iTasks.UI.JS.Encoding._c;238;45_584}> (fn_1 (_predefined._Cons no_2 _predefined._Nil)) x_3 y_4 z_5 i_6 j_7 k_8 m_2_0 xs_9 l_10) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_10)
+<{iTasks.UI.JS.Encoding._c;238;45_584}> !_x_0 x_1 y_2 z_3 i_4 j_5 k_6 m_7 xs_8 l_9 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just n_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (_Tuple8 x_1 y_2 z_3 i_4 j_5 k_6 m_7 n_2_0)) xs_8) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_9)
+<{iTasks.UI.JS.Encoding.cu;252;36_59}> !_vone_0 !<{_v+_1}> c_l_i_2 !g_l_3 = <{iTasks.UI.JS.Encoding.g_c1;252;41_592}> g_l_3 _vone_0 <{_v+_1}> c_l_i_2
+<{iTasks.UI.JS.Encoding.g_c1;252;41_592}> !g_l_0 _vone_1 <{_v+_2}> c_l_i_3 = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;252;36_59}> _vone_1 <{_v+_2}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 c_l_i_3 (select _vone_1::<{StdOverloaded.one;}> 0)) g_t_1_1) (_ -> c_l_i_3)
+<{iTasks.UI.JS.Encoding.cu;252;36_58}> !_vArray_0 c_a_1 c_i_2::I !g_l_3 = <{iTasks.UI.JS.Encoding.g_c1;252;41_593}> g_l_3 _vArray_0 c_a_1 c_i_2
+<{iTasks.UI.JS.Encoding.g_c1;252;41_593}> !g_l_0 _vArray_1 c_a_2 c_i_3::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;252;36_58}> _vArray_1 (select _vArray_1::<{_SystemArray.Array;}> 5 c_a_2 c_i_3 e_1_0) (<{StdInt.+_6}> c_i_3 StdInt.one_11) g_t_1_1) (_ -> c_a_2)
+<{iTasks.UI.JS.Encoding.cu;252;36_543}>::I !<{_v+_0}> c_l_i_1::I !g_l_2 = <{iTasks.UI.JS.Encoding.g_c1;252;41_594}> g_l_2 <{_v+_0}> c_l_i_1
+<{iTasks.UI.JS.Encoding.g_c1;252;41_594}>::I !g_l_0 <{_v+_1}> c_l_i_2::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;252;36_543}> <{_v+_1}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 c_l_i_2 StdInt.one_11) g_t_1_1) (_ -> c_l_i_2)
+<{iTasks.UI.JS.Encoding.cu;252;36_544}> !c_a_0 c_i_1::I !g_l_2 = <{iTasks.UI.JS.Encoding.g_c1;252;41_595}> g_l_2 c_a_0 c_i_1
+<{iTasks.UI.JS.Encoding.g_c1;252;41_595}> !g_l_0 !c_a_1 c_i_2::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;252;36_544}> (_SystemArray.update_77 c_a_1 c_i_2 e_1_0) (<{StdInt.+_6}> c_i_2 StdInt.one_11) g_t_1_1) (_ -> c_a_1)
+<{iTasks.UI.JS.Encoding.cu;252;36_545}>::I !c_l_i_0::I !g_l_1 = <{iTasks.UI.JS.Encoding.g_c1;252;41_596}> g_l_1 c_l_i_0
+<{iTasks.UI.JS.Encoding.g_c1;252;41_596}>::I !g_l_0 !c_l_i_1::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;252;36_545}> (<{StdInt.+_6}> c_l_i_1 StdInt.one_11) g_t_1_1) (_ -> c_l_i_1)
+iTasks.UI.JS.Encoding.JSDecode__Array_44 fx_0 !l_1 = case l_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray items_2_0 -> <{iTasks.UI.JS.Encoding._c;251;7_597}> (iTasks.UI.JS.Encoding.decodeItems fx_0 items_2_0) xs_1_1 l_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)
+<{iTasks.UI.JS.Encoding._c;251;7_597}> !_x_0 xs_1 l_2 = case _x_0 (Data.Maybe.Just x_1_0 -> <{_Tuple2!3}> (Data.Maybe.Just (<{iTasks.UI.JS.Encoding.cu;252;36_544}> (_SystemArray._createArray_72 (<{iTasks.UI.JS.Encoding.cu;252;36_545}> 0 x_1_0)) 0 x_1_0)) xs_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+<{iTasks.UI.JS.Encoding.cu;258;36_61}> !_vone_0 !<{_v+_1}> c_l_i_2 !g_l_3 = <{iTasks.UI.JS.Encoding.g_c1;258;41_598}> g_l_3 _vone_0 <{_v+_1}> c_l_i_2
+<{iTasks.UI.JS.Encoding.g_c1;258;41_598}> !g_l_0 _vone_1 <{_v+_2}> c_l_i_3 = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;258;36_61}> _vone_1 <{_v+_2}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 c_l_i_3 (select _vone_1::<{StdOverloaded.one;}> 0)) g_t_1_1) (_ -> c_l_i_3)
+<{iTasks.UI.JS.Encoding.cu;258;36_60}> !_vArray_0 c_a_1 c_i_2::I !g_l_3 = <{iTasks.UI.JS.Encoding.g_c1;258;41_599}> g_l_3 _vArray_0 c_a_1 c_i_2
+<{iTasks.UI.JS.Encoding.g_c1;258;41_599}> !g_l_0 _vArray_1 c_a_2 c_i_3::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;258;36_60}> _vArray_1 (select _vArray_1::<{_SystemArray.Array;}> 5 c_a_2 c_i_3 e_1_0) (<{StdInt.+_6}> c_i_3 StdInt.one_11) g_t_1_1) (_ -> c_a_2)
+<{iTasks.UI.JS.Encoding.cu;258;36_546}>::I !<{_v+_0}> c_l_i_1::I !g_l_2 = <{iTasks.UI.JS.Encoding.g_c1;258;41_600}> g_l_2 <{_v+_0}> c_l_i_1
+<{iTasks.UI.JS.Encoding.g_c1;258;41_600}>::I !g_l_0 <{_v+_1}> c_l_i_2::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;258;36_546}> <{_v+_1}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 c_l_i_2 StdInt.one_11) g_t_1_1) (_ -> c_l_i_2)
+<{iTasks.UI.JS.Encoding.cu;258;36_547}> !c_a_0 c_i_1::I !g_l_2 = <{iTasks.UI.JS.Encoding.g_c1;258;41_601}> g_l_2 c_a_0 c_i_1
+<{iTasks.UI.JS.Encoding.g_c1;258;41_601}> !g_l_0 !c_a_1 c_i_2::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;258;36_547}> (_SystemArray.update_5 c_a_1 c_i_2 e_1_0) (<{StdInt.+_6}> c_i_2 StdInt.one_11) g_t_1_1) (_ -> c_a_1)
+<{iTasks.UI.JS.Encoding.cu;258;36_548}>::I !c_l_i_0::I !g_l_1 = <{iTasks.UI.JS.Encoding.g_c1;258;41_602}> g_l_1 c_l_i_0
+<{iTasks.UI.JS.Encoding.g_c1;258;41_602}>::I !g_l_0 !c_l_i_1::I = case g_l_0 (_predefined._Cons e_1_0 g_t_1_1 -> <{iTasks.UI.JS.Encoding.cu;258;36_548}> (<{StdInt.+_6}> c_l_i_1 StdInt.one_11) g_t_1_1) (_ -> c_l_i_1)
+<{iTasks.UI.JS.Encoding.JSDecode__!Array_45}> fx_0 !l_1 = case l_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (Text.JSON.JSONArray items_2_0 -> <{iTasks.UI.JS.Encoding._c;257;7_603}> (iTasks.UI.JS.Encoding.decodeItems fx_0 items_2_0) xs_1_1 l_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)
+<{iTasks.UI.JS.Encoding._c;257;7_603}> !_x_0 xs_1 l_2 = case _x_0 (Data.Maybe.Just x_1_0 -> <{_Tuple2!3}> (Data.Maybe.Just (<{iTasks.UI.JS.Encoding.cu;258;36_547}> (_SystemArray._createArray_0 (<{iTasks.UI.JS.Encoding.cu;258;36_548}> 0 x_1_0)) 0 x_1_0)) xs_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+iTasks.UI.JS.Encoding.d2_54 !x_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 ys_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.PAIR x_0 y_2_0)) ys_1_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+iTasks.UI.JS.Encoding.d1_53 !fy_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks.UI.JS.Encoding.d2_54 x_2_0 (fy_0 xs_1_1) l_2) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+iTasks.UI.JS.Encoding.JSDecode_PAIR_46 !fx_0 !fy_1 !l_2 = iTasks.UI.JS.Encoding.d1_53 fy_1 (fx_0 l_2) l_2
+iTasks.UI.JS.Encoding.d_55 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+iTasks.UI.JS.Encoding.d_56 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+iTasks.UI.JS.Encoding.JSDecode_RECORD_47 fx_0 !l_1 = case l_1 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> iTasks.UI.JS.Encoding.d_55 (fx_0 (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_1) (Text.JSON.JSONArray fields_2_0 -> iTasks.UI.JS.Encoding.d_56 (fx_0 (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_1) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)
+iTasks.UI.JS.Encoding.findField_57 !match_0 !_x_1 = case _x_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (_Tuple2 l_2_0 x_2_1 -> case (<{StdString.==_2}> l_2_0 match_0) (True -> _predefined._Cons x_2_1 _predefined._Nil) (False -> iTasks.UI.JS.Encoding.findField_57 match_0 xs_1_1) ) ) (_predefined._Nil -> _predefined._Nil) 
+iTasks.UI.JS.Encoding.JSDecode_FIELD_48 gfd_name_0 _x_1::I fx_2 !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = iTasks.UI.JS.Encoding.findField_57 gfd_name_0 fields_2_0 in <{iTasks.UI.JS.Encoding._c;130;5_604}> (fx_2 field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{iTasks.UI.JS.Encoding._c;141;5_605}> (fx_2 (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{iTasks.UI.JS.Encoding._c;141;5_605}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{iTasks.UI.JS.Encoding._c;130;5_604}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+
+
+|| Converted Records
+:: <{iTasks.UI.JS.Encoding.JSONEncode_s;}> = {!iTasks.UI.JS.Encoding.JSONEncode_s}
+
+:: <{iTasks.UI.JS.Encoding.JSONEncode_ss;}> = {!iTasks.UI.JS.Encoding.JSONEncode_ss}
+
+:: <{iTasks.UI.JS.Encoding.JSONEncode_sss;}> = {!iTasks.UI.JS.Encoding.JSONEncode_sss}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_s;}> = {!iTasks.UI.JS.Encoding.JSONDecode_s}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_ss;}> = {!iTasks.UI.JS.Encoding.JSONDecode_ss}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_sss;}> = {!iTasks.UI.JS.Encoding.JSONDecode_sss}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_s;}> = {iTasks.UI.JS.Encoding.gDefault_s}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_ss;}> = {iTasks.UI.JS.Encoding.gDefault_ss}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_sss;}> = {iTasks.UI.JS.Encoding.gDefault_sss}
+
+:: <{iTasks.UI.JS.Encoding.gText_s;}> = {!iTasks.UI.JS.Encoding.gText_s}
+
+:: <{iTasks.UI.JS.Encoding.gText_ss;}> = {!iTasks.UI.JS.Encoding.gText_ss}
+
+:: <{iTasks.UI.JS.Encoding.gText_sss;}> = {!iTasks.UI.JS.Encoding.gText_sss}
+
+:: <{iTasks.UI.JS.Encoding.gEditor_s;}> = {iTasks.UI.JS.Encoding.gEditor_s}
+
+:: <{iTasks.UI.JS.Encoding.gEditor_ss;}> = {iTasks.UI.JS.Encoding.gEditor_ss}
+
+:: <{iTasks.UI.JS.Encoding.gEditor_sss;}> = {iTasks.UI.JS.Encoding.gEditor_sss}
+
+:: <{iTasks.UI.JS.Encoding.gEq_s;}> = {!iTasks.UI.JS.Encoding.gEq_s}
+
+:: <{iTasks.UI.JS.Encoding.gEq_ss;}> = {!iTasks.UI.JS.Encoding.gEq_ss}
+
+:: <{iTasks.UI.JS.Encoding.gEq_sss;}> = {!iTasks.UI.JS.Encoding.gEq_sss}
+
+:: <{iTasks.UI.JS.Encoding.gEq_ssss;}> = {!iTasks.UI.JS.Encoding.gEq_ssss}
+
+:: <{iTasks.UI.JS.Encoding.gEq_sssss;}> = {!iTasks.UI.JS.Encoding.gEq_sssss}
+
+:: <{iTasks.UI.JS.Encoding.gEq_ssssss;}> = {!iTasks.UI.JS.Encoding.gEq_ssssss}
+
+:: <{iTasks.UI.JS.Encoding.gEq_sssssss;}> = {!iTasks.UI.JS.Encoding.gEq_sssssss}
+
+:: <{iTasks.UI.JS.Encoding.gEq_ssssssss;}> = {!iTasks.UI.JS.Encoding.gEq_ssssssss}
+
+:: <{iTasks.UI.JS.Encoding.gEq_sssssssss;}> = {!iTasks.UI.JS.Encoding.gEq_sssssssss}
+
+:: <{iTasks.UI.JS.Encoding.bimap_s;}> = {iTasks.UI.JS.Encoding.bimap_s}
+
+:: <{iTasks.UI.JS.Encoding.bimap_ss;}> = {iTasks.UI.JS.Encoding.bimap_ss}
+
+:: <{iTasks.UI.JS.Encoding.bimap_sss;}> = {iTasks.UI.JS.Encoding.bimap_sss}
+
+:: <{iTasks.UI.JS.Encoding.JSONEncode_ssss;}> = {!iTasks.UI.JS.Encoding.JSONEncode_ssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONEncode_sssss;}> = {!iTasks.UI.JS.Encoding.JSONEncode_sssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONEncode_ssssss;}> = {!iTasks.UI.JS.Encoding.JSONEncode_ssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONEncode_sssssss;}> = {!iTasks.UI.JS.Encoding.JSONEncode_sssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONEncode_ssssssss;}> = {!iTasks.UI.JS.Encoding.JSONEncode_ssssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONEncode_sssssssss;}> = {!iTasks.UI.JS.Encoding.JSONEncode_sssssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_ssss;}> = {!iTasks.UI.JS.Encoding.JSONDecode_ssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_sssss;}> = {!iTasks.UI.JS.Encoding.JSONDecode_sssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_ssssss;}> = {!iTasks.UI.JS.Encoding.JSONDecode_ssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_sssssss;}> = {!iTasks.UI.JS.Encoding.JSONDecode_sssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_ssssssss;}> = {!iTasks.UI.JS.Encoding.JSONDecode_ssssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSONDecode_sssssssss;}> = {!iTasks.UI.JS.Encoding.JSONDecode_sssssssss}
+
+:: <{iTasks.UI.JS.Encoding.gText_ssss;}> = {!iTasks.UI.JS.Encoding.gText_ssss}
+
+:: <{iTasks.UI.JS.Encoding.gText_sssss;}> = {!iTasks.UI.JS.Encoding.gText_sssss}
+
+:: <{iTasks.UI.JS.Encoding.gText_ssssss;}> = {!iTasks.UI.JS.Encoding.gText_ssssss}
+
+:: <{iTasks.UI.JS.Encoding.gText_sssssss;}> = {!iTasks.UI.JS.Encoding.gText_sssssss}
+
+:: <{iTasks.UI.JS.Encoding.gText_ssssssss;}> = {!iTasks.UI.JS.Encoding.gText_ssssssss}
+
+:: <{iTasks.UI.JS.Encoding.gText_sssssssss;}> = {!iTasks.UI.JS.Encoding.gText_sssssssss}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_ssss;}> = {iTasks.UI.JS.Encoding.gDefault_ssss}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_sssss;}> = {iTasks.UI.JS.Encoding.gDefault_sssss}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_ssssss;}> = {iTasks.UI.JS.Encoding.gDefault_ssssss}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_sssssss;}> = {iTasks.UI.JS.Encoding.gDefault_sssssss}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_ssssssss;}> = {iTasks.UI.JS.Encoding.gDefault_ssssssss}
+
+:: <{iTasks.UI.JS.Encoding.gDefault_sssssssss;}> = {iTasks.UI.JS.Encoding.gDefault_sssssssss}
+
+:: <{iTasks.UI.JS.Encoding.gEditor_ssss;}> = {iTasks.UI.JS.Encoding.gEditor_ssss}
+
+:: <{iTasks.UI.JS.Encoding.gEditor_sssss;}> = {iTasks.UI.JS.Encoding.gEditor_sssss}
+
+:: <{iTasks.UI.JS.Encoding.gEditor_ssssss;}> = {iTasks.UI.JS.Encoding.gEditor_ssssss}
+
+:: <{iTasks.UI.JS.Encoding.gEditor_sssssss;}> = {iTasks.UI.JS.Encoding.gEditor_sssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_s;}> = {!iTasks.UI.JS.Encoding.JSEncode_s}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_ss;}> = {!iTasks.UI.JS.Encoding.JSEncode_ss}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_sss;}> = {!iTasks.UI.JS.Encoding.JSEncode_sss}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_ssss;}> = {!iTasks.UI.JS.Encoding.JSEncode_ssss}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_sssss;}> = {!iTasks.UI.JS.Encoding.JSEncode_sssss}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_ssssss;}> = {!iTasks.UI.JS.Encoding.JSEncode_ssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_sssssss;}> = {!iTasks.UI.JS.Encoding.JSEncode_sssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_ssssssss;}> = {!iTasks.UI.JS.Encoding.JSEncode_ssssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSEncode_sssssssss;}> = {!iTasks.UI.JS.Encoding.JSEncode_sssssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_s;}> = {!iTasks.UI.JS.Encoding.JSDecode_s}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_ss;}> = {!iTasks.UI.JS.Encoding.JSDecode_ss}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_sss;}> = {!iTasks.UI.JS.Encoding.JSDecode_sss}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_ssss;}> = {!iTasks.UI.JS.Encoding.JSDecode_ssss}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_sssss;}> = {!iTasks.UI.JS.Encoding.JSDecode_sssss}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_ssssss;}> = {!iTasks.UI.JS.Encoding.JSDecode_ssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_sssssss;}> = {!iTasks.UI.JS.Encoding.JSDecode_sssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_ssssssss;}> = {!iTasks.UI.JS.Encoding.JSDecode_ssssssss}
+
+:: <{iTasks.UI.JS.Encoding.JSDecode_sssssssss;}> = {!iTasks.UI.JS.Encoding.JSDecode_sssssssss}
+

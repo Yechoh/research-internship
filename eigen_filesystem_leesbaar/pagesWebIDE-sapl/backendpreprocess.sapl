@@ -1,0 +1,95 @@
+|| ?module? backendpreprocess
+
+
+<{backendpreprocess.c;16;50_2}> iclModule_0 !g_l_1 = <{backendpreprocess.g_c1;16;55_99}> g_l_1 iclModule_0
+<{backendpreprocess.g_c1;16;55_99}> !g_l_0 iclModule_1 = case g_l_0 (_predefined._Cons i_1_0 g_t_1_1 -> _predefined._Cons (backendpreprocess.select_71 (select iclModule_1::syntax._IclModule 1) i_1_0) (<{backendpreprocess.c;16;50_2}> iclModule_1 g_t_1_1)) (_ -> _predefined._Nil)
+backendpreprocess.anon_39 !x_0 = x_0
+backendpreprocess.anon_40 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.foldState_38 function_0 !_x_1 = case _x_1 (_predefined._Nil -> backendpreprocess.anon_39) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_40 (backendpreprocess.foldState_38 function_0 tl_1_1) (function_0 hd_1_0)) 
+backendpreprocess.preprocess_10 !_vpreprocess_0 !aliasDummy_1 !list_2 = backendpreprocess.foldState_38 (select _vpreprocess_0::<{backendpreprocess.preprocess;}> 0 aliasDummy_1) list_2
+backendpreprocess.toSequenceState_48 !aliasDummy_0 varHeap_1 = backendpreprocess._SequenceState 0 varHeap_1 aliasDummy_0
+backendpreprocess.fromSequenceState_47 !sequenceState_0 = select sequenceState_0::backendpreprocess._SequenceState 1
+backendpreprocess.anon_46 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_45 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_53 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_50 !x_0 = x_0
+backendpreprocess.anon_51 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.foldState_49 function_0 !_x_1 = case _x_1 (_predefined._Nil -> backendpreprocess.anon_50) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_51 (backendpreprocess.foldState_49 function_0 tl_1_1) (function_0 hd_1_0)) 
+backendpreprocess.sequence_12 !_vsequence_0 !list_1 = backendpreprocess.foldState_49 (select _vsequence_0::<{backendpreprocess.sequence;}> 0) list_1
+backendpreprocess.alreadySequenced_3::B !_x_0 = case _x_0 (syntax.VI_SequenceNumber _x_1_0 -> True) (syntax.VI_AliasSequenceNumber _x_1_0 -> True) (_ -> False)
+backendpreprocess.assignSequenceNumber !var_0 !sequenceState_1 = case (backendpreprocess.alreadySequenced_3 (select (Heap.readPtr var_0 (select sequenceState_1::backendpreprocess._SequenceState 1))::_Tuple2 0)) (True -> sequenceState_1) (False -> update sequenceState_1::backendpreprocess._SequenceState [0:<{StdInt.+_6}> (select sequenceState_1::backendpreprocess._SequenceState 0) 1,1:Heap.writePtr var_0 (syntax.VI_SequenceNumber (select sequenceState_1::backendpreprocess._SequenceState 0)) (select sequenceState_1::backendpreprocess._SequenceState 1)]) 
+backendpreprocess.sequence_24 var_0 = backendpreprocess.assignSequenceNumber var_0
+backendpreprocess.sequence_16 freeVar_0 = backendpreprocess.sequence_24 (select freeVar_0::syntax._FreeVar 2)
+backendpreprocess.anon_63 !x_0 = x_0
+backendpreprocess.anon_61 !x_0 = x_0
+backendpreprocess.anon_62 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.foldState_60 function_0 !_x_1 = case _x_1 (_predefined._Nil -> backendpreprocess.anon_61) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_62 (backendpreprocess.foldState_60 function_0 tl_1_1) (function_0 hd_1_0)) 
+backendpreprocess.anon_59 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_58 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_57 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_56 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_55 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_54 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_4 !_vsequence_0 !_x_1 = case _x_1 (general._Bind bind_src_1_0 bind_dst_1_1 -> select _vsequence_0::<{backendpreprocess.sequence;}> 0 bind_dst_1_1) 
+backendpreprocess.anon_52 !x_0 = x_0
+backendpreprocess.sequence_13 !_vsequence_0 !_x_1 = case _x_1 (general.Yes x_1_0 -> select _vsequence_0::<{backendpreprocess.sequence;}> 0 x_1_0) (general.No -> backendpreprocess.anon_52) 
+backendpreprocess.anon_65 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_64 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_66 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.anon_67 !x_0 = x_0
+<{backendpreprocess.sequence`_5}> !_x_0 lb_dst_1 !sequenceState_2 = case _x_0 (syntax._App app_symb_1_0 app_args_1_1 app_info_ptr_1_2 -> case sequenceState_2 (backendpreprocess._SequenceState ss_sequenceNumber_2_0 ss_varHeap_2_1 ss_aliasDummy_2_2 -> case (case (StdBool.not (Heap.isNilPtr (select (select app_symb_1_0::syntax._SymbIdent 0)::syntax._Ident 1))) (True -> <{syntax.==_15}> (select app_symb_1_0::syntax._SymbIdent 0) ss_aliasDummy_2_2) (False -> False) ) (True -> <{backendpreprocess._c;163;19_101}> (StdList.hd app_args_1_1) sequenceState_2 lb_dst_1) (False -> backendpreprocess.sequence_16 lb_dst_1 sequenceState_2) ) ) 
+<{backendpreprocess._c;163;19_101}> !_x_0 !sequenceState_1 lb_dst_2 = case _x_0 (syntax.Var bound_var_1_0 -> case bound_var_1_0 (syntax._BoundVar var_ident_2_0 var_info_ptr_2_1 var_expr_ptr_2_2 -> let sequenceState_3_0 = backendpreprocess.assignSequenceNumber var_info_ptr_2_1 sequenceState_1, _x_3_1 = Heap.readPtr var_info_ptr_2_1 (select sequenceState_3_0::backendpreprocess._SequenceState 1) in update sequenceState_3_0::backendpreprocess._SequenceState [1:Heap.writePtr (select lb_dst_2::syntax._FreeVar 2) (syntax.VI_AliasSequenceNumber (<{backendpreprocess._c;167;49_100}> (select _x_3_1::_Tuple2 0) bound_var_1_0)) (select _x_3_1::_Tuple2 1)]) ) (_ -> backendpreprocess.sequence_16 lb_dst_2 sequenceState_1)
+<{backendpreprocess._c;167;49_100}> !_x_0 bound_var_1 = case _x_0 (syntax.VI_SequenceNumber _x_1_0 -> bound_var_1) (syntax.VI_AliasSequenceNumber alias_bound_var_1_0 -> alias_bound_var_1_0) 
+backendpreprocess.sequence_23 !_x_0 = case _x_0 (syntax._LetBind lb_dst_1_0 _x_1_1 lb_position_1_2 -> case _x_1_1 (syntax.App app_2_0 -> <{backendpreprocess.sequence`_5}> app_2_0 lb_dst_1_0) ) (_ -> backendpreprocess.sequence_16 (select _x_0::syntax._LetBind 0))
+backendpreprocess.foldState_93 !_x_0 = case _x_0 (_predefined._Nil -> backendpreprocess.anon_50) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_51 (backendpreprocess.foldState_93 tl_1_1) (backendpreprocess.sequence_16 hd_1_0)) 
+backendpreprocess.sequence_92 !list_0 = backendpreprocess.foldState_93 list_0
+backendpreprocess.anon_87 !g_0 f_1 f_2 x_3 = backendpreprocess.anon_64 g_0 f_1 (f_2 x_3)
+backendpreprocess.anon_85 !_x_0 = case _x_0 (general._Bind bind_src_1_0 bind_dst_1_1 -> backendpreprocess.sequence_16 bind_dst_1_1) 
+backendpreprocess.foldState_86 !_x_0 = case _x_0 (_predefined._Nil -> backendpreprocess.anon_61) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_62 (backendpreprocess.foldState_86 tl_1_1) (backendpreprocess.anon_85 hd_1_0)) 
+backendpreprocess.anon_80 !g_0 f_1 f_2 x_3 = backendpreprocess.anon_56 g_0 f_1 (f_2 x_3)
+backendpreprocess.foldState_77 !_x_0 = case _x_0 (_predefined._Nil -> backendpreprocess.anon_50) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_51 (backendpreprocess.foldState_77 tl_1_1) (backendpreprocess.sequence_23 hd_1_0)) 
+backendpreprocess.sequence_76 !list_0 = backendpreprocess.foldState_77 list_0
+backendpreprocess.anon_78 !g_0 f_1 f_2 x_3 = backendpreprocess.anon_54 g_0 f_1 (f_2 x_3)
+backendpreprocess.foldState_82 !_x_0 = case _x_0 (_predefined._Nil -> backendpreprocess.anon_50) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_51 (backendpreprocess.foldState_82 tl_1_1) (backendpreprocess.sequence_17 hd_1_0)) 
+backendpreprocess.sequence_81 !list_0 = backendpreprocess.foldState_82 list_0
+backendpreprocess.sequence_22 !_x_0 = case _x_0 (syntax.RecordSelection _x_1_0 _x_1_1 -> backendpreprocess.anon_67) (syntax.ArraySelection _x_1_0 _x_1_1 index_1_2 -> backendpreprocess.sequence_17 index_1_2) (syntax.DictionarySelection dictionaryVar_1_0 dictionarySelections_1_1 _x_1_2 index_1_3 -> backendpreprocess.sequence_17 index_1_3) 
+backendpreprocess.foldState_84 !_x_0 = case _x_0 (_predefined._Nil -> backendpreprocess.anon_50) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_51 (backendpreprocess.foldState_84 tl_1_1) (backendpreprocess.sequence_22 hd_1_0)) 
+backendpreprocess.sequence_83 !list_0 = backendpreprocess.foldState_84 list_0
+backendpreprocess.sequence_79 !_x_0 = case _x_0 (general.Yes x_1_0 -> backendpreprocess.sequence_17 x_1_0) (general.No -> backendpreprocess.anon_52) 
+backendpreprocess.sequence_21 !_x_0 = case _x_0 (syntax._BasicPattern bp_value_1_0 bp_expr_1_1 bp_position_1_2 -> backendpreprocess.sequence_17 bp_expr_1_1) 
+backendpreprocess.foldState_91 !_x_0 = case _x_0 (_predefined._Nil -> backendpreprocess.anon_50) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_51 (backendpreprocess.foldState_91 tl_1_1) (backendpreprocess.sequence_21 hd_1_0)) 
+backendpreprocess.sequence_90 !list_0 = backendpreprocess.foldState_91 list_0
+backendpreprocess.sequence_20 !_x_0 = case _x_0 (syntax._AlgebraicPattern ap_symbol_1_0 ap_vars_1_1 ap_expr_1_2 ap_position_1_3 -> backendpreprocess.anon_66 (backendpreprocess.sequence_17 ap_expr_1_2) (backendpreprocess.sequence_92 ap_vars_1_1)) 
+backendpreprocess.foldState_89 !_x_0 = case _x_0 (_predefined._Nil -> backendpreprocess.anon_50) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_51 (backendpreprocess.foldState_89 tl_1_1) (backendpreprocess.sequence_20 hd_1_0)) 
+backendpreprocess.sequence_88 !list_0 = backendpreprocess.foldState_89 list_0
+backendpreprocess.sequence_19 !_x_0 = case _x_0 (syntax.AlgebraicPatterns _x_1_0 patterns_1_1 -> backendpreprocess.sequence_88 patterns_1_1) (syntax.BasicPatterns _x_1_0 patterns_1_1 -> backendpreprocess.sequence_90 patterns_1_1) (syntax.OverloadedListPatterns _x_1_0 decons_expr_1_1 patterns_1_2 -> backendpreprocess.sequence_88 patterns_1_2) 
+backendpreprocess.sequence_18 !_x_0 = case _x_0 (syntax._Case case_expr_1_0 case_guards_1_1 case_default_1_2 case_ident_1_3 case_info_ptr_1_4 case_explicit_1_5 case_default_pos_1_6 -> backendpreprocess.anon_87 (backendpreprocess.sequence_79 case_default_1_2) (backendpreprocess.sequence_19 case_guards_1_1) (backendpreprocess.sequence_17 case_expr_1_0)) 
+backendpreprocess.sequence_17 !_x_0 = case _x_0 (syntax.Let _x_1_0 -> case _x_1_0 (syntax._Let let_strict_binds_2_0 let_lazy_binds_2_1 let_expr_2_2 let_info_ptr_2_3 let_expr_position_2_4 -> backendpreprocess.anon_78 (backendpreprocess.sequence_17 let_expr_2_2) (backendpreprocess.sequence_76 let_lazy_binds_2_1) (backendpreprocess.sequence_76 let_strict_binds_2_0)) ) (syntax.Conditional _x_1_0 -> case _x_1_0 (syntax._Conditional if_cond_2_0 if_then_2_1 if_else_2_2 -> backendpreprocess.anon_80 (backendpreprocess.sequence_79 if_else_2_2) (backendpreprocess.sequence_17 if_then_2_1) (backendpreprocess.sequence_17 if_cond_2_0)) ) (syntax.App _x_1_0 -> case _x_1_0 (syntax._App app_symb_2_0 app_args_2_1 app_info_ptr_2_2 -> backendpreprocess.sequence_81 app_args_2_1) ) (<{syntax.@}> f_1_0 arg_1_1 -> backendpreprocess.anon_58 (backendpreprocess.sequence_81 arg_1_1) (backendpreprocess.sequence_17 f_1_0)) (syntax.Selection _x_1_0 exp_1_1 selections_1_2 -> backendpreprocess.anon_59 (backendpreprocess.sequence_83 selections_1_2) (backendpreprocess.sequence_17 exp_1_1)) (syntax.AnyCodeExpr _x_1_0 outParams_1_1 _x_1_2 -> backendpreprocess.foldState_86 outParams_1_1) (syntax.Case caseExpr_1_0 -> backendpreprocess.sequence_18 caseExpr_1_0) (_ -> backendpreprocess.anon_63)
+backendpreprocess.sequence_15 body_0 = backendpreprocess.anon_53 (backendpreprocess.sequence_17 (select body_0::syntax._TransformedBody 1)) (backendpreprocess.sequence_92 (select body_0::syntax._TransformedBody 0))
+backendpreprocess.sequence_14 !_x_0 = case _x_0 (syntax.TransformedBody transformedBody_1_0 -> backendpreprocess.sequence_15 transformedBody_1_0) (_ -> StdMisc.abort "preprocess (FunctionBody): unknown body")
+backendpreprocess.anon_94 !f_0 x_1 = backendpreprocess.fromSequenceState_47 (f_0 x_1)
+backendpreprocess.anon_95 !f_0 f_1 x_2 = backendpreprocess.anon_94 f_0 (f_1 x_2)
+backendpreprocess.anon_96 !f_0 aliasDummy_1 x_2 = backendpreprocess.anon_94 f_0 (backendpreprocess.toSequenceState_48 aliasDummy_1 x_2)
+backendpreprocess.preprocess_11 !aliasDummy_0 funDef_1 = backendpreprocess.anon_96 (backendpreprocess.sequence_14 (select funDef_1::syntax._FunDef 3)) aliasDummy_0
+backendpreprocess.foldState_98 !aliasDummy_0 !_x_1 = case _x_1 (_predefined._Nil -> backendpreprocess.anon_39) (_predefined._Cons hd_1_0 tl_1_1 -> backendpreprocess.anon_40 (backendpreprocess.foldState_98 aliasDummy_0 tl_1_1) (backendpreprocess.preprocess_11 aliasDummy_0 hd_1_0)) 
+backendpreprocess.preprocess_97 !aliasDummy_0 !list_1 = backendpreprocess.foldState_98 aliasDummy_0 list_1
+backendpreprocess.backEndPreprocess !aliasDummy_0 !function_1 !iclModule_2 !varHeap_3 = backendpreprocess.preprocess_97 aliasDummy_0 (<{backendpreprocess.c;16;50_2}> iclModule_2 function_1) varHeap_3
+backendpreprocess.anon_34 !x_0 = x_0
+backendpreprocess.anon_35 !g_0 f_1 x_2 = g_0 (f_1 x_2)
+backendpreprocess.foldStateA_33 !_vArray_0 function_1 array_2 !arraySize_3::I !index_4::I = case (<{StdInt.==_16}> index_4 arraySize_3) (True -> backendpreprocess.anon_34) (False -> backendpreprocess.anon_35 (backendpreprocess.foldStateA_33 _vArray_0 function_1 array_2 arraySize_3 (<{StdInt.+_6}> index_4 1)) (function_1 (select _vArray_0::<{_SystemArray.Array;}> 3 array_2 index_4))) 
+backendpreprocess.preprocess_9 !_vpreprocess_0 !_vArray_1 !aliasDummy_2 array_3 = backendpreprocess.foldStateA_33 _vArray_1 (select _vpreprocess_0::<{backendpreprocess.preprocess;}> 0 aliasDummy_2) array_3 (select _vArray_1::<{_SystemArray.Array;}> 4 array_3) 0
+<{backendpreprocess.TD;Preprocessor}> _x_0::B = _predefined._Nil
+<{backendpreprocess.TD;PreprocessState}> _x_0::B = _predefined._Nil
+<{backendpreprocess.TD;Sequencer}> _x_0::B = _predefined._Nil
+<{backendpreprocess.TD;SequenceState}> _x_0::B = _predefined._Nil
+<{backendpreprocess.TD;preprocess;}> _x_0::B = _predefined._Nil
+<{backendpreprocess.TD;sequence;}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: backendpreprocess._SequenceState = {!backendpreprocess.ss_sequenceNumber::I, backendpreprocess.ss_varHeap, !backendpreprocess.ss_aliasDummyId}
+
+:: <{backendpreprocess.preprocess;}> = {!backendpreprocess.preprocess}
+
+:: <{backendpreprocess.sequence;}> = {!backendpreprocess.sequence}
+

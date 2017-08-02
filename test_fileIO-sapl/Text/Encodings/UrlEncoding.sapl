@@ -1,0 +1,25 @@
+|| ?module? Text.Encodings.UrlEncoding
+
+
+Text.Encodings.UrlEncoding.urlEncodeChar_5 c1_0::C c2_1::C !_x_2::C = case _x_2 (' ' -> _predefined._Cons '+' _predefined._Nil) (_ -> _predefined._Cons '%' (_predefined._Cons c1_0 (_predefined._Cons c2_1 _predefined._Nil)))
+Text.Encodings.UrlEncoding.digitToHex_4::I !d_0::I = case (StdBool.not (<{StdInt.<_17}> 9 d_0)) (True -> <{StdInt.+_6}> d_0 (StdInt.toInt_20 '0')) (False -> <{StdInt.-_7}> (<{StdInt.+_6}> d_0 (StdInt.toInt_20 'A')) 10) 
+Text.Encodings.UrlEncoding.charToHex_6 !c_0::C = let i_1_0::I = StdInt.toInt_20 c_0 in <{_Tuple2!3}> (StdChar.toChar_21 (Text.Encodings.UrlEncoding.digitToHex_4 (<{StdInt.>>}> i_1_0 4))) (StdChar.toChar_21 (Text.Encodings.UrlEncoding.digitToHex_4 (StdInt.bitand i_1_0 15)))
+<{Text.Encodings.UrlEncoding.urlEncode`_7}> !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons x_1_0 xs_1_1 -> case (StdChar.isAlphanum x_1_0) (True -> _predefined._Cons x_1_0 (<{Text.Encodings.UrlEncoding.urlEncode`_7}> xs_1_1)) (False -> let _x_3_0 = Text.Encodings.UrlEncoding.charToHex_6 x_1_0 in <{StdList.++}> (Text.Encodings.UrlEncoding.urlEncodeChar_5 (select _x_3_0::_Tuple2 0) (select _x_3_0::_Tuple2 1) x_1_0) (<{Text.Encodings.UrlEncoding.urlEncode`_7}> xs_1_1)) ) 
+Text.Encodings.UrlEncoding.urlEncode !s_0 = StdList.toString_79 (<{Text.Encodings.UrlEncoding.urlEncode`_7}> (StdList.fromString_78 s_0))
+Text.Encodings.UrlEncoding.hexToDigit_10::I !i_0::I = case (StdBool.not (<{StdInt.<_17}> (StdInt.toInt_20 '9') i_0)) (True -> <{StdInt.-_7}> i_0 (StdInt.toInt_20 '0')) (False -> <{StdInt.+_6}> 10 (<{StdInt.-_7}> i_0 (StdInt.toInt_20 'A'))) 
+Text.Encodings.UrlEncoding.hexToChar_9::C !_x_0 = case _x_0 (_Tuple2 a_1_0 b_1_1 -> StdChar.toChar_21 (<{StdInt.+_6}> (<{StdInt.<<}> (Text.Encodings.UrlEncoding.hexToDigit_10 (StdInt.toInt_20 a_1_0)) 4) (Text.Encodings.UrlEncoding.hexToDigit_10 (StdInt.toInt_20 b_1_1)))) 
+<{Text.Encodings.UrlEncoding.urlDecode`_8}> !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 ('+' -> _predefined._Cons ' ' (<{Text.Encodings.UrlEncoding.urlDecode`_8}> xs_1_1)) ('%' -> case xs_1_1 (_predefined._Cons hex1_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons hex2_4_0 xs_4_1 -> _predefined._Cons (Text.Encodings.UrlEncoding.hexToChar_9 (_Tuple2 hex1_3_0 hex2_4_0)) (<{Text.Encodings.UrlEncoding.urlDecode`_8}> xs_4_1)) ) ) (_ -> _predefined._Cons _x_1_0 (<{Text.Encodings.UrlEncoding.urlDecode`_8}> xs_1_1))) 
+Text.Encodings.UrlEncoding.urlDecode !s_0 = StdList.toString_79 (<{Text.Encodings.UrlEncoding.urlDecode`_8}> (StdList.fromString_78 s_0))
+<{Text.Encodings.UrlEncoding.c;48;71_11}> !g_l_0 = <{Text.Encodings.UrlEncoding.g_c1;48;80_15}> g_l_0
+<{Text.Encodings.UrlEncoding.g_c1;48;80_15}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Text.Encodings.UrlEncoding.g_c2;48;80_14}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Text.Encodings.UrlEncoding.g_c2;48;80_14}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 k_1_0 v_1_1 -> _predefined._Cons (<{StdString.+++_11}> (Text.Encodings.UrlEncoding.urlEncode k_1_0) (<{StdString.+++_11}> "=" (Text.Encodings.UrlEncoding.urlEncode v_1_1))) (<{Text.Encodings.UrlEncoding.c;48;71_11}> g_t_1)) (_ -> <{Text.Encodings.UrlEncoding.c;48;71_11}> g_t_1)
+Text.Encodings.UrlEncoding.urlEncodePairs !pairs_0 = Text.join_6 "&" (<{Text.Encodings.UrlEncoding.c;48;71_11}> pairs_0)
+<{Text.Encodings.UrlEncoding.c;51;76_13}> !g_l_0 = <{Text.Encodings.UrlEncoding.g_c1;51;84_16}> g_l_0
+<{Text.Encodings.UrlEncoding.g_c1;51;84_16}> !g_l_0 = case g_l_0 (_predefined._Cons part_1_0 g_t_1_1 -> _predefined._Cons (Text.split_13 "=" part_1_0) (<{Text.Encodings.UrlEncoding.c;51;76_13}> g_t_1_1)) (_ -> _predefined._Nil)
+<{Text.Encodings.UrlEncoding.c;51;48_12}> !g_l_0 = <{Text.Encodings.UrlEncoding.g_c1;51;57_18}> g_l_0
+<{Text.Encodings.UrlEncoding.g_c1;51;57_18}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{Text.Encodings.UrlEncoding.g_c2;51;57_17}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{Text.Encodings.UrlEncoding.g_c2;51;57_17}> !g_h_0 g_t_1 = case g_h_0 (_predefined._Cons k_1_0 _x_1_1 -> case _x_1_1 (_predefined._Cons v_2_0 _x_2_1 -> case _x_2_1 (_predefined._Nil -> _predefined._Cons (_Tuple2 (Text.Encodings.UrlEncoding.urlDecode k_1_0) (Text.Encodings.UrlEncoding.urlDecode v_2_0)) (<{Text.Encodings.UrlEncoding.c;51;48_12}> g_t_1)) ) ) (_ -> <{Text.Encodings.UrlEncoding.c;51;48_12}> g_t_1)
+Text.Encodings.UrlEncoding.urlDecodePairs !s_0 = <{Text.Encodings.UrlEncoding.c;51;48_12}> (<{Text.Encodings.UrlEncoding.c;51;76_13}> (Text.split_13 "&" s_0))
+
+
+|| Converted Records

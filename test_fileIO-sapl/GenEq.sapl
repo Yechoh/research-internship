@@ -1,0 +1,72 @@
+|| ?module? GenEq
+
+
+<{GenEq.===}>::B !<{_vgEq*_0}> x_1 y_2 = select <{_vgEq*_0}>::<{GenEq.gEq_s;}> 0 x_1 y_2
+<{GenEq.=!=}>::B !<{_vgEq*_0}> x_1 y_2 = StdBool.not (<{GenEq.===}> <{_vgEq*_0}> x_1 y_2)
+GenEq.eq_25::B !_vArray_0 !_vArray_1 f_2 !i_3::I !n_4::I xs_5 ys_6 = case (<{StdInt.==_16}> i_3 n_4) (True -> True) (False -> case (<{StdInt.<_17}> i_3 n_4) (True -> case (f_2 (select _vArray_0::<{_SystemArray.Array;}> 3 xs_5 i_3) (select _vArray_1::<{_SystemArray.Array;}> 3 ys_6 i_3)) (True -> GenEq.eq_25 _vArray_0 _vArray_1 f_2 (<{StdInt.+_6}> i_3 StdInt.one_11) n_4 xs_5 ys_6) (False -> False) ) ) 
+GenEq.eqArray::B !_vArray_0 !_vArray_1 f_2 xs_3 ys_4 = case (<{StdInt.==_16}> (select _vArray_0::<{_SystemArray.Array;}> 4 xs_3) (select _vArray_1::<{_SystemArray.Array;}> 4 ys_4)) (True -> GenEq.eq_25 _vArray_0 _vArray_1 f_2 0 (select _vArray_0::<{_SystemArray.Array;}> 4 xs_3) xs_3 ys_4) (False -> False) 
+GenEq.gEq_Int_2::B !x_0::I !y_1::I = <{StdInt.==_16}> x_0 y_1
+GenEq.gEq_Char_3::B !x_0::C !y_1::C = <{StdChar.==_18}> x_0 y_1
+GenEq.gEq_Bool_4::B !x_0::B !y_1::B = <{StdBool.==_3}> x_0 y_1
+GenEq.gEq_Real_5::B !x_0::D !y_1::D = <{StdReal.==_11}> x_0 y_1
+GenEq.gEq__String_6::B !x_0 !y_1 = <{StdString.==_2}> x_0 y_1
+GenEq.gEq_UNIT_7::B !_x_0 !_x_1 = case _x_0 (StdGeneric.UNIT -> case _x_1 (StdGeneric.UNIT -> True) ) 
+GenEq.gEq_PAIR_8::B !fx_0 fy_1 !_x_2 !_x_3 = case _x_2 (StdGeneric.PAIR x1_1_0 y1_1_1 -> case _x_3 (StdGeneric.PAIR x2_2_0 y2_2_1 -> case (fx_0 x1_1_0 x2_2_0) (True -> fy_1 y1_1_1 y2_2_1) (False -> False) ) ) 
+GenEq.gEq_EITHER_9::B fl_0 fr_1 !_x_2 _x_3 = case _x_2 (StdGeneric.LEFT x_1_0 -> case _x_3 (StdGeneric.LEFT y_2_0 -> fl_0 x_1_0 y_2_0) ) (StdGeneric.RIGHT x_1_0 -> case _x_3 (StdGeneric.RIGHT y_2_0 -> fr_1 x_1_0 y_2_0) ) (_ -> False)
+GenEq.gEq_CONS_10::B !f_0 !_x_1 !_x_2 = case _x_1 (StdGeneric.CONS x_1_0 -> case _x_2 (StdGeneric.CONS y_2_0 -> f_0 x_1_0 y_2_0) ) 
+GenEq.gEq_RECORD_11::B !f_0 !_x_1 !_x_2 = case _x_1 (StdGeneric.RECORD x_1_0 -> case _x_2 (StdGeneric.RECORD y_2_0 -> f_0 x_1_0 y_2_0) ) 
+GenEq.gEq_FIELD_12::B !f_0 !_x_1 !_x_2 = case _x_1 (StdGeneric.FIELD x_1_0 -> case _x_2 (StdGeneric.FIELD y_2_0 -> f_0 x_1_0 y_2_0) ) 
+GenEq.gEq_OBJECT_13::B !f_0 !_x_1 !_x_2 = case _x_1 (StdGeneric.OBJECT x_1_0 -> case _x_2 (StdGeneric.OBJECT y_2_0 -> f_0 x_1_0 y_2_0) ) 
+GenEq.eq_127::B !_vArray_0 f_1 !i_2::I !n_3::I xs_4 ys_5 = case (<{StdInt.==_16}> i_2 n_3) (True -> True) (False -> case (<{StdInt.<_17}> i_2 n_3) (True -> case (f_1 (_SystemArray.select_75 xs_4 i_2) (select _vArray_0::<{_SystemArray.Array;}> 3 ys_5 i_2)) (True -> GenEq.eq_127 _vArray_0 f_1 (<{StdInt.+_6}> i_2 StdInt.one_11) n_3 xs_4 ys_5) (False -> False) ) ) 
+GenEq.eqArray_126::B !_vArray_0 f_1 !xs_2 ys_3 = case (<{StdInt.==_16}> (_SystemArray.size_76 xs_2) (select _vArray_0::<{_SystemArray.Array;}> 4 ys_3)) (True -> GenEq.eq_127 _vArray_0 f_1 0 (_SystemArray.size_76 xs_2) xs_2 ys_3) (False -> False) 
+GenEq.eq_129::B f_0 !i_1::I !n_2::I xs_3 ys_4 = case (<{StdInt.==_16}> i_1 n_2) (True -> True) (False -> case (<{StdInt.<_17}> i_1 n_2) (True -> case (f_0 (_SystemArray.select_75 xs_3 i_1) (_SystemArray.select_75 ys_4 i_1)) (True -> GenEq.eq_129 f_0 (<{StdInt.+_6}> i_1 StdInt.one_11) n_2 xs_3 ys_4) (False -> False) ) ) 
+GenEq.eqArray_128::B f_0 !xs_1 !ys_2 = case (<{StdInt.==_16}> (_SystemArray.size_76 xs_1) (_SystemArray.size_76 ys_2)) (True -> GenEq.eq_129 f_0 0 (_SystemArray.size_76 xs_1) xs_1 ys_2) (False -> False) 
+GenEq.gEq__Array_14::B f_0 !xs_1 !ys_2 = GenEq.eqArray_128 f_0 xs_1 ys_2
+GenEq.eq_131::B !_vArray_0 f_1 !i_2::I !n_3::I xs_4 ys_5 = case (<{StdInt.==_16}> i_2 n_3) (True -> True) (False -> case (<{StdInt.<_17}> i_2 n_3) (True -> case (f_1 (_SystemArray.select_3 xs_4 i_2) (select _vArray_0::<{_SystemArray.Array;}> 3 ys_5 i_2)) (True -> GenEq.eq_131 _vArray_0 f_1 (<{StdInt.+_6}> i_2 StdInt.one_11) n_3 xs_4 ys_5) (False -> False) ) ) 
+GenEq.eqArray_130::B !_vArray_0 f_1 !xs_2 ys_3 = case (<{StdInt.==_16}> (_SystemArray.size_4 xs_2) (select _vArray_0::<{_SystemArray.Array;}> 4 ys_3)) (True -> GenEq.eq_131 _vArray_0 f_1 0 (_SystemArray.size_4 xs_2) xs_2 ys_3) (False -> False) 
+GenEq.eq_133::B f_0 !i_1::I !n_2::I xs_3 ys_4 = case (<{StdInt.==_16}> i_1 n_2) (True -> True) (False -> case (<{StdInt.<_17}> i_1 n_2) (True -> case (f_0 (_SystemArray.select_3 xs_3 i_1) (_SystemArray.select_3 ys_4 i_1)) (True -> GenEq.eq_133 f_0 (<{StdInt.+_6}> i_1 StdInt.one_11) n_2 xs_3 ys_4) (False -> False) ) ) 
+GenEq.eqArray_132::B f_0 !xs_1 !ys_2 = case (<{StdInt.==_16}> (_SystemArray.size_4 xs_1) (_SystemArray.size_4 ys_2)) (True -> GenEq.eq_133 f_0 0 (_SystemArray.size_4 xs_1) xs_1 ys_2) (False -> False) 
+<{GenEq.gEq__!Array_15}>::B f_0 !xs_1 !ys_2 = GenEq.eqArray_132 f_0 xs_1 ys_2
+GenEq.toGeneric_List_33 !x_0 = case x_0 (_predefined._Cons x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1)))) (_predefined._Nil -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.CONS StdGeneric.UNIT))) 
+GenEq.gEq__List_16::B <{gEq_a_25-0_a0_0}> !x1_1 !x2_2 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a0_0}> (GenEq.gEq__List_16 <{gEq_a_25-0_a0_0}>))) (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7)) (GenEq.toGeneric_List_33 x1_1) (GenEq.toGeneric_List_33 x2_2)
+GenEq.toGeneric_Tuple2_40 !x_0 = case x_0 (_Tuple2 x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1))) 
+GenEq.gEq__Tuple2_17::B !<{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}> !x1_2 !x2_3 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}>)) (GenEq.toGeneric_Tuple2_40 x1_2) (GenEq.toGeneric_Tuple2_40 x2_3)
+GenEq.toGeneric_Tuple3_47 !x_0 = case x_0 (_Tuple3 x11_1_0 x12_1_1 x13_1_2 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)))) 
+GenEq.gEq__Tuple3_18::B !<{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}> !x1_3 !x2_4 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a0_0}> (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}>))) (GenEq.toGeneric_Tuple3_47 x1_3) (GenEq.toGeneric_Tuple3_47 x2_4)
+GenEq.toGeneric_Tuple4_54 !x_0 = case x_0 (_Tuple4 x11_1_0 x12_1_1 x13_1_2 x14_1_3 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 x14_1_3)))) 
+GenEq.gEq__Tuple4_19::B !<{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}> <{gEq_a_25-0_a3_3}> !x1_4 !x2_5 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}>) (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a2_2}> <{gEq_a_25-0_a3_3}>))) (GenEq.toGeneric_Tuple4_54 x1_4) (GenEq.toGeneric_Tuple4_54 x2_5)
+GenEq.toGeneric_Tuple5_61 !x_0 = case x_0 (_Tuple5 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 (StdGeneric.PAIR x14_1_3 x15_1_4))))) 
+GenEq.gEq__Tuple5_20::B !<{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}> <{gEq_a_25-0_a3_3}> <{gEq_a_25-0_a4_4}> !x1_5 !x2_6 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}>) (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a2_2}> (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a3_3}> <{gEq_a_25-0_a4_4}>)))) (GenEq.toGeneric_Tuple5_61 x1_5) (GenEq.toGeneric_Tuple5_61 x2_6)
+GenEq.toGeneric_Tuple6_68 !x_0 = case x_0 (_Tuple6 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)) (StdGeneric.PAIR x14_1_3 (StdGeneric.PAIR x15_1_4 x16_1_5))))) 
+GenEq.gEq__Tuple6_21::B !<{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}> <{gEq_a_25-0_a3_3}> <{gEq_a_25-0_a4_4}> <{gEq_a_25-0_a5_5}> !x1_6 !x2_7 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a0_0}> (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}>)) (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a3_3}> (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a4_4}> <{gEq_a_25-0_a5_5}>)))) (GenEq.toGeneric_Tuple6_68 x1_6) (GenEq.toGeneric_Tuple6_68 x2_7)
+GenEq.toGeneric_Tuple7_75 !x_0 = case x_0 (_Tuple7 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 x17_1_6 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 (StdGeneric.PAIR x12_1_1 x13_1_2)) (StdGeneric.PAIR (StdGeneric.PAIR x14_1_3 x15_1_4) (StdGeneric.PAIR x16_1_5 x17_1_6))))) 
+GenEq.gEq__Tuple7_22::B !<{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}> <{gEq_a_25-0_a3_3}> <{gEq_a_25-0_a4_4}> <{gEq_a_25-0_a5_5}> <{gEq_a_25-0_a6_6}> !x1_7 !x2_8 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a0_0}> (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}>)) (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a3_3}> <{gEq_a_25-0_a4_4}>) (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a5_5}> <{gEq_a_25-0_a6_6}>)))) (GenEq.toGeneric_Tuple7_75 x1_7) (GenEq.toGeneric_Tuple7_75 x2_8)
+GenEq.toGeneric_Tuple8_82 !x_0 = case x_0 (_Tuple8 x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 x16_1_5 x17_1_6 x18_1_7 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 x14_1_3)) (StdGeneric.PAIR (StdGeneric.PAIR x15_1_4 x16_1_5) (StdGeneric.PAIR x17_1_6 x18_1_7))))) 
+GenEq.gEq__Tuple8_23::B !<{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}> <{gEq_a_25-0_a2_2}> <{gEq_a_25-0_a3_3}> <{gEq_a_25-0_a4_4}> <{gEq_a_25-0_a5_5}> <{gEq_a_25-0_a6_6}> <{gEq_a_25-0_a7_7}> !x1_8 !x2_9 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a0_0}> <{gEq_a_25-0_a1_1}>) (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a2_2}> <{gEq_a_25-0_a3_3}>)) (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a4_4}> <{gEq_a_25-0_a5_5}>) (GenEq.gEq_PAIR_8 <{gEq_a_25-0_a6_6}> <{gEq_a_25-0_a7_7}>)))) (GenEq.toGeneric_Tuple8_82 x1_8) (GenEq.toGeneric_Tuple8_82 x2_9)
+
+
+|| Converted Records
+:: <{GenEq.gEq_s;}> = {!GenEq.gEq_s}
+
+:: <{GenEq.gEq_ss;}> = {!GenEq.gEq_ss}
+
+:: <{GenEq.gEq_sss;}> = {!GenEq.gEq_sss}
+
+:: <{GenEq.gEq_ssss;}> = {!GenEq.gEq_ssss}
+
+:: <{GenEq.gEq_sssss;}> = {!GenEq.gEq_sssss}
+
+:: <{GenEq.gEq_ssssss;}> = {!GenEq.gEq_ssssss}
+
+:: <{GenEq.gEq_sssssss;}> = {!GenEq.gEq_sssssss}
+
+:: <{GenEq.gEq_ssssssss;}> = {!GenEq.gEq_ssssssss}
+
+:: <{GenEq.gEq_sssssssss;}> = {!GenEq.gEq_sssssssss}
+
+:: <{GenEq.bimap_s;}> = {GenEq.bimap_s}
+
+:: <{GenEq.bimap_ss;}> = {GenEq.bimap_ss}
+
+:: <{GenEq.bimap_sss;}> = {GenEq.bimap_sss}
+

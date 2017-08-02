@@ -1,0 +1,119 @@
+|| ?module? Sapl.Transform.TailRecursion
+
+
+Sapl.Transform.TailRecursion.anon_24 a_0 as_1 = _predefined._Cons a_0 as_1
+Sapl.Transform.TailRecursion.anon_23 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+Sapl.Transform.TailRecursion.anon_22 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+Sapl.Transform.TailRecursion.fst_21 !tuple_0 = select tuple_0::_Tuple2 0
+Sapl.Transform.TailRecursion.anon_20 a_0 as_1 = _predefined._Cons a_0 as_1
+Sapl.Transform.TailRecursion.foldl_19 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_19 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.anon_7::B !<{_v==_0}> m_1 e_2 = select <{_v==_0}>::<{StdOverloaded.==;}> 0 (select e_2::_Tuple2 1) m_1
+Sapl.Transform.TailRecursion.peredge_8 !_vOrd_0 !_vOrd_1 !_vEq_2 !_vEq_3 !_x_4 !e_5 = case _x_4 (_Tuple2 edges_1_0 out_1_1 -> case e_5 (_Tuple2 n_2_0 m_2_1 -> let edges_3_0 = Data.Set.delete (<{StdOverloaded.<;}> (<{StdTuple.<_6}> _vOrd_0 _vOrd_1)) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> _vEq_2 _vEq_3)) e_5 edges_1_0 in case (<{Sapl.Transform.TailRecursion._c;55;12_175}> (Data.Set.filter (<{StdOverloaded.<;}> (<{StdTuple.<_6}> _vOrd_0 _vOrd_1)) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> _vEq_2 _vEq_3)) (Sapl.Transform.TailRecursion.anon_7 (select _vEq_3::<{StdClass.Eq;}> 0) m_2_1) edges_3_0)) (True -> _Tuple2 edges_3_0 (_predefined._Cons m_2_1 out_1_1)) (False -> _Tuple2 edges_3_0 out_1_1) ) ) 
+<{Sapl.Transform.TailRecursion._c;55;12_175}>::B !_x_0 = case _x_0 (Data.Set.Tip -> True) (Data.Set.Bin sz_1_0 _x_1_1 _x_1_2 _x_1_3 -> False) 
+Sapl.Transform.TailRecursion.anon_6::B !<{_v==_0}> n_1 e_2 = select <{_v==_0}>::<{StdOverloaded.==;}> 0 (select e_2::_Tuple2 0) n_1
+Sapl.Transform.TailRecursion.foldl_152 !_vOrd_0 !_vOrd_1 !_vEq_2 !_vEq_3 !r_4 !_x_5 = case _x_5 (_predefined._Nil -> r_4) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_152 _vOrd_0 _vOrd_1 _vEq_2 _vEq_3 (Sapl.Transform.TailRecursion.peredge_8 _vOrd_0 _vOrd_1 _vEq_2 _vEq_3 r_4 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.gen_9 !_vOrd_0 !_vEq_1 edges_2 !_x_3 = case _x_3 (_predefined._Nil -> _Tuple2 edges_2 _predefined._Nil) (_predefined._Cons n_1_0 ns_1_1 -> let _x_2_0 = Sapl.Transform.TailRecursion.foldl_152 _vOrd_0 _vOrd_0 _vEq_1 _vEq_1 (_Tuple2 edges_2 _predefined._Nil) (StdList.filter (Sapl.Transform.TailRecursion.anon_6 (select _vEq_1::<{StdClass.Eq;}> 0) n_1_0) (Data.Set.fold Sapl.Transform.TailRecursion.anon_20 _predefined._Nil edges_2)), _x_2_1 = Sapl.Transform.TailRecursion.gen_9 _vOrd_0 _vEq_1 (select _x_2_0::_Tuple2 0) (<{StdList.++}> (select _x_2_0::_Tuple2 1) ns_1_1) in _Tuple2 (select _x_2_1::_Tuple2 0) (_predefined._Cons n_1_0 (select _x_2_1::_Tuple2 1))) 
+<{Sapl.Transform.TailRecursion.get`_17}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{Sapl.Transform.TailRecursion.get`_17}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{Sapl.Transform.TailRecursion.get`_17}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+Sapl.Transform.TailRecursion.anon_4 !<{_v<_0}> !defmap_1 k_2 = Data.Maybe.fromJust (<{Sapl.Transform.TailRecursion.get`_17}> <{_v<_0}> k_2 defmap_1)
+Sapl.Transform.TailRecursion.foldl_16 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_16 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.foldl_15 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_15 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.foldl_14 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_14 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.foldl_13 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_13 op_0 (op_0 r_1 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.snd_12 !tuple_0 = select tuple_0::_Tuple2 1
+<{Sapl.Transform.TailRecursion.==_10}>::B !a_0 !b_1 = Sapl.SaplStruct.eqVarByNameLevel a_0 b_1
+<{Sapl.Transform.TailRecursion.<_11}>::B !a_0 !b_1 = Sapl.SaplStruct.ltVarByNameLevel a_0 b_1
+Sapl.Transform.TailRecursion.foldl_153 vs_0 bv_1 r_2 !_x_3 = case _x_3 (_predefined._Nil -> r_2) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_153 vs_0 bv_1 (Sapl.Transform.TailRecursion.gen_3 vs_0 bv_1 r_2 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.foldl_155 vs_0 bv_1 r_2 !_x_3 = case _x_3 (_predefined._Nil -> r_2) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_155 vs_0 bv_1 (Sapl.Transform.TailRecursion.gen_3 vs_0 bv_1 r_2 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.foldl_154 vs_0 bv_1 r_2 !_x_3 = case _x_3 (_predefined._Nil -> r_2) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_154 vs_0 bv_1 (Sapl.Transform.TailRecursion.gen_3 vs_0 bv_1 r_2 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.gen_3 vs_0 bv_1 s_2 !_x_3 = case _x_3 (Sapl.SaplStruct.SSelect expr_1_0 _x_1_1 idx_1_2 -> Sapl.Transform.TailRecursion.gen_3 vs_0 bv_1 s_2 expr_1_0) (Sapl.SaplStruct.SUpdate expr_1_0 _x_1_1 updates_1_2 -> Sapl.Transform.TailRecursion.foldl_153 vs_0 bv_1 (Sapl.Transform.TailRecursion.gen_3 vs_0 bv_1 s_2 expr_1_0) (StdList.map Sapl.Transform.TailRecursion.snd_12 updates_1_2)) (Sapl.SaplStruct.SApplication _x_1_0 as_1_1 -> case _x_1_0 (Sapl.SaplStruct.SVar f_2_0 -> Sapl.Transform.TailRecursion.foldl_154 vs_0 bv_1 s_2 (_predefined._Cons (Sapl.SaplStruct.SVar f_2_0) as_1_1)) (_ -> Sapl.Transform.TailRecursion.foldl_155 vs_0 bv_1 (Sapl.Transform.TailRecursion.gen_3 vs_0 bv_1 s_2 _x_1_0) as_1_1)) (Sapl.SaplStruct.SVar v_1_0 -> case s_2 (_Tuple2 es_2_0 is_2_1 -> case (case (Data.Set.member (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>) (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>) v_1_0 vs_0) (True -> StdBool.not (<{Sapl.Transform.TailRecursion.==_10}> v_1_0 bv_1)) (False -> False) ) (True -> _Tuple2 (Data.Set.insert (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)))) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>)) (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>)))) (_Tuple2 bv_1 v_1_0) es_2_0) (Data.Set.delete (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>) (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>) v_1_0 is_2_1)) ) ) (_ -> s_2)
+Sapl.Transform.TailRecursion.anon_2 binds_0 s_1 !_x_2 = case _x_2 (_Tuple2 _x_1_0 body_1_1 -> case _x_1_0 (Sapl.SaplStruct.TypedVar bv_2_0 _x_2_1 -> Sapl.Transform.TailRecursion.gen_3 binds_0 bv_2_0 s_1 body_1_1) ) 
+Sapl.Transform.TailRecursion.foldl_156 binds_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_156 binds_0 (Sapl.Transform.TailRecursion.anon_2 binds_0 r_1 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.genGraph !binds_0 !defs_1 = Sapl.Transform.TailRecursion.foldl_156 binds_0 (_Tuple2 Data.Set.newSet binds_0) defs_1
+Sapl.Transform.TailRecursion.anon_5 !d_0 = case d_0 (_Tuple2 bv_1_0 body_1_1 -> _Tuple2 (Sapl.SaplStruct.removeTypeInfo bv_1_0) d_0) 
+Sapl.Transform.TailRecursion.anon_157 !g_0 x_1 = Sapl.SaplStruct.toNormalVar_17 (g_0 x_1)
+Sapl.Transform.TailRecursion.anon_158 !g_0 x_1 = Sapl.SaplStruct.removeTypeInfo (g_0 x_1)
+Sapl.Transform.TailRecursion.peredge_161 !_vOrd_0 !_vEq_1 !_vEq_2 !_x_3 !e_4 = case _x_3 (_Tuple2 edges_1_0 out_1_1 -> case e_4 (_Tuple2 n_2_0 m_2_1 -> let edges_3_0 = Data.Set.delete (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) _vOrd_0)) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> _vEq_1 _vEq_2)) e_4 edges_1_0 in case (<{Sapl.Transform.TailRecursion._c;55;12_176}> (Data.Set.filter (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) _vOrd_0)) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> _vEq_1 _vEq_2)) (Sapl.Transform.TailRecursion.anon_7 (select _vEq_2::<{StdClass.Eq;}> 0) m_2_1) edges_3_0)) (True -> _Tuple2 edges_3_0 (_predefined._Cons m_2_1 out_1_1)) (False -> _Tuple2 edges_3_0 out_1_1) ) ) 
+<{Sapl.Transform.TailRecursion._c;55;12_176}>::B !_x_0 = case _x_0 (Data.Set.Tip -> True) (Data.Set.Bin sz_1_0 _x_1_1 _x_1_2 _x_1_3 -> False) 
+Sapl.Transform.TailRecursion.foldl_160 !_vOrd_0 !_vEq_1 !_vEq_2 !r_3 !_x_4 = case _x_4 (_predefined._Nil -> r_3) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_160 _vOrd_0 _vEq_1 _vEq_2 (Sapl.Transform.TailRecursion.peredge_161 _vOrd_0 _vEq_1 _vEq_2 r_3 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.peredge_165 !_vEq_0 !_vEq_1 !_x_2 !e_3 = case _x_2 (_Tuple2 edges_1_0 out_1_1 -> case e_3 (_Tuple2 n_2_0 m_2_1 -> let edges_3_0 = Data.Set.delete (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)))) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> _vEq_0 _vEq_1)) e_3 edges_1_0 in case (<{Sapl.Transform.TailRecursion._c;55;12_177}> (Data.Set.filter (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)))) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> _vEq_0 _vEq_1)) (Sapl.Transform.TailRecursion.anon_7 (select _vEq_1::<{StdClass.Eq;}> 0) m_2_1) edges_3_0)) (True -> _Tuple2 edges_3_0 (_predefined._Cons m_2_1 out_1_1)) (False -> _Tuple2 edges_3_0 out_1_1) ) ) 
+<{Sapl.Transform.TailRecursion._c;55;12_177}>::B !_x_0 = case _x_0 (Data.Set.Tip -> True) (Data.Set.Bin sz_1_0 _x_1_1 _x_1_2 _x_1_3 -> False) 
+Sapl.Transform.TailRecursion.foldl_164 !_vEq_0 !_vEq_1 !r_2 !_x_3 = case _x_3 (_predefined._Nil -> r_2) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_164 _vEq_0 _vEq_1 (Sapl.Transform.TailRecursion.peredge_165 _vEq_0 _vEq_1 r_2 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.gen_159 !_vEq_0 edges_1 !_x_2 = case _x_2 (_predefined._Nil -> _Tuple2 edges_1 _predefined._Nil) (_predefined._Cons n_1_0 ns_1_1 -> let _x_2_0 = Sapl.Transform.TailRecursion.foldl_164 _vEq_0 _vEq_0 (_Tuple2 edges_1 _predefined._Nil) (StdList.filter (Sapl.Transform.TailRecursion.anon_6 (select _vEq_0::<{StdClass.Eq;}> 0) n_1_0) (Data.Set.fold Sapl.Transform.TailRecursion.anon_20 _predefined._Nil edges_1)), _x_2_1 = Sapl.Transform.TailRecursion.gen_159 _vEq_0 (select _x_2_0::_Tuple2 0) (<{StdList.++}> (select _x_2_0::_Tuple2 1) ns_1_1) in _Tuple2 (select _x_2_1::_Tuple2 0) (_predefined._Cons n_1_0 (select _x_2_1::_Tuple2 1))) 
+<{Sapl.Transform.TailRecursion.get`_163}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{Sapl.Transform.TailRecursion.<_11}> _x_0 kx_1_1) (True -> <{Sapl.Transform.TailRecursion.get`_163}> _x_0 l_1_3) (False -> case (<{Sapl.Transform.TailRecursion.<_11}> kx_1_1 _x_0) (True -> <{Sapl.Transform.TailRecursion.get`_163}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+Sapl.Transform.TailRecursion.anon_162 !defmap_0 k_1 = Data.Maybe.fromJust (<{Sapl.Transform.TailRecursion.get`_163}> k_1 defmap_0)
+Sapl.Transform.TailRecursion.anon_166 !x_0 = Sapl.SaplStruct.toNormalVar_17 (Sapl.Transform.TailRecursion.fst_21 x_0)
+Sapl.Transform.TailRecursion.anon_167 !x_0 = Sapl.SaplStruct.removeTypeInfo (Sapl.Transform.TailRecursion.anon_166 x_0)
+Sapl.Transform.TailRecursion.peredge_171 !_vEq_0 !_x_1 !e_2 = case _x_1 (_Tuple2 edges_1_0 out_1_1 -> case e_2 (_Tuple2 n_2_0 m_2_1 -> let edges_3_0 = Data.Set.delete (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)))) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>)) _vEq_0)) e_2 edges_1_0 in case (<{Sapl.Transform.TailRecursion._c;55;12_178}> (Data.Set.filter (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)))) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>)) _vEq_0)) (Sapl.Transform.TailRecursion.anon_7 (select _vEq_0::<{StdClass.Eq;}> 0) m_2_1) edges_3_0)) (True -> _Tuple2 edges_3_0 (_predefined._Cons m_2_1 out_1_1)) (False -> _Tuple2 edges_3_0 out_1_1) ) ) 
+<{Sapl.Transform.TailRecursion._c;55;12_178}>::B !_x_0 = case _x_0 (Data.Set.Tip -> True) (Data.Set.Bin sz_1_0 _x_1_1 _x_1_2 _x_1_3 -> False) 
+Sapl.Transform.TailRecursion.foldl_170 !_vEq_0 !r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_170 _vEq_0 (Sapl.Transform.TailRecursion.peredge_171 _vEq_0 r_1 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.anon_169::B !n_0 !e_1 = <{Sapl.Transform.TailRecursion.==_10}> (select e_1::_Tuple2 0) n_0
+Sapl.Transform.TailRecursion.anon_174::B !m_0 !e_1 = <{Sapl.Transform.TailRecursion.==_10}> (select e_1::_Tuple2 1) m_0
+Sapl.Transform.TailRecursion.peredge_173 !_x_0 !e_1 = case _x_0 (_Tuple2 edges_1_0 out_1_1 -> case e_1 (_Tuple2 n_2_0 m_2_1 -> let edges_3_0 = Data.Set.delete (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)))) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>)) (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>)))) e_1 edges_1_0 in case (<{Sapl.Transform.TailRecursion._c;55;12_179}> (Data.Set.filter (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>)))) (<{StdOverloaded.==;}> (<{StdTuple.==_4}> (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>)) (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>)))) (Sapl.Transform.TailRecursion.anon_174 m_2_1) edges_3_0)) (True -> _Tuple2 edges_3_0 (_predefined._Cons m_2_1 out_1_1)) (False -> _Tuple2 edges_3_0 out_1_1) ) ) 
+<{Sapl.Transform.TailRecursion._c;55;12_179}>::B !_x_0 = case _x_0 (Data.Set.Tip -> True) (Data.Set.Bin sz_1_0 _x_1_1 _x_1_2 _x_1_3 -> False) 
+Sapl.Transform.TailRecursion.foldl_172 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> Sapl.Transform.TailRecursion.foldl_172 (Sapl.Transform.TailRecursion.peredge_173 r_0 a_1_0) x_1_1) 
+Sapl.Transform.TailRecursion.gen_168 edges_0 !_x_1 = case _x_1 (_predefined._Nil -> _Tuple2 edges_0 _predefined._Nil) (_predefined._Cons n_1_0 ns_1_1 -> let _x_2_0 = Sapl.Transform.TailRecursion.foldl_172 (_Tuple2 edges_0 _predefined._Nil) (StdList.filter (Sapl.Transform.TailRecursion.anon_169 n_1_0) (Data.Set.fold Sapl.Transform.TailRecursion.anon_20 _predefined._Nil edges_0)), _x_2_1 = Sapl.Transform.TailRecursion.gen_168 (select _x_2_0::_Tuple2 0) (<{StdList.++}> (select _x_2_0::_Tuple2 1) ns_1_1) in _Tuple2 (select _x_2_1::_Tuple2 0) (_predefined._Cons n_1_0 (select _x_2_1::_Tuple2 1))) 
+Sapl.Transform.TailRecursion.sortSetters !_x_0 = case _x_0 (_predefined._Cons d_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> Data.Maybe.Just (_predefined._Cons d_1_0 _predefined._Nil)) ) (_ -> let binds_1_0 = Data.Set.fromList (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>) (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>) (StdList.map Sapl.Transform.TailRecursion.anon_167 _x_0), _x_1_1 = Sapl.Transform.TailRecursion.genGraph binds_1_0 _x_0, edges_1_2 = select _x_1_1::_Tuple2 0, startnodes_1_3 = select _x_1_1::_Tuple2 1, _x_1_4 = Sapl.Transform.TailRecursion.gen_168 edges_1_2 (Data.Set.fold Sapl.Transform.TailRecursion.anon_24 _predefined._Nil startnodes_1_3) in case (<{Sapl.Transform.TailRecursion._c;55;12_180}> (select _x_1_4::_Tuple2 0)) (True -> Data.Maybe.Just (StdList.map (Sapl.Transform.TailRecursion.anon_162 (Data.Map.fromList (<{StdOverloaded.==;}> <{Sapl.Transform.TailRecursion.==_10}>) (<{StdOverloaded.<;}> <{Sapl.Transform.TailRecursion.<_11}>) (StdList.map Sapl.Transform.TailRecursion.anon_5 _x_0))) (StdList.reverse (select _x_1_4::_Tuple2 1)))) (False -> Data.Maybe.Nothing) )
+<{Sapl.Transform.TailRecursion._c;55;12_180}>::B !_x_0 = case _x_0 (Data.Set.Tip -> True) (Data.Set.Bin sz_1_0 _x_1_1 _x_1_2 _x_1_3 -> False) 
+
+
+|| Converted Records
+:: <{Sapl.Transform.TailRecursion.JSONEncode_s;}> = {!Sapl.Transform.TailRecursion.JSONEncode_s}
+
+:: <{Sapl.Transform.TailRecursion.JSONEncode_ss;}> = {!Sapl.Transform.TailRecursion.JSONEncode_ss}
+
+:: <{Sapl.Transform.TailRecursion.JSONEncode_sss;}> = {!Sapl.Transform.TailRecursion.JSONEncode_sss}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_s;}> = {!Sapl.Transform.TailRecursion.JSONDecode_s}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_ss;}> = {!Sapl.Transform.TailRecursion.JSONDecode_ss}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_sss;}> = {!Sapl.Transform.TailRecursion.JSONDecode_sss}
+
+:: <{Sapl.Transform.TailRecursion.gEq_s;}> = {!Sapl.Transform.TailRecursion.gEq_s}
+
+:: <{Sapl.Transform.TailRecursion.gEq_ss;}> = {!Sapl.Transform.TailRecursion.gEq_ss}
+
+:: <{Sapl.Transform.TailRecursion.gEq_sss;}> = {!Sapl.Transform.TailRecursion.gEq_sss}
+
+:: <{Sapl.Transform.TailRecursion.gEq_ssss;}> = {!Sapl.Transform.TailRecursion.gEq_ssss}
+
+:: <{Sapl.Transform.TailRecursion.gEq_sssss;}> = {!Sapl.Transform.TailRecursion.gEq_sssss}
+
+:: <{Sapl.Transform.TailRecursion.gEq_ssssss;}> = {!Sapl.Transform.TailRecursion.gEq_ssssss}
+
+:: <{Sapl.Transform.TailRecursion.gEq_sssssss;}> = {!Sapl.Transform.TailRecursion.gEq_sssssss}
+
+:: <{Sapl.Transform.TailRecursion.gEq_ssssssss;}> = {!Sapl.Transform.TailRecursion.gEq_ssssssss}
+
+:: <{Sapl.Transform.TailRecursion.gEq_sssssssss;}> = {!Sapl.Transform.TailRecursion.gEq_sssssssss}
+
+:: <{Sapl.Transform.TailRecursion.bimap_s;}> = {Sapl.Transform.TailRecursion.bimap_s}
+
+:: <{Sapl.Transform.TailRecursion.bimap_ss;}> = {Sapl.Transform.TailRecursion.bimap_ss}
+
+:: <{Sapl.Transform.TailRecursion.bimap_sss;}> = {Sapl.Transform.TailRecursion.bimap_sss}
+
+:: <{Sapl.Transform.TailRecursion.JSONEncode_ssss;}> = {!Sapl.Transform.TailRecursion.JSONEncode_ssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONEncode_sssss;}> = {!Sapl.Transform.TailRecursion.JSONEncode_sssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONEncode_ssssss;}> = {!Sapl.Transform.TailRecursion.JSONEncode_ssssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONEncode_sssssss;}> = {!Sapl.Transform.TailRecursion.JSONEncode_sssssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONEncode_ssssssss;}> = {!Sapl.Transform.TailRecursion.JSONEncode_ssssssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONEncode_sssssssss;}> = {!Sapl.Transform.TailRecursion.JSONEncode_sssssssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_ssss;}> = {!Sapl.Transform.TailRecursion.JSONDecode_ssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_sssss;}> = {!Sapl.Transform.TailRecursion.JSONDecode_sssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_ssssss;}> = {!Sapl.Transform.TailRecursion.JSONDecode_ssssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_sssssss;}> = {!Sapl.Transform.TailRecursion.JSONDecode_sssssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_ssssssss;}> = {!Sapl.Transform.TailRecursion.JSONDecode_ssssssss}
+
+:: <{Sapl.Transform.TailRecursion.JSONDecode_sssssssss;}> = {!Sapl.Transform.TailRecursion.JSONDecode_sssssssss}
+

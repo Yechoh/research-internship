@@ -1,0 +1,684 @@
+|| ?module? syntax
+
+
+syntax.abort_empty_SymbolTableEntry = StdMisc.abort "empty SymbolTableEntry"
+syntax.EmptySymbolTableEntryCAF =: syntax._BoxedSymbolTableEntry (syntax._SymbolTableEntry syntax.STE_Empty -1 -1 syntax.abort_empty_SymbolTableEntry general.No)
+syntax.newTypeSymbIdentCAF =: syntax._TypeSymbIdent (syntax._Ident "" Heap.nilPtr) 0 (syntax._Global -1 -1) (syntax._TypeSymbProperties (typeproperties._SignClassification 0 0) 0 True)
+syntax.write_contexts2_311 !<{_v<<<_0}> !_x_1 file_2 = case _x_1 (_predefined._Nil -> file_2) (_predefined._Cons tc_1_0 tcs_1_1 -> syntax.write_contexts2_311 <{_v<<<_0}> tcs_1_1 (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{StdFile.<<<_38}> file_2 " & ") tc_1_0)) 
+syntax.write_contexts !<{_v<<<_0}> !_x_1 file_2 = case _x_1 (_predefined._Nil -> file_2) (_predefined._Cons tc_1_0 tcs_1_1 -> syntax.write_contexts2_311 <{_v<<<_0}> tcs_1_1 (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{StdFile.<<<_38}> file_2 " | ") tc_1_0)) 
+syntax.write_remaining_inequalities_312 !<{_v<<<_0}> !_x_1 file_2 = case _x_1 (_predefined._Nil -> file_2) (_predefined._Cons ineq_1_0 ineqs_1_1 -> syntax.write_remaining_inequalities_312 <{_v<<<_0}> ineqs_1_1 (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{StdFile.<<<_37}> file_2 ' ') ineq_1_0)) 
+syntax.write_inequalities !<{_v<<<_0}> !_x_1 file_2 = case _x_1 (_predefined._Nil -> file_2) (_predefined._Cons ineq_1_0 ineqs_1_1 -> syntax.write_remaining_inequalities_312 <{_v<<<_0}> ineqs_1_1 (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{StdFile.<<<_37}> file_2 ',') ineq_1_0)) 
+syntax.write_var_ptrs_313 !<{_v<<<_0}> file_1 !_x_2 = case _x_2 (_predefined._Cons var_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_1 var_1_0) (_ -> syntax.write_var_ptrs_313 <{_v<<<_0}> (<{StdFile.<<<_37}> (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_1 var_1_0) '.') _x_1_1)) 
+syntax.writeVarPtrs !<{_v<<<_0}> file_1 !_x_2 = case _x_2 (_predefined._Nil -> file_1) (_ -> <{StdFile.<<<_37}> (syntax.write_var_ptrs_313 <{_v<<<_0}> (<{StdFile.<<<_37}> file_1 '<') _x_2) '>')
+syntax.readable !_x_0 = case _x_0 (syntax._Ident id_name_1_0 id_info_1_1 -> case (case (<{StdInt.<_17}> 0 (_SystemArray.size_20 id_name_1_0)) (True -> <{StdChar.==_18}> (_SystemArray.select_19 id_name_1_0 0) '_') (False -> False) ) (True -> case (case (<{StdString.==_2}> id_name_1_0 "_Cons") (True -> True) (False -> <{StdString.==_2}> id_name_1_0 "_Nil") ) (True -> "list constructor") (False -> case (case (<{StdString.==_2}> id_name_1_0 "_!Cons") (True -> True) (False -> <{StdString.==_2}> id_name_1_0 "_!Nil") ) (True -> "! list constructor") (False -> case (case (<{StdString.==_2}> id_name_1_0 "_#Cons") (True -> True) (False -> <{StdString.==_2}> id_name_1_0 "_#Nil") ) (True -> "# list constructor") (False -> case (case (<{StdString.==_2}> id_name_1_0 "_Cons!") (True -> True) (False -> <{StdString.==_2}> id_name_1_0 "_Nil!") ) (True -> "list constructor !") (False -> case (case (<{StdString.==_2}> id_name_1_0 "_!Cons!") (True -> True) (False -> <{StdString.==_2}> id_name_1_0 "_!Nil!") ) (True -> "! list constructor !") (False -> case (case (<{StdString.==_2}> id_name_1_0 "_#Cons!") (True -> True) (False -> <{StdString.==_2}> id_name_1_0 "_#Nil!") ) (True -> "# list constructor !") (False -> <{StdString.%_10}> id_name_1_0 (_Tuple2 1 (<{StdInt.-_7}> (_SystemArray.size_20 id_name_1_0) 1))) ) ) ) ) ) ) (False -> id_name_1_0) ) 
+<{syntax.<<<_24}> !file_0 !_x_1 = case _x_1 (syntax._Ident id_name_1_0 id_info_1_1 -> <{StdFile.<<<_38}> file_0 id_name_1_0) 
+<{syntax.<<<_38}> !file_0 !_x_1 = case _x_1 (syntax.BVI int_1_0 -> <{StdFile.<<<_38}> file_0 int_1_0) (syntax.BVInt int_1_0 -> <{StdFile.<<<_36}> file_0 int_1_0) (syntax.BVC char_1_0 -> <{StdFile.<<<_38}> file_0 char_1_0) (syntax.BVB bool_1_0 -> <{general.<<<_6}> file_0 bool_1_0) (syntax.BVR real_1_0 -> <{StdFile.<<<_38}> file_0 real_1_0) (syntax.BVS string_1_0 -> <{StdFile.<<<_38}> file_0 string_1_0) 
+syntax.show_expression !file_0 !_x_1 = case _x_1 (syntax.Var _x_1_0 -> case _x_1_0 (syntax._BoundVar var_ident_2_0 var_info_ptr_2_1 var_expr_ptr_2_2 -> <{syntax.<<<_24}> file_0 var_ident_2_0) ) (syntax.FreeVar _x_1_0 -> case _x_1_0 (syntax._FreeVar fv_def_level_2_0 fv_ident_2_1 fv_info_ptr_2_2 fv_count_2_3 -> <{syntax.<<<_24}> file_0 fv_ident_2_1) ) (syntax.App _x_1_0 -> case _x_1_0 (syntax._App _x_2_0 app_args_2_1 app_info_ptr_2_2 -> case _x_2_0 (syntax._SymbIdent symb_ident_3_0 symb_kind_3_1 -> case (<{StdString.==_2}> (select symb_ident_3_0::syntax._Ident 0) "_dummyForStrictAlias") (True -> syntax.show_expression file_0 (StdList.hd app_args_2_1)) (False -> <{StdFile.<<<_38}> file_0 (syntax.readable symb_ident_3_0)) ) ) ) (<{syntax.@}> fun_1_0 fun_args_1_1 -> syntax.show_expression file_0 fun_1_0) (syntax.Case _x_1_0 -> case _x_1_0 (syntax._Case case_expr_2_0 case_guards_2_1 case_default_2_2 _x_2_3 case_info_ptr_2_4 case_explicit_2_5 case_default_pos_2_6 -> case _x_2_3 (general.No -> <{StdFile.<<<_38}> file_0 "(case ... )") ) ) (syntax.Selection _x_1_0 expr_1_1 selectors_1_2 -> <{StdFile.<<<_38}> file_0 "selection") (syntax.Update expr1_1_0 selectors_1_1 expr2_1_2 -> <{StdFile.<<<_38}> file_0 "update") (syntax.TupleSelect _x_1_0 elem_nr_1_1 expr_1_2 -> case _x_1_0 (syntax._DefinedSymbol ds_ident_2_0 ds_arity_2_1 ds_index_2_2 -> <{StdFile.<<<_38}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "argument ") (<{StdInt.+_6}> elem_nr_1_1 1)) " of ") ds_arity_2_1) "-tuple") ) (syntax.BasicExpr bv_1_0 -> <{syntax.<<<_38}> file_0 bv_1_0) (syntax.RecordUpdate _x_1_0 _x_1_1 _x_1_2 -> <{StdFile.<<<_38}> file_0 "update of record") (syntax.MatchExpr _x_1_0 expr_1_1 -> <{StdFile.<<<_38}> file_0 "match expression") (syntax.IsConstructor _x_1_0 _x_1_1 _x_1_2 _x_1_3 _x_1_4 _x_1_5 -> <{StdFile.<<<_38}> file_0 "is constructor expression") (syntax.Let _x_1_0 -> <{StdFile.<<<_38}> file_0 "(let ... ) or #") (_ -> file_0)
+syntax.toString_2 !_x_0 = case _x_0 (syntax._Ident id_name_1_0 id_info_1_1 -> id_name_1_0) 
+<{syntax.==_3}>::B !_x_0 !_x_1 = case _x_0 (syntax.FunctionOrIclMacroIndex f1_1_0 -> case _x_1 (syntax.FunctionOrIclMacroIndex f2_2_0 -> <{StdInt.==_16}> f1_1_0 f2_2_0) ) (syntax.DclMacroIndex m1_1_0 f1_1_1 -> case _x_1 (syntax.DclMacroIndex m2_2_0 f2_2_1 -> case (<{StdInt.==_16}> m1_1_0 m2_2_0) (True -> <{StdInt.==_16}> f1_1_1 f2_2_1) (False -> False) ) ) (_ -> False)
+<{syntax.==_74}>::B !gi1_0 !gi2_1 = case (<{StdInt.==_16}> (select gi1_0::syntax._GlobalIndex 0) (select gi2_1::syntax._GlobalIndex 0)) (True -> <{StdInt.==_16}> (select gi1_0::syntax._GlobalIndex 1) (select gi2_1::syntax._GlobalIndex 1)) (False -> False) 
+<{syntax.==_4}>::B !gen_dep1_0 !gen_dep2_1 = case (<{syntax.==_74}> (select gen_dep1_0::syntax._GenericDependency 1) (select gen_dep2_1::syntax._GenericDependency 1)) (True -> <{StdList.==_45}> (<{StdOverloaded.==;}> <{compare_types.==_12}>) (select gen_dep1_0::syntax._GenericDependency 2) (select gen_dep2_1::syntax._GenericDependency 2)) (False -> False) 
+syntax.toString_5 !_x_0 = case _x_0 (syntax._Import import_module_1_0 import_symbols_1_1 import_file_position_1_2 import_qualified_1_3 -> syntax.toString_2 import_module_1_0) 
+syntax.toString_6 !_x_0 = case _x_0 (syntax._AttributeVar av_ident_1_0 av_info_ptr_1_1 -> syntax.toString_2 av_ident_1_0) 
+syntax.toString_7 !_x_0 = case _x_0 (syntax.TA_Unique -> "*") (syntax.TA_TempVar tav_number_1_0 -> <{general.+_14}> (<{general.+_14}> "u" (StdString.toString_5 tav_number_1_0)) ":") (syntax.TA_Var avar_1_0 -> <{general.+_14}> (syntax.toString_6 avar_1_0) ":") (syntax.TA_RootVar avar_1_0 -> <{general.+_14}> (syntax.toString_6 avar_1_0) ":)") (syntax.TA_Anonymous -> ".") (syntax.TA_None -> "") (syntax.TA_Multi -> "o ") (syntax.TA_MultiOfPropagatingConsVar -> "@@ ") (syntax.TA_List _x_1_0 _x_1_1 -> "??? ") 
+syntax.toString_8 !_x_0 = case _x_0 (syntax.AN_Strict -> "!") (_ -> "")
+syntax.to_string_318 !_vtoString_0 !_x_1 = case _x_1 (_predefined._Nil -> "??????") (_predefined._Cons k_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> select _vtoString_0::<{StdOverloaded.toString;}> 0 k_1_0) (_ -> <{StdString.+++_11}> (select _vtoString_0::<{StdOverloaded.toString;}> 0 k_1_0) (<{StdString.+++_11}> "->" (syntax.to_string_318 _vtoString_0 _x_1_1)))) 
+syntax.to_string_370 !_x_0 = case _x_0 (_predefined._Nil -> "??????") (_predefined._Cons k_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> syntax.toString_9 k_1_0) (_ -> <{StdString.+++_11}> (syntax.toString_9 k_1_0) (<{StdString.+++_11}> "->" (syntax.to_string_370 _x_1_1)))) 
+syntax.toString_9 !_x_0 = case _x_0 (syntax.KindVar _x_1_0 -> "**") (syntax.KindConst -> "*") (syntax.KindArrow args_1_0 -> <{StdString.+++_11}> "{" (<{StdString.+++_11}> (syntax.to_string_370 args_1_0) "->*}")) 
+<{syntax.<<<_10}> !file_0 !kind_1 = <{StdFile.<<<_38}> file_0 (syntax.toString_9 kind_1)
+<{syntax.==_11}>::B !_x_0 !_x_1 = case _x_0 (syntax.KindConst -> case _x_1 (syntax.KindConst -> True) ) (syntax.KindArrow xs_1_0 -> case _x_1 (syntax.KindArrow ys_2_0 -> <{StdList.==_45}> (<{StdOverloaded.==;}> <{syntax.==_11}>) xs_1_0 ys_2_0) ) (_ -> False)
+syntax.withBrackets_319 !_x_0 !kind_str_1 = case _x_0 (syntax.KI_Arrow _x_1_0 _x_1_1 -> <{StdString.+++_11}> "(" (<{StdString.+++_11}> kind_str_1 ")")) (_ -> kind_str_1)
+syntax.toString_12 !_x_0 = case _x_0 (syntax.KI_Var ptr_1_0 -> "*") (syntax.KI_Const -> "*") (syntax.KI_Arrow kind1_1_0 kind2_1_1 -> <{StdString.+++_11}> (syntax.withBrackets_319 kind1_1_0 (syntax.toString_12 kind1_1_0)) (<{StdString.+++_11}> " -> " (syntax.toString_12 kind2_1_1))) 
+<{syntax.==_13}>::B !a1_0 !a2_1 = compare_constructor.equal_constructor a1_0 a2_1
+<{syntax.==_14}>::B !mk1_0 !mk2_1 = compare_constructor.equal_constructor mk1_0 mk2_1
+<{syntax.==_15}>::B !id1_0 !id2_1 = <{Heap.==_10}> (select id1_0::syntax._Ident 1) (select id2_1::syntax._Ident 1)
+<{syntax.<<<_352}> !file_0 !kind_1 = file_0
+<{syntax.<<<_16}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (syntax._Module mod_ident_1_0 mod_modification_time_1_1 mod_type_1_2 mod_imports_1_3 mod_imported_objects_1_4 mod_foreign_exports_1_5 mod_defs_1_6 -> select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{syntax.<<<_24}> (<{syntax.<<<_352}> file_1 mod_type_1_2) mod_ident_1_0) mod_defs_1_6) 
+<{syntax.<<<_338}> !file_0 !ptr_1 = <{StdFile.<<<_36}> file_0 (Heap.ptrToInt ptr_1)
+<{syntax.<<<_19}> !file_0 !_x_1 = case _x_1 (syntax._AttributeVar av_ident_1_0 av_info_ptr_1_1 -> <{StdFile.<<<_38}> (<{syntax.<<<_338}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 av_ident_1_0) "[") av_info_ptr_1_1) "]") 
+<{syntax.<<<_20}> !file_0 !varid_1 = <{syntax.<<<_24}> file_0 (select varid_1::syntax._TypeVar 0)
+<{syntax.<<<_31}> !file_0 !ta_1 = <{StdFile.<<<_38}> file_0 (syntax.toString_7 ta_1)
+<{syntax.<<<_39}> !file_0 !_x_1 = case _x_1 (syntax._ATypeVar atv_attribute_1_0 atv_variable_1_1 -> <{syntax.<<<_20}> (<{syntax.<<<_31}> file_0 atv_attribute_1_0) atv_variable_1_1) 
+<{syntax.<<<_45}> !file_0 !_x_1 = case _x_1 (syntax.CV tv_1_0 -> <{syntax.<<<_20}> file_0 tv_1_0) (syntax.TempCV tv_1_0 -> <{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "v") tv_1_0) ' ') (syntax.TempQCV tv_1_0 -> <{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "E.") tv_1_0) ' ') (syntax.TempQCDV tv_1_0 -> <{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "E.") tv_1_0) ' ') 
+syntax.toString_71 !_x_0 = case _x_0 (syntax.BT_Int -> "Int") (syntax.BT_Char -> "Char") (syntax.BT_Real -> "Real") (syntax.BT_Bool -> "Bool") (syntax.BT_String _x_1_0 -> "String") (syntax.BT_Dynamic -> "Dynamic") (syntax.BT_File -> "File") (syntax.BT_World -> "World") 
+<{syntax.<<<_46}> !file_0 !bt_1 = <{StdFile.<<<_38}> file_0 (syntax.toString_71 bt_1)
+<{syntax.<<<_25}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (syntax._Global glob_object_1_0 glob_module_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_1 glob_object_1_0) "M:") glob_module_1_1) 
+<{syntax.<<<_371}> !file_0 !_x_1 = case _x_1 (syntax._Global glob_object_1_0 glob_module_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{StdFile.<<<_36}> file_0 glob_object_1_0) "M:") glob_module_1_1) 
+<{syntax.<<<_63}> !file_0 !symb_1 = <{syntax.<<<_371}> (<{StdFile.<<<_37}> (<{syntax.<<<_24}> file_0 (select symb_1::syntax._TypeSymbIdent 0)) '.') (select symb_1::syntax._TypeSymbIdent 2)
+<{syntax.<<<_328}> !file_0 !_x_1 = case _x_1 (syntax.NotStrict -> <{StdFile.<<<_36}> file_0 0) (syntax.Strict s_1_0 -> <{StdFile.<<<_36}> file_0 s_1_0) (syntax.StrictList s_1_0 l_1_1 -> <{syntax.<<<_328}> (<{StdFile.<<<_37}> (<{StdFile.<<<_36}> file_0 s_1_0) ' ') l_1_1) 
+<{syntax.<<<_347}> !file_0 !_x_1 = case _x_1 (syntax._DefinedSymbol ds_ident_1_0 ds_arity_1_1 ds_index_1_2 -> <{syntax.<<<_24}> file_0 ds_ident_1_0) 
+<{syntax.<<<_372}> !file_0 !_x_1 = case _x_1 (syntax._Global glob_object_1_0 glob_module_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{syntax.<<<_347}> file_0 glob_object_1_0) "M:") glob_module_1_1) 
+<{syntax.<<<_68}> !file_0 !_x_1 = case _x_1 (syntax.TCClass glob_1_0 -> <{syntax.<<<_372}> file_0 glob_1_0) (syntax.TCGeneric _x_1_0 -> case _x_1_0 (syntax._GenericTypeContext gtc_generic_2_0 gtc_kind_2_1 gtc_class_2_2 gtc_generic_dict_2_3 -> <{syntax.<<<_10}> (<{syntax.<<<_372}> file_0 gtc_generic_2_0) gtc_kind_2_1) ) 
+<{syntax.<<<_329}> !file_0 !co_1 = <{StdFile.<<<_37}> (<{syntax.<<<_338}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_23}>) (<{StdFile.<<<_38}> (<{syntax.<<<_68}> file_0 (select co_1::syntax._TypeContext 0)) " ") (select co_1::syntax._TypeContext 1)) " <") (select co_1::syntax._TypeContext 2)) '>'
+<{syntax.<<<_23}> !file_0 !_x_1 = case _x_1 (syntax.TV varid_1_0 -> <{syntax.<<<_20}> file_0 varid_1_0) (syntax.TempV tv_number_1_0 -> <{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_37}> file_0 'v') tv_number_1_0) ' ') (syntax.TA consid_1_0 types_1_1 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_28}>) (<{StdFile.<<<_38}> (<{syntax.<<<_63}> file_0 consid_1_0) " ") types_1_1) (syntax.TAS consid_1_0 types_1_1 strictness_1_2 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_28}>) (<{StdFile.<<<_37}> (<{syntax.<<<_328}> (<{StdFile.<<<_37}> (<{syntax.<<<_63}> file_0 consid_1_0) ' ') strictness_1_2) ' ') types_1_1) (<{syntax.-->}> arg_type_1_0 res_type_1_1 -> <{syntax.<<<_28}> (<{StdFile.<<<_38}> (<{syntax.<<<_28}> file_0 arg_type_1_0) " -> ") res_type_1_1) (syntax.TB tb_1_0 -> <{syntax.<<<_46}> file_0 tb_1_0) (<{syntax.:@:}> type_1_0 types_1_1 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_28}>) (<{StdFile.<<<_38}> (<{syntax.<<<_45}> file_0 type_1_0) " @") types_1_1) (syntax.TArrow -> <{StdFile.<<<_38}> file_0 "(->)") (syntax.TArrow1 t_1_0 -> <{syntax.<<<_28}> (<{StdFile.<<<_38}> file_0 "(->) ") t_1_0) (syntax.TFA vars_1_0 types_1_1 -> <{syntax.<<<_23}> (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_39}>) (<{StdFile.<<<_38}> file_0 "A.") vars_1_0) ':') types_1_1) (syntax.TFAC vars_1_0 types_1_1 contexts_1_2 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_329}>) (<{StdFile.<<<_38}> (<{syntax.<<<_23}> (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_39}>) (<{StdFile.<<<_38}> file_0 "A.") vars_1_0) ':') types_1_1) " | ") contexts_1_2) (syntax.TempQV tv_number_1_0 -> <{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "E.#") tv_number_1_0) ' ') (syntax.TempQDV tv_number_1_0 -> <{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "E.#") tv_number_1_0) ' ') (syntax.TGenericFunctionInDictionary _x_1_0 _x_1_1 _x_1_2 -> case _x_1_2 (syntax._GlobalIndex gi_module_2_0 gi_index_2_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "TGenericFunctionInDictionary ") gi_module_2_0) ' ') gi_index_2_1) ) (syntax.TE -> <{StdFile.<<<_38}> file_0 "### EMPTY ###") 
+<{syntax.<<<_28}> !file_0 !_x_1 = case _x_1 (syntax._AType at_attribute_1_0 at_type_1_1 -> <{syntax.<<<_23}> (<{syntax.<<<_31}> file_0 at_attribute_1_0) at_type_1_1) 
+<{syntax.<<<_58}> !file_0 !_x_1 = case _x_1 (syntax._AttrInequality ai_demanded_1_0 ai_offered_1_1 -> <{syntax.<<<_19}> (<{StdFile.<<<_38}> (<{syntax.<<<_19}> file_0 ai_offered_1_1) " <= ") ai_demanded_1_0) 
+syntax.write_contexts2_374 !_x_0 !file_1 = case _x_0 (_predefined._Nil -> file_1) (_predefined._Cons tc_1_0 tcs_1_1 -> syntax.write_contexts2_374 tcs_1_1 (<{syntax.<<<_329}> (<{StdFile.<<<_38}> file_1 " & ") tc_1_0)) 
+syntax.write_contexts_373 !_x_0 !file_1 = case _x_0 (_predefined._Nil -> file_1) (_predefined._Cons tc_1_0 tcs_1_1 -> syntax.write_contexts2_374 tcs_1_1 (<{syntax.<<<_329}> (<{StdFile.<<<_38}> file_1 " | ") tc_1_0)) 
+syntax.write_remaining_inequalities_376 !_x_0 !file_1 = case _x_0 (_predefined._Nil -> file_1) (_predefined._Cons ineq_1_0 ineqs_1_1 -> syntax.write_remaining_inequalities_376 ineqs_1_1 (<{syntax.<<<_58}> (<{StdFile.<<<_37}> file_1 ' ') ineq_1_0)) 
+syntax.write_inequalities_375 !_x_0 !file_1 = case _x_0 (_predefined._Nil -> file_1) (_predefined._Cons ineq_1_0 ineqs_1_1 -> syntax.write_remaining_inequalities_376 ineqs_1_1 (<{syntax.<<<_58}> (<{StdFile.<<<_37}> file_1 ',') ineq_1_0)) 
+<{syntax.<<<_21}> !file_0 !st_1 = case st_1 (syntax._SymbolType st_vars_1_0 st_args_1_1 st_args_strictness_1_2 st_arity_1_3 st_result_1_4 st_context_1_5 st_attr_vars_1_6 st_attr_env_1_7 -> case (<{StdInt.==_16}> (select st_1::syntax._SymbolType 3) 0) (True -> syntax.write_inequalities_375 (select st_1::syntax._SymbolType 7) (syntax.write_contexts_373 (select st_1::syntax._SymbolType 5) (<{syntax.<<<_28}> (<{StdFile.<<<_37}> (<{syntax.<<<_328}> (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_19}>) (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_20}>) (<{StdFile.<<<_37}> file_0 '[') st_vars_1_0) ',') st_attr_vars_1_6) ']') (select st_1::syntax._SymbolType 2)) ' ') (select st_1::syntax._SymbolType 4)))) (False -> syntax.write_inequalities_375 (select st_1::syntax._SymbolType 7) (syntax.write_contexts_373 (select st_1::syntax._SymbolType 5) (<{syntax.<<<_28}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_28}>) (<{StdFile.<<<_37}> (<{syntax.<<<_328}> (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_19}>) (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_20}>) (<{StdFile.<<<_37}> file_0 '[') st_vars_1_0) ',') st_attr_vars_1_6) ']') (select st_1::syntax._SymbolType 2)) ' ') (select st_1::syntax._SymbolType 1)) " -> ") (select st_1::syntax._SymbolType 4)))) ) 
+<{syntax.<<<_65}> !file_0 !_x_1 = case _x_1 (syntax._IndexRange ir_from_1_0 ir_to_1_1 -> case (<{StdInt.==_16}> ir_from_1_0 ir_to_1_1) (True -> file_0) (False -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{StdFile.<<<_36}> file_0 ir_from_1_0) "---") ir_to_1_1) ) 
+<{syntax.<<<_44}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (general.Yes x_1_0 -> select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_1 x_1_0) (general.No -> file_1) 
+<{syntax.<<<_32}> !<{_v<<<_0}> !<{_v<<<_1}> !file_2 !_x_3 = case _x_3 (general._Bind bind_src_1_0 bind_dst_1_1 -> select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{StdFile.<<<_38}> (select <{_v<<<_1}>::<{StdFile.<<<;}> 0 file_2 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_33}> !file_0 !_x_1 = case _x_1 (syntax.FieldName ident_1_0 -> <{syntax.<<<_24}> file_0 ident_1_0) (syntax.QualifiedFieldName module_ident_1_0 field_name_1_1 -> <{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> (<{StdFile.<<<_37}> file_0 '.') module_ident_1_0) "'.") field_name_1_1) 
+syntax.gen_kind_to_string_314 !_x_0 = case _x_0 (syntax.IsListGenerator -> "<-") (syntax.IsOverloadedListGenerator -> "<|-") (syntax.IsArrayGenerator -> "<-:") 
+<{syntax.<<<_341}> !file_0 !_x_1 = case _x_1 (syntax.ParsedNormalSelector -> <{StdFile.<<<_38}> file_0 ".") (syntax.ParsedUniqueSelector _x_1_0 -> case _x_1_0 (True -> <{StdFile.<<<_38}> file_0 "!*") (False -> <{StdFile.<<<_38}> file_0 "!") ) 
+<{syntax.<<<_345}> !file_0 !_x_1 = case _x_1 (syntax._DynamicType dt_uni_vars_1_0 dt_global_vars_1_1 dt_type_1_2 dt_contexts_1_3 -> case (StdList.isEmpty dt_uni_vars_1_0) (True -> <{syntax.<<<_28}> (<{StdFile.<<<_38}> file_0 "DynamicType") dt_type_1_2) (False -> <{syntax.<<<_28}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_39}>) (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> file_0 "DynamicType") "A.") dt_uni_vars_1_0) ":") dt_type_1_2) ) 
+<{syntax.<<<_35}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (syntax._TypeDef td_ident_1_0 td_index_1_1 td_arity_1_2 td_args_1_3 td_attrs_1_4 td_rhs_1_5 td_attribute_1_6 td_pos_1_7 td_used_types_1_8 td_fun_index_1_9 -> select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_39}>) (<{StdFile.<<<_37}> (<{syntax.<<<_24}> (<{StdFile.<<<_38}> file_1 ":: ") td_ident_1_0) ' ') td_args_1_3) td_rhs_1_5) 
+<{syntax.<<<_64}> !file_0 !_x_1 = case _x_1 (syntax.TypeConsSymb name_1_0 -> <{syntax.<<<_63}> file_0 name_1_0) (syntax.TypeConsBasic basic_type_1_0 -> <{syntax.<<<_46}> file_0 basic_type_1_0) (syntax.TypeConsArrow -> <{StdFile.<<<_38}> file_0 "(->)") (syntax.TypeConsVar tv_1_0 -> <{syntax.<<<_20}> file_0 tv_1_0) 
+<{syntax.<<<_34}> !file_0 !_x_1 = case _x_1 (syntax._ParsedConstructor pc_cons_ident_1_0 pc_cons_arity_1_1 pc_exi_vars_1_2 pc_arg_types_1_3 pc_args_strictness_1_4 pc_context_1_5 pc_cons_prio_1_6 pc_cons_pos_1_7 pc_doc_1_8 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_28}>) (<{syntax.<<<_24}> file_0 pc_cons_ident_1_0) pc_arg_types_1_3) 
+<{syntax.<<<_351}> !file_0 !_x_1 = case _x_1 (syntax._ParsedSelector ps_field_ident_1_0 ps_selector_ident_1_1 ps_field_annotation_1_2 ps_field_type_1_3 ps_field_var_1_4 ps_field_pos_1_5 ps_doc_1_6 -> <{syntax.<<<_28}> (<{syntax.<<<_24}> file_0 ps_field_ident_1_0) ps_field_type_1_3) 
+<{syntax.<<<_350}> !file_0 !_x_1 = case _x_1 (syntax.TypeSpec type_1_0 -> <{syntax.<<<_28}> file_0 type_1_0) (syntax.ConsList cons_defs_1_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_34}>) file_0 cons_defs_1_0) (syntax.SelectorList _x_1_0 _x_1_1 _x_1_2 sel_defs_1_3 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_351}>) file_0 sel_defs_1_3) (syntax.NewTypeCons cons_def_1_0 -> <{syntax.<<<_34}> file_0 cons_def_1_0) (_ -> file_0)
+<{syntax.<<<_378}> !file_0 !_x_1 = case _x_1 (syntax._TypeDef td_ident_1_0 td_index_1_1 td_arity_1_2 td_args_1_3 td_attrs_1_4 td_rhs_1_5 td_attribute_1_6 td_pos_1_7 td_used_types_1_8 td_fun_index_1_9 -> <{syntax.<<<_350}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_39}>) (<{StdFile.<<<_37}> (<{syntax.<<<_24}> (<{StdFile.<<<_38}> file_0 ":: ") td_ident_1_0) ' ') td_args_1_3) td_rhs_1_5) 
+<{syntax.<<<_377}> !file_0 !_x_1 = case _x_1 (general.Yes x_1_0 -> <{syntax.<<<_21}> file_0 x_1_0) (general.No -> file_0) 
+<{syntax.<<<_342}> !file_0 !_x_1 = case _x_1 (syntax.PS_Record selector_1_0 _x_1_1 -> <{syntax.<<<_24}> file_0 selector_1_0) (syntax.PS_Array index_expr_1_0 -> <{StdFile.<<<_37}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> file_0 '[') index_expr_1_0) ']') (syntax.PS_Erroneous -> <{StdFile.<<<_38}> file_0 "Erroneous selector") 
+<{syntax.<<<_382}> !file_0 !_x_1 = case _x_1 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{syntax.<<<_33}> file_0 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_335}> !file_0 !_x_1 = case _x_1 (syntax._Generator gen_kind_1_0 gen_pattern_1_1 gen_expr_1_2 gen_position_1_3 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{syntax.<<<_30}> file_0 gen_pattern_1_1) (syntax.gen_kind_to_string_314 gen_kind_1_0)) gen_expr_1_2) 
+<{syntax.<<<_334}> !file_0 !_x_1 = case _x_1 (syntax._Qualifier qual_generators_1_0 qual_let_defs_1_1 _x_1_2 qual_position_1_3 qual_filename_1_4 -> case _x_1_2 (general.Yes qual_filter_2_0 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_335}>) file_0 qual_generators_1_0) "| ") qual_filter_2_0) (general.No -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_335}>) file_0 qual_generators_1_0) ) 
+<{syntax.<<<_336}> !file_0 !_x_1 = case _x_1 (syntax.SQ_From _x_1_0 expr_1_1 -> <{syntax.<<<_30}> file_0 expr_1_1) (syntax.SQ_FromTo _x_1_0 from_expr_1_1 to_expr_1_2 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{syntax.<<<_30}> file_0 from_expr_1_1) "..") to_expr_1_2) (syntax.SQ_FromThen _x_1_0 from_expr_1_1 then_expr_1_2 -> <{StdFile.<<<_38}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> (<{syntax.<<<_30}> file_0 from_expr_1_1) ',') then_expr_1_2) "..") (syntax.SQ_FromThenTo _x_1_0 from_expr_1_1 then_expr_1_2 to_expr_1_3 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> (<{syntax.<<<_30}> file_0 from_expr_1_1) ',') then_expr_1_2) "..") to_expr_1_3) 
+<{syntax.<<<_383}> !file_0 !_x_1 = case _x_1 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_355}> !file_0 !_x_1 = case _x_1 (syntax._Rhs rhs_alts_1_0 rhs_locals_1_1 -> <{StdFile.<<<_37}> (<{syntax.<<<_52}> (<{syntax.<<<_356}> file_0 rhs_alts_1_0) rhs_locals_1_1) '\n') 
+<{syntax.<<<_27}> !file_0 !_x_1 = case _x_1 (syntax._CaseAlt calt_pattern_1_0 calt_rhs_1_1 calt_position_1_2 -> <{syntax.<<<_355}> (<{StdFile.<<<_38}> (<{syntax.<<<_30}> file_0 calt_pattern_1_0) " -> ") calt_rhs_1_1) 
+<{syntax.<<<_381}> !file_0 !_x_1 = case _x_1 (general.Yes x_1_0 -> <{syntax.<<<_357}> file_0 x_1_0) (general.No -> file_0) 
+<{syntax.<<<_359}> !file_0 !_x_1 = case _x_1 (syntax._GuardedExpr alt_nodes_1_0 alt_guard_1_1 alt_expr_1_2 alt_ident_1_3 alt_position_1_4 -> <{syntax.<<<_356}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> file_0 '|') alt_guard_1_1) alt_expr_1_2) 
+<{syntax.<<<_384}> !file_0 !_x_1 = case _x_1 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{syntax.<<<_30}> file_0 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_358}> !file_0 !_x_1 = case _x_1 (syntax._NodeDefWithLocals ndwl_strict_1_0 ndwl_def_1_1 ndwl_locals_1_2 ndwl_position_1_3 -> case ndwl_strict_1_0 (True -> <{syntax.<<<_52}> (<{syntax.<<<_384}> (<{StdFile.<<<_38}> file_0 "\n#! ") ndwl_def_1_1) ndwl_locals_1_2) (False -> <{syntax.<<<_52}> (<{syntax.<<<_384}> (<{StdFile.<<<_38}> file_0 "\n# ") ndwl_def_1_1) ndwl_locals_1_2) ) 
+<{syntax.<<<_357}> !file_0 !_x_1 = case _x_1 (syntax._ExprWithLocalDefs _x_1_0 ewl_expr_1_1 ewl_locals_1_2 ewl_position_1_3 -> case _x_1_0 (_predefined._Nil -> <{syntax.<<<_52}> (<{syntax.<<<_30}> file_0 ewl_expr_1_1) ewl_locals_1_2) (_ -> <{syntax.<<<_52}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_358}>) file_0 _x_1_0) '\n') ewl_expr_1_1) ewl_locals_1_2)) 
+<{syntax.<<<_356}> !file_0 !_x_1 = case _x_1 (syntax.GuardedAlts guarded_exprs_1_0 def_expr_1_1 -> <{syntax.<<<_381}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_359}>) file_0 guarded_exprs_1_0) def_expr_1_1) (syntax.UnGuardedExpr unguarded_expr_1_0 -> <{syntax.<<<_357}> file_0 unguarded_expr_1_0) 
+<{syntax.<<<_380}> !file_0 !_x_1 = case _x_1 (syntax._NodeDef nd_dst_1_0 nd_alts_1_1 nd_locals_1_2 nd_position_1_3 -> <{syntax.<<<_52}> (<{syntax.<<<_356}> (<{syntax.<<<_30}> file_0 nd_dst_1_0) nd_alts_1_1) nd_locals_1_2) 
+<{syntax.<<<_340}> !file_0 !_x_1 = case _x_1 (syntax._CollectedLocalDefs loc_functions_1_0 loc_nodes_1_1 loc_in_icl_module_1_2 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_380}>) (<{syntax.<<<_65}> file_0 loc_functions_1_0) loc_nodes_1_1) 
+<{syntax.<<<_52}> !file_0 !_x_1 = case _x_1 (syntax.LocalParsedDefs defs_1_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_17}>) file_0 defs_1_0) (syntax.CollectedLocalDefs defs_1_0 -> <{syntax.<<<_340}> file_0 defs_1_0) 
+<{syntax.<<<_30}> !file_0 !_x_1 = case _x_1 (syntax.PE_List exprs_1_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_30}>) file_0 exprs_1_0) (syntax.PE_Tuple args_1_0 -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_30}>) (<{StdFile.<<<_37}> file_0 '(') args_1_0) ')') (syntax.PE_Basic basic_value_1_0 -> <{syntax.<<<_38}> file_0 basic_value_1_0) (syntax.PE_Selection selector_kind_1_0 expr_1_1 selectors_1_2 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_342}>) (<{syntax.<<<_341}> (<{syntax.<<<_30}> file_0 expr_1_1) selector_kind_1_0) selectors_1_2) (syntax.PE_Update expr1_1_0 selections_1_1 expr2_1_2 -> <{StdFile.<<<_37}> (<{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_342}>) (<{StdFile.<<<_38}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> file_0 '{') expr1_1_0) " & ") selections_1_1) " = ") expr2_1_2) '}') (syntax.PE_Record _x_1_0 _x_1_1 fields_1_2 -> case _x_1_0 (syntax.PE_Empty -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_382}>) (<{StdFile.<<<_37}> file_0 '{') fields_1_2) '}') (_ -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_382}>) (<{StdFile.<<<_38}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> file_0 '{') _x_1_0) " & ") fields_1_2) '}')) (syntax.PE_ListCompr _x_1_0 _x_1_1 expr_1_2 quals_1_3 -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_334}>) (<{StdFile.<<<_38}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> file_0 '[') expr_1_2) " \\ ") quals_1_3) ']') (syntax.PE_ArrayCompr _x_1_0 expr_1_1 quals_1_2 -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_334}>) (<{StdFile.<<<_38}> (<{syntax.<<<_30}> (<{StdFile.<<<_37}> file_0 '{') expr_1_1) " \\ ") quals_1_2) '}') (syntax.PE_Sequ seq_1_0 -> <{StdFile.<<<_37}> (<{syntax.<<<_336}> (<{StdFile.<<<_37}> file_0 '[') seq_1_0) ']') (syntax.PE_Empty -> <{StdFile.<<<_38}> file_0 "** E **") (syntax.PE_Ident symb_1_0 -> <{syntax.<<<_24}> file_0 symb_1_0) (syntax.PE_WildCard -> <{StdFile.<<<_37}> file_0 '_') (syntax.PE_Lambda _x_1_0 exprs_1_1 rhs_1_2 _x_1_3 -> <{syntax.<<<_355}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_30}>) (<{StdFile.<<<_37}> file_0 '\\') exprs_1_1) rhs_1_2) (syntax.PE_Bound bind_1_0 -> <{syntax.<<<_383}> file_0 bind_1_0) (syntax.PE_Case _x_1_0 expr_1_1 alts_1_2 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_27}>) (<{StdFile.<<<_38}> (<{syntax.<<<_30}> (<{StdFile.<<<_38}> file_0 "case ") expr_1_1) " of\n") alts_1_2) (syntax.PE_Let defs_1_0 expr_1_1 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (<{syntax.<<<_52}> (<{StdFile.<<<_38}> file_0 "let ") defs_1_0) " in\n") expr_1_1) (syntax.PE_DynamicPattern expr_1_0 type_1_1 -> <{syntax.<<<_345}> (<{StdFile.<<<_38}> (<{syntax.<<<_30}> file_0 expr_1_0) "::") type_1_1) (syntax.PE_Dynamic expr_1_0 maybetype_1_1 -> <{syntax._c;520;11_401}> maybetype_1_1 file_0 expr_1_0) (_ -> <{StdFile.<<<_38}> file_0 "some expression")
+<{syntax.<<<_17}> !file_0 !_x_1 = case _x_1 (syntax.PD_Function _x_1_0 name_1_1 _x_1_2 exprs_1_3 rhs_1_4 _x_1_5 -> <{syntax.<<<_355}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_30}>) (<{syntax.<<<_24}> file_0 name_1_1) exprs_1_3) " = ") rhs_1_4) (syntax.PD_NodeDef _x_1_0 pattern_1_1 rhs_1_2 -> <{syntax.<<<_355}> (<{StdFile.<<<_38}> (<{syntax.<<<_30}> file_0 pattern_1_1) " =: ") rhs_1_2) (syntax.PD_TypeSpec _x_1_0 name_1_1 prio_1_2 st_1_3 sp_1_4 -> <{syntax.<<<_377}> (<{syntax.<<<_24}> file_0 name_1_1) st_1_3) (syntax.PD_Type td_1_0 -> <{syntax.<<<_378}> file_0 td_1_0) (syntax.PD_Generic _x_1_0 -> case _x_1_0 (syntax._GenericDef gen_ident_2_0 gen_member_ident_2_1 gen_pos_2_2 gen_type_2_3 gen_vars_2_4 gen_deps_2_5 gen_info_ptr_2_6 -> <{syntax.<<<_24}> (<{StdFile.<<<_38}> file_0 "generic ") gen_ident_2_0) ) (syntax.PD_GenericCase _x_1_0 _x_1_1 -> case _x_1_0 (syntax._GenericCaseDef gc_pos_2_0 gc_type_2_1 gc_type_cons_2_2 _x_2_3 -> case _x_2_3 (syntax.GCF gc_ident_3_0 _x_3_1 -> <{StdFile.<<<_38}> (<{syntax.<<<_64}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 gc_ident_3_0) "{|") gc_type_cons_2_2) "|}") ) ) (_ -> file_0)
+<{syntax._c;520;11_401}> !maybetype_0 !file_1 !expr_2 = case maybetype_0 (general.Yes type_1_0 -> <{syntax.<<<_345}> (<{StdFile.<<<_38}> (<{syntax.<<<_30}> (<{StdFile.<<<_38}> file_1 "dynamic ") expr_2) "::") type_1_0) (general.No -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> file_1 "dynamic ") expr_2) 
+<{syntax.<<<_379}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{syntax.<<<_30}> (<{StdFile.<<<_38}> (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_1 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_339}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (syntax._NodeDef nd_dst_1_0 nd_alts_1_1 nd_locals_1_2 nd_position_1_3 -> <{syntax.<<<_52}> (<{syntax.<<<_356}> (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_1 nd_dst_1_0) nd_alts_1_1) nd_locals_1_2) 
+<{syntax.<<<_18}> !file_0 !it_1 = syntax.write_contexts_373 (select it_1::syntax._InstanceType 3) (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_23}>) file_0 (select it_1::syntax._InstanceType 1))
+syntax.write_binds_315 !<{_v<<<_0}> !<{_v<<<_1}> x_2 file_3 !_x_4 = case _x_4 (_predefined._Nil -> file_3) (_predefined._Cons bind_1_0 binds_1_1 -> syntax.write_binds_315 <{_v<<<_0}> <{_v<<<_1}> x_2 (select <{_v<<<_1}>::<{StdFile.<<<;}> 0 (<{StdFile.<<<_38}> (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_3 x_2) " ") bind_1_0) binds_1_1) 
+syntax.else_part_316 !<{_v<<<_0}> file_1 !_x_2 = case _x_2 (general.No -> <{StdFile.<<<_37}> file_1 '\n') (general.Yes else_1_0 -> <{StdFile.<<<_37}> (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{StdFile.<<<_38}> file_1 "\nELSE\n") else_1_0) '\n') 
+<{syntax.<<<_53}> !file_0 !_x_1 = case _x_1 (syntax._FreeVar fv_def_level_1_0 fv_ident_1_1 fv_info_ptr_1_2 fv_count_1_3 -> <{StdFile.<<<_37}> (<{syntax.<<<_338}> (<{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_37}> (<{syntax.<<<_24}> file_0 fv_ident_1_1) '#') fv_count_1_3) '<') fv_info_ptr_1_2) '>') 
+<{syntax.<<<_62}> !file_0 !_x_1 = case _x_1 (syntax._BoundVar var_ident_1_0 var_info_ptr_1_1 var_expr_ptr_1_2 -> <{StdFile.<<<_37}> (<{syntax.<<<_338}> (<{StdFile.<<<_38}> (<{syntax.<<<_338}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 var_ident_1_0) "<I") var_info_ptr_1_1) ", E") var_expr_ptr_1_2) '>') 
+<{syntax.<<<_48}> !file_0 !_x_1 = case _x_1 (syntax.NormalSelector -> <{StdFile.<<<_38}> file_0 ".") (syntax.UniqueSelector -> <{StdFile.<<<_38}> file_0 "!") (syntax.UniqueSelectorUniqueElementResult -> <{StdFile.<<<_38}> file_0 "!*") (syntax.UniqueSingleArraySelector -> <{StdFile.<<<_38}> file_0 "!") (syntax.UniqueSingleArraySelectorUniqueElementResult -> <{StdFile.<<<_38}> file_0 "!*") 
+<{syntax.<<<_330}> !file_0 !symb_1 = case symb_1 (syntax._SymbIdent symb_ident_1_0 symb_kind_1_1 -> case symb_kind_1_1 (syntax.SK_Function symb_index_2_0 -> <{syntax.<<<_371}> (<{StdFile.<<<_37}> (<{syntax.<<<_24}> file_0 (select symb_1::syntax._SymbIdent 0)) '@') symb_index_2_0) (syntax.SK_LocalMacroFunction symb_index_2_0 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 (select symb_1::syntax._SymbIdent 0)) "[lm]@") symb_index_2_0) (syntax.SK_GeneratedFunction _x_2_0 symb_index_2_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 (select symb_1::syntax._SymbIdent 0)) "[g]@") symb_index_2_1) (syntax.SK_LocalDclMacroFunction symb_index_2_0 -> <{syntax.<<<_371}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 (select symb_1::syntax._SymbIdent 0)) "[ldm]@") symb_index_2_0) (syntax.SK_OverloadedFunction symb_index_2_0 -> <{syntax.<<<_371}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 (select symb_1::syntax._SymbIdent 0)) "[o]@") symb_index_2_0) ) (_ -> <{syntax.<<<_24}> file_0 (select symb_1::syntax._SymbIdent 0))
+<{syntax.<<<_349}> !file_0 !_x_1 = case _x_1 (syntax._FieldSymbol fs_ident_1_0 fs_var_1_1 fs_index_1_2 -> <{syntax.<<<_24}> file_0 fs_ident_1_0) 
+<{syntax.<<<_389}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{StdFile.<<<_38}> (<{StdFile.<<<_38}> (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_1 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_387}> !file_0 !_x_1 = case _x_1 (syntax._Global glob_object_1_0 glob_module_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{syntax.<<<_349}> file_0 glob_object_1_0) "M:") glob_module_1_1) 
+syntax.write_binds_385 !<{_v<<<_0}> x_1 file_2 !_x_3 = case _x_3 (_predefined._Nil -> file_2) (_predefined._Cons bind_1_0 binds_1_1 -> syntax.write_binds_385 <{_v<<<_0}> x_1 (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> file_2 x_1) " ") bind_1_0) binds_1_1) 
+<{syntax.<<<_393}> !file_0 !_x_1 = case _x_1 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{syntax.<<<_62}> file_0 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_392}> !file_0 !_x_1 = case _x_1 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{syntax.<<<_53}> file_0 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_59}> !file_0 !_x_1 = case _x_1 (syntax._LetBind lb_dst_1_0 lb_src_1_1 lb_position_1_2 -> <{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{syntax.<<<_53}> file_0 lb_dst_1_0) " = ") lb_src_1_1) "\n") 
+syntax.write_binds_390 x_0 !file_1 !_x_2 = case _x_2 (_predefined._Nil -> file_1) (_predefined._Cons bind_1_0 binds_1_1 -> syntax.write_binds_390 x_0 (<{syntax.<<<_59}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> file_1 x_0) " ") bind_1_0) binds_1_1) 
+<{syntax.<<<_332}> !file_0 !g_1 = <{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{syntax.<<<_38}> (<{StdFile.<<<_37}> file_0 '\n') (select g_1::syntax._BasicPattern 0)) "\n\t-> ") (select g_1::syntax._BasicPattern 1)
+<{syntax.<<<_337}> !file_0 !_x_1 = case _x_1 (syntax._DynamicPattern dp_var_1_0 dp_type_1_1 dp_type_code_1_2 dp_rhs_1_3 dp_position_1_4 -> <{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{syntax.<<<_56}> (<{StdFile.<<<_38}> (<{syntax.<<<_53}> file_0 dp_var_1_0) " :: ") dp_type_code_1_2) " = ") dp_rhs_1_3) 
+<{syntax.<<<_331}> !file_0 !g_1 = <{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_53}>) (<{syntax.<<<_372}> (<{StdFile.<<<_37}> file_0 '\n') (select g_1::syntax._AlgebraicPattern 0)) (select g_1::syntax._AlgebraicPattern 1)) "\n\t-> ") (select g_1::syntax._AlgebraicPattern 2)
+<{syntax.<<<_43}> !file_0 !_x_1 = case _x_1 (syntax.BasicPatterns type_1_0 patterns_1_1 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_332}>) (<{StdFile.<<<_38}> file_0 " ") patterns_1_1) (syntax.AlgebraicPatterns type_1_0 patterns_1_1 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_331}>) file_0 patterns_1_1) (syntax.DynamicPatterns patterns_1_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_337}>) file_0 patterns_1_0) (syntax.OverloadedListPatterns type_1_0 decons_expr_1_1 patterns_1_2 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_331}>) (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_37}> file_0 ' ') decons_expr_1_1) " ") patterns_1_2) (syntax.NewTypePatterns type_1_0 patterns_1_1 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_331}>) file_0 patterns_1_1) (syntax.NoPattern -> file_0) 
+syntax.else_part_386 !file_0 !_x_1 = case _x_1 (general.No -> <{StdFile.<<<_37}> file_0 '\n') (general.Yes else_1_0 -> <{StdFile.<<<_37}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> file_0 "\nELSE\n") else_1_0) '\n') 
+<{syntax.<<<_391}> !file_0 !_x_1 = case _x_1 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{syntax.<<<_387}> file_0 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_49}> !file_0 !_x_1 = case _x_1 (syntax.RecordSelection selector_1_0 _x_1_1 -> <{syntax.<<<_372}> file_0 selector_1_0) (syntax.ArraySelection _x_1_0 _x_1_1 index_expr_1_2 -> case _x_1_0 (syntax._Global _x_2_0 glob_module_2_1 -> case _x_2_0 (syntax._DefinedSymbol ds_ident_3_0 ds_arity_3_1 ds_index_3_2 -> <{StdFile.<<<_37}> (<{syntax.<<<_22}> (<{StdFile.<<<_37}> (<{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_37}> file_0 '<') ds_index_3_2) '>') '[') index_expr_1_2) ']') ) ) (syntax.DictionarySelection var_1_0 selections_1_1 _x_1_2 index_expr_1_3 -> <{StdFile.<<<_37}> (<{syntax.<<<_22}> (<{StdFile.<<<_37}> (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_49}>) (<{StdFile.<<<_37}> (<{syntax.<<<_62}> (<{StdFile.<<<_37}> file_0 '(') var_1_0) '.') selections_1_1) ')') '[') index_expr_1_3) ']') 
+<{syntax.<<<_56}> !file_0 !_x_1 = case _x_1 (syntax.TCE_Empty -> file_0) (syntax.TCE_Var info_ptr_1_0 -> <{syntax.<<<_338}> (<{StdFile.<<<_38}> file_0 "TCE_Var ") info_ptr_1_0) (syntax.TCE_TypeTerm info_ptr_1_0 -> <{syntax.<<<_338}> (<{StdFile.<<<_38}> file_0 "TCE_TypeTerm ") info_ptr_1_0) (syntax.TCE_Constructor cons_1_0 exprs_1_1 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_56}>) (<{StdFile.<<<_37}> (<{StdFile.<<<_38}> file_0 "TCE_Constructor ") ' ') exprs_1_1) (syntax.TCE_Selector selectors_1_0 info_ptr_1_1 -> <{syntax.<<<_338}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_49}>) (<{StdFile.<<<_38}> file_0 "TCE_Selector ") selectors_1_0) "VAR ") info_ptr_1_1) (syntax.TCE_UniType vars_1_0 type_code_1_1 -> <{syntax.<<<_56}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_338}>) (<{StdFile.<<<_38}> file_0 "TCE_UniType ") vars_1_0) " ") type_code_1_1) (syntax.TCE_UnqType type_code_1_0 -> <{syntax.<<<_56}> (<{StdFile.<<<_38}> file_0 "TCE_UnqType ") type_code_1_0) 
+<{syntax.<<<_22}> !file_0 !_x_1 = case _x_1 (syntax.Var ident_1_0 -> <{syntax.<<<_62}> file_0 ident_1_0) (syntax.App _x_1_0 -> case _x_1_0 (syntax._App app_symb_2_0 app_args_2_1 app_info_ptr_2_2 -> <{syntax._c;363;11_402}> (select app_symb_2_0::syntax._SymbIdent 1) file_0 app_symb_2_0 app_args_2_1) ) (<{syntax.@}> f_exp_1_0 a_exp_1_1 -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_22}>) (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_37}> file_0 '(') f_exp_1_0) ") @ (") a_exp_1_1) ')') (syntax.Let _x_1_0 -> case _x_1_0 (syntax._Let let_strict_binds_2_0 let_lazy_binds_2_1 let_expr_2_2 let_info_ptr_2_3 let_expr_position_2_4 -> <{syntax.<<<_22}> (<{StdFile.<<<_38}> (syntax.write_binds_390 "" (syntax.write_binds_390 "!" (<{StdFile.<<<_37}> (<{StdFile.<<<_38}> file_0 "let") '\n') let_strict_binds_2_0) let_lazy_binds_2_1) "in\n") let_expr_2_2) ) (syntax.Case _x_1_0 -> case _x_1_0 (syntax._Case case_expr_2_0 case_guards_2_1 _x_2_2 case_ident_2_3 case_info_ptr_2_4 case_explicit_2_5 case_default_pos_2_6 -> case _x_2_2 (general.No -> case case_explicit_2_5 (True -> <{syntax.<<<_43}> (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> file_0 "case ") case_expr_2_0) " of") case_guards_2_1) (False -> <{syntax.<<<_43}> (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> file_0 "match ") case_expr_2_0) " of") case_guards_2_1) ) (general.Yes def_expr_3_0 -> case case_explicit_2_5 (True -> <{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{syntax.<<<_43}> (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> file_0 "case ") case_expr_2_0) " of") case_guards_2_1) "\n\t->") def_expr_3_0) (False -> <{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{syntax.<<<_43}> (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> file_0 "match ") case_expr_2_0) " of") case_guards_2_1) "\n\t->") def_expr_3_0) ) ) ) (syntax.BasicExpr basic_value_1_0 -> <{syntax.<<<_38}> file_0 basic_value_1_0) (syntax.Conditional _x_1_0 -> case _x_1_0 (syntax._Conditional if_cond_2_0 if_then_2_1 if_else_2_2 -> syntax.else_part_386 (<{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> file_0 "IF ") if_cond_2_0) "\nTHEN\n") if_then_2_1) if_else_2_2) ) (syntax.Selection selector_kind_1_0 expr_1_1 selectors_1_2 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_49}>) (<{syntax.<<<_48}> (<{syntax.<<<_22}> file_0 expr_1_1) selector_kind_1_0) selectors_1_2) (syntax.Update expr1_1_0 selections_1_1 expr2_1_2 -> <{StdFile.<<<_37}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_49}>) (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_37}> file_0 '{') expr1_1_0) " & ") selections_1_1) " = ") expr2_1_2) '}') (syntax.RecordUpdate cons_symbol_1_0 expression_1_1 expressions_1_2 -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_391}>) (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_37}> (<{syntax.<<<_372}> (<{StdFile.<<<_37}> file_0 '{') cons_symbol_1_0) ' ') expression_1_1) " & ") expressions_1_2) '}') (syntax.TupleSelect field_1_0 field_nr_1_1 expr_1_2 -> <{StdFile.<<<_36}> (<{StdFile.<<<_37}> (<{syntax.<<<_22}> file_0 expr_1_2) '.') field_nr_1_1) (syntax.MatchExpr cons_1_0 expr_1_1 -> <{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{syntax.<<<_372}> file_0 cons_1_0) " (M)=: ") expr_1_1) (syntax.IsConstructor expr_1_0 cons_symbol_1_1 cons_arity_1_2 global_type_index_1_3 case_ident_1_4 position_1_5 -> <{syntax.<<<_372}> (<{StdFile.<<<_38}> (<{syntax.<<<_22}> file_0 expr_1_0) " (I)=: ") cons_symbol_1_1) (syntax.EE -> <{StdFile.<<<_38}> file_0 "** E **") (syntax.NoBind _x_1_0 -> <{StdFile.<<<_38}> file_0 "** NB **") (syntax.DynamicExpr _x_1_0 -> case _x_1_0 (syntax._DynamicExpr dyn_expr_2_0 dyn_opt_type_2_1 dyn_info_ptr_2_2 dyn_type_code_2_3 -> <{syntax.<<<_56}> (<{StdFile.<<<_38}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> file_0 "dynamic ") dyn_expr_2_0) " :: ") dyn_type_code_2_3) ) (syntax.TypeCodeExpression type_code_1_0 -> <{syntax.<<<_56}> file_0 type_code_1_0) (syntax.Constant symb_1_0 _x_1_1 _x_1_2 -> <{syntax.<<<_330}> (<{StdFile.<<<_38}> file_0 "** Constant **") symb_1_0) (syntax.ABCCodeExpr code_sequence_1_0 do_inline_1_1 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{StdFile.<<<_38}>) (<{StdFile.<<<_38}> file_0 (<{syntax._if;412;71_403}> do_inline_1_1)) code_sequence_1_0) (syntax.AnyCodeExpr input_1_0 output_1_1 code_sequence_1_2 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{StdFile.<<<_38}>) (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_392}>) (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_393}>) (<{StdFile.<<<_38}> file_0 "code\n") input_1_0) "\n") output_1_1) "\n") code_sequence_1_2) (syntax.FreeVar _x_1_0 -> case _x_1_0 (syntax._FreeVar fv_def_level_2_0 fv_ident_2_1 fv_info_ptr_2_2 fv_count_2_3 -> <{syntax.<<<_24}> file_0 fv_ident_2_1) ) (syntax.ClassVariable info_ptr_1_0 -> <{syntax.<<<_338}> (<{StdFile.<<<_38}> file_0 "ClassVariable ") info_ptr_1_0) (syntax.FailExpr _x_1_0 -> <{StdFile.<<<_38}> file_0 "** FAIL **") (syntax.TypeSignature array_kind_1_0 expr_1_1 -> <{StdFile.<<<_37}> (<{syntax.<<<_22}> (<{StdFile.<<<_37}> (<{StdFile.<<<_38}> file_0 "TypeSignature ") '(') expr_1_1) ')') (syntax.DictionariesFunction dictionaries_1_0 expr_1_1 expr_type_1_2 -> <{syntax.<<<_28}> (<{syntax.<<<_22}> (<{general.<<<_13}> (<{StdFile.<<<;}> (<{general.<<<_7}> (<{StdFile.<<<;}> <{syntax.<<<_53}>) (<{StdFile.<<<;}> <{syntax.<<<_28}>))) (<{StdFile.<<<_38}> file_0 "DictionariesFunction ") dictionaries_1_0) expr_1_1) expr_type_1_2) (_ -> StdMisc.abort "<<< (Expression)")
+<{syntax._if;412;71_403}> !do_inline_0::B = case do_inline_0 (True -> "code inline\n") (_ -> "code\n")
+<{syntax._c;363;11_402}> !_x_0 !file_1 !app_symb_2 !app_args_3 = case _x_0 (syntax.SK_Generic _x_1_0 kind_1_1 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_22}>) (<{StdFile.<<<_37}> (<{syntax.<<<_10}> (<{syntax.<<<_330}> file_1 app_symb_2) kind_1_1) ' ') app_args_3) (_ -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_22}>) (<{StdFile.<<<_37}> (<{syntax.<<<_330}> file_1 app_symb_2) ' ') app_args_3)
+<{syntax.<<<_388}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (general._Bind bind_src_1_0 bind_dst_1_1 -> <{syntax.<<<_22}> (<{StdFile.<<<_38}> (select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_1 bind_dst_1_1) " = ") bind_src_1_0) 
+<{syntax.<<<_26}> !file_0 !_x_1 = case _x_1 (syntax.FunPos file_name_1_0 line_1_1 func_1_2 -> <{StdFile.<<<_37}> (<{StdFile.<<<_38}> (<{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_37}> (<{StdFile.<<<_38}> (<{StdFile.<<<_37}> file_0 '[') file_name_1_0) ',') line_1_1) ',') func_1_2) ']') (syntax.LinePos file_name_1_0 line_1_1 -> <{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_37}> (<{StdFile.<<<_38}> (<{StdFile.<<<_37}> file_0 '[') file_name_1_0) ',') line_1_1) ']') (_ -> file_0)
+<{syntax.<<<_76}> !file_0 !_x_1 = case _x_1 (syntax.FunCall fc_index_1_0 fc_level_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_37}> (<{StdFile.<<<_36}> file_0 fc_index_1_0) '.') fc_level_1_1) (syntax.MacroCall module_index_1_0 fc_index_1_1 fc_level_1_2 -> <{StdFile.<<<_36}> (<{StdFile.<<<_37}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "MacroCall ") module_index_1_0) " ") fc_index_1_1) '.') fc_level_1_2) (syntax.DclFunCall module_index_1_0 fc_index_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "DclFunCall ") module_index_1_0) " ") fc_index_1_1) (syntax.GeneratedFunCall fc_index_1_0 fun_ptr_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "GeneratedFunCall ") fc_index_1_0) 
+<{syntax.<<<_333}> !file_0 !_x_1 = case _x_1 (syntax._CheckedAlternative ca_rhs_1_0 ca_position_1_1 -> <{syntax.<<<_22}> file_0 ca_rhs_1_0) 
+<{syntax.<<<_343}> !file_0 !_x_1 = case _x_1 (syntax._ParsedBody pb_args_1_0 pb_rhs_1_1 pb_position_1_2 -> <{syntax.<<<_355}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_30}>) file_0 pb_args_1_0) " = ") pb_rhs_1_1) 
+<{syntax.<<<_29}> !file_0 !_x_1 = case _x_1 (syntax._FunDef fun_ident_1_0 fun_arity_1_1 fun_priority_1_2 _x_1_3 fun_type_1_4 fun_pos_1_5 fun_kind_1_6 fun_lifted_1_7 fun_info_1_8 -> case _x_1_3 (syntax.ParsedBody bodies_2_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_343}>) (<{StdFile.<<<_37}> (<{StdFile.<<<_37}> (<{syntax.<<<_24}> file_0 fun_ident_1_0) '.') ' ') bodies_2_0) (syntax.CheckedBody _x_2_0 -> case _x_2_0 (syntax._CheckedBody cb_args_3_0 cb_rhs_3_1 -> case fun_info_1_8 (syntax._FunInfo fi_calls_4_0 fi_group_index_4_1 fi_def_level_4_2 fi_free_vars_4_3 fi_local_vars_4_4 fi_dynamics_4_5 fi_properties_4_6 -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_333}>) (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_53}>) (<{StdFile.<<<_38}> (<{StdFile.<<<_37}> (<{syntax.<<<_24}> file_0 fun_ident_1_0) '.') "C ") cb_args_3_0) " = ") cb_rhs_3_1) '\n') ) ) (syntax.TransformedBody _x_2_0 -> case _x_2_0 (syntax._TransformedBody tb_args_3_0 tb_rhs_3_1 -> case fun_info_1_8 (syntax._FunInfo fi_calls_4_0 fi_group_index_4_1 fi_def_level_4_2 fi_free_vars_4_3 fi_local_vars_4_4 fi_dynamics_4_5 fi_properties_4_6 -> <{StdFile.<<<_37}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_76}>) (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_53}>) (<{StdFile.<<<_38}> (<{StdFile.<<<_37}> (<{syntax.<<<_24}> file_0 fun_ident_1_0) '.') "T ") tb_args_3_0) '[') fi_calls_4_0) ']') "\n\t= ") tb_rhs_3_1) '\n') ) ) (syntax.NoBody -> case fun_type_1_4 (general.Yes type_3_0 -> <{StdFile.<<<_38}> (<{StdFile.<<<_37}> (<{syntax.<<<_24}> file_0 fun_ident_1_0) '.') "Array function\n") ) (_ -> <{StdFile.<<<_37}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 fun_ident_1_0) "???") '\n')) 
+<{syntax.<<<_36}> !file_0 !_x_1 = case _x_1 (syntax.TVI_Empty -> <{StdFile.<<<_38}> file_0 "TVI_Empty") (syntax.TVI_Type _x_1_0 -> <{StdFile.<<<_38}> file_0 "TVI_Type") (syntax.TVI_TypeVar ptr_1_0 -> <{StdFile.<<<_36}> file_0 (Heap.ptrToInt ptr_1_0)) (syntax.TVI_Forward _x_1_0 -> <{StdFile.<<<_38}> file_0 "TVI_Forward") (syntax.TVI_SignClass _x_1_0 _x_1_1 _x_1_2 -> <{StdFile.<<<_38}> file_0 "TVI_SignClass") (syntax.TVI_AttrAndRefCount ta_1_0 rc_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{syntax.<<<_31}> (<{StdFile.<<<_38}> file_0 "TVI_AttrAndRefCount ") ta_1_0) " ") rc_1_1) (syntax.TVI_CorrespondenceNumber n_1_0 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "TVI_CorrespondenceNumber ") n_1_0) (syntax.TVI_AType at_1_0 -> <{syntax.<<<_28}> (<{StdFile.<<<_38}> file_0 "TVI_AType ") at_1_0) (syntax.TVI_Used -> <{StdFile.<<<_38}> file_0 "TVI_Used") (syntax.TVI_TypeCode _x_1_0 -> <{StdFile.<<<_38}> file_0 "TVI_TypeCode") (syntax.TVI_CPSLocalTypeVar _x_1_0 -> <{StdFile.<<<_38}> file_0 "TVI_CPSLocalTypeVar") (syntax.TVI_Kinds _x_1_0 -> <{StdFile.<<<_38}> file_0 "TVI_Kinds") (syntax.TVI_PropClass _x_1_0 _x_1_1 _x_1_2 -> <{StdFile.<<<_38}> file_0 "TVI_PropClass") (syntax.TVI_TypeKind kind_info_ptr_1_0 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "TVI_TypeKind ") (Heap.ptrToInt kind_info_ptr_1_0)) (syntax.TVI_Kind kind_1_0 -> <{syntax.<<<_10}> (<{StdFile.<<<_38}> file_0 "TVI_Kind") kind_1_0) (syntax.TVI_Expr is_bimap_id_1_0 expr_1_1 -> <{syntax.<<<_22}> (<{StdFile.<<<_37}> (<{general.<<<_6}> (<{StdFile.<<<_38}> file_0 "TVI_Expr ") is_bimap_id_1_0) ' ') expr_1_1) 
+<{syntax.<<<_37}> !file_0 !_x_1 = case _x_1 (syntax.AVI_Empty -> <{StdFile.<<<_38}> file_0 "AVI_Empty") (syntax.AVI_Attr attr_1_0 -> <{syntax.<<<_31}> (<{StdFile.<<<_38}> file_0 "AVI_Attr ") attr_1_0) (syntax.AVI_AttrVar av_info_ptr_1_0 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "AVI_AttrVar ") (Heap.ptrToInt av_info_ptr_1_0)) (syntax.AVI_Forward temp_attr_id_1_0 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "AVI_Forward ") temp_attr_id_1_0) (syntax.AVI_CorrespondenceNumber n_1_0 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "AVI_CorrespondenceNumber ") n_1_0) (syntax.AVI_Used -> <{StdFile.<<<_38}> file_0 "AVI_Used") (syntax.AVI_CountZero -> <{StdFile.<<<_38}> file_0 "AVI_CountZero") (syntax.AVI_CountOne -> <{StdFile.<<<_38}> file_0 "AVI_CountOne") (syntax.AVI_CountMany -> <{StdFile.<<<_38}> file_0 "AVI_CountMany") (syntax.AVI_CountVar _x_1_0 -> <{StdFile.<<<_38}> file_0 "AVI_CountVar") (syntax.AVI_SequenceNumber n_1_0 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "AVI_SequenceNumber ") n_1_0) (syntax.AVI_Collected -> <{StdFile.<<<_38}> file_0 "AVI_Collected") 
+syntax.i_fold_st_361 !<{_v<_0}> !_vone_1 !<{_v+_2}> op_3 fr_4 to_5 st_6 = case (StdBool.not (select <{_v<_0}>::<{StdOverloaded.<;}> 0 fr_4 to_5)) (True -> st_6) (False -> syntax.i_fold_st_361 <{_v<_0}> _vone_1 <{_v+_2}> op_3 (select <{_v+_2}>::<{StdOverloaded.+;}> 0 fr_4 (select _vone_1::<{StdOverloaded.one;}> 0)) to_5 (op_3 fr_4 st_6)) 
+syntax.anon_320 !_vArray_0 !<{_v<<<_1}> rt_fields_2 index_3::I file_4 = select <{_v<<<_1}>::<{StdFile.<<<;}> 0 file_4 (select _vArray_0::<{_SystemArray.Array;}> 3 rt_fields_2 index_3)
+syntax.anon_394 !<{_v<<<_0}> rt_fields_1 index_2::I file_3 = select <{_v<<<_0}>::<{StdFile.<<<;}> 0 file_3 (syntax.select_365 rt_fields_1 index_2)
+syntax.i_fold_st_395 !_vone_0 !<{_v+_1}> op_2 !fr_3::I !to_4::I st_5 = case (StdBool.not (<{StdInt.<_17}> fr_3 to_4)) (True -> st_5) (False -> syntax.i_fold_st_395 _vone_0 <{_v+_1}> op_2 (select <{_v+_1}>::<{StdOverloaded.+;}> 0 fr_3 (select _vone_0::<{StdOverloaded.one;}> 0)) to_4 (op_2 fr_3 st_5)) 
+syntax.anon_396 !rt_fields_0 !index_1::I !file_2 = <{syntax.<<<_349}> file_2 (syntax.select_365 rt_fields_0 index_1)
+syntax.i_fold_st_397 !<{_v+_0}> op_1 !fr_2::I !to_3::I st_4 = case (StdBool.not (<{StdInt.<_17}> fr_2 to_3)) (True -> st_4) (False -> syntax.i_fold_st_397 <{_v+_0}> op_1 (select <{_v+_0}>::<{StdOverloaded.+;}> 0 fr_2 StdInt.one_11) to_3 (op_1 fr_2 st_4)) 
+syntax.i_fold_st_398 op_0 !fr_1::I !to_2::I st_3 = case (StdBool.not (<{StdInt.<_17}> fr_1 to_2)) (True -> st_3) (False -> syntax.i_fold_st_398 op_0 (<{StdInt.+_6}> fr_1 StdInt.one_11) to_2 (op_0 fr_1 st_3)) 
+syntax.i_fold_st_399 rt_fields_0 !fr_1::I !to_2::I !st_3 = case (StdBool.not (<{StdInt.<_17}> fr_1 to_2)) (True -> st_3) (False -> syntax.i_fold_st_399 rt_fields_0 (<{StdInt.+_6}> fr_1 StdInt.one_11) to_2 (syntax.anon_396 rt_fields_0 fr_1 st_3)) 
+<{syntax.<<<_348}> !file_0 !_x_1 = case _x_1 (syntax._RecordType rt_constructor_1_0 rt_fields_1_1 rt_is_boxed_record_1_2 -> syntax.i_fold_st_399 rt_fields_1_1 0 (syntax.size_366 rt_fields_1_1) file_0) 
+<{syntax.<<<_40}> !file_0 !_x_1 = case _x_1 (syntax.SynType type_1_0 -> <{syntax.<<<_28}> (<{StdFile.<<<_38}> file_0 " :== ") type_1_0) (syntax.AlgType data_1_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_347}>) (<{StdFile.<<<_38}> file_0 " = ") data_1_0) (syntax.RecordType record_1_0 -> <{StdFile.<<<_37}> (<{syntax.<<<_348}> (<{StdFile.<<<_37}> (<{StdFile.<<<_38}> file_0 " = ") '{') record_1_0) '}') (_ -> file_0)
+<{syntax.<<<_400}> !file_0 !_x_1 = case _x_1 (general.Yes x_1_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_24}>) file_0 x_1_0) (general.No -> file_0) 
+<{syntax.<<<_42}> !file_0 !_x_1 = case _x_1 (syntax.ID_Function ident_1_0 -> <{syntax.<<<_24}> file_0 ident_1_0) (syntax.ID_Class ident_1_0 opt_1_1 -> <{syntax.<<<_400}> (<{syntax.<<<_24}> (<{StdFile.<<<_38}> file_0 "class ") ident_1_0) opt_1_1) (syntax.ID_Type ident_1_0 opt_1_1 -> <{syntax.<<<_400}> (<{syntax.<<<_24}> (<{StdFile.<<<_38}> file_0 ":: ") ident_1_0) opt_1_1) (syntax.ID_Record ident_1_0 opt_1_1 -> <{StdFile.<<<_38}> (<{syntax.<<<_400}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 ident_1_0) " { ") opt_1_1) " } ") (syntax.ID_Instance i1_1_0 i2_1_1 tup_1_2 -> <{general.<<<_7}> (<{StdFile.<<<;}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_23}>))) (<{StdFile.<<<;}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_329}>))) (<{syntax.<<<_24}> (<{syntax.<<<_24}> (<{StdFile.<<<_38}> file_0 "instance ") i1_1_0) i2_1_1) tup_1_2) 
+<{syntax.<<<_41}> !file_0 !_x_1 = case _x_1 (syntax._Import import_module_1_0 _x_1_1 import_file_position_1_2 import_qualified_1_3 -> case _x_1_1 (syntax.ImportSymbolsAll -> <{syntax.<<<_24}> (<{StdFile.<<<_38}> file_0 "import ") import_module_1_0) (syntax.ImportSymbolsOnly import_symbols_2_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_42}>) (<{syntax.<<<_24}> (<{StdFile.<<<_38}> file_0 "import ") import_module_1_0) import_symbols_2_0) ) 
+<{syntax.<<<_47}> !file_0 !an_1 = <{StdFile.<<<_38}> file_0 (syntax.toString_8 an_1)
+<{syntax.<<<_50}> !file_0 !_x_1 = case _x_1 (syntax._SelectorDef sd_ident_1_0 sd_field_1_1 sd_type_1_2 sd_exi_vars_1_3 sd_field_nr_1_4 sd_type_index_1_5 sd_type_ptr_1_6 sd_pos_1_7 -> <{syntax.<<<_24}> file_0 sd_ident_1_0) 
+<{syntax.<<<_51}> !file_0 !_x_1 = case _x_1 (syntax._ConsDef cons_ident_1_0 cons_type_1_1 cons_priority_1_2 cons_number_1_3 cons_type_index_1_4 cons_exi_vars_1_5 cons_type_ptr_1_6 cons_pos_1_7 -> <{syntax.<<<_21}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 cons_ident_1_0) " :: ") cons_type_1_1) 
+<{syntax.<<<_69}> !file_0 !_x_1 = case _x_1 (syntax.Ident ident_1_0 -> <{syntax.<<<_24}> file_0 ident_1_0) (syntax.QualifiedIdent module_ident_1_0 name_1_1 -> <{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> (<{StdFile.<<<_37}> file_0 '\'') module_ident_1_0) "'.") name_1_1) 
+<{syntax.<<<_54}> !file_0 !_x_1 = case _x_1 (syntax._ClassInstance ins_class_index_1_0 ins_class_ident_1_1 ins_ident_1_2 ins_type_1_3 ins_member_types_1_4 ins_members_1_5 ins_specials_1_6 ins_pos_1_7 -> <{syntax.<<<_18}> (<{StdFile.<<<_38}> (<{syntax.<<<_69}> file_0 (select ins_class_ident_1_1::syntax._ClassIdent 0)) " :: ") ins_type_1_3) 
+syntax.write_signs_317 !file_0 !sc_pos_vect_1::I !sc_neg_vect_2::I index_3::I = case (case (<{StdInt.==_16}> sc_pos_vect_1 0) (True -> <{StdInt.==_16}> sc_neg_vect_2 0) (False -> False) ) (True -> file_0) (False -> let index_bit_2_0::I = <{StdInt.<<}> 1 index_3 in case (<{StdInt.==_16}> (StdInt.bitand sc_pos_vect_1 index_bit_2_0) 0) (True -> case (<{StdInt.==_16}> (StdInt.bitand sc_neg_vect_2 index_bit_2_0) 0) (True -> syntax.write_signs_317 (<{StdFile.<<<_37}> file_0 'O') sc_pos_vect_1 sc_neg_vect_2 (<{StdInt.+_6}> index_3 StdInt.one_11)) (False -> syntax.write_signs_317 (<{StdFile.<<<_37}> file_0 '-') sc_pos_vect_1 (StdInt.bitand sc_neg_vect_2 (StdInt.bitnot index_bit_2_0)) (<{StdInt.+_6}> index_3 StdInt.one_11)) ) (False -> case (<{StdInt.==_16}> (StdInt.bitand sc_neg_vect_2 index_bit_2_0) 0) (True -> syntax.write_signs_317 (<{StdFile.<<<_37}> file_0 '+') (StdInt.bitand sc_pos_vect_1 (StdInt.bitnot index_bit_2_0)) sc_neg_vect_2 (<{StdInt.+_6}> index_3 StdInt.one_11)) (False -> syntax.write_signs_317 (<{StdFile.<<<_37}> file_0 'T') (StdInt.bitand sc_pos_vect_1 (StdInt.bitnot index_bit_2_0)) (StdInt.bitand sc_neg_vect_2 (StdInt.bitnot index_bit_2_0)) (<{StdInt.+_6}> index_3 StdInt.one_11)) ) ) 
+<{syntax.<<<_55}> !file_0 !_x_1 = case _x_1 (typeproperties._SignClassification sc_pos_vect_1_0 sc_neg_vect_1_1 -> syntax.write_signs_317 file_0 sc_pos_vect_1_0 sc_neg_vect_1_1 0) 
+<{syntax.<<<_57}> !file_0 !_x_1 = case _x_1 (syntax.CP_FunArg fun_name_1_0 arg_nr_1_1 -> <{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "argument ") arg_nr_1_1) " of ") (syntax.readable fun_name_1_0)) (syntax.CP_SymbArgAndExpression fun_name_1_0 arg_nr_1_1 expression_1_2 -> syntax.show_expression (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_36}> (<{StdFile.<<<_38}> file_0 "argument ") arg_nr_1_1) " of ") (syntax.readable (select fun_name_1_0::syntax._SymbIdent 0))) " : ") expression_1_2) (syntax.CP_LiftedFunArg fun_name_1_0 arg_name_1_1 -> <{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> (<{StdFile.<<<_38}> file_0 "lifted argument ") arg_name_1_1) " of ") (syntax.readable fun_name_1_0)) (syntax.CP_Expression expression_1_0 -> syntax.show_expression file_0 expression_1_0) 
+<{syntax.<<<_61}> !file_0 !_x_1 = case _x_1 (syntax.STE_FunctionOrMacro _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_FunctionOrMacro") (syntax.STE_Type -> <{StdFile.<<<_38}> file_0 "STE_Type") (syntax.STE_Constructor -> <{StdFile.<<<_38}> file_0 "STE_Constructor") (syntax.STE_Selector _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_Selector") (syntax.STE_Class -> <{StdFile.<<<_38}> file_0 "STE_Class") (syntax.STE_Field _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_Field") (syntax.STE_Member -> <{StdFile.<<<_38}> file_0 "STE_Member") (syntax.STE_Instance -> <{StdFile.<<<_38}> file_0 "STE_Instance") (syntax.STE_Variable _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_Variable") (syntax.STE_TypeVariable _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_TypeVariable") (syntax.STE_TypeAttribute _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_TypeAttribute") (syntax.STE_BoundTypeVariable _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_BoundTypeVariable") (syntax.STE_Imported a_1_0 b_1_1 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{syntax.<<<_61}> (<{StdFile.<<<_38}> file_0 "STE_Imported (") a_1_0) ")") b_1_1) (syntax.STE_DclFunction -> <{StdFile.<<<_38}> file_0 "STE_DclFunction") (syntax.STE_Generic _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_Generic") (syntax.STE_GenericCase -> <{StdFile.<<<_38}> file_0 "STE_GenericCase") (syntax.STE_GenericDeriveClass -> <{StdFile.<<<_38}> file_0 "STE_GenericDeriveClass") (syntax.STE_Module _x_1_0 -> <{StdFile.<<<_38}> file_0 "STE_Module") (syntax.STE_ClosedModule -> <{StdFile.<<<_38}> file_0 "STE_ClosedModule") (syntax.STE_Empty -> <{StdFile.<<<_38}> file_0 "STE_Empty") (_ -> <{StdFile.<<<_38}> file_0 "STE_???")
+<{syntax.<<<_60}> !file_0 !_x_1 = case _x_1 (syntax.Declaration _x_1_0 -> case _x_1_0 (syntax._DeclarationRecord decl_ident_2_0 decl_pos_2_1 decl_kind_2_2 decl_index_2_3 -> <{StdFile.<<<_37}> (<{syntax.<<<_61}> (<{StdFile.<<<_37}> (<{StdFile.<<<_37}> (<{syntax.<<<_338}> (<{StdFile.<<<_37}> (<{syntax.<<<_24}> file_0 decl_ident_2_0) '<') (select decl_ident_2_0::syntax._Ident 1)) '>') '(') decl_kind_2_2) ')') ) 
+<{syntax.<<<_66}> !file_0 !_x_1 = case _x_1 (syntax._FunType ft_ident_1_0 ft_arity_1_1 ft_priority_1_2 ft_type_1_3 ft_pos_1_4 ft_specials_1_5 ft_type_ptr_1_6 -> <{syntax.<<<_21}> (<{StdFile.<<<_38}> (<{syntax.<<<_24}> file_0 ft_ident_1_0) "::") ft_type_1_3) 
+<{syntax.<<<_67}> !file_0 !_x_1 = case _x_1 (syntax._GenericClassInfo gci_kind_1_0 gci_module_1_1 gci_class_1_2 gci_member_1_3 -> <{StdFile.<<<_36}> (<{StdFile.<<<_38}> (<{syntax.<<<_10}> file_0 gci_kind_1_0) ":") gci_class_1_2) 
+<{syntax.<<<_70}> !file_0 !_x_1 = case _x_1 (syntax.ParsedBody bodies_1_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_343}>) file_0 bodies_1_0) (syntax.CheckedBody _x_1_0 -> case _x_1_0 (syntax._CheckedBody cb_args_2_0 cb_rhs_2_1 -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_333}>) (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_53}>) (<{StdFile.<<<_38}> file_0 "C ") cb_args_2_0) " = ") cb_rhs_2_1) '\n') ) (syntax.TransformedBody _x_1_0 -> case _x_1_0 (syntax._TransformedBody tb_args_2_0 tb_rhs_2_1 -> <{StdFile.<<<_37}> (<{syntax.<<<_22}> (<{StdFile.<<<_38}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_53}>) (<{StdFile.<<<_38}> file_0 "T ") tb_args_2_0) " = ") tb_rhs_2_1) '\n') ) (syntax.Expanding vars_1_0 -> <{general.<<<_13}> (<{StdFile.<<<;}> <{syntax.<<<_53}>) (<{StdFile.<<<_38}> file_0 "E ") vars_1_0) (syntax.GeneratedBody -> <{StdFile.<<<_38}> file_0 "Generic function\n") (syntax.NoBody -> <{StdFile.<<<_38}> file_0 "Array function\n") 
+<{syntax.==_72}>::B !attr1_0 !attr2_1 = compare_constructor.equal_constructor attr1_0 attr2_1
+<{syntax.==_73}>::B !a1_0 !a2_1 = compare_constructor.equal_constructor a1_0 a2_1
+syntax.toString_75 !_x_0 = case _x_0 (syntax.TCClass clazz_1_0 -> select (select (select clazz_1_0::syntax._Global 0)::syntax._DefinedSymbol 0)::syntax._Ident 0) (syntax.TCGeneric _x_1_0 -> case _x_1_0 (syntax._GenericTypeContext gtc_generic_2_0 gtc_kind_2_1 gtc_class_2_2 gtc_generic_dict_2_3 -> <{StdString.+++_11}> (select (select (select gtc_generic_2_0::syntax._Global 0)::syntax._DefinedSymbol 0)::syntax._Ident 0) (syntax.toString_9 gtc_kind_2_1)) ) 
+<{syntax.==_323}>::B !varid1_0 !varid2_1 = <{syntax.==_15}> (select varid1_0::syntax._BoundVar 0) (select varid2_1::syntax._BoundVar 0)
+syntax.needs_brackets_325::B !_x_0 = case _x_0 (syntax.TA _x_1_0 _x_1_1 -> case _x_1_0 (syntax._TypeSymbIdent type_ident_2_0 type_arity_2_1 type_index_2_2 type_prop_2_3 -> <{StdInt.<_17}> 0 type_arity_2_1) ) (syntax.TAS _x_1_0 _x_1_1 _x_1_2 -> case _x_1_0 (syntax._TypeSymbIdent type_ident_2_0 type_arity_2_1 type_index_2_2 type_prop_2_3 -> <{StdInt.<_17}> 0 type_arity_2_1) ) (<{syntax.-->}> _x_1_0 _x_1_1 -> True) (<{syntax.:@:}> _x_1_0 _x_1_1 -> True) (syntax.TArrow1 _x_1_0 -> True) (_ -> False)
+syntax.needs_brackets_324::B !_x_0 = case _x_0 (syntax._AType at_attribute_1_0 at_type_1_1 -> syntax.needs_brackets_325 at_type_1_1) 
+syntax.needs_brackets_326::B !_x_0 = case _x_0 (syntax.App _x_1_0 -> case _x_1_0 (syntax._App app_symb_2_0 app_args_2_1 app_info_ptr_2_2 -> StdBool.not (StdList.isEmpty app_args_2_1)) ) (<{syntax.@}> _x_1_0 _x_1_1 -> True) (syntax.Let _x_1_0 -> True) (syntax.Case _x_1_0 -> True) (syntax.Selection _x_1_0 _x_1_1 _x_1_2 -> True) (_ -> False)
+syntax.needs_brackets_327::B _x_0 = False
+<{syntax.<<<_344}> !file_0 !_x_1 = case _x_1 (syntax.FK_Function _x_1_0 -> case _x_1_0 (True -> <{StdFile.<<<_38}> file_0 "Lambda") (False -> <{StdFile.<<<_38}> file_0 "FK_Function") ) (syntax.FK_NodeDefOrFunction -> <{StdFile.<<<_38}> file_0 "FK_NodeDefOrFunction") (syntax.FK_Macro -> <{StdFile.<<<_38}> file_0 "FK_Macro") (syntax.FK_Caf -> <{StdFile.<<<_38}> file_0 "FK_Caf") (syntax.FK_Unknown -> <{StdFile.<<<_38}> file_0 "FK_Unknown") 
+<{syntax.<<<_346}> !file_0 !_x_1 = case _x_1 (syntax._TypeDefInfo tdi_kinds_1_0 tdi_properties_1_1 tdi_group_1_2 tdi_group_nr_1_3 tdi_group_vars_1_4 tdi_cons_vars_1_5 tdi_index_in_group_1_6 tdi_classification_1_7 tdi_gen_rep_1_8 -> <{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{StdFile.<<<_36}>) (<{StdFile.<<<_37}> (<{general.<<<_13}> (<{StdFile.<<<;}> <{StdFile.<<<_36}>) (<{StdFile.<<<_37}> file_0 '[') tdi_group_vars_1_4) '=') tdi_cons_vars_1_5) ']') 
+<{syntax.<<<_353}> !file_0 !_x_1 = case _x_1 (syntax._ClassDef class_ident_1_0 class_arity_1_1 class_args_1_2 class_context_1_3 class_members_1_4 class_dictionary_1_5 class_pos_1_6 class_cons_vars_1_7 class_fun_dep_vars_1_8 class_lazy_members_1_9 -> <{syntax.<<<_24}> file_0 class_ident_1_0) 
+<{syntax.<<<_354}> !<{_v<<<_0}> !file_1 !_x_2 = case _x_2 (syntax._CollectedDefinitions def_types_1_0 def_constructors_1_1 def_selectors_1_2 def_macros_1_3 def_macro_indices_1_4 def_classes_1_5 def_members_1_6 def_funtypes_1_7 def_instances_1_8 def_generics_1_9 def_generic_cases_1_10 -> file_1) 
+<{syntax.TD;OptionalDoc}> _x_0::B = _predefined._Nil
+<{syntax.TD;Ident}> _x_0::B = _predefined._Nil
+<{syntax.TD;SymbolTable}> _x_0::B = _predefined._Nil
+<{syntax.TD;SymbolPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;SymbolTableEntry}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunctionOrMacroIndex}> _x_0::B = _predefined._Nil
+<{syntax.TD;STE_BoundTypeVariable}> _x_0::B = _predefined._Nil
+<{syntax.TD;STE_Kind}> _x_0::B = _predefined._Nil
+<{syntax.TD;ModuleN}> _x_0::B = _predefined._Nil
+<{syntax.TD;SortedQualifiedImports}> _x_0::B = _predefined._Nil
+<{syntax.TD;Declaration}> _x_0::B = _predefined._Nil
+<{syntax.TD;DeclarationRecord}> _x_0::B = _predefined._Nil
+<{syntax.TD;ComponentNrAndIndex}> _x_0::B = _predefined._Nil
+<{syntax.TD;Global}> _x_0::B = _predefined._Nil
+<{syntax.TD;Module}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedForeignExport}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedModule}> _x_0::B = _predefined._Nil
+<{syntax.TD;ScannedModule}> _x_0::B = _predefined._Nil
+<{syntax.TD;ModuleKind}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunDefIndex}> _x_0::B = _predefined._Nil
+<{syntax.TD;IclFunctionIndices}> _x_0::B = _predefined._Nil
+<{syntax.TD;IclModule}> _x_0::B = _predefined._Nil
+<{syntax.TD;DclModule}> _x_0::B = _predefined._Nil
+<{syntax.TD;ForeignExport}> _x_0::B = _predefined._Nil
+<{syntax.TD;CopiedDefinitions}> _x_0::B = _predefined._Nil
+<{syntax.TD;Declarations}> _x_0::B = _predefined._Nil
+<{syntax.TD;QualifiedDeclaration}> _x_0::B = _predefined._Nil
+<{syntax.TD;DictionaryInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;RhsDefsOfType}> _x_0::B = _predefined._Nil
+<{syntax.TD;CollectedDefinitions}> _x_0::B = _predefined._Nil
+<{syntax.TD;CommonDefs}> _x_0::B = _predefined._Nil
+<{syntax.TD;LocalDefs}> _x_0::B = _predefined._Nil
+<{syntax.TD;IndexRange}> _x_0::B = _predefined._Nil
+<{syntax.TD;ArrayAndListInstances}> _x_0::B = _predefined._Nil
+<{syntax.TD;Level}> _x_0::B = _predefined._Nil
+<{syntax.TD;CollectedLocalDefs}> _x_0::B = _predefined._Nil
+<{syntax.TD;NodeDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;Rhs}> _x_0::B = _predefined._Nil
+<{syntax.TD;DocType}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedDefinition}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunKind}> _x_0::B = _predefined._Nil
+<{syntax.TD;StrictnessList}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedSelector}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedConstructor}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedInstance}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedInstanceAndMembers}> _x_0::B = _predefined._Nil
+<{syntax.TD;ScannedInstanceAndMembersR}> _x_0::B = _predefined._Nil
+<{syntax.TD;IdentOrQualifiedIdent}> _x_0::B = _predefined._Nil
+<{syntax.TD;Specials}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunSpecials}> _x_0::B = _predefined._Nil
+<{syntax.TD;SpecialSubstitution}> _x_0::B = _predefined._Nil
+<{syntax.TD;Special}> _x_0::B = _predefined._Nil
+<{syntax.TD;AttrInequality}> _x_0::B = _predefined._Nil
+<{syntax.TD;DefinedSymbol}> _x_0::B = _predefined._Nil
+<{syntax.TD;ClassDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;ClassDefInfos}> _x_0::B = _predefined._Nil
+<{syntax.TD;MemberDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericDependency}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericClassInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericClassInfos}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericRepresentationConstructor}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericInfoPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericHeap}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeCons}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericCaseDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericCaseFunctions}> _x_0::B = _predefined._Nil
+<{syntax.TD;GCF}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericCaseBody}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericInstanceDependencies}> _x_0::B = _predefined._Nil
+<{syntax.TD;InstanceType}> _x_0::B = _predefined._Nil
+<{syntax.TD;ClassInstance}> _x_0::B = _predefined._Nil
+<{syntax.TD;ClassIdent}> _x_0::B = _predefined._Nil
+<{syntax.TD;ClassInstanceMember}> _x_0::B = _predefined._Nil
+<{syntax.TD;Import}> _x_0::B = _predefined._Nil
+<{syntax.TD;ImportSymbols}> _x_0::B = _predefined._Nil
+<{syntax.TD;ImportQualified}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedImport}> _x_0::B = _predefined._Nil
+<{syntax.TD;ImportDeclaration}> _x_0::B = _predefined._Nil
+<{syntax.TD;ImportedObject}> _x_0::B = _predefined._Nil
+<{syntax.TD;RecordType}> _x_0::B = _predefined._Nil
+<{syntax.TD;FieldSymbol}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeRhs}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedTypeDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;CheckedTypeDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;GlobalIndex}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeDefInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenTypeStruct}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericTypeRep}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeDefInfos}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunType}> _x_0::B = _predefined._Nil
+<{syntax.TD;FreeVar}> _x_0::B = _predefined._Nil
+<{syntax.TD;ModuleIndex}> _x_0::B = _predefined._Nil
+<{syntax.TD;DclFunctionIndex}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunCall}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedBody}> _x_0::B = _predefined._Nil
+<{syntax.TD;CheckedBody}> _x_0::B = _predefined._Nil
+<{syntax.TD;CheckedAlternative}> _x_0::B = _predefined._Nil
+<{syntax.TD;TransformedBody}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunctionBody}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;ConsClasses}> _x_0::B = _predefined._Nil
+<{syntax.TD;ConsClass}> _x_0::B = _predefined._Nil
+<{syntax.TD;ProdClass}> _x_0::B = _predefined._Nil
+<{syntax.TD;ImportedConstructors}> _x_0::B = _predefined._Nil
+<{syntax.TD;ImportedFunctions}> _x_0::B = _predefined._Nil
+<{syntax.TD;ImportedTypes}> _x_0::B = _predefined._Nil
+<{syntax.TD;OptionalVariable}> _x_0::B = _predefined._Nil
+<{syntax.TD;AuxiliaryPattern}> _x_0::B = _predefined._Nil
+<{syntax.TD;AP_Kind}> _x_0::B = _predefined._Nil
+<{syntax.TD;VI_TypeInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;VarInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeCodeVariableInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;ExtendedVarInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;ArgumentPosition}> _x_0::B = _predefined._Nil
+<{syntax.TD;VarHeap}> _x_0::B = _predefined._Nil
+<{syntax.TD;VarInfoPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;BoundVar}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeSymbIdent}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeSymbProperties}> _x_0::B = _predefined._Nil
+<{syntax.TD;SymbKind}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunctionHeap}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunctionInfoPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunctionInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;Producer}> _x_0::B = _predefined._Nil
+<{syntax.TD;InstanceInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;GeneratedFunction}> _x_0::B = _predefined._Nil
+<{syntax.TD;ExpressionHeap}> _x_0::B = _predefined._Nil
+<{syntax.TD;ExprInfoPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;TempLocalVar}> _x_0::B = _predefined._Nil
+<{syntax.TD;DynamicPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;ExprInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;ExtendedExprInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;ActiveCaseInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;OverloadedCall}> _x_0::B = _predefined._Nil
+<{syntax.TD;OverloadedCallWithVarContexts}> _x_0::B = _predefined._Nil
+<{syntax.TD;DictionaryAndClassType}> _x_0::B = _predefined._Nil
+<{syntax.TD;VarContexts}> _x_0::B = _predefined._Nil
+<{syntax.TD;CaseType}> _x_0::B = _predefined._Nil
+<{syntax.TD;SymbIdent}> _x_0::B = _predefined._Nil
+<{syntax.TD;ConsDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;SelectorDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;SymbolType}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeContext}> _x_0::B = _predefined._Nil
+<{syntax.TD;TCClass}> _x_0::B = _predefined._Nil
+<{syntax.TD;GenericTypeContext}> _x_0::B = _predefined._Nil
+<{syntax.TD;AType}> _x_0::B = _predefined._Nil
+<{syntax.TD;TempAttrId}> _x_0::B = _predefined._Nil
+<{syntax.TD;TempVarId}> _x_0::B = _predefined._Nil
+<{syntax.TD;Type}> _x_0::B = _predefined._Nil
+<{syntax.TD;ConsVariable}> _x_0::B = _predefined._Nil
+<{syntax.TD;DynamicType}> _x_0::B = _predefined._Nil
+<{syntax.TD;KindHeap}> _x_0::B = _predefined._Nil
+<{syntax.TD;KindInfoPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;KindInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeVarInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeVarInfoPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeVarHeap}> _x_0::B = _predefined._Nil
+<{syntax.TD;AttrVarInfo}> _x_0::B = _predefined._Nil
+<{syntax.TD;AttrVarInfoPtr}> _x_0::B = _predefined._Nil
+<{syntax.TD;AttrVarHeap}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeHeaps}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeVar}> _x_0::B = _predefined._Nil
+<{syntax.TD;ATypeVar}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeAttribute}> _x_0::B = _predefined._Nil
+<{syntax.TD;AttributeVar}> _x_0::B = _predefined._Nil
+<{syntax.TD;Annotation}> _x_0::B = _predefined._Nil
+<{syntax.TD;BasicType}> _x_0::B = _predefined._Nil
+<{syntax.TD;BasicValue}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeKind}> _x_0::B = _predefined._Nil
+<{syntax.TD;PatternVar}> _x_0::B = _predefined._Nil
+<{syntax.TD;ReferenceCountList}> _x_0::B = _predefined._Nil
+<{syntax.TD;Occurrence}> _x_0::B = _predefined._Nil
+<{syntax.TD;ReferenceCount}> _x_0::B = _predefined._Nil
+<{syntax.TD;SelectiveUse}> _x_0::B = _predefined._Nil
+<{syntax.TD;RC_Used}> _x_0::B = _predefined._Nil
+<{syntax.TD;CountedFreeVar}> _x_0::B = _predefined._Nil
+<{syntax.TD;OccurrenceBinding}> _x_0::B = _predefined._Nil
+<{syntax.TD;RefMarkResult}> _x_0::B = _predefined._Nil
+<{syntax.TD;OptGuardedAlts}> _x_0::B = _predefined._Nil
+<{syntax.TD;GuardedExpr}> _x_0::B = _predefined._Nil
+<{syntax.TD;ExprWithLocalDefs}> _x_0::B = _predefined._Nil
+<{syntax.TD;NodeDefWithLocals}> _x_0::B = _predefined._Nil
+<{syntax.TD;CaseAlt}> _x_0::B = _predefined._Nil
+<{syntax.TD;LocalDef}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedSelectorKind}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedExpr}> _x_0::B = _predefined._Nil
+<{syntax.TD;ParsedSelection}> _x_0::B = _predefined._Nil
+<{syntax.TD;OptionalRecordName}> _x_0::B = _predefined._Nil
+<{syntax.TD;ModuleIdent}> _x_0::B = _predefined._Nil
+<{syntax.TD;ArrayKind}> _x_0::B = _predefined._Nil
+<{syntax.TD;GeneratorKind}> _x_0::B = _predefined._Nil
+<{syntax.TD;LineAndColumn}> _x_0::B = _predefined._Nil
+<{syntax.TD;Generator}> _x_0::B = _predefined._Nil
+<{syntax.TD;Qualifier}> _x_0::B = _predefined._Nil
+<{syntax.TD;Sequence}> _x_0::B = _predefined._Nil
+<{syntax.TD;BoundExpr}> _x_0::B = _predefined._Nil
+<{syntax.TD;FieldAssignment}> _x_0::B = _predefined._Nil
+<{syntax.TD;FieldNameOrQualifiedFieldName}> _x_0::B = _predefined._Nil
+<{syntax.TD;ElemAssignment}> _x_0::B = _predefined._Nil
+<{syntax.TD;SelectorKind}> _x_0::B = _predefined._Nil
+<{syntax.TD;Expression}> _x_0::B = _predefined._Nil
+<{syntax.TD;CodeBinding}> _x_0::B = _predefined._Nil
+<{syntax.TD;App}> _x_0::B = _predefined._Nil
+<{syntax.TD;Case}> _x_0::B = _predefined._Nil
+<{syntax.TD;Let}> _x_0::B = _predefined._Nil
+<{syntax.TD;LetBind}> _x_0::B = _predefined._Nil
+<{syntax.TD;Conditional}> _x_0::B = _predefined._Nil
+<{syntax.TD;DynamicExpr}> _x_0::B = _predefined._Nil
+<{syntax.TD;CasePatterns}> _x_0::B = _predefined._Nil
+<{syntax.TD;OverloadedListType}> _x_0::B = _predefined._Nil
+<{syntax.TD;Selection}> _x_0::B = _predefined._Nil
+<{syntax.TD;TypeCodeExpression}> _x_0::B = _predefined._Nil
+<{syntax.TD;GlobalTCType}> _x_0::B = _predefined._Nil
+<{syntax.TD;AlgebraicPattern}> _x_0::B = _predefined._Nil
+<{syntax.TD;BasicPattern}> _x_0::B = _predefined._Nil
+<{syntax.TD;DynamicPattern}> _x_0::B = _predefined._Nil
+<{syntax.TD;Position}> _x_0::B = _predefined._Nil
+<{syntax.TD;CoercionPosition}> _x_0::B = _predefined._Nil
+<{syntax.TD;IdentPos}> _x_0::B = _predefined._Nil
+<{syntax.TD;StringPos}> _x_0::B = _predefined._Nil
+<{syntax.TD;FileName}> _x_0::B = _predefined._Nil
+<{syntax.TD;FunctName}> _x_0::B = _predefined._Nil
+<{syntax.TD;LineNr}> _x_0::B = _predefined._Nil
+<{syntax.TD;BoxedSymbolTableEntry}> _x_0::B = _predefined._Nil
+<{syntax.TD;needs_brackets;}> _x_0::B = _predefined._Nil
+
+:: syntax.FunctionOrMacroIndex = syntax.FunctionOrIclMacroIndex !a1::I | syntax.DclMacroIndex !a1::I !a2::I
+:: syntax.STE_Kind = syntax.STE_FunctionOrMacro !a1 | syntax.STE_DclMacroOrLocalMacroFunction !a1 | syntax.STE_Type | syntax.STE_Constructor | syntax.STE_Selector !a1 | syntax.STE_Field !a1 | syntax.STE_Class | syntax.STE_Member | syntax.STE_Generic !a1::I | syntax.STE_GenericCase | syntax.STE_GenericDeriveClass | syntax.STE_Instance | syntax.STE_Variable !a1 | syntax.STE_TypeVariable !a1 | syntax.STE_FunDepTypeVariable !a1 | syntax.STE_TypeAttribute !a1 | syntax.STE_BoundTypeVariable !a1 | syntax.STE_Imported !a1 !a2 | syntax.STE_DclFunction | syntax.STE_Module !a1 | syntax.STE_ClosedModule | syntax.STE_ModuleQualifiedImports !a1 | syntax.STE_Empty | syntax.STE_DictType !a1 | syntax.STE_DictCons !a1 | syntax.STE_DictField !a1 | syntax.STE_Called !a1 | syntax.STE_ExplImpSymbol !a1::I | syntax.STE_ExplImpComponentNrs !a1 | syntax.STE_BelongingSymbol !a1::I | syntax.STE_ExplImpSymbolNotImported !a1 !a2 | syntax.STE_ImportedQualified !a1 !a2 | syntax.STE_UsedType !a1 !a2 | syntax.STE_UsedQualifiedType !a1 !a2 !a3 | syntax.STE_BelongingSymbolExported | syntax.STE_BelongingSymbolForExportedSymbol | syntax.STE_TypeExtension
+:: syntax.SortedQualifiedImports = syntax.SortedQualifiedImports !a1 !a2 !a3 | syntax.EmptySortedQualifiedImports
+:: syntax.Declaration = syntax.Declaration !a1
+:: syntax.ModuleKind = syntax.MK_Main | syntax.MK_Module | syntax.MK_System | syntax.MK_None | syntax.MK_NoMainDcl
+:: syntax.RhsDefsOfType = syntax.ConsList !a1 | syntax.SelectorList !a1 !a2 !a3::B !a4 | syntax.TypeSpec !a1 | syntax.NewTypeCons !a1 | syntax.EmptyRhs !a1 | syntax.AbstractTypeSpec !a1 !a2 | syntax.ExtensibleConses !a1 | syntax.MoreConses !a1 !a2
+:: syntax.LocalDefs = syntax.LocalParsedDefs a1 | syntax.CollectedLocalDefs a1
+:: syntax.DocType = syntax.DocBlock | syntax.DocLine
+:: syntax.ParsedDefinition = syntax.PD_Function a1 a2 a3::B a4 a5 a6 | syntax.PD_NodeDef a1 a2 a3 | syntax.PD_Type a1 | syntax.PD_TypeSpec a1 a2 a3 a4 a5 | syntax.PD_Class a1 a2 | syntax.PD_Instance a1 | syntax.PD_Instances a1 | syntax.PD_Import a1 | syntax.PD_ImportedObjects a1 | syntax.PD_ForeignExport !a1 !a2 !a3::I !a4::B | syntax.PD_Generic a1 | syntax.PD_GenericCase a1 a2 | syntax.PD_Derive a1 | syntax.PD_Documentation a1 a2 | syntax.PD_Erroneous
+:: syntax.FunKind = syntax.FK_Function !a1::B | syntax.FK_Macro | syntax.FK_Caf | syntax.FK_NodeDefOrFunction | syntax.FK_Unknown
+:: syntax.StrictnessList = syntax.NotStrict | syntax.Strict !a1::I | syntax.StrictList !a1::I a2
+:: syntax.IdentOrQualifiedIdent = syntax.Ident !a1 | syntax.QualifiedIdent !a1 !a2
+:: syntax.Specials = syntax.SP_ParsedSubstitutions !a1 | syntax.SP_Substitutions !a1 | syntax.SP_ContextTypes !a1 | syntax.SP_TypeOffset !a1::I | syntax.SP_None
+:: syntax.FunSpecials = syntax.FSP_ParsedSubstitutions !a1 | syntax.FSP_Substitutions !a1 | syntax.FSP_ContextTypes !a1 | syntax.FSP_FunIndex !a1 | syntax.FSP_None
+:: syntax.TypeCons = syntax.TypeConsSymb a1 | syntax.TypeConsBasic a1 | syntax.TypeConsArrow | syntax.TypeConsVar a1 | syntax.TypeConsQualifiedIdent !a1 !a2
+:: syntax.GenericCaseFunctions = syntax.GCF !a1 !a2 | syntax.GCFS !a1 | syntax.GCFC !a1 !a2
+:: syntax.GenericCaseBody = syntax.GCB_None | syntax.GCB_FunIndex !a1 | syntax.GCB_FunAndMacroIndex !a1 !a2 | syntax.GCB_MacroIndex !a1 | syntax.GCB_FunDef !a1 | syntax.GCB_ParsedBody !a1 !a2
+:: syntax.GenericInstanceDependencies = syntax.AllGenericInstanceDependencies | syntax.GenericInstanceDependencies !a1::I !a2::I | syntax.GenericInstanceUsedArgs !a1::I !a2::I
+:: syntax.ImportSymbols = syntax.ImportSymbolsAll | syntax.ImportSymbolsOnly !a1
+:: syntax.ImportQualified = syntax.NotQualified | syntax.Qualified | syntax.QualifiedAs !a1
+:: syntax.ImportDeclaration = syntax.ID_Function !a1 | syntax.ID_Class !a1 !a2 | syntax.ID_Type !a1 !a2 | syntax.ID_Record !a1 !a2 | syntax.ID_Instance !a1 !a2 !a3 | syntax.ID_Generic !a1 !a2
+:: syntax.TypeRhs = syntax.AlgType !a1 | syntax.SynType !a1 | syntax.RecordType !a1 | syntax.NewType !a1 | syntax.AbstractType !a1 | syntax.AbstractSynType !a1 !a2 | syntax.ExtensibleAlgType !a1 | syntax.AlgConses !a1 !a2 | syntax.UncheckedAlgConses !a1 !a2 | syntax.UnknownType
+:: syntax.GenTypeStruct = syntax.GTSAppCons a1 a2 | syntax.GTSAppVar a1 a2 | syntax.GTSVar a1 | syntax.GTSCons !a1 !a2 !a3 !a4 !a5 | syntax.GTSRecord !a1 !a2 !a3 !a4 !a5 | syntax.GTSField !a1 !a2 !a3 !a4 | syntax.GTSObject !a1 !a2 !a3 !a4 | syntax.GTSE | syntax.GTSPair !a1 !a2 | syntax.GTSEither !a1 !a2 | syntax.GTSUnit | syntax.GTSArrow a1 a2 | syntax.GTSAppConsBimapKindConst | syntax.GTSAppBimap a1 a2 | syntax.GTSAppConsSimpleType !a1 !a2 !a3
+:: syntax.FunCall = syntax.FunCall !a1 !a2 | syntax.MacroCall !a1 !a2 a3 | syntax.DclFunCall !a1 !a2 | syntax.GeneratedFunCall !a1 !a2
+:: syntax.FunctionBody = syntax.ParsedBody !a1 | syntax.CheckedBody !a1 | syntax.PartitioningMacro | syntax.PartitioningFunction !a1 !a2::I | syntax.RhsMacroBody !a1 | syntax.TransformedBody !a1 | syntax.Expanding !a1 | syntax.GeneratedBody | syntax.NoBody
+:: syntax.AuxiliaryPattern = syntax.AP_Algebraic !a1 !a2 !a3 !a4 | syntax.AP_Variable !a1 !a2 a3 | syntax.AP_Basic !a1 a2 | syntax.AP_NewType !a1 !a2 a3 a4 | syntax.AP_Dynamic !a1 !a2 !a3 | syntax.AP_Constant !a1 !a2 !a3 | syntax.AP_WildCard !a1 | syntax.AP_Empty
+:: syntax.AP_Kind = syntax.APK_Constructor !a1 | syntax.APK_NewTypeConstructor !a1 | syntax.APK_Macro !a1::B
+:: syntax.VI_TypeInfo = syntax.VITI_Empty | syntax.VITI_Coercion a1 | syntax.VITI_PatternType a1 !a2 !a3 a4
+:: syntax.VarInfo = syntax.VI_Empty | syntax.VI_Type !a1 !a2 | syntax.VI_FAType !a1 !a2 !a3 | syntax.VI_FATypeC !a1 !a2 !a3 !a4 | syntax.VI_FPC | syntax.VI_Occurrence !a1 | syntax.VI_UsedVar !a1 | syntax.VI_Expression !a1 | syntax.VI_Variable !a1 !a2 | syntax.VI_LiftedVariable !a1 | syntax.VI_Count !a1::I !a2::B | syntax.VI_AccVar !a1 !a2 | syntax.VI_Alias !a1 | syntax.VI_RefFromTupleSel0 !a1::I | syntax.VI_RefFromArrayUpdate !a1::I !a2 | syntax.VI_RefFromArrayUpdateToTupleSelector2 !a1::I !a2 !a3 | syntax.VI_RefFromArrayUpdateOfTupleElem2 !a1::I !a2 | syntax.VI_FreeVar !a1 !a2 !a3::I !a4 | syntax.VI_BoundVar !a1 | syntax.VI_LocalVar | syntax.VI_ClassVar !a1 !a2 !a3::I | syntax.VI_EmptyConstructorClassVar | syntax.VI_ForwardClassVar !a1 | syntax.VI_Forward !a1 | syntax.VI_LetVar !a1 | syntax.VI_LetExpression !a1 | syntax.VI_CaseOrStrictLetVar !a1 | syntax.VI_StrictLetVar | syntax.VI_CorrespondenceNumber !a1::I | syntax.VI_SequenceNumber !a1::I | syntax.VI_AliasSequenceNumber !a1 | syntax.VI_Used | syntax.VI_PropagationType !a1 | syntax.VI_ExpandedType !a1 | syntax.VI_Record !a1 | syntax.VI_Pattern !a1 | syntax.VI_TypeCodeVariable !a1 | syntax.VI_DynamicValueAlias !a1 | syntax.VI_Body !a1 !a2 !a3 !a4 !a5 | syntax.VI_ExpressionOrBody !a1 !a2 !a3 !a4 !a5 !a6 | syntax.VI_Dictionary !a1 !a2 !a3 | syntax.VI_Extended !a1 !a2 | syntax.VI_NotUsed | syntax.VI_CPSExprVar !a1 | syntax.VI_Labelled_Empty !a1 | syntax.VI_LocalLetVar
+:: syntax.TypeCodeVariableInfo = syntax.TCI_TypeVar !a1 | syntax.TCI_TypePatternVar !a1 | syntax.TCI_SelectionsTypePatternVar !a1
+:: syntax.ExtendedVarInfo = syntax.EVI_VarType !a1
+:: syntax.SymbKind = syntax.SK_Unknown | syntax.SK_Function !a1 | syntax.SK_IclMacro !a1 | syntax.SK_LocalMacroFunction !a1 | syntax.SK_DclMacro !a1 | syntax.SK_LocalDclMacroFunction !a1 | syntax.SK_OverloadedFunction !a1 | syntax.SK_GeneratedFunction !a1 !a2 | syntax.SK_Constructor !a1 | syntax.SK_NewTypeConstructor !a1 | syntax.SK_Generic !a1 !a2 | syntax.SK_TypeCode | syntax.SK_OverloadedConstructor !a1 | syntax.SK_TFACVar !a1 | syntax.SK_VarContexts !a1 | syntax.SK_TypeCodeAndContexts !a1
+:: syntax.FunctionInfo = syntax.FI_Empty | syntax.FI_Function !a1
+:: syntax.Producer = syntax.PR_Empty | syntax.PR_Function !a1 !a2::I !a3 | syntax.PR_Class !a1 !a2 !a3 | syntax.PR_Constructor !a1 !a2::I !a3 | syntax.PR_GeneratedFunction !a1 !a2::I !a3 | syntax.PR_Curried !a1 !a2::I | syntax.PR_Unused | syntax.PR_CurriedFunction !a1 !a2::I !a3 | syntax.PR_String !a1 | syntax.PR_Int !a1::I | syntax.PR_Equal !a1::I | syntax.PR_EqualRemove !a1::I
+:: syntax.InstanceInfo = syntax.II_Empty | syntax.II_Node !a1 !a2 !a3 !a4
+:: syntax.ExprInfo = syntax.EI_Empty | syntax.EI_Overloaded !a1 | syntax.EI_OverloadedWithVarContexts !a1 | syntax.EI_Instance !a1 !a2 | syntax.EI_Selection !a1 !a2 !a3 | syntax.EI_Context !a1 | syntax.EI_ContextWithVarContexts !a1 !a2 | syntax.EI_FPContext !a1 !a2 | syntax.EI_UnmarkedDynamic !a1 !a2 | syntax.EI_Dynamic !a1 !a2 | syntax.EI_DynamicType !a1 !a2 | syntax.EI_DynamicTypeWithVars !a1 !a2 !a3 | syntax.EI_TempDynamicType !a1 !a2 !a3 !a4 !a5 !a6 !a7 | syntax.EI_TempDynamicPattern !a1 !a2 !a3 !a4 !a5 !a6 !a7 !a8 | syntax.EI_TypeOfDynamic !a1 | syntax.EI_TypeOfDynamicPattern !a1 !a2 !a3::B | syntax.EI_TypeOfDynamicWithContexts !a1 !a2 | syntax.EI_TypeCode !a1 | syntax.EI_TypeCodes !a1 | syntax.EI_TypeCodesWithContexts !a1 !a2 | syntax.EI_Attribute !a1::I | syntax.EI_DictionaryType !a1 | syntax.EI_CaseType !a1 | syntax.EI_LetType !a1 | syntax.EI_CaseTypeWithContexts !a1 !a2 | syntax.EI_CaseTypeAndRefCounts !a1 !a2 | syntax.EI_CaseTypeAndSplits !a1 !a2 | syntax.EI_LetTypeAndRefCounts !a1 !a2 | syntax.EI_Default !a1 !a2 !a3 | syntax.EI_DefaultFunction !a1 !a2 | syntax.EI_Extended !a1 !a2
+:: syntax.ExtendedExprInfo = syntax.EEI_ActiveCase !a1
+:: syntax.VarContexts = syntax.VarContext !a1::I !a2 !a3 !a4 | syntax.NoVarContexts
+:: syntax.TCClass = syntax.TCClass !a1 | syntax.TCGeneric !a1 | syntax.TCQualifiedIdent !a1 !a2
+:: syntax.Type = syntax.TA !a1 !a2 | syntax.TAS !a1 !a2 !a3 | <{syntax.-->}> !a1 !a2 | syntax.TArrow | syntax.TArrow1 !a1 | <{syntax.:@:}> !a1 !a2 | syntax.TB !a1 | syntax.TFA !a1 !a2 | syntax.GTV !a1 | syntax.TV !a1 | syntax.TFAC !a1 !a2 !a3 | syntax.TempV !a1 | syntax.TempQV !a1 | syntax.TempQDV !a1 | syntax.TLifted !a1 | syntax.TQualifiedIdent !a1 !a2 !a3 | syntax.TGenericFunctionInDictionary !a1 !a2 !a3 | syntax.TLiftedSubst !a1 | syntax.TE
+:: syntax.ConsVariable = syntax.CV !a1 | syntax.TempCV !a1 | syntax.TempQCV !a1 | syntax.TempQCDV !a1
+:: syntax.KindInfo = syntax.KI_Var !a1 | syntax.KI_Arrow !a1 !a2 | syntax.KI_Const | syntax.KI_ConsVar | syntax.KI_VarBind !a1 | syntax.KI_NormVar !a1::I
+:: syntax.TypeVarInfo = syntax.TVI_Empty | syntax.TVI_Type !a1 | syntax.TVI_TypeVar !a1 | syntax.TVI_Forward !a1 | syntax.TVI_TypeKind !a1 | syntax.TVI_SignClass !a1 !a2 !a3 | syntax.TVI_PropClass !a1 !a2 !a3 | syntax.TVI_AttrAndRefCount !a1 !a2::I | syntax.TVI_CorrespondenceNumber !a1::I | syntax.TVI_AType !a1 | syntax.TVI_Reify !a1::I | syntax.TVI_Used | syntax.TVI_TypeCode !a1 | syntax.TVI_CPSLocalTypeVar !a1::I | syntax.TVI_Kinds !a1 | syntax.TVI_Kind !a1 | syntax.TVI_ConsInstance !a1 | syntax.TVI_Normalized !a1::I | syntax.TVI_Expr !a1::B !a2 | syntax.TVI_Exprs !a1 | syntax.TVI_Iso !a1 !a2 !a3 | syntax.TVI_GenTypeVarNumber !a1::I | syntax.TVI_CPSTypeVar !a1 | syntax.TVI_Attr !a1 | syntax.TVI_TypeAttribute !a1
+:: syntax.AttrVarInfo = syntax.AVI_Empty | syntax.AVI_Attr !a1 | syntax.AVI_AttrVar !a1 | syntax.AVI_Forward !a1 | syntax.AVI_CorrespondenceNumber !a1::I | syntax.AVI_Used | syntax.AVI_CountZero | syntax.AVI_CountOne | syntax.AVI_CountMany | syntax.AVI_CountVar !a1 | syntax.AVI_SequenceNumber !a1::I | syntax.AVI_Collected
+:: syntax.TypeAttribute = syntax.TA_Unique | syntax.TA_Multi | syntax.TA_Var !a1 | syntax.TA_RootVar a1 | syntax.TA_TempVar !a1::I | syntax.TA_Anonymous | syntax.TA_None | syntax.TA_List !a1::I !a2 | syntax.TA_Locked !a1 | syntax.TA_MultiOfPropagatingConsVar
+:: syntax.Annotation = syntax.AN_Strict | syntax.AN_None
+:: syntax.BasicType = syntax.BT_Int | syntax.BT_Char | syntax.BT_Real | syntax.BT_Bool | syntax.BT_Dynamic | syntax.BT_File | syntax.BT_World | syntax.BT_String !a1
+:: syntax.BasicValue = syntax.BVI !a1 | syntax.BVInt !a1::I | syntax.BVC !a1 | syntax.BVB !a1::B | syntax.BVR !a1 | syntax.BVS !a1
+:: syntax.TypeKind = syntax.KindVar !a1 | syntax.KindConst | syntax.KindArrow !a1 | syntax.KindCycle | syntax.KindError
+:: syntax.ReferenceCountList = syntax.ReferenceCounts !a1 !a2 | syntax.ReferenceCountsUnused !a1::I !a2 | syntax.ReferenceCountsAllUnused | syntax.EndReferenceCounts
+:: syntax.ReferenceCount = syntax.RC_Used !a1 | syntax.RC_Unused
+:: syntax.OccurrenceBinding = syntax.OB_Empty | syntax.OB_OpenLet !a1 !a2 | syntax.OB_LockedLet !a1 | syntax.OB_MarkedLet !a1
+:: syntax.OptGuardedAlts = syntax.GuardedAlts !a1 !a2 | syntax.UnGuardedExpr !a1
+:: syntax.ParsedSelectorKind = syntax.ParsedNormalSelector | syntax.ParsedUniqueSelector !a1::B
+:: syntax.ParsedExpr = syntax.PE_List !a1 | syntax.PE_Ident !a1 | syntax.PE_Basic !a1 | syntax.PE_Bound !a1 | syntax.PE_Lambda !a1 !a2 !a3 !a4 | syntax.PE_Tuple !a1 | syntax.PE_Record !a1 !a2 !a3 | syntax.PE_ArrayPattern !a1 | syntax.PE_UpdateComprehension !a1 !a2 !a3 !a4 | syntax.PE_ArrayDenot !a1 !a2 | syntax.PE_Selection !a1 !a2 !a3 | syntax.PE_Update !a1 a2 a3 | syntax.PE_Case !a1 !a2 a3 | syntax.PE_If !a1 !a2 !a3 !a4 | syntax.PE_Let !a1 !a2 | syntax.PE_ListCompr !a1::I !a2::I !a3 !a4 | syntax.PE_ArrayCompr !a1 !a2 !a3 | syntax.PE_Sequ a1 | syntax.PE_WildCard | syntax.PE_Matches !a1 !a2 !a3 !a4 | syntax.PE_QualifiedIdent !a1 !a2 | syntax.PE_ABC_Code !a1 !a2::B | syntax.PE_Any_Code !a1 !a2 !a3 | syntax.PE_DynamicPattern !a1 !a2 | syntax.PE_Dynamic !a1 !a2 | syntax.PE_Generic !a1 !a2 | syntax.PE_TypeSignature !a1 !a2 | syntax.PE_Empty
+:: syntax.ParsedSelection = syntax.PS_Record !a1 !a2 | syntax.PS_QualifiedRecord !a1 !a2 !a3 | syntax.PS_Array !a1 | syntax.PS_Erroneous
+:: syntax.OptionalRecordName = syntax.NoRecordName | syntax.RecordNameIdent !a1 | syntax.RecordNameQualifiedIdent !a1 !a2
+:: syntax.ArrayKind = syntax.OverloadedArray | syntax.StrictArray | syntax.UnboxedArray
+:: syntax.GeneratorKind = syntax.IsListGenerator | syntax.IsOverloadedListGenerator | syntax.IsArrayGenerator
+:: syntax.Sequence = syntax.SQ_FromThen !a1::I a2 a3 | syntax.SQ_FromThenTo !a1::I a2 a3 a4 | syntax.SQ_From !a1::I a2 | syntax.SQ_FromTo !a1::I a2 a3
+:: syntax.FieldNameOrQualifiedFieldName = syntax.FieldName !a1 | syntax.QualifiedFieldName !a1 !a2
+:: syntax.SelectorKind = syntax.NormalSelector | syntax.UniqueSelector | syntax.UniqueSelectorUniqueElementResult | syntax.UniqueSingleArraySelector | syntax.UniqueSingleArraySelectorUniqueElementResult
+:: syntax.Expression = syntax.Var !a1 | syntax.App !a1 | <{syntax.@}> !a1 !a2 | syntax.Let !a1 | syntax.Case !a1 | syntax.Selection !a1 !a2 !a3 | syntax.Update !a1 !a2 a3 | syntax.RecordUpdate !a1 !a2 !a3 | syntax.TupleSelect !a1 !a2::I !a3 | syntax.BasicExpr !a1 | syntax.Conditional !a1 | syntax.AnyCodeExpr !a1 !a2 !a3 | syntax.ABCCodeExpr !a1 !a2::B | syntax.MatchExpr !a1 !a2 | syntax.IsConstructor !a1 !a2 !a3::I !a4 !a5 !a6 | syntax.FreeVar a1 | syntax.DictionariesFunction !a1 !a2 !a3 | syntax.Constant !a1 !a2::I !a3 | syntax.ClassVariable !a1 | syntax.DynamicExpr !a1 | syntax.TypeCodeExpression !a1 | syntax.TypeSignature !a1 !a2 | syntax.EE | syntax.NoBind a1 | syntax.FailExpr !a1
+:: syntax.CasePatterns = syntax.AlgebraicPatterns !a1 !a2 | syntax.BasicPatterns !a1 a2 | syntax.NewTypePatterns !a1 !a2 | syntax.DynamicPatterns a1 | syntax.OverloadedListPatterns !a1 !a2 !a3 | syntax.NoPattern
+:: syntax.OverloadedListType = syntax.UnboxedList !a1 !a2 !a3 !a4 | syntax.UnboxedTailStrictList !a1 !a2 !a3 !a4 | syntax.OverloadedList !a1 !a2 !a3 !a4
+:: syntax.Selection = syntax.RecordSelection !a1 !a2::I | syntax.ArraySelection !a1 !a2 !a3 | syntax.DictionarySelection !a1 !a2 !a3 !a4
+:: syntax.TypeCodeExpression = syntax.TCE_Empty | syntax.TCE_Var !a1 | syntax.TCE_TypeTerm !a1 | syntax.TCE_Constructor !a1 !a2 | syntax.TCE_App !a1 !a2 | syntax.TCE_Selector !a1 !a2 | syntax.TCE_UniType !a1 !a2 | syntax.TCE_UnqType !a1
+:: syntax.GlobalTCType = syntax.GTT_Basic !a1 | syntax.GTT_Constructor !a1 !a2::B | syntax.GTT_PredefTypeConstructor !a1 | syntax.GTT_Function
+:: syntax.Position = syntax.FunPos a1 a2 a3 | syntax.LinePos a1 a2 | syntax.PreDefPos a1 | syntax.NoPos
+:: syntax.CoercionPosition = syntax.CP_Expression !a1 | syntax.CP_FunArg !a1 !a2::I | syntax.CP_SymbArgAndExpression !a1 !a2::I !a3 | syntax.CP_LiftedFunArg !a1 !a2
+
+|| Converted Records
+:: syntax._Ident = {!syntax.id_name, !syntax.id_info}
+
+:: syntax._SymbolTableEntry = {!syntax.ste_kind, !syntax.ste_index, !syntax.ste_def_level, syntax.ste_previous, !syntax.ste_doc}
+
+:: syntax._STE_BoundTypeVariable = {!syntax.stv_attribute, !syntax.stv_info_ptr}
+
+:: syntax._DeclarationRecord = {!syntax.decl_ident, !syntax.decl_pos, !syntax.decl_kind, !syntax.decl_index}
+
+:: syntax._ComponentNrAndIndex = {!syntax.cai_component_nr::I, !syntax.cai_index::I}
+
+:: syntax._Global = {!syntax.glob_object, !syntax.glob_module}
+
+:: syntax._Module = {!syntax.mod_ident, syntax.mod_modification_time, !syntax.mod_type, !syntax.mod_imports, !syntax.mod_imported_objects, !syntax.mod_foreign_exports, !syntax.mod_defs}
+
+:: syntax._ParsedForeignExport = {!syntax.pfe_ident, !syntax.pfe_line::I, !syntax.pfe_file, !syntax.pfe_stdcall::B}
+
+:: syntax._IclFunctionIndices = {!syntax.ifi_global_function_indices, !syntax.ifi_local_function_indices, !syntax.ifi_instance_indices, !syntax.ifi_specials_indices, !syntax.ifi_gencase_indices, !syntax.ifi_type_function_indices}
+
+:: syntax._IclModule = {!syntax.icl_name, !syntax.icl_functions, !syntax.icl_function_indices, !syntax.icl_common, !syntax.icl_import, !syntax.icl_qualified_imports, !syntax.icl_imported_objects, !syntax.icl_foreign_exports, !syntax.icl_used_module_numbers, !syntax.icl_modification_time}
+
+:: syntax._DclModule = {!syntax.dcl_name, !syntax.dcl_functions, !syntax.dcl_instances, !syntax.dcl_macros, !syntax.dcl_specials, !syntax.dcl_gencases, !syntax.dcl_type_funs, !syntax.dcl_common, !syntax.dcl_sizes, !syntax.dcl_dictionary_info, !syntax.dcl_declared, !syntax.dcl_has_macro_conversions::B, !syntax.dcl_module_kind, !syntax.dcl_modification_time, !syntax.dcl_imported_module_numbers}
+
+:: syntax._ForeignExport = {!syntax.fe_fd_index, !syntax.fe_stdcall::B}
+
+:: syntax._CopiedDefinitions = {syntax.copied_type_defs, syntax.copied_class_defs, syntax.copied_generic_defs}
+
+:: syntax._Declarations = {!syntax.dcls_import, !syntax.dcls_local, !syntax.dcls_local_for_import}
+
+:: syntax._DictionaryInfo = {!syntax.n_dictionary_types::I, !syntax.n_dictionary_constructors::I, !syntax.n_dictionary_selectors::I}
+
+:: syntax._CollectedDefinitions = {!syntax.def_types, !syntax.def_constructors, !syntax.def_selectors, !syntax.def_macros, !syntax.def_macro_indices, !syntax.def_classes, !syntax.def_members, !syntax.def_funtypes, !syntax.def_instances, !syntax.def_generics, !syntax.def_generic_cases}
+
+:: syntax._CommonDefs = {!syntax.com_type_defs, !syntax.com_cons_defs, !syntax.com_selector_defs, !syntax.com_class_defs, !syntax.com_member_defs, !syntax.com_instance_defs, !syntax.com_generic_defs, !syntax.com_gencase_defs}
+
+:: syntax._IndexRange = {!syntax.ir_from, !syntax.ir_to}
+
+:: syntax._ArrayAndListInstances = {!syntax.ali_array_first_instance_indices, !syntax.ali_list_first_instance_indices, !syntax.ali_tail_strict_list_first_instance_indices, !syntax.ali_instances_range}
+
+:: syntax._CollectedLocalDefs = {!syntax.loc_functions, !syntax.loc_nodes, !syntax.loc_in_icl_module::B}
+
+:: syntax._NodeDef = {!syntax.nd_dst, !syntax.nd_alts, !syntax.nd_locals, !syntax.nd_position}
+
+:: syntax._Rhs = {!syntax.rhs_alts, !syntax.rhs_locals}
+
+:: syntax._ParsedSelector = {!syntax.ps_field_ident, !syntax.ps_selector_ident, !syntax.ps_field_annotation, !syntax.ps_field_type, !syntax.ps_field_var, !syntax.ps_field_pos, !syntax.ps_doc}
+
+:: syntax._ParsedConstructor = {!syntax.pc_cons_ident, !syntax.pc_cons_arity::I, !syntax.pc_exi_vars, !syntax.pc_arg_types, !syntax.pc_args_strictness, !syntax.pc_context, !syntax.pc_cons_prio, !syntax.pc_cons_pos, !syntax.pc_doc}
+
+:: syntax._ParsedInstance = {!syntax.pi_class, !syntax.pi_ident, !syntax.pi_types, !syntax.pi_context, !syntax.pi_pos, !syntax.pi_specials}
+
+:: syntax._ParsedInstanceAndMembers = {!syntax.pim_pi, !syntax.pim_members}
+
+:: syntax._ScannedInstanceAndMembersR = {!syntax.sim_pi, !syntax.sim_members, !syntax.sim_member_types}
+
+:: syntax._SpecialSubstitution = {!syntax.ss_environ, !syntax.ss_context, !syntax.ss_vars, !syntax.ss_attrs}
+
+:: syntax._Special = {!syntax.spec_index, !syntax.spec_types, !syntax.spec_vars, !syntax.spec_attrs}
+
+:: syntax._AttrInequality = {!syntax.ai_demanded, !syntax.ai_offered}
+
+:: syntax._DefinedSymbol = {!syntax.ds_ident, !syntax.ds_arity::I, !syntax.ds_index}
+
+:: syntax._ClassDef = {!syntax.class_ident, !syntax.class_arity::I, !syntax.class_args, !syntax.class_context, !syntax.class_members, !syntax.class_dictionary, !syntax.class_pos, !syntax.class_cons_vars, !syntax.class_fun_dep_vars, !syntax.class_lazy_members}
+
+:: syntax._MemberDef = {!syntax.me_ident, !syntax.me_class, !syntax.me_offset, !syntax.me_type, !syntax.me_type_ptr, !syntax.me_class_vars, !syntax.me_pos, !syntax.me_priority}
+
+:: syntax._GenericDef = {!syntax.gen_ident, !syntax.gen_member_ident, !syntax.gen_pos, !syntax.gen_type, !syntax.gen_vars, !syntax.gen_deps, !syntax.gen_info_ptr}
+
+:: syntax._GenericDependency = {!syntax.gd_ident, !syntax.gd_index, !syntax.gd_vars, !syntax.gd_nums}
+
+:: syntax._GenericClassInfo = {!syntax.gci_kind, !syntax.gci_module, !syntax.gci_class, !syntax.gci_member}
+
+:: syntax._GenericInfo = {!syntax.gen_classes, !syntax.gen_var_kinds, !syntax.gen_rep_conses}
+
+:: syntax._GenericRepresentationConstructor = {!syntax.grc_module::I, !syntax.grc_index, !syntax.grc_local_fun_index::I, !syntax.grc_ident, !syntax.grc_generic_info::I, !syntax.grc_generic_instance_deps, !syntax.grc_optional_fun_type}
+
+:: syntax._GenericCaseDef = {!syntax.gc_pos, !syntax.gc_type, !syntax.gc_type_cons, !syntax.gc_gcf}
+
+:: syntax._GCF = {!syntax.gcf_gident, !syntax.gcf_generic, !syntax.gcf_arity::I, !syntax.gcf_generic_info::I, !syntax.gcf_body, !syntax.gcf_kind, !syntax.gcf_generic_instance_deps}
+
+:: syntax._InstanceType = {syntax.it_vars, !syntax.it_types, syntax.it_attr_vars, !syntax.it_context}
+
+:: syntax._ClassInstance = {!syntax.ins_class_index, !syntax.ins_class_ident, !syntax.ins_ident, !syntax.ins_type, !syntax.ins_member_types, !syntax.ins_members, !syntax.ins_specials, !syntax.ins_pos}
+
+:: syntax._ClassIdent = {!syntax.ci_ident, !syntax.ci_arity::I}
+
+:: syntax._ClassInstanceMember = {!syntax.cim_ident, !syntax.cim_arity::I, !syntax.cim_index}
+
+:: syntax._Import = {!syntax.import_module, !syntax.import_symbols, !syntax.import_file_position, !syntax.import_qualified}
+
+:: syntax._ImportedObject = {!syntax.io_is_library::B, !syntax.io_name}
+
+:: syntax._RecordType = {!syntax.rt_constructor, !syntax.rt_fields, !syntax.rt_is_boxed_record::B}
+
+:: syntax._FieldSymbol = {!syntax.fs_ident, !syntax.fs_var, !syntax.fs_index}
+
+:: syntax._GlobalIndex = {!syntax.gi_module::I, !syntax.gi_index::I}
+
+:: syntax._TypeDef = {!syntax.td_ident, !syntax.td_index::I, !syntax.td_arity::I, !syntax.td_args, !syntax.td_attrs, !syntax.td_rhs, !syntax.td_attribute, !syntax.td_pos, !syntax.td_used_types, !syntax.td_fun_index}
+
+:: syntax._TypeDefInfo = {!syntax.tdi_kinds, !syntax.tdi_properties, !syntax.tdi_group, !syntax.tdi_group_nr::I, !syntax.tdi_group_vars, !syntax.tdi_cons_vars, !syntax.tdi_index_in_group, !syntax.tdi_classification, !syntax.tdi_gen_rep}
+
+:: syntax._GenericTypeRep = {syntax.gtr_type, !syntax.gtr_iso, !syntax.gtr_to, !syntax.gtr_from}
+
+:: syntax._FunType = {!syntax.ft_ident, !syntax.ft_arity::I, !syntax.ft_priority, !syntax.ft_type, !syntax.ft_pos, !syntax.ft_specials, !syntax.ft_type_ptr}
+
+:: syntax._FreeVar = {!syntax.fv_def_level, !syntax.fv_ident, !syntax.fv_info_ptr, !syntax.fv_count::I}
+
+:: syntax._FunInfo = {!syntax.fi_calls, !syntax.fi_group_index, !syntax.fi_def_level, !syntax.fi_free_vars, !syntax.fi_local_vars, !syntax.fi_dynamics, !syntax.fi_properties}
+
+:: syntax._ParsedBody = {!syntax.pb_args, !syntax.pb_rhs, !syntax.pb_position}
+
+:: syntax._CheckedBody = {!syntax.cb_args, !syntax.cb_rhs}
+
+:: syntax._CheckedAlternative = {!syntax.ca_rhs, !syntax.ca_position}
+
+:: syntax._TransformedBody = {!syntax.tb_args, !syntax.tb_rhs}
+
+:: syntax._FunDef = {!syntax.fun_ident, !syntax.fun_arity::I, !syntax.fun_priority, !syntax.fun_body, !syntax.fun_type, !syntax.fun_pos, !syntax.fun_kind, !syntax.fun_lifted::I, !syntax.fun_info}
+
+:: syntax._ConsClasses = {!syntax.cc_size::I, !syntax.cc_args, !syntax.cc_linear_bits, !syntax.cc_producer}
+
+:: syntax._BoundVar = {!syntax.var_ident, !syntax.var_info_ptr, !syntax.var_expr_ptr}
+
+:: syntax._TypeSymbIdent = {!syntax.type_ident, !syntax.type_arity::I, !syntax.type_index, !syntax.type_prop}
+
+:: syntax._TypeSymbProperties = {!syntax.tsp_sign, !syntax.tsp_propagation, !syntax.tsp_coercible::B}
+
+:: syntax._GeneratedFunction = {!syntax.gf_fun_def, !syntax.gf_instance_info, !syntax.gf_cons_args, !syntax.gf_fun_index}
+
+:: syntax._ActiveCaseInfo = {!syntax.aci_params, !syntax.aci_opt_unfolder, !syntax.aci_free_vars, !syntax.aci_linearity_of_patterns, !syntax.aci_safe::B}
+
+:: syntax._OverloadedCall = {!syntax.oc_symbol, !syntax.oc_context, !syntax.oc_specials}
+
+:: syntax._OverloadedCallWithVarContexts = {!syntax.ocvc_symbol, !syntax.ocvc_context, !syntax.ocvc_var_contexts}
+
+:: syntax._DictionaryAndClassType = {!syntax.dc_var, !syntax.dc_class_type}
+
+:: syntax._CaseType = {!syntax.ct_pattern_type, !syntax.ct_result_type, !syntax.ct_cons_types}
+
+:: syntax._SymbIdent = {!syntax.symb_ident, !syntax.symb_kind}
+
+:: syntax._ConsDef = {!syntax.cons_ident, !syntax.cons_type, !syntax.cons_priority, !syntax.cons_number, !syntax.cons_type_index, !syntax.cons_exi_vars, !syntax.cons_type_ptr, !syntax.cons_pos}
+
+:: syntax._SelectorDef = {!syntax.sd_ident, !syntax.sd_field, !syntax.sd_type, !syntax.sd_exi_vars, !syntax.sd_field_nr::I, !syntax.sd_type_index::I, !syntax.sd_type_ptr, !syntax.sd_pos}
+
+:: syntax._SymbolType = {!syntax.st_vars, !syntax.st_args, !syntax.st_args_strictness, !syntax.st_arity::I, !syntax.st_result, !syntax.st_context, !syntax.st_attr_vars, !syntax.st_attr_env}
+
+:: syntax._TypeContext = {!syntax.tc_class, !syntax.tc_types, !syntax.tc_var}
+
+:: syntax._GenericTypeContext = {!syntax.gtc_generic, !syntax.gtc_kind, !syntax.gtc_class, !syntax.gtc_generic_dict}
+
+:: syntax._AType = {!syntax.at_attribute, !syntax.at_type}
+
+:: syntax._DynamicType = {!syntax.dt_uni_vars, !syntax.dt_global_vars, !syntax.dt_type, !syntax.dt_contexts}
+
+:: syntax._TypeHeaps = {!syntax.th_vars, !syntax.th_attrs}
+
+:: syntax._TypeVar = {!syntax.tv_ident, !syntax.tv_info_ptr}
+
+:: syntax._ATypeVar = {!syntax.atv_attribute, !syntax.atv_variable}
+
+:: syntax._AttributeVar = {!syntax.av_ident, !syntax.av_info_ptr}
+
+:: syntax._PatternVar = {!syntax.pv_var, !syntax.pv_arg_nr::I}
+
+:: syntax._Occurrence = {!syntax.occ_ref_count, !syntax.occ_bind, !syntax.occ_pattern_vars, syntax.occ_observing, !syntax.occ_previous}
+
+:: syntax._SelectiveUse = {!syntax.su_field::I, !syntax.su_multiply, !syntax.su_uniquely}
+
+:: syntax._RC_Used = {!syntax.rcu_multiply, !syntax.rcu_selectively, !syntax.rcu_uniquely}
+
+:: syntax._CountedFreeVar = {!syntax.cfv_var, !syntax.cfv_is_let::B, !syntax.cfv_count}
+
+:: syntax._GuardedExpr = {!syntax.alt_nodes, !syntax.alt_guard, !syntax.alt_expr, !syntax.alt_ident, !syntax.alt_position}
+
+:: syntax._ExprWithLocalDefs = {!syntax.ewl_nodes, !syntax.ewl_expr, !syntax.ewl_locals, !syntax.ewl_position}
+
+:: syntax._NodeDefWithLocals = {!syntax.ndwl_strict::B, !syntax.ndwl_def, !syntax.ndwl_locals, !syntax.ndwl_position}
+
+:: syntax._CaseAlt = {!syntax.calt_pattern, !syntax.calt_rhs, !syntax.calt_position}
+
+:: syntax._LineAndColumn = {!syntax.lc_line::I, !syntax.lc_column::I}
+
+:: syntax._Generator = {!syntax.gen_kind, !syntax.gen_pattern, !syntax.gen_expr, !syntax.gen_position}
+
+:: syntax._Qualifier = {!syntax.qual_generators, !syntax.qual_let_defs, !syntax.qual_filter, !syntax.qual_position, !syntax.qual_filename}
+
+:: syntax._App = {!syntax.app_symb, !syntax.app_args, !syntax.app_info_ptr}
+
+:: syntax._Case = {!syntax.case_expr, !syntax.case_guards, !syntax.case_default, !syntax.case_ident, !syntax.case_info_ptr, !syntax.case_explicit::B, !syntax.case_default_pos}
+
+:: syntax._Let = {!syntax.let_strict_binds, !syntax.let_lazy_binds, !syntax.let_expr, !syntax.let_info_ptr, !syntax.let_expr_position}
+
+:: syntax._LetBind = {!syntax.lb_dst, !syntax.lb_src, !syntax.lb_position}
+
+:: syntax._Conditional = {!syntax.if_cond, !syntax.if_then, !syntax.if_else}
+
+:: syntax._DynamicExpr = {!syntax.dyn_expr, !syntax.dyn_opt_type, !syntax.dyn_info_ptr, !syntax.dyn_type_code}
+
+:: syntax._AlgebraicPattern = {!syntax.ap_symbol, !syntax.ap_vars, !syntax.ap_expr, !syntax.ap_position}
+
+:: syntax._BasicPattern = {!syntax.bp_value, !syntax.bp_expr, !syntax.bp_position}
+
+:: syntax._DynamicPattern = {!syntax.dp_var, !syntax.dp_type, !syntax.dp_type_code, !syntax.dp_rhs, !syntax.dp_position}
+
+:: syntax._IdentPos = {!syntax.ip_ident, !syntax.ip_line::I, !syntax.ip_file}
+
+:: syntax._StringPos = {!syntax.sp_name, !syntax.sp_line::I, !syntax.sp_file}
+
+:: syntax._BoxedSymbolTableEntry = {!syntax.boxed_symbol_table_entry}
+
+:: <{syntax.needs_brackets;}> = {!syntax.needs_brackets}
+

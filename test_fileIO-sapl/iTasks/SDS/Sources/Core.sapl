@@ -1,0 +1,130 @@
+|| ?module? iTasks.SDS.Sources.Core
+
+
+iTasks.SDS.Sources.Core.anon_5 v_0 _x_1 env_2 = _Tuple2 v_0 env_2
+iTasks.SDS.Sources.Core.constShare !v_0 = iTasks.Internal.SDS.createReadOnlySDS (iTasks.SDS.Sources.Core.anon_5 v_0)
+iTasks.SDS.Sources.Core.anon_7 _x_0 _x_1 env_2 = _Tuple2 (Data.Error.Ok (StdFunc.const False)) env_2
+iTasks.SDS.Sources.Core.anon_6 _x_0 env_1 = _Tuple2 (Data.Error.Ok _predefined._Unit) env_1
+iTasks.SDS.Sources.Core.nullShare = iTasks.Internal.SDS.createReadWriteSDS "_core_" "nullShare" iTasks.SDS.Sources.Core.anon_6 iTasks.SDS.Sources.Core.anon_7
+iTasks.SDS.Sources.Core.randomInt_8 !_x_0 !iworld_1 = case _x_0 (_predefined._Unit -> case iworld_1 (iTasks.Internal.IWorld._IWorld server_2_0 config_2_1 clocks_2_2 current_2_3 random_2_4 sdsNotifyRequests_2_5 memoryShares_2_6 cachedShares_2_7 exposedShares_2_8 jsCompilerState_2_9 ioTasks_2_10 ioStates_2_11 world_2_12 resources_2_13 onClient_2_14 shutdown_2_15 -> case random_2_4 (_predefined._Cons i_3_0 is_3_1 -> _Tuple2 i_3_0 (update iworld_1::iTasks.Internal.IWorld._IWorld [4:is_3_1])) ) ) 
+iTasks.SDS.Sources.Core.randomInt = iTasks.Internal.SDS.createReadOnlySDS iTasks.SDS.Sources.Core.randomInt_8
+iTasks.SDS.Sources.Core.write_10 !path_0 content_1 !iworld_2 = case iworld_2 (iTasks.Internal.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> let _x_2_0 = StdFile.fopen_31 path_0 1 world_1_12 in case (StdBool.not (select _x_2_0::_Tuple3 0)) (True -> _Tuple2 (Data.Error.Error (iTasks.WF.Definition.exception (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{System.File.TD;FileError}>)) (<{StdOverloaded.toString;}> System.File.toString_10) System.File.CannotOpen)) (update iworld_2::iTasks.Internal.IWorld._IWorld [12:select _x_2_0::_Tuple3 2])) (False -> let file_4_0 = select _x_2_0::_Tuple3 1, file_4_1 = StdFile.fwrites content_1 file_4_0, world_4_2 = select _x_2_0::_Tuple3 2, _x_4_3 = StdFile.fclose_30 file_4_1 world_4_2 in case (StdBool.not (select _x_4_3::_Tuple2 0)) (True -> _Tuple2 (Data.Error.Error (iTasks.WF.Definition.exception (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{System.File.TD;FileError}>)) (<{StdOverloaded.toString;}> System.File.toString_10) System.File.CannotClose)) (update iworld_2::iTasks.Internal.IWorld._IWorld [12:select _x_4_3::_Tuple2 1])) (False -> _Tuple2 (Data.Error.Ok (<{StdString.==_2}> path_0)) (update iworld_2::iTasks.Internal.IWorld._IWorld [12:select _x_4_3::_Tuple2 1])) ) ) 
+iTasks.SDS.Sources.Core.read_9 !path_0 !iworld_1 = case iworld_1 (iTasks.Internal.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> let _x_2_0 = StdFile.fopen_31 path_0 3 (select iworld_1::iTasks.Internal.IWorld._IWorld 12) in case (StdBool.not (select _x_2_0::_Tuple3 0)) (True -> _Tuple2 (Data.Error.Ok "") (update iworld_1::iTasks.Internal.IWorld._IWorld [12:select _x_2_0::_Tuple3 2])) (False -> let file_4_0 = select _x_2_0::_Tuple3 1, _x_4_1 = System.File.readAll file_4_0, file_4_2 = select _x_4_1::_Tuple2 1, world_4_3 = select _x_2_0::_Tuple3 2, _x_4_4 = StdFile.fclose_30 file_4_2 world_4_3 in case (StdBool.not (select _x_4_4::_Tuple2 0)) (True -> _Tuple2 (Data.Error.Error (iTasks.WF.Definition.exception (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{System.File.TD;FileError}>)) (<{StdOverloaded.toString;}> System.File.toString_10) System.File.CannotClose)) (update iworld_1::iTasks.Internal.IWorld._IWorld [12:select _x_4_4::_Tuple2 1])) (False -> let world_6_0 = select _x_4_4::_Tuple2 1 in <{iTasks.SDS.Sources.Core._c;34;11_355}> (select _x_4_1::_Tuple2 0) iworld_1 world_6_0) ) ) 
+<{iTasks.SDS.Sources.Core._c;34;11_355}> !_x_0 iworld_1 world_2 = case _x_0 (Data.Error.Error e_1_0 -> _Tuple2 (Data.Error.Error (iTasks.WF.Definition.exception (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{System.File.TD;FileError}>)) (<{StdOverloaded.toString;}> System.File.toString_10) e_1_0)) (update iworld_1::iTasks.Internal.IWorld._IWorld [12:world_2])) (Data.Error.Ok content_1_0 -> _Tuple2 (Data.Error.Ok content_1_0) (update iworld_1::iTasks.Internal.IWorld._IWorld [12:world_2])) 
+iTasks.SDS.Sources.Core.externalFile = iTasks.Internal.SDS.createReadWriteSDS "_core_" "externalFile" iTasks.SDS.Sources.Core.read_9 iTasks.SDS.Sources.Core.write_10
+iTasks.SDS.Sources.Core.read_11 !path_0 !iworld_1 = <{iTasks.SDS.Sources.Core._c;49;24_356}> (System.Directory.readDirectory path_0 iworld_1)
+<{iTasks.SDS.Sources.Core._c;49;24_356}> !_x_0 = case _x_0 (_Tuple2 _x_1_0 iworld_1_1 -> case _x_1_0 (Data.Error.Ok files_2_0 -> _Tuple2 (Data.Error.Ok files_2_0) iworld_1_1) (Data.Error.Error _x_2_0 -> case _x_2_0 (_Tuple2 _x_3_0 e_3_1 -> _Tuple2 (Data.Error.Error (iTasks.WF.Definition.exception (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) (<{StdOverloaded.toString;}> StdString.toString_9) e_3_1)) iworld_1_1) ) ) 
+iTasks.SDS.Sources.Core.externalDirectory = iTasks.Internal.SDS.createReadOnlySDSError iTasks.SDS.Sources.Core.read_11
+
+
+|| Converted Records
+:: <{iTasks.SDS.Sources.Core.JSONEncode_s;}> = {!iTasks.SDS.Sources.Core.JSONEncode_s}
+
+:: <{iTasks.SDS.Sources.Core.JSONEncode_ss;}> = {!iTasks.SDS.Sources.Core.JSONEncode_ss}
+
+:: <{iTasks.SDS.Sources.Core.JSONEncode_sss;}> = {!iTasks.SDS.Sources.Core.JSONEncode_sss}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_s;}> = {!iTasks.SDS.Sources.Core.JSONDecode_s}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_ss;}> = {!iTasks.SDS.Sources.Core.JSONDecode_ss}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_sss;}> = {!iTasks.SDS.Sources.Core.JSONDecode_sss}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_s;}> = {iTasks.SDS.Sources.Core.gDefault_s}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_ss;}> = {iTasks.SDS.Sources.Core.gDefault_ss}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_sss;}> = {iTasks.SDS.Sources.Core.gDefault_sss}
+
+:: <{iTasks.SDS.Sources.Core.gText_s;}> = {!iTasks.SDS.Sources.Core.gText_s}
+
+:: <{iTasks.SDS.Sources.Core.gText_ss;}> = {!iTasks.SDS.Sources.Core.gText_ss}
+
+:: <{iTasks.SDS.Sources.Core.gText_sss;}> = {!iTasks.SDS.Sources.Core.gText_sss}
+
+:: <{iTasks.SDS.Sources.Core.gEditor_s;}> = {iTasks.SDS.Sources.Core.gEditor_s}
+
+:: <{iTasks.SDS.Sources.Core.gEditor_ss;}> = {iTasks.SDS.Sources.Core.gEditor_ss}
+
+:: <{iTasks.SDS.Sources.Core.gEditor_sss;}> = {iTasks.SDS.Sources.Core.gEditor_sss}
+
+:: <{iTasks.SDS.Sources.Core.gEq_s;}> = {!iTasks.SDS.Sources.Core.gEq_s}
+
+:: <{iTasks.SDS.Sources.Core.gEq_ss;}> = {!iTasks.SDS.Sources.Core.gEq_ss}
+
+:: <{iTasks.SDS.Sources.Core.gEq_sss;}> = {!iTasks.SDS.Sources.Core.gEq_sss}
+
+:: <{iTasks.SDS.Sources.Core.gEq_ssss;}> = {!iTasks.SDS.Sources.Core.gEq_ssss}
+
+:: <{iTasks.SDS.Sources.Core.gEq_sssss;}> = {!iTasks.SDS.Sources.Core.gEq_sssss}
+
+:: <{iTasks.SDS.Sources.Core.gEq_ssssss;}> = {!iTasks.SDS.Sources.Core.gEq_ssssss}
+
+:: <{iTasks.SDS.Sources.Core.gEq_sssssss;}> = {!iTasks.SDS.Sources.Core.gEq_sssssss}
+
+:: <{iTasks.SDS.Sources.Core.gEq_ssssssss;}> = {!iTasks.SDS.Sources.Core.gEq_ssssssss}
+
+:: <{iTasks.SDS.Sources.Core.gEq_sssssssss;}> = {!iTasks.SDS.Sources.Core.gEq_sssssssss}
+
+:: <{iTasks.SDS.Sources.Core.bimap_s;}> = {iTasks.SDS.Sources.Core.bimap_s}
+
+:: <{iTasks.SDS.Sources.Core.bimap_ss;}> = {iTasks.SDS.Sources.Core.bimap_ss}
+
+:: <{iTasks.SDS.Sources.Core.bimap_sss;}> = {iTasks.SDS.Sources.Core.bimap_sss}
+
+:: <{iTasks.SDS.Sources.Core.JSONEncode_ssss;}> = {!iTasks.SDS.Sources.Core.JSONEncode_ssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONEncode_sssss;}> = {!iTasks.SDS.Sources.Core.JSONEncode_sssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONEncode_ssssss;}> = {!iTasks.SDS.Sources.Core.JSONEncode_ssssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONEncode_sssssss;}> = {!iTasks.SDS.Sources.Core.JSONEncode_sssssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONEncode_ssssssss;}> = {!iTasks.SDS.Sources.Core.JSONEncode_ssssssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONEncode_sssssssss;}> = {!iTasks.SDS.Sources.Core.JSONEncode_sssssssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_ssss;}> = {!iTasks.SDS.Sources.Core.JSONDecode_ssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_sssss;}> = {!iTasks.SDS.Sources.Core.JSONDecode_sssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_ssssss;}> = {!iTasks.SDS.Sources.Core.JSONDecode_ssssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_sssssss;}> = {!iTasks.SDS.Sources.Core.JSONDecode_sssssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_ssssssss;}> = {!iTasks.SDS.Sources.Core.JSONDecode_ssssssss}
+
+:: <{iTasks.SDS.Sources.Core.JSONDecode_sssssssss;}> = {!iTasks.SDS.Sources.Core.JSONDecode_sssssssss}
+
+:: <{iTasks.SDS.Sources.Core.gText_ssss;}> = {!iTasks.SDS.Sources.Core.gText_ssss}
+
+:: <{iTasks.SDS.Sources.Core.gText_sssss;}> = {!iTasks.SDS.Sources.Core.gText_sssss}
+
+:: <{iTasks.SDS.Sources.Core.gText_ssssss;}> = {!iTasks.SDS.Sources.Core.gText_ssssss}
+
+:: <{iTasks.SDS.Sources.Core.gText_sssssss;}> = {!iTasks.SDS.Sources.Core.gText_sssssss}
+
+:: <{iTasks.SDS.Sources.Core.gText_ssssssss;}> = {!iTasks.SDS.Sources.Core.gText_ssssssss}
+
+:: <{iTasks.SDS.Sources.Core.gText_sssssssss;}> = {!iTasks.SDS.Sources.Core.gText_sssssssss}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_ssss;}> = {iTasks.SDS.Sources.Core.gDefault_ssss}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_sssss;}> = {iTasks.SDS.Sources.Core.gDefault_sssss}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_ssssss;}> = {iTasks.SDS.Sources.Core.gDefault_ssssss}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_sssssss;}> = {iTasks.SDS.Sources.Core.gDefault_sssssss}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_ssssssss;}> = {iTasks.SDS.Sources.Core.gDefault_ssssssss}
+
+:: <{iTasks.SDS.Sources.Core.gDefault_sssssssss;}> = {iTasks.SDS.Sources.Core.gDefault_sssssssss}
+
+:: <{iTasks.SDS.Sources.Core.gEditor_ssss;}> = {iTasks.SDS.Sources.Core.gEditor_ssss}
+
+:: <{iTasks.SDS.Sources.Core.gEditor_sssss;}> = {iTasks.SDS.Sources.Core.gEditor_sssss}
+
+:: <{iTasks.SDS.Sources.Core.gEditor_ssssss;}> = {iTasks.SDS.Sources.Core.gEditor_ssssss}
+
+:: <{iTasks.SDS.Sources.Core.gEditor_sssssss;}> = {iTasks.SDS.Sources.Core.gEditor_sssssss}
+

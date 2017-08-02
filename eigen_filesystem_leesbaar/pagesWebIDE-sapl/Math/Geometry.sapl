@@ -1,0 +1,19 @@
+|| ?module? Math.Geometry
+
+
+Math.Geometry.rad !r_0::D = Math.Geometry.Rad r_0
+Math.Geometry.deg !d_0::D = Math.Geometry.Deg d_0
+Math.Geometry.toDeg::D !_x_0 = case _x_0 (Math.Geometry.Deg r_1_0 -> r_1_0) (Math.Geometry.Rad r_1_0 -> <{StdReal./_5}> r_1_0 (<{StdReal./_5}> 3.14159265359 180.0)) 
+Math.Geometry.toRad::D !_x_0 = case _x_0 (Math.Geometry.Deg r_1_0 -> <{StdReal.*_4}> (<{StdReal./_5}> 3.14159265359 180.0) r_1_0) (Math.Geometry.Rad r_1_0 -> r_1_0) 
+Math.Geometry.d_11::D !<{absa`_0}>::D = <{StdReal.*_4}> (StdReal.toReal_13 (StdReal.entier (<{StdReal./_5}> <{absa`_0}> 360.0))) 360.0
+Math.Geometry.normalize !a_0 = let !<{a`_1_0}>::D = Math.Geometry.toDeg a_0, !<{absa`_1_1}>::D = StdReal.abs_8 <{a`_1_0}> in case (StdBool.not (<{StdReal.<_12}> 360.0 <{absa`_1_1}>)) (True -> Math.Geometry.Deg <{a`_1_0}>) (False -> case (<{StdReal.<_12}> 0.0 <{a`_1_0}>) (True -> Math.Geometry.Deg (<{StdReal.-_2}> <{a`_1_0}> (Math.Geometry.d_11 <{absa`_1_1}>))) (False -> Math.Geometry.Deg (<{StdReal.+_1}> <{a`_1_0}> (Math.Geometry.d_11 <{absa`_1_1}>))) ) 
+<{Math.Geometry.==_5}>::B !_x_0 !<{r`_1}> = case _x_0 (Math.Geometry.Deg r_1_0 -> <{StdReal.==_11}> r_1_0 (Math.Geometry.toDeg <{r`_1}>)) (Math.Geometry.Rad r_1_0 -> <{StdReal.==_11}> r_1_0 (Math.Geometry.toRad <{r`_1}>)) 
+<{Math.Geometry.<_6}>::B !_x_0 !<{r`_1}> = case _x_0 (Math.Geometry.Deg r_1_0 -> <{StdReal.<_12}> r_1_0 (Math.Geometry.toDeg <{r`_1}>)) (Math.Geometry.Rad r_1_0 -> <{StdReal.<_12}> r_1_0 (Math.Geometry.toRad <{r`_1}>)) 
+<{Math.Geometry.+_7}> !_x_0 !<{r`_1}> = case _x_0 (Math.Geometry.Deg r_1_0 -> Math.Geometry.Deg (<{StdReal.+_1}> r_1_0 (Math.Geometry.toDeg <{r`_1}>))) (Math.Geometry.Rad r_1_0 -> Math.Geometry.Rad (<{StdReal.+_1}> r_1_0 (Math.Geometry.toRad <{r`_1}>))) 
+<{Math.Geometry.-_8}> !_x_0 !<{r`_1}> = case _x_0 (Math.Geometry.Deg r_1_0 -> Math.Geometry.Deg (<{StdReal.-_2}> r_1_0 (Math.Geometry.toDeg <{r`_1}>))) (Math.Geometry.Rad r_1_0 -> Math.Geometry.Rad (<{StdReal.-_2}> r_1_0 (Math.Geometry.toRad <{r`_1}>))) 
+Math.Geometry.sign_9::I !_x_0 = case _x_0 (Math.Geometry.Deg r_1_0 -> StdReal.sign_9 r_1_0) (Math.Geometry.Rad r_1_0 -> StdReal.sign_9 r_1_0) 
+<{Math.Geometry.TD;Angle}> _x_0::B = _predefined._Nil
+
+:: Math.Geometry.Angle = Math.Geometry.Deg !a1::D | Math.Geometry.Rad !a1::D
+
+|| Converted Records

@@ -1,0 +1,58 @@
+|| ?module? System.Directory
+
+
+System.Directory.createDirectory !path_0 !world_1 = let _x_1_0 = System._Posix.mkdir (System._Pointer.packString path_0) 493 world_1 in case (<{StdInt.==_16}> (select _x_1_0::_Tuple2 0) 0) (True -> <{_Tuple2!3}> (Data.Error.Ok _predefined._Unit) (select _x_1_0::_Tuple2 1)) (False -> System.OSError.getLastOSError (select _x_1_0::_Tuple2 1)) 
+System.Directory.removeDirectory !path_0 !world_1 = let _x_1_0 = System._Posix.rmdir (System._Pointer.packString path_0) world_1 in case (<{StdInt.==_16}> (select _x_1_0::_Tuple2 0) 0) (True -> <{_Tuple2!3}> (Data.Error.Ok _predefined._Unit) (select _x_1_0::_Tuple2 1)) (False -> System.OSError.getLastOSError (select _x_1_0::_Tuple2 1)) 
+System.Directory.readEntry_6 !entryptr_0::I !world_1 = <{_Tuple2!3}> (System._Pointer.derefString (<{StdInt.+_6}> entryptr_0 19)) world_1
+System.Directory.readEntries_5 !dirptr_0::I !world_1 = let _x_1_0::I = System._Posix.readdir dirptr_0 world_1, entryptr_1_1 = select _x_1_0::_Tuple2 0 in case (<{StdInt.==_16}> entryptr_1_1 0) (True -> <{_Tuple2!3}> _predefined._Nil (select _x_1_0::_Tuple2 1)) (False -> let _x_3_0 = System.Directory.readEntry_6 entryptr_1_1 (select _x_1_0::_Tuple2 1), _x_3_1 = System.Directory.readEntries_5 dirptr_0 (select _x_3_0::_Tuple2 1) in <{_Tuple2!3}> (_predefined._Cons (select _x_3_0::_Tuple2 0) (select _x_3_1::_Tuple2 0)) (select _x_3_1::_Tuple2 1)) 
+System.Directory.readDirectory !path_0 !world_1 = let _x_1_0::I = System._Posix.opendir (System._Pointer.packString path_0) world_1, dirptr_1_1 = select _x_1_0::_Tuple2 0 in case (<{StdInt.==_16}> dirptr_1_1 0) (True -> System.OSError.getLastOSError (select _x_1_0::_Tuple2 1)) (False -> let world_3_0 = select _x_1_0::_Tuple2 1, _x_3_1 = System.Directory.readEntries_5 dirptr_1_1 world_3_0, world_3_2 = select _x_3_1::_Tuple2 1, _x_3_3 = System._Posix.closedir dirptr_1_1 world_3_2 in case (<{StdInt.==_16}> (select _x_3_3::_Tuple2 0) 0) (True -> <{_Tuple2!3}> (Data.Error.Ok (select _x_3_1::_Tuple2 0)) (select _x_3_3::_Tuple2 1)) (False -> System.OSError.getLastOSError (select _x_3_3::_Tuple2 1)) ) 
+<{System.Directory.cu;59;18_8}> !_vArray_0 !_vone_1 !<{_v+_2}> c_l_i_3 !g_i_4::I !g_s_5::I g_a_6 = <{System.Directory.g_c1;59;23_58}> (StdBool.not (<{StdInt.<_17}> g_s_5 g_i_4)) g_a_6 g_i_4 _vArray_0 _vone_1 <{_v+_2}> c_l_i_3 g_s_5
+<{System.Directory.g_c1;59;23_58}> !_x_0::B g_a_1 g_i_2::I _vArray_3 _vone_4 <{_v+_5}> c_l_i_6 g_s_7::I = case _x_0 (True -> <{System.Directory.g_c2;59;23_57}> (select _vArray_3::<{_SystemArray.Array;}> 6 g_a_1 g_i_2) _vArray_3 _vone_4 <{_v+_5}> c_l_i_6 g_i_2 g_s_7 g_a_1) (_ -> c_l_i_6)
+<{System.Directory.g_c2;59;23_57}> !_x_0 !_vArray_1 !_vone_2 !<{_v+_3}> c_l_i_4 !g_i_5::I !g_s_6::I g_a_7 = case _x_0 (_Tuple2 c_1_0 g_a_1_1 -> case (StdBool.not (<{StdChar.==_18}> c_1_0 '\0')) (True -> <{System.Directory.cu;59;18_8}> _vArray_1 _vone_2 <{_v+_3}> (select <{_v+_3}>::<{StdOverloaded.+;}> 0 c_l_i_4 (select _vone_2::<{StdOverloaded.one;}> 0)) (<{StdInt.+_6}> g_i_5 StdInt.one_11) g_s_6 g_a_1_1) ) (_ -> <{System.Directory.cu;59;18_8}> _vArray_1 _vone_2 <{_v+_3}> c_l_i_4 (<{StdInt.+_6}> g_i_5 StdInt.one_11) g_s_6 g_a_7)
+<{System.Directory.cu;59;18_7}> !_vArray_0 !_vArray_1 c_a_2 c_i_3::I !g_i_4::I !g_s_5::I g_a_6 = <{System.Directory.g_c1;59;23_60}> (StdBool.not (<{StdInt.<_17}> g_s_5 g_i_4)) g_a_6 g_i_4 _vArray_0 _vArray_1 c_a_2 c_i_3 g_s_5
+<{System.Directory.g_c1;59;23_60}> !_x_0::B g_a_1 g_i_2::I _vArray_3 _vArray_4 c_a_5 c_i_6::I g_s_7::I = case _x_0 (True -> <{System.Directory.g_c2;59;23_59}> (select _vArray_3::<{_SystemArray.Array;}> 6 g_a_1 g_i_2) _vArray_3 _vArray_4 c_a_5 c_i_6 g_i_2 g_s_7 g_a_1) (_ -> c_a_5)
+<{System.Directory.g_c2;59;23_59}> !_x_0 !_vArray_1 !_vArray_2 c_a_3 c_i_4::I !g_i_5::I !g_s_6::I g_a_7 = case _x_0 (_Tuple2 c_1_0 g_a_1_1 -> case (StdBool.not (<{StdChar.==_18}> c_1_0 '\0')) (True -> <{System.Directory.cu;59;18_7}> _vArray_1 _vArray_2 (select _vArray_2::<{_SystemArray.Array;}> 5 c_a_3 c_i_4 c_1_0) (<{StdInt.+_6}> c_i_4 StdInt.one_11) (<{StdInt.+_6}> g_i_5 StdInt.one_11) g_s_6 g_a_1_1) ) (_ -> <{System.Directory.cu;59;18_7}> _vArray_1 _vArray_2 c_a_3 c_i_4 (<{StdInt.+_6}> g_i_5 StdInt.one_11) g_s_6 g_a_7)
+<{System.Directory.cu;59;18_52}> !_vone_0 !<{_v+_1}> c_l_i_2 !g_i_3::I !g_s_4::I g_a_5 = <{System.Directory.g_c1;59;23_62}> (StdBool.not (<{StdInt.<_17}> g_s_4 g_i_3)) g_a_5 g_i_3 _vone_0 <{_v+_1}> c_l_i_2 g_s_4
+<{System.Directory.g_c1;59;23_62}> !_x_0::B g_a_1 g_i_2::I _vone_3 <{_v+_4}> c_l_i_5 g_s_6::I = case _x_0 (True -> <{System.Directory.g_c2;59;23_61}> (_SystemArray.uselect_22 g_a_1 g_i_2) _vone_3 <{_v+_4}> c_l_i_5 g_i_2 g_s_6 g_a_1) (_ -> c_l_i_5)
+<{System.Directory.g_c2;59;23_61}> !_x_0 !_vone_1 !<{_v+_2}> c_l_i_3 !g_i_4::I !g_s_5::I g_a_6 = case _x_0 (_Tuple2 c_1_0 g_a_1_1 -> case (StdBool.not (<{StdChar.==_18}> c_1_0 '\0')) (True -> <{System.Directory.cu;59;18_52}> _vone_1 <{_v+_2}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 c_l_i_3 (select _vone_1::<{StdOverloaded.one;}> 0)) (<{StdInt.+_6}> g_i_4 StdInt.one_11) g_s_5 g_a_1_1) ) (_ -> <{System.Directory.cu;59;18_52}> _vone_1 <{_v+_2}> c_l_i_3 (<{StdInt.+_6}> g_i_4 StdInt.one_11) g_s_5 g_a_6)
+<{System.Directory.cu;59;18_53}> !_vArray_0 c_a_1 c_i_2::I !g_i_3::I !g_s_4::I g_a_5 = <{System.Directory.g_c1;59;23_64}> (StdBool.not (<{StdInt.<_17}> g_s_4 g_i_3)) g_a_5 g_i_3 _vArray_0 c_a_1 c_i_2 g_s_4
+<{System.Directory.g_c1;59;23_64}> !_x_0::B g_a_1 g_i_2::I _vArray_3 c_a_4 c_i_5::I g_s_6::I = case _x_0 (True -> <{System.Directory.g_c2;59;23_63}> (_SystemArray.uselect_22 g_a_1 g_i_2) _vArray_3 c_a_4 c_i_5 g_i_2 g_s_6 g_a_1) (_ -> c_a_4)
+<{System.Directory.g_c2;59;23_63}> !_x_0 !_vArray_1 c_a_2 c_i_3::I !g_i_4::I !g_s_5::I g_a_6 = case _x_0 (_Tuple2 c_1_0 g_a_1_1 -> case (StdBool.not (<{StdChar.==_18}> c_1_0 '\0')) (True -> <{System.Directory.cu;59;18_53}> _vArray_1 (select _vArray_1::<{_SystemArray.Array;}> 5 c_a_2 c_i_3 c_1_0) (<{StdInt.+_6}> c_i_3 StdInt.one_11) (<{StdInt.+_6}> g_i_4 StdInt.one_11) g_s_5 g_a_1_1) ) (_ -> <{System.Directory.cu;59;18_53}> _vArray_1 c_a_2 c_i_3 (<{StdInt.+_6}> g_i_4 StdInt.one_11) g_s_5 g_a_6)
+<{System.Directory.cu;59;18_54}>::I !<{_v+_0}> c_l_i_1::I !g_i_2::I !g_s_3::I g_a_4 = <{System.Directory.g_c1;59;23_66}> (StdBool.not (<{StdInt.<_17}> g_s_3 g_i_2)) g_a_4 g_i_2 <{_v+_0}> c_l_i_1 g_s_3
+<{System.Directory.g_c1;59;23_66}>::I !_x_0::B g_a_1 g_i_2::I <{_v+_3}> c_l_i_4::I g_s_5::I = case _x_0 (True -> <{System.Directory.g_c2;59;23_65}> (_SystemArray.uselect_22 g_a_1 g_i_2) <{_v+_3}> c_l_i_4 g_i_2 g_s_5 g_a_1) (_ -> c_l_i_4)
+<{System.Directory.g_c2;59;23_65}>::I !_x_0 !<{_v+_1}> c_l_i_2::I !g_i_3::I !g_s_4::I g_a_5 = case _x_0 (_Tuple2 c_1_0 g_a_1_1 -> case (StdBool.not (<{StdChar.==_18}> c_1_0 '\0')) (True -> <{System.Directory.cu;59;18_54}> <{_v+_1}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 c_l_i_2 StdInt.one_11) (<{StdInt.+_6}> g_i_3 StdInt.one_11) g_s_4 g_a_1_1) ) (_ -> <{System.Directory.cu;59;18_54}> <{_v+_1}> c_l_i_2 (<{StdInt.+_6}> g_i_3 StdInt.one_11) g_s_4 g_a_5)
+<{System.Directory.cu;59;18_55}> !c_a_0 c_i_1::I !g_i_2::I !g_s_3::I g_a_4 = <{System.Directory.g_c1;59;23_68}> (StdBool.not (<{StdInt.<_17}> g_s_3 g_i_2)) g_a_4 g_i_2 c_a_0 c_i_1 g_s_3
+<{System.Directory.g_c1;59;23_68}> !_x_0::B g_a_1 g_i_2::I !c_a_3 c_i_4::I g_s_5::I = case _x_0 (True -> <{System.Directory.g_c2;59;23_67}> (_SystemArray.uselect_22 g_a_1 g_i_2) c_a_3 c_i_4 g_i_2 g_s_5 g_a_1) (_ -> c_a_3)
+<{System.Directory.g_c2;59;23_67}> !_x_0 !c_a_1 c_i_2::I !g_i_3::I !g_s_4::I g_a_5 = case _x_0 (_Tuple2 c_1_0 g_a_1_1 -> case (StdBool.not (<{StdChar.==_18}> c_1_0 '\0')) (True -> <{System.Directory.cu;59;18_55}> (_SystemArray.update_21 c_a_1 c_i_2 c_1_0) (<{StdInt.+_6}> c_i_2 StdInt.one_11) (<{StdInt.+_6}> g_i_3 StdInt.one_11) g_s_4 g_a_1_1) ) (_ -> <{System.Directory.cu;59;18_55}> c_a_1 c_i_2 (<{StdInt.+_6}> g_i_3 StdInt.one_11) g_s_4 g_a_5)
+<{System.Directory.cu;59;18_56}>::I !c_l_i_0::I !g_i_1::I !g_s_2::I g_a_3 = <{System.Directory.g_c1;59;23_70}> (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) g_a_3 g_i_1 c_l_i_0 g_s_2
+<{System.Directory.g_c1;59;23_70}>::I !_x_0::B g_a_1 g_i_2::I !c_l_i_3::I g_s_4::I = case _x_0 (True -> <{System.Directory.g_c2;59;23_69}> (_SystemArray.uselect_22 g_a_1 g_i_2) c_l_i_3 g_i_2 g_s_4 g_a_1) (_ -> c_l_i_3)
+<{System.Directory.g_c2;59;23_69}>::I !_x_0 !c_l_i_1::I !g_i_2::I !g_s_3::I g_a_4 = case _x_0 (_Tuple2 c_1_0 g_a_1_1 -> case (StdBool.not (<{StdChar.==_18}> c_1_0 '\0')) (True -> <{System.Directory.cu;59;18_56}> (<{StdInt.+_6}> c_l_i_1 StdInt.one_11) (<{StdInt.+_6}> g_i_2 StdInt.one_11) g_s_3 g_a_1_1) ) (_ -> <{System.Directory.cu;59;18_56}> c_l_i_1 (<{StdInt.+_6}> g_i_2 StdInt.one_11) g_s_3 g_a_4)
+System.Directory.getCurrentDirectory !world_0 = let buf_1_0 = _SystemArray.createArray_17 1024 '\0', _x_1_1 = System._Posix.getcwd buf_1_0 1024 world_0 in case (<{StdInt.==_16}> (select _x_1_1::_Tuple2 0) 0) (True -> System.OSError.getLastOSError (select _x_1_1::_Tuple2 1)) (False -> let _x_3_0 = _SystemArray.usize_23 buf_1_0, _x_3_1 = _SystemArray.usize_23 buf_1_0 in <{_Tuple2!3}> (Data.Error.Ok (<{System.Directory.cu;59;18_55}> (_SystemArray._createArray_16 (<{System.Directory.cu;59;18_56}> 0 0 (<{StdInt.-_7}> (select _x_3_0::_Tuple2 0) 1) (select _x_3_0::_Tuple2 1))) 0 0 (<{StdInt.-_7}> (select _x_3_1::_Tuple2 0) 1) (select _x_3_1::_Tuple2 1))) (select _x_1_1::_Tuple2 1)) 
+System.Directory.setCurrentDirectory !path_0 !world_1 = let _x_1_0 = System._Posix.chdir (System._Pointer.packString path_0) world_1 in case (<{StdInt.==_16}> (select _x_1_0::_Tuple2 0) 0) (True -> <{_Tuple2!3}> (Data.Error.Ok _predefined._Unit) (select _x_1_0::_Tuple2 1)) (False -> System.OSError.getLastOSError (select _x_1_0::_Tuple2 1)) 
+
+
+|| Converted Records
+:: <{System.Directory.gEq_s;}> = {!System.Directory.gEq_s}
+
+:: <{System.Directory.gEq_ss;}> = {!System.Directory.gEq_ss}
+
+:: <{System.Directory.gEq_sss;}> = {!System.Directory.gEq_sss}
+
+:: <{System.Directory.gEq_ssss;}> = {!System.Directory.gEq_ssss}
+
+:: <{System.Directory.gEq_sssss;}> = {!System.Directory.gEq_sssss}
+
+:: <{System.Directory.gEq_ssssss;}> = {!System.Directory.gEq_ssssss}
+
+:: <{System.Directory.gEq_sssssss;}> = {!System.Directory.gEq_sssssss}
+
+:: <{System.Directory.gEq_ssssssss;}> = {!System.Directory.gEq_ssssssss}
+
+:: <{System.Directory.gEq_sssssssss;}> = {!System.Directory.gEq_sssssssss}
+
+:: <{System.Directory.bimap_s;}> = {System.Directory.bimap_s}
+
+:: <{System.Directory.bimap_ss;}> = {System.Directory.bimap_ss}
+
+:: <{System.Directory.bimap_sss;}> = {System.Directory.bimap_sss}
+

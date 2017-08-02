@@ -1,0 +1,159 @@
+|| ?module? builddb
+
+
+builddb.flip_28 !f_0 a_1 b_2 = f_0 b_2 a_1
+builddb.readDir !pwd_0 !world_1 = let _x_1_0 = System.Directory.readDirectory pwd_0 world_1, res_1_1 = select _x_1_0::_Tuple2 0 in case (Data.Error.isError res_1_1) (True -> StdMisc.abort "Cannot read directory: ") (False -> _Tuple2 (Data.Error.fromOk res_1_1) (select _x_1_0::_Tuple2 1)) 
+builddb.anon_14::B !a_0 = case (StdBool.not (<{StdString.==_2}> a_0 ".")) (True -> StdBool.not (<{StdString.==_2}> a_0 "..")) (False -> False) 
+builddb.isDirectory !file_0 !world_1 = let _x_1_0 = System.File.getFileInfo file_0 world_1, res_1_1 = select _x_1_0::_Tuple2 0 in case (Data.Error.isError res_1_1) (True -> StdMisc.abort "Cannot get directory info from file: ") (False -> _Tuple2 (select (Data.Error.fromOk res_1_1)::System.File._FileInfo 0) (select _x_1_0::_Tuple2 1)) 
+<{builddb.selDirs`_16}> pwd_0 !_x_1 !_x_2 w_3 = case _x_1 (_predefined._Nil -> case _x_2 (_Tuple2 dirs_2_0 nodirs_2_1 -> _Tuple3 dirs_2_0 nodirs_2_1 w_3) ) (_predefined._Cons f_1_0 fs_1_1 -> case _x_2 (_Tuple2 dirs_2_0 nodirs_2_1 -> let _x_3_0 = builddb.isDirectory (<{System.FilePath.</>}> pwd_0 f_1_0) w_3, w_3_1 = select _x_3_0::_Tuple2 1 in case (select _x_3_0::_Tuple2 0) (True -> <{builddb.selDirs`_16}> pwd_0 fs_1_1 (_Tuple2 (_predefined._Cons f_1_0 dirs_2_0) nodirs_2_1) w_3_1) (False -> <{builddb.selDirs`_16}> pwd_0 fs_1_1 (_Tuple2 dirs_2_0 (_predefined._Cons f_1_0 nodirs_2_1)) w_3_1) ) ) 
+builddb.selectDirs pwd_0 !paths_1 w_2 = <{builddb.selDirs`_16}> pwd_0 paths_1 (_Tuple2 _predefined._Nil _predefined._Nil) w_2
+builddb.fetchDirectories pwd_0 w_1 = let _x_1_0 = builddb.readDir pwd_0 w_1, _x_1_1 = builddb.selectDirs pwd_0 (StdList.filter builddb.anon_14 (select _x_1_0::_Tuple2 0)) (select _x_1_0::_Tuple2 1) in _Tuple2 (select _x_1_1::_Tuple3 0) (select _x_1_1::_Tuple3 2)
+builddb.anon_12::B a_0 = False
+builddb.anon_13 dir_0 = _Tuple2 (System.FilePath.dropDirectory dir_0) builddb.anon_12
+builddb.eval_all_nodes !g_0 = error "no AnyCodeExpr"
+builddb.loop _x_0 !_x_1 !db_2 !w_3 = case _x_1 (_predefined._Nil -> <{_Tuple2!3}> db_2 w_3) (_predefined._Cons _x_1_0 list_1_1 -> case _x_1_0 (_Tuple3 lib_2_0 mod_2_1 iscore_2_2 -> let !w_3_0 = select (StdFile.fclose_30 (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> StdFile.stderr lib_2_0) ": ") mod_2_1) "\n") w_3)::_Tuple2 1, !_x_3_1 = CloogleDBFactory.indexModule _x_0 mod_2_1 lib_2_0 iscore_2_2 db_2 w_3_0, !db_3_2 = builddb.eval_all_nodes (select _x_3_1::_Tuple2 0) in builddb.loop _x_0 list_1_1 db_3_2 (select _x_3_1::_Tuple2 1)) ) 
+builddb.predefFunctions = _predefined._Cons (_Tuple2 (CloogleDB.Builtin "if") (update CloogleDB.zero_51::CloogleDB._FunctionEntry [1:Data.Maybe.Just (TypeDef.Func (_predefined._Cons (TypeDef.Type "Bool" _predefined._Nil) (_predefined._Cons (TypeDef.Var "a") (_predefined._Cons (TypeDef.Var "a") _predefined._Nil))) (TypeDef.Var "a") _predefined._Nil)])) (_predefined._Cons (_Tuple2 (CloogleDB.Builtin "dynamic") (update CloogleDB.zero_51::CloogleDB._FunctionEntry [1:Data.Maybe.Just (TypeDef.Func (_predefined._Cons (TypeDef.Var "a") _predefined._Nil) (TypeDef.Type "Dynamic" _predefined._Nil) _predefined._Nil)])) _predefined._Nil)
+builddb.predefClasses = _predefined._Cons (_Tuple2 (CloogleDB.Builtin "TC") (CloogleDB._ClassEntry (_predefined._Cons "v" _predefined._Nil) _predefined._Nil Data.Maybe.Nothing _predefined._Nil _predefined._Nil)) _predefined._Nil
+builddb.predefTypes = let deft_1_0 = CloogleDB._TypeDefEntry (TypeDef._TypeDef "" False _predefined._Nil TypeDef.TDRAbstract) Data.Maybe.Nothing, defc_1_1 = TypeDef._Constructor "" _predefined._Nil _predefined._Nil _predefined._Nil Data.Maybe.Nothing in _predefined._Cons (_Tuple2 (CloogleDB.Builtin "Bool") (update deft_1_0::CloogleDB._TypeDefEntry [0:update (select deft_1_0::CloogleDB._TypeDefEntry 0)::TypeDef._TypeDef [0:"Bool",3:TypeDef.TDRCons False (_predefined._Cons (update defc_1_1::TypeDef._Constructor [0:"False"]) (_predefined._Cons (update defc_1_1::TypeDef._Constructor [0:"True"]) _predefined._Nil))]])) (_predefined._Cons (_Tuple2 (CloogleDB.Builtin "Int") (update deft_1_0::CloogleDB._TypeDefEntry [0:update (select deft_1_0::CloogleDB._TypeDefEntry 0)::TypeDef._TypeDef [0:"Int"]])) (_predefined._Cons (_Tuple2 (CloogleDB.Builtin "Real") (update deft_1_0::CloogleDB._TypeDefEntry [0:update (select deft_1_0::CloogleDB._TypeDefEntry 0)::TypeDef._TypeDef [0:"Real"]])) (_predefined._Cons (_Tuple2 (CloogleDB.Builtin "Char") (update deft_1_0::CloogleDB._TypeDefEntry [0:update (select deft_1_0::CloogleDB._TypeDefEntry 0)::TypeDef._TypeDef [0:"Char"]])) (_predefined._Cons (_Tuple2 (CloogleDB.Builtin "String") (update deft_1_0::CloogleDB._TypeDefEntry [0:update (select deft_1_0::CloogleDB._TypeDefEntry 0)::TypeDef._TypeDef [0:"String",3:TypeDef.TDRSynonym (TypeDef.Type "_#Array" (_predefined._Cons (TypeDef.Type "Char" _predefined._Nil) _predefined._Nil))]])) (_predefined._Cons (_Tuple2 (CloogleDB.Builtin "Dynamic") (update deft_1_0::CloogleDB._TypeDefEntry [0:update (select deft_1_0::CloogleDB._TypeDefEntry 0)::TypeDef._TypeDef [0:"Dynamic"]])) (_predefined._Cons (_Tuple2 (CloogleDB.Builtin "File") (update deft_1_0::CloogleDB._TypeDefEntry [0:update (select deft_1_0::CloogleDB._TypeDefEntry 0)::TypeDef._TypeDef [0:"File"]])) (_predefined._Cons (_Tuple2 (CloogleDB.Builtin "World") (update deft_1_0::CloogleDB._TypeDefEntry [0:update (select deft_1_0::CloogleDB._TypeDefEntry 0)::TypeDef._TypeDef [0:"World",1:True]])) _predefined._Nil)))))))
+<{builddb.cu;195;24_22}> !<{_v<_0}> !_vone_1 !<{_v+_2}> !_vone_3 !<{_v+_4}> c_l_i_5 g_i_6 g_s_7 = case (StdBool.not (select <{_v<_0}>::<{StdOverloaded.<;}> 0 g_s_7 g_i_6)) (True -> <{builddb.cu;195;24_22}> <{_v<_0}> _vone_1 <{_v+_2}> _vone_3 <{_v+_4}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 c_l_i_5 (select _vone_1::<{StdOverloaded.one;}> 0)) (select <{_v+_4}>::<{StdOverloaded.+;}> 0 g_i_6 (select _vone_3::<{StdOverloaded.one;}> 0)) g_s_7) (False -> c_l_i_5) 
+<{builddb.cu;195;24_21}> !<{_v<_0}> !_vArray_1 !_vone_2 !<{_v+_3}> c_a_4 c_i_5::I g_i_6 g_s_7 = case (StdBool.not (select <{_v<_0}>::<{StdOverloaded.<;}> 0 g_s_7 g_i_6)) (True -> <{builddb.cu;195;24_21}> <{_v<_0}> _vArray_1 _vone_2 <{_v+_3}> (select _vArray_1::<{_SystemArray.Array;}> 5 c_a_4 c_i_5 ' ') (<{StdInt.+_6}> c_i_5 StdInt.one_11) (select <{_v+_3}>::<{StdOverloaded.+;}> 0 g_i_6 (select _vone_2::<{StdOverloaded.one;}> 0)) g_s_7) (False -> c_a_4) 
+<{builddb.cu;195;24_373}> !_vone_0 !<{_v+_1}> !_vone_2 !<{_v+_3}> c_l_i_4 !g_i_5::I !g_s_6::I = case (StdBool.not (<{StdInt.<_17}> g_s_6 g_i_5)) (True -> <{builddb.cu;195;24_373}> _vone_0 <{_v+_1}> _vone_2 <{_v+_3}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 c_l_i_4 (select _vone_0::<{StdOverloaded.one;}> 0)) (select <{_v+_3}>::<{StdOverloaded.+;}> 0 g_i_5 (select _vone_2::<{StdOverloaded.one;}> 0)) g_s_6) (False -> c_l_i_4) 
+<{builddb.cu;195;24_374}> !_vArray_0 !_vone_1 !<{_v+_2}> c_a_3 c_i_4::I !g_i_5::I !g_s_6::I = case (StdBool.not (<{StdInt.<_17}> g_s_6 g_i_5)) (True -> <{builddb.cu;195;24_374}> _vArray_0 _vone_1 <{_v+_2}> (select _vArray_0::<{_SystemArray.Array;}> 5 c_a_3 c_i_4 ' ') (<{StdInt.+_6}> c_i_4 StdInt.one_11) (select <{_v+_2}>::<{StdOverloaded.+;}> 0 g_i_5 (select _vone_1::<{StdOverloaded.one;}> 0)) g_s_6) (False -> c_a_3) 
+<{builddb.cu;195;24_375}>::I !<{_v+_0}> !_vone_1 !<{_v+_2}> c_l_i_3::I !g_i_4::I !g_s_5::I = case (StdBool.not (<{StdInt.<_17}> g_s_5 g_i_4)) (True -> <{builddb.cu;195;24_375}> <{_v+_0}> _vone_1 <{_v+_2}> (select <{_v+_0}>::<{StdOverloaded.+;}> 0 c_l_i_3 StdInt.one_11) (select <{_v+_2}>::<{StdOverloaded.+;}> 0 g_i_4 (select _vone_1::<{StdOverloaded.one;}> 0)) g_s_5) (False -> c_l_i_3) 
+<{builddb.cu;195;24_376}> !_vone_0 !<{_v+_1}> !c_a_2 c_i_3::I !g_i_4::I !g_s_5::I = case (StdBool.not (<{StdInt.<_17}> g_s_5 g_i_4)) (True -> <{builddb.cu;195;24_376}> _vone_0 <{_v+_1}> (_SystemArray.update_21 c_a_2 c_i_3 ' ') (<{StdInt.+_6}> c_i_3 StdInt.one_11) (select <{_v+_1}>::<{StdOverloaded.+;}> 0 g_i_4 (select _vone_0::<{StdOverloaded.one;}> 0)) g_s_5) (False -> c_a_2) 
+<{builddb.cu;195;24_377}>::I !_vone_0 !<{_v+_1}> !c_l_i_2::I !g_i_3::I !g_s_4::I = case (StdBool.not (<{StdInt.<_17}> g_s_4 g_i_3)) (True -> <{builddb.cu;195;24_377}> _vone_0 <{_v+_1}> (<{StdInt.+_6}> c_l_i_2 StdInt.one_11) (select <{_v+_1}>::<{StdOverloaded.+;}> 0 g_i_3 (select _vone_0::<{StdOverloaded.one;}> 0)) g_s_4) (False -> c_l_i_2) 
+<{builddb.cu;195;24_378}> !<{_v+_0}> !c_a_1 c_i_2::I !g_i_3::I !g_s_4::I = case (StdBool.not (<{StdInt.<_17}> g_s_4 g_i_3)) (True -> <{builddb.cu;195;24_378}> <{_v+_0}> (_SystemArray.update_21 c_a_1 c_i_2 ' ') (<{StdInt.+_6}> c_i_2 StdInt.one_11) (select <{_v+_0}>::<{StdOverloaded.+;}> 0 g_i_3 StdInt.one_11) g_s_4) (False -> c_a_1) 
+<{builddb.cu;195;24_379}>::I !<{_v+_0}> !c_l_i_1::I !g_i_2::I !g_s_3::I = case (StdBool.not (<{StdInt.<_17}> g_s_3 g_i_2)) (True -> <{builddb.cu;195;24_379}> <{_v+_0}> (<{StdInt.+_6}> c_l_i_1 StdInt.one_11) (select <{_v+_0}>::<{StdOverloaded.+;}> 0 g_i_2 StdInt.one_11) g_s_3) (False -> c_l_i_1) 
+<{builddb.cu;195;24_380}> !c_a_0 c_i_1::I !g_i_2::I !g_s_3::I = case (StdBool.not (<{StdInt.<_17}> g_s_3 g_i_2)) (True -> <{builddb.cu;195;24_380}> (_SystemArray.update_21 c_a_0 c_i_1 ' ') (<{StdInt.+_6}> c_i_1 StdInt.one_11) (<{StdInt.+_6}> g_i_2 StdInt.one_11) g_s_3) (False -> c_a_0) 
+<{builddb.cu;195;24_381}>::I !c_l_i_0::I !g_i_1::I !g_s_2::I = case (StdBool.not (<{StdInt.<_17}> g_s_2 g_i_1)) (True -> <{builddb.cu;195;24_381}> (<{StdInt.+_6}> c_l_i_0 StdInt.one_11) (<{StdInt.+_6}> g_i_1 StdInt.one_11) g_s_2) (False -> c_l_i_0) 
+builddb.pad_23 !_vtoString_0 !n_1::I i_2 = <{StdString.+++_11}> (<{builddb.cu;195;24_380}> (_SystemArray._createArray_16 (<{builddb.cu;195;24_381}> 0 0 (<{StdInt.-_7}> (<{StdInt.-_7}> n_1 (_SystemArray.size_20 (select _vtoString_0::<{StdOverloaded.toString;}> 0 i_2))) 1))) 0 0 (<{StdInt.-_7}> (<{StdInt.-_7}> n_1 (_SystemArray.size_20 (select _vtoString_0::<{StdOverloaded.toString;}> 0 i_2))) 1)) (select _vtoString_0::<{StdOverloaded.toString;}> 0 i_2)
+builddb.pad_382 !n_0::I !i_1::I = <{StdString.+++_11}> (<{builddb.cu;195;24_380}> (_SystemArray._createArray_16 (<{builddb.cu;195;24_381}> 0 0 (<{StdInt.-_7}> (<{StdInt.-_7}> n_0 (_SystemArray.size_20 (StdString.toString_5 i_1))) 1))) 0 0 (<{StdInt.-_7}> (<{StdInt.-_7}> n_0 (_SystemArray.size_20 (StdString.toString_5 i_1))) 1)) (StdString.toString_5 i_1)
+builddb.printStats !db_0 !f_1 !dirs_2 = let _x_1_0 = StdList.map (builddb.pad_382 5) (_predefined._Cons (CloogleDB.moduleCount db_0) (_predefined._Cons (CloogleDB.functionCount db_0) (_predefined._Cons (CloogleDB.typeCount db_0) (_predefined._Cons (CloogleDB.classCount db_0) (_predefined._Cons (CloogleDB.deriveCount db_0) _predefined._Nil))))), _x_1_1 = select _x_1_0::_Tuple2 1, _x_1_2 = select _x_1_1::_Tuple2 1, _x_1_3 = select _x_1_2::_Tuple2 1 in <{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> (<{StdFile.<<<_38}> f_1 "+-------------+-------+\n") "| Modules     | ") (select _x_1_0::_Tuple2 0)) " |\n") "| Functions   | ") (select _x_1_1::_Tuple2 0)) " |\n") "| Types       | ") (select _x_1_2::_Tuple2 0)) " |\n") "| Classes     | ") (select _x_1_3::_Tuple2 0)) " |\n") "| Derivations | ") (select (select _x_1_3::_Tuple2 1)::_Tuple2 0)) " |\n") "+-------------+-------+\n") (Text.concat_1 dirs_2)
+builddb.flip_383 !_x_0 a_1 !b_2 = StdTuple.uncurry _x_0 b_2 a_1
+builddb.buildit !w_0 = let _x_1_0 = System.Directory.getCurrentDirectory w_0 in case (Data.Error.isError (select _x_1_0::_Tuple2 0)) (True -> StdMisc.abort "no pwd") (False -> let w_3_0 = select _x_1_0::_Tuple2 1, _x_3_1 = System.Environment.getEnvironmentVariable "CLEAN_HOME" w_3_0, res_3_2 = select _x_3_1::_Tuple2 0 in case (Data.Maybe.isNothing res_3_2) (True -> StdMisc.abort "no cleanhome") (False -> let cleanhome_5_0 = Data.Maybe.fromJust res_3_2, w_5_1 = select _x_3_1::_Tuple2 1, _x_5_2 = StdFile.stdio_33 w_5_1, w_5_3 = select _x_5_2::_Tuple2 1, _x_5_4 = builddb.fetchDirectories (<{System.FilePath.</>}> cleanhome_5_0 "lib") w_5_3, dirs_5_5 = select _x_5_4::_Tuple2 0, libs_5_6 = StdList.map builddb.anon_13 dirs_5_5, w_5_7 = select _x_5_4::_Tuple2 1, _x_5_8 = Data.Func.mapSt (builddb.flip_383 (CloogleDBFactory.findModules _predefined._Nil (<{System.FilePath.</>}> cleanhome_5_0 "lib")) "") libs_5_6 w_5_7, modss_5_9 = select _x_5_8::_Tuple2 0, mods_5_10 = StdList.flatten modss_5_9, w_5_11 = select _x_5_8::_Tuple2 1, _x_5_12 = builddb.loop (<{System.FilePath.</>}> cleanhome_5_0 "lib") mods_5_10 CloogleDBFactory.newTemporaryDb w_5_11, db_5_13 = select _x_5_12::_Tuple2 0, db_5_14 = CloogleDBFactory.finaliseDb db_5_13 CloogleDB.newDb, db_5_15 = CloogleDB.putFunctions builddb.predefFunctions db_5_14, db_5_16 = CloogleDB.putClasses builddb.predefClasses db_5_15, db_5_17 = CloogleDB.putTypes builddb.predefTypes db_5_16, db_5_18 = CloogleDB.putFunctions (StdList.flatten (StdList.map CloogleDBFactory.constructor_functions builddb.predefTypes)) db_5_17, db_5_19 = CloogleDB.putFunctions (StdList.flatten (StdList.map CloogleDBFactory.record_functions builddb.predefTypes)) db_5_18, w_5_20 = select _x_5_12::_Tuple2 1, _x_5_21 = StdFile.fclose_30 (builddb.printStats db_5_19 StdFile.stderr dirs_5_5) w_5_20 in case (StdBool.not (select _x_5_21::_Tuple2 0)) (True -> StdMisc.abort "Couldn't close stdio") (False -> _Tuple2 db_5_19 (select (StdFile.fclose_30 (CloogleDB.saveDb db_5_19 (select _x_5_2::_Tuple2 0)) (select _x_5_21::_Tuple2 1))::_Tuple2 1)) ) ) 
+builddb.anon_20 x_0 !c_1 = update c_1::builddb._CLI [3:_predefined._Cons (_Tuple2 x_0 (StdFunc.const False)) (select c_1::builddb._CLI 3)]
+builddb.anon_19 x_0 !c_1 = update c_1::builddb._CLI [2:x_0]
+builddb.anon_18 !c_0 = update c_0::builddb._CLI [1:True]
+builddb.anon_17 !c_0 = update c_0::builddb._CLI [0:True]
+builddb.anon_29 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+builddb.anon_384::B !g_0 x_1 = StdBool.not (g_0 x_1)
+builddb.anon_385::B !_x_0 !x_1 = StdBool.not (Text.startsWith_14 _x_0 x_1)
+builddb.zero_26 = builddb._CLI False False "/opt/clean/lib/" (_predefined._Cons (_Tuple2 "ArgEnv" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "CleanInotify" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "CleanPrettyPrint" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "CleanSerial" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "CleanSnappy" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "CleanTypeUnifier" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "Cloogle" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "Directory" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "Dynamics" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "Gast" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "Generics" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "GraphCopy" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "MersenneTwister" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "ObjectIO" (builddb.anon_385 "Std")) (_predefined._Cons (_Tuple2 "Platform" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "Sapl" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "SoccerFun" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "StdEnv" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "StdLib" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "TCPIP" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "iTasks" (StdFunc.const False)) (_predefined._Cons (_Tuple2 "libcloogle" (StdFunc.const False)) _predefined._Nil)))))))))))))))))))))) (_predefined._Cons "StdEnv/_startup" (_predefined._Cons "StdEnv/_system" (_predefined._Cons "Platform/Deprecated" (_predefined._Cons "Platform/Data/Graph/Inductive/Query" (_predefined._Cons "SoccerFun/RefereeCoach_" (_predefined._Cons "SoccerFun/Team_" (_predefined._Cons "Cloogle/compiler-patch" _predefined._Nil)))))))
+builddb.parseCLI !_x_0 = case _x_0 (_predefined._Nil -> Data.Either.Right builddb.zero_26) (_predefined._Cons x_1_0 a_1_1 -> <{builddb._c;167;18_386}> (_Tuple2 x_1_0 a_1_1)) 
+<{builddb._c;167;18_386}> !_x_0 = case _x_0 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 ("--help" -> <{Data.Functor.<$>}> (<{Data.Functor.Functor;}> Data.Either.fmap_1) builddb.anon_17 (builddb.parseCLI xs_1_1)) ("--version" -> <{Data.Functor.<$>}> (<{Data.Functor.Functor;}> Data.Either.fmap_1) builddb.anon_18 (builddb.parseCLI xs_1_1)) ("-l" -> case xs_1_1 (_predefined._Nil -> Data.Either.Left "'-l' requires an argument") (_predefined._Cons x_3_0 xs_3_1 -> <{Data.Functor.<$>}> (<{Data.Functor.Functor;}> Data.Either.fmap_1) (builddb.anon_20 x_3_0) (builddb.parseCLI xs_3_1)) ) ("-r" -> case xs_1_1 (_predefined._Nil -> Data.Either.Left "'-r' requires an argument") (_predefined._Cons x_3_0 xs_3_1 -> <{Data.Functor.<$>}> (<{Data.Functor.Functor;}> Data.Either.fmap_1) (builddb.anon_19 x_3_0) (builddb.parseCLI xs_3_1)) ) (_ -> Data.Either.Left (<{StdString.+++_11}> "Unknown option '" (<{StdString.+++_11}> _x_1_0 "'")))) 
+<{builddb.TD;CLI}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: builddb._CLI = {builddb.help::B, builddb.version::B, builddb.root, builddb.libs, builddb.exclude}
+
+:: <{builddb.JSONEncode_s;}> = {!builddb.JSONEncode_s}
+
+:: <{builddb.JSONEncode_ss;}> = {!builddb.JSONEncode_ss}
+
+:: <{builddb.JSONEncode_sss;}> = {!builddb.JSONEncode_sss}
+
+:: <{builddb.JSONDecode_s;}> = {!builddb.JSONDecode_s}
+
+:: <{builddb.JSONDecode_ss;}> = {!builddb.JSONDecode_ss}
+
+:: <{builddb.JSONDecode_sss;}> = {!builddb.JSONDecode_sss}
+
+:: <{builddb.gDefault_s;}> = {builddb.gDefault_s}
+
+:: <{builddb.gDefault_ss;}> = {builddb.gDefault_ss}
+
+:: <{builddb.gDefault_sss;}> = {builddb.gDefault_sss}
+
+:: <{builddb.gText_s;}> = {!builddb.gText_s}
+
+:: <{builddb.gText_ss;}> = {!builddb.gText_ss}
+
+:: <{builddb.gText_sss;}> = {!builddb.gText_sss}
+
+:: <{builddb.gEditor_s;}> = {builddb.gEditor_s}
+
+:: <{builddb.gEditor_ss;}> = {builddb.gEditor_ss}
+
+:: <{builddb.gEditor_sss;}> = {builddb.gEditor_sss}
+
+:: <{builddb.gEq_s;}> = {!builddb.gEq_s}
+
+:: <{builddb.gEq_ss;}> = {!builddb.gEq_ss}
+
+:: <{builddb.gEq_sss;}> = {!builddb.gEq_sss}
+
+:: <{builddb.gEq_ssss;}> = {!builddb.gEq_ssss}
+
+:: <{builddb.gEq_sssss;}> = {!builddb.gEq_sssss}
+
+:: <{builddb.gEq_ssssss;}> = {!builddb.gEq_ssssss}
+
+:: <{builddb.gEq_sssssss;}> = {!builddb.gEq_sssssss}
+
+:: <{builddb.gEq_ssssssss;}> = {!builddb.gEq_ssssssss}
+
+:: <{builddb.gEq_sssssssss;}> = {!builddb.gEq_sssssssss}
+
+:: <{builddb.bimap_s;}> = {builddb.bimap_s}
+
+:: <{builddb.bimap_ss;}> = {builddb.bimap_ss}
+
+:: <{builddb.bimap_sss;}> = {builddb.bimap_sss}
+
+:: <{builddb.JSONEncode_ssss;}> = {!builddb.JSONEncode_ssss}
+
+:: <{builddb.JSONEncode_sssss;}> = {!builddb.JSONEncode_sssss}
+
+:: <{builddb.JSONEncode_ssssss;}> = {!builddb.JSONEncode_ssssss}
+
+:: <{builddb.JSONEncode_sssssss;}> = {!builddb.JSONEncode_sssssss}
+
+:: <{builddb.JSONEncode_ssssssss;}> = {!builddb.JSONEncode_ssssssss}
+
+:: <{builddb.JSONEncode_sssssssss;}> = {!builddb.JSONEncode_sssssssss}
+
+:: <{builddb.JSONDecode_ssss;}> = {!builddb.JSONDecode_ssss}
+
+:: <{builddb.JSONDecode_sssss;}> = {!builddb.JSONDecode_sssss}
+
+:: <{builddb.JSONDecode_ssssss;}> = {!builddb.JSONDecode_ssssss}
+
+:: <{builddb.JSONDecode_sssssss;}> = {!builddb.JSONDecode_sssssss}
+
+:: <{builddb.JSONDecode_ssssssss;}> = {!builddb.JSONDecode_ssssssss}
+
+:: <{builddb.JSONDecode_sssssssss;}> = {!builddb.JSONDecode_sssssssss}
+
+:: <{builddb.gText_ssss;}> = {!builddb.gText_ssss}
+
+:: <{builddb.gText_sssss;}> = {!builddb.gText_sssss}
+
+:: <{builddb.gText_ssssss;}> = {!builddb.gText_ssssss}
+
+:: <{builddb.gText_sssssss;}> = {!builddb.gText_sssssss}
+
+:: <{builddb.gText_ssssssss;}> = {!builddb.gText_ssssssss}
+
+:: <{builddb.gText_sssssssss;}> = {!builddb.gText_sssssssss}
+
+:: <{builddb.gDefault_ssss;}> = {builddb.gDefault_ssss}
+
+:: <{builddb.gDefault_sssss;}> = {builddb.gDefault_sssss}
+
+:: <{builddb.gDefault_ssssss;}> = {builddb.gDefault_ssssss}
+
+:: <{builddb.gDefault_sssssss;}> = {builddb.gDefault_sssssss}
+
+:: <{builddb.gDefault_ssssssss;}> = {builddb.gDefault_ssssssss}
+
+:: <{builddb.gDefault_sssssssss;}> = {builddb.gDefault_sssssssss}
+
+:: <{builddb.gEditor_ssss;}> = {builddb.gEditor_ssss}
+
+:: <{builddb.gEditor_sssss;}> = {builddb.gEditor_sssss}
+
+:: <{builddb.gEditor_ssssss;}> = {builddb.gEditor_ssssss}
+
+:: <{builddb.gEditor_sssssss;}> = {builddb.gEditor_sssssss}
+

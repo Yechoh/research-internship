@@ -1,0 +1,73 @@
+|| ?module? tcp
+
+
+tcp.pack_tcplistener !endpointRef_0::I = tcp.TCP_Listener_ endpointRef_0
+tcp.pack_tcpschan !buffered_SChan_0 = tcp.TCP_SChannel_ buffered_SChan_0
+tcp.pack_tcprchan !x_0 = tcp.TCP_RChannel_ x_0
+tcp.pack_ipaddr::I !i_0::I = i_0
+tcp.unpack_tcplistener::I !_x_0 = case _x_0 (tcp.TCP_Listener_ endpointRef_1_0 -> endpointRef_1_0) 
+tcp.unpack_tcpschan !_x_0 = case _x_0 (tcp.TCP_SChannel_ buffered_SChan_1_0 -> buffered_SChan_1_0) 
+tcp.unpack_tcprchan !_x_0 = case _x_0 (tcp.TCP_RChannel_ x_1_0 -> x_1_0) 
+tcp.unpack_ipaddr::I !i_0::I = i_0
+tcp.toDottedDecimal !ip_0::I = <{StdString.+++_11}> (StdString.toString_5 (StdInt.bitand (<{StdInt.>>}> ip_0 24) 255)) (<{StdString.+++_11}> "." (<{StdString.+++_11}> (StdString.toString_5 (StdInt.bitand (<{StdInt.>>}> ip_0 16) 255)) (<{StdString.+++_11}> "." (<{StdString.+++_11}> (StdString.toString_5 (StdInt.bitand (<{StdInt.>>}> ip_0 8) 255)) (<{StdString.+++_11}> "." (StdString.toString_5 (StdInt.bitand ip_0 255)))))))
+tcp.lookupHost_syncC !_x_0 !_x_1 = error "no AnyCodeExpr"
+tcp.setEndpointData_no_new_notifiersC32 !endpointRef_0::I !referenceCount_1::I !hasReceiveNotifier_2::B !hasSendableNotifier_3::B !aborted_4::B !e_5 = error "no AnyCodeExpr"
+tcp.setEndpointData_no_new_notifiersC64 !endpointRef_0::I !referenceCount_1::I !hasReceiveNotifier_2::B !hasSendableNotifier_3::B !aborted_4::B !e_5 = error "no AnyCodeExpr"
+tcp.setEndpointData_no_new_notifiersC !endpointRef_0::I !referenceCount_1::I !hasReceiveNotifier_2::B !hasSendableNotifier_3::B !aborted_4::B !e_5 = tcp.setEndpointData_no_new_notifiersC64 endpointRef_0 referenceCount_1 hasReceiveNotifier_2 hasSendableNotifier_3 aborted_4 e_5
+tcp.garbageCollectEndpointC32 !endpointRef_0::I !e_1 = error "no AnyCodeExpr"
+tcp.garbageCollectEndpointC64 !endpointRef_0::I !e_1 = error "no AnyCodeExpr"
+tcp.garbageCollectEndpointC !endpointRef_0::I !e_1 = tcp.garbageCollectEndpointC64 endpointRef_0 e_1
+tcp.close_listener !endpointRef_0::I !env_1 = tcp.garbageCollectEndpointC endpointRef_0 (tcp.setEndpointData_no_new_notifiersC endpointRef_0 0 False False True env_1)
+tcp.getEndpointDataC32_54 !endpointRef_0::I !e_1 = error "no AnyCodeExpr"
+tcp.getEndpointDataC64_53 !endpointRef_0::I !e_1 = error "no AnyCodeExpr"
+tcp.getEndpointDataC !er_0::I !env_1 = let _x_1_0 = tcp.getEndpointDataC64_53 er_0 env_1, _x_1_1 = select _x_1_0::_Tuple2 0 in <{_Tuple2!3}> (_Tuple4 (select _x_1_1::_Tuple4 0) (StdBool.not (<{StdInt.==_16}> (select _x_1_1::_Tuple4 1) 0)) (StdBool.not (<{StdInt.==_16}> (select _x_1_1::_Tuple4 2) 0)) (StdBool.not (<{StdInt.==_16}> (select _x_1_1::_Tuple4 3) 0))) (select _x_1_0::_Tuple2 1)
+tcp.disconnectBrutalC32 !endpointRef_0::I !e_1 = error "no AnyCodeExpr"
+tcp.disconnectBrutalC64 !endpointRef_0::I !e_1 = error "no AnyCodeExpr"
+tcp.disconnectBrutalC !endpointRef_0::I !e_1 = tcp.disconnectBrutalC64 endpointRef_0 e_1
+tcp.disconnectGracefulC32 !endpointRef_0::I !e_1 = error "no AnyCodeExpr"
+tcp.disconnectGracefulC64 !endpointRef_0::I !e_1 = error "no AnyCodeExpr"
+tcp.disconnectGracefulC !endpointRef_0::I !e_1 = tcp.disconnectGracefulC64 endpointRef_0 e_1
+tcp.close_tcprchan !endpointRef_0::I !env_1 = let _x_1_0::B = tcp.getEndpointDataC endpointRef_0 env_1, _x_1_1 = select _x_1_0::_Tuple2 0, referenceCount_1_2::B = select _x_1_1::_Tuple4 0, aborted_1_3::I = select _x_1_1::_Tuple4 3, env_1_4 = select _x_1_0::_Tuple2 1, hs_1_5 = select _x_1_1::_Tuple4 2 in tcp.garbageCollectEndpointC endpointRef_0 (<{tcp._c;105;15_76}> (_Tuple2 referenceCount_1_2 aborted_1_3) endpointRef_0 referenceCount_1_2 hs_1_5 aborted_1_3 env_1_4)
+<{tcp._c;105;15_76}> !_x_0 !endpointRef_1::I !referenceCount_2::I !hs_3::B !aborted_4::B !env_5 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (1 -> tcp._f75_75 _x_1_1 endpointRef_1 referenceCount_2 hs_3 aborted_4 env_5) ) (_ -> tcp.setEndpointData_no_new_notifiersC endpointRef_1 (<{StdInt.-_7}> referenceCount_2 StdInt.one_11) False hs_3 aborted_4 env_5)
+tcp._f75_75 !_x_0::B !endpointRef_1::I !referenceCount_2::I !hs_3::B !aborted_4::B !env_5 = case _x_0 (False -> tcp.disconnectGracefulC endpointRef_1 (tcp.setEndpointData_no_new_notifiersC endpointRef_1 (<{StdInt.-_7}> referenceCount_2 StdInt.one_11) False hs_3 aborted_4 env_5)) (_ -> tcp.disconnectBrutalC endpointRef_1 (tcp.setEndpointData_no_new_notifiersC endpointRef_1 (<{StdInt.-_7}> referenceCount_2 StdInt.one_11) False hs_3 aborted_4 env_5))
+tcp.openTCP_ListenerC32 !portNum_0::I !e_1 = error "no AnyCodeExpr"
+tcp.openTCP_ListenerC64 !portNum_0::I !e_1 = error "no AnyCodeExpr"
+tcp.openTCP_ListenerC !portNum_0::I !e_1 = tcp.openTCP_ListenerC64 portNum_0 e_1
+tcp.data_availableC32_52 !_x_0::I !_x_1 = error "no AnyCodeExpr"
+tcp.data_availableC64_51 !_x_0::I !_x_1 = error "no AnyCodeExpr"
+tcp.data_availableC !er_0::I !env_1 = let _x_1_0 = tcp.data_availableC64_51 er_0 env_1 in <{_Tuple2!3}> (StdBool.not (<{StdInt.==_16}> (select _x_1_0::_Tuple2 0) 0)) (select _x_1_0::_Tuple2 1)
+tcp.sendC32 !endpointRef_0::I !data_1 !begin_2::I !nBytes_3::I !e_4 = error "no AnyCodeExpr"
+tcp.sendC64 !endpointRef_0::I !data_1 !begin_2::I !nBytes_3::I !e_4 = error "no AnyCodeExpr"
+tcp.sendC !endpointRef_0::I !data_1 !begin_2::I !nBytes_3::I !e_4 = tcp.sendC64 endpointRef_0 data_1 begin_2 nBytes_3 e_4
+tcp.receiveC32 !endpointRef_0::I !maxSize_1::I !e_2 = error "no AnyCodeExpr"
+tcp.receiveC64 !endpointRef_0::I !maxSize_1::I !e_2 = error "no AnyCodeExpr"
+tcp.receiveC !endpointRef_0::I !maxSize_1::I !e_2 = tcp.receiveC64 endpointRef_0 maxSize_1 e_2
+tcp.acceptC32 !listener_0::I !e_1 = error "no AnyCodeExpr"
+tcp.acceptC64 !listener_0::I !e_1 = error "no AnyCodeExpr"
+tcp.acceptC !listener_0::I !e_1 = tcp.acceptC64 listener_0 e_1
+tcp.selectChC !justForMac_0::I !nonBlocking_1::B !doTimeout_and_stopTime_2 !pRChannels_3 !justForMac2_4 !pSChannels_5 !env_6 = error "no AnyCodeExpr"
+tcp.tcpPossibleC_55 !_x_0 = error "no AnyCodeExpr"
+tcp.tcpPossibleC !env_0 = let _x_1_0 = tcp.tcpPossibleC_55 env_0 in <{_Tuple2!3}> (StdBool.not (<{StdInt.==_16}> (select _x_1_0::_Tuple2 0) 0)) (select _x_1_0::_Tuple2 1)
+<{tcp.TD;InetEvent}> _x_0::B = _predefined._Nil
+<{tcp.TD;EndpointRef}> _x_0::B = _predefined._Nil
+<{tcp.TD;InetErrCode}> _x_0::B = _predefined._Nil
+<{tcp.TD;TCP_SChannel_}> _x_0::B = _predefined._Nil
+<{tcp.TD;TCP_RChannel_}> _x_0::B = _predefined._Nil
+<{tcp.TD;TCP_Listener_}> _x_0::B = _predefined._Nil
+<{tcp.TD;Buffered_SChan}> _x_0::B = _predefined._Nil
+<{tcp.TD;Buffer}> _x_0::B = _predefined._Nil
+<{tcp.TD;IPAddress}> _x_0::B = _predefined._Nil
+<{tcp.TD;InetReceiverCategory}> _x_0::B = _predefined._Nil
+<{tcp.TD;ChannelEnv;}> _x_0::B = _predefined._Nil
+
+:: tcp.TCP_SChannel_ = tcp.TCP_SChannel_ a1
+:: tcp.TCP_RChannel_ = tcp.TCP_RChannel_ !a1
+:: tcp.TCP_Listener_ = tcp.TCP_Listener_ !a1
+
+|| Converted Records
+:: tcp._Buffered_SChan = {!tcp.bEndpointRef, !tcp.bNormal, !tcp.bUnsent::I, !tcp.bId::I}
+
+:: tcp._Buffer = {!tcp.bPackets, !tcp.bBegin::I}
+
+:: <{tcp.ChannelEnv;}> = {!tcp.channelEnvKind, !tcp.channel_env_get_current_tick, !tcp.mb_close_inet_receiver_without_id}
+

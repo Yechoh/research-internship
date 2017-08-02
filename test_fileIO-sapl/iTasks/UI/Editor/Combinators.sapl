@@ -1,0 +1,171 @@
+|| ?module? iTasks.UI.Editor.Combinators
+
+
+iTasks.UI.Editor.Combinators.genUI_11 extra_0 !editor_1 dp_2 val_3 !vst_4 = case vst_4 (iTasks.UI.Editor._VSt task_1_0 mode_1_1 optional_1_2 selectedCons_1_3 iworld_1_4 -> <{iTasks.UI.Editor.Combinators._c;13;11_378}> (select editor_1::iTasks.UI.Editor._Editor 0 dp_2 val_3 vst_4) extra_0) 
+<{iTasks.UI.Editor.Combinators._c;13;11_378}> !_x_0 extra_1 = case _x_0 (_Tuple2 _x_1_0 vst_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 _x_3_0 mask_3_1 -> case _x_3_0 (iTasks.UI.Definition.UI type_4_0 attr_4_1 items_4_2 -> _Tuple2 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.UI type_4_0 (Data.Map.union (<{StdOverloaded.<;}> <{StdString.<_3}>) attr_4_1 extra_1) items_4_2) mask_3_1)) vst_1_1) ) ) (_ -> _Tuple2 _x_1_0 vst_1_1)) 
+iTasks.UI.Editor.Combinators.withAttributes extra_0 !editor_1 = update editor_1::iTasks.UI.Editor._Editor [0:iTasks.UI.Editor.Combinators.genUI_11 extra_0 editor_1]
+iTasks.UI.Editor.Combinators.genUI_12 !editor_0 dp_1 val_2 !vst_3 = case vst_3 (iTasks.UI.Editor._VSt task_1_0 mode_1_1 optional_1_2 selectedCons_1_3 iworld_1_4 -> <{iTasks.UI.Editor.Combinators._c;21;11_379}> (select editor_0::iTasks.UI.Editor._Editor 0 dp_1 val_2 vst_3) mode_1_1) 
+<{iTasks.UI.Editor.Combinators._c;21;11_379}> !_x_0 mode_1 = case _x_0 (_Tuple2 _x_1_0 vst_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 _x_3_0 mask_3_1 -> case _x_3_0 (iTasks.UI.Definition.UI type_4_0 attr_4_1 items_4_2 -> _Tuple2 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.UI type_4_0 (Data.Map.put (<{StdOverloaded.<;}> <{StdString.<_3}>) "mode" (Text.JSON.JSONString (iTasks.UI.Editor.toString_8 mode_1)) attr_4_1) items_4_2) mask_3_1)) vst_1_1) ) ) (_ -> _Tuple2 _x_1_0 vst_1_1)) 
+iTasks.UI.Editor.Combinators.withEditMode !editor_0 = update editor_0::iTasks.UI.Editor._Editor [0:iTasks.UI.Editor.Combinators.genUI_12 editor_0]
+iTasks.UI.Editor.Combinators.stdAttributes typename_0 optional_1::B !_x_2 = case _x_2 (iTasks.UI.Editor.CompoundMask _x_1_0 -> Data.Map.newMap) (_ -> let _x_1_0 = <{iTasks.UI.Editor.Combinators._c;54;31_380}> _x_2, state_1_1 = select _x_1_0::_Tuple3 2 in case (case (<{iTasks.UI.Editor.Combinators._c;57;15_381}> state_1_1) (True -> StdBool.not (select _x_1_0::_Tuple3 0)) (False -> False) ) (True -> Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (_Tuple2 "hint-type" (Text.JSON.JSONString "info")) (_predefined._Cons (_Tuple2 "hint" (Text.JSON.JSONString (<{StdString.+++_11}> "Please enter a " (<{StdString.+++_11}> typename_0 (<{iTasks.UI.Editor.Combinators._if;59;89_382}> optional_1))))) _predefined._Nil))) (False -> case (<{iTasks.UI.Editor.Combinators._c;60;16_383}> state_1_1) (True -> Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (_Tuple2 "hint-type" (Text.JSON.JSONString "invalid")) (_predefined._Cons (_Tuple2 "hint" (Text.JSON.JSONString (<{StdString.+++_11}> "You need to enter a " (<{StdString.+++_11}> typename_0 " (this value is required)")))) _predefined._Nil))) (False -> case (select _x_1_0::_Tuple3 1) (True -> Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (_Tuple2 "hint-type" (Text.JSON.JSONString "valid")) (_predefined._Cons (_Tuple2 "hint" (Text.JSON.JSONString (<{StdString.+++_11}> "You have correctly entered a " typename_0))) _predefined._Nil))) (False -> Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (_Tuple2 "hint-type" (Text.JSON.JSONString "invalid")) (_predefined._Cons (_Tuple2 "hint" (Text.JSON.JSONString (<{StdString.+++_11}> "This value not in the required format of a " typename_0))) _predefined._Nil))) ) ) )
+<{iTasks.UI.Editor.Combinators._c;60;16_383}>::B !_x_0 = case _x_0 (Text.JSON.JSONNull -> True) (_ -> False)
+<{iTasks.UI.Editor.Combinators._if;59;89_382}> !optional_0::B = case optional_0 (True -> "") (_ -> " (this value is required)")
+<{iTasks.UI.Editor.Combinators._c;57;15_381}>::B !_x_0 = case _x_0 (Text.JSON.JSONNull -> True) (_ -> False)
+<{iTasks.UI.Editor.Combinators._c;54;31_380}> !_x_0 = case _x_0 (iTasks.UI.Editor.FieldMask _x_1_0 -> case _x_1_0 (iTasks.UI.Editor._FieldMask touched_2_0 valid_2_1 state_2_2 -> _Tuple3 touched_2_0 valid_2_1 state_2_2) ) (_ -> _Tuple3 (iTasks.UI.Editor.isTouched _x_0) True Text.JSON.JSONNull)
+iTasks.UI.Editor.Combinators.genUI_13 typeDesc_0 !editor_1 dp_2 val_3 !vst_4 = case vst_4 (iTasks.UI.Editor._VSt task_1_0 mode_1_1 optional_1_2 selectedCons_1_3 iworld_1_4 -> <{iTasks.UI.Editor.Combinators._c;29;11_384}> (select editor_1::iTasks.UI.Editor._Editor 0 dp_2 val_3 vst_4) typeDesc_0 optional_1_2) 
+<{iTasks.UI.Editor.Combinators._c;29;11_384}> !_x_0 typeDesc_1 optional_2::B = case _x_0 (_Tuple2 _x_1_0 vst_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 _x_3_0 mask_3_1 -> case _x_3_0 (iTasks.UI.Definition.UI type_4_0 attr_4_1 items_4_2 -> _Tuple2 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.UI type_4_0 (Data.Map.union (<{StdOverloaded.<;}> <{StdString.<_3}>) (iTasks.UI.Editor.Combinators.stdAttributes typeDesc_1 optional_2 mask_3_1) attr_4_1) items_4_2) mask_3_1)) vst_1_1) ) ) (_ -> _Tuple2 _x_1_0 vst_1_1)) 
+iTasks.UI.Editor.Combinators.anon_34 k_0 x_1 xs_2 = _predefined._Cons (_Tuple2 k_0 x_1) xs_2
+<{iTasks.UI.Editor.Combinators.c;73;37_17}> !g_l_0 = <{iTasks.UI.Editor.Combinators.g_c1;73;46_386}> g_l_0
+<{iTasks.UI.Editor.Combinators.g_c1;73;46_386}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{iTasks.UI.Editor.Combinators.g_c2;73;46_385}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{iTasks.UI.Editor.Combinators.g_c2;73;46_385}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 k_1_0 v_1_1 -> _predefined._Cons (iTasks.UI.Definition.SetAttribute k_1_0 v_1_1) (<{iTasks.UI.Editor.Combinators.c;73;37_17}> g_t_1)) (_ -> <{iTasks.UI.Editor.Combinators.c;73;37_17}> g_t_1)
+iTasks.UI.Editor.Combinators.stdAttributeChanges typename_0 optional_1::B om_2 nm_3 = case (<{GenEq.===}> (<{iTasks.UI.Editor.Combinators.gEq_s;}> iTasks.UI.Editor.gEq_EditMask_13) om_2 nm_3) (True -> _predefined._Nil) (False -> <{iTasks.UI.Editor.Combinators.c;73;37_17}> (Data.Map.foldrWithKey iTasks.UI.Editor.Combinators.anon_34 _predefined._Nil (iTasks.UI.Editor.Combinators.stdAttributes typename_0 optional_1 nm_3))) 
+iTasks.UI.Editor.Combinators.addHintAttrChanges_16 typeDesc_0 omask_1 !_x_2 = case _x_2 (_Tuple3 _x_1_0 nval_1_1 vst_1_2 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 change_3_0 nmask_3_1 -> case vst_1_2 (iTasks.UI.Editor._VSt task_4_0 mode_4_1 optional_4_2 selectedCons_4_3 iworld_4_4 -> let cs_5_0 = iTasks.UI.Editor.Combinators.stdAttributeChanges typeDesc_0 optional_4_2 omask_1 nmask_3_1 in _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.mergeUIChanges change_3_0 (<{iTasks.UI.Editor.Combinators._c;42;24_387}> cs_5_0)) nmask_3_1)) nval_1_1 vst_1_2) ) ) (_ -> _Tuple3 _x_1_0 nval_1_1 vst_1_2)) 
+<{iTasks.UI.Editor.Combinators._c;42;24_387}> !cs_0 = case cs_0 (_predefined._Nil -> iTasks.UI.Definition.NoChange) (_ -> iTasks.UI.Definition.ChangeUI cs_0 _predefined._Nil)
+iTasks.UI.Editor.Combinators.onEdit_14 typeDesc_0 !editor_1 dp_2 e_3 oval_4 omask_5 !vst_6 = case vst_6 (iTasks.UI.Editor._VSt task_1_0 mode_1_1 optional_1_2 selectedCons_1_3 iworld_1_4 -> iTasks.UI.Editor.Combinators.addHintAttrChanges_16 typeDesc_0 omask_5 (select editor_1::iTasks.UI.Editor._Editor 1 dp_2 e_3 oval_4 omask_5 vst_6)) 
+iTasks.UI.Editor.Combinators.onRefresh_15 typeDesc_0 !editor_1 dp_2 e_3 oval_4 omask_5 !vst_6 = case vst_6 (iTasks.UI.Editor._VSt task_1_0 mode_1_1 optional_1_2 selectedCons_1_3 iworld_1_4 -> iTasks.UI.Editor.Combinators.addHintAttrChanges_16 typeDesc_0 omask_5 (select editor_1::iTasks.UI.Editor._Editor 2 dp_2 e_3 oval_4 omask_5 vst_6)) 
+iTasks.UI.Editor.Combinators.withHintAttributes typeDesc_0 editor_1 = iTasks.UI.Editor._Editor (iTasks.UI.Editor.Combinators.genUI_13 typeDesc_0 editor_1) (iTasks.UI.Editor.Combinators.onEdit_14 typeDesc_0 editor_1) (iTasks.UI.Editor.Combinators.onRefresh_15 typeDesc_0 editor_1)
+iTasks.UI.Editor.Combinators.withLabel label_0 !editor_1 = iTasks.UI.Editor.Combinators.withAttributes (iTasks.UI.Definition.labelAttr label_0) editor_1
+iTasks.UI.Editor.Combinators.genUI_18 enabledEditor_0 disabledEditor_1 dp_2 val_3 !vst_4 = case vst_4 (iTasks.UI.Editor._VSt task_1_0 mode_1_1 optional_1_2 selectedCons_1_3 iworld_1_4 -> case (<{iTasks.UI.Editor.Combinators._c;82;19_388}> mode_1_1) (True -> select disabledEditor_1::iTasks.UI.Editor._Editor 0 dp_2 val_3 vst_4) (False -> select enabledEditor_0::iTasks.UI.Editor._Editor 0 dp_2 val_3 vst_4) ) 
+<{iTasks.UI.Editor.Combinators._c;82;19_388}>::B !_x_0 = case _x_0 (iTasks.UI.Editor.View -> True) (_ -> False)
+iTasks.UI.Editor.Combinators.onEdit_19 !enabledEditor_0 dp_1 e_2 val_3 mask_4 vst_5 = select enabledEditor_0::iTasks.UI.Editor._Editor 1 dp_1 e_2 val_3 mask_4 vst_5
+iTasks.UI.Editor.Combinators.onRefresh_20 enabledEditor_0 disabledEditor_1 dp_2 new_3 old_4 mask_5 !vst_6 = case vst_6 (iTasks.UI.Editor._VSt task_1_0 mode_1_1 optional_1_2 selectedCons_1_3 iworld_1_4 -> case (<{iTasks.UI.Editor.Combinators._c;89;19_389}> mode_1_1) (True -> select disabledEditor_1::iTasks.UI.Editor._Editor 2 dp_2 new_3 old_4 mask_5 vst_6) (False -> select enabledEditor_0::iTasks.UI.Editor._Editor 2 dp_2 new_3 old_4 mask_5 vst_6) ) 
+<{iTasks.UI.Editor.Combinators._c;89;19_389}>::B !_x_0 = case _x_0 (iTasks.UI.Editor.View -> True) (_ -> False)
+iTasks.UI.Editor.Combinators.whenDisabled disabledEditor_0 enabledEditor_1 = iTasks.UI.Editor._Editor (iTasks.UI.Editor.Combinators.genUI_18 enabledEditor_1 disabledEditor_0) (iTasks.UI.Editor.Combinators.onEdit_19 enabledEditor_1) (iTasks.UI.Editor.Combinators.onRefresh_20 enabledEditor_1 disabledEditor_0)
+iTasks.UI.Editor.Combinators.genUI_21 !editor_0 tof_1 dp_2 val_3 vst_4 = select editor_0::iTasks.UI.Editor._Editor 0 dp_2 (tof_1 val_3) vst_4
+iTasks.UI.Editor.Combinators.onEdit_22 fromf_0 editor_1 tof_2 dp_3 e_4 val_5 mask_6 vst_7 = let _x_1_0 = select editor_1::iTasks.UI.Editor._Editor 1 dp_3 e_4 (tof_2 val_5) mask_6 vst_7 in _Tuple3 (select _x_1_0::_Tuple3 0) (fromf_0 (select _x_1_0::_Tuple3 1)) (select _x_1_0::_Tuple3 2)
+iTasks.UI.Editor.Combinators.onRefresh_23 fromf_0 editor_1 tof_2 dp_3 new_4 old_5 mask_6 vst_7 = let _x_1_0 = select editor_1::iTasks.UI.Editor._Editor 2 dp_3 (tof_2 new_4) (tof_2 old_5) mask_6 vst_7 in _Tuple3 (select _x_1_0::_Tuple3 0) (fromf_0 (select _x_1_0::_Tuple3 1)) (select _x_1_0::_Tuple3 2)
+iTasks.UI.Editor.Combinators.liftEditor tof_0 fromf_1 editor_2 = iTasks.UI.Editor._Editor (iTasks.UI.Editor.Combinators.genUI_21 editor_2 tof_0) (iTasks.UI.Editor.Combinators.onEdit_22 fromf_1 editor_2 tof_0) (iTasks.UI.Editor.Combinators.onRefresh_23 fromf_1 editor_2 tof_0)
+iTasks.UI.Editor.Combinators.genUI_24 !editor_0 tof_1 dp_2 val_3 vst_4 = select editor_0::iTasks.UI.Editor._Editor 0 dp_2 (tof_1 val_3) vst_4
+iTasks.UI.Editor.Combinators.onEdit_25 !fromf_0 editor_1 tof_2 dp_3 e_4 old_5 mask_6 vst_7 = let _x_1_0 = select editor_1::iTasks.UI.Editor._Editor 1 dp_3 e_4 (tof_2 old_5) mask_6 vst_7, vst_1_1 = select _x_1_0::_Tuple3 2, mask_1_2 = select _x_1_0::_Tuple3 0 in <{iTasks.UI.Editor.Combinators._c;110;11_391}> (fromf_0 (select _x_1_0::_Tuple3 1)) mask_1_2 vst_1_1 old_5
+<{iTasks.UI.Editor.Combinators._c;110;11_391}> !_x_0 mask_1 vst_2 old_3 = case _x_0 (Data.Error.Ok new_1_0 -> _Tuple3 mask_1 new_1_0 vst_2) (Data.Error.Error e_1_0 -> <{iTasks.UI.Editor.Combinators._c;112;25_390}> mask_1 e_1_0 old_3 vst_2) 
+<{iTasks.UI.Editor.Combinators._c;112;25_390}> !mask_0 e_1 old_2 vst_3 = case mask_0 (Data.Error.Ok _x_1_0 -> case _x_1_0 (_Tuple2 change_2_0 _x_2_1 -> case _x_2_1 (iTasks.UI.Editor.FieldMask mask_3_0 -> _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.mergeUIChanges change_2_0 (iTasks.UI.Definition.ChangeUI (_predefined._Cons (iTasks.UI.Definition.SetAttribute "hint-type" (Text.JSON.JSONString "invalid")) (_predefined._Cons (iTasks.UI.Definition.SetAttribute "hint" (Text.JSON.JSONString e_1)) _predefined._Nil)) _predefined._Nil)) (iTasks.UI.Editor.FieldMask (update mask_3_0::iTasks.UI.Editor._FieldMask [1:False])))) old_2 vst_3) ) ) (_ -> _Tuple3 mask_0 old_2 vst_3)
+iTasks.UI.Editor.Combinators.onRefresh_26 !fromf_0 editor_1 tof_2 dp_3 new_4 old_5 mask_6 vst_7 = let _x_1_0 = select editor_1::iTasks.UI.Editor._Editor 2 dp_3 (tof_2 new_4) (tof_2 old_5) mask_6 vst_7, vst_1_1 = select _x_1_0::_Tuple3 2, change_1_2 = select _x_1_0::_Tuple3 0 in <{iTasks.UI.Editor.Combinators._c;123;11_392}> (fromf_0 (select _x_1_0::_Tuple3 1)) change_1_2 vst_1_1 old_5
+<{iTasks.UI.Editor.Combinators._c;123;11_392}> !_x_0 change_1 vst_2 old_3 = case _x_0 (Data.Error.Ok new_1_0 -> _Tuple3 change_1 new_1_0 vst_2) (Data.Error.Error e_1_0 -> _Tuple3 change_1 old_3 vst_2) 
+iTasks.UI.Editor.Combinators.liftEditorAsymmetric tof_0 fromf_1 editor_2 = iTasks.UI.Editor._Editor (iTasks.UI.Editor.Combinators.genUI_24 editor_2 tof_0) (iTasks.UI.Editor.Combinators.onEdit_25 fromf_1 editor_2 tof_0) (iTasks.UI.Editor.Combinators.onRefresh_26 fromf_1 editor_2 tof_0)
+iTasks.UI.Editor.Combinators.genUI_27 !editor_0 val_1 dp_2 _x_3 vst_4 = select editor_0::iTasks.UI.Editor._Editor 0 dp_2 val_1 vst_4
+iTasks.UI.Editor.Combinators.onEdit_28 dp_0 _x_1 val_2 mask_3 vst_4 = _Tuple3 (Data.Error.Ok (_Tuple2 iTasks.UI.Definition.NoChange mask_3)) val_2 vst_4
+iTasks.UI.Editor.Combinators.onRefresh_29 dp_0 _x_1 val_2 mask_3 vst_4 = _Tuple3 (Data.Error.Ok (_Tuple2 iTasks.UI.Definition.NoChange mask_3)) val_2 vst_4
+iTasks.UI.Editor.Combinators.constEditor val_0 editor_1 = iTasks.UI.Editor._Editor (iTasks.UI.Editor.Combinators.genUI_27 editor_1 val_0) iTasks.UI.Editor.Combinators.onEdit_28 iTasks.UI.Editor.Combinators.onRefresh_29
+iTasks.UI.Editor.Combinators.genUI_30 type_0 ey_1 !ex_2 dp_3 !_x_4 vst_5 = case _x_4 (_Tuple2 x_1_0 y_1_1 -> let _x_2_0 = select ex_2::iTasks.UI.Editor._Editor 0 (<{StdList.++}> dp_3 (_predefined._Cons 0 _predefined._Nil)) x_1_0 vst_5, vizx_2_1 = select _x_2_0::_Tuple2 0 in case (<{iTasks.UI.Editor.Combinators._c;139;27_393}> vizx_2_1) (True -> _Tuple2 vizx_2_1 (select _x_2_0::_Tuple2 1)) (False -> let vst_4_0 = select _x_2_0::_Tuple2 1, _x_4_1 = select ey_1::iTasks.UI.Editor._Editor 0 (<{StdList.++}> dp_3 (_predefined._Cons 1 _predefined._Nil)) y_1_1 vst_4_0, vizy_4_2 = select _x_4_1::_Tuple2 0 in case (<{iTasks.UI.Editor.Combinators._c;141;27_394}> vizy_4_2) (True -> _Tuple2 vizy_4_2 (select _x_4_1::_Tuple2 1)) (False -> let _x_6_0 = _Tuple2 (Data.Error.fromOk vizx_2_1) (Data.Error.fromOk vizy_4_2), _x_6_1 = select _x_6_0::_Tuple2 0, _x_6_2 = select _x_6_0::_Tuple2 1 in _Tuple2 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.uic type_0 (_predefined._Cons (select _x_6_1::_Tuple2 0) (_predefined._Cons (select _x_6_2::_Tuple2 0) _predefined._Nil))) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (_predefined._Cons (select _x_6_1::_Tuple2 1) (_predefined._Cons (select _x_6_2::_Tuple2 1) _predefined._Nil)) Text.JSON.JSONNull)))) (select _x_4_1::_Tuple2 1)) ) ) 
+<{iTasks.UI.Editor.Combinators._c;141;27_394}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+<{iTasks.UI.Editor.Combinators._c;139;27_393}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+iTasks.UI.Editor.Combinators.onEdit_31 ey_0 ex_1 dp_2 !_x_3 _x_4 _x_5 vst_6 = case _x_3 (_Tuple2 _x_1_0 e_1_1 -> case _x_1_0 (_predefined._Cons _x_2_0 ds_2_1 -> case _x_2_0 (0 -> case _x_4 (_Tuple2 x_4_0 y_4_1 -> case _x_5 (iTasks.UI.Editor.CompoundMask _x_5_0 -> case _x_5_0 (iTasks.UI.Editor._CompoundMask _x_6_0 state_6_1 -> case _x_6_0 (_predefined._Cons xmask_7_0 _x_7_1 -> case _x_7_1 (_predefined._Cons ymask_8_0 _x_8_1 -> case _x_8_1 (_predefined._Nil -> <{iTasks.UI.Editor.Combinators._c;146;11_395}> (select ex_1::iTasks.UI.Editor._Editor 1 (<{StdList.++}> dp_2 (_predefined._Cons 0 _predefined._Nil)) (_Tuple2 ds_2_1 e_1_1) x_4_0 xmask_7_0 vst_6) ymask_8_0 state_6_1 y_4_1) ) ) ) ) ) ) (1 -> case _x_4 (_Tuple2 x_4_0 y_4_1 -> case _x_5 (iTasks.UI.Editor.CompoundMask _x_5_0 -> case _x_5_0 (iTasks.UI.Editor._CompoundMask _x_6_0 state_6_1 -> case _x_6_0 (_predefined._Cons xmask_7_0 _x_7_1 -> case _x_7_1 (_predefined._Cons ymask_8_0 _x_8_1 -> case _x_8_1 (_predefined._Nil -> <{iTasks.UI.Editor.Combinators._c;151;11_396}> (select ey_0::iTasks.UI.Editor._Editor 1 (<{StdList.++}> dp_2 (_predefined._Cons 1 _predefined._Nil)) (_Tuple2 ds_2_1 e_1_1) y_4_1 ymask_8_0 vst_6) xmask_7_0 state_6_1 x_4_0) ) ) ) ) ) ) ) ) (_ -> _Tuple3 (Data.Error.Ok (_Tuple2 iTasks.UI.Definition.NoChange _x_5)) _x_4 vst_6)
+<{iTasks.UI.Editor.Combinators._c;151;11_396}> !_x_0 xmask_1 state_2 x_3 = case _x_0 (_Tuple3 _x_1_0 y_1_1 vst_1_2 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 ychange_3_0 ymask_3_1 -> _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 1 (iTasks.UI.Definition.ChangeChild ychange_3_0)) _predefined._Nil)) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (_predefined._Cons xmask_1 (_predefined._Cons ymask_3_1 _predefined._Nil)) state_2)))) (_Tuple2 x_3 y_1_1) vst_1_2) ) (Data.Error.Error e_2_0 -> _Tuple3 (Data.Error.Error e_2_0) (_Tuple2 x_3 y_1_1) vst_1_2) ) 
+<{iTasks.UI.Editor.Combinators._c;146;11_395}> !_x_0 ymask_1 state_2 y_3 = case _x_0 (_Tuple3 _x_1_0 x_1_1 vst_1_2 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_Tuple2 xchange_3_0 xmask_3_1 -> _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 0 (iTasks.UI.Definition.ChangeChild xchange_3_0)) _predefined._Nil)) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (_predefined._Cons xmask_3_1 (_predefined._Cons ymask_1 _predefined._Nil)) state_2)))) (_Tuple2 x_1_1 y_3) vst_1_2) ) (Data.Error.Error e_2_0 -> _Tuple3 (Data.Error.Error e_2_0) (_Tuple2 x_1_1 y_3) vst_1_2) ) 
+iTasks.UI.Editor.Combinators.onRefresh_32 ey_0 !ex_1 dp_2 !_x_3 !_x_4 !_x_5 vst_6 = case _x_3 (_Tuple2 newx_1_0 newy_1_1 -> case _x_4 (_Tuple2 oldx_2_0 oldy_2_1 -> case _x_5 (iTasks.UI.Editor.CompoundMask _x_3_0 -> case _x_3_0 (iTasks.UI.Editor._CompoundMask _x_4_0 state_4_1 -> case _x_4_0 (_predefined._Cons maskx_5_0 _x_5_1 -> case _x_5_1 (_predefined._Cons masky_6_0 _x_6_1 -> case _x_6_1 (_predefined._Nil -> let _x_8_0 = select ex_1::iTasks.UI.Editor._Editor 2 (<{StdList.++}> dp_2 (_predefined._Cons 0 _predefined._Nil)) newx_1_0 oldx_2_0 maskx_5_0 vst_6, changex_8_1 = select _x_8_0::_Tuple3 0 in case (<{iTasks.UI.Editor.Combinators._c;159;29_397}> changex_8_1) (True -> _Tuple3 changex_8_1 (_Tuple2 oldx_2_0 oldy_2_1) (select _x_8_0::_Tuple3 2)) (False -> let vst_10_0 = select _x_8_0::_Tuple3 2, _x_10_1 = select ey_0::iTasks.UI.Editor._Editor 2 (<{StdList.++}> dp_2 (_predefined._Cons 1 _predefined._Nil)) newy_1_1 oldy_2_1 masky_6_0 vst_10_0, changey_10_2 = select _x_10_1::_Tuple3 0 in case (<{iTasks.UI.Editor.Combinators._c;161;30_398}> changey_10_2) (True -> _Tuple3 changey_10_2 (_Tuple2 oldx_2_0 oldy_2_1) (select _x_10_1::_Tuple3 2)) (False -> let _x_12_0 = _Tuple2 (Data.Error.fromOk changex_8_1) (Data.Error.fromOk changey_10_2), _x_12_1 = select _x_12_0::_Tuple2 0, _x_12_2 = select _x_12_0::_Tuple2 1 in _Tuple3 (Data.Error.Ok (_Tuple2 (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 0 (iTasks.UI.Definition.ChangeChild (select _x_12_1::_Tuple2 0))) (_predefined._Cons (_Tuple2 1 (iTasks.UI.Definition.ChangeChild (select _x_12_2::_Tuple2 0))) _predefined._Nil))) (iTasks.UI.Editor.CompoundMask (iTasks.UI.Editor._CompoundMask (_predefined._Cons (select _x_12_1::_Tuple2 1) (_predefined._Cons (select _x_12_2::_Tuple2 1) _predefined._Nil)) state_4_1)))) (_Tuple2 (select _x_8_0::_Tuple3 1) (select _x_10_1::_Tuple3 1)) (select _x_10_1::_Tuple3 2)) ) ) ) ) ) ) ) ) 
+<{iTasks.UI.Editor.Combinators._c;161;30_398}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+<{iTasks.UI.Editor.Combinators._c;159;29_397}>::B !_x_0 = case _x_0 (Data.Error.Error _x_1_0 -> True) (_ -> False)
+iTasks.UI.Editor.Combinators.composeEditors type_0 ex_1 ey_2 = iTasks.UI.Editor._Editor (iTasks.UI.Editor.Combinators.genUI_30 type_0 ey_2 ex_1) (iTasks.UI.Editor.Combinators.onEdit_31 ey_2 ex_1) (iTasks.UI.Editor.Combinators.onRefresh_32 ey_2 ex_1)
+
+
+|| Converted Records
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_s;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_s}
+
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_ss;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_ss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_sss;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_sss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_s;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_s}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_ss;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_ss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_sss;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_sss}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_s;}> = {iTasks.UI.Editor.Combinators.gDefault_s}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_ss;}> = {iTasks.UI.Editor.Combinators.gDefault_ss}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_sss;}> = {iTasks.UI.Editor.Combinators.gDefault_sss}
+
+:: <{iTasks.UI.Editor.Combinators.gText_s;}> = {!iTasks.UI.Editor.Combinators.gText_s}
+
+:: <{iTasks.UI.Editor.Combinators.gText_ss;}> = {!iTasks.UI.Editor.Combinators.gText_ss}
+
+:: <{iTasks.UI.Editor.Combinators.gText_sss;}> = {!iTasks.UI.Editor.Combinators.gText_sss}
+
+:: <{iTasks.UI.Editor.Combinators.gEditor_s;}> = {iTasks.UI.Editor.Combinators.gEditor_s}
+
+:: <{iTasks.UI.Editor.Combinators.gEditor_ss;}> = {iTasks.UI.Editor.Combinators.gEditor_ss}
+
+:: <{iTasks.UI.Editor.Combinators.gEditor_sss;}> = {iTasks.UI.Editor.Combinators.gEditor_sss}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_s;}> = {!iTasks.UI.Editor.Combinators.gEq_s}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_ss;}> = {!iTasks.UI.Editor.Combinators.gEq_ss}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_sss;}> = {!iTasks.UI.Editor.Combinators.gEq_sss}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_ssss;}> = {!iTasks.UI.Editor.Combinators.gEq_ssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_sssss;}> = {!iTasks.UI.Editor.Combinators.gEq_sssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_ssssss;}> = {!iTasks.UI.Editor.Combinators.gEq_ssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_sssssss;}> = {!iTasks.UI.Editor.Combinators.gEq_sssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_ssssssss;}> = {!iTasks.UI.Editor.Combinators.gEq_ssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEq_sssssssss;}> = {!iTasks.UI.Editor.Combinators.gEq_sssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.bimap_s;}> = {iTasks.UI.Editor.Combinators.bimap_s}
+
+:: <{iTasks.UI.Editor.Combinators.bimap_ss;}> = {iTasks.UI.Editor.Combinators.bimap_ss}
+
+:: <{iTasks.UI.Editor.Combinators.bimap_sss;}> = {iTasks.UI.Editor.Combinators.bimap_sss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_ssss;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_ssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_sssss;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_sssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_ssssss;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_ssssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_sssssss;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_sssssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_ssssssss;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_ssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONEncode_sssssssss;}> = {!iTasks.UI.Editor.Combinators.JSONEncode_sssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_ssss;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_ssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_sssss;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_sssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_ssssss;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_ssssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_sssssss;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_sssssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_ssssssss;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_ssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.JSONDecode_sssssssss;}> = {!iTasks.UI.Editor.Combinators.JSONDecode_sssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gText_ssss;}> = {!iTasks.UI.Editor.Combinators.gText_ssss}
+
+:: <{iTasks.UI.Editor.Combinators.gText_sssss;}> = {!iTasks.UI.Editor.Combinators.gText_sssss}
+
+:: <{iTasks.UI.Editor.Combinators.gText_ssssss;}> = {!iTasks.UI.Editor.Combinators.gText_ssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gText_sssssss;}> = {!iTasks.UI.Editor.Combinators.gText_sssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gText_ssssssss;}> = {!iTasks.UI.Editor.Combinators.gText_ssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gText_sssssssss;}> = {!iTasks.UI.Editor.Combinators.gText_sssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_ssss;}> = {iTasks.UI.Editor.Combinators.gDefault_ssss}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_sssss;}> = {iTasks.UI.Editor.Combinators.gDefault_sssss}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_ssssss;}> = {iTasks.UI.Editor.Combinators.gDefault_ssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_sssssss;}> = {iTasks.UI.Editor.Combinators.gDefault_sssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_ssssssss;}> = {iTasks.UI.Editor.Combinators.gDefault_ssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gDefault_sssssssss;}> = {iTasks.UI.Editor.Combinators.gDefault_sssssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEditor_ssss;}> = {iTasks.UI.Editor.Combinators.gEditor_ssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEditor_sssss;}> = {iTasks.UI.Editor.Combinators.gEditor_sssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEditor_ssssss;}> = {iTasks.UI.Editor.Combinators.gEditor_ssssss}
+
+:: <{iTasks.UI.Editor.Combinators.gEditor_sssssss;}> = {iTasks.UI.Editor.Combinators.gEditor_sssssss}
+

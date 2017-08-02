@@ -1,0 +1,249 @@
+|| ?module? iTasks.Extensions.Document
+
+
+iTasks.Extensions.Document.toString_4 !_x_0 = case _x_0 (iTasks.Extensions.Document.FileException path_1_0 error_1_1 -> <{iTasks.Extensions.Document._c;40;43_464}> error_1_1 path_1_0) 
+<{iTasks.Extensions.Document._c;40;43_464}> !error_0 !path_1 = case error_0 (System.File.CannotOpen -> <{StdString.+++_11}> "Cannot open file '" (<{StdString.+++_11}> path_1 "'")) (System.File.CannotClose -> <{StdString.+++_11}> "Cannot close file '" (<{StdString.+++_11}> path_1 "'")) (System.File.IOError -> <{StdString.+++_11}> "Error reading/writing file '" (<{StdString.+++_11}> path_1 "'")) 
+iTasks.Extensions.Document.openException s_0 = let e_1_0 = iTasks.Extensions.Document.FileException s_0 System.File.CannotOpen in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;FileException}>))) (iTasks.Extensions.Document.toString_4 e_1_0))
+iTasks.Extensions.Document.readAll_26 !file_0 = let _x_1_0 = StdFile.freads file_0 1048576, chunk_1_1 = select _x_1_0::_Tuple2 0 in case (<{StdInt.<_17}> (_SystemArray.size_20 chunk_1_1) 1048576) (True -> _Tuple2 chunk_1_1 (select _x_1_0::_Tuple2 1)) (False -> let _x_3_0 = iTasks.Extensions.Document.readAll_26 (select _x_1_0::_Tuple2 1) in _Tuple2 (<{StdString.+++_11}> chunk_1_1 (select _x_3_0::_Tuple2 0)) (select _x_3_0::_Tuple2 1)) 
+iTasks.Extensions.Document.closeException s_0 = let e_1_0 = iTasks.Extensions.Document.FileException s_0 System.File.CannotClose in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;FileException}>))) (iTasks.Extensions.Document.toString_4 e_1_0))
+iTasks.Extensions.Document.readDocument_25 task_0 !filename_1 !iworld_2 = case iworld_2 (iTasks.Internal.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks.Internal.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 -> let _x_3_0 = StdFile.fopen_31 filename_1 3 world_1_12 in case (StdBool.not (select _x_3_0::_Tuple3 0)) (True -> _Tuple2 (iTasks.Extensions.Document.openException filename_1) (update iworld_2::iTasks.Internal.IWorld._IWorld [12:select _x_3_0::_Tuple3 2])) (False -> let file_5_0 = select _x_3_0::_Tuple3 1, _x_5_1 = iTasks.Extensions.Document.readAll_26 file_5_0, file_5_2 = select _x_5_1::_Tuple2 1, world_5_3 = select _x_3_0::_Tuple3 2, _x_5_4 = StdFile.fclose_30 file_5_2 world_5_3 in case (StdBool.not (select _x_5_4::_Tuple2 0)) (True -> _Tuple2 (iTasks.Extensions.Document.closeException filename_1) (update iworld_2::iTasks.Internal.IWorld._IWorld [12:select _x_5_4::_Tuple2 1])) (False -> let name_7_0 = System.FilePath.dropDirectory filename_1, mime_7_1 = Text.Encodings.MIME.extensionToMimeType (System.FilePath.takeExtension name_7_0), content_7_2 = select _x_5_1::_Tuple2 0, world_7_3 = select _x_5_4::_Tuple2 1, _x_7_4 = iTasks.Internal.TaskStore.createDocument name_7_0 mime_7_1 content_7_2 (update iworld_2::iTasks.Internal.IWorld._IWorld [12:world_7_3]), iworld_7_5 = select _x_7_4::_Tuple2 1 in <{iTasks.Extensions.Document._c;61;7_465}> (select _x_7_4::_Tuple2 0) iworld_7_5) ) ) ) 
+<{iTasks.Extensions.Document._c;61;7_465}> !_x_0 iworld_1 = case _x_0 (Data.Error.Ok document_1_0 -> _Tuple2 (Data.Error.Ok document_1_0) iworld_1) (Data.Error.Error e_1_0 -> _Tuple2 (Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{System.File.TD;FileError}>))) (System.File.toString_10 e_1_0))) iworld_1) 
+iTasks.Extensions.Document.eval_24 !filename_0 task_1 !iworld_2 = iTasks.Extensions.Document.readDocument_25 task_1 filename_0 iworld_2
+iTasks.Extensions.Document.toGenericDocument_46 !x_0 = case x_0 (iTasks.Extensions.Document._Document x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.FIELD x12_1_1)) (StdGeneric.PAIR (StdGeneric.FIELD x13_1_2) (StdGeneric.PAIR (StdGeneric.FIELD x14_1_3) (StdGeneric.FIELD x15_1_4))))) 
+iTasks.Extensions.Document.JSONEncode_FIELD_71 !fx_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.FIELD x_1_0 -> fx_0 True x_1_0) 
+<{iTasks.Extensions.Document.++_70}> !_x_0 !list_1 = case _x_0 (_predefined._Cons hd_1_0 tl_1_1 -> _predefined._Cons hd_1_0 (<{iTasks.Extensions.Document.++_70}> tl_1_1 list_1)) (_ -> list_1)
+iTasks.Extensions.Document.JSONEncode_PAIR_69 !fx_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (fx_0 False x_1_0) (fy_1 False y_1_1)) 
+iTasks.Extensions.Document.fli__Document_38 = _predefined._Cons "documentId" (_predefined._Cons "contentUrl" (_predefined._Cons "name" (_predefined._Cons "mime" (_predefined._Cons "size" _predefined._Nil))))
+iTasks.Extensions.Document.isNotNull_68::B !_x_0 = case _x_0 (Text.JSON.JSONNull -> False) (_ -> True)
+<{iTasks.Extensions.Document.c;92;47_67}> !g_l_0 g_l_1 = <{iTasks.Extensions.Document.g_c1;92;33_467}> g_l_0 g_l_1
+<{iTasks.Extensions.Document.g_c1;92;33_467}> !g_l_0 g_l_1 = case g_l_0 (_predefined._Cons o_1_0 g_t_1_1 -> <{iTasks.Extensions.Document.g_c1;92;54_466}> g_l_1 o_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{iTasks.Extensions.Document.g_c1;92;54_466}> !g_l_0 o_1 g_t_2 = case g_l_0 (_predefined._Cons name_1_0 g_t_1_1 -> case (iTasks.Extensions.Document.isNotNull_68 o_1) (True -> _predefined._Cons (_Tuple2 name_1_0 o_1) (<{iTasks.Extensions.Document.c;92;47_67}> g_t_2 g_t_1_1)) (False -> <{iTasks.Extensions.Document.c;92;47_67}> g_t_2 g_t_1_1) ) (_ -> _predefined._Nil)
+iTasks.Extensions.Document.JSONEncode_RECORD_66 grd_fields_0 fx_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{iTasks.Extensions.Document.c;92;47_67}> (fx_1 False x_1_0) grd_fields_0)) _predefined._Nil) 
+iTasks.Extensions.Document.JSONEncode_FIELD_433 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode_Int_11 True x_1_0) 
+iTasks.Extensions.Document.JSONEncode_FIELD_431 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode__String_15 True x_1_0) 
+iTasks.Extensions.Document.JSONEncode_PAIR_432 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (iTasks.Extensions.Document.JSONEncode_FIELD_431 False x_1_0) (fy_0 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_PAIR_434 !fy_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (iTasks.Extensions.Document.JSONEncode_PAIR_432 fy_0 False x_1_0) (fy_1 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_RECORD_435 grd_fields_0 fy_1 fy_2 !_x_3::B !_x_4 = case _x_4 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{iTasks.Extensions.Document.c;92;47_67}> (iTasks.Extensions.Document.JSONEncode_PAIR_434 fy_1 fy_2 False x_1_0) grd_fields_0)) _predefined._Nil) 
+iTasks.Extensions.Document.JSONEncode_PAIR_436 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (iTasks.Extensions.Document.JSONEncode_FIELD_431 False x_1_0) (iTasks.Extensions.Document.JSONEncode_FIELD_433 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_PAIR_437 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (iTasks.Extensions.Document.JSONEncode_FIELD_431 False x_1_0) (iTasks.Extensions.Document.JSONEncode_PAIR_436 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_PAIR_440 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (iTasks.Extensions.Document.JSONEncode_FIELD_431 False x_1_0) (iTasks.Extensions.Document.JSONEncode_FIELD_431 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_PAIR_439 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (iTasks.Extensions.Document.JSONEncode_PAIR_440 False x_1_0) (fy_0 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_RECORD_438 grd_fields_0 fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{iTasks.Extensions.Document.c;92;47_67}> (iTasks.Extensions.Document.JSONEncode_PAIR_439 fy_1 False x_1_0) grd_fields_0)) _predefined._Nil) 
+iTasks.Extensions.Document.JSONEncode_PAIR_442 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (iTasks.Extensions.Document.JSONEncode_PAIR_440 False x_1_0) (iTasks.Extensions.Document.JSONEncode_PAIR_437 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_RECORD_441 grd_fields_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{iTasks.Extensions.Document.c;92;47_67}> (iTasks.Extensions.Document.JSONEncode_PAIR_442 False x_1_0) grd_fields_0)) _predefined._Nil) 
+iTasks.Extensions.Document.JSONEncode_Document_5 !x1_0::B !x2_1 = iTasks.Extensions.Document.JSONEncode_RECORD_441 iTasks.Extensions.Document.fli__Document_38 x1_0 (iTasks.Extensions.Document.toGenericDocument_46 x2_1)
+iTasks.Extensions.Document.findField_79 !match_0 !_x_1 = case _x_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (_Tuple2 l_2_0 x_2_1 -> case (<{StdString.==_2}> l_2_0 match_0) (True -> _predefined._Cons x_2_1 _predefined._Nil) (False -> iTasks.Extensions.Document.findField_79 match_0 xs_1_1) ) ) (_predefined._Nil -> _predefined._Nil) 
+iTasks.Extensions.Document.JSONDecode_FIELD_78 gfd_name_0 _x_1::I fx_2 !_x_3::B !l_4 = case l_4 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = iTasks.Extensions.Document.findField_79 gfd_name_0 fields_2_0 in <{iTasks.Extensions.Document._c;139;5_468}> (fx_2 True field_4_0) l_4) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{iTasks.Extensions.Document._c;150;5_469}> (fx_2 True (_predefined._Cons field_4_0 _predefined._Nil)) l_4) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+<{iTasks.Extensions.Document._c;150;5_469}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{iTasks.Extensions.Document._c;139;5_468}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+iTasks.Extensions.Document.d2_77 !x_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 ys_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.PAIR x_0 y_2_0)) ys_1_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+iTasks.Extensions.Document.d1_76 !fy_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks.Extensions.Document.d2_77 x_2_0 (fy_0 False xs_1_1) l_2) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+iTasks.Extensions.Document.JSONDecode_PAIR_75 !fx_0 !fy_1 !_x_2::B !l_3 = iTasks.Extensions.Document.d1_76 fy_1 (fx_0 False l_3) l_3
+iTasks.Extensions.Document.d_73 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+iTasks.Extensions.Document.d_74 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+iTasks.Extensions.Document.JSONDecode_RECORD_72 fx_0 !_x_1::B !l_2 = case l_2 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> iTasks.Extensions.Document.d_73 (fx_0 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_2) (Text.JSON.JSONArray fields_2_0 -> iTasks.Extensions.Document.d_74 (fx_0 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_2) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+iTasks.Extensions.Document.fromGenericDocument_45 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.PAIR c_3_0 c_3_1 -> case c_3_0 (StdGeneric.FIELD x1_4_0 -> case c_3_1 (StdGeneric.FIELD x2_5_0 -> case c_2_1 (StdGeneric.PAIR c_6_0 c_6_1 -> case c_6_0 (StdGeneric.FIELD x3_7_0 -> case c_6_1 (StdGeneric.PAIR c_8_0 c_8_1 -> case c_8_0 (StdGeneric.FIELD x4_9_0 -> case c_8_1 (StdGeneric.FIELD x5_10_0 -> iTasks.Extensions.Document._Document x1_4_0 x2_5_0 x3_7_0 x4_9_0 x5_10_0) ) ) ) ) ) ) ) ) ) 
+iTasks.Extensions.Document.bimapFromGeneric_80 !x_0 = iTasks.Extensions.Document._f470_470 x_0
+iTasks.Extensions.Document._f470_470 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (iTasks.Extensions.Document.fromGenericDocument_45 x1_1_0)) 
+iTasks.Extensions.Document.bimapFromGeneric_81 !x_0 = iTasks.Extensions.Document._f471_471 x_0
+iTasks.Extensions.Document._f471_471 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (iTasks.Extensions.Document.bimapFromGeneric_80 x1_1_0) x2_1_1) 
+iTasks.Extensions.Document.JSONDecode_FIELD_445 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = iTasks.Extensions.Document.findField_79 gfd_name_0 fields_2_0 in <{iTasks.Extensions.Document._c;139;5_472}> (Text.JSON.JSONDecode_Int_35 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{iTasks.Extensions.Document._c;150;5_473}> (Text.JSON.JSONDecode_Int_35 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{iTasks.Extensions.Document._c;150;5_473}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{iTasks.Extensions.Document._c;139;5_472}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+iTasks.Extensions.Document.JSONDecode_FIELD_443 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = iTasks.Extensions.Document.findField_79 gfd_name_0 fields_2_0 in <{iTasks.Extensions.Document._c;139;5_474}> (Text.JSON.JSONDecode__String_39 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{iTasks.Extensions.Document._c;150;5_475}> (Text.JSON.JSONDecode__String_39 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{iTasks.Extensions.Document._c;150;5_475}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{iTasks.Extensions.Document._c;139;5_474}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+iTasks.Extensions.Document.JSONDecode_PAIR_444 gfd_name_0 _x_1::I !fy_2 !_x_3::B !l_4 = iTasks.Extensions.Document.d1_76 fy_2 (iTasks.Extensions.Document.JSONDecode_FIELD_443 gfd_name_0 _x_1 False l_4) l_4
+iTasks.Extensions.Document.JSONDecode_PAIR_446 gfd_name_0 _x_1::I !fy_2 !fy_3 !_x_4::B !l_5 = iTasks.Extensions.Document.d1_76 fy_3 (iTasks.Extensions.Document.JSONDecode_PAIR_444 gfd_name_0 _x_1 fy_2 False l_5) l_5
+iTasks.Extensions.Document.JSONDecode_RECORD_447 gfd_name_0 _x_1::I fy_2 fy_3 !_x_4::B !l_5 = case l_5 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> iTasks.Extensions.Document.d_73 (iTasks.Extensions.Document.JSONDecode_PAIR_446 gfd_name_0 _x_1 fy_2 fy_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) (Text.JSON.JSONArray fields_2_0 -> iTasks.Extensions.Document.d_74 (iTasks.Extensions.Document.JSONDecode_PAIR_446 gfd_name_0 _x_1 fy_2 fy_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_5)
+iTasks.Extensions.Document.d1_449 gfd_name_0 _x_1::I !_x_2 !l_3 = case _x_2 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks.Extensions.Document.d2_77 x_2_0 (iTasks.Extensions.Document.JSONDecode_FIELD_445 gfd_name_0 _x_1 False xs_1_1) l_3) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_3) ) 
+iTasks.Extensions.Document.JSONDecode_PAIR_448 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = iTasks.Extensions.Document.d1_449 gfd_name_2 _x_3 (iTasks.Extensions.Document.JSONDecode_FIELD_443 gfd_name_0 _x_1 False l_5) l_5
+iTasks.Extensions.Document.d1_451 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4 !l_5 = case _x_4 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks.Extensions.Document.d2_77 x_2_0 (iTasks.Extensions.Document.JSONDecode_PAIR_448 gfd_name_0 _x_1 gfd_name_2 _x_3 False xs_1_1) l_5) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_5) ) 
+iTasks.Extensions.Document.JSONDecode_PAIR_450 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I !_x_6::B !l_7 = iTasks.Extensions.Document.d1_451 gfd_name_2 _x_3 gfd_name_4 _x_5 (iTasks.Extensions.Document.JSONDecode_FIELD_443 gfd_name_0 _x_1 False l_7) l_7
+iTasks.Extensions.Document.d1_455 gfd_name_0 _x_1::I !_x_2 !l_3 = case _x_2 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks.Extensions.Document.d2_77 x_2_0 (iTasks.Extensions.Document.JSONDecode_FIELD_443 gfd_name_0 _x_1 False xs_1_1) l_3) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_3) ) 
+iTasks.Extensions.Document.JSONDecode_PAIR_454 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = iTasks.Extensions.Document.d1_455 gfd_name_2 _x_3 (iTasks.Extensions.Document.JSONDecode_FIELD_443 gfd_name_0 _x_1 False l_5) l_5
+iTasks.Extensions.Document.JSONDecode_PAIR_453 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !fy_4 !_x_5::B !l_6 = iTasks.Extensions.Document.d1_76 fy_4 (iTasks.Extensions.Document.JSONDecode_PAIR_454 gfd_name_0 _x_1 gfd_name_2 _x_3 False l_6) l_6
+iTasks.Extensions.Document.JSONDecode_RECORD_452 gfd_name_0 _x_1::I gfd_name_2 _x_3::I fy_4 !_x_5::B !l_6 = case l_6 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> iTasks.Extensions.Document.d_73 (iTasks.Extensions.Document.JSONDecode_PAIR_453 gfd_name_0 _x_1 gfd_name_2 _x_3 fy_4 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_6) (Text.JSON.JSONArray fields_2_0 -> iTasks.Extensions.Document.d_74 (iTasks.Extensions.Document.JSONDecode_PAIR_453 gfd_name_0 _x_1 gfd_name_2 _x_3 fy_4 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_6) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_6)
+iTasks.Extensions.Document.d1_458 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I !_x_6 !l_7 = case _x_6 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks.Extensions.Document.d2_77 x_2_0 (iTasks.Extensions.Document.JSONDecode_PAIR_450 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 False xs_1_1) l_7) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_7) ) 
+iTasks.Extensions.Document.JSONDecode_PAIR_457 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I gfd_name_6 _x_7::I gfd_name_8 _x_9::I !_x_10::B !l_11 = iTasks.Extensions.Document.d1_458 gfd_name_4 _x_5 gfd_name_6 _x_7 gfd_name_8 _x_9 (iTasks.Extensions.Document.JSONDecode_PAIR_454 gfd_name_0 _x_1 gfd_name_2 _x_3 False l_11) l_11
+iTasks.Extensions.Document.JSONDecode_RECORD_456 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I gfd_name_6 _x_7::I gfd_name_8 _x_9::I !_x_10::B !l_11 = case l_11 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> iTasks.Extensions.Document.d_73 (iTasks.Extensions.Document.JSONDecode_PAIR_457 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 gfd_name_6 _x_7 gfd_name_8 _x_9 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_11) (Text.JSON.JSONArray fields_2_0 -> iTasks.Extensions.Document.d_74 (iTasks.Extensions.Document.JSONDecode_PAIR_457 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 gfd_name_6 _x_7 gfd_name_8 _x_9 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_11) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_11)
+iTasks.Extensions.Document.JSONDecode_Document_6 !x1_0::B !x2_1 = iTasks.Extensions.Document.bimapFromGeneric_81 (iTasks.Extensions.Document.JSONDecode_RECORD_456 "documentId" 0 "contentUrl" 1 "name" 2 "mime" 3 "size" 4 x1_0 x2_1)
+iTasks.Extensions.Document.gDefault_Document_7 = iTasks.Extensions.Document.fromGenericDocument_45 (iTasks.Internal.Generic.Defaults.gDefault_RECORD_6 (iTasks.Internal.Generic.Defaults.gDefault_PAIR_2 (iTasks.Internal.Generic.Defaults.gDefault_PAIR_2 (iTasks.Internal.Generic.Defaults.gDefault_FIELD_7 iTasks.Internal.Generic.Defaults.gDefault__String_12) (iTasks.Internal.Generic.Defaults.gDefault_FIELD_7 iTasks.Internal.Generic.Defaults.gDefault__String_12)) (iTasks.Internal.Generic.Defaults.gDefault_PAIR_2 (iTasks.Internal.Generic.Defaults.gDefault_FIELD_7 iTasks.Internal.Generic.Defaults.gDefault__String_12) (iTasks.Internal.Generic.Defaults.gDefault_PAIR_2 (iTasks.Internal.Generic.Defaults.gDefault_FIELD_7 iTasks.Internal.Generic.Defaults.gDefault__String_12) (iTasks.Internal.Generic.Defaults.gDefault_FIELD_7 iTasks.Internal.Generic.Defaults.gDefault_Int_8)))))
+iTasks.Extensions.Document.gEq_Document_8::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_FIELD_12 GenEq.gEq__String_6)) (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_FIELD_12 GenEq.gEq_Int_2)))) (iTasks.Extensions.Document.toGenericDocument_46 x1_0) (iTasks.Extensions.Document.toGenericDocument_46 x2_1)
+iTasks.Extensions.Document.gText_Document_9 !_x_0 !_x_1 = case _x_1 (Data.Maybe.Just val_1_0 -> case (<{StdInt.==_16}> (select val_1_0::iTasks.Extensions.Document._Document 4) 0) (True -> _predefined._Cons "No Document" _predefined._Nil) (False -> _predefined._Cons (select val_1_0::iTasks.Extensions.Document._Document 2) _predefined._Nil) ) (Data.Maybe.Nothing -> _predefined._Cons "" _predefined._Nil) 
+iTasks.Extensions.Document.fromView_29 !_x_0 = case _x_0 (_Tuple5 document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4 -> iTasks.Extensions.Document._Document document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4) 
+iTasks.Extensions.Document.toView_28 !_x_0 = case _x_0 (iTasks.Extensions.Document._Document document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4 -> _Tuple5 document_1_0 contentUrl_1_1 name_1_2 mime_1_3 size_1_4) 
+iTasks.Extensions.Document.gEditor_Document_10 = iTasks.UI.Editor.Combinators.liftEditor iTasks.Extensions.Document.toView_28 iTasks.Extensions.Document.fromView_29 (iTasks.UI.Editor.Builtin.documentField Data.Map.newMap)
+iTasks.Extensions.Document.importDocument !filename_0 = iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.Document.gEditor_s;}> iTasks.Extensions.Document.gEditor_Document_10) (<{iTasks.Extensions.Document.gText_s;}> iTasks.Extensions.Document.gText_Document_9) (<{iTasks.Extensions.Document.JSONEncode_s;}> iTasks.Extensions.Document.JSONEncode_Document_5) (<{iTasks.Extensions.Document.JSONDecode_s;}> iTasks.Extensions.Document.JSONDecode_Document_6) (<{iTasks.Extensions.Document.gDefault_s;}> iTasks.Extensions.Document.gDefault_Document_7) (<{iTasks.Extensions.Document.gEq_s;}> iTasks.Extensions.Document.gEq_Document_8) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;Document}>))) (iTasks.Extensions.Document.eval_24 filename_0)
+iTasks.Extensions.Document.ioException s_0 = let e_1_0 = iTasks.Extensions.Document.FileException s_0 System.File.IOError in Data.Error.Error (_Tuple2 (_SystemDynamic._DynamicTemp e_1_0 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;FileException}>))) (iTasks.Extensions.Document.toString_4 e_1_0))
+iTasks.Extensions.Document.writeDocument task_0 filename_1 !document_2 !iworld_3 = let _x_1_0 = iTasks.Internal.TaskStore.loadDocumentContent (select document_2::iTasks.Extensions.Document._Document 0) iworld_3, mbContent_1_1 = select _x_1_0::_Tuple2 0 in case (Data.Maybe.isNothing mbContent_1_1) (True -> let iworld_3_0 = select _x_1_0::_Tuple2 1 in _Tuple2 (iTasks.Extensions.Document.ioException filename_1) (update iworld_3_0::iTasks.Internal.IWorld._IWorld [12:select iworld_3_0::iTasks.Internal.IWorld._IWorld 12])) (False -> let iworld_3_0 = select _x_1_0::_Tuple2 1, world_3_1 = select iworld_3_0::iTasks.Internal.IWorld._IWorld 12, _x_3_2 = StdFile.fopen_31 filename_1 4 world_3_1 in case (StdBool.not (select _x_3_2::_Tuple3 0)) (True -> _Tuple2 (iTasks.Extensions.Document.openException filename_1) (update iworld_3_0::iTasks.Internal.IWorld._IWorld [12:select _x_3_2::_Tuple3 2])) (False -> let file_5_0 = select _x_3_2::_Tuple3 1, file_5_1 = StdFile.fwrites (Data.Maybe.fromJust mbContent_1_1) file_5_0, world_5_2 = select _x_3_2::_Tuple3 2, _x_5_3 = StdFile.fclose_30 file_5_1 world_5_2 in case (StdBool.not (select _x_5_3::_Tuple2 0)) (True -> _Tuple2 (iTasks.Extensions.Document.closeException filename_1) (update iworld_3_0::iTasks.Internal.IWorld._IWorld [12:select _x_5_3::_Tuple2 1])) (False -> _Tuple2 (Data.Error.Ok document_2) (update iworld_3_0::iTasks.Internal.IWorld._IWorld [12:select _x_5_3::_Tuple2 1])) ) ) 
+iTasks.Extensions.Document.eval_27 filename_0 !document_1 task_2 !iworld_3 = iTasks.Extensions.Document.writeDocument task_2 filename_0 document_1 iworld_3
+iTasks.Extensions.Document.exportDocument !filename_0 !document_1 = iTasks.Internal.Task.mkInstantTask (<{iTasks.WF.Definition.iTask;}> (<{iTasks.Extensions.Document.gEditor_s;}> iTasks.Extensions.Document.gEditor_Document_10) (<{iTasks.Extensions.Document.gText_s;}> iTasks.Extensions.Document.gText_Document_9) (<{iTasks.Extensions.Document.JSONEncode_s;}> iTasks.Extensions.Document.JSONEncode_Document_5) (<{iTasks.Extensions.Document.JSONDecode_s;}> iTasks.Extensions.Document.JSONDecode_Document_6) (<{iTasks.Extensions.Document.gDefault_s;}> iTasks.Extensions.Document.gDefault_Document_7) (<{iTasks.Extensions.Document.gEq_s;}> iTasks.Extensions.Document.gEq_Document_8) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks.Extensions.Document.TD;Document}>))) (iTasks.Extensions.Document.eval_27 filename_0 document_1)
+iTasks.Extensions.Document.toString_2 !doc_0 = ""
+<{iTasks.Extensions.Document.==_3}>::B !doc0_0 !doc1_1 = <{StdString.==_2}> (select doc0_0::iTasks.Extensions.Document._Document 0) (select doc1_1::iTasks.Extensions.Document._Document 0)
+iTasks.Extensions.Document.gti_FileException_50 = StdGeneric.GenTypeArrow (StdGeneric.GenTypeCons "FilePath") (StdGeneric.GenTypeArrow (StdGeneric.GenTypeCons "FileError") (StdGeneric.GenTypeCons "FileException"))
+iTasks.Extensions.Document.tdi_FileException_49 = StdGeneric._GenericTypeDefDescriptor "FileException" 0 1 iTasks.Extensions.Document.cli_FileException_48
+iTasks.Extensions.Document.cdi_FileException_51 = StdGeneric._GenericConsDescriptor "FileException" 2 StdGeneric.GenConsNoPrio iTasks.Extensions.Document.tdi_FileException_49 iTasks.Extensions.Document.gti_FileException_50 0
+iTasks.Extensions.Document.cli_FileException_48 = _predefined._Cons iTasks.Extensions.Document.cdi_FileException_51 _predefined._Nil
+iTasks.Extensions.Document.fromGenericFileException_52 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.CONS c_2_0 -> case c_2_0 (StdGeneric.PAIR x1_3_0 x2_3_1 -> iTasks.Extensions.Document.FileException x1_3_0 x2_3_1) ) ) 
+iTasks.Extensions.Document.toGenericFileException_53 !x_0 = case x_0 (iTasks.Extensions.Document.FileException x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1))) 
+iTasks.Extensions.Document.isoFileException_54 = StdGeneric._Bimap iTasks.Extensions.Document.toGenericFileException_53 iTasks.Extensions.Document.fromGenericFileException_52
+iTasks.Extensions.Document.gti_IOError_59 = StdGeneric.GenTypeCons "FileError"
+iTasks.Extensions.Document.gti_CannotClose_58 = StdGeneric.GenTypeCons "FileError"
+iTasks.Extensions.Document.gti_CannotOpen_57 = StdGeneric.GenTypeCons "FileError"
+iTasks.Extensions.Document.cdi_CannotOpen_60 = StdGeneric._GenericConsDescriptor "CannotOpen" 0 StdGeneric.GenConsNoPrio iTasks.Extensions.Document.tdi_FileError_56 iTasks.Extensions.Document.gti_CannotOpen_57 0
+iTasks.Extensions.Document.cdi_CannotClose_61 = StdGeneric._GenericConsDescriptor "CannotClose" 0 StdGeneric.GenConsNoPrio iTasks.Extensions.Document.tdi_FileError_56 iTasks.Extensions.Document.gti_CannotClose_58 1
+iTasks.Extensions.Document.tdi_FileError_56 = StdGeneric._GenericTypeDefDescriptor "FileError" 0 3 iTasks.Extensions.Document.cli_FileError_55
+iTasks.Extensions.Document.cdi_IOError_62 = StdGeneric._GenericConsDescriptor "IOError" 0 StdGeneric.GenConsNoPrio iTasks.Extensions.Document.tdi_FileError_56 iTasks.Extensions.Document.gti_IOError_59 2
+iTasks.Extensions.Document.cli_FileError_55 = _predefined._Cons iTasks.Extensions.Document.cdi_CannotOpen_60 (_predefined._Cons iTasks.Extensions.Document.cdi_CannotClose_61 (_predefined._Cons iTasks.Extensions.Document.cdi_IOError_62 _predefined._Nil))
+iTasks.Extensions.Document.fromGenericFileError_63 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.LEFT c_2_0 -> case c_2_0 (StdGeneric.CONS c_3_0 -> case c_3_0 (StdGeneric.UNIT -> System.File.CannotOpen) ) ) (StdGeneric.RIGHT c_2_0 -> case c_2_0 (StdGeneric.LEFT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.UNIT -> System.File.CannotClose) ) ) (StdGeneric.RIGHT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.UNIT -> System.File.IOError) ) ) ) ) 
+iTasks.Extensions.Document.toGenericFileError_64 !x_0 = case x_0 (System.File.CannotOpen -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT))) (System.File.CannotClose -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT)))) (System.File.IOError -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS StdGeneric.UNIT)))) 
+iTasks.Extensions.Document.isoFileError_65 = StdGeneric._Bimap iTasks.Extensions.Document.toGenericFileError_64 iTasks.Extensions.Document.fromGenericFileError_63
+iTasks.Extensions.Document.gEditor_FileError_31 = select (iTasks.UI.Editor.Generic.bimap_Editor_29 iTasks.Extensions.Document.isoFileError_65)::StdGeneric._Bimap 1 (iTasks.UI.Editor.Generic.gEditor_OBJECT_3 3 iTasks.Extensions.Document.cli_FileError_55 (iTasks.UI.Editor.Generic.gEditor_EITHER_1 (iTasks.UI.Editor.Generic.gEditor_CONS_4 0 0 iTasks.UI.Editor.Generic.gEditor_UNIT_0) (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 iTasks.Internal.Generic.Defaults.gDefault_UNIT_1) (iTasks.UI.Editor.Generic.gEditor_EITHER_1 (iTasks.UI.Editor.Generic.gEditor_CONS_4 0 1 iTasks.UI.Editor.Generic.gEditor_UNIT_0) (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 iTasks.Internal.Generic.Defaults.gDefault_UNIT_1) (iTasks.UI.Editor.Generic.gEditor_CONS_4 0 2 iTasks.UI.Editor.Generic.gEditor_UNIT_0) (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 iTasks.Internal.Generic.Defaults.gDefault_UNIT_1)) (iTasks.Internal.Generic.Defaults.gDefault_EITHER_3 (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 iTasks.Internal.Generic.Defaults.gDefault_UNIT_1) (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 iTasks.Internal.Generic.Defaults.gDefault_UNIT_1))))
+iTasks.Extensions.Document.gEditor_FileException_11 = select (iTasks.UI.Editor.Generic.bimap_Editor_29 iTasks.Extensions.Document.isoFileException_54)::StdGeneric._Bimap 1 (iTasks.UI.Editor.Generic.gEditor_OBJECT_3 1 iTasks.Extensions.Document.cli_FileException_48 (iTasks.UI.Editor.Generic.gEditor_CONS_4 2 0 (iTasks.UI.Editor.Generic.gEditor_PAIR_2 iTasks.UI.Editor.Generic.gEditor__String_11 iTasks.Extensions.Document.gEditor_FileError_31)))
+iTasks.Extensions.Document.bimapToGeneric_82 !x_0 = iTasks.Extensions.Document._f476_476 x_0
+iTasks.Extensions.Document._f476_476 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (iTasks.Extensions.Document.toGenericFileException_53 x1_1_0)) 
+iTasks.Extensions.Document.bimapToGeneric_85 !x_0 = iTasks.Extensions.Document._f477_477 x_0
+iTasks.Extensions.Document._f477_477 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (iTasks.Extensions.Document.toGenericFileError_64 x1_1_0)) 
+iTasks.Extensions.Document.gText_FileError_32 !x1_0 x2_1 = iTasks.Internal.Generic.Visualization.gText_OBJECT_8 (iTasks.Internal.Generic.Visualization.gText_EITHER_6 (iTasks.Internal.Generic.Visualization.gText_CONS_7 "CannotOpen" iTasks.Extensions.Document.tdi_FileError_56 iTasks.Internal.Generic.Visualization.gText_UNIT_4) (iTasks.Internal.Generic.Visualization.gText_EITHER_6 (iTasks.Internal.Generic.Visualization.gText_CONS_7 "CannotClose" iTasks.Extensions.Document.tdi_FileError_56 iTasks.Internal.Generic.Visualization.gText_UNIT_4) (iTasks.Internal.Generic.Visualization.gText_CONS_7 "IOError" iTasks.Extensions.Document.tdi_FileError_56 iTasks.Internal.Generic.Visualization.gText_UNIT_4))) x1_0 (iTasks.Extensions.Document.bimapToGeneric_85 x2_1)
+iTasks.Extensions.Document.gText_FileException_12 !x1_0 x2_1 = iTasks.Internal.Generic.Visualization.gText_OBJECT_8 (iTasks.Internal.Generic.Visualization.gText_CONS_7 "FileException" iTasks.Extensions.Document.tdi_FileException_49 (iTasks.Internal.Generic.Visualization.gText_PAIR_5 iTasks.Internal.Generic.Visualization.gText__String_15 iTasks.Extensions.Document.gText_FileError_32)) x1_0 (iTasks.Extensions.Document.bimapToGeneric_82 x2_1)
+iTasks.Extensions.Document.JSONEncode_FileError_33 !x1_0::B !x2_1 = Text.JSON.JSONEncode_OBJECT_31 (Text.JSON.JSONEncode_EITHER_29 (Text.JSON.JSONEncode_CONS_30 "CannotOpen" Text.JSON.JSONEncode_UNIT_16) (Text.JSON.JSONEncode_EITHER_29 (Text.JSON.JSONEncode_CONS_30 "CannotClose" Text.JSON.JSONEncode_UNIT_16) (Text.JSON.JSONEncode_CONS_30 "IOError" Text.JSON.JSONEncode_UNIT_16))) x1_0 (iTasks.Extensions.Document.toGenericFileError_64 x2_1)
+iTasks.Extensions.Document.JSONEncode_PAIR_459 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (Text.JSON.JSONEncode__String_15 False x_1_0) (fy_0 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_PAIR_460 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{iTasks.Extensions.Document.++_70}> (Text.JSON.JSONEncode__String_15 False x_1_0) (iTasks.Extensions.Document.JSONEncode_FileError_33 False y_1_1)) 
+iTasks.Extensions.Document.JSONEncode_FileException_13 !x1_0::B !x2_1 = Text.JSON.JSONEncode_OBJECT_31 (Text.JSON.JSONEncode_CONS_30 "FileException" iTasks.Extensions.Document.JSONEncode_PAIR_460) x1_0 (iTasks.Extensions.Document.toGenericFileException_53 x2_1)
+iTasks.Extensions.Document.bimapFromGeneric_83 !x_0 = iTasks.Extensions.Document._f478_478 x_0
+iTasks.Extensions.Document._f478_478 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (iTasks.Extensions.Document.fromGenericFileException_52 x1_1_0)) 
+iTasks.Extensions.Document.bimapFromGeneric_84 !x_0 = iTasks.Extensions.Document._f479_479 x_0
+iTasks.Extensions.Document._f479_479 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (iTasks.Extensions.Document.bimapFromGeneric_83 x1_1_0) x2_1_1) 
+iTasks.Extensions.Document.bimapFromGeneric_86 !x_0 = iTasks.Extensions.Document._f480_480 x_0
+iTasks.Extensions.Document._f480_480 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (iTasks.Extensions.Document.fromGenericFileError_63 x1_1_0)) 
+iTasks.Extensions.Document.bimapFromGeneric_87 !x_0 = iTasks.Extensions.Document._f481_481 x_0
+iTasks.Extensions.Document._f481_481 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (iTasks.Extensions.Document.bimapFromGeneric_86 x1_1_0) x2_1_1) 
+iTasks.Extensions.Document.JSONDecode_FileError_34 !x1_0::B !x2_1 = iTasks.Extensions.Document.bimapFromGeneric_87 (Text.JSON.JSONDecode_OBJECT_43 (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "CannotOpen" Text.JSON.JSONDecode_UNIT_40) (Text.JSON.JSONDecode_EITHER_41 (Text.JSON.JSONDecode_CONS_42 "CannotClose" Text.JSON.JSONDecode_UNIT_40) (Text.JSON.JSONDecode_CONS_42 "IOError" Text.JSON.JSONDecode_UNIT_40))) x1_0 x2_1)
+iTasks.Extensions.Document.JSONDecode_PAIR_461 !fy_0 !_x_1::B !l_2 = iTasks.Extensions.Document.d1_76 fy_0 (Text.JSON.JSONDecode__String_39 False l_2) l_2
+iTasks.Extensions.Document.d1_463 !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> iTasks.Extensions.Document.d2_77 x_2_0 (iTasks.Extensions.Document.JSONDecode_FileError_34 False xs_1_1) l_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_1) ) 
+iTasks.Extensions.Document.JSONDecode_PAIR_462 !_x_0::B !l_1 = iTasks.Extensions.Document.d1_463 (Text.JSON.JSONDecode__String_39 False l_1) l_1
+iTasks.Extensions.Document.JSONDecode_FileException_14 !x1_0::B !x2_1 = iTasks.Extensions.Document.bimapFromGeneric_84 (Text.JSON.JSONDecode_OBJECT_43 (Text.JSON.JSONDecode_CONS_42 "FileException" iTasks.Extensions.Document.JSONDecode_PAIR_462) x1_0 x2_1)
+iTasks.Extensions.Document.gDefault_FileError_35 = iTasks.Extensions.Document.fromGenericFileError_63 (iTasks.Internal.Generic.Defaults.gDefault_OBJECT_5 (iTasks.Internal.Generic.Defaults.gDefault_EITHER_3 (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 iTasks.Internal.Generic.Defaults.gDefault_UNIT_1) (iTasks.Internal.Generic.Defaults.gDefault_EITHER_3 (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 iTasks.Internal.Generic.Defaults.gDefault_UNIT_1) (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 iTasks.Internal.Generic.Defaults.gDefault_UNIT_1))))
+iTasks.Extensions.Document.gDefault_FileException_15 = iTasks.Extensions.Document.fromGenericFileException_52 (iTasks.Internal.Generic.Defaults.gDefault_OBJECT_5 (iTasks.Internal.Generic.Defaults.gDefault_CONS_4 (iTasks.Internal.Generic.Defaults.gDefault_PAIR_2 iTasks.Internal.Generic.Defaults.gDefault__String_12 iTasks.Extensions.Document.gDefault_FileError_35)))
+iTasks.Extensions.Document.gEq_FileError_36::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7))) (iTasks.Extensions.Document.toGenericFileError_64 x1_0) (iTasks.Extensions.Document.toGenericFileError_64 x2_1)
+iTasks.Extensions.Document.gEq_FileException_16::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 GenEq.gEq__String_6 iTasks.Extensions.Document.gEq_FileError_36)) (iTasks.Extensions.Document.toGenericFileException_53 x1_0) (iTasks.Extensions.Document.toGenericFileException_53 x2_1)
+<{iTasks.Extensions.Document.TD;Document}> _x_0::B = _predefined._Nil
+<{iTasks.Extensions.Document.TD;DocumentId}> _x_0::B = _predefined._Nil
+<{iTasks.Extensions.Document.TD;FileException}> _x_0::B = _predefined._Nil
+
+:: iTasks.Extensions.Document.FileException = iTasks.Extensions.Document.FileException !a1 !a2
+
+|| Converted Records
+:: iTasks.Extensions.Document._Document = {!iTasks.Extensions.Document.documentId, !iTasks.Extensions.Document.contentUrl, !iTasks.Extensions.Document.name, !iTasks.Extensions.Document.mime, !iTasks.Extensions.Document.size::I}
+
+:: <{iTasks.Extensions.Document.JSONEncode_s;}> = {!iTasks.Extensions.Document.JSONEncode_s}
+
+:: <{iTasks.Extensions.Document.JSONEncode_ss;}> = {!iTasks.Extensions.Document.JSONEncode_ss}
+
+:: <{iTasks.Extensions.Document.JSONEncode_sss;}> = {!iTasks.Extensions.Document.JSONEncode_sss}
+
+:: <{iTasks.Extensions.Document.JSONDecode_s;}> = {!iTasks.Extensions.Document.JSONDecode_s}
+
+:: <{iTasks.Extensions.Document.JSONDecode_ss;}> = {!iTasks.Extensions.Document.JSONDecode_ss}
+
+:: <{iTasks.Extensions.Document.JSONDecode_sss;}> = {!iTasks.Extensions.Document.JSONDecode_sss}
+
+:: <{iTasks.Extensions.Document.gDefault_s;}> = {iTasks.Extensions.Document.gDefault_s}
+
+:: <{iTasks.Extensions.Document.gDefault_ss;}> = {iTasks.Extensions.Document.gDefault_ss}
+
+:: <{iTasks.Extensions.Document.gDefault_sss;}> = {iTasks.Extensions.Document.gDefault_sss}
+
+:: <{iTasks.Extensions.Document.gText_s;}> = {!iTasks.Extensions.Document.gText_s}
+
+:: <{iTasks.Extensions.Document.gText_ss;}> = {!iTasks.Extensions.Document.gText_ss}
+
+:: <{iTasks.Extensions.Document.gText_sss;}> = {!iTasks.Extensions.Document.gText_sss}
+
+:: <{iTasks.Extensions.Document.gEditor_s;}> = {iTasks.Extensions.Document.gEditor_s}
+
+:: <{iTasks.Extensions.Document.gEditor_ss;}> = {iTasks.Extensions.Document.gEditor_ss}
+
+:: <{iTasks.Extensions.Document.gEditor_sss;}> = {iTasks.Extensions.Document.gEditor_sss}
+
+:: <{iTasks.Extensions.Document.gEq_s;}> = {!iTasks.Extensions.Document.gEq_s}
+
+:: <{iTasks.Extensions.Document.gEq_ss;}> = {!iTasks.Extensions.Document.gEq_ss}
+
+:: <{iTasks.Extensions.Document.gEq_sss;}> = {!iTasks.Extensions.Document.gEq_sss}
+
+:: <{iTasks.Extensions.Document.gEq_ssss;}> = {!iTasks.Extensions.Document.gEq_ssss}
+
+:: <{iTasks.Extensions.Document.gEq_sssss;}> = {!iTasks.Extensions.Document.gEq_sssss}
+
+:: <{iTasks.Extensions.Document.gEq_ssssss;}> = {!iTasks.Extensions.Document.gEq_ssssss}
+
+:: <{iTasks.Extensions.Document.gEq_sssssss;}> = {!iTasks.Extensions.Document.gEq_sssssss}
+
+:: <{iTasks.Extensions.Document.gEq_ssssssss;}> = {!iTasks.Extensions.Document.gEq_ssssssss}
+
+:: <{iTasks.Extensions.Document.gEq_sssssssss;}> = {!iTasks.Extensions.Document.gEq_sssssssss}
+
+:: <{iTasks.Extensions.Document.bimap_s;}> = {iTasks.Extensions.Document.bimap_s}
+
+:: <{iTasks.Extensions.Document.bimap_ss;}> = {iTasks.Extensions.Document.bimap_ss}
+
+:: <{iTasks.Extensions.Document.bimap_sss;}> = {iTasks.Extensions.Document.bimap_sss}
+
+:: <{iTasks.Extensions.Document.JSONEncode_ssss;}> = {!iTasks.Extensions.Document.JSONEncode_ssss}
+
+:: <{iTasks.Extensions.Document.JSONEncode_sssss;}> = {!iTasks.Extensions.Document.JSONEncode_sssss}
+
+:: <{iTasks.Extensions.Document.JSONEncode_ssssss;}> = {!iTasks.Extensions.Document.JSONEncode_ssssss}
+
+:: <{iTasks.Extensions.Document.JSONEncode_sssssss;}> = {!iTasks.Extensions.Document.JSONEncode_sssssss}
+
+:: <{iTasks.Extensions.Document.JSONEncode_ssssssss;}> = {!iTasks.Extensions.Document.JSONEncode_ssssssss}
+
+:: <{iTasks.Extensions.Document.JSONEncode_sssssssss;}> = {!iTasks.Extensions.Document.JSONEncode_sssssssss}
+
+:: <{iTasks.Extensions.Document.JSONDecode_ssss;}> = {!iTasks.Extensions.Document.JSONDecode_ssss}
+
+:: <{iTasks.Extensions.Document.JSONDecode_sssss;}> = {!iTasks.Extensions.Document.JSONDecode_sssss}
+
+:: <{iTasks.Extensions.Document.JSONDecode_ssssss;}> = {!iTasks.Extensions.Document.JSONDecode_ssssss}
+
+:: <{iTasks.Extensions.Document.JSONDecode_sssssss;}> = {!iTasks.Extensions.Document.JSONDecode_sssssss}
+
+:: <{iTasks.Extensions.Document.JSONDecode_ssssssss;}> = {!iTasks.Extensions.Document.JSONDecode_ssssssss}
+
+:: <{iTasks.Extensions.Document.JSONDecode_sssssssss;}> = {!iTasks.Extensions.Document.JSONDecode_sssssssss}
+
+:: <{iTasks.Extensions.Document.gText_ssss;}> = {!iTasks.Extensions.Document.gText_ssss}
+
+:: <{iTasks.Extensions.Document.gText_sssss;}> = {!iTasks.Extensions.Document.gText_sssss}
+
+:: <{iTasks.Extensions.Document.gText_ssssss;}> = {!iTasks.Extensions.Document.gText_ssssss}
+
+:: <{iTasks.Extensions.Document.gText_sssssss;}> = {!iTasks.Extensions.Document.gText_sssssss}
+
+:: <{iTasks.Extensions.Document.gText_ssssssss;}> = {!iTasks.Extensions.Document.gText_ssssssss}
+
+:: <{iTasks.Extensions.Document.gText_sssssssss;}> = {!iTasks.Extensions.Document.gText_sssssssss}
+
+:: <{iTasks.Extensions.Document.gDefault_ssss;}> = {iTasks.Extensions.Document.gDefault_ssss}
+
+:: <{iTasks.Extensions.Document.gDefault_sssss;}> = {iTasks.Extensions.Document.gDefault_sssss}
+
+:: <{iTasks.Extensions.Document.gDefault_ssssss;}> = {iTasks.Extensions.Document.gDefault_ssssss}
+
+:: <{iTasks.Extensions.Document.gDefault_sssssss;}> = {iTasks.Extensions.Document.gDefault_sssssss}
+
+:: <{iTasks.Extensions.Document.gDefault_ssssssss;}> = {iTasks.Extensions.Document.gDefault_ssssssss}
+
+:: <{iTasks.Extensions.Document.gDefault_sssssssss;}> = {iTasks.Extensions.Document.gDefault_sssssssss}
+
+:: <{iTasks.Extensions.Document.gEditor_ssss;}> = {iTasks.Extensions.Document.gEditor_ssss}
+
+:: <{iTasks.Extensions.Document.gEditor_sssss;}> = {iTasks.Extensions.Document.gEditor_sssss}
+
+:: <{iTasks.Extensions.Document.gEditor_ssssss;}> = {iTasks.Extensions.Document.gEditor_ssssss}
+
+:: <{iTasks.Extensions.Document.gEditor_sssssss;}> = {iTasks.Extensions.Document.gEditor_sssssss}
+
