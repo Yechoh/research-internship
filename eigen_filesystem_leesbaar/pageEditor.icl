@@ -114,7 +114,7 @@ vbselecties =
       
 helpwindows :: String (Shared (EditorInfo,Map String [String])) -> Task [(TaskTime,TaskValue ())]
 helpwindows filename s = (parallel (embed
-	[	(errorWindow filename s)
+	[	(errorWindow filename s) 
 	,	viewSelection filename s	
 	]) [])<<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)
 
@@ -205,18 +205,19 @@ editor filename cnt = \tasklist.(withShared editorInfo (\ei.
 	-&&-
 	helpwindows filename (ei >*< contents) //-|| autoWrite filename (ei >*< contents) -|| viewSharedInformation "" [] ei 
 	)
-	>^*[	OnAction ActionSaveAs		(always 
-			(contentOf filename >>- \content. 
-			saveFileAs filename content ))
-	 	]
-	>>*[	OnAction ActionClose		(always (
+	>>*[	OnAction ActionSaveAs		(always\ 
+			((contentOf filename) >>- \content. 
+			(saveFileAs filename content)<<@ Title name >>|- editor filename cnt tasklist))
+	 	,
+	 		OnAction ActionClose		(always (
 			contentOf filename >>- \content. 
 			saveFile filename content >>|- 
 			get cnt >>- \(ucontents,utabs).
 			set (('DM'.del filename ucontents),('DM'.del filename utabs)) cnt >>|-
 			return ()))
 		,
-			OnAction (Action "placeText") (always (enterInformation "" [] >>= \s.placeText filename 2 s))	
+			OnAction (Action "Restart") (always
+			(editor filename cnt tasklist))
 		])<<@ Title name
 	where
 	er ei filename = mapReadWrite ((eiAndContents2ErRead filename), (er2EiAndContentsWrite filename)) (ei >*< contents)
@@ -249,9 +250,9 @@ updateTabs :: (Shared (Map String TaskId)) -> ParallelTask ()
 updateTabs tabs = \tasklist. ut tabs tasklist 
 	where
 	ut :: (Shared (Map String TaskId)) -> ParallelTask ()
-	ut tabs = \tasklist. watch (cnt tabs) 
+	ut tabs = \tasklist. (viewInformation "" [] "equal" ||- watch (cnt tabs)) 
 		>>* [	OnValue		(ifValue (\(c,utabs). differentLengths c utabs) (\(c,utabs). (auxa utabs c tasklist) >>|- 
-				watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. updateTabs tabs tasklist))]))]
+				(viewInformation "" [] "difference" ||- watch tabs) >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. updateTabs tabs tasklist))]))]
 	
 	waitf :: (Map String [String]) (Shared (Map String TaskId)) (ParallelTask ()) -> ParallelTask ()
 	waitf c tabs task = \tasklist.watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. task tasklist))] 

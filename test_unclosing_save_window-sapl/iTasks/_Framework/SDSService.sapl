@@ -1,0 +1,206 @@
+|| ?module? iTasks._Framework.SDSService
+
+
+iTasks._Framework.SDSService.matchFun_8::B reqUrl_0 = <{iTasks._Framework.SDSService._c;36;23_427}> (Text.URI.pathToSegments reqUrl_0)
+<{iTasks._Framework.SDSService._c;36;23_427}>::B !_x_0 = case _x_0 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 ("" -> case _x_1_1 (_predefined._Cons _x_3_0 _x_3_1 -> case _x_3_0 ("sds" -> case _x_3_1 (_predefined._Cons _x_5_0 _x_5_1 -> case _x_5_1 (_predefined._Nil -> True) ) ) ) ) ) (_ -> False)
+<{iTasks._Framework.SDSService.get`_29}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks._Framework.SDSService.get`_29}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks._Framework.SDSService.get`_29}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.SDSService.anon_28 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+iTasks._Framework.SDSService.anon_27 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+<{iTasks._Framework.SDSService.get`_26}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks._Framework.SDSService.get`_26}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks._Framework.SDSService.get`_26}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.SDSService.anon_25 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+iTasks._Framework.SDSService.anon_24 !f_0 g_1 x_2 = f_0 (g_1 x_2)
+iTasks._Framework.SDSService.writeit_7 !_vfromString_0 !_viTask_1 req_2 !focus_3 !shared_4 !iworld_5 = let _x_1_0 = iTasks._Framework.SDS.write (select _vfromString_0::<{StdOverloaded.fromString;}> 0 (select req_2::Internet.HTTP._HTTPRequest 6)) (iTasks.API.Common.SDSCombinators.sdsFocus _viTask_1 focus_3 shared_4) iworld_5, iworld_1_1 = select _x_1_0::_Tuple2 1 in <{iTasks._Framework.SDSService._c;62;15_428}> (select _x_1_0::_Tuple2 0) iworld_1_1
+<{iTasks._Framework.SDSService._c;62;15_428}> !_x_0 iworld_1 = case _x_0 (Data.Error.Ok _x_1_0 -> _Tuple4 Internet.HTTP.okResponse Data.Maybe.Nothing Data.Maybe.Nothing iworld_1) (Data.Error.Error _x_1_0 -> case _x_1_0 (_Tuple2 e_2_0 msg_2_1 -> _Tuple4 (Internet.HTTP.errorResponse msg_2_1) Data.Maybe.Nothing Data.Maybe.Nothing iworld_1) ) 
+iTasks._Framework.SDSService.jsonResponse_10 !_vtoString_0 json_1 = update Internet.HTTP.okResponse::Internet.HTTP._HTTPResponse [3:_predefined._Cons (_Tuple2 "Content-Type" "text/json") _predefined._Nil,4:select _vtoString_0::<{StdOverloaded.toString;}> 0 json_1]
+iTasks._Framework.SDSService.readit_6 !_viTask_0 !_vtoString_1 !focus_2 !shared_3 !iworld_4 = let _x_1_0 = iTasks._Framework.SDS.read (iTasks.API.Common.SDSCombinators.sdsFocus _viTask_0 focus_2 shared_3) iworld_4, iworld_1_1 = select _x_1_0::_Tuple2 1 in <{iTasks._Framework.SDSService._c;56;15_429}> (select _x_1_0::_Tuple2 0) _vtoString_1 iworld_1_1
+<{iTasks._Framework.SDSService._c;56;15_429}> !_x_0 _vtoString_1 iworld_2 = case _x_0 (Data.Error.Ok json_1_0 -> _Tuple4 (iTasks._Framework.SDSService.jsonResponse_10 _vtoString_1 json_1_0) Data.Maybe.Nothing Data.Maybe.Nothing iworld_2) (Data.Error.Error _x_1_0 -> case _x_1_0 (_Tuple2 e_2_0 msg_2_1 -> _Tuple4 (Internet.HTTP.errorResponse msg_2_1) Data.Maybe.Nothing Data.Maybe.Nothing iworld_2) ) 
+iTasks._Framework.SDSService.plainResponse_11 string_0 = update Internet.HTTP.okResponse::Internet.HTTP._HTTPResponse [3:_predefined._Cons (_Tuple2 "Content-Type" "text/plain") _predefined._Nil,4:string_0]
+iTasks._Framework.SDSService.anon_404 !g_0 x_1 = StdList.tl (g_0 x_1)
+iTasks._Framework.SDSService.anon_405 !g_0 x_1 = StdList.hd (g_0 x_1)
+<{iTasks._Framework.SDSService.get`_406}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks._Framework.SDSService.get`_406}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks._Framework.SDSService.get`_406}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.SDSService.writeit_408 !_viTask_0 !req_1 !focus_2 !shared_3 !iworld_4 = let _x_1_0 = iTasks._Framework.SDS.write (Text.JSON.fromString_8 (select req_1::Internet.HTTP._HTTPRequest 6)) (iTasks.API.Common.SDSCombinators.sdsFocus _viTask_0 focus_2 shared_3) iworld_4, iworld_1_1 = select _x_1_0::_Tuple2 1 in <{iTasks._Framework.SDSService._c;62;15_430}> (select _x_1_0::_Tuple2 0) iworld_1_1
+<{iTasks._Framework.SDSService._c;62;15_430}> !_x_0 iworld_1 = case _x_0 (Data.Error.Ok _x_1_0 -> _Tuple4 Internet.HTTP.okResponse Data.Maybe.Nothing Data.Maybe.Nothing iworld_1) (Data.Error.Error _x_1_0 -> case _x_1_0 (_Tuple2 e_2_0 msg_2_1 -> _Tuple4 (Internet.HTTP.errorResponse msg_2_1) Data.Maybe.Nothing Data.Maybe.Nothing iworld_1) ) 
+iTasks._Framework.SDSService.readit_407 !_vtoString_0 !focus_1 !shared_2 !iworld_3 = let _x_1_0 = iTasks._Framework.SDS.read (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.SDSService.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor_JSONNode_25) (<{iTasks._Framework.SDSService.gText_s;}> iTasks._Framework.Generic.Visualization.gText_JSONNode_31) (<{iTasks._Framework.SDSService.JSONEncode_s;}> Text.JSON.JSONEncode_JSONNode_28) (<{iTasks._Framework.SDSService.JSONDecode_s;}> Text.JSON.JSONDecode_JSONNode_55) (<{iTasks._Framework.SDSService.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault_JSONNode_28) (<{iTasks._Framework.SDSService.gEq_s;}> iTasks.API.Core.Types.gEq_JSONNode_199) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Text.JSON.TD;JSONNode}>))) focus_1 shared_2) iworld_3, iworld_1_1 = select _x_1_0::_Tuple2 1 in <{iTasks._Framework.SDSService._c;56;15_431}> (select _x_1_0::_Tuple2 0) _vtoString_0 iworld_1_1
+<{iTasks._Framework.SDSService._c;56;15_431}> !_x_0 _vtoString_1 iworld_2 = case _x_0 (Data.Error.Ok json_1_0 -> _Tuple4 (iTasks._Framework.SDSService.jsonResponse_10 _vtoString_1 json_1_0) Data.Maybe.Nothing Data.Maybe.Nothing iworld_2) (Data.Error.Error _x_1_0 -> case _x_1_0 (_Tuple2 e_2_0 msg_2_1 -> _Tuple4 (Internet.HTTP.errorResponse msg_2_1) Data.Maybe.Nothing Data.Maybe.Nothing iworld_2) ) 
+iTasks._Framework.SDSService.anon_409 !g_0 x_1 = StdList.tl (g_0 x_1)
+iTasks._Framework.SDSService.anon_410 !g_0 x_1 = StdList.hd (g_0 x_1)
+<{iTasks._Framework.SDSService.get`_411}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks._Framework.SDSService.get`_411}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks._Framework.SDSService.get`_411}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.SDSService.anon_412 !x_0 = StdList.tl (StdList.tl x_0)
+iTasks._Framework.SDSService.anon_413 !x_0 = StdList.hd (iTasks._Framework.SDSService.anon_412 x_0)
+iTasks._Framework.SDSService.writeit_416 !req_0 !focus_1 !shared_2 !iworld_3 = let _x_1_0 = iTasks._Framework.SDS.write (Text.JSON.fromString_8 (select req_0::Internet.HTTP._HTTPRequest 6)) (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.SDSService.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor_JSONNode_25) (<{iTasks._Framework.SDSService.gText_s;}> iTasks._Framework.Generic.Visualization.gText_JSONNode_31) (<{iTasks._Framework.SDSService.JSONEncode_s;}> Text.JSON.JSONEncode_JSONNode_28) (<{iTasks._Framework.SDSService.JSONDecode_s;}> Text.JSON.JSONDecode_JSONNode_55) (<{iTasks._Framework.SDSService.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault_JSONNode_28) (<{iTasks._Framework.SDSService.gEq_s;}> iTasks.API.Core.Types.gEq_JSONNode_199) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Text.JSON.TD;JSONNode}>))) focus_1 shared_2) iworld_3, iworld_1_1 = select _x_1_0::_Tuple2 1 in <{iTasks._Framework.SDSService._c;62;15_432}> (select _x_1_0::_Tuple2 0) iworld_1_1
+<{iTasks._Framework.SDSService._c;62;15_432}> !_x_0 iworld_1 = case _x_0 (Data.Error.Ok _x_1_0 -> _Tuple4 Internet.HTTP.okResponse Data.Maybe.Nothing Data.Maybe.Nothing iworld_1) (Data.Error.Error _x_1_0 -> case _x_1_0 (_Tuple2 e_2_0 msg_2_1 -> _Tuple4 (Internet.HTTP.errorResponse msg_2_1) Data.Maybe.Nothing Data.Maybe.Nothing iworld_1) ) 
+iTasks._Framework.SDSService.jsonResponse_415 json_0 = update Internet.HTTP.okResponse::Internet.HTTP._HTTPResponse [3:_predefined._Cons (_Tuple2 "Content-Type" "text/json") _predefined._Nil,4:Text.JSON.toString_7 json_0]
+iTasks._Framework.SDSService.readit_414 !focus_0 !shared_1 !iworld_2 = let _x_1_0 = iTasks._Framework.SDS.read (iTasks.API.Common.SDSCombinators.sdsFocus (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.SDSService.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor_JSONNode_25) (<{iTasks._Framework.SDSService.gText_s;}> iTasks._Framework.Generic.Visualization.gText_JSONNode_31) (<{iTasks._Framework.SDSService.JSONEncode_s;}> Text.JSON.JSONEncode_JSONNode_28) (<{iTasks._Framework.SDSService.JSONDecode_s;}> Text.JSON.JSONDecode_JSONNode_55) (<{iTasks._Framework.SDSService.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault_JSONNode_28) (<{iTasks._Framework.SDSService.gEq_s;}> iTasks.API.Core.Types.gEq_JSONNode_199) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{Text.JSON.TD;JSONNode}>))) focus_0 shared_1) iworld_2, iworld_1_1 = select _x_1_0::_Tuple2 1 in <{iTasks._Framework.SDSService._c;56;15_433}> (select _x_1_0::_Tuple2 0) iworld_1_1
+<{iTasks._Framework.SDSService._c;56;15_433}> !_x_0 iworld_1 = case _x_0 (Data.Error.Ok json_1_0 -> _Tuple4 (iTasks._Framework.SDSService.jsonResponse_415 json_1_0) Data.Maybe.Nothing Data.Maybe.Nothing iworld_1) (Data.Error.Error _x_1_0 -> case _x_1_0 (_Tuple2 e_2_0 msg_2_1 -> _Tuple4 (Internet.HTTP.errorResponse msg_2_1) Data.Maybe.Nothing Data.Maybe.Nothing iworld_1) ) 
+iTasks._Framework.SDSService.anon_417 !x_0 = StdList.tl (StdList.tl x_0)
+iTasks._Framework.SDSService.anon_418 !x_0 = StdList.hd (iTasks._Framework.SDSService.anon_417 x_0)
+iTasks._Framework.SDSService.reqFun_9 !req_0 _x_1 !iworld_2 = case (iTasks._Framework.HtmlUtil.hasParam "client_session_id" req_0) (True -> StdMisc.abort "Shareds on clients are not supported yet") (False -> case iworld_2 (iTasks._Framework.IWorld._IWorld server_2_0 config_2_1 clocks_2_2 current_2_3 random_2_4 sdsNotifyRequests_2_5 memoryShares_2_6 cachedShares_2_7 exposedShares_2_8 jsCompilerState_2_9 ioTasks_2_10 ioStates_2_11 world_2_12 resources_2_13 onClient_2_14 shutdown_2_15 -> case (iTasks._Framework.HtmlUtil.hasParam "focus" req_0) (True -> let _x_4_0 = iTasks._Framework.SDS.getURLbyId (iTasks._Framework.SDSService.anon_413 (Text.URI.pathToSegments (select req_0::Internet.HTTP._HTTPRequest 1))) iworld_2, iworld_4_1 = select _x_4_0::_Tuple2 1 in <{iTasks._Framework.SDSService._c;45;11_435}> (<{iTasks._Framework.SDSService.get`_406}> (select _x_4_0::_Tuple2 0) exposedShares_2_8) req_0 iworld_4_1) (False -> let _x_4_0 = iTasks._Framework.SDS.getURLbyId (iTasks._Framework.SDSService.anon_418 (Text.URI.pathToSegments (select req_0::Internet.HTTP._HTTPRequest 1))) iworld_2, iworld_4_1 = select _x_4_0::_Tuple2 1 in <{iTasks._Framework.SDSService._c;68;11_436}> (<{iTasks._Framework.SDSService.get`_411}> (select _x_4_0::_Tuple2 0) exposedShares_2_8) req_0 iworld_4_1) ) ) 
+<{iTasks._Framework.SDSService._c;68;11_436}> !_x_0 req_1 !iworld_2 = case _x_0 (Data.Maybe.Nothing -> <{_Tuple4!15}> (iTasks._Framework.HtmlUtil.notFoundResponse req_1) Data.Maybe.Nothing Data.Maybe.Nothing iworld_2) (Data.Maybe.Just _x_1_0 -> case _x_1_0 (_Tuple2 dyn_2_0 _x_2_1 -> <{_Tuple4!15}> (iTasks._Framework.SDSService.plainResponse_11 (_SystemDynamic.toString_25 (iTasks._Framework.DynamicUtil.unpackType dyn_2_0))) Data.Maybe.Nothing Data.Maybe.Nothing iworld_2) ) 
+<{iTasks._Framework.SDSService._c;45;11_435}> !_x_0 !req_1 !iworld_2 = case _x_0 (Data.Maybe.Nothing -> <{_Tuple4!15}> (iTasks._Framework.HtmlUtil.notFoundResponse req_1) Data.Maybe.Nothing Data.Maybe.Nothing iworld_2) (Data.Maybe.Just _x_1_0 -> case _x_1_0 (_Tuple2 _x_2_0 shared_2_1 -> <{iTasks._Framework.SDSService._c;47;38_434}> (select req_1::Internet.HTTP._HTTPRequest 0) req_1 shared_2_1 iworld_2) ) 
+<{iTasks._Framework.SDSService._c;47;38_434}> !_x_0 req_1 shared_2 !iworld_3 = case _x_0 (Internet.HTTP.HTTP_GET -> iTasks._Framework.SDSService.readit_414 (Text.JSON.fromString_8 (iTasks._Framework.HtmlUtil.paramValue "focus" req_1)) shared_2 iworld_3) (Internet.HTTP.HTTP_PUT -> iTasks._Framework.SDSService.writeit_416 req_1 (Text.JSON.fromString_8 (iTasks._Framework.HtmlUtil.paramValue "focus" req_1)) shared_2 iworld_3) (_ -> <{_Tuple4!15}> (Internet.HTTP.badRequestResponse "Invalid method") Data.Maybe.Nothing Data.Maybe.Nothing iworld_3)
+iTasks._Framework.SDSService.dataFun_12 !req_0 _x_1 !mbData_2 !instanceNo_3 !iworld_4 = <{_Tuple5!31}> _predefined._Nil True instanceNo_3 Data.Maybe.Nothing iworld_4
+iTasks._Framework.SDSService.disconnectFun_13 !_x_0 _x_1 !_x_2 !iworld_3 = <{_Tuple2!3}> Data.Maybe.Nothing iworld_3
+iTasks._Framework.SDSService.sdsService = <{_Tuple5!31}> iTasks._Framework.SDSService.matchFun_8 True iTasks._Framework.SDSService.reqFun_9 iTasks._Framework.SDSService.dataFun_12 iTasks._Framework.SDSService.disconnectFun_13
+<{iTasks._Framework.SDSService.<>_30}>::B !_vEq_0 !x_1 !y_2 = StdBool.not (select (select _vEq_0::<{StdClass.Eq;}> 0)::<{StdOverloaded.==;}> 0 x_1 y_2)
+iTasks._Framework.SDSService.anon_15 !_vtoString_0 p_1 = <{StdString.+++_11}> "focus=" (Text.URI.escapeString Text.URI.okInQuery (select _vtoString_0::<{StdOverloaded.toString;}> 0 p_1))
+iTasks._Framework.SDSService.convert_16 !_vtoString_0 mbp_1 u_2 = update Text.URI.nullURI::Text.URI._URI [0:Data.Maybe.Just "http",2:select u_2::Text.URI._URI 2,3:select u_2::Text.URI._URI 3,4:<{StdString.+++_11}> "/sds" (select u_2::Text.URI._URI 4),5:Data.Maybe.fmap_12 (iTasks._Framework.SDSService.anon_15 _vtoString_0) mbp_1]
+<{iTasks._Framework.SDSService.<>_419}>::B !x_0 !y_1 = StdBool.not (<{StdString.==_2}> x_0 y_1)
+iTasks._Framework.SDSService.anon_421 p_0 = <{StdString.+++_11}> "focus=" (Text.URI.escapeString Text.URI.okInQuery (Text.JSON.toString_7 p_0))
+iTasks._Framework.SDSService.convert_420 mbp_0 u_1 = update Text.URI.nullURI::Text.URI._URI [0:Data.Maybe.Just "http",2:select u_1::Text.URI._URI 2,3:select u_1::Text.URI._URI 3,4:<{StdString.+++_11}> "/sds" (select u_1::Text.URI._URI 4),5:Data.Maybe.fmap_12 iTasks._Framework.SDSService.anon_421 mbp_0]
+iTasks._Framework.SDSService.convertURL !url_0 !mbp_1 = <{iTasks._Framework.SDSService._c;98;7_437}> (Text.URI.parseURI url_0) url_0 mbp_1
+<{iTasks._Framework.SDSService._c;98;7_437}> !_x_0 url_1 mbp_2 = case _x_0 (Data.Maybe.Nothing -> Data.Error.Error (<{StdString.+++_11}> "Malformed URL: " url_1)) (Data.Maybe.Just uri_1_0 -> case (Data.Maybe.maybe False (<{iTasks._Framework.SDSService.<>_419}> "sds") (select uri_1_0::Text.URI._URI 0)) (True -> Data.Error.Error (<{StdString.+++_11}> "Invalid URL: " url_1)) (False -> Data.Error.Ok (iTasks._Framework.SDSService.convert_420 mbp_2 uri_1_0)) ) 
+iTasks._Framework.SDSService.load_14 !_vfromString_0 !uri_1 !iworld_2 = let _x_1_0 = iTasks._Framework.RemoteAccess.httpRequest Internet.HTTP.HTTP_GET uri_1 Data.Maybe.Nothing iworld_2, response_1_1 = select _x_1_0::_Tuple2 0, iworld_1_2 = select _x_1_0::_Tuple2 1 in case (Internet.HTTP.isOkResponse response_1_1) (True -> _Tuple2 (Data.Error.Ok (select _vfromString_0::<{StdOverloaded.fromString;}> 0 (select response_1_1::Internet.HTTP._HTTPResponse 4))) iworld_1_2) (False -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Request failed: " (select response_1_1::Internet.HTTP._HTTPResponse 2))) iworld_1_2) 
+iTasks._Framework.SDSService.load_422 !uri_0 !iworld_1 = let _x_1_0 = iTasks._Framework.RemoteAccess.httpRequest Internet.HTTP.HTTP_GET uri_0 Data.Maybe.Nothing iworld_1, response_1_1 = select _x_1_0::_Tuple2 0, iworld_1_2 = select _x_1_0::_Tuple2 1 in case (Internet.HTTP.isOkResponse response_1_1) (True -> _Tuple2 (Data.Error.Ok (Text.JSON.fromString_8 (select response_1_1::Internet.HTTP._HTTPResponse 4))) iworld_1_2) (False -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Request failed: " (select response_1_1::Internet.HTTP._HTTPResponse 2))) iworld_1_2) 
+iTasks._Framework.SDSService.readRemoteSDS !p_0 !url_1 !iworld_2 = case iworld_2 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> <{iTasks._Framework.SDSService._c;86;7_438}> (iTasks._Framework.SDSService.convertURL url_1 (Data.Maybe.Just p_0)) iworld_2) 
+<{iTasks._Framework.SDSService._c;86;7_438}> !_x_0 !iworld_1 = case _x_0 (Data.Error.Ok uri_1_0 -> iTasks._Framework.SDSService.load_422 uri_1_0 iworld_1) (Data.Error.Error e_1_0 -> <{_Tuple2!3}> (Data.Error.Error e_1_0) iworld_1) 
+iTasks._Framework.SDSService.load_17 !_vtoString_0 !uri_1 val_2 !iworld_3 = let _x_1_0 = iTasks._Framework.RemoteAccess.httpRequest Internet.HTTP.HTTP_PUT uri_1 (Data.Maybe.Just (select _vtoString_0::<{StdOverloaded.toString;}> 0 val_2)) iworld_3, response_1_1 = select _x_1_0::_Tuple2 0, iworld_1_2 = select _x_1_0::_Tuple2 1 in case (Internet.HTTP.isOkResponse response_1_1) (True -> _Tuple2 (Data.Error.Ok _predefined._Unit) iworld_1_2) (False -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Request failed: " (select response_1_1::Internet.HTTP._HTTPResponse 2))) iworld_1_2) 
+iTasks._Framework.SDSService.load_423 !uri_0 val_1 !iworld_2 = let _x_1_0 = iTasks._Framework.RemoteAccess.httpRequest Internet.HTTP.HTTP_PUT uri_0 (Data.Maybe.Just (Text.JSON.toString_7 val_1)) iworld_2, response_1_1 = select _x_1_0::_Tuple2 0, iworld_1_2 = select _x_1_0::_Tuple2 1 in case (Internet.HTTP.isOkResponse response_1_1) (True -> _Tuple2 (Data.Error.Ok _predefined._Unit) iworld_1_2) (False -> _Tuple2 (Data.Error.Error (<{StdString.+++_11}> "Request failed: " (select response_1_1::Internet.HTTP._HTTPResponse 2))) iworld_1_2) 
+iTasks._Framework.SDSService.writeRemoteSDS !p_0 !val_1 !url_2 !iworld_3 = <{iTasks._Framework.SDSService._c;112;7_439}> (iTasks._Framework.SDSService.convertURL url_2 (Data.Maybe.Just p_0)) val_1 iworld_3
+<{iTasks._Framework.SDSService._c;112;7_439}> !_x_0 val_1 !iworld_2 = case _x_0 (Data.Error.Ok uri_1_0 -> iTasks._Framework.SDSService.load_423 uri_1_0 val_1 iworld_2) (Data.Error.Error e_1_0 -> <{_Tuple2!3}> (Data.Error.Error e_1_0) iworld_2) 
+iTasks._Framework.SDSService.check_23::B !<{_v==_0}> clnty_1 srvty_2 = select <{_v==_0}>::<{StdOverloaded.==;}> 0 clnty_1 srvty_2
+iTasks._Framework.SDSService.anon_21 !<{_v==_0}> !_viTask_1 cont_2 clnty_3 f_4 ty_5 = case (iTasks._Framework.SDSService.check_23 <{_v==_0}> clnty_3 ty_5) (True -> cont_2 (Data.Maybe.Just f_4)) (False -> iTasks.API.Core.Tasks.throw _viTask_1 (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.SDSService.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{iTasks._Framework.SDSService.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.SDSService.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{iTasks._Framework.SDSService.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{iTasks._Framework.SDSService.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{iTasks._Framework.SDSService.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{StdOverloaded.toString;}> StdString.toString_9) "Type check failed") 
+iTasks._Framework.SDSService.conv_22 rsp_0 = Data.Error.Ok (select rsp_0::Internet.HTTP._HTTPResponse 4)
+<{iTasks._Framework.SDSService.get`_31}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks._Framework.SDSService.get`_31}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks._Framework.SDSService.get`_31}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.SDSService.rwrite_20 !url_0 !jsonp_1 !jsonw_2 !iworld_3 = <{iTasks._Framework.SDSService._c;136;11_440}> (iTasks._Framework.SDSService.writeRemoteSDS jsonp_1 jsonw_2 url_0 iworld_3)
+<{iTasks._Framework.SDSService._c;136;11_440}> !_x_0 = case _x_0 (_Tuple2 _x_1_0 iworld_1_1 -> case _x_1_0 (Data.Error.Ok _x_2_0 -> case _x_2_0 (_predefined._Unit -> _Tuple2 (Data.Error.Ok (StdFunc.const False)) iworld_1_1) ) (Data.Error.Error msg_2_0 -> _Tuple2 (Data.Error.Error (iTasks._Framework.Task.exception (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) (<{StdOverloaded.toString;}> StdString.toString_9) msg_2_0)) iworld_1_1) ) 
+iTasks._Framework.SDSService.rread_19 !url_0 !jsonp_1 !iworld_2 = <{iTasks._Framework.SDSService._c;132;11_441}> (iTasks._Framework.SDSService.readRemoteSDS jsonp_1 url_0 iworld_2)
+<{iTasks._Framework.SDSService._c;132;11_441}> !_x_0 = case _x_0 (_Tuple2 _x_1_0 iworld_1_1 -> case _x_1_0 (Data.Error.Ok v_2_0 -> _Tuple2 (Data.Error.Ok v_2_0) iworld_1_1) (Data.Error.Error msg_2_0 -> _Tuple2 (Data.Error.Error (iTasks._Framework.Task.exception (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) (<{StdOverloaded.toString;}> StdString.toString_9) msg_2_0)) iworld_1_1) ) 
+<{iTasks._Framework.SDSService.get`_424}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks._Framework.SDSService.get`_424}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks._Framework.SDSService.get`_424}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.SDSService.f_18 url_0 _x_1 !iworld_2 = case iworld_2 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> <{iTasks._Framework.SDSService._c;126;11_442}> (<{iTasks._Framework.SDSService.get`_424}> url_0 exposedShares_1_8) url_0 iworld_2) 
+<{iTasks._Framework.SDSService._c;126;11_442}> !_x_0 url_1 iworld_2 = case _x_0 (Data.Maybe.Nothing -> _Tuple2 (Data.Error.Ok (iTasks._Framework.SDS.createReadWriteSDS "remoteShare" url_1 (iTasks._Framework.SDSService.rread_19 url_1) (iTasks._Framework.SDSService.rwrite_20 url_1))) iworld_2) (Data.Maybe.Just _x_1_0 -> case _x_1_0 (_Tuple2 _x_2_0 shared_2_1 -> _Tuple2 (Data.Error.Ok shared_2_1) iworld_2) (_ -> _Tuple2 (Data.Error.Error (iTasks._Framework.Task.exception (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char))) (<{StdOverloaded.toString;}> StdString.toString_9) (<{StdString.+++_11}> "Exposed share type mismatch: " url_1))) iworld_2)) 
+iTasks._Framework.SDSService.remoteJSONShared !url_0 = iTasks._Framework.SDS.SDSDynamic (iTasks._Framework.SDSService.f_18 url_0)
+iTasks._Framework.SDSService.check_426::B !clnty_0 !srvty_1 = <{StdString.==_2}> clnty_0 srvty_1
+iTasks._Framework.SDSService.anon_425 !_viTask_0 cont_1 !clnty_2 f_3 !ty_4 = case (iTasks._Framework.SDSService.check_426 clnty_2 ty_4) (True -> cont_1 (Data.Maybe.Just f_3)) (False -> iTasks.API.Core.Tasks.throw _viTask_0 (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.SDSService.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{iTasks._Framework.SDSService.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.SDSService.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{iTasks._Framework.SDSService.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{iTasks._Framework.SDSService.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{iTasks._Framework.SDSService.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{StdOverloaded.toString;}> StdString.toString_9) "Type check failed") 
+iTasks._Framework.SDSService.openRemoteSDS !_viTask_0 !<{_vJSONEncode*_1}> !<{_vJSONDecode*_2}> !<{_vJSONEncode*_3}> !_vTC_4 !_vTC_5 !_vTC_6 !url_7 !cont_8 = <{iTasks._Framework.SDSService._c;142;7_443}> (iTasks._Framework.SDSService.convertURL url_7 Data.Maybe.Nothing) _viTask_0 <{_vJSONEncode*_1}> <{_vJSONDecode*_2}> <{_vJSONEncode*_3}> url_7 cont_8 _vTC_4 _vTC_5 _vTC_6
+<{iTasks._Framework.SDSService._c;142;7_443}> !_x_0 !_viTask_1 <{_vJSONEncode*_2}> <{_vJSONDecode*_3}> <{_vJSONEncode*_4}> url_5 cont_6 a_ij_7 a_ij_8 a_ij_9 = case _x_0 (Data.Error.Error e_1_0 -> iTasks.API.Core.Tasks.throw _viTask_1 (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.SDSService.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{iTasks._Framework.SDSService.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.SDSService.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{iTasks._Framework.SDSService.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{iTasks._Framework.SDSService.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{iTasks._Framework.SDSService.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) (<{StdOverloaded.toString;}> StdString.toString_9) e_1_0) (Data.Error.Ok uri_1_0 -> let f_2_0 = iTasks._Framework.SDS.fromJSONShared <{_vJSONEncode*_2}> <{_vJSONDecode*_3}> <{_vJSONEncode*_4}> (iTasks._Framework.SDSService.remoteJSONShared url_5) in <{iTasks.API.Core.Types.>>=_9}> (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.SDSService.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{iTasks._Framework.SDSService.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.SDSService.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{iTasks._Framework.SDSService.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{iTasks._Framework.SDSService.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{iTasks._Framework.SDSService.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) _viTask_1 (iTasks.API.Core.IntegrationTasks.callHTTP (<{iTasks._Framework.Generic.iTask;}> (<{iTasks._Framework.SDSService.gEditor_s;}> iTasks.UI.Editor.Generic.gEditor__String_11) (<{iTasks._Framework.SDSService.gText_s;}> iTasks._Framework.Generic.Visualization.gText__String_15) (<{iTasks._Framework.SDSService.JSONEncode_s;}> Text.JSON.JSONEncode__String_15) (<{iTasks._Framework.SDSService.JSONDecode_s;}> Text.JSON.JSONDecode__String_39) (<{iTasks._Framework.SDSService.gDefault_s;}> iTasks._Framework.Generic.Defaults.gDefault__String_12) (<{iTasks._Framework.SDSService.gEq_s;}> GenEq.gEq__String_6) (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC__UnboxedArray)) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Char)))) Internet.HTTP.HTTP_GET uri_1_0 "" iTasks._Framework.SDSService.conv_22) (iTasks._Framework.SDSService.anon_425 _viTask_1 cont_6 (_SystemDynamic.toString_25 (iTasks._Framework.DynamicUtil.unpackType (_SystemDynamic._DynamicTemp f_2_0 (_SystemDynamic._normalise (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 0) a_ij_7 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 1) a_ij_8 (_SystemDynamic._bind_global_type_pattern_var (_SystemDynamic.TypeVar 2) a_ij_9 (_SystemDynamic._initial_unification_environment 3 0)))) (_SystemDynamic.TypeApp (_SystemDynamic.TypeApp (_SystemDynamic.TypeApp (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{iTasks._Framework.SDS.TD;RWShared}>)) (_SystemDynamic.TypeVar 0)) (_SystemDynamic.TypeVar 1)) (_SystemDynamic.TypeVar 2)))))) f_2_0)) 
+
+
+|| Converted Records
+:: <{iTasks._Framework.SDSService.JSONEncode_s;}> = {!iTasks._Framework.SDSService.JSONEncode_s}
+
+:: <{iTasks._Framework.SDSService.JSONEncode_ss;}> = {!iTasks._Framework.SDSService.JSONEncode_ss}
+
+:: <{iTasks._Framework.SDSService.JSONEncode_sss;}> = {!iTasks._Framework.SDSService.JSONEncode_sss}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_s;}> = {!iTasks._Framework.SDSService.JSONDecode_s}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_ss;}> = {!iTasks._Framework.SDSService.JSONDecode_ss}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_sss;}> = {!iTasks._Framework.SDSService.JSONDecode_sss}
+
+:: <{iTasks._Framework.SDSService.gDefault_s;}> = {iTasks._Framework.SDSService.gDefault_s}
+
+:: <{iTasks._Framework.SDSService.gDefault_ss;}> = {iTasks._Framework.SDSService.gDefault_ss}
+
+:: <{iTasks._Framework.SDSService.gDefault_sss;}> = {iTasks._Framework.SDSService.gDefault_sss}
+
+:: <{iTasks._Framework.SDSService.gText_s;}> = {!iTasks._Framework.SDSService.gText_s}
+
+:: <{iTasks._Framework.SDSService.gText_ss;}> = {!iTasks._Framework.SDSService.gText_ss}
+
+:: <{iTasks._Framework.SDSService.gText_sss;}> = {!iTasks._Framework.SDSService.gText_sss}
+
+:: <{iTasks._Framework.SDSService.gEditor_s;}> = {iTasks._Framework.SDSService.gEditor_s}
+
+:: <{iTasks._Framework.SDSService.gEditor_ss;}> = {iTasks._Framework.SDSService.gEditor_ss}
+
+:: <{iTasks._Framework.SDSService.gEditor_sss;}> = {iTasks._Framework.SDSService.gEditor_sss}
+
+:: <{iTasks._Framework.SDSService.gEq_s;}> = {!iTasks._Framework.SDSService.gEq_s}
+
+:: <{iTasks._Framework.SDSService.gEq_ss;}> = {!iTasks._Framework.SDSService.gEq_ss}
+
+:: <{iTasks._Framework.SDSService.gEq_sss;}> = {!iTasks._Framework.SDSService.gEq_sss}
+
+:: <{iTasks._Framework.SDSService.JSONEncode_ssss;}> = {!iTasks._Framework.SDSService.JSONEncode_ssss}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_ssss;}> = {!iTasks._Framework.SDSService.JSONDecode_ssss}
+
+:: <{iTasks._Framework.SDSService.gEq_ssss;}> = {!iTasks._Framework.SDSService.gEq_ssss}
+
+:: <{iTasks._Framework.SDSService.gDefault_ssss;}> = {iTasks._Framework.SDSService.gDefault_ssss}
+
+:: <{iTasks._Framework.SDSService.gEq_sssss;}> = {!iTasks._Framework.SDSService.gEq_sssss}
+
+:: <{iTasks._Framework.SDSService.gEq_ssssss;}> = {!iTasks._Framework.SDSService.gEq_ssssss}
+
+:: <{iTasks._Framework.SDSService.gEq_sssssss;}> = {!iTasks._Framework.SDSService.gEq_sssssss}
+
+:: <{iTasks._Framework.SDSService.gEq_ssssssss;}> = {!iTasks._Framework.SDSService.gEq_ssssssss}
+
+:: <{iTasks._Framework.SDSService.gEq_sssssssss;}> = {!iTasks._Framework.SDSService.gEq_sssssssss}
+
+:: <{iTasks._Framework.SDSService.bimap_s;}> = {iTasks._Framework.SDSService.bimap_s}
+
+:: <{iTasks._Framework.SDSService.bimap_ss;}> = {iTasks._Framework.SDSService.bimap_ss}
+
+:: <{iTasks._Framework.SDSService.bimap_sss;}> = {iTasks._Framework.SDSService.bimap_sss}
+
+:: <{iTasks._Framework.SDSService.JSONEncode_sssss;}> = {!iTasks._Framework.SDSService.JSONEncode_sssss}
+
+:: <{iTasks._Framework.SDSService.JSONEncode_ssssss;}> = {!iTasks._Framework.SDSService.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.SDSService.JSONEncode_sssssss;}> = {!iTasks._Framework.SDSService.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.SDSService.JSONEncode_ssssssss;}> = {!iTasks._Framework.SDSService.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.SDSService.JSONEncode_sssssssss;}> = {!iTasks._Framework.SDSService.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_sssss;}> = {!iTasks._Framework.SDSService.JSONDecode_sssss}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_ssssss;}> = {!iTasks._Framework.SDSService.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_sssssss;}> = {!iTasks._Framework.SDSService.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_ssssssss;}> = {!iTasks._Framework.SDSService.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.SDSService.JSONDecode_sssssssss;}> = {!iTasks._Framework.SDSService.JSONDecode_sssssssss}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_s;}> = {!iTasks._Framework.SDSService.gLexOrd_s}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_ss;}> = {!iTasks._Framework.SDSService.gLexOrd_ss}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_sss;}> = {!iTasks._Framework.SDSService.gLexOrd_sss}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_ssss;}> = {!iTasks._Framework.SDSService.gLexOrd_ssss}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_sssss;}> = {!iTasks._Framework.SDSService.gLexOrd_sssss}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_ssssss;}> = {!iTasks._Framework.SDSService.gLexOrd_ssssss}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_sssssss;}> = {!iTasks._Framework.SDSService.gLexOrd_sssssss}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_ssssssss;}> = {!iTasks._Framework.SDSService.gLexOrd_ssssssss}
+
+:: <{iTasks._Framework.SDSService.gLexOrd_sssssssss;}> = {!iTasks._Framework.SDSService.gLexOrd_sssssssss}
+
+:: <{iTasks._Framework.SDSService.gText_ssss;}> = {!iTasks._Framework.SDSService.gText_ssss}
+
+:: <{iTasks._Framework.SDSService.gText_sssss;}> = {!iTasks._Framework.SDSService.gText_sssss}
+
+:: <{iTasks._Framework.SDSService.gText_ssssss;}> = {!iTasks._Framework.SDSService.gText_ssssss}
+
+:: <{iTasks._Framework.SDSService.gText_sssssss;}> = {!iTasks._Framework.SDSService.gText_sssssss}
+
+:: <{iTasks._Framework.SDSService.gText_ssssssss;}> = {!iTasks._Framework.SDSService.gText_ssssssss}
+
+:: <{iTasks._Framework.SDSService.gText_sssssssss;}> = {!iTasks._Framework.SDSService.gText_sssssssss}
+
+:: <{iTasks._Framework.SDSService.gDefault_sssss;}> = {iTasks._Framework.SDSService.gDefault_sssss}
+
+:: <{iTasks._Framework.SDSService.gDefault_ssssss;}> = {iTasks._Framework.SDSService.gDefault_ssssss}
+
+:: <{iTasks._Framework.SDSService.gDefault_sssssss;}> = {iTasks._Framework.SDSService.gDefault_sssssss}
+
+:: <{iTasks._Framework.SDSService.gDefault_ssssssss;}> = {iTasks._Framework.SDSService.gDefault_ssssssss}
+
+:: <{iTasks._Framework.SDSService.gDefault_sssssssss;}> = {iTasks._Framework.SDSService.gDefault_sssssssss}
+
+:: <{iTasks._Framework.SDSService.gEditor_ssss;}> = {iTasks._Framework.SDSService.gEditor_ssss}
+
+:: <{iTasks._Framework.SDSService.gEditor_sssss;}> = {iTasks._Framework.SDSService.gEditor_sssss}
+
+:: <{iTasks._Framework.SDSService.gEditor_ssssss;}> = {iTasks._Framework.SDSService.gEditor_ssssss}
+
+:: <{iTasks._Framework.SDSService.gEditor_sssssss;}> = {iTasks._Framework.SDSService.gEditor_sssssss}
+

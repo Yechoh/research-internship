@@ -228,3 +228,35 @@ Ik zie hiervoor twee oplossingen, de simpele en de moeilijke.
 De simpele oplossing is een WithShared gebruiken over het datatype waarin we de data selecteren/maken. Dit geeft ons de mogelijkheid >^* te gebruiken ipv van >>*. Dit lijkt me een elegante oplossing, omdat de operatie die we willen doen (het datatype anders bekijken/de data transformeren) ook voelt als een zijstap in plaats van een hoofdstap. Maar tegelijkertijd is bij een enterInformation geen WithShared nodig en heb ik het gevoel dat dat hier ook niet nodig zou moeten zijn.
 Dus de moeilijke oplossing is iTasks op een of andere manier aanpassen, zodat de functie ook een waarde teruggeeft als er geen continueknop bestaat. Ik weet niet of dat haalbaar is.
 
+---
+ik heb 2 windows. 1 laat contents zien. Hierin bestaat file aaa met daarin wat zinnen.
+de andere doet het volgende:
+1. het roept placeText aan om in aaa een zelfgedefinieerde text te plaatsen
+	deze haalt eerst de contentlines van aaa op
+		haalt eerst de contents. Deze bevat aaa.
+		gets aaa
+		deze bevat lines. Het plakt "found:" ervoor en returnt
+	daarna zet het aaa op de tekst in aaa samengevoegd met onze nieuwe tekst. Dit gaat goed.
+2. daarna bekijken we de contentlines van aaa. Dit gaat fout.
+
+---
+ik heb een file rommel.icl met twee zinnen aan meuk.
+Ik klik op placeText
+Ik mag wat lines vullen met onzin
+placeText wordt aangeroepen met de juiste filename, 2, en mijn text
+	het vertelt de line
+	het leest de content.
+	het set de content met de nieuwe tekst
+	het returnt leeg
+vervolgens open ik de file
+
+---
+feature request list:
+- viewInformation over een Task moet niet een lege string teruggeven. Ipdv heb ik liever het woord 'Task' of een vreemd taskid, of wat dan ook.
+- de mogelijkheid tot een pop-up window in de gevallen waar je niet wilt dat andere taken klikbaar zijn, maar ook niet de taak waar je mee bezig bent af wil sluiten.
+
+---
+ik heb een enterChoiceWithShared. Dit is een continuous task die output wat ik select.
+Nu gebruik ik
+
+---

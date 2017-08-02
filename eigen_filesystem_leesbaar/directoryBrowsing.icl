@@ -373,7 +373,7 @@ where
 	readAllLines file accu 
 	# (line,file) 				= freadline file
 	| line == ""				= (reverse accu,file)
-	= readAllLines file [line:accu]
+	= readAllLines file [(remove_newlines line):accu]
 
 writeToFile :: String String -> Task String
 writeToFile path content = worldIO (write path content) 
@@ -397,6 +397,9 @@ isFile str file = (takeExtension file) == str
 
 remove_double_enters :: String -> String
 remove_double_enters str = {c \\ c <-: str | c <> '\r'}
+
+remove_newlines :: String -> String
+remove_newlines str = {c \\ c <-: str | c <> '\n' && c <> '\r'}
 
 saveFile :: String String -> Task ()
 saveFile path content = writeToFile path (remove_double_enters content) /*>>- ReadFromFile*/ @! () 

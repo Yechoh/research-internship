@@ -13,14 +13,14 @@ import Text
 
 errorWindow :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
 errorWindow nameOfFileInEditor editorStore
-	=				\tasklist.get project
+	=				\tasklist.(get project
 	>>- \myProj ->	accWorld (fileExists (myProj.projectPath </> myProj.projectName +++ ".exe"))
 	>>- \isExe -> get contents 
 	>>- \c -> 'DM'.foldrWithKey (\k v t -> t >>|- saveFile k (foldr joinWithNewline "" v)) (return ()) c
 	>>|-	
-		(enterChoiceWithShared  (Title ("Errors & Warnings")) [ChooseFromGrid id] errorStore 
-	>&^
-	(offerSolutions editorStore)) <<@ ApplyLayout (arrangeHorizontal) >>|- return ()  
+		((enterChoiceWithShared "" [ChooseFromGrid id] errorStore) 
+	>&>
+	(\a.(viewSharedInformation "" [] a ||- (offerSolutions editorStore a)))) <<@ ApplyLayout (arrangeHorizontal) >>|- return () ) <<@ (Title ("Errors & Warnings"))  
 
 /*showErrorsAndSolutions :: (Shared (EditorInfo,Map String [String])) -> Task ()
 showErrorsAndSolutions editorStore = 
@@ -63,12 +63,12 @@ diagnose err
 		| otherwise = Unknown (filename+++" "+++errwords!!1) line
 	| otherwise = Unknown (filename) line
 
-showButtons :: [(Action,Task ())] -> Task ()
-showButtons l = viewInformation "" [] "" >>*
-		(map (\(a,t). OnAction a (always t)) l)
+showButtons :: String [(Action,Task ())] String (ReadOnlyShared (Maybe String)) (Task ()) -> Task ()
+showButtons message l str smstr t = viewInformation "" [] message ||- watch smstr >>*
+		[(OnValue (ifValue (\mstr. mstr <> (Just str)) \a.t)):(map (\(a,t). OnAction a (always t)) l)]
 
 startOfFunction :: String Int -> Task Int
-startOfFunction filepath i = contentLinesOf filepath >>- \l. return (sof l i)
+startOfFunction filepath i = contentLinesOf filepath >>- \l. return (sof l (i+1))
 	where
 	sof :: [String] Int -> Int
 	sof l 0 = 0
@@ -77,12 +77,12 @@ startOfFunction filepath i = contentLinesOf filepath >>- \l. return (sof l i)
 		| otherwise						= i
 		
 placeText :: String Int [String] -> Task ()
-placeText filepath i text = viewInformation "placetext" [] i >>|
+placeText filepath i text =
 	contentLinesOf filepath >>- \l.
 	setContent filepath ((\(a,b).a++text++b) (splitAt i l)) >>| return ()
 	
 jumpToLine :: (Shared (EditorInfo,Map String [String])) Int -> Task ()
-jumpToLine editorstore i = viewInformation "jumptoline" [] i >>|
+jumpToLine editorstore i =
 	upd (\(ei,c). ({ei & position = (i, snd ei.EditorInfo.position)},c)) editorstore >>| return ()
 
 createVarSolution :: String (Shared (EditorInfo,Map String [String])) Int String -> Task ()
@@ -99,9 +99,19 @@ createVarSolution filename editorstore i var = filenameToFilepath filename >>- (
 offerSolutions ::(Shared (EditorInfo,Map String [String])) (ReadOnlyShared (Maybe String)) -> Task ()
 offerSolutions editorstore error = forever ((viewSharedInformation "" [] error ||- watch error) >>*
 	[ OnValue (ifValue (\mstr. isJust mstr) (\(Just err). jumpToLine editorstore (getErrorLineNr err) >>| case diagnose err of
-		UndefinedVar filename i var = showButtons [(Action ("Create "+++var), createVarSolution filename editorstore i var)]
-		Unknown filename i = (viewInformation "" [] filename) >>|- return ()
+		UndefinedVar filename i var = sb "" [(Action ("Create "+++var), createVarSolution filename editorstore i var)] err
+		Unknown filename i = sb filename [] err
 		))])
+	where
+	sb message l err = showButtons message l err error (offerSolutions editorstore error) 
+
+/*structuur van een goedwerkende offerSolutions		
+os :: (ReadOnlyShared (Maybe String)) -> Task ()
+os error = watch error >>*
+	[OnValue (ifValue (\mstr. isJust mstr) (\(Just err). case diagnose err of
+		Solvable args = (showButtons args ||- watch error) >>* [OnValue (ifValue \mstr. mstr <> (Just err)) (os)]
+	)]
+*/
 
 build :: Task ()
 build 

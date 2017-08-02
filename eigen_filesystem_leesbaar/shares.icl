@@ -5,7 +5,8 @@ import qualified Data.Map as DM
 import System.OS
 import iTasks.API.Extensions.Editors.Ace
 import System.FilePath
-
+import Text
+import StdArray
 
 derive class iTask Settings, Project
 
@@ -35,17 +36,20 @@ contentLinesOf filepath =
 	get contents >>- \c.
 	case (fst ('DM'.getU filepath c )) of 
 		Nothing = viewInformation "not found" [] (filepath,c) >>| return ["not found!"]
-		Just lines = return ["found: ":lines]
+		Just lines = return lines
 	
 setContent :: String [String] -> Task (Map String [String])
 setContent filepath content = upd (\c. 'DM'.put filepath content c) contents
 	
 joinWithNewline :: String String -> String
 joinWithNewline a b = a+++OS_NEWLINE+++b
+
+remove_newlines :: String -> String
+remove_newlines str = {c \\ c <-: str | c <> '\n' && c <> '\r'}
 	
 contentOf :: String -> Task String
 contentOf filename = get contents >>- \c.
-	return (foldr joinWithNewline "" (fromJust (fst ('DM'.getU filename c ))))
+	return (foldr (\a. joinWithNewline (remove_newlines a)) "" (fromJust (fst ('DM'.getU filename c ))))
 
 /*contents uses the complete filepath as filename. 
 This is because a user is allowed to have two files open with the same name but on different locations.

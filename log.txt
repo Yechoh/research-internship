@@ -487,9 +487,14 @@ di 25-7
 12:14 gesprek met Tim over zorgen vanuit Rinus over de validiteit van mijn project. Mijn volgende taak wordt op papier te zetten een afgebakende definitie en doel van mijn project en een halverwege-observatie. Daarna wat gepraat over wat Tim maakt.
 16:53 aw, bijna klaar met midterm review
 
+wo 26-7
 8:33 verder met midterm review
 10:27 klaar. door op ubuntu met de mail van Camil
-
+10:38 Camil heet Staps en niet Stappen
+11:00 bezig met de CloogleDB laten zien in mijn project. Net ontdekt dat het ook mogelijk is om een record type abstract te laten zien. Dus dan kun je niet in de recordfields kijken als daar geen hulpfunctie voor in dezelfde file voor is. Dit is een optie die we toe moeten voegen als we de dcl gaan abstraheren.
+11:27 ik heb het probleem dat als ik alle dependencies van een CloogleDB wil classderiven naar een iTask, ik dan opeens Type en Kind moet deriven, wat natuurlijk niet kan. Ik heb hier een tijd naar zitten staren, maar herinner me opeens dat ik dit probleem een keer gehad had tijdens de koningsdagpuzzel en dat Markus me toen hielp het op te lossen. Ik weet niet meer wat de oplossing was, maar hopelijk kunnen we het terugvinden in de koningsdagpuzzel.
+11:32 nope
+11:36 mail naar Bas gestuurd. Wachten op antwoord of wachten op Markus om het hem te vragen. Door op Windows
 11:46 door met 'if a var is unknown, give the option to make it'. Ik meen me te herinneren dat ik hier iets verder in was. Clean waarschuwt niet als ik iets niet gesaved heb?
 12:14 pauze
 
@@ -497,6 +502,7 @@ di 25-7
 13:27 error waar we wel een makkelijke solution voor kunnen maken: Error [..icl,47,funnaam]: function body expected. Nu ik er over nadenk, ik kan wel veel zijsituaties bedenken waar je het anders wil.
 14:48 pauze
 
+do 27-7
 8:06 mail checken
 8:14 geen mail terug van Bas, maar wel van Tim over mijn project plan en midterm review. Hij heeft een boel punten haha.
 9:00 een betere project plan. Nu nog de midterm review
@@ -514,6 +520,73 @@ di 25-7
 16:51 oke, het feit dat er extra enters tevoorschijn komen bij het saven, alswel dat het savewindow soms niet sluit, zijn dingen waar ik geen oplossing voor zie en die ik liever negeer. Nee serieus, ik zie geen reden waarom dit zo werkt en heb er ook geen oplossing voor. Dan het probleem van placeText in het geval dat ik een solution voor een error probeer op te lossen: ik kan niet meer bij die fout komen. de cpm-aanroep lijkt ook iets harder te flippen dan normaal. Ik heb geen idee
 16:55 naar huis.
 
-find: grep -rn term ./
+vr 28-7
+9:37 gisteravond mail gecheckt en geantwoord. s'ochtends mail gecheckt. Nog geen antwoord waardoor ik verder kan met Cloogle. Gister mijn werkdag afgesloten met wat unexpected gedrag. Deze ga ik in testfiles namaken en dan opsturen naar Bas. Ook moet ik maar eens een lijst van feature requests gaan maken in aant.
+De testfiles bevatten:
+	- savewindow sluit niet
+	- file saven en openen genereert extra enters.
+daarna moet ik er nog achter zien te komen wat er ook al weer fout ging bij placeText.
+9:49 feature request lijst gemaakt. laten we beginnen.
+9:55
+
+10:43 eind pauze
+10:48 observed: als ik saveAs klik, verschijnt er een window die mij de optie geeft om te saven, met de knippen save en cancel. Als ik op save duw, verdwijnt SaveAs.
+11:30 door alles in stores te doen en door gewoon >>* ipv >^* te gebruiken, is het probleem van het nietsluitende window opgelost. Het probleem van extra enters kan ik niet repliceren, maar mss is dat magisch verdwenen als ik het eerste probleem fix.
+11:37 doorgevoerd in grote project. Werkt als een tierelier. Problemen die nog opgelost moeten worden is dat de tab zijn naam behoudt en dat hij niet verspringt naar een andere tab (maar dat wordt wss veroorzaakt door de naamwisseling). Maar het dubbele-enter probleem is nog niet opgelost. Wss heeft Ace hiermee te maken.
+12:11 twee dingen: 1. for some reason wordt de ace editor in mijn testprojectje niet weergegeven. Dat is irritant en vreemd. 2. De aceEditor zorgt voor de extra enters. Dus dat is goed om te weten.
+
+12:56 terug van pauze.
+13:00 de Ace Editor zorgt voor de extra enters wanneer er gesaved wordt.
+13:10 het is mysterieus opgelost als ik niet joinWithNewline. Maar waarom ik de AceEditor nog niet kan bekijken is een raadsel.
+13:20 bug opgelost. newlines verwijdert bij het openen van een file. Nu nog zorgen dat de tabnaam gelijk blijft.
+13:31 tabnaam blijft gelijk, maar hij verspringt wel van tab, wss omdat de tab heel even leeg wordt. Maar hier zie ik zo geen oplossing voor. Ook is het dubbel-enter probleem niet helemaal opgelost.
+13:51 oke het volgende probleem was dat als ik rommel.icl veranderde, maar daarna opsloeg, een oude versie werd opgeslagen en een oude versie weer werd geladen. Daarvan heb ik gevonden waar dat door komt. Er gaat iets fout in als ik typ, dat de contentstore mee geupdate wordt. Dit kan komen door twee mogelijkheden:
+ - er zit een fout in mijn mapping tussen de twee stores
+ - updating the stores gaat gewoon te sloom.
+We kunnen hier achter komen door de verandering te doen en dan heel lang te wachten.
+13:56 er zit een fout in de mapping
+14:02 of zou het een fout in de Ace Editor kunnen zijn? dat het het wel laat zien alsof het op een regel zit, maar het eigenlijk nog op twee regels staat?
+14:04 Ace doorgekeken, maar daar word ik ook niet echt gelukkig van. Negeren en verder met placeText
+14:06 werkt prima afgezien van:
+	- de text wordt op de verkeerde plek geplakt
+	- ik krijg niet de mogelijkheid nog een solution toe te passen
+	- er slingert nog heel veel debugcode rond
+14:17 probleem 1 zou opgelost moeten zijn, moet ik nog testen. Ik heb een wijze les geleerd, die zou kunnen helpen bij probleem 2: het beste is vaak zo min mogelijk >^* en >&> te gebruiken, aangezien die je minder controle geven dan je zou willen, en ipdv >>* te gebruiken. (ik moet eerlijk zeggen dat dit gebaseerd is op intuitie en niet op een echte reden. Mss zit er ergens een bug ofzo, maar iig worden >^* en >&> snel buggy. Zo had ik die saveFile die niet wou afsluiten en ook deze offerSolutions die ook al niet wil afsluiten).
+14:22 wacht, wat ik zeg kan niet. Dan moet ik de enterchoice opnieuw laden, maar dan is natuurlijk de error die ik selecteerde niet meer geladen. Tijd voor een aant.
+14:27 realisatie: ik gebruik feedSideways, maar ik kan ook gewoon feedForward gebruiken en wss is die minder buggy
+14:34 aha, wat ik wil is dat als de gegeven input aan offerSolutions verandert, dat hij dan meteen de task die hij laat zien afbreekt en opnieuw diagnostiseert. Maar op het moment zit er wel een watchtask in het begin, maar niet een watchtask over als hij een oplossing heeft.
+15:19 jahaha! offerSolutions werkt als een tierelier. Het enige wat nog niet helemaal werkt, is dat hij de juiste file moet openen. Maar dat stellen we nog even uit. Waar ik nu heel veel zin in heb is om van tabs en offerSolutions bruikbare libraries te maken. Ten eerste heb ik dat namelijk al uitgedacht in mijn hoofd zitten, ten tweede geeft dit iets nuttigs, ook als mijn IDE faalt.
+16:53 de dynamicTabs lib wordt een juweeltje! ongetest, maar wss geeft het een error omdat het een task() verwacht, (dus met () als uitkomst).
+
+za 29-7
+11:52 tijd voor testen
+12:26
+
+12:53
+13:28 'internal overloading of ... could not be solved' betekent dat er een voorwaarde aan een functie binnen deze functie is, die niet wordt doorgegeven aan deze functie. Bijv: '| iTask a'
+13:35 getest. Het werkt niet helemaal lekker. Als ik een task wil beeindigen, wordt de element wel uit de map gegooid, maar blijft de taak bestaan. Als je vervolgens een andere taak wil sluiten, sluit de ene taak, dus alsof updateTabs achterloopt. Er is een verschil tussen deze versie en de editorversie en dat is dat deze niet de stores merged op sommige plekken. Ik ga hier naar kijken wat de verschillen zijn en wat voor invloed dat kan hebben.
+13:47 pauze
+
+ma 31-7
+9:56
+10:16 ik probeer nu de toParallel functie zo te maken dat als de gegeven task sluit, ook de bijbehorende el verwijdert wordt. Maar is dit het gedrag dat we willen? Het is op zich wel duidelijk, want de task is gekoppeld aan de el.
+10:35 'type variable <a> of type of lifted argument appears in the specified type': <a> kan hier alles zijn. Dit is een foutmelding die gegeven wordt als de compiler het liften van de where-functie niet voor mekaar krijgt, voor wat voor reden dan ook. Probeer de functie uit de where-clause te halen, om te kijken wat de reden is.
+11:23 heel vreemd iTask gedrag gehad. Over gepraat met Tim en daarna opgestuurd naar Bas. Ook met Tim gehad over het probleem dat ik Type en Kind niet kan deriven voor de CloogleDB. Hij zegt dat dat wel gewoon mogelijk zou moeten zijn. Ik ga dus verder op linux om te kijken waar dit nu precies fout ging.
+11:27 op ubuntu
+14:35 cloogleDBfactory heeft allerlei modules nodig die helemaal niet bestaan. Nu komen die toch echt wel ergens vandaan, want ik heb hem een keer werkend gecompiled. Deze files komen denk ik dan van een server, en als ik de readme lees, vind ik mss de file die deze server aanroept en kan ik die downloaden of zo.
+15:12 in de cloogle readme (dus niet de cloogle.org readme) staat dat het dingen uit de oude compiler code gebruikt en een terminal comando om die te verkrijgen. Dit lost een groot deel van de dependencies op, maar creeert ook weer nieuwe. Nu ging de terminal comando niet helemaal perfect, dus mss moet ik hier nog even naar kijken.
+15:53 ik kan de file ArgEnv niet vinden. Mailtje gestuurd naar Mart en Camil. door op Windows.
+15:57 op windows. mailtje van Bas gehad dat het vreemde itask gedrag op zijn computer niet voorkomt. Eens kijken of de store resetten iets oplost.
+16:31 het ligt wss aan >^*. Mailtje gestuurd naar Bas hierover. En een workaround gevonden, dus ik kan weer verder.
+16:34 deleting a value sluit nog niet de corresponderende task
+16:48 interessant. Als er iets gedelete wordt, dan wordt de taak aangeroepen om de twee stores weer gelijk te trekken, maar aan het eind is er nog steeds een difference.
+16:51 test toegevoegd aan aux_remove waaraan ik het verschil zou kunnen merken. Volgende keer runnen. Maar ik moet nu naar huis.
+
+find: grep -rn --include \*.icl --include \*.dcl term ./
 compile: /home/martin/Documents/clean-bundle-itasks/bin/cpm ./pagesWebIDE.prj
-ctrl-L: grep -rn 'term [^\n]*::'  ./
+ctrl-L: grep -rn --include \*.icl --include \*.dcl 'term [^\n]*::'  ./
+
+types and programming languages: typeringssystemen
+programming language pragmatics: hoofdstuk core issues in language design
+essentials of programming languages: algemene concepten
+structure and interpretation of computer programs: algemene concepten (online)
