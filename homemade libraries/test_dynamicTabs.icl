@@ -26,6 +26,26 @@ f = (viewSharedInformation "" [] mapstore
 		,	OnAction (Action "Delete") (always (f -|| delf))
 		])
 
+map1 :: Map Int Int
+map1 = 'DM'.fromList
+		[
+			(1,11),
+			(2,22),
+			(3,33)
+		]
+
+map2 :: Map Int String
+map2 = 'DM'.fromList
+		[
+			(2,"2"),
+			(3,"3"),
+			(4,"4")
+		]
+
+//Start = ('DM'.difference map1 map2, 'DM'.difference map2 map1)
+
+//Start = parallel
+
 Start world = startEngine
 	(
 		f

@@ -582,6 +582,68 @@ ma 31-7
 16:48 interessant. Als er iets gedelete wordt, dan wordt de taak aangeroepen om de twee stores weer gelijk te trekken, maar aan het eind is er nog steeds een difference.
 16:51 test toegevoegd aan aux_remove waaraan ik het verschil zou kunnen merken. Volgende keer runnen. Maar ik moet nu naar huis.
 
+di 1-8
+9:34 mail van Mart gehad dat ArgEnv niet meer bestaat, maar ook hoe ik er een verkrijg.
+10:37 volgens mij heb ik de db running, ik heb er nog niks vanuit iTasks opgevraagd. Maar er worden geen modules in geladen. Dat is vreemd en moet ik oplossen.
+11:11 buildit krijgt instructies vanuit de commandline. Deze worden volgens mij gegeven vanuit de makefile. Makefile tutorial lezen.
+12:09 tijd voor pauze. plan daarna is CLI er uit slopen, want daar doen we niet aan. Makefile was niet zo nuttig. parseCLI was nuttiger. De clean_home environment variable bestaat niet (vreemd genoeg) dus die heb ik aangemaakt.
+14:46 een stuk verder. Modules worden geladen, maar er zitten vrij veel errors in. Ook komt het project in een eternal loop als het iTasks.Internal.Generic.Visualization probeert te observeren, gevolgde door een Heap Full.
+15:01 oke, vreemd. Een veelvoorkomende tekst in de output is Platform, maar er is geen functie in Cloogle die die tekst lijkt te printen, volgens grep.
+15:35 hij liep vast op het feit dat hij het moest weergeven in een viewInformation. Nu werkt het.
+16:36 helpwindow cloogleFind gemaakt. Maar die lijkt niets te geven. Ook ziet mijn project er verkrackt uit omdat tabs gebroken zijn. Ik weet niet of dat door Ubuntu komt, of omdat dat iets was dat ik moest fixen, maar ik meen me te herinneren dat het het laatste was. Dus het wordt tijd om de windows en ubuntu project te mergen.
+16:48 installed git cola, een git GUI. Hiermee kan ik morgen committen. Maar nu naar huis
+
+wo 2-8
+8:48 git Gui bekijken en hopelijk committen
+8:54 ik snap hem niet
+9:05 pauze
+
+9:27 eind pauze
+9:36 ik wil qol mergen om te kijken of dat het verkrackt zijn oplost, maar blijkbaar heb ik de laatste changes in qol nog niet gesaved. Dus dat ga ik nu doen. op windows.
+10:13 clean_home environment variable definitief toegevoegd (blijkbaar was dat niet). Een van de vele redenen waarom ik windows fijner vindt.
+10:25 de termen layoutSubs SelectRoot bestaan niet in de nieuwere itasks, maar ze lijken ook niet nodig. Ik moet een keer testen of ze ook nutteloos zijn op windows. iig, we hebben weer tabs
+11:41 Mats van het werk afgehouden.
+11:53 opmerking: ctrl-L zoals beneden gedefinieerd is nog niet perfect, want bij types staat :: voor de term
+11:57 betekenis Location:
+	Location libmap-string modulenaam(omzetbaar naar pad in het geval van de library) (linenr in dcl) (linenr in icl) (naam)
+12:24 cloogleserver heeft een functie handle, die zelf search in Search aanroept. Samen maken die een heel uitgebreide resultatenlijst, een stuk gevulder dan een simpele findFunction. De vraag is, willen we deze functionaliteit overnemen? Dat is namelijk veel werk.
+
+14:15 eind pauze. functionaliteit nemen we later mss over. Nu een funtie die het resultaat van findFunction een beetje mooi weergeeft.
+14:43 ipdv preferences in atom aangepast
+15:15 cloogle kan geen functies vinden als ze niet in de dcl voorkomen. Dat moeten we mss veranderen. (Of alleen veranderen over het eigen project).
+15:23 coole code stub zou zijn 'to auxiliary function', wat het volgende doet:
+a :: b -> c
+a b = c b + a (b-1)
+naar
+a :: b ->
+where
+  a' :: b -> c
+  a' b = c b + a' (b-1)
+15:31 ik wil nu de list to options functie kunnen gebruiken. Die moet ik nog maken in de homemade library, dus laten we daar verder gaan.
+15:40 pauze
+
+do 3-8
+10:09 ik had iets gemaakt zodat er meer info tevoorschijn zou komen over waarom er een difference was, maar ik zag gister niets.
+10:39 mapTasksSequentially is een maffe functie en ik wil even voor mezelf bewijzen dat deze het doet.
+het krijgt een b->task() en een [b]
+foldr krijgt een functie, een startvalue en een lijst.
+De functie krijgt eerst het element en daarna de vorige value.
+\b return(). return() >>| task() >>| task()
+ja deze functie werkt.
+10:48 de task wordt wel verwijderd, maar de tabid in de tabstore niet.
+11:50 geluisterd naar tim terwijl hij vertelde over zijn onderzoek
+12:30 hoop verandert aan de functie. Maar klopt nog steeds niet.
+
+13:20
+13:26 hij geeft aan geen difference te deleten te hebben, maar terug delete hij alles.
+13:28 ah, .intersection is niet .minus. Het is keep what is equal. wat ik nodig heb is .difference
+13:33 add werkt. maar delete gooit hem nu wel weg uit de tabsstore, maar delete de task niet.
+14:08 voorbeeld tabs.icl verder uitgewerkt, namelijk removeTask toegevoegd. Werkt precies zoals verwacht. Dus daar ligt het niet aan. Het vreemde is dat ik oprecht niks out of the ordinary zie waar het aan fout kan gaan dat de task niet geremoved wordt. Mss dat de taskid wijzigt als een combinator aangeroepen wordt.
+15:04 Bas gevraagd hoe ik een sharedtasklist kan inzien. Mail van Rinus gehad over mijn review. Hij vraagt of het feasible is dat ik de ACE editor uitbreid. Nu mijn review aan het doorkijken hoe nodig dat is.
+15:51 mail gestuurd naar Rinus dat ik liever mijn eigen stappenplan aanhoud. Next up: giveSolutions (of hoe het ook heet) tot een library function verwerken.
+17:27 tijd om te gaan. bezig geweest met library function viewSharedListWithDescriptionAndOptions
+
+
 find: grep -rn --include \*.icl --include \*.dcl term ./
 compile: /home/martin/Documents/clean-bundle-itasks/bin/cpm ./pagesWebIDE.prj
 ctrl-L: grep -rn --include \*.icl --include \*.dcl 'term [^\n]*::'  ./

@@ -52,9 +52,15 @@ waitf c tabsstore ptask = \tasklist. watch tabsstore >>* [ OnValue (ifValue (\ta
 //closes tab and task when the corresponding Map element is removed.
 //opens tab and task when a Map element is added.
 updateTabs :: (Shared (Map k TaskId)) (Shared (Map k e)) (k -> ParallelTask ()) -> ParallelTask () | iTask k & iTask e & < k
-updateTabs tabsstore mapstore ptaskf = \tasklist. (viewInformation "" [] "equal" ||- watch (mapstore >*< tabsstore)) 
-		>>* [	OnValue		(ifValue (\(c,tabs). differentLengths c tabs) (\(c,tabs). (auxa tabs c tasklist ptaskf) >>|- 
-				(viewInformation "" [] "difference" ||- watch tabsstore) >>* [ OnValue (ifValue (\tabs. 'DM'.mapSize tabs == length ('DM'.keys c)) (\tabs. updateTabs tabsstore mapstore ptaskf tasklist))]))]
+updateTabs tabsstore mapstore keyToPtask = \tasklist. 
+	viewInformation "" [] "equal" >>| (viewSharedInformation "" [] tabsstore ||- watch (mapstore >*< tabsstore)) 
+	>>* 
+	[	OnValue		(ifValue (\(c,tabs). differentLengths c tabs) (\(c,tabs). (auxa ('DM'.difference c tabs) ('DM'.difference tabs c) tabsstore tasklist keyToPtask) >>|- 
+			viewInformation "" [] "difference" >>| (viewSharedInformation "" [] tabsstore ||- watch tabsstore)
+			 >>* 
+			 [ 	OnValue (ifValue (\tabs. 'DM'.mapSize tabs == length ('DM'.keys c)) (\tabs. updateTabs tabsstore mapstore keyToPtask tasklist))
+			 ]))
+	]
 	where
 	mapTasksSequentially :: (b -> Task ()) [b] -> Task ()
 	mapTasksSequentially f l = foldr (\e t. t >>|- f e) (return ()) l
@@ -62,12 +68,23 @@ updateTabs tabsstore mapstore ptaskf = \tasklist. (viewInformation "" [] "equal"
 	differentLengths :: (Map k e) (Map k TaskId) -> Bool
 	differentLengths c utabs =  not ('DM'.mapSize c == 'DM'.mapSize utabs)	
 	
-	auxa :: (Map k TaskId) (Map k e) (SharedTaskList ()) (k -> ParallelTask ()) -> Task () | iTask k & iTask e & < k
-	auxa utabs c tasklist ptaskf = (aux_append utabs c tasklist ptaskf) 
-		>>|- (aux_remove utabs c tasklist)
+	auxa :: (Map k e) (Map k TaskId) (Shared (Map k TaskId)) (SharedTaskList ()) (k -> ParallelTask()) -> Task () | iTask k & iTask e & <k
+	auxa elsNotInTabsstore tabsNotInMapstore tabsstore tasklist keyToPtask =
+		aux_append elsNotInTabsstore tabsstore tasklist keyToPtask
+		>>|-
+		aux_remove tabsNotInMapstore tabsstore tasklist
 	
-	aux_append :: (Map k TaskId) (Map k e) (SharedTaskList ()) (k -> ParallelTask ()) -> Task () | iTask k & iTask e & < k
-	aux_append utabs c tasklist ptaskf = mapTasksSequentially (\key.appendTask Embedded (ptaskf key) tasklist >>|- return ()) ('DM'.keys ('DM'.difference c utabs))
+	aux_append :: (Map k e) (Shared (Map k TaskId)) (SharedTaskList ()) (k -> ParallelTask()) -> Task () | iTask k & <k
+	aux_append difference tabsstore tasklist keyToPtask = 
+		mapTasksSequentially (\key.appendTask Embedded (keyToPtask key) tasklist >>|- return ()) ('DM'.keys difference) >>|-  
+		return ()
 	
-	aux_remove :: (Map k TaskId) (Map k e) (SharedTaskList ()) -> Task () | iTask k & iTask e & < k
-	aux_remove utabs c tasklist = viewInformation "" [] ("deleting",('DM'.elems ('DM'.difference utabs c))) ||- mapTasksSequentially (\taskid. removeTask taskid tasklist) ('DM'.elems ('DM'.difference utabs c)) >>| return ()
+	aux_remove :: (Map k TaskId) (Shared (Map k TaskId)) (SharedTaskList ()) -> Task () | iTask k & <k
+	aux_remove difference tabsstore tasklist = 
+		viewInformation "keys" [] ('DM'.keys difference) -||
+		 viewSharedInformation "tasklist" [] (taskListIds tasklist) >>|
+		mapTasksSequentially (\taskid. removeTask taskid tasklist >>|- return () ) ('DM'.elems difference) >>|- 
+		upd (\tabs. 'DM'.difference tabs difference) tabsstore >>|- 
+		return ()
+		
+		
