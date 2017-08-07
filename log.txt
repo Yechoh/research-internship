@@ -446,6 +446,7 @@ do 13-7
 
 -- te doen: 247 1/2 uur
 
+week 1 van 5
 ma 24-7
 8:09 ik moet een betere logstructuur regelen. Ik zit nu op ubuntu en kan nu niet bij de windows partition aangezien die aan het hibernaten is. Dat betekent dat ik niet bij de log kan. Ook wil ik de beschrijving van dit vak wel weer eens een keer zien. Daarna wil ik kijken waar ik gebleven ben.
 8:32 awkward. Ik ben me vergeten in te schrijven voor het vak. Blijkbaar had ik in week 1 een mail moeten krijgen waarin ik aangaf wie mijn supervisor was en wat ik wil doen. Zodra Tim er is, het hier eens met hem over hebben. En hopen dat dit geen problemen (zoals invalidatie van mijn werk) oplevert.
@@ -567,6 +568,7 @@ za 29-7
 13:35 getest. Het werkt niet helemaal lekker. Als ik een task wil beeindigen, wordt de element wel uit de map gegooid, maar blijft de taak bestaan. Als je vervolgens een andere taak wil sluiten, sluit de ene taak, dus alsof updateTabs achterloopt. Er is een verschil tussen deze versie en de editorversie en dat is dat deze niet de stores merged op sommige plekken. Ik ga hier naar kijken wat de verschillen zijn en wat voor invloed dat kan hebben.
 13:47 pauze
 
+week 2 van 5
 ma 31-7
 9:56
 10:16 ik probeer nu de toParallel functie zo te maken dat als de gegeven task sluit, ook de bijbehorende el verwijdert wordt. Maar is dit het gedrag dat we willen? Het is op zich wel duidelijk, want de task is gekoppeld aan de el.
@@ -643,6 +645,32 @@ ja deze functie werkt.
 15:51 mail gestuurd naar Rinus dat ik liever mijn eigen stappenplan aanhoud. Next up: giveSolutions (of hoe het ook heet) tot een library function verwerken.
 17:27 tijd om te gaan. bezig geweest met library function viewSharedListWithDescriptionAndOptions
 
+za 5-8
+8:21 mailtje gehad van Bas. Ik snap hem nog niet echt.
+8:40 pauze
+
+12:05
+12:07 oh, er bestaat gewoon een functie taskListIds in sdsCombinators
+
+12:23 oke, de task is deleted in de tasklist, maar dat betekent blijkbaar niet dat hij removed wordt uit de tabs. Het betekent gewoon dat hij unresponsive wordt. Wat een vreemde functie. Maar als er geen shares in het spel zijn, doet hij het wel. testfile maken en bug opsturen naar Bas.
+12:33
+
+12:56
+13:10 share toevoegen zorgde er niet voor dat het brak. Ik merkte dat niet alle taken de tasklist goed weergaven. Mss komt het probleem tevoorschijn als tasks andere tasks removen.
+13:35 yup dat was hem. Bug opgestuurd naar Bas. Ik zou op zich wel om deze bug heen kunnen werken, maar het lijkt me beter om de andere libfunc af te maken, zodat we weer verder kunnen met cloogle.
+15:50 viewSharedListWithDescriptionAndOptions en viewListWithDescriptionAndOptions gemaakt. Maar wat ik er nu bij wil maken is een task waarbij je de optie er langs ziet en een waarbij de task niet de window afsluit. Bij beide zie ik de opties liever als grid, dan als buttons.
+16:25 we hebben een duidelijkere benaming nodig. Wss iets van doubleEnterChoice. Ook, als we de opties als grid doen, dan kunnen we geen beschrijving meer geven. 
+Heeft het dan wel nut? Ook, we maken nu drie versies, forward, sideways, viewableSideways. Hoe gaat dat voor de originele enterChoice? Daar plak je een >&> of ^&> achter. Als de tweede task viewable is, dan wordt die weergegeven, anders verdwijnt hij. Op deze manier wordt het niet zo'n fantastische library function.
+16:56 enterMultipleChoice vs enterChoice is dropdown vs radiobuttons. editChoice: enterChoice >&> editInformation? Nee, want het krijgt een Maybe a. updateChoice krijgt een a mee. Ik gok dat die de geselecteerde vervangt.
+17:34 lib gemaakt en gesubmit. Dingen uitgezocht over waarom hij niet lekker synct, maar het is eigk gewoon vreemd. Verkeerde rebase ofzo.
+
+zo 6-8
+16:04 planning maken voor de komende drie weken
+16:56
+
+ma 7-8
+12:40
+13:11 project veranderd zodat het nu de lib function gebruikt. nu naar Ubuntu
 
 find: grep -rn --include \*.icl --include \*.dcl term ./
 compile: /home/martin/Documents/clean-bundle-itasks/bin/cpm ./pagesWebIDE.prj

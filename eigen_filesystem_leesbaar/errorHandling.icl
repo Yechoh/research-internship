@@ -8,16 +8,14 @@ import _SystemArray
 import extraTaskCombinators
 import qualified Data.Map as DM
 import Text
+import doubleEnterChoice
 
 //!String !(Shared (!AceOptions,!AceState))
 
 errorWindow :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
 errorWindow nameOfFileInEditor editorStore
-	=				\tasklist.(get project
-	>>- \myProj ->	accWorld (fileExists (myProj.projectPath </> myProj.projectName +++ ".exe"))
-	>>- \isExe -> get contents 
-	>>- \c -> 'DM'.foldrWithKey (\k v t -> t >>|- saveFile k (foldr joinWithNewline "" v)) (return ()) c
-	>>|-	
+	= \tasklist. doubleEnterChoiceWithShared "" [ChooseFromGrid id] errorstore 
+	
 		((enterChoiceWithShared "" [ChooseFromGrid id] errorStore) 
 	>&>
 	(\a.(viewSharedInformation "" [] a ||- (offerSolutions editorStore a)))) <<@ ApplyLayout (arrangeHorizontal) >>|- return () ) <<@ (Title ("Errors & Warnings"))  
@@ -36,7 +34,20 @@ showErrorsAndSolutions editorStore =
 			= 				get project 
 			>>- \myProj ->	runExec (myProj.projectPath </> myProj.projectName +++ ".exe") 8080 @! ()*/
 
-:: DiagnosedError = UndefinedVar String Int String | Unknown String Int
+:: LineNr :== Int
+:: DiagnosedError = (Filename,LineNr,ErrorDiagnosis)
+:: ErrorDiagnosis = UndefinedVar String | Unknown
+
+diagnosedErrorToDescription :: DiagnosedError -> String
+diagnosedErrorToDescription
+| _ = ""
+
+diagnosedErrorToSolutions :: DiagnosedError (Shared (EditorInfo,Map String [String])) -> [(String,Task ())]
+diagnosedErrorToSolutions (filename,linenr,diagnosis) editorstore = //jumpToLine editorstore (getErrorLineNr err) >>|
+	case diagnosis of
+	| UndefinedVar varname = 
+		[(Action ("Create "+++varname),solutionCreateVar filename editorstore linenr varname)]
+	| _ = []
 
 splitOnce :: !String !String -> (String,String)
 splitOnce sep s 
@@ -85,11 +96,10 @@ jumpToLine :: (Shared (EditorInfo,Map String [String])) Int -> Task ()
 jumpToLine editorstore i =
 	upd (\(ei,c). ({ei & position = (i, snd ei.EditorInfo.position)},c)) editorstore >>| return ()
 
-createVarSolution :: String (Shared (EditorInfo,Map String [String])) Int String -> Task ()
-createVarSolution filename editorstore i var = filenameToFilepath filename >>- (\a. case a of
+solutionCreateVar :: String (Shared (EditorInfo,Map String [String])) Int String -> Task ()
+solutionCreateVar filename editorstore i var = filenameToFilepath filename >>- (\a. case a of
 	Nothing = viewInformation "" [] "cannot find file" >>| return ()
-	Just filepath = 
-		
+	Just filepath = 	
 		startOfFunction filepath i >>- \funi. 
 		placeText filepath funi [var+++" :: ",""] >>| 
 		jumpToLine editorstore funi
