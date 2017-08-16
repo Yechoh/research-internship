@@ -8,50 +8,52 @@ import qualified Data.Map as DM
 
 setSettings :: Task ()
 setSettings = setSettings` <<@ ApplyLayout frameCompact
-where 
+where
 	setSettings`
 		=				accWorld (getEnvironmentVariable "CLEAN_HOME")
-		>>- \mbHome ->  upd (\cs -> {cs & cpmDirectory = if (cs.cpmDirectory == "" && isJust mbHome) (fromJust mbHome) cs.cpmDirectory}) settings 
+		>>- \mbHome ->  upd (\cs -> {cs & cleanHome = if (cs.cleanHome == "" && isJust mbHome) ((fromJust mbHome)) cs.cleanHome}) settings
 		>>|				get settings
 		>>- \curSet ->	get project
 		>>- \recProj -> let isProj 			= recProj.projectPath <> "" && recProj.projectName <> ""
-							isCPM  			= curSet.cpmDirectory <> ""
+							isCPM  			= curSet.cleanHome <> ""
 							projectPath 	= recProj.projectPath </> recProj.projectName +++ ".prj"
-							applicationPath = curSet.cpmDirectory
-						in	(if (not isCPM)  (viewInformation () [] "Where is cpm.exe ? Should be in Clean home directory...")
-							(if (not isProj) (viewInformation () [] ("The location of cpm.exe currently set is: " +++ curSet.cpmDirectory )
+							applicationPath = curSet.cleanHome
+						in	(if (not isCPM)  (viewInformation () [] "Where is the Clean home directory...")
+							(if (not isProj) (viewInformation () [] ("The Clean home directory currently set is: " +++ curSet.cleanHome )
 											 -||-
 											 viewInformation () [] "No Project Set...")
 					   			(viewInformation () [] "Change Settings..")
 							))
-							>>*		[ OnAction (Action "Set cpm location")	(always 		(mbCancel findCPM <<@ ApplyLayout frameCompact))
-							 		, OnAction (Action "Set Project")		(ifCond isCPM   (mbCancel NewProject <<@ ApplyLayout frameCompact))  
+							>>*		[ OnAction (Action "Set Clean home")	(always 		(mbCancel findHome <<@ ApplyLayout frameCompact))
+							 		, OnAction (Action "Set Project")		(ifCond isCPM   (mbCancel NewProject <<@ ApplyLayout frameCompact))
 							 		]
 
-	findCPM 
-		= 					askUserForFile cpmFile isCPM 
-		>>- \(path,file) ->	upd (\curSet -> {curSet & cpmDirectory  = path}) settings
+	findHome
+		= 					viewInformation "" [] "where is the Clean home directory?"
+		||-					getPwdName
+ 		>>- \pwd ->			selectFolder pwd
+		>>- \(path,file) ->	upd (\curSet -> {curSet & cleanHome  = path}) settings
 
-	NewProject  
-		= 					askUserForFile "the Clean .icl main file" isCleanIcl 
+	NewProject
+		= 					askUserForFile "the Clean .icl main file" isCleanIcl
 		>>- \(path,file) -> upd (\myProj -> { myProj 	& projectPath 		= path
 														, projectName 		= dropExtension file
 														, projectSources 	= [path]
 				  							}) project
-		>>|					get settings 
+		>>|					get settings
 		>>- \curSet ->		get project
-		>>- \myProj ->		createProject (curSet.cpmDirectory </> cpmFile) myProj.projectPath myProj.projectName
-		>>|- setContents (path </> file) 
-		
+		>>- \myProj ->		createProject (curSet.cleanHome </> "bin" </> "cpm") myProj.projectPath myProj.projectName
+		>>|- setContents (path </> file)
+
 setContents :: String -> Task ()
 setContents iclloc
 	= 							readLinesFromFile iclloc
 	>>- \(Just contenttxt) ->	get contents
 	>>- \contentmap ->			set ('DM'.put iclloc contenttxt contentmap) contents
 								>>|- return ()
-		
+
 mbCancel :: (Task a) -> Task ()
-mbCancel ta 
+mbCancel ta
 	=
 	(		(ta @! ())
 	-||- 	(	viewInformation () [] ()

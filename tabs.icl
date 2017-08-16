@@ -4,40 +4,27 @@ import iTasks
 
 Start :: *World -> *World
 Start world = startEngine
-	//(allTasks [helloWorld <<@ Title "a", enterString <<@ Title "b", enterString <<@ Title "c"] <<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs))
 	page
 	world
-/*
-page :: Task ()
-page = withShared "" (\text. tabs text -&&- UpdateSharedInformation "" [] text) >>= return ()
-
-
-tabs :: (Shared String) -> Task ()
-tabs text = 
-	*/
 	
 page :: Task [(TaskTime,TaskValue ())]
 page = list 
 	where 
-	list = parallel [(Embedded, phw),(Embedded,phw)] [] <<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)
+	list = parallel [(Embedded, phsw),(Embedded,phw)] [] //<<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)
 	
+phw :: (RWShared TaskListFilter (!TaskId,![TaskListItem ()]) [(!TaskId,!TaskAttributes)]) -> Task ()
+phw a = 
+	   (viewSharedInformation "safe" [] (taskListIds a)
+		>>*[	OnAction (Action "add copy") (always (appendTask Embedded phw a ||- phw a))
+			,	OnAction (Action "remove myself") (always ( get (taskListSelfId a) >>- \taskid. removeTask taskid a ||- phw a))
+			]
+	 >>- (\a.return ()))
 
-phw :: (SharedTaskList ()) -> Task ()
-phw a = helloWorld >^*[(OnAction (Action "addTask") (always (appendTask Embedded phw a)))]
-	 >>| (return ())
-
-the_workflow :: [Workflow]
-the_workflow = 
-	[workflow ("Hello world") 			 	"View a constant string" 			helloWorld
-	,workflow ("Enter a string") 		 	"Entering a string" 				enterString
-	,workflow ("Enter an integer") 		 	"Entering an integer" 				enterString
-	]
+pshw :: (RWShared TaskListFilter (!TaskId,![TaskListItem ()]) [(!TaskId,!TaskAttributes)]) -> Task ()
+pshw a = 
+	   (viewSharedInformation "weird" [] (taskListIds a)
+		>>*[	OnAction (Action "add copy") (always (appendTask Embedded pshw a ||- pshw a))
+			,	OnAction (Action "remove last task") (always ( get (taskListIds a) >>- \taskids. removeTask (hd (reverse taskids)) a ||- pshw a))
+			]
+	 >>- (\a.return ()))
 	
-helloWorld :: Task String
-helloWorld = viewInformation "You have a message from iTasks:" [] "Hello world!" 
-
-enterString :: Task String
-enterString = enterInformation "Enter a string" []
-
-enterInt :: Task Int
-enterInt = enterInformation "Enter an integer" []

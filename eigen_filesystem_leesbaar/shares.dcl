@@ -5,15 +5,26 @@ import System.FilePath
 import qualified Data.Map as DM
 import iTasks.Extensions.Editors.Ace
 import StdString, StdList
+import CloogleDB
+import CloogleDBFactory
 
-:: Settings 	= 	{ cpmDirectory 		:: FilePath			// directory of cpm.exe
+:: Settings 	= 	{ cleanHome 		:: FilePath			// directory of cpm.exe
 					}
 :: Project	 	=	{ projectName  		:: String			// name of the project (without .prj extension)
 					, projectPath  		:: FilePath			// directory where project is stored
 					, projectSources	:: [FilePath]		// not cashed, all file names read in after every cycle
 					}
-				
-derive class iTask Settings, Project
+
+derive class iTask Settings, Project, Sharenum
+
+dclStore :: Shared (Map String [(Sharenum,String,Comment)])
+
+updateDclStore :: Task (Map String [(Sharenum,String,Comment)])
+
+:: Sharenum = Sharedf | Unsharedf | Deprecatedf | Sharedi | Unsharedi
+
+searchterm :: Shared (String)
+clooglestore :: Shared (CloogleDB)
 
 settings 		:: Shared Settings
 project 		:: Shared Project
@@ -22,18 +33,21 @@ errorStore :: Shared [String]
 //contents = ([(filename,[line])],prev_time)
 contents :: Shared (Map String [String])
 
+:: Comment :== String
 
 //functions to get specific content
 contentLinesOf :: String -> Task [String]
+setContent :: String [String] -> Task (Map String [String])
 joinWithNewline :: String String -> String
 contentOf :: String -> Task String
+filenameToFilepath :: String -> Task (Maybe String)
 
-:: Shortcut = No_shortcut 
-			| Ctrl_slash 
-			| Ctrl_backslash 
-			| Ctrl_Shift_backslash 
-			| Ctrl_equals 
-			| Ctrl_Shift_equals 
+:: Shortcut = No_shortcut
+			| Ctrl_slash
+			| Ctrl_backslash
+			| Ctrl_Shift_backslash
+			| Ctrl_equals
+			| Ctrl_Shift_equals
 			| Ctrl_b //
 			| Ctrl_d
 			| Ctrl_Shift_d
@@ -53,7 +67,7 @@ contentOf :: String -> Task String
 			| Ctrl_w
 			| Ctrl_Shift_w
 
-:: EditorInfo = 
+:: EditorInfo =
 	{
 		shortcuts :: [Shortcut],
 		selection :: Maybe AceRange,
@@ -62,7 +76,7 @@ contentOf :: String -> Task String
 		readOnly :: Bool,
 		prev_time :: Time
 	}
-	
+
 derive class iTask EditorInfo, Shortcut
 
 cpmFile			 :== "cpm.exe"

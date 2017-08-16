@@ -1,10 +1,21 @@
 .comp 920 000111010011
 .start _nostart_
+.depend "Text" "20170707023452"
+.depend "extraText" "20170815101645"
 .depend "extraTaskCombinators" "20170705162321"
+.depend "directoryBrowsing" "20170811141029"
+.depend "CloogleDBFactory" "20170725081135"
+.depend "Cloogle" "20170731120145"
+.depend "Doc" "20170725081135"
+.depend "TypeParse" "20170725081138"
+.depend "TypeUtil" "20170731133638"
+.depend "TypeUnify" "20170725081138"
+.depend "TypeDef" "20170725081138"
+.depend "Type" "20170725081138"
+.depend "CloogleDB" "20170809121716"
 .depend "iTasks.Extensions.Editors.Ace" "20170707023452"
-.depend "shares" "20170707130600"
-.depend "directoryBrowsing" "20170705151856"
-.depend "pagetypes" "20170413104943"
+.depend "shares" "20170815144923"
+.depend "pagetypes" "20170807152038"
 .depend "iTasks.Extensions.Admin.WorkflowAdmin" "20170707023452"
 .depend "iTasks.Extensions.Admin.UserAdmin" "20170707023452"
 .depend "iTasks.UI.Layout.Common" "20170707023452"
@@ -120,7 +131,7 @@
 .depend "StdOverloaded" "20170707023452"
 .depend "_SystemDynamic" "20170707023452"
 .depend "pageChooseFile" "20170327150057"
-.module m_pageChooseFile "pageChooseFile" "20170724161805"
+.module m_pageChooseFile "pageChooseFile" "20170815144832"
 .endinfo
 .impmod _system
 .implab _cycle_in_spine
@@ -159,29 +170,30 @@
 .implab _driver
 .impmod extraTaskCombinators
 .implab e_extraTaskCombinators_s>>|-
+.impmod directoryBrowsing
+.implab e_directoryBrowsing_sselectFromTreeMaybe
+.implab e_directoryBrowsing_sgetPwdName
+.implab e_directoryBrowsing_sreadLinesFromFile
+.impdesc e_directoryBrowsing_disCleanFile
 .impmod shares
 .implab e_shares_ssettings
 .impdesc e_shares_dcontents
 .implab e_shares_scontents
 .implab e_shares_ncontents e_shares_eacontents
-.impdesc e_shares_dgEditor_Settings;7
-.implab e_shares_ngEditor_Settings;7
-.impdesc e_shares_dgText_Settings;8
-.impdesc e_shares_dJSONEncode_Settings;9
-.impdesc e_shares_dJSONDecode_Settings;10
-.impdesc e_shares_dgDefault_Settings;11
-.implab e_shares_ngDefault_Settings;11
-.impdesc e_shares_dgEq_Settings;12
+.impdesc e_shares_dgEditor_Settings;13
+.implab e_shares_ngEditor_Settings;13
+.impdesc e_shares_dgText_Settings;14
+.impdesc e_shares_dJSONEncode_Settings;15
+.impdesc e_shares_dJSONDecode_Settings;16
+.impdesc e_shares_dgDefault_Settings;17
+.implab e_shares_ngDefault_Settings;17
+.impdesc e_shares_dgEq_Settings;18
 .impdesc e_shares_dTD;Settings
-.impmod directoryBrowsing
-.implab e_directoryBrowsing_sselectFromTree
-.implab e_directoryBrowsing_sgetPwdName
-.implab e_directoryBrowsing_sreadLinesFromFile
-.impdesc e_directoryBrowsing_disCleanFile
 .impmod iTasks.WF.Combinators.Common
 .implab e_iTasks.WF.Combinators.Common_s>>-
 .implab e_iTasks.WF.Combinators.Common_s-||
 .impmod iTasks.WF.Tasks.Interaction
+.implab e_iTasks.WF.Tasks.Interaction_sviewInformation
 .implab e_iTasks.WF.Tasks.Interaction_supdateSharedInformation
 .impmod iTasks.WF.Tasks.SDS
 .implab e_iTasks.WF.Tasks.SDS_sget
@@ -239,6 +251,7 @@
 .impmod Data.Maybe
 .implab e_Data.Maybe_sgEq_Maybe;13
 .impdesc e_Data.Maybe_dTD;Maybe
+.impdesc e_Data.Maybe_dNothing
 .impdesc e_Data.Maybe_dJust
 .impmod Data.Map
 .implab e_Data.Map_sput
@@ -262,12 +275,12 @@
 .impdesc e__SystemDynamic_dTC__Tuple2
 .impdesc e__SystemDynamic_dTC__UnboxedArray
 .impdesc e__SystemDynamic_dTC__Unit
-.record r97 a 1 0 "JSONEncode_s;"
-.record r103 a 1 0 "JSONDecode_s;"
-.record r109 a 1 0 "gDefault_s;"
-.record r115 a 1 0 "gText_s;"
-.record r121 a 1 0 "gEditor_s;"
-.record r127 a 1 0 "gEq_s;"
+.record r174 a 1 0 "JSONEncode_s;"
+.record r180 a 1 0 "JSONDecode_s;"
+.record r186 a 1 0 "gDefault_s;"
+.record r192 a 1 0 "gText_s;"
+.record r198 a 1 0 "gEditor_s;"
+.record r204 a 1 0 "gEq_s;"
 .export e_pageChooseFile_spageChooseFile
 .export e_pageChooseFile_eapageChooseFile
 .descexp e_pageChooseFile_dpageChooseFile e_pageChooseFile_npageChooseFile e_pageChooseFile_lpageChooseFile 1 0 "pageChooseFile"
@@ -292,7 +305,7 @@ e_pageChooseFile_eapageChooseFile
 .o 3 0
 s1
 	push_a 1
-	buildh d94 1
+	buildh d117 1
 	create
 	buildh _Nil 0
 	update_a 0 4
@@ -305,22 +318,22 @@ s1
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;18 0
+	build e_shares_dgDefault_Settings;17 0 e_shares_ngDefault_Settings;17
+	buildh e_shares_dJSONDecode_Settings;16 0
+	buildh e_shares_dJSONEncode_Settings;15 0
+	buildh e_shares_dgText_Settings;14 0
+	build e_shares_dgEditor_Settings;13 0 e_shares_ngEditor_Settings;13
 	buildh e_shares_dTD;Settings 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;18 0
+	build e_shares_dgDefault_Settings;17 0 e_shares_ngDefault_Settings;17
+	buildh e_shares_dJSONDecode_Settings;16 0
+	buildh e_shares_dJSONEncode_Settings;15 0
+	buildh e_shares_dgText_Settings;14 0
+	build e_shares_dgEditor_Settings;13 0 e_shares_ngEditor_Settings;13
 	buildh e_iTasks.UI.Prompt_dtoPrompt;1 0
 	create
 	buildAC "paths"
@@ -359,12 +372,12 @@ s1
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
-	buildh e_shares_dgEq_Settings;12 0
-	build e_shares_dgDefault_Settings;11 0 e_shares_ngDefault_Settings;11
-	buildh e_shares_dJSONDecode_Settings;10 0
-	buildh e_shares_dJSONEncode_Settings;9 0
-	buildh e_shares_dgText_Settings;8 0
-	build e_shares_dgEditor_Settings;7 0 e_shares_ngEditor_Settings;7
+	buildh e_shares_dgEq_Settings;18 0
+	build e_shares_dgDefault_Settings;17 0 e_shares_ngDefault_Settings;17
+	buildh e_shares_dJSONDecode_Settings;16 0
+	buildh e_shares_dJSONEncode_Settings;15 0
+	buildh e_shares_dgText_Settings;14 0
+	build e_shares_dgEditor_Settings;13 0 e_shares_ngEditor_Settings;13
 	buildh e__SystemDynamic_dTC_Char 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
@@ -376,12 +389,40 @@ s1
 	build_r e__SystemDynamic_kTypeApp 2 0 0 0
 	update_a 0 2
 	pop_a 2
-	buildh e_GenEq_dgEq__String;6 0
-	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
-	buildh e_Text.JSON_dJSONDecode__String;39 0
-	buildh e_Text.JSON_dJSONEncode__String;15 0
-	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
-	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__Tuple2 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_Data.Maybe_dTD;Maybe 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d98 0
+	build _ 0 n96
+	buildh d95 0
+	buildh d94 0
+	buildh d93 0
+	build _ 0 n116
 	create
 	push_a 16
 	update_a 1 17
@@ -426,12 +467,40 @@ s1
 	build_r e__SystemDynamic_kTypeApp 2 0 0 0
 	update_a 0 2
 	pop_a 2
-	buildh e_GenEq_dgEq__String;6 0
-	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
-	buildh e_Text.JSON_dJSONDecode__String;39 0
-	buildh e_Text.JSON_dJSONEncode__String;15 0
-	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
-	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__Tuple2 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_Data.Maybe_dTD;Maybe 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d98 0
+	build _ 0 n96
+	buildh d95 0
+	buildh d94 0
+	buildh d93 0
+	build _ 0 n116
 	update_a 15 17
 	update_a 14 16
 	update_a 13 15
@@ -450,21 +519,42 @@ s1
 	updatepop_a 0 2
 .d 17 0
 	jmp e_iTasks.WF.Combinators.Common_s>>-
-.desc d94 _hnf l94 2 0 "<lambda>[line:16];9;412"
-.a 2 ea94
+.desc d117 _hnf l117 2 0 "<lambda>[line:18];9;429"
+.a 2 ea117
 .o 2 0
-l94
+l117
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea94
+ea117
+	jsr_eval 1
 .o 3 0
-s94
+s117
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s170
+.o 3 0
+s170
+	eq_desc e_Data.Maybe_dNothing 0 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	pop_a 1
+	jmp_eval_upd
+case.2
+	repl_args 1 1
+	jsr_eval 0
+	repl_args 2 2
 	push_a 1
-	build _ 1 n3
+	push_a 1
+	build e_System.FilePath_d</> 2 e_System.FilePath_n</>
+	build _ 1 n7
 	buildh e__SystemDynamic_dTC__Unit 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
@@ -485,7 +575,7 @@ s94
 	buildh e_iTasks.WF.Derives_dJSONEncode__Unit;0 0
 	buildh e_iTasks.Internal.Generic.Visualization_dgText__Unit;17 0
 	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	push_a 15
+	push_a 17
 	push_a 15
 	update_a 1 16
 	update_a 2 1
@@ -504,114 +594,31 @@ s94
 	update_a 15 14
 	update_a 0 15
 	pop_a 1
-	update_a 15 17
-	update_a 14 16
-	update_a 13 15
-	update_a 12 14
-	update_a 11 13
-	update_a 10 12
-	update_a 9 11
-	update_a 8 10
-	update_a 7 9
-	update_a 6 8
-	update_a 5 7
-	update_a 4 6
-	update_a 3 5
-	update_a 2 4
-	update_a 1 3
-	updatepop_a 0 2
+	update_a 15 18
+	update_a 14 17
+	update_a 13 16
+	update_a 12 15
+	update_a 11 14
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
 .d 17 0
-	jmp e_iTasks.WF.Combinators.Overloaded_s>>|;4
+	jmp e_extraTaskCombinators_s>>|-
 .o 1 0
 s2
-	buildh d6 0
+	buildh d9 0
 	create
 .d 1 0
 	jsr e_directoryBrowsing_sgetPwdName
 .o 1 0
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e_GenEq_dgEq__String;6 0
-	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
-	buildh e_Text.JSON_dJSONDecode__String;39 0
-	buildh e_Text.JSON_dJSONEncode__String;15 0
-	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
-	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e_GenEq_dgEq__String;6 0
-	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
-	buildh e_Text.JSON_dJSONDecode__String;39 0
-	buildh e_Text.JSON_dJSONEncode__String;15 0
-	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
-	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-.d 17 0
-	jmp e_iTasks.WF.Combinators.Common_s>>-
-.desc d6 _hnf l6 1 0 "<lambda>[line:21];9;5"
-.o 2 0
-l6
-	update_a 1 0
-	create
-	update_a 0 2
-	pop_a 1
-.o 2 0
-ea6
-	jsr_eval 0
-	push_array 0
-	update_a 0 1
-	pop_a 1
-.o 2 0
-s6
-	buildh d79 0
-	buildh e_directoryBrowsing_disCleanFile 0
-	create
-	push_a 3
-	pushB TRUE
-	push_a 2
-	update_a 2 3
-	update_a 0 2
-	pop_a 1
-	buildh _Nil 0
-	update_a 0 5
-	pop_a 1
-.d 3 1 b
-	jsr e_directoryBrowsing_sselectFromTree
-.o 1 0
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e_GenEq_dgEq__String;6 0
-	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
-	buildh e_Text.JSON_dJSONDecode__String;39 0
-	buildh e_Text.JSON_dJSONEncode__String;15 0
-	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
-	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
 	buildh e__SystemDynamic_dTC_Char 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
@@ -644,36 +651,44 @@ s6
 	build_r e__SystemDynamic_kTypeApp 2 0 0 0
 	update_a 0 2
 	pop_a 2
-	buildh d85 0
-	build _ 0 n84
-	buildh d83 0
-	buildh d82 0
-	buildh d81 0
-	build _ 0 n93
-	update_a 15 16
-	update_a 14 15
-	update_a 13 14
-	update_a 12 13
-	update_a 11 12
-	update_a 10 11
-	update_a 9 10
-	update_a 8 9
-	update_a 7 8
-	update_a 6 7
-	update_a 5 6
-	update_a 4 5
-	update_a 3 4
-	update_a 2 3
-	update_a 1 2
-	updatepop_a 0 1
+	buildh e_Data.Maybe_dTD;Maybe 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d98 0
+	build _ 0 n96
+	buildh d95 0
+	buildh d94 0
+	buildh d93 0
+	build _ 0 n116
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_GenEq_dgEq__String;6 0
+	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
+	buildh e_Text.JSON_dJSONDecode__String;39 0
+	buildh e_Text.JSON_dJSONEncode__String;15 0
+	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
+	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
 .d 17 0
 	jmp e_iTasks.WF.Combinators.Common_s>>-
 .n 0 _
 .o 1 0
-n93
+n116
 	push_node _cycle_in_spine 0
 .d 0 0
-	jsr ea93
+	jsr ea116
 .o 3 0
 .impmod iTasks.UI.Editor
 .impdesc e_iTasks.UI.Editor_rEditor
@@ -682,9 +697,31 @@ n93
 .d 1 0
 	rtn
 .o 0 0
-ea93
+ea116
 .o 0 0
-s93
+s116
+	buildh d101 0
+	buildh d102 0
+	build _ 0 n100
+	buildh d103 0
+	build _ 0 n112
+.d 5 0
+	jmp e_iTasks.UI.Editor.Generic_sgEditor_Maybe;21
+.n 0 _
+.o 1 0
+n112
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea112
+.o 3 0
+	fill_r e_iTasks.UI.Editor_rEditor 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.o 0 0
+ea112
+.o 0 0
+s112
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
@@ -697,20 +734,47 @@ s93
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
 .d 10 0
 	jmp e_iTasks.UI.Editor.Generic_sgEditor__Tuple2;14
-.desc d81 _hnf l81 2 0 "gText_s;399"
-.a 2 ea81
+.desc d93 _hnf l93 2 0 "gText_s;405"
+.a 2 ea93
 .o 2 0
-l81
+l93
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea81
+ea93
 	jsr_eval 0
 .o 3 0
-s81
+s93
+	buildh d103 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp e_iTasks.Internal.Generic.Visualization_sgText_Maybe;27
+.desc d103 _hnf l103 2 0 "gText_s;415"
+.a 2 ea103
+.o 2 0
+l103
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea103
+	jsr_eval 0
+.o 3 0
+s103
 	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
 	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
 	push_a 3
@@ -728,17 +792,46 @@ s81
 	updatepop_a 0 2
 .d 5 0
 	jmp e_iTasks.Internal.Generic.Visualization_sgText__Tuple2;18
-.desc d82 _hnf l82 2 0 "JSONEncode_s;400"
-.a 2 ea82
+.desc d94 _hnf l94 2 0 "JSONEncode_s;406"
+.a 2 ea94
 .o 2 0
-l82
+l94
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea82
+ea94
+	jsr_eval 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 2 1 b
+s94
+	buildh d102 0
+	push_a 1
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 3 1 b
+	jmp e_Text.JSON_sJSONEncode_Maybe;27
+.desc d102 _hnf l102 2 0 "JSONEncode_s;414"
+.a 2 ea102
+.o 2 0
+l102
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea102
 	push_a 1
 	jsr_eval 0
 	repl_args 2 2
@@ -748,7 +841,7 @@ ea82
 	update_a 0 2
 	pop_a 2
 .o 3 1 b
-s82
+s102
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	push_a 3
@@ -768,15 +861,15 @@ s82
 	updatepop_b 0 1
 .d 5 1 b
 	jmp e_Text.JSON_sJSONEncode__Tuple2;18
-.desc d83 _hnf l83 2 0 "JSONDecode_s;401"
-.a 0 a83
+.desc d95 _hnf l95 2 0 "JSONDecode_s;407"
+.a 0 a95
 .o 2 0
-l83
+l95
 	repl_args 1 1
 .o 2 0
-a83
+a95
 .d 2 0
-	jsr ea83
+	jsr ea95
 .o 2 0
 	push_a 1
 	push_a 1
@@ -785,13 +878,49 @@ a83
 .d 1 0
 	rtn
 .o 2 0
-ea83
+ea95
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 1 1 b
-s83
+s95
+	buildh d101 0
+	push_a 1
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 2 1 b
+	jmp e_Text.JSON_sJSONDecode_Maybe;54
+.desc d101 _hnf l101 2 0 "JSONDecode_s;413"
+.a 0 a101
+.o 2 0
+l101
+	repl_args 1 1
+.o 2 0
+a101
+.d 2 0
+	jsr ea101
+.o 2 0
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 2 0
+ea101
+	jsr_eval 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 1 1 b
+s101
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	push_a 2
@@ -807,12 +936,23 @@ s83
 	updatepop_b 0 1
 .d 3 1 b
 	jmp e_Text.JSON_sJSONDecode__Tuple2;45
+.n 0 _ ea96
+.o 1 0
+n96
+	push_node _cycle_in_spine 0
+.o 1 0
+ea96
+.o 1 0
+s96
+	build _ 0 n100
+.d 2 0
+	jmp e_iTasks.Internal.Generic.Defaults_sgDefault_Maybe;24
 .n 0 _
 .o 1 0
-n84
+n100
 	push_node _cycle_in_spine 0
 .d 0 0
-	jsr ea84
+	jsr ea100
 .o 2 0
 	push_a 1
 	push_a 1
@@ -821,31 +961,62 @@ n84
 .d 1 0
 	rtn
 .o 0 0
-ea84
+ea100
 .o 0 0
-s84
+s100
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
 .d 2 0
 	jmp e_iTasks.Internal.Generic.Defaults_sgDefault__Tuple2;15
-.desc d85 _hnf l85 2 0 "gEq_s;403"
-.a 0 a85
+.desc d98 _hnf l98 2 0 "gEq_s;410"
+.a 0 a98
 .o 2 0
-l85
+l98
 	repl_args 1 1
 .o 2 0
-a85
+a98
 .d 2 0
-	jsr ea85
+	jsr ea98
 .o 0 1 b
 	buildB_b 0
 	pop_b 1
 .d 1 0
 	rtn
 .o 2 0
-ea85
+ea98
 .o 2 0
-s85
+s98
+	buildh d99 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp e_Data.Maybe_sgEq_Maybe;13
+.desc d99 _hnf l99 2 0 "gEq_s;411"
+.a 0 a99
+.o 2 0
+l99
+	repl_args 1 1
+.o 2 0
+a99
+.d 2 0
+	jsr ea99
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea99
+.o 2 0
+s99
 	buildh e_GenEq_dgEq__String;6 0
 	buildh e_GenEq_dgEq__String;6 0
 	push_a 3
@@ -863,59 +1034,38 @@ s85
 	updatepop_a 0 2
 .d 4 0
 	jmp e_GenEq_sgEq__Tuple2;17
-.desc d79 _hnf l79 1 0 "<lambda>[line:22];9;397"
+.desc d9 _hnf l9 1 0 "<lambda>[line:25];9;8"
 .o 2 0
-l79
+l9
 	update_a 1 0
 	create
 	update_a 0 2
 	pop_a 1
 .o 2 0
-ea79
+ea9
 	jsr_eval 0
-	repl_args 2 2
-.o 3 0
-s79
-	push_a 1
-	push_a 1
-	build e_System.FilePath_d</> 2 e_System.FilePath_n</>
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	push_array 0
 	update_a 0 1
 	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e_GenEq_dgEq__String;6 0
-	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
-	buildh e_Text.JSON_dJSONDecode__String;39 0
-	buildh e_Text.JSON_dJSONEncode__String;15 0
-	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
-	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	update_a 7 9
-	update_a 6 8
-	update_a 5 7
-	update_a 4 6
-	update_a 3 5
-	update_a 2 4
-	update_a 1 3
-	updatepop_a 0 2
-.d 9 0
-	jmp e_iTasks.WF.Combinators.Overloaded_sreturn;2
-.n 1 _ ea3
+.o 2 0
+s9
+	buildh e_directoryBrowsing_disCleanFile 0
+	push_a 1
+	pushB TRUE
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 1 b
+	jmp e_directoryBrowsing_sselectFromTreeMaybe
+.n 1 _ ea7
 .o 1 0
-n3
+n7
 	push_node _cycle_in_spine 1
 .o 2 0
-ea3
+ea7
 .o 2 0
-s3
+s7
 	push_a 0
-	buildh d8 1
+	buildh d16 1
 	create
 	push_a 2
 	buildh _Nil 0
@@ -959,12 +1109,12 @@ s3
 	build_r e__SystemDynamic_kTypeApp 2 0 0 0
 	update_a 0 2
 	pop_a 2
-	buildh d68 0
-	build _ 0 n67
-	buildh d66 0
-	buildh d65 0
-	buildh d64 0
-	build _ 0 n72
+	buildh d82 0
+	build _ 0 n81
+	buildh d80 0
+	buildh d79 0
+	buildh d78 0
+	build _ 0 n86
 	update_a 15 16
 	update_a 14 15
 	update_a 13 14
@@ -985,41 +1135,41 @@ s3
 	jmp e_iTasks.WF.Combinators.Common_s>>-
 .n 0 _
 .o 1 0
-n72
+n86
 	push_node _cycle_in_spine 0
 .d 0 0
-	jsr ea72
+	jsr ea86
 .o 3 0
 	fill_r e_iTasks.UI.Editor_rEditor 3 0 3 0 0
 	pop_a 3
 .d 1 0
 	rtn
 .o 0 0
-ea72
+ea86
 .o 0 0
-s72
-	buildh d37 0
-	buildh d36 0
-	build _ 0 n35
-	buildh d34 0
-	build _ 0 n56
+s86
+	buildh d51 0
+	buildh d50 0
+	build _ 0 n49
+	buildh d48 0
+	build _ 0 n70
 .d 5 0
 	jmp e_iTasks.UI.Editor.Generic_sgEditor_Maybe;21
-.desc d64 _hnf l64 2 0 "gText_s;382"
-.a 2 ea64
+.desc d78 _hnf l78 2 0 "gText_s;390"
+.a 2 ea78
 .o 2 0
-l64
+l78
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea64
+ea78
 	jsr_eval 0
 .o 3 0
-s64
-	buildh d34 0
+s78
+	buildh d48 0
 	push_a 2
 	push_a 2
 	push_a 2
@@ -1032,24 +1182,24 @@ s64
 	updatepop_a 0 2
 .d 4 0
 	jmp e_iTasks.Internal.Generic.Visualization_sgText_Maybe;27
-.desc d65 _hnf l65 2 0 "JSONEncode_s;383"
-.a 2 ea65
+.desc d79 _hnf l79 2 0 "JSONEncode_s;391"
+.a 2 ea79
 .o 2 0
-l65
+l79
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea65
+ea79
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 2 1 b
-s65
-	buildh d36 0
+s79
+	buildh d50 0
 	push_a 1
 	push_b 0
 	push_a 1
@@ -1061,15 +1211,15 @@ s65
 	updatepop_b 0 1
 .d 3 1 b
 	jmp e_Text.JSON_sJSONEncode_Maybe;27
-.desc d66 _hnf l66 2 0 "JSONDecode_s;384"
-.a 0 a66
+.desc d80 _hnf l80 2 0 "JSONDecode_s;392"
+.a 0 a80
 .o 2 0
-l66
+l80
 	repl_args 1 1
 .o 2 0
-a66
+a80
 .d 2 0
-	jsr ea66
+	jsr ea80
 .o 2 0
 	push_a 1
 	push_a 1
@@ -1078,14 +1228,14 @@ a66
 .d 1 0
 	rtn
 .o 2 0
-ea66
+ea80
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 1 1 b
-s66
-	buildh d37 0
+s80
+	buildh d51 0
 	push_a 1
 	push_b 0
 	push_a 1
@@ -1097,36 +1247,36 @@ s66
 	updatepop_b 0 1
 .d 2 1 b
 	jmp e_Text.JSON_sJSONDecode_Maybe;54
-.n 0 _ ea67
+.n 0 _ ea81
 .o 1 0
-n67
+n81
 	push_node _cycle_in_spine 0
 .o 1 0
-ea67
+ea81
 .o 1 0
-s67
-	build _ 0 n35
+s81
+	build _ 0 n49
 .d 2 0
 	jmp e_iTasks.Internal.Generic.Defaults_sgDefault_Maybe;24
-.desc d68 _hnf l68 2 0 "gEq_s;386"
-.a 0 a68
+.desc d82 _hnf l82 2 0 "gEq_s;394"
+.a 0 a82
 .o 2 0
-l68
+l82
 	repl_args 1 1
 .o 2 0
-a68
+a82
 .d 2 0
-	jsr ea68
+	jsr ea82
 .o 0 1 b
 	buildB_b 0
 	pop_b 1
 .d 1 0
 	rtn
 .o 2 0
-ea68
+ea82
 .o 2 0
-s68
-	buildh d43 0
+s82
+	buildh d57 0
 	push_a 2
 	push_a 2
 	push_a 2
@@ -1139,31 +1289,124 @@ s68
 	updatepop_a 0 2
 .d 3 0
 	jmp e_Data.Maybe_sgEq_Maybe;13
-.desc d8 _hnf l8 2 0 "<lambda>[line:28];9;7"
-.a 2 ea8
+.desc d16 _hnf l16 2 0 "<lambda>[line:63];35;15"
+.a 2 ea16
 .o 2 0
-l8
+l16
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea8
+ea16
 	jsr_eval 1
 .o 3 0
-s8
-	eq_desc e_Data.Maybe_dJust 1 1
-	jmp_true case.1
-	jmp s8.1
-case.1
-	push_args 1 1 1
-	buildh _Nil 0
-	update_a 0 3
-	pop_a 1
+s16
 	push_a 0
 	push_a 2
-	buildh d7 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s168
+.o 3 0
+s168
+	eq_desc e_Data.Maybe_dNothing 0 0
+	jmp_true case.3
+	jmp case.4
+case.3
+	buildh e__SystemDynamic_dTC__Unit 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build e_iTasks.Internal.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks.Internal.Generic.Defaults_ngDefault__Unit;14
+	build_r r186 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
+	build_r r198 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build _ 3 n285
+	buildh _Nil 0
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
+	build_r r186 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
+	build_r r198 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	push_a 6
+	push_a 4
+	update_a 1 5
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 0 4
+	pop_a 1
+	build _ 5 n284
+	buildh e__SystemDynamic_dTC__Unit 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e_iTasks.WF.Derives_dgEq__Unit;12 0
+	build e_iTasks.Internal.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks.Internal.Generic.Defaults_ngDefault__Unit;14
+	buildh e_iTasks.WF.Derives_dJSONDecode__Unit;6 0
+	buildh e_iTasks.WF.Derives_dJSONEncode__Unit;0 0
+	buildh e_iTasks.Internal.Generic.Visualization_dgText__Unit;17 0
+	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_GenEq_dgEq__String;6 0
+	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
+	buildh e_Text.JSON_dJSONDecode__String;39 0
+	buildh e_Text.JSON_dJSONEncode__String;15 0
+	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
+	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
+	update_a 15 17
+	update_a 14 16
+	update_a 13 15
+	update_a 12 14
+	update_a 11 13
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 17 0
+	jmp e_iTasks.WF.Combinators.Overloaded_s>>|;4
+case.4
+	repl_args 1 1
+	push_a 0
+	push_a 2
+	buildh d15 2
 	create
 	buildh _Nil 0
 	update_a 0 4
@@ -1211,12 +1454,12 @@ case.1
 	build_r e__SystemDynamic_kTypeApp 2 0 0 0
 	update_a 0 2
 	pop_a 2
-	buildh d51 0
-	build _ 0 n50
-	buildh d49 0
-	buildh d48 0
-	buildh d47 0
-	build _ 0 n62
+	buildh d65 0
+	build _ 0 n64
+	buildh d63 0
+	buildh d62 0
+	buildh d61 0
+	build _ 0 n76
 	create
 	push_a 8
 	update_a 1 9
@@ -1281,196 +1524,38 @@ case.1
 	build_r e__SystemDynamic_kTypeApp 2 0 0 0
 	update_a 0 2
 	pop_a 2
-	buildh d51 0
-	build _ 0 n50
-	buildh d49 0
-	buildh d48 0
-	buildh d47 0
-	build _ 0 n62
-	update_a 15 18
-	update_a 14 17
-	update_a 13 16
-	update_a 12 15
-	update_a 11 14
-	update_a 10 13
-	update_a 9 12
-	update_a 8 11
-	update_a 7 10
-	update_a 6 9
-	update_a 5 8
-	update_a 4 7
-	update_a 3 6
-	update_a 2 5
-	update_a 1 4
-	updatepop_a 0 3
+	buildh d65 0
+	build _ 0 n64
+	buildh d63 0
+	buildh d62 0
+	buildh d61 0
+	build _ 0 n76
+	update_a 15 17
+	update_a 14 16
+	update_a 13 15
+	update_a 12 14
+	update_a 11 13
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
 .d 17 0
 	jmp e_iTasks.WF.Combinators.Common_s>>-
-s8.1
-	pop_a 3
-	pushD m_pageChooseFile
-	pushD d8
-.d 0 2 ii
-	jmp _match_error
-.desc d7 _hnf l7 3 0 "<lambda>[line:29];9;6"
-.a 3 ea7
-.o 2 0
-l7
-	push_args 0 2 2
-	update_a 3 2
-	create
-	update_a 0 4
-	pop_a 1
-.o 4 0
-ea7
-.o 4 0
-s7
-	buildh e__SystemDynamic_dTC__Unit 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build e_iTasks.Internal.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks.Internal.Generic.Defaults_ngDefault__Unit;14
-	build_r r109 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	build_r r121 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build _ 3 n209
-	build e_shares_dcontents 0 e_shares_ncontents
-	push_a 4
-	push_a 4
-	push_a 4
-	build _ 3 n208
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e__SystemDynamic_dTC__List 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e_Data.Map_dTD;Map 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	build _ 0 n50
-	build_r r109 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build _ 0 n62
-	build_r r121 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build _ 5 n207
-	buildh e__SystemDynamic_dTC__Unit 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e_iTasks.WF.Derives_dgEq__Unit;12 0
-	build e_iTasks.Internal.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks.Internal.Generic.Defaults_ngDefault__Unit;14
-	buildh e_iTasks.WF.Derives_dJSONDecode__Unit;6 0
-	buildh e_iTasks.WF.Derives_dJSONEncode__Unit;0 0
-	buildh e_iTasks.Internal.Generic.Visualization_dgText__Unit;17 0
-	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e__SystemDynamic_dTC__List 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e__SystemDynamic_dTC_Char 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	buildh e__SystemDynamic_dTC__UnboxedArray 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh e_Data.Map_dTD;Map 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	build_r e__SystemDynamic_kTypeApp 2 0 0 0
-	update_a 0 2
-	pop_a 2
-	buildh d51 0
-	build _ 0 n50
-	buildh d49 0
-	buildh d48 0
-	buildh d47 0
-	build _ 0 n62
-	update_a 15 18
-	update_a 14 17
-	update_a 13 16
-	update_a 12 15
-	update_a 11 14
-	update_a 10 13
-	update_a 9 12
-	update_a 8 11
-	update_a 7 10
-	update_a 6 9
-	update_a 5 8
-	update_a 4 7
-	update_a 3 6
-	update_a 2 5
-	update_a 1 4
-	updatepop_a 0 3
-.d 17 0
-	jmp e_extraTaskCombinators_s>>|-
-.n 3 _ ea209
+.n 3 _ ea285
 .o 1 0
-n209
+n285
 	push_node _cycle_in_spine 3
 .o 4 0
-ea209
+ea285
 .o 4 0
-s209
+s285
 	buildh e__predef_d_Unit 0
 	push_a 3
 	jsr_eval 0
@@ -1494,14 +1579,251 @@ s209
 	updatepop_a 0 3
 .d 9 0
 	jmp e_iTasks.WF.Combinators.Overloaded_sreturn;2
-.n 3 _ ea208
+.n 5 _ ea284
 .o 1 0
-n208
+n284
+	push_node _cycle_in_spine 5
+.o 6 0
+ea284
+.o 6 0
+s284
+	push_a 4
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	buildh e_GenEq_dgEq__String;6 0
+	push_a 4
+	jsr_eval 0
+	repl_r_args 1 0
+	buildh e_Text.JSON_dJSONDecode__String;39 0
+	buildh e_Text.JSON_dJSONEncode__String;15 0
+	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
+	push_a 7
+	jsr_eval 0
+	repl_r_args 1 0
+	buildh e_iTasks.UI.Prompt_dtoPrompt;1 0
+	push_a 12
+	buildAC "not found"
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+	push_a 9
+	update_a 2 10
+	update_a 4 2
+	update_a 6 4
+	update_a 8 6
+	update_a 0 8
+	update_a 9 0
+	update_a 1 9
+	update_a 3 1
+	update_a 5 3
+	update_a 7 5
+	update_a 0 7
+	pop_a 1
+	update_a 10 15
+	update_a 9 14
+	update_a 8 13
+	update_a 7 12
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 12 0
+	jmp e_iTasks.WF.Tasks.Interaction_sviewInformation
+.desc d15 _hnf l15 3 0 "<lambda>[line:67];21;14"
+.a 3 ea15
+.o 2 0
+l15
+	push_args 0 2 2
+	update_a 3 2
+	create
+	update_a 0 4
+	pop_a 1
+.o 4 0
+ea15
+.o 4 0
+s15
+	buildh e__SystemDynamic_dTC__Unit 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build e_iTasks.Internal.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks.Internal.Generic.Defaults_ngDefault__Unit;14
+	build_r r186 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
+	build_r r198 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build _ 3 n288
+	build e_shares_dcontents 0 e_shares_ncontents
+	push_a 4
+	push_a 4
+	push_a 4
+	build _ 3 n287
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__List 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_Data.Map_dTD;Map 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build _ 0 n64
+	build_r r186 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build _ 0 n76
+	build_r r198 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build _ 5 n286
+	buildh e__SystemDynamic_dTC__Unit 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e_iTasks.WF.Derives_dgEq__Unit;12 0
+	build e_iTasks.Internal.Generic.Defaults_dgDefault__Unit;14 0 e_iTasks.Internal.Generic.Defaults_ngDefault__Unit;14
+	buildh e_iTasks.WF.Derives_dJSONDecode__Unit;6 0
+	buildh e_iTasks.WF.Derives_dJSONEncode__Unit;0 0
+	buildh e_iTasks.Internal.Generic.Visualization_dgText__Unit;17 0
+	build e_iTasks.UI.Editor.Generic_dgEditor__Unit;13 0 e_iTasks.UI.Editor.Generic_ngEditor__Unit;13
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC__List 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e__SystemDynamic_dTC_Char 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	buildh e__SystemDynamic_dTC__UnboxedArray 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_Data.Map_dTD;Map 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	build_r e__SystemDynamic_kTypeApp 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh d65 0
+	build _ 0 n64
+	buildh d63 0
+	buildh d62 0
+	buildh d61 0
+	build _ 0 n76
+	update_a 15 18
+	update_a 14 17
+	update_a 13 16
+	update_a 12 15
+	update_a 11 14
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 17 0
+	jmp e_extraTaskCombinators_s>>|-
+.n 3 _ ea288
+.o 1 0
+n288
 	push_node _cycle_in_spine 3
 .o 4 0
-ea208
+ea288
 .o 4 0
-s208
+s288
+	buildh e__predef_d_Unit 0
+	push_a 3
+	jsr_eval 0
+	buildh e_iTasks.WF.Derives_dgEq__Unit;12 0
+	push_a 4
+	jsr_eval 0
+	repl_r_args 1 0
+	buildh e_iTasks.WF.Derives_dJSONDecode__Unit;6 0
+	buildh e_iTasks.WF.Derives_dJSONEncode__Unit;0 0
+	buildh e_iTasks.Internal.Generic.Visualization_dgText__Unit;17 0
+	push_a 7
+	jsr_eval 0
+	repl_r_args 1 0
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 9 0
+	jmp e_iTasks.WF.Combinators.Overloaded_sreturn;2
+.n 3 _ ea287
+.o 1 0
+n287
+	push_node _cycle_in_spine 3
+.o 4 0
+ea287
+.o 4 0
+s287
 	push_a 2
 	jsr_eval 0
 	push_a 2
@@ -1515,27 +1837,27 @@ s208
 	updatepop_a 0 3
 .d 5 0
 	jmp e_Data.Map_sput
-.n 5 _ ea207
+.n 5 _ ea286
 .o 1 0
-n207
+n286
 	push_node _cycle_in_spine 5
 .o 6 0
-ea207
+ea286
 .o 6 0
-s207
+s286
 	push_a 4
 	jsr_eval 0
 	push_a 4
 	jsr_eval 0
 	push_a 4
 	jsr_eval 0
-	buildh d51 0
+	buildh d65 0
 	push_a 5
 	jsr_eval 0
 	repl_r_args 1 0
-	buildh d49 0
-	buildh d48 0
-	buildh d47 0
+	buildh d63 0
+	buildh d62 0
+	buildh d61 0
 	push_a 8
 	jsr_eval 0
 	repl_r_args 1 0
@@ -1552,24 +1874,24 @@ s207
 	jmp e_iTasks.WF.Tasks.SDS_sset
 .n 0 _
 .o 1 0
-n62
+n76
 	push_node _cycle_in_spine 0
 .d 0 0
-	jsr ea62
+	jsr ea76
 .o 3 0
 	fill_r e_iTasks.UI.Editor_rEditor 3 0 3 0 0
 	pop_a 3
 .d 1 0
 	rtn
 .o 0 0
-ea62
+ea76
 .o 0 0
-s62
-	buildh d37 0
-	buildh d36 0
-	build _ 0 n35
-	buildh d34 0
-	build _ 0 n56
+s76
+	buildh d51 0
+	buildh d50 0
+	build _ 0 n49
+	buildh d48 0
+	build _ 0 n70
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
@@ -1579,19 +1901,19 @@ s62
 	jmp e_iTasks.UI.Editor.Generic_sgEditor_Map;24
 .n 0 _
 .o 1 0
-n56
+n70
 	push_node _cycle_in_spine 0
 .d 0 0
-	jsr ea56
+	jsr ea70
 .o 3 0
 	fill_r e_iTasks.UI.Editor_rEditor 3 0 3 0 0
 	pop_a 3
 .d 1 0
 	rtn
 .o 0 0
-ea56
+ea70
 .o 0 0
-s56
+s70
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
@@ -1599,21 +1921,21 @@ s56
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
 .d 5 0
 	jmp e_iTasks.UI.Editor.Generic_sgEditor__List;12
-.desc d47 _hnf l47 2 0 "gText_s;365"
-.a 2 ea47
+.desc d61 _hnf l61 2 0 "gText_s;373"
+.a 2 ea61
 .o 2 0
-l47
+l61
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea47
+ea61
 	jsr_eval 0
 .o 3 0
-s47
-	buildh d34 0
+s61
+	buildh d48 0
 	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
 	push_a 3
 	push_a 3
@@ -1630,24 +1952,24 @@ s47
 	updatepop_a 0 2
 .d 5 0
 	jmp e_iTasks.Internal.Generic.Visualization_sgText_Map;30
-.desc d48 _hnf l48 2 0 "JSONEncode_s;366"
-.a 2 ea48
+.desc d62 _hnf l62 2 0 "JSONEncode_s;374"
+.a 2 ea62
 .o 2 0
-l48
+l62
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea48
+ea62
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 2 1 b
-s48
-	buildh d36 0
+s62
+	buildh d50 0
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	push_a 2
 	push_b 0
@@ -1662,15 +1984,15 @@ s48
 	updatepop_b 0 1
 .d 4 1 b
 	jmp e_Data.Map_sJSONEncode_Map;35
-.desc d49 _hnf l49 2 0 "JSONDecode_s;367"
-.a 0 a49
+.desc d63 _hnf l63 2 0 "JSONDecode_s;375"
+.a 0 a63
 .o 2 0
-l49
+l63
 	repl_args 1 1
 .o 2 0
-a49
+a63
 .d 2 0
-	jsr ea49
+	jsr ea63
 .o 2 0
 	push_a 1
 	push_a 1
@@ -1679,14 +2001,14 @@ a49
 .d 1 0
 	rtn
 .o 2 0
-ea49
+ea63
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 1 1 b
-s49
-	buildh d37 0
+s63
+	buildh d51 0
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	push_a 2
 	push_b 0
@@ -1701,37 +2023,37 @@ s49
 	updatepop_b 0 1
 .d 3 1 b
 	jmp e_Data.Map_sJSONDecode_Map;36
-.n 0 _ ea50
+.n 0 _ ea64
 .o 1 0
-n50
+n64
 	push_node _cycle_in_spine 0
 .o 1 0
-ea50
+ea64
 .o 1 0
-s50
-	build _ 0 n35
+s64
+	build _ 0 n49
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
 .d 3 0
 	jmp e_iTasks.Internal.Generic.Defaults_sgDefault_Map;27
-.desc d51 _hnf l51 2 0 "gEq_s;369"
-.a 0 a51
+.desc d65 _hnf l65 2 0 "gEq_s;377"
+.a 0 a65
 .o 2 0
-l51
+l65
 	repl_args 1 1
 .o 2 0
-a51
+a65
 .d 2 0
-	jsr ea51
+	jsr ea65
 .o 0 1 b
 	buildB_b 0
 	pop_b 1
 .d 1 0
 	rtn
 .o 2 0
-ea51
+ea65
 .o 2 0
-s51
-	buildh d43 0
+s65
+	buildh d57 0
 	buildh e_GenEq_dgEq__String;6 0
 	push_a 3
 	push_a 3
@@ -1748,20 +2070,20 @@ s51
 	updatepop_a 0 2
 .d 4 0
 	jmp e_Data.Map_sgEq_Map;37
-.desc d34 _hnf l34 2 0 "gText_s;352"
-.a 2 ea34
+.desc d48 _hnf l48 2 0 "gText_s;360"
+.a 2 ea48
 .o 2 0
-l34
+l48
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea34
+ea48
 	jsr_eval 0
 .o 3 0
-s34
+s48
 	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
 	push_a 2
 	push_a 2
@@ -1775,23 +2097,23 @@ s34
 	updatepop_a 0 2
 .d 4 0
 	jmp e_iTasks.Internal.Generic.Visualization_sgText__List;16
-.desc d36 _hnf l36 2 0 "JSONEncode_s;354"
-.a 2 ea36
+.desc d50 _hnf l50 2 0 "JSONEncode_s;362"
+.a 2 ea50
 .o 2 0
-l36
+l50
 	push_args 0 1 1
 	update_a 2 1
 	create
 	update_a 0 3
 	pop_a 1
 .o 3 0
-ea36
+ea50
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 2 1 b
-s36
+s50
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	push_a 1
 	push_b 0
@@ -1804,15 +2126,15 @@ s36
 	updatepop_b 0 1
 .d 3 1 b
 	jmp e_Text.JSON_sJSONEncode__List;17
-.desc d37 _hnf l37 2 0 "JSONDecode_s;355"
-.a 0 a37
+.desc d51 _hnf l51 2 0 "JSONDecode_s;363"
+.a 0 a51
 .o 2 0
-l37
+l51
 	repl_args 1 1
 .o 2 0
-a37
+a51
 .d 2 0
-	jsr ea37
+	jsr ea51
 .o 2 0
 	push_a 1
 	push_a 1
@@ -1821,13 +2143,13 @@ a37
 .d 1 0
 	rtn
 .o 2 0
-ea37
+ea51
 	jsr_eval 1
 	jsr_eval 0
 	pushB_a 0
 	pop_a 1
 .o 1 1 b
-s37
+s51
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	push_a 1
 	push_b 0
@@ -1840,35 +2162,35 @@ s37
 	updatepop_b 0 1
 .d 2 1 b
 	jmp e_Text.JSON_sJSONDecode__List;44
-.n 0 _ ea35
+.n 0 _ ea49
 .o 1 0
-n35
+n49
 	push_node _cycle_in_spine 0
 .o 1 0
-ea35
+ea49
 .o 1 0
-s35
+s49
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
 .d 2 0
 	jmp e_iTasks.Internal.Generic.Defaults_sgDefault__List;13
-.desc d43 _hnf l43 2 0 "gEq_s;361"
-.a 0 a43
+.desc d57 _hnf l57 2 0 "gEq_s;369"
+.a 0 a57
 .o 2 0
-l43
+l57
 	repl_args 1 1
 .o 2 0
-a43
+a57
 .d 2 0
-	jsr ea43
+	jsr ea57
 .o 0 1 b
 	buildB_b 0
 	pop_b 1
 .d 1 0
 	rtn
 .o 2 0
-ea43
+ea57
 .o 2 0
-s43
+s57
 	buildh e_GenEq_dgEq__String;6 0
 	push_a 2
 	push_a 2
@@ -1882,5 +2204,3 @@ s43
 	updatepop_a 0 2
 .d 3 0
 	jmp e_GenEq_sgEq__List;16
-.impmod _system
-.implab _match_error

@@ -7,12 +7,19 @@ import pageAskImportPaths
 import qualified Data.Map as DM
 import shares
 import settings
+import pageCreateFile
+import errorHandling
 
-Start world = //vbselecties//
+Start world =
+	//isAFunctionLineTest//vbselecties//
 	startEngine
-	//(startTask)
-	pagenodeEditor
-	//(viewInformation "" [] "henk")
+	//(return () >>* [OnAction (Action "a") (always (return ()))])//
+	/*(viewSharedInformation "" [] contents -&&- (forever (enterInformation "" []
+	>>= (\a. placeText "aaa" 0 a)
+	>>| contentLinesOf "aaa"
+	>>= \a. (viewInformation "tada!" [] a)
+	>>| return ())))*/
+	(startTask)
 	world
 
 // first force settings after which by default we open an editor onn the main .icl file
@@ -21,7 +28,7 @@ startTask
 	=				get settings
 	>>- \curSet ->	get project
 	>>- \curProj ->	let isProj = curProj.projectPath <> "" && curProj.projectName <> ""
-					    isCPM  = curSet.cpmDirectory <> ""
+					    isCPM  = curSet.cleanHome <> ""
 					in if (not isProj || not isCPM)
 							(setSettings  >>| startTask)
 					   		(pagenodeEditor)
@@ -29,6 +36,15 @@ startTask
 pagenodeChooseFile :: Task ()
 pagenodeChooseFile =
 	pageChooseFile (ActionContinue, pagenodeEditor)
+
+pagenodeCreateFile :: Task ()
+pagenodeCreateFile =
+	pageCreateFile
+	(	(Action "Create",
+			 pagenodeEditor)
+	,	(ActionCancel,
+			pagenodeEditor)
+	)
 
 pagenodeEditor :: Task ()
 pagenodeEditor =
@@ -38,8 +54,10 @@ pagenodeEditor =
 	(pageEditor
 	(	(ActionOpen,
 			pagenodeChooseFile)
-	,	(Action "import paths",
+	,	(Action "Import Paths",
 			pagenodeAskImportPaths)
+	,	(Action "/File/New",
+			pagenodeCreateFile)
 	))
 
 pagenodeAskImportPaths :: Task ()

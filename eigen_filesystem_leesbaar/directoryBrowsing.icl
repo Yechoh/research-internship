@@ -105,6 +105,63 @@ where
 		= ([cf:cfs],j)
 */
 
+selectFromTreeMaybe :: !Bool !FilePath !(FileName -> Bool) -> Task (Maybe (FilePath,String))
+selectFromTreeMaybe show fp isWantedFile
+	=				fetchDirectories fp isWantedFile
+	>>= \dirs ->	withShared dirs (edit dirs)
+		>>* 		[ OnAction (Action "Select")	(ifValue (\mbsel -> isWantedFile (snd (split fp dirs mbsel))) (\mbsel -> return (Just (split fp dirs mbsel))))
+					, OnAction (Action "Up")		(ifCond (snd (splitFileName fp) <> "") (selectFromTreeMaybe show (takeDirectory fp) isWantedFile))
+					, OnAction ActionCancel			(always (return Nothing))
+					]
+where
+
+	edit dirs sdirs
+		= 				editSelectionWithShared () False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) sdirs (\_ -> [])
+		>&> \mbsel ->	if show (viewSharedInformation "Selected: " [ViewAs (findSelected fp (conv 0 dirs))] mbsel)
+								(get mbsel)
+
+selectFolder :: !FilePath  -> Task (String,String)
+selectFolder fp
+	=				fetchDirectories fp (\x.False)
+	>>= \dirs ->	withShared dirs (edit dirs)
+		>>* 		[ OnAction (Action "Up")		(ifCond (snd (splitFileName fp) <> "") (selectFolder (takeDirectory fp)))
+					]
+where
+
+	edit dirs sdirs
+		= 				editSelectionWithShared () False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) sdirs (\_ -> [])
+		>&> \mbsel ->	(viewSharedInformation "Selected: " [ViewAs (findSelected fp (conv 0 dirs))] mbsel)
+
+
+//toFileloc isWantedFile = (\mbsel -> isWantedFile (snd (split fp dirs mbsel))) (\mbsel -> return (split fp dirs mbsel))
+/*
+createTree :: FilePath (FileName -> Bool) -> Task (FilePath,(FileName->Bool),Shared Directory)
+createTree fp isWantedFile
+	= fetchDirectories fp isWantedFile
+	>>- \dirs -> withShared dirs (\sdirs.return (fp,isWantedFile,sdirs))
+
+selectFromTree :: (FilePath,(FileName->Bool),Shared Directory) -> Task [Int]
+selectFromTree (fp,isWantedFile,sdirs)
+	=	(editSelectionWithShared () False (SelectInTree (\d -> fst (conv 0 d)) (\_ idx -> idx)) sdirs (\_ -> []))
+		>^* [OnAction (Action "Up")		(ifCond cond (do sdirs))]
+	cond :: Bool
+	cond = 	(snd (splitFileName fp) <> "")
+	do :: (Shared Directory) -> Task Directory
+	do sdirs= fetchDirectories (takeDirectory fp) isWantedFile >>- \newdirs. set newdirs sdirs
+
+TreeToPath :: (FilePath,(FileName->Bool),Shared Directory) [Int] -> (String,String)
+TreeToPath (fp,isWantedFile,sdirs) = (split fp dirs mbsel)
+
+//split: voert findSelected uit met filePath, converted dirs en een maybe intlist.
+// waarom dat maybe is, is onduidelijk
+// waarom het editSelection is en niet editChoice is onduidelijk (omdat er geen SelectInTree bestaat voor editChoice, maar waarom niet?)
+split :: FilePath Directory (Maybe [Int]) -> (String,String)
+split fp dirs mbsel
+	= (takeDirectory selected, dropDirectory selected)
+where
+	selected = findSelected fp (conv 0 dirs) mbsel
+*/
+
 selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
 selectFromTree show fp isWantedFile
 	=				fetchDirectories fp isWantedFile
@@ -123,6 +180,7 @@ split fp dirs mbsel
 	= (takeDirectory selected, dropDirectory selected)
 where
 	selected = findSelected fp (conv 0 dirs) mbsel
+
 
 findSelected :: FilePath ([ChoiceNode],Int) (Maybe [Int]) -> String
 findSelected pwd (nodes,i) Nothing  =  pwd
@@ -243,6 +301,10 @@ where
 
 	selected mbsel dirs = findSelected fp (conv 0 dirs) mbsel
 
+/*
+conv, gegeven het getal 0 en een directory : Dir FileName [Directory] [FileName]
+geeft het een choicenode, dat een tree icon is.
+*/
 conv :: !Int !Directory -> ([ChoiceNode],Int)
 conv i (Dir pwd dirs files) = convDirs i pwd dirs files
 where
@@ -312,7 +374,7 @@ where
 	readAllLines file accu
 	# (line,file) 				= freadline file
 	| line == ""				= (reverse accu,file)
-	= readAllLines file [line:accu]
+	= readAllLines file [(remove_newlines line):accu]
 
 writeToFile :: String String -> Task String
 writeToFile path content = accWorldError (write path content) id
@@ -336,6 +398,9 @@ isFile str file = (takeExtension file) == str
 
 remove_double_enters :: String -> String
 remove_double_enters str = {c \\ c <-: str | c <> '\r'}
+
+remove_newlines :: String -> String
+remove_newlines str = {c \\ c <-: str | c <> '\n' && c <> '\r'}
 
 saveFile :: String String -> Task ()
 saveFile path content = writeToFile path (remove_double_enters content) /*>>- ReadFromFile*/ @! ()

@@ -1,0 +1,119 @@
+|| ?module? iTasks._Framework.Generic.Defaults
+
+
+iTasks._Framework.Generic.Defaults.defaultValue !<{_vgDefault*_0}> = select <{_vgDefault*_0}>::<{iTasks._Framework.Generic.Defaults.gDefault_s;}> 0
+iTasks._Framework.Generic.Defaults.gDefault_UNIT_1 = StdGeneric.UNIT
+iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 fa_0 fb_1 = StdGeneric.PAIR fa_0 fb_1
+iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 fa_0 fb_1 = StdGeneric.LEFT fa_0
+iTasks._Framework.Generic.Defaults.gDefault_CONS_4 fa_0 = StdGeneric.CONS fa_0
+iTasks._Framework.Generic.Defaults.gDefault_OBJECT_5 fa_0 = StdGeneric.OBJECT fa_0
+iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 fa_0 = StdGeneric.RECORD fa_0
+iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 fa_0 = StdGeneric.FIELD fa_0
+iTasks._Framework.Generic.Defaults.gDefault_Int_8::I = 0
+iTasks._Framework.Generic.Defaults.gDefault_Real_9::D = 0.0
+iTasks._Framework.Generic.Defaults.gDefault_Char_10::C = '-'
+iTasks._Framework.Generic.Defaults.gDefault_Bool_11::B = False
+iTasks._Framework.Generic.Defaults.gDefault__String_12 = ""
+iTasks._Framework.Generic.Defaults.gDefault__List_13 fa_0 = _predefined._Nil
+iTasks._Framework.Generic.Defaults.gDefault__Unit_14 = _predefined._Unit
+iTasks._Framework.Generic.Defaults.gDefault__Tuple2_15 fa_0 fb_1 = _Tuple2 fa_0 fb_1
+iTasks._Framework.Generic.Defaults.gDefault__Tuple3_16 fa_0 fb_1 fc_2 = _Tuple3 fa_0 fb_1 fc_2
+iTasks._Framework.Generic.Defaults.gDefault__Tuple4_17 fa_0 fb_1 fc_2 fd_3 = _Tuple4 fa_0 fb_1 fc_2 fd_3
+iTasks._Framework.Generic.Defaults.gDefault__Tuple5_18 fa_0 fb_1 fc_2 fd_3 fe_4 = _Tuple5 fa_0 fb_1 fc_2 fd_3 fe_4
+iTasks._Framework.Generic.Defaults.gDefault__Tuple6_19 fa_0 fb_1 fc_2 fd_3 fe_4 ff_5 = _Tuple6 fa_0 fb_1 fc_2 fd_3 fe_4 ff_5
+iTasks._Framework.Generic.Defaults.gDefault__Tuple7_20 fa_0 fb_1 fc_2 fd_3 fe_4 ff_5 fg_6 = _Tuple7 fa_0 fb_1 fc_2 fd_3 fe_4 ff_5 fg_6
+iTasks._Framework.Generic.Defaults.gDefault__Tuple8_21 fa_0 fb_1 fc_2 fd_3 fe_4 ff_5 fg_6 fh_7 = _Tuple8 fa_0 fb_1 fc_2 fd_3 fe_4 ff_5 fg_6 fh_7
+iTasks._Framework.Generic.Defaults.gDefault_ARROW_22 fa_0 !fb_1 = StdFunc.const fb_1
+iTasks._Framework.Generic.Defaults.gDefault_Dynamic_23 = _SystemDynamic._DynamicTemp 42 (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor _SystemDynamic.TC_Int))
+iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 fa_0 = Data.Maybe.Nothing
+iTasks._Framework.Generic.Defaults.fromGenericEither_37 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.LEFT c_2_0 -> case c_2_0 (StdGeneric.CONS x1_3_0 -> Data.Either.Left x1_3_0) ) (StdGeneric.RIGHT c_2_0 -> case c_2_0 (StdGeneric.CONS x1_3_0 -> Data.Either.Right x1_3_0) ) ) 
+iTasks._Framework.Generic.Defaults.gDefault_Either_25 <{gDefault_a_45-0_a_0}> <{gDefault_a_45-0_b_1}> = iTasks._Framework.Generic.Defaults.fromGenericEither_37 (iTasks._Framework.Generic.Defaults.gDefault_OBJECT_5 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 <{gDefault_a_45-0_a_0}>) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 <{gDefault_a_45-0_b_1}>)))
+iTasks._Framework.Generic.Defaults.fromGenericMaybeError_46 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.LEFT c_2_0 -> case c_2_0 (StdGeneric.CONS x1_3_0 -> Data.Error.Error x1_3_0) ) (StdGeneric.RIGHT c_2_0 -> case c_2_0 (StdGeneric.CONS x1_3_0 -> Data.Error.Ok x1_3_0) ) ) 
+iTasks._Framework.Generic.Defaults.gDefault_MaybeError_26 <{gDefault_a_45-0_a_0}> <{gDefault_a_45-0_b_1}> = iTasks._Framework.Generic.Defaults.fromGenericMaybeError_46 (iTasks._Framework.Generic.Defaults.gDefault_OBJECT_5 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 <{gDefault_a_45-0_a_0}>) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 <{gDefault_a_45-0_b_1}>)))
+iTasks._Framework.Generic.Defaults.gDefault_Map_27 fa_0 fb_1 = Data.Map.newMap
+iTasks._Framework.Generic.Defaults.fromGenericJSONNode_69 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.LEFT c_2_0 -> case c_2_0 (StdGeneric.LEFT c_3_0 -> case c_3_0 (StdGeneric.LEFT c_4_0 -> case c_4_0 (StdGeneric.CONS c_5_0 -> case c_5_0 (StdGeneric.UNIT -> Text.JSON.JSONNull) ) ) (StdGeneric.RIGHT c_4_0 -> case c_4_0 (StdGeneric.CONS x1_5_0 -> Text.JSON.JSONBool x1_5_0) ) ) (StdGeneric.RIGHT c_3_0 -> case c_3_0 (StdGeneric.LEFT c_4_0 -> case c_4_0 (StdGeneric.CONS x1_5_0 -> Text.JSON.JSONInt x1_5_0) ) (StdGeneric.RIGHT c_4_0 -> case c_4_0 (StdGeneric.CONS x1_5_0 -> Text.JSON.JSONReal x1_5_0) ) ) ) (StdGeneric.RIGHT c_2_0 -> case c_2_0 (StdGeneric.LEFT c_3_0 -> case c_3_0 (StdGeneric.LEFT c_4_0 -> case c_4_0 (StdGeneric.CONS x1_5_0 -> Text.JSON.JSONString x1_5_0) ) (StdGeneric.RIGHT c_4_0 -> case c_4_0 (StdGeneric.CONS x1_5_0 -> Text.JSON.JSONArray x1_5_0) ) ) (StdGeneric.RIGHT c_3_0 -> case c_3_0 (StdGeneric.LEFT c_4_0 -> case c_4_0 (StdGeneric.CONS x1_5_0 -> Text.JSON.JSONObject x1_5_0) ) (StdGeneric.RIGHT c_4_0 -> case c_4_0 (StdGeneric.LEFT c_5_0 -> case c_5_0 (StdGeneric.CONS x1_6_0 -> Text.JSON.JSONRaw x1_6_0) ) (StdGeneric.RIGHT c_5_0 -> case c_5_0 (StdGeneric.CONS c_6_0 -> case c_6_0 (StdGeneric.UNIT -> Text.JSON.JSONError) ) ) ) ) ) ) 
+iTasks._Framework.Generic.Defaults.gDefault_JSONNode_28 = iTasks._Framework.Generic.Defaults.fromGenericJSONNode_69 (iTasks._Framework.Generic.Defaults.gDefault_OBJECT_5 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_Int_8) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_Real_9))) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 (iTasks._Framework.Generic.Defaults.gDefault__List_13 iTasks._Framework.Generic.Defaults.gDefault_JSONNode_28))) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 (iTasks._Framework.Generic.Defaults.gDefault__List_13 (iTasks._Framework.Generic.Defaults.gDefault__Tuple2_15 iTasks._Framework.Generic.Defaults.gDefault__String_12 iTasks._Framework.Generic.Defaults.gDefault_JSONNode_28))) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1))))))
+iTasks._Framework.Generic.Defaults.gDefault_HtmlTag_29 = Text.HTML.Html ""
+iTasks._Framework.Generic.Defaults.fromGenericTimestamp_76 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.CONS x1_2_0 -> System.Time.Timestamp x1_2_0) ) 
+iTasks._Framework.Generic.Defaults.gDefault_Timestamp_30 = iTasks._Framework.Generic.Defaults.fromGenericTimestamp_76 (iTasks._Framework.Generic.Defaults.gDefault_OBJECT_5 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_Int_8))
+
+
+|| Converted Records
+:: <{iTasks._Framework.Generic.Defaults.gEq_s;}> = {!iTasks._Framework.Generic.Defaults.gEq_s}
+
+:: <{iTasks._Framework.Generic.Defaults.gEq_ss;}> = {!iTasks._Framework.Generic.Defaults.gEq_ss}
+
+:: <{iTasks._Framework.Generic.Defaults.gEq_sss;}> = {!iTasks._Framework.Generic.Defaults.gEq_sss}
+
+:: <{iTasks._Framework.Generic.Defaults.gEq_ssss;}> = {!iTasks._Framework.Generic.Defaults.gEq_ssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gEq_sssss;}> = {!iTasks._Framework.Generic.Defaults.gEq_sssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gEq_ssssss;}> = {!iTasks._Framework.Generic.Defaults.gEq_ssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gEq_sssssss;}> = {!iTasks._Framework.Generic.Defaults.gEq_sssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gEq_ssssssss;}> = {!iTasks._Framework.Generic.Defaults.gEq_ssssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gEq_sssssssss;}> = {!iTasks._Framework.Generic.Defaults.gEq_sssssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.bimap_s;}> = {iTasks._Framework.Generic.Defaults.bimap_s}
+
+:: <{iTasks._Framework.Generic.Defaults.bimap_ss;}> = {iTasks._Framework.Generic.Defaults.bimap_ss}
+
+:: <{iTasks._Framework.Generic.Defaults.bimap_sss;}> = {iTasks._Framework.Generic.Defaults.bimap_sss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_s;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_s}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_ss;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_ss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_sss;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_sss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_ssss;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_ssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_sssss;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_sssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_ssssss;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_sssssss;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_ssssssss;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONEncode_sssssssss;}> = {!iTasks._Framework.Generic.Defaults.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_s;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_s}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_ss;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_ss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_sss;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_sss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_ssss;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_ssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_sssss;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_sssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_ssssss;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_sssssss;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_ssssssss;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.JSONDecode_sssssssss;}> = {!iTasks._Framework.Generic.Defaults.JSONDecode_sssssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_s;}> = {iTasks._Framework.Generic.Defaults.gDefault_s}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_ss;}> = {iTasks._Framework.Generic.Defaults.gDefault_ss}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_sss;}> = {iTasks._Framework.Generic.Defaults.gDefault_sss}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_ssss;}> = {iTasks._Framework.Generic.Defaults.gDefault_ssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_sssss;}> = {iTasks._Framework.Generic.Defaults.gDefault_sssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_ssssss;}> = {iTasks._Framework.Generic.Defaults.gDefault_ssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_sssssss;}> = {iTasks._Framework.Generic.Defaults.gDefault_sssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_ssssssss;}> = {iTasks._Framework.Generic.Defaults.gDefault_ssssssss}
+
+:: <{iTasks._Framework.Generic.Defaults.gDefault_sssssssss;}> = {iTasks._Framework.Generic.Defaults.gDefault_sssssssss}
+

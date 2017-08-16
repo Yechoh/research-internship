@@ -10,16 +10,19 @@ derive class iTask Directory
 derive class iTask ChoiceNode
 //derive class iTask (Maybe String)
 
-// from given directory path recursively fetch all files which name maches the predicate 
+// from given directory path recursively fetch all files which name maches the predicate
 
-fetchDirectories 	::  FilePath (FileName -> Bool) -> Task Directory	
+fetchDirectories 	::  FilePath (FileName -> Bool) -> Task Directory
 
 // directory browsing
 
+selectFromTreeMaybe :: !Bool !FilePath !(FileName -> Bool) -> Task (Maybe (FilePath,String))
+selectFolder 		:: !FilePath -> Task (String,String)
+//selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task [Int]
 selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
 browseDirectory 	:: (FilePath -> Bool) -> Task ((FilePath,[FilePath]),Maybe FilePath)
 
-// 
+//
 
 getPwdName 			:: Task FilePath					// return present working directory name
 isDirectory 		:: FilePath -> Task Bool			// True if file is a directory
@@ -27,7 +30,7 @@ readDir 			:: FilePath  -> Task [FileName]  	// returns all names of files and d
 
 askUserForFile:: !FileName !(FileName -> Bool) -> Task (FilePath,FileName)
 
-// File I/O	
+// File I/O
 
 createFile 			:: FilePath FileName String -> Task ()	// create new file in directory and store content
 readFromFile 		:: String -> Task (Maybe String)		// read from file. returns Nothing if the file cannot be found.

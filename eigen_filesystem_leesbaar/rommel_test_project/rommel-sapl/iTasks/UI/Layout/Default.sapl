@@ -1,0 +1,199 @@
+|| ?module? iTasks.UI.Layout.Default
+
+
+iTasks.UI.Layout.Default.foldl_40 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks.UI.Layout.Default.foldl_40 op_0 (op_0 r_1 a_1_0) x_1_1) 
+<{iTasks.UI.Layout.Default.c;63;62_20}> !g_l_0 = <{iTasks.UI.Layout.Default.g_c1;63;67_421}> g_l_0
+<{iTasks.UI.Layout.Default.g_c1;63;67_421}> !g_l_0 = case g_l_0 (_predefined._Cons t_1_0 g_t_1_1 -> _predefined._Cons (iTasks.UI.Layout.SelectByType t_1_0) (<{iTasks.UI.Layout.Default.c;63;62_20}> g_t_1_1)) (_ -> _predefined._Nil)
+iTasks.UI.Layout.Default.selectIntermediate = iTasks.UI.Layout.Default.foldl_40 iTasks.UI.Layout.SelectOR (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIRecord) (<{iTasks.UI.Layout.Default.c;63;62_20}> (_predefined._Cons iTasks.UI.Definition.UIInteract (_predefined._Cons iTasks.UI.Definition.UIStep (_predefined._Cons iTasks.UI.Definition.UIParallel _predefined._Nil))))
+iTasks.UI.Layout.Default.actionsToButtonBar = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.insertSubAt (_predefined._Cons 1 _predefined._Nil) (iTasks.UI.Definition.ui iTasks.UI.Definition.UIButtonBar)) (_predefined._Cons (iTasks.UI.Layout.moveSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectChildren (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIAction)) (_predefined._Cons 1 (_predefined._Cons 0 _predefined._Nil))) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectByPath (_predefined._Cons 1 _predefined._Nil)) (iTasks.UI.Layout.layoutSubs iTasks.UI.Layout.SelectChildren iTasks.UI.Layout.Common.actionToButton)) _predefined._Nil)))
+<{iTasks.UI.Layout.Default.get`_39}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_39}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.UI.Layout.Default.get`_39}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.UI.Layout.Default.get`_38}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_38}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.UI.Layout.Default.get`_38}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.UI.Layout.Default.get`_37}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_37}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.UI.Layout.Default.get`_37}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.UI.Layout.Default.anon_26::B !_x_0 = case _x_0 (Text.JSON.JSONBool b_1_0 -> b_1_0) 
+iTasks.UI.Layout.Default.anon_27::B !_x_0 = case _x_0 (Text.JSON.JSONString m_1_0 -> StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) m_1_0 (_predefined._Cons "enter" (_predefined._Cons "update" _predefined._Nil))) 
+iTasks.UI.Layout.Default.addspace_31 !_x_0 = case _x_0 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons c_1_0 cs_1_1 -> case (<{StdChar.==_18}> c_1_0 '_') (True -> _predefined._Cons ' ' (iTasks.UI.Layout.Default.addspace_31 cs_1_1)) (False -> case (StdChar.isUpper c_1_0) (True -> _predefined._Cons ' ' (_predefined._Cons (StdChar.toLower c_1_0) (iTasks.UI.Layout.Default.addspace_31 cs_1_1))) (False -> _predefined._Cons c_1_0 (iTasks.UI.Layout.Default.addspace_31 cs_1_1)) ) ) 
+<{iTasks.UI.Layout.Default.cu;188;31_30}> !_vone_0 !<{_v+_1}> c_l_i_2 !g_l_3 = <{iTasks.UI.Layout.Default.g_c1;188;36_422}> g_l_3 _vone_0 <{_v+_1}> c_l_i_2
+<{iTasks.UI.Layout.Default.g_c1;188;36_422}> !g_l_0 _vone_1 <{_v+_2}> c_l_i_3 = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{iTasks.UI.Layout.Default.cu;188;31_30}> _vone_1 <{_v+_2}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 c_l_i_3 (select _vone_1::<{StdOverloaded.one;}> 0)) g_t_1_1) (_ -> c_l_i_3)
+<{iTasks.UI.Layout.Default.cu;188;31_29}> !_vArray_0 c_a_1 c_i_2::I !g_l_3 = <{iTasks.UI.Layout.Default.g_c1;188;36_423}> g_l_3 _vArray_0 c_a_1 c_i_2
+<{iTasks.UI.Layout.Default.g_c1;188;36_423}> !g_l_0 _vArray_1 c_a_2 c_i_3::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{iTasks.UI.Layout.Default.cu;188;31_29}> _vArray_1 (select _vArray_1::<{_SystemArray.Array;}> 5 c_a_2 c_i_3 c_1_0) (<{StdInt.+_6}> c_i_3 StdInt.one_11) g_t_1_1) (_ -> c_a_2)
+<{iTasks.UI.Layout.Default.cu;188;31_413}>::I !<{_v+_0}> c_l_i_1::I !g_l_2 = <{iTasks.UI.Layout.Default.g_c1;188;36_424}> g_l_2 <{_v+_0}> c_l_i_1
+<{iTasks.UI.Layout.Default.g_c1;188;36_424}>::I !g_l_0 <{_v+_1}> c_l_i_2::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{iTasks.UI.Layout.Default.cu;188;31_413}> <{_v+_1}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 c_l_i_2 StdInt.one_11) g_t_1_1) (_ -> c_l_i_2)
+<{iTasks.UI.Layout.Default.cu;188;31_414}> !c_a_0 c_i_1::I !g_l_2 = <{iTasks.UI.Layout.Default.g_c1;188;36_425}> g_l_2 c_a_0 c_i_1
+<{iTasks.UI.Layout.Default.g_c1;188;36_425}> !g_l_0 !c_a_1 c_i_2::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{iTasks.UI.Layout.Default.cu;188;31_414}> (_SystemArray.update_21 c_a_1 c_i_2 c_1_0) (<{StdInt.+_6}> c_i_2 StdInt.one_11) g_t_1_1) (_ -> c_a_1)
+<{iTasks.UI.Layout.Default.cu;188;31_415}>::I !c_l_i_0::I !g_l_1 = <{iTasks.UI.Layout.Default.g_c1;188;36_426}> g_l_1 c_l_i_0
+<{iTasks.UI.Layout.Default.g_c1;188;36_426}>::I !g_l_0 !c_l_i_1::I = case g_l_0 (_predefined._Cons c_1_0 g_t_1_1 -> <{iTasks.UI.Layout.Default.cu;188;31_415}> (<{StdInt.+_6}> c_l_i_1 StdInt.one_11) g_t_1_1) (_ -> c_l_i_1)
+iTasks.UI.Layout.Default.formatDefaultLabel !label_0 = let _x_1_0 = StdList.fromString_78 label_0, lname_1_1::C = select _x_1_0::_Tuple2 0, lnames_1_2 = select _x_1_0::_Tuple2 1 in <{iTasks.UI.Layout.Default.cu;188;31_414}> (_SystemArray._createArray_16 (<{iTasks.UI.Layout.Default.cu;188;31_415}> 0 (_predefined._Cons (StdChar.toUpper lname_1_1) (iTasks.UI.Layout.Default.addspace_31 lnames_1_2)))) 0 (_predefined._Cons (StdChar.toUpper lname_1_1) (iTasks.UI.Layout.Default.addspace_31 lnames_1_2))
+<{iTasks.UI.Layout.Default.get`_416}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_416}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.UI.Layout.Default.get`_416}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.UI.Layout.Default.get`_417}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_417}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.UI.Layout.Default.get`_417}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.UI.Layout.Default.get`_418}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_418}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.UI.Layout.Default.get`_418}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.UI.Layout.Default.labelControl !attributes_0 = <{iTasks.UI.Layout.Default._c;163;27_429}> (<{iTasks.UI.Layout.Default.get`_416}> "label" attributes_0) attributes_0
+<{iTasks.UI.Layout.Default._c;163;27_429}> !_x_0 attributes_1 = case _x_0 (Data.Maybe.Just _x_1_0 -> case _x_1_0 (Text.JSON.JSONString labelAttr_2_0 -> Data.Maybe.Just (iTasks.UI.Definition.UI iTasks.UI.Definition.UILabel (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.textAttr (<{StdString.+++_11}> (<{iTasks.UI.Layout.Default._if;168;19_428}> (iTasks.UI.Layout.Default._f427_427 (Data.Maybe.maybe False iTasks.UI.Layout.Default.anon_27 (<{iTasks.UI.Layout.Default.get`_418}> "mode" attributes_1)) attributes_1) labelAttr_2_0) ":")) (_predefined._Cons (iTasks.UI.Definition.widthAttr (iTasks.UI.Definition.ExactSize 100)) _predefined._Nil))) _predefined._Nil)) ) (_ -> Data.Maybe.Nothing)
+<{iTasks.UI.Layout.Default._if;168;19_428}> !_x_0::B !labelAttr_1 = case _x_0 (True -> <{StdString.+++_11}> (iTasks.UI.Layout.Default.formatDefaultLabel labelAttr_1) "*") (_ -> iTasks.UI.Layout.Default.formatDefaultLabel labelAttr_1)
+iTasks.UI.Layout.Default._f427_427::B !_x_0::B attributes_1 = case _x_0 (True -> StdBool.not (Data.Maybe.maybe False iTasks.UI.Layout.Default.anon_26 (<{iTasks.UI.Layout.Default.get`_417}> "optional" attributes_1))) (_ -> False)
+<{iTasks.UI.Layout.Default.get`_36}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_36}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.UI.Layout.Default.get`_36}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.UI.Layout.Default.get`_35}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_35}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.UI.Layout.Default.get`_35}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.UI.Layout.Default.icon_28 type_0 tooltip_1 = iTasks.UI.Definition.uia iTasks.UI.Definition.UIIcon (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.leftMarginAttr 5) (_predefined._Cons (iTasks.UI.Definition.tooltipAttr tooltip_1) (_predefined._Cons (iTasks.UI.Definition.iconClsAttr (<{StdString.+++_11}> "icon-" type_0)) _predefined._Nil))))
+<{iTasks.UI.Layout.Default.get`_420}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_420}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.UI.Layout.Default.get`_420}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.UI.Layout.Default.get`_419}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{iTasks.UI.Layout.Default.get`_419}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{iTasks.UI.Layout.Default.get`_419}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.UI.Layout.Default.infoControl !attributes_0 = <{iTasks.UI.Layout.Default._c;181;7_430}> (_Tuple2 (<{iTasks.UI.Layout.Default.get`_419}> "hint-type" attributes_0) (<{iTasks.UI.Layout.Default.get`_420}> "hint" attributes_0))
+<{iTasks.UI.Layout.Default._c;181;7_430}> !_x_0 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just _x_2_0 -> case _x_2_0 (Text.JSON.JSONString type_3_0 -> case _x_1_1 (Data.Maybe.Just _x_4_0 -> case _x_4_0 (Text.JSON.JSONString hint_5_0 -> Data.Maybe.Just (iTasks.UI.Layout.Default.icon_28 type_3_0 hint_5_0)) ) ) ) ) (_ -> Data.Maybe.Nothing)
+iTasks.UI.Layout.Default.remap_24 !_x_0 !v_1 = case _x_0 ("hint" -> iTasks.UI.Definition.SetAttribute "tooltip" (Text.JSON.JSONString v_1)) ("hint-type" -> iTasks.UI.Definition.SetAttribute "iconCls" (Text.JSON.JSONString (<{StdString.+++_11}> "icon-" v_1))) (_ -> iTasks.UI.Definition.SetAttribute _x_0 (Text.JSON.JSONString v_1))
+<{iTasks.UI.Layout.Default.c;150;40_22}> !g_l_0 = <{iTasks.UI.Layout.Default.g_c1;150;73_432}> g_l_0
+<{iTasks.UI.Layout.Default.g_c1;150;73_432}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{iTasks.UI.Layout.Default.g_c2;150;73_431}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{iTasks.UI.Layout.Default.g_c2;150;73_431}> !g_h_0 g_t_1 = case g_h_0 (iTasks.UI.Definition.SetAttribute t_1_0 _x_1_1 -> case _x_1_1 (Text.JSON.JSONString v_2_0 -> case (StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) t_1_0 (_predefined._Cons "hint" (_predefined._Cons "hint-type" _predefined._Nil))) (True -> _predefined._Cons (iTasks.UI.Layout.Default.remap_24 t_1_0 v_2_0) (<{iTasks.UI.Layout.Default.c;150;40_22}> g_t_1)) ) ) (_ -> <{iTasks.UI.Layout.Default.c;150;40_22}> g_t_1)
+<{iTasks.UI.Layout.Default.c;153;29_23}> !g_l_0 = <{iTasks.UI.Layout.Default.g_c1;153;54_434}> g_l_0
+<{iTasks.UI.Layout.Default.g_c1;153;54_434}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{iTasks.UI.Layout.Default.g_c2;153;54_433}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{iTasks.UI.Layout.Default.g_c2;153;54_433}> !g_h_0 g_t_1 = case g_h_0 (iTasks.UI.Definition.SetAttribute t_1_0 _x_1_1 -> case (StdBool.not (StdList.isMember (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)) t_1_0 (_predefined._Cons "hint" (_predefined._Cons "hint-type" _predefined._Nil)))) (True -> _predefined._Cons g_h_0 (<{iTasks.UI.Layout.Default.c;153;29_23}> g_t_1)) ) (_ -> <{iTasks.UI.Layout.Default.c;153;29_23}> g_t_1)
+iTasks.UI.Layout.Default.layout_25 !_x_0 = case _x_0 (_Tuple2 _x_1_0 s_1_1 -> case _x_1_0 (iTasks.UI.Definition.ReplaceUI control_2_0 -> case control_2_0 (iTasks.UI.Definition.UI _x_3_0 attr_3_1 _x_3_2 -> _Tuple2 (iTasks.UI.Definition.ReplaceUI (iTasks.UI.Definition.uiac iTasks.UI.Definition.UIContainer (Data.Map.unions (<{StdOverloaded.<;}> <{StdString.<_3}>) (_predefined._Cons (iTasks.UI.Definition.marginsAttr 2 4 2 4) (_predefined._Cons (iTasks.UI.Definition.directionAttr iTasks.UI.Definition.Horizontal) (_predefined._Cons (iTasks.UI.Definition.sizeAttr iTasks.UI.Definition.FlexSize iTasks.UI.Definition.WrapSize) _predefined._Nil)))) (_predefined._Cons (Data.Maybe.fromMaybe (iTasks.UI.Definition.ui iTasks.UI.Definition.UIEmpty) (iTasks.UI.Layout.Default.labelControl attr_3_1)) (_predefined._Cons control_2_0 (_predefined._Cons (Data.Maybe.fromMaybe (iTasks.UI.Definition.ui iTasks.UI.Definition.UIEmpty) (iTasks.UI.Layout.Default.infoControl attr_3_1)) _predefined._Nil))))) s_1_1) ) (iTasks.UI.Definition.ChangeUI localChanges_2_0 childChanges_2_1 -> let changes_3_0 = <{iTasks.UI.Layout.Default.c;150;40_22}> localChanges_2_0 in _Tuple2 (iTasks.UI.Definition.ChangeUI _predefined._Nil (_predefined._Cons (_Tuple2 1 (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI (<{iTasks.UI.Layout.Default.c;153;29_23}> localChanges_2_0) childChanges_2_1))) (<{iTasks.UI.Layout.Default._c;150;24_435}> changes_3_0))) s_1_1) (_ -> _Tuple2 _x_1_0 s_1_1)) 
+<{iTasks.UI.Layout.Default._c;150;24_435}> !changes_0 = case changes_0 (_predefined._Nil -> _predefined._Nil) (_ -> _predefined._Cons (_Tuple2 2 (iTasks.UI.Definition.ChangeChild (iTasks.UI.Definition.ChangeUI changes_0 _predefined._Nil))) _predefined._Nil)
+iTasks.UI.Layout.Default.toFormItem = iTasks.UI.Layout.Default.layout_25
+iTasks.UI.Layout.Default.foldl_34 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks.UI.Layout.Default.foldl_34 op_0 (op_0 r_1 a_1_0) x_1_1) 
+<{iTasks.UI.Layout.Default.c;65;62_21}> !g_l_0 = <{iTasks.UI.Layout.Default.g_c1;65;67_436}> g_l_0
+<{iTasks.UI.Layout.Default.g_c1;65;67_436}> !g_l_0 = case g_l_0 (_predefined._Cons t_1_0 g_t_1_1 -> _predefined._Cons (iTasks.UI.Layout.SelectByType t_1_0) (<{iTasks.UI.Layout.Default.c;65;62_21}> g_t_1_1)) (_ -> _predefined._Nil)
+iTasks.UI.Layout.Default.selectEditorIntermediate = iTasks.UI.Layout.Default.foldl_34 iTasks.UI.Layout.SelectOR (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIRecord) (<{iTasks.UI.Layout.Default.c;65;62_21}> (_predefined._Cons iTasks.UI.Definition.UIRecord (_predefined._Cons iTasks.UI.Definition.UICons (_predefined._Cons iTasks.UI.Definition.UIVarCons _predefined._Nil))))
+iTasks.UI.Layout.Default.foldl_33 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks.UI.Layout.Default.foldl_33 op_0 (op_0 r_1 a_1_0) x_1_1) 
+<{iTasks.UI.Layout.Default.c;53;25_19}> !g_l_0 = <{iTasks.UI.Layout.Default.g_c1;53;30_437}> g_l_0
+<{iTasks.UI.Layout.Default.g_c1;53;30_437}> !g_l_0 = case g_l_0 (_predefined._Cons t_1_0 g_t_1_1 -> _predefined._Cons (iTasks.UI.Layout.SelectByType t_1_0) (<{iTasks.UI.Layout.Default.c;53;25_19}> g_t_1_1)) (_ -> _predefined._Nil)
+iTasks.UI.Layout.Default.selectFormComponent = iTasks.UI.Layout.Default.foldl_33 iTasks.UI.Layout.SelectOR (iTasks.UI.Layout.SelectByHasAttribute "label") (<{iTasks.UI.Layout.Default.c;53;25_19}> (_predefined._Cons iTasks.UI.Definition.UITextField (_predefined._Cons iTasks.UI.Definition.UITextArea (_predefined._Cons iTasks.UI.Definition.UIPasswordField (_predefined._Cons iTasks.UI.Definition.UIIntegerField (_predefined._Cons iTasks.UI.Definition.UIDecimalField (_predefined._Cons iTasks.UI.Definition.UICheckbox (_predefined._Cons iTasks.UI.Definition.UISlider (_predefined._Cons iTasks.UI.Definition.UIDocumentField (_predefined._Cons iTasks.UI.Definition.UIDropdown (_predefined._Cons iTasks.UI.Definition.UICheckGroup (_predefined._Cons iTasks.UI.Definition.UITextView (_predefined._Cons iTasks.UI.Definition.UIHtmlView _predefined._Nil)))))))))))))
+iTasks.UI.Layout.Default.selectEditorParts = iTasks.UI.Layout.SelectOR iTasks.UI.Layout.Default.selectFormComponent iTasks.UI.Layout.Default.selectEditorIntermediate
+iTasks.UI.Layout.Default.finalizeRecord = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectDescendents iTasks.UI.Layout.Default.selectEditorParts) iTasks.UI.Layout.Default.finalizeEditor) (_predefined._Cons (iTasks.UI.Layout.setNodeType iTasks.UI.Definition.UIContainer) (_predefined._Cons (iTasks.UI.Layout.setAttributes (iTasks.UI.Definition.heightAttr iTasks.UI.Definition.WrapSize)) _predefined._Nil)))
+iTasks.UI.Layout.Default.finalizeCons = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectDescendents iTasks.UI.Layout.Default.selectEditorParts) iTasks.UI.Layout.Default.finalizeEditor) (_predefined._Cons (iTasks.UI.Layout.setAttributes (iTasks.UI.Definition.directionAttr iTasks.UI.Definition.Horizontal)) (_predefined._Cons (iTasks.UI.Layout.setNodeType iTasks.UI.Definition.UIContainer) (_predefined._Cons iTasks.UI.Layout.Default.toFormItem _predefined._Nil))))
+iTasks.UI.Layout.Default.finalizeVarCons = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectDescendents iTasks.UI.Layout.Default.selectEditorParts) iTasks.UI.Layout.Default.finalizeEditor) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectByPath (_predefined._Cons 0 _predefined._Nil)) (iTasks.UI.Layout.setAttributes (iTasks.UI.Definition.widthAttr iTasks.UI.Definition.WrapSize))) (_predefined._Cons (iTasks.UI.Layout.setAttributes (iTasks.UI.Definition.directionAttr iTasks.UI.Definition.Horizontal)) (_predefined._Cons (iTasks.UI.Layout.setNodeType iTasks.UI.Definition.UIContainer) (_predefined._Cons iTasks.UI.Layout.Default.toFormItem _predefined._Nil)))))
+iTasks.UI.Layout.Default.finalizeFormComponent = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectDescendents iTasks.UI.Layout.Default.selectEditorIntermediate) iTasks.UI.Layout.Default.finalizeEditor) (_predefined._Cons iTasks.UI.Layout.Default.toFormItem _predefined._Nil))
+iTasks.UI.Layout.Default.finalizeEditor = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIRecord)) iTasks.UI.Layout.Default.finalizeRecord) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UICons)) iTasks.UI.Layout.Default.finalizeCons) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIVarCons)) iTasks.UI.Layout.Default.finalizeVarCons) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot iTasks.UI.Layout.Default.selectFormComponent) iTasks.UI.Layout.Default.finalizeFormComponent) _predefined._Nil))))
+iTasks.UI.Layout.Default.finalizeInteract = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectByPath (_predefined._Cons 1 _predefined._Nil)) iTasks.UI.Layout.Default.finalizeEditor) (_predefined._Cons (iTasks.UI.Layout.copyAttributes (_predefined._Cons "title" _predefined._Nil) (_predefined._Cons 0 _predefined._Nil) _predefined._Nil) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot (iTasks.UI.Layout.SelectRelative (_predefined._Cons 0 _predefined._Nil) (iTasks.UI.Layout.SelectByNumChildren 0))) (iTasks.UI.Layout.removeSubs (iTasks.UI.Layout.SelectByPath (_predefined._Cons 0 _predefined._Nil)))) (_predefined._Cons (iTasks.UI.Layout.setNodeType iTasks.UI.Definition.UIPanel) _predefined._Nil))))
+iTasks.UI.Layout.Default.finalizeStep = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot (iTasks.UI.Layout.SelectAND (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIStep) (iTasks.UI.Layout.SelectByHasChildrenOfType iTasks.UI.Definition.UIAction))) (iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectByPath (_predefined._Cons 0 _predefined._Nil)) iTasks.UI.Layout.Default.finalizeUI) (_predefined._Cons iTasks.UI.Layout.Default.actionsToButtonBar (_predefined._Cons (iTasks.UI.Layout.setNodeType iTasks.UI.Definition.UIPanel) _predefined._Nil))))) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIStep)) (iTasks.UI.Layout.sequenceLayouts (_predefined._Cons iTasks.UI.Layout.unwrapUI (_predefined._Cons iTasks.UI.Layout.Default.finalizeUI _predefined._Nil)))) _predefined._Nil))
+iTasks.UI.Layout.Default.finalizeParallel = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot (iTasks.UI.Layout.SelectAND (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIParallel) (iTasks.UI.Layout.SelectByHasChildrenOfType iTasks.UI.Definition.UIAction))) (iTasks.UI.Layout.sequenceLayouts (_predefined._Cons iTasks.UI.Layout.Default.actionsToButtonBar (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectDescendents iTasks.UI.Layout.Default.selectIntermediate) iTasks.UI.Layout.Default.finalizeUI) (_predefined._Cons (iTasks.UI.Layout.setNodeType iTasks.UI.Definition.UIPanel) _predefined._Nil))))) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectRoot (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIParallel)) (iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectDescendents iTasks.UI.Layout.Default.selectIntermediate) iTasks.UI.Layout.Default.finalizeUI) (_predefined._Cons (iTasks.UI.Layout.setNodeType iTasks.UI.Definition.UIContainer) _predefined._Nil)))) _predefined._Nil))
+iTasks.UI.Layout.Default.finalizeUI = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIInteract) iTasks.UI.Layout.Default.finalizeInteract) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIStep) iTasks.UI.Layout.Default.finalizeStep) (_predefined._Cons (iTasks.UI.Layout.layoutSubs (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIParallel) iTasks.UI.Layout.Default.finalizeParallel) _predefined._Nil)))
+iTasks.UI.Layout.Default.defaultSessionLayout = iTasks.UI.Layout.sequenceLayouts (_predefined._Cons iTasks.UI.Layout.Default.finalizeUI (_predefined._Cons (iTasks.UI.Layout.removeSubs (iTasks.UI.Layout.SelectAND iTasks.UI.Layout.SelectDescendents (iTasks.UI.Layout.SelectByType iTasks.UI.Definition.UIEmpty))) (_predefined._Cons (iTasks.UI.Layout.setAttributes (iTasks.UI.Definition.sizeAttr iTasks.UI.Definition.FlexSize iTasks.UI.Definition.FlexSize)) _predefined._Nil)))
+
+
+|| Converted Records
+:: <{iTasks.UI.Layout.Default.JSONEncode_s;}> = {!iTasks.UI.Layout.Default.JSONEncode_s}
+
+:: <{iTasks.UI.Layout.Default.JSONEncode_ss;}> = {!iTasks.UI.Layout.Default.JSONEncode_ss}
+
+:: <{iTasks.UI.Layout.Default.JSONEncode_sss;}> = {!iTasks.UI.Layout.Default.JSONEncode_sss}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_s;}> = {!iTasks.UI.Layout.Default.JSONDecode_s}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_ss;}> = {!iTasks.UI.Layout.Default.JSONDecode_ss}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_sss;}> = {!iTasks.UI.Layout.Default.JSONDecode_sss}
+
+:: <{iTasks.UI.Layout.Default.gDefault_s;}> = {iTasks.UI.Layout.Default.gDefault_s}
+
+:: <{iTasks.UI.Layout.Default.gDefault_ss;}> = {iTasks.UI.Layout.Default.gDefault_ss}
+
+:: <{iTasks.UI.Layout.Default.gDefault_sss;}> = {iTasks.UI.Layout.Default.gDefault_sss}
+
+:: <{iTasks.UI.Layout.Default.gText_s;}> = {!iTasks.UI.Layout.Default.gText_s}
+
+:: <{iTasks.UI.Layout.Default.gText_ss;}> = {!iTasks.UI.Layout.Default.gText_ss}
+
+:: <{iTasks.UI.Layout.Default.gText_sss;}> = {!iTasks.UI.Layout.Default.gText_sss}
+
+:: <{iTasks.UI.Layout.Default.gEditor_s;}> = {iTasks.UI.Layout.Default.gEditor_s}
+
+:: <{iTasks.UI.Layout.Default.gEditor_ss;}> = {iTasks.UI.Layout.Default.gEditor_ss}
+
+:: <{iTasks.UI.Layout.Default.gEditor_sss;}> = {iTasks.UI.Layout.Default.gEditor_sss}
+
+:: <{iTasks.UI.Layout.Default.gEq_s;}> = {!iTasks.UI.Layout.Default.gEq_s}
+
+:: <{iTasks.UI.Layout.Default.gEq_ss;}> = {!iTasks.UI.Layout.Default.gEq_ss}
+
+:: <{iTasks.UI.Layout.Default.gEq_sss;}> = {!iTasks.UI.Layout.Default.gEq_sss}
+
+:: <{iTasks.UI.Layout.Default.JSONEncode_ssss;}> = {!iTasks.UI.Layout.Default.JSONEncode_ssss}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_ssss;}> = {!iTasks.UI.Layout.Default.JSONDecode_ssss}
+
+:: <{iTasks.UI.Layout.Default.gEq_ssss;}> = {!iTasks.UI.Layout.Default.gEq_ssss}
+
+:: <{iTasks.UI.Layout.Default.gDefault_ssss;}> = {iTasks.UI.Layout.Default.gDefault_ssss}
+
+:: <{iTasks.UI.Layout.Default.gEq_sssss;}> = {!iTasks.UI.Layout.Default.gEq_sssss}
+
+:: <{iTasks.UI.Layout.Default.gEq_ssssss;}> = {!iTasks.UI.Layout.Default.gEq_ssssss}
+
+:: <{iTasks.UI.Layout.Default.gEq_sssssss;}> = {!iTasks.UI.Layout.Default.gEq_sssssss}
+
+:: <{iTasks.UI.Layout.Default.gEq_ssssssss;}> = {!iTasks.UI.Layout.Default.gEq_ssssssss}
+
+:: <{iTasks.UI.Layout.Default.gEq_sssssssss;}> = {!iTasks.UI.Layout.Default.gEq_sssssssss}
+
+:: <{iTasks.UI.Layout.Default.bimap_s;}> = {iTasks.UI.Layout.Default.bimap_s}
+
+:: <{iTasks.UI.Layout.Default.bimap_ss;}> = {iTasks.UI.Layout.Default.bimap_ss}
+
+:: <{iTasks.UI.Layout.Default.bimap_sss;}> = {iTasks.UI.Layout.Default.bimap_sss}
+
+:: <{iTasks.UI.Layout.Default.JSONEncode_sssss;}> = {!iTasks.UI.Layout.Default.JSONEncode_sssss}
+
+:: <{iTasks.UI.Layout.Default.JSONEncode_ssssss;}> = {!iTasks.UI.Layout.Default.JSONEncode_ssssss}
+
+:: <{iTasks.UI.Layout.Default.JSONEncode_sssssss;}> = {!iTasks.UI.Layout.Default.JSONEncode_sssssss}
+
+:: <{iTasks.UI.Layout.Default.JSONEncode_ssssssss;}> = {!iTasks.UI.Layout.Default.JSONEncode_ssssssss}
+
+:: <{iTasks.UI.Layout.Default.JSONEncode_sssssssss;}> = {!iTasks.UI.Layout.Default.JSONEncode_sssssssss}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_sssss;}> = {!iTasks.UI.Layout.Default.JSONDecode_sssss}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_ssssss;}> = {!iTasks.UI.Layout.Default.JSONDecode_ssssss}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_sssssss;}> = {!iTasks.UI.Layout.Default.JSONDecode_sssssss}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_ssssssss;}> = {!iTasks.UI.Layout.Default.JSONDecode_ssssssss}
+
+:: <{iTasks.UI.Layout.Default.JSONDecode_sssssssss;}> = {!iTasks.UI.Layout.Default.JSONDecode_sssssssss}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_s;}> = {!iTasks.UI.Layout.Default.gLexOrd_s}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_ss;}> = {!iTasks.UI.Layout.Default.gLexOrd_ss}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_sss;}> = {!iTasks.UI.Layout.Default.gLexOrd_sss}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_ssss;}> = {!iTasks.UI.Layout.Default.gLexOrd_ssss}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_sssss;}> = {!iTasks.UI.Layout.Default.gLexOrd_sssss}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_ssssss;}> = {!iTasks.UI.Layout.Default.gLexOrd_ssssss}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_sssssss;}> = {!iTasks.UI.Layout.Default.gLexOrd_sssssss}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_ssssssss;}> = {!iTasks.UI.Layout.Default.gLexOrd_ssssssss}
+
+:: <{iTasks.UI.Layout.Default.gLexOrd_sssssssss;}> = {!iTasks.UI.Layout.Default.gLexOrd_sssssssss}
+
+:: <{iTasks.UI.Layout.Default.gText_ssss;}> = {!iTasks.UI.Layout.Default.gText_ssss}
+
+:: <{iTasks.UI.Layout.Default.gText_sssss;}> = {!iTasks.UI.Layout.Default.gText_sssss}
+
+:: <{iTasks.UI.Layout.Default.gText_ssssss;}> = {!iTasks.UI.Layout.Default.gText_ssssss}
+
+:: <{iTasks.UI.Layout.Default.gText_sssssss;}> = {!iTasks.UI.Layout.Default.gText_sssssss}
+
+:: <{iTasks.UI.Layout.Default.gText_ssssssss;}> = {!iTasks.UI.Layout.Default.gText_ssssssss}
+
+:: <{iTasks.UI.Layout.Default.gText_sssssssss;}> = {!iTasks.UI.Layout.Default.gText_sssssssss}
+
+:: <{iTasks.UI.Layout.Default.gDefault_sssss;}> = {iTasks.UI.Layout.Default.gDefault_sssss}
+
+:: <{iTasks.UI.Layout.Default.gDefault_ssssss;}> = {iTasks.UI.Layout.Default.gDefault_ssssss}
+
+:: <{iTasks.UI.Layout.Default.gDefault_sssssss;}> = {iTasks.UI.Layout.Default.gDefault_sssssss}
+
+:: <{iTasks.UI.Layout.Default.gDefault_ssssssss;}> = {iTasks.UI.Layout.Default.gDefault_ssssssss}
+
+:: <{iTasks.UI.Layout.Default.gDefault_sssssssss;}> = {iTasks.UI.Layout.Default.gDefault_sssssssss}
+
+:: <{iTasks.UI.Layout.Default.gEditor_ssss;}> = {iTasks.UI.Layout.Default.gEditor_ssss}
+
+:: <{iTasks.UI.Layout.Default.gEditor_sssss;}> = {iTasks.UI.Layout.Default.gEditor_sssss}
+
+:: <{iTasks.UI.Layout.Default.gEditor_ssssss;}> = {iTasks.UI.Layout.Default.gEditor_ssssss}
+
+:: <{iTasks.UI.Layout.Default.gEditor_sssssss;}> = {iTasks.UI.Layout.Default.gEditor_sssssss}
+

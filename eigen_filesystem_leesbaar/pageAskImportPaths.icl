@@ -16,23 +16,25 @@ import errorHandling
 pageAskImportPaths :: AskImportPathsRedirects -> Task ()
 pageAskImportPaths ((actioncontinue,pagenodeEditor),(actioncancel,pagenodeEditor2)) =
 	get project >>- \proj.
-	readFromFile proj.projectName >>- \(Just projtxt).
-	showUnresolvedImports
-	||-
-	showMapSelector proj.projectName
-	>>* [   OnAction  actioncontinue   	(always (pagenodeEditor))
-		,	OnAction actioncancel		(always (writeToFile (proj.projectName) projtxt >>|- pagenodeEditor))
-		]
-		
+	readFromFile ((proj.projectPath </> proj.projectName)+++".prj") >>- \mprojtxt. case mprojtxt of
+	Nothing = viewInformation "" [] (proj.projectPath +++ "   " +++ proj.projectName) >>| return ()
+	(Just projtxt) =
+		showUnresolvedImports
+		||-
+		showMapSelector proj.projectName
+		>>* [   OnAction  actioncontinue   	(always (pagenodeEditor))
+			,	OnAction actioncancel		(always (writeToFile (proj.projectName) projtxt >>|- pagenodeEditor))
+			]
+
 Errors2Imports :: [String] -> String
-Errors2Imports lines 
+Errors2Imports lines
 	# importlines = filter (\line. endsWith "imported" line) lines
 	# importlinessplitted = map (split " ") importlines
 	# dclnames = map (\x. hd (tl (tl x))) importlinessplitted
 	=  join "\n" dclnames
 
 showUnresolvedImports :: Task ()
-showUnresolvedImports = 
+showUnresolvedImports =
 	viewSharedInformation "Unresolved imports"  [ViewUsing Errors2Imports (textArea 'DM'.newMap)] errorStore >>|- return ()
 
 addPath2Project :: String String String -> String
@@ -46,10 +48,10 @@ addPath2Project path cleandir projtxt
 	= newprojtxt
 
 showMapSelector :: String -> Task ()
-showMapSelector projname = 
+showMapSelector projname =
 	get settings
-	>>= \settings. selectFromTree True settings.cpmDirectory (isFile "dcl")
+	>>= \settings. selectFromTree True settings.cleanHome (isFile "dcl")
 	>>= \(dclpath,dclname). readFromFile projname
-	>>- \(Just projtxt). saveFile projname (addPath2Project dclpath settings.cpmDirectory projtxt)
+	>>- \(Just projtxt). saveFile projname (addPath2Project dclpath settings.cleanHome projtxt)
 	>>|- build
 	>>|- showMapSelector projname

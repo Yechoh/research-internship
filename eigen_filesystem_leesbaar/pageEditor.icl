@@ -10,14 +10,14 @@ import directoryBrowsing
 //import createAndRunExec
 import iTasks.Extensions.Editors.Ace
 import iTasks.UI.Editor.Builtin, iTasks.UI.Layout
-import Text
+import extraText
 import errorHandling
 import iTasks.Extensions.DateTime
 import iTasks.Internal.TaskEval
 import builddb
 import CloogleDB
-
-
+import doubleEnterChoice
+import extraList
 
 editorInfo =
 	{
@@ -40,18 +40,17 @@ editorRecord =
 		readOnly = False
 	}
 */
-clooglestore :: Shared (CloogleDB)
-clooglestore = sharedStore "clooglestore" zero
 
 pageEditor :: EditorRedirects -> Task ()
-pageEditor ((actionOpen,pagenodeChooseFile),(actionAskImportPaths,pagenodeAskImportPaths)) = accWorld(buildit) >>= \a. set a clooglestore >>| //return ()
+pageEditor ((actionOpen,pagenodeChooseFile),(actionAskImportPaths,pagenodeAskImportPaths),(actionNew,pagenodeCreateFile)) = accWorld(buildit) >>= \a. set a clooglestore >>| //return ()
 	//viewInformation "" [] a
 	//||-
 	(editors)
 	-&&-
 	(repeatEveryTwoMinutes (build))
-	 >>*	[   OnAction  actionOpen   	(always pagenodeChooseFile)
+	 >>*	[   OnAction  actionOpen   			(always pagenodeChooseFile)
 	 		,	OnAction actionAskImportPaths	(always (pagenodeAskImportPaths))
+	 		,	OnAction ActionNew 				(always pagenodeCreateFile)
 		    ]
 /*
 latest :: Time Time -> Time
@@ -72,21 +71,170 @@ showErrors :: ParallelTask ()
 showErrors = \tasklist.viewSharedInformation "errors" [ViewUsing id (textArea 'DM'.newMap)] errorstate >>|- return ()
 */
 
-//j is de lengte
-subset :: Int Int [a] -> [a]
-subset i j a = snd (splitAt i (fst (splitAt (j+i) a)))
+linesContaining :: String Int [String] -> [(Int,String)]
+linesContaining needle i [] = []
+linesContaining needle i [x:y]
+| indexOf needle x <> -1 = [(i,x):linesContaining needle (i+1) y]
+| otherwise = linesContaining needle (i+1) y
 
-before :: Int [a] -> [a]
-before i a = fst (splitAt i a)
+replaceNext :: [String] String String EditorInfo -> [String]
+replaceNext text search replace ei
+	# line = fst ei.position
+	# character = snd ei.position
+	# (lbefore,lafter) = splitAt line text
+	# (lcurrent,lafter) = (hd lafter,tl lafter)
+	# indexCurrent = indexOfAfter character search lcurrent
+	= if (indexCurrent <> -1)
+	(lbefore ++ [(replaceSubString search replace lcurrent):lafter])
+	(lbefore ++ [lcurrent: replaceNext` search replace lafter])
+	where
+		replaceNext` :: String String [String] -> [String]
+		replaceNext` search replace [] = []
+		replaceNext` search replace [x:y] =
+		 	if (indexOf search x <> -1)
+			([replaceSubString search replace x:y])
+			([x:replaceNext` search replace y])
 
-after :: Int [a] -> [a]
-after i a = snd (splitAt i a)
+:: Q = Before | After
 
-//adds the interspersed element also as head
-intersperse :: a [a] -> [a]
-intersperse el [] = []
-intersperse el l = foldr (\x y.[el,x: y]) [] l
+replaceInfo :: String [String] (Int,Int) (Int,Int) Q -> [((Int,Int),String,Bool)]
+replaceInfo needle [] (line,character) (i,j) q = []
+replaceInfo needle [s:r] (line,character) (i,j) Before
+| indexOfAfter j needle s <> -1
+	| (i== line && indexOfAfter j needle s >= character) || i>line = [((i,(indexOfAfter j needle s)),s,True):replaceInfo needle [s:r] (line,character) (i,(indexOfAfter j needle s)+1) After]
+	| otherwise = [((i,(indexOfAfter j needle s)),s,False):replaceInfo needle [s:r] (line,character) (i,(indexOfAfter j needle s)+1) Before]
+| otherwise = replaceInfo needle r (line,character) (i+1,0) Before
+replaceInfo needle [s:r] (line,character) (i,j) After
+| indexOfAfter j needle s <> -1 = [((i,(indexOfAfter j needle s)),s,False):replaceInfo needle [s:r] (line,character) (i,(indexOfAfter j needle s)+1) After]
+| otherwise = replaceInfo needle r (line,character) (i+1,0) After
 
+replaceview :: ((Int,Int),String,Bool) -> (String,String)
+replaceview ((i,j),s,True) = (concat [">(",toString (i+1),",",toString j,")<"],s)
+replaceview ((i,j),s,False) = (concat [" (",toString (i+1),",",toString j,") "],s)
+
+replace :: ((Int,Int),String,Bool) String String [String] String -> Task ()
+replace ((line,character),s,b) term replaceterm text filename
+# (lbefore,lafter) = splitAt line text
+# (lcurrent,lafter) = (hd lafter,tl lafter)
+= setContent filename (lbefore ++ [replaceFirstSubStringAt character term replaceterm lcurrent: lafter]) >>|- return ()
+
+viewreplace :: String [String] EditorInfo String String -> Task [((Int,Int),String,Bool)]
+viewreplace term text ei filename replaceterm =
+	enterChoice "Click to replace" [ChooseFromGrid replaceview] (replaceInfo term text ei.position (0,0) Before)
+	>>*
+	[OnValue (hasValue \info. contentLinesOf filename >>- \text. replace info term replaceterm text filename >>|- (viewreplace term text ei filename replaceterm))]
+
+
+replaceWindow :: String String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
+replaceWindow filename replaceterm store = \tasklist. (get searchterm >>- \term. contentLinesOf filename >>- \text. get store >>- \(ei,c).
+	((updateSharedInformation "Search" [] searchterm -&&- updateInformation "Replace" [] replaceterm) -|| viewreplace term text ei filename replaceterm)<<@ ApplyLayout (arrangeHorizontal)
+	>>*
+	[	(OnAction (Action "Update view") (ifValue (\((search,replace)). search <> "") (\((search,replace)). replaceWindow filename replace store tasklist)))
+	,	(OnAction (Action "Replace all") (ifValue (\((search,replace)). search <> "") (\((search,replace)). contentLinesOf filename >>- \text. (setContent filename (map (\line.replaceSubString search replace line) text) ||- replaceWindow filename replace store tasklist))))
+	]) <<@ (Title "Replace")
+
+/*
+replaceWindow :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
+replaceWindow filename store = \tasklist.
+	((updateSharedInformation "Search" [] searchterm -&&- enterInformation "Replace" [])
+	>>*
+	[	(OnAction (Action "Show") (ifValue (\(search,replace). search <> "") (\(search,replace).contentLinesOf filename >>- \text. showReplace search text store)))
+	,	(OnAction (Action "Replace next") (ifValue (\(search,replace). search <> "") (\(search,replace).get store >>- \(ei,c). contentLinesOf filename >>- \text. setContent filename (replaceNext text search replace ei) ||- replaceWindow filename store tasklist)))
+	,	(OnAction (Action "Replace all") (ifValue (\(search,replace). search <> "") (\(search,replace).contentLinesOf filename >>- \text. (setContent filename (map (\line.replaceSubString search replace line) text) ||- replaceWindow filename store tasklist))))]
+	)  >>| return ()
+*/
+
+cloogleFind :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
+cloogleFind filename store = \tasklist. (cloogleFind` filename store) <<@ (Title "Search") >>|- return ()
+
+cloogleFind` :: String (Shared (EditorInfo,Map String [String])) -> Task String
+cloogleFind` filename store = withShared True (\slocal.
+	((updateSharedInformation "" [] searchterm
+	>^*
+	[	(OnAction (Action "Search shared definitions") (hasValue \a. upd (\l.False) slocal >>|- return ()))
+	,	(OnAction (Action "Search this file") (hasValue \a. upd (\l.True) slocal >>|- return ()))
+	]) -|| (showResults slocal filename store)))<<@ ApplyLayout (arrangeHorizontal)
+
+
+focusNextReplacement :: [(Int,String)] (Int,Int) -> [(String,String)]
+focusNextReplacement [] (line,character) = []
+//focusNextReplacement [(i,s1)] (line,character) =
+focusNextReplacement [(i,s1),(j,s2):z] (line,character)
+| i == line || (i < line && j > line) = [(">"+++(toString i)+++"<",s1): map (\(i,s).(" "+++(toString i)+++" ",s)) [(j,s2):z]]
+| otherwise = [(" "+++toString(i)+++" ",s1): focusNextReplacement [(j,s2):z] (line,character)]
+
+showReplace :: String [String] (Shared (EditorInfo,Map String [String])) -> Task ()
+showReplace term text store = get store >>- \(ei,c).
+	(enterChoice "" [ChooseFromGrid id] (focusNextReplacement (linesContaining term 1 text) ei.position)) >>|- return ()
+
+showFileSearchResults :: String String (Shared (EditorInfo,Map String [String])) -> Task ()
+showFileSearchResults term filename store = contentLinesOf filename >>- \text.
+	(enterChoice "" [ChooseFromGrid id] (linesContaining term 1 text)
+	>>*
+	[OnValue (hasValue \(i,line). showFileSearchResults term filename store -&&- jumpToLine store (i-1) )])
+	>>|- return ()
+
+showResults :: (Shared Bool) String (Shared (EditorInfo,Map String [String])) -> Task ()
+showResults slocal filename store = get slocal >>- \local. if local
+		(get searchterm >>- \term. showFileSearchResults term filename store ||- watch slocal)
+		(get searchterm >>- \term. showCloogleResults term ||- watch slocal)
+		>>*
+			[ OnValue (ifValue (\newlocal. newlocal <> local) (\newlocal. showResults slocal filename store))
+			]
+
+showCloogleResults :: String -> Task ()
+showCloogleResults a = get clooglestore >>- \db.
+	((enterChoice "" [ChooseFromGrid \result. (snd result).fe_representation] (findFunction a db))
+	>&^
+	\a.return ())
+	>>|- return ()
+
+cloogleFindDeprecated :: ParallelTask ()
+cloogleFindDeprecated = \tasklist.
+	first >>|- return ()
+	where
+	first =
+		(enterInformation "" []
+		>&^
+		(\sma. ((viewInformation "" [] "" -||- viewInformation "" [] "")<<@ ApplyLayout(arrangeHorizontal)) ||- watch sma
+			>>*
+			[	(OnValue (ifValue (\ma. isJust ma) \(Just a).
+				second2 sma a) )
+			])) <<@ ApplyLayout (arrangeHorizontal)
+
+second2 :: (ReadOnlyShared (Maybe String)) String -> Task ()
+second2 sma a = get clooglestore >>- \db.
+	(((enterChoice "" [ChooseFromGrid \result. (snd result).fe_representation] (findFunction a db))
+	>&>
+	\sma2. watch (sma >*< sma2))
+		>>*
+		[ (OnValue (ifValue (\(ma,ma2). isJust ma2) \(ma,Just a2).
+		(second2 sma a -||- third a)<<@ ApplyLayout (arrangeHorizontal)))
+		, (OnValue (ifValue (\(ma,ma2). maybe (False) (\newa. newa =!= a) ma) (\(Just newa,ma2).
+		second2 sma newa )))
+		])
+
+third :: a -> Task ()
+third a = (enterChoice "" [ChooseFromGrid id] ["To icl","To dcl"])
+	>&>
+	\sma2. watch sma2
+	>>*
+	[ (OnValue (ifValue (\ma2. maybe (False) (\a. a=="To icl") ma2) \(Just a2).  return ()))
+	, (OnValue (ifValue (\ma2. maybe (False) (\a. a=="To dcl") ma2) \(Just a2).  return ()))
+	]
+		/*chooseTaskBasedOnFeed2
+			(enterInformation "" [])
+			(\searchterm."")
+			(\searchterm.get clooglestore >>- \db. return (findFunction searchterm db))
+			(\result. maybe "" id ((snd result).fe_representation))
+			(\searchterm result. viewInformation "" [] result >>| return ())/*chooseTaskBasedOnFeed
+				(return result)
+				(\result. maybe "" id ((snd result).fe_representation))
+				(\result.["To icl","To dcl"])
+				(\result action. viewInformation "action" [] action >>| return ())
+			)*/*/
+
+/*
 cloogleFind :: ParallelTask ()
 cloogleFind = \tasklist. cloogleFind`
 	where
@@ -99,19 +247,19 @@ cloogleFind = \tasklist. cloogleFind`
 				(
 					get clooglestore >>-
 					\db. (viewInformation "" [] (findType a db)) >>| return ())))]
+*/
 
 viewSelection :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
-viewSelection filename s = \tasklist. viewSelection` filename s
+viewSelection filename s = \tasklist. viewSelection` filename s <<@ (Title "Selected")
 	where
 	viewSelection` filename s =
 		viewSharedInformation "selected" [ViewUsing (\(ei,c). mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) (textArea 'DM'.newMap)] s
 			>>*
-			[OnAction (Action "CloogleFind") (hasValue (\(ei,c).
-				viewSelection` filename s
+			[OnAction (Action "Search shared definitions") (hasValue (\(ei,c).
+				((viewSelection` filename s
 				-||
 				(
-					get clooglestore >>-
-					\db. (viewInformation "" [] (findType (mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) db) >>| return ()))))]
+					showCloogleResults (mrange2text (ei.EditorInfo.selection) ('DM'.get filename c)) >>|- return ()))<<@ ApplyLayout(arrangeHorizontal))))]
 
 	mrange2text _ Nothing = ""
 	mrange2text Nothing (Just text) = "-"
@@ -145,12 +293,76 @@ vbselecties =
 	(selectText {start=(1,5), end=(1,6)} vbtekst) +++ "\n\n\n" +++
 	(selectText {start=(1,5), end=(2,9)} vbtekst)
 
+shareWindow :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
+shareWindow filename s = \tasklist. ((get dclStore >>- \dcls. maybe (show []) (show) ('DM'.get filename dcls) >>* [OnAction (Action "Refresh") (always (shareWindow filename s tasklist))]) >>|- return ()) <<@ (Title "Shared")
+where
+	show dcl
+	# imports = filter (\(x,y,z). startsWith "import " y || startsWith "derive " y) dcl
+	# functions = filter (\(x,y,z). not (startsWith "import " y || startsWith "derive " y)) dcl
+	= functiontasks (importtasks (headline) imports) functions
+	where
+		importtasks starttask imports = (foldr (\d t. t ||- showSharableImport filename d) (starttask) imports)
+		functiontasks starttask functions = (foldr (\d t. t ||- showSharableFunction filename d) (starttask) functions)
+		headline = ((((viewInformation "" [] "Shared:" -&&- viewInformation "" [] "Definition:")<<@ ApplyLayout (arrangeHorizontal)) -&&- viewInformation "" [] "Description:")<<@ ApplyLayout (arrangeHorizontal)) >>|- return ()
+
+swapshared :: Sharenum -> Sharenum
+swapshared Sharedi = Unsharedi
+swapshared Unsharedi = Sharedi
+swapshared Deprecatedf = Deprecatedf //should never occur
+swapshared Sharedf = Unsharedf
+swapshared Unsharedf = Sharedf
+
+/*
+showSharable :: [(Sharenum,String,Comment)]
+showSharable filename dcl =
+ 	enterChoice "Shared" [ChooseFromGrid (\dcl. fst3 dcl === Sharedi || fst3 dcl === Sharedf)] dcl >>* [OnValue (hasValue (\(x,y,z). upd (\dcls. 'DM'.put filename (\dcl. map (\(x2,y2,z2). if (y2 == y) (swapshared x,y2,z2) (x2,y2,z2) ) dcl) dcls) dclsStore))]
+	-&&-
+	enterChoice "Definition" [ChooseFromGrid (snd3)] dcl
+	-&&-
+	enterChoice "Description"
+*/
+
+showSharableImport :: String (Sharenum,String,Comment) -> Task ()
+showSharableImport filename (sharenum,def,desc) =
+ 	(((viewInformation "" [] (sharenum === Sharedi)
+	-&&-
+	viewInformation "" [] def)<<@ ApplyLayout (arrangeHorizontal))
+	-&&-
+	viewInformation "" [] "")<<@ ApplyLayout (arrangeHorizontal)
+	>>*
+	[ OnAction (Action (if (sharenum === Sharedi) "Unshare" "Share"))  (hasValue (\((x,y),z). upd (\dcls.('DM'.alter (\(Just dcl). Just (swapmap y dcl)) filename dcls)) dclStore ||- showSharableImport filename (swapshared sharenum,y,z)))
+	]
+	where
+		swapmap :: String -> ([(Sharenum,String,Comment)] -> [(Sharenum,String,Comment)])
+		swapmap y = (\dcl. map (\(x2,y2,z2). if (y2 == y) (swapshared sharenum,y2,z2) (x2,y2,z2) ) dcl)
+
+showSharableFunction :: String (Sharenum,String,Comment) -> Task ()
+showSharableFunction filename (sharenum,def,desc) =
+ 	(((viewInformation "" [] (sharenum === Sharedf)
+	-&&-
+	viewInformation "" [] def)<<@ ApplyLayout (arrangeHorizontal))
+	-&&-
+	updateInformation "" [UpdateUsing id (\a b. b) (textArea 'DM'.newMap)] desc)<<@ ApplyLayout (arrangeHorizontal)
+	>>*
+	[ OnAction (Action (if (sharenum === Sharedf) "Unshare" "Share"))  (hasValue (\((x,y),z). upd (\dcls.('DM'.alter (\(Just dcl). Just (swapmap y dcl)) filename dcls)) dclStore ||- showSharableFunction filename (swapshared sharenum,y,z)))
+	, OnAction (Action "Save description") (hasValue \((x,y),z). upd (\dcls. ('DM'.alter (\(Just dcl). Just (commentmap y z dcl)) filename dcls)) dclStore ||- showSharableFunction filename (sharenum,y,z))
+	]
+	where
+		swapmap :: String -> ([(Sharenum,String,Comment)] -> [(Sharenum,String,Comment)])
+		swapmap y = (\dcl. map (\(x2,y2,z2). if (y2 == y) (swapshared sharenum,y2,z2) (x2,y2,z2) ) dcl)
+
+		commentmap :: String Comment -> ([(Sharenum,String,Comment)] -> [(Sharenum,String,Comment)])
+		commentmap y z = (\dcl. map (\(x2,y2,z2). if (y2 == y) (x2,y2,z) (x2,y2,z2) ) dcl)
+
+
 helpwindows :: String (Shared (EditorInfo,Map String [String])) -> Task [(TaskTime,TaskValue ())]
 helpwindows filename s = (parallel (embed
 	[	(errorWindow filename s)
-	,	viewSelection filename s
-	,	cloogleFind
-	]) []) //<<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)
+	,	(viewSelection filename s)
+	,	(cloogleFind filename s)
+	,	(replaceWindow filename "" s)
+	, 	(shareWindow filename s)
+	]) []) <<@ ApplyLayout (arrangeWithTabs)
 
 
 
@@ -185,26 +397,74 @@ er2EiAndContentsWrite filename (ao,as) (ei,contents) =
 		'DM'.put filename as.lines contents
 	)
 
+//autoWrite automatically writes at certain conditions. At the moment those are:
+// - when the cursor is on a function line (a word followed by ::), the function name is put underneath it, if it isn't already.
+autoWrite :: String (Shared (EditorInfo,Map String [String])) -> Task ()
+autoWrite filename s =
+	watch s >>* [OnValue (ifValue (\(ei,c).case ('DM'.get filename c) of
+		Nothing = False
+		(Just content) = isAFunctionLine (content!!(fst ei.position)) if (((fst ei.position)+1)>=(length content)) "" (content!!((fst ei.position)+1)))
+	(\(ei,c).check "1" >>| case ('DM'.get filename c) of
+		Nothing = return ()
+		(Just content) = check "2" >>|
+			addFunctionName content filename (fst ei.position) s >>|- check "6" >>| autoWrite filename s)) ]
+
+check :: String -> Task String
+check s = viewInformation "" [] s
+
+isAFunctionLine :: String String -> Bool
+isAFunctionLine line nextline
+	# splitted = split "::" line
+	#fname = if (splitted==[]) "" (trim (splitted!!0))
+	#alreadyThere = (indexOf fname (trim nextline))==0
+	= (trim nextline <> "") && (length splitted==2) && (not alreadyThere)
+
+isAFunctionLineTest :: [Bool]
+isAFunctionLineTest = [
+	isAFunctionLine "" "",
+	isAFunctionLine "::" "",
+	isAFunctionLine "::" " ",
+	isAFunctionLine " ::" "",
+	isAFunctionLine "henk :: kaas saak" "",
+	isAFunctionLine "henk :: kaas saak" " ",
+	isAFunctionLine "henk :: kaas saak" "henk ",
+	isAFunctionLine "henk :: kaas saak" "henkje ",
+	isAFunctionLine "henk :: kaas saak" "appelsap"
+	]
+
+addFunctionName :: [String] String Int (Shared (EditorInfo,Map String [String])) -> Task ()
+addFunctionName content filename findex s
+	# fname = trim ((split "::" (content!!findex))!!0)
+	# splitted = split " " (content!!(findex+1))
+	# newline = if (length splitted>0) (fname+++" "+++(join " " (tl splitted))) (fname)
+	= check "3" >>| upd (\c.'DM'.put filename (updateAt (findex+1) newline content) c) contents
+		>>|- check "4" >>| upd (\(ei,c). ({EditorInfo| ei & position = (findex,snd ei.position)},c)) s >>|- check "5" >>| return ()
+
+
+
 editor :: String (Shared ((Map String [String]),(Map String TaskId))) -> ParallelTask ()
-editor filename cnt = \tasklist.withShared editorInfo (\ei.
+editor filename cnt = \tasklist.(withShared editorInfo (\ei.
 	get cnt >>- \(c,utabs).
 	get (taskListSelfId tasklist) >>- \selfid.
 	set (c,'DM'.put filename selfid utabs) cnt >>|-
 	(updateSharedInformation (name) [UpdateUsing id (\_ nsc -> nsc) aceEditor] (er ei filename))
 	-&&-
-	helpwindows filename (ei >*< contents)
+	helpwindows filename (ei >*< contents) //-|| autoWrite filename (ei >*< contents) -|| viewSharedInformation "" [] ei
 	)
-	>^*[	OnAction ActionSaveAs		(always
-			(contentOf filename >>- \content.
-			saveFileAs filename content ))
-	 	]
-	>>*[	OnAction ActionClose		(always (
+	>>*[	OnAction ActionSaveAs		(always
+			((contentOf filename) >>- \content.
+			(saveFileAs filename content)<<@ Title name >>|- editor filename cnt tasklist))
+	 	,
+	 		OnAction ActionClose		(always (
 			contentOf filename >>- \content.
 			saveFile filename content >>|-
 			get cnt >>- \(ucontents,utabs).
 			set (('DM'.del filename ucontents),('DM'.del filename utabs)) cnt >>|-
 			return ()))
-		]
+		,
+			OnAction (Action "Restart") (always
+			(editor filename cnt tasklist))
+		])<<@ Title name
 	where
 	er ei filename = mapReadWrite ((eiAndContents2ErRead filename), (er2EiAndContentsWrite filename)) (ei >*< contents)
 	name = dropDirectory filename
@@ -215,7 +475,7 @@ simpleEditor filename = \tasklist.
 editors :: Task [(TaskTime,TaskValue ())]
 editors =
 	get contents >>- \c. withShared 'DM'.newMap (\tabs.
-	parallel [(Embedded,(waitf c tabs (updateTabs tabs))):(map (\x.(Embedded,(editor x (contents >*< tabs)))) ('DM'.keys c))] [] /*<<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs)*/)
+	parallel [(Embedded,(waitf c tabs (updateTabs tabs))):(map (\x.(Embedded,(editor x (contents >*< tabs)))) ('DM'.keys c))] [] <<@ ApplyLayout (arrangeWithTabs))
 	where
 	waitf :: (Map String [String]) (Shared (Map String TaskId)) (ParallelTask ()) -> ParallelTask ()
 	waitf c tabs task = \tasklist.watch tabs >>* [ OnValue (ifValue (\utabs. 'DM'.mapSize utabs == length ('DM'.keys c)) (\utabs. task tasklist))]

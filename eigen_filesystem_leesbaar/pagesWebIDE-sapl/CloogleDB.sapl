@@ -6,8 +6,8 @@ CloogleDB.isBuiltin::B !_x_0 = case _x_0 (CloogleDB.Builtin _x_1_0 -> True) (_ -
 <{CloogleDB.get`_230}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{CloogleDB.get`_230}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{CloogleDB.get`_230}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
 <{CloogleDB.get`_967}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) _x_0 kx_1_1) (True -> <{CloogleDB.get`_967}> _x_0 l_1_3) (False -> case (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) kx_1_1 _x_0) (True -> <{CloogleDB.get`_967}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
 CloogleDB.getModule !lib_0 !mod_1 !db_2 = <{CloogleDB.get`_967}> (_Tuple2 lib_0 mod_1) (select db_2::CloogleDB._CloogleDB 4)
-CloogleDB.isCore::B !_x_0 _x_1 = case _x_0 (CloogleDB.Builtin _x_1_0 -> False) (CloogleDB.Location lib_1_0 mod_1_1 _x_1_2 _x_1_3 _x_1_4 -> <{CloogleDB._c;151;38_1237}> (CloogleDB.getModule lib_1_0 mod_1_1 _x_1)) 
-<{CloogleDB._c;151;38_1237}>::B !_x_0 = case _x_0 (Data.Maybe.Nothing -> False) (Data.Maybe.Just b_1_0 -> select b_1_0::CloogleDB._ModuleEntry 0) 
+CloogleDB.isCore::B !_x_0 _x_1 = case _x_0 (CloogleDB.Builtin _x_1_0 -> False) (CloogleDB.Location lib_1_0 mod_1_1 _x_1_2 _x_1_3 _x_1_4 -> <{CloogleDB._c;152;38_1237}> (CloogleDB.getModule lib_1_0 mod_1_1 _x_1)) 
+<{CloogleDB._c;152;38_1237}>::B !_x_0 = case _x_0 (Data.Maybe.Nothing -> False) (Data.Maybe.Just b_1_0 -> select b_1_0::CloogleDB._ModuleEntry 0) 
 CloogleDB.toTypeDefEntry !td_0 !doc_1 = CloogleDB._TypeDefEntry td_0 doc_1
 CloogleDB.getTypeDef !_x_0 = case _x_0 (CloogleDB._TypeDefEntry tde_typedef_1_0 tde_doc_1_1 -> tde_typedef_1_0) 
 CloogleDB.getTypeDefDoc !_x_0 = case _x_0 (CloogleDB._TypeDefEntry tde_typedef_1_0 tde_doc_1_1 -> tde_doc_1_1) 
@@ -23,8 +23,8 @@ CloogleDB.moduleCount::I !_x_0 = case _x_0 (CloogleDB._CloogleDB functionmap_1_0
 CloogleDB.anon_234 !f_0 g_1 x_2 = f_0 (g_1 x_2)
 CloogleDB.anon_969 !g_0 x_1 = StdFunc.const (g_0 x_1)
 CloogleDB.filterLoc f_0 !m_1 = Data.Map.filterWithKey (CloogleDB.anon_969 f_0) m_1
-CloogleDB.filtDervLocs f_0 !_x_1 = case _x_1 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons de_1_0 rest_1_1 -> let ls_2_0 = StdList.filter f_0 (select de_1_0::CloogleDB._DeriveEntry 2) in <{CloogleDB._c;203;28_1238}> ls_2_0 f_0 rest_1_1 de_1_0) 
-<{CloogleDB._c;203;28_1238}> !ls_0 f_1 rest_2 de_3 = case ls_0 (_predefined._Nil -> CloogleDB.filtDervLocs f_1 rest_2) (_ -> _predefined._Cons (update de_3::CloogleDB._DeriveEntry [2:ls_0]) (CloogleDB.filtDervLocs f_1 rest_2))
+CloogleDB.filtDervLocs f_0 !_x_1 = case _x_1 (_predefined._Nil -> _predefined._Nil) (_predefined._Cons de_1_0 rest_1_1 -> let ls_2_0 = StdList.filter f_0 (select de_1_0::CloogleDB._DeriveEntry 2) in <{CloogleDB._c;204;28_1238}> ls_2_0 f_0 rest_1_1 de_1_0) 
+<{CloogleDB._c;204;28_1238}> !ls_0 f_1 rest_2 de_3 = case ls_0 (_predefined._Nil -> CloogleDB.filtDervLocs f_1 rest_2) (_ -> _predefined._Cons (update de_3::CloogleDB._DeriveEntry [2:ls_0]) (CloogleDB.filtDervLocs f_1 rest_2))
 CloogleDB.anon_191 f_0 k_1 !a_2 = CloogleDB.filtDervLocs f_0 a_2
 CloogleDB.anon_192 !f_0 !_x_1 _x_2 = case _x_1 (_Tuple2 l_1_0 m_1_1 -> f_0 (CloogleDB.Location l_1_0 m_1_1 Data.Maybe.Nothing Data.Maybe.Nothing "")) 
 CloogleDB.filtModules f_0 !m_1 = Data.Map.filterWithKey (CloogleDB.anon_192 f_0) m_1
@@ -32,7 +32,7 @@ CloogleDB.filterLocations f_0 !db_1 = update db_1::CloogleDB._CloogleDB [0:Cloog
 <{CloogleDB.get`_235}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{CloogleDB.get`_235}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{CloogleDB.get`_235}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
 CloogleDB.toGenericLocation_306 !x_0 = case x_0 (CloogleDB.Location x11_1_0 x12_1_1 x13_1_2 x14_1_3 x15_1_4 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR (StdGeneric.PAIR x11_1_0 x12_1_1) (StdGeneric.PAIR x13_1_2 (StdGeneric.PAIR x14_1_3 x15_1_4)))))) (CloogleDB.Builtin x21_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.CONS x21_1_0))) 
 CloogleDB.toGenericMaybe_509 !x_0 = case x_0 (Data.Maybe.Nothing -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT))) (Data.Maybe.Just x21_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.CONS x21_1_0))) 
-CloogleDB.gLexOrd_Maybe_226 <{gLexOrd_a_b_136-0_a_0}> x1_1 x2_2 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 GenLexOrd.gLexOrd_UNIT_7) (GenLexOrd.gLexOrd_CONS_11 <{gLexOrd_a_b_136-0_a_0}>)) (CloogleDB.toGenericMaybe_509 x1_1) (CloogleDB.toGenericMaybe_509 x2_2)
+CloogleDB.gLexOrd_Maybe_226 <{gLexOrd_a_b_126-0_a_0}> x1_1 x2_2 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 GenLexOrd.gLexOrd_UNIT_7) (GenLexOrd.gLexOrd_CONS_11 <{gLexOrd_a_b_126-0_a_0}>)) (CloogleDB.toGenericMaybe_509 x1_1) (CloogleDB.toGenericMaybe_509 x2_2)
 CloogleDB.gLexOrd_Location_225 x1_0 x2_1 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd_PAIR_8 GenLexOrd.gLexOrd__String_6 GenLexOrd.gLexOrd__String_6) (GenLexOrd.gLexOrd_PAIR_8 (CloogleDB.gLexOrd_Maybe_226 GenLexOrd.gLexOrd_Int_4) (GenLexOrd.gLexOrd_PAIR_8 (CloogleDB.gLexOrd_Maybe_226 GenLexOrd.gLexOrd_Int_4) GenLexOrd.gLexOrd__String_6)))) (GenLexOrd.gLexOrd_CONS_11 GenLexOrd.gLexOrd__String_6)) (CloogleDB.toGenericLocation_306 x1_0) (CloogleDB.toGenericLocation_306 x2_1)
 <{CloogleDB.<_219}>::B !a_0 !b_1 = <{GenEq.===}> (<{CloogleDB.gEq_s;}> GenLexOrd.gEq_LexOrd_1) (<{GenLexOrd.=?=}> (<{CloogleDB.gLexOrd_s;}> CloogleDB.gLexOrd_Location_225) a_0 b_1) GenLexOrd.LT
 <{CloogleDB.get`_970}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{CloogleDB.<_219}> _x_0 kx_1_1) (True -> <{CloogleDB.get`_970}> _x_0 l_1_3) (False -> case (<{CloogleDB.<_219}> kx_1_1 _x_0) (True -> <{CloogleDB.get`_970}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
@@ -69,12 +69,12 @@ CloogleDB.anon_981::B !_x_0 !g_1 x_2 = <{StdString.==_2}> _x_0 (g_1 x_2)
 CloogleDB.anon_982 !x_0 = CloogleDB.getName (CloogleDB.fst_246 x_0)
 CloogleDB.anon_983::B !_x_0 !x_1 = <{StdString.==_2}> _x_0 (CloogleDB.anon_982 x_1)
 CloogleDB.findClass !c_0 !db_1 = StdList.filter (CloogleDB.anon_983 c_0) (Data.Map.foldrWithKey CloogleDB.anon_249 _predefined._Nil (select db_1::CloogleDB._CloogleDB 1))
-<{CloogleDB.c;231;52_193}> g_t_0 !g_l_1 = <{CloogleDB.g_c1;231;57_1241}> g_l_1 g_t_0
-<{CloogleDB.c;231;25_194}> !g_l_0 = <{CloogleDB.g_c1;231;35_1240}> g_l_0
-<{CloogleDB.g_c1;231;57_1241}> !g_l_0 g_t_1 = case g_l_0 (_predefined._Cons ie_1_0 g_t_1_1 -> _predefined._Cons ie_1_0 (<{CloogleDB.c;231;52_193}> g_t_1 g_t_1_1)) (_ -> <{CloogleDB.c;231;25_194}> g_t_1)
-<{CloogleDB.g_c1;231;35_1240}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;231;35_1239}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
-<{CloogleDB.g_c2;231;35_1239}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 _x_1_0 ce_1_1 -> <{CloogleDB.c;231;52_193}> g_t_1 (select ce_1_1::CloogleDB._ClassEntry 4)) (_ -> <{CloogleDB.c;231;25_194}> g_t_1)
-CloogleDB.getInstances !c_0 !db_1 = <{CloogleDB.c;231;25_194}> (CloogleDB.findClass c_0 db_1)
+<{CloogleDB.c;232;52_193}> g_t_0 !g_l_1 = <{CloogleDB.g_c1;232;57_1241}> g_l_1 g_t_0
+<{CloogleDB.c;232;25_194}> !g_l_0 = <{CloogleDB.g_c1;232;35_1240}> g_l_0
+<{CloogleDB.g_c1;232;57_1241}> !g_l_0 g_t_1 = case g_l_0 (_predefined._Cons ie_1_0 g_t_1_1 -> _predefined._Cons ie_1_0 (<{CloogleDB.c;232;52_193}> g_t_1 g_t_1_1)) (_ -> <{CloogleDB.c;232;25_194}> g_t_1)
+<{CloogleDB.g_c1;232;35_1240}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;232;35_1239}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{CloogleDB.g_c2;232;35_1239}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 _x_1_0 ce_1_1 -> <{CloogleDB.c;232;52_193}> g_t_1 (select ce_1_1::CloogleDB._ClassEntry 4)) (_ -> <{CloogleDB.c;232;25_194}> g_t_1)
+CloogleDB.getInstances !c_0 !db_1 = <{CloogleDB.c;232;25_194}> (CloogleDB.findClass c_0 db_1)
 CloogleDB.gEq_Location_65::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 GenEq.gEq__String_6 GenEq.gEq__String_6) (GenEq.gEq_PAIR_8 (Data.Maybe.gEq_Maybe_13 GenEq.gEq_Int_2) (GenEq.gEq_PAIR_8 (Data.Maybe.gEq_Maybe_13 GenEq.gEq_Int_2) GenEq.gEq__String_6)))) (GenEq.gEq_CONS_10 GenEq.gEq__String_6)) (CloogleDB.toGenericLocation_306 x1_0) (CloogleDB.toGenericLocation_306 x2_1)
 <{CloogleDB.==_223}>::B !a_0 !b_1 = CloogleDB.gEq_Location_65 a_0 b_1
 CloogleDB.update_196 l_0 t_1 !_x_2 = case _x_2 (_predefined._Nil -> _predefined._Cons (CloogleDB._InstanceEntry t_1 (_predefined._Cons l_0 _predefined._Nil)) _predefined._Nil) (_predefined._Cons ie_1_0 rest_1_1 -> case (<{StdList.==_45}> (<{StdOverloaded.==;}> (<{StdTuple.==_4}> (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{TypeDef.==_22}>)) (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{StdString.==_2}>)))) (select ie_1_0::CloogleDB._InstanceEntry 0) t_1) (True -> _predefined._Cons (update ie_1_0::CloogleDB._InstanceEntry [1:StdList.removeDup (<{StdClass.Eq;}> (<{StdOverloaded.==;}> <{CloogleDB.==_223}>)) (_predefined._Cons l_0 (select ie_1_0::CloogleDB._InstanceEntry 1))]) rest_1_1) (False -> _predefined._Cons ie_1_0 (CloogleDB.update_196 l_0 t_1 rest_1_1)) ) 
@@ -104,29 +104,29 @@ CloogleDB.foldr_989 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefine
 CloogleDB.anon_258 k_0 x_1 xs_2 = _predefined._Cons (_Tuple2 k_0 x_1) xs_2
 CloogleDB.app5_257 !f_0 !_x_1 = CloogleDB._f1242_1242 _x_1 f_0
 CloogleDB._f1242_1242 !_x_0 !f_1 = case _x_0 (_Tuple5 a_1_0 b_1_1 c_1_2 d_1_3 e_1_4 -> f_1 a_1_0 b_1_1 c_1_2 d_1_3 e_1_4) 
-<{CloogleDB.c;269;47_198}> g_t_0 def_1 cl_2 !g_l_3 = <{CloogleDB.g_c1;269;55_1246}> g_l_3 cl_2 def_1 g_t_0
-<{CloogleDB.c;269;9_199}> !g_l_0 = <{CloogleDB.g_c1;269;21_1244}> g_l_0
-<{CloogleDB.g_c1;269;55_1246}> !g_l_0 cl_1 def_2 g_t_3 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;269;55_1245}> g_h_1_0 cl_1 def_2 g_t_3 g_t_1_1) (_ -> <{CloogleDB.c;269;9_199}> g_t_3)
-<{CloogleDB.g_c2;269;55_1245}> !g_h_0 cl_1 def_2 g_t_3 g_t_4 = case g_h_0 (_Tuple2 f_1_0 t_1_1 -> _predefined._Cons (_Tuple5 cl_1 (select def_2::CloogleDB._ClassEntry 0) (select def_2::CloogleDB._ClassEntry 1) f_1_0 t_1_1) (<{CloogleDB.c;269;47_198}> g_t_3 def_2 cl_1 g_t_4)) (_ -> <{CloogleDB.c;269;47_198}> g_t_3 def_2 cl_1 g_t_4)
-<{CloogleDB.g_c1;269;21_1244}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;269;21_1243}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
-<{CloogleDB.g_c2;269;21_1243}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 cl_1_0 def_1_1 -> <{CloogleDB.c;269;47_198}> g_t_1 def_1_1 cl_1_0 (select def_1_1::CloogleDB._ClassEntry 3)) (_ -> <{CloogleDB.c;269;9_199}> g_t_1)
-<{CloogleDB.findClassMembers`}> !f_0 !db_1 = StdList.filter (CloogleDB.app5_257 f_0) (<{CloogleDB.c;269;9_199}> (Data.Map.foldrWithKey CloogleDB.anon_258 _predefined._Nil (select db_1::CloogleDB._CloogleDB 1)))
+<{CloogleDB.c;270;47_198}> g_t_0 def_1 cl_2 !g_l_3 = <{CloogleDB.g_c1;270;55_1246}> g_l_3 cl_2 def_1 g_t_0
+<{CloogleDB.c;270;9_199}> !g_l_0 = <{CloogleDB.g_c1;270;21_1244}> g_l_0
+<{CloogleDB.g_c1;270;55_1246}> !g_l_0 cl_1 def_2 g_t_3 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;270;55_1245}> g_h_1_0 cl_1 def_2 g_t_3 g_t_1_1) (_ -> <{CloogleDB.c;270;9_199}> g_t_3)
+<{CloogleDB.g_c2;270;55_1245}> !g_h_0 cl_1 def_2 g_t_3 g_t_4 = case g_h_0 (_Tuple2 f_1_0 t_1_1 -> _predefined._Cons (_Tuple5 cl_1 (select def_2::CloogleDB._ClassEntry 0) (select def_2::CloogleDB._ClassEntry 1) f_1_0 t_1_1) (<{CloogleDB.c;270;47_198}> g_t_3 def_2 cl_1 g_t_4)) (_ -> <{CloogleDB.c;270;47_198}> g_t_3 def_2 cl_1 g_t_4)
+<{CloogleDB.g_c1;270;21_1244}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;270;21_1243}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{CloogleDB.g_c2;270;21_1243}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 cl_1_0 def_1_1 -> <{CloogleDB.c;270;47_198}> g_t_1 def_1_1 cl_1_0 (select def_1_1::CloogleDB._ClassEntry 3)) (_ -> <{CloogleDB.c;270;9_199}> g_t_1)
+<{CloogleDB.findClassMembers`}> !f_0 !db_1 = StdList.filter (CloogleDB.app5_257 f_0) (<{CloogleDB.c;270;9_199}> (Data.Map.foldrWithKey CloogleDB.anon_258 _predefined._Nil (select db_1::CloogleDB._CloogleDB 1)))
 CloogleDB.foldr_262 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> op_0 a_1_0 (CloogleDB.foldr_262 op_0 r_1 x_1_1)) 
 CloogleDB.anon_261 !f_0 g_1 x_2 = f_0 (g_1 x_2)
 CloogleDB.app5_260 !f_0 !_x_1 = CloogleDB._f1247_1247 _x_1 f_0
 CloogleDB._f1247_1247 !_x_0 !f_1 = case _x_0 (_Tuple5 a_1_0 b_1_1 c_1_2 d_1_3 e_1_4 -> f_1 a_1_0 b_1_1 c_1_2 d_1_3 e_1_4) 
 CloogleDB.anon_259 k_0 x_1 xs_2 = _predefined._Cons (_Tuple2 k_0 x_1) xs_2
-<{CloogleDB.c;276;47_200}> g_t_0 def_1 cl_2 !g_l_3 = <{CloogleDB.g_c1;276;55_1251}> g_l_3 cl_2 def_1 g_t_0
-<{CloogleDB.c;276;9_201}> !g_l_0 = <{CloogleDB.g_c1;276;21_1249}> g_l_0
-<{CloogleDB.g_c1;276;55_1251}> !g_l_0 cl_1 def_2 g_t_3 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;276;55_1250}> g_h_1_0 cl_1 def_2 g_t_3 g_t_1_1) (_ -> <{CloogleDB.c;276;9_201}> g_t_3)
-<{CloogleDB.g_c2;276;55_1250}> !g_h_0 cl_1 def_2 g_t_3 g_t_4 = case g_h_0 (_Tuple2 f_1_0 t_1_1 -> _predefined._Cons (_Tuple5 cl_1 (select def_2::CloogleDB._ClassEntry 0) (select def_2::CloogleDB._ClassEntry 1) f_1_0 t_1_1) (<{CloogleDB.c;276;47_200}> g_t_3 def_2 cl_1 g_t_4)) (_ -> <{CloogleDB.c;276;47_200}> g_t_3 def_2 cl_1 g_t_4)
-<{CloogleDB.g_c1;276;21_1249}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;276;21_1248}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
-<{CloogleDB.g_c2;276;21_1248}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 cl_1_0 def_1_1 -> <{CloogleDB.c;276;47_200}> g_t_1 def_1_1 cl_1_0 (select def_1_1::CloogleDB._ClassEntry 3)) (_ -> <{CloogleDB.c;276;9_201}> g_t_1)
+<{CloogleDB.c;277;47_200}> g_t_0 def_1 cl_2 !g_l_3 = <{CloogleDB.g_c1;277;55_1251}> g_l_3 cl_2 def_1 g_t_0
+<{CloogleDB.c;277;9_201}> !g_l_0 = <{CloogleDB.g_c1;277;21_1249}> g_l_0
+<{CloogleDB.g_c1;277;55_1251}> !g_l_0 cl_1 def_2 g_t_3 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;277;55_1250}> g_h_1_0 cl_1 def_2 g_t_3 g_t_1_1) (_ -> <{CloogleDB.c;277;9_201}> g_t_3)
+<{CloogleDB.g_c2;277;55_1250}> !g_h_0 cl_1 def_2 g_t_3 g_t_4 = case g_h_0 (_Tuple2 f_1_0 t_1_1 -> _predefined._Cons (_Tuple5 cl_1 (select def_2::CloogleDB._ClassEntry 0) (select def_2::CloogleDB._ClassEntry 1) f_1_0 t_1_1) (<{CloogleDB.c;277;47_200}> g_t_3 def_2 cl_1 g_t_4)) (_ -> <{CloogleDB.c;277;47_200}> g_t_3 def_2 cl_1 g_t_4)
+<{CloogleDB.g_c1;277;21_1249}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;277;21_1248}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{CloogleDB.g_c2;277;21_1248}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 cl_1_0 def_1_1 -> <{CloogleDB.c;277;47_200}> g_t_1 def_1_1 cl_1_0 (select def_1_1::CloogleDB._ClassEntry 3)) (_ -> <{CloogleDB.c;277;9_201}> g_t_1)
 CloogleDB.anon_991 g_0 x_1 = StdList.filter (g_0 x_1)
 CloogleDB.foldr_992 g_0 !r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> CloogleDB.anon_991 g_0 a_1_0 (CloogleDB.foldr_992 g_0 r_1 x_1_1)) 
 CloogleDB.anon_994 x_0 = StdList.filter (CloogleDB.app5_260 x_0)
 CloogleDB.foldr_993 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> CloogleDB.anon_994 a_1_0 (CloogleDB.foldr_993 r_0 x_1_1)) 
-<{CloogleDB.findClassMembers``}> !fs_0 !db_1 = CloogleDB.foldr_993 (<{CloogleDB.c;276;9_201}> (Data.Map.foldrWithKey CloogleDB.anon_259 _predefined._Nil (select db_1::CloogleDB._CloogleDB 1))) fs_0
+<{CloogleDB.findClassMembers``}> !fs_0 !db_1 = CloogleDB.foldr_993 (<{CloogleDB.c;277;9_201}> (Data.Map.foldrWithKey CloogleDB.anon_259 _predefined._Nil (select db_1::CloogleDB._CloogleDB 1))) fs_0
 <{CloogleDB.get`_263}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{CloogleDB.get`_263}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{CloogleDB.get`_263}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
 <{CloogleDB.get`_995}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{CloogleDB.<_219}> _x_0 kx_1_1) (True -> <{CloogleDB.get`_995}> _x_0 l_1_3) (False -> case (<{CloogleDB.<_219}> kx_1_1 _x_0) (True -> <{CloogleDB.get`_995}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
 CloogleDB.getType !loc_0 !db_1 = <{CloogleDB.get`_995}> loc_0 (select db_1::CloogleDB._CloogleDB 2)
@@ -161,8 +161,8 @@ CloogleDB.anon_1006 _x_0 !f_1 !x_2 = StdList.map _x_0 (<{CloogleDB.findType`}> f
 CloogleDB.allTypes = CloogleDB.anon_1006 CloogleDB.snd_273 CloogleDB.anon_202
 <{CloogleDB.get`_275}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{CloogleDB.get`_275}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{CloogleDB.get`_275}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
 <{CloogleDB.get`_1007}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{CloogleDB.get`_1007}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{CloogleDB.get`_1007}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
-CloogleDB.getDerivations !gen_0 !db_1 = <{CloogleDB._c;356;15_1252}> (<{CloogleDB.get`_1007}> gen_0 (select db_1::CloogleDB._CloogleDB 3))
-<{CloogleDB._c;356;15_1252}> !_x_0 = case _x_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just xs_1_0 -> xs_1_0) 
+CloogleDB.getDerivations !gen_0 !db_1 = <{CloogleDB._c;357;15_1252}> (<{CloogleDB.get`_1007}> gen_0 (select db_1::CloogleDB._CloogleDB 3))
+<{CloogleDB._c;357;15_1252}> !_x_0 = case _x_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just xs_1_0 -> xs_1_0) 
 CloogleDB.toGenericDeriveEntry_440 !x_0 = case x_0 (CloogleDB._DeriveEntry x11_1_0 x12_1_1 x13_1_2 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.PAIR (StdGeneric.FIELD x12_1_1) (StdGeneric.FIELD x13_1_2)))) 
 CloogleDB.toGenericType_337 !x_0 = case x_0 (TypeDef.Type x11_1_0 x12_1_1 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x11_1_0 x12_1_1))))) (TypeDef.Func x21_1_0 x22_1_1 x23_1_2 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x21_1_0 (StdGeneric.PAIR x22_1_1 x23_1_2))))))) (TypeDef.Var x31_1_0 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS x31_1_0))))) (TypeDef.Cons x41_1_0 x42_1_1 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x41_1_0 x42_1_1)))))) (TypeDef.Uniq x51_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.RIGHT (StdGeneric.CONS x51_1_0))))) (TypeDef.Forall x61_1_0 x62_1_1 x63_1_2 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS (StdGeneric.PAIR x61_1_0 (StdGeneric.PAIR x62_1_1 x63_1_2))))))) (TypeDef.Arrow x71_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS x71_1_0))))) 
 CloogleDB.toGenericClassOrGeneric_346 !x_0 = case x_0 (TypeDef.Class x11_1_0 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS x11_1_0))) (TypeDef.Generic x21_1_0 x22_1_1 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.CONS (StdGeneric.PAIR x21_1_0 x22_1_1)))) 
@@ -185,46 +185,46 @@ CloogleDB.anon_278 k_0 x_1 xs_2 = _predefined._Cons (_Tuple2 k_0 x_1) xs_2
 CloogleDB.anon_204 !_x_0 = case _x_0 (_Tuple2 _x_1_0 i_1_1 -> case _x_1_0 (_Tuple2 l_2_0 m_2_1 -> _Tuple3 l_2_0 m_2_1 i_1_1) ) 
 <{CloogleDB.findModule`}> !f_0 !db_1 = StdList.map CloogleDB.anon_204 (StdList.filter (StdTuple.uncurry (StdTuple.uncurry f_0)) (Data.Map.foldrWithKey CloogleDB.anon_278 _predefined._Nil (select db_1::CloogleDB._CloogleDB 4)))
 <{CloogleDB.get`_280}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{CloogleDB.get`_280}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{CloogleDB.get`_280}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
-CloogleDB.mb2list_279 !m_0 = <{CloogleDB._c;356;15_1253}> m_0
-<{CloogleDB._c;356;15_1253}> !m_0 = case m_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just xs_1_0 -> xs_1_0) 
+CloogleDB.mb2list_279 !m_0 = <{CloogleDB._c;357;15_1253}> m_0
+<{CloogleDB._c;357;15_1253}> !m_0 = case m_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just xs_1_0 -> xs_1_0) 
 <{CloogleDB.get`_1010}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{CloogleDB.get`_1010}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{CloogleDB.get`_1010}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
 CloogleDB.getTypeInstances !n_0 !db_1 = CloogleDB.mb2list_279 (<{CloogleDB.get`_1010}> n_0 (select db_1::CloogleDB._CloogleDB 5))
 <{CloogleDB.get`_282}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{CloogleDB.get`_282}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{CloogleDB.get`_282}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
-CloogleDB.mb2list_281 !m_0 = <{CloogleDB._c;356;15_1254}> m_0
-<{CloogleDB._c;356;15_1254}> !m_0 = case m_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just xs_1_0 -> xs_1_0) 
+CloogleDB.mb2list_281 !m_0 = <{CloogleDB._c;357;15_1254}> m_0
+<{CloogleDB._c;357;15_1254}> !m_0 = case m_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just xs_1_0 -> xs_1_0) 
 <{CloogleDB.get`_1011}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdString.<_3}> _x_0 kx_1_1) (True -> <{CloogleDB.get`_1011}> _x_0 l_1_3) (False -> case (<{StdString.<_3}> kx_1_1 _x_0) (True -> <{CloogleDB.get`_1011}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
 CloogleDB.getTypeDerivations !n_0 !db_1 = CloogleDB.mb2list_281 (<{CloogleDB.get`_1011}> n_0 (select db_1::CloogleDB._CloogleDB 6))
 CloogleDB.zero_50 = CloogleDB._CloogleDB Data.Map.newMap Data.Map.newMap Data.Map.newMap Data.Map.newMap Data.Map.newMap Data.Map.newMap Data.Map.newMap
 CloogleDB.newDb = CloogleDB.zero_50
 CloogleDB.anon_285 k_0 x_1 xs_2 = _predefined._Cons (_Tuple2 k_0 x_1) xs_2
 CloogleDB.anon_284 k_0 x_1 xs_2 = _predefined._Cons (_Tuple2 k_0 x_1) xs_2
-<{CloogleDB.c;341;88_208}> g_t_0 c_1 g_t_2 ie_3 !g_l_4 = <{CloogleDB.g_c1;341;103_1259}> g_l_4 c_1 ie_3 g_t_0 g_t_2
-<{CloogleDB.c;341;65_209}> g_t_0 c_1 !g_l_2 = <{CloogleDB.g_c1;341;70_1257}> g_l_2 g_t_0 c_1
-<{CloogleDB.c;341;29_210}> !g_l_0 = <{CloogleDB.g_c1;341;39_1256}> g_l_0
-<{CloogleDB.g_c1;341;103_1259}> !g_l_0 c_1 ie_2 g_t_3 g_t_4 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;341;103_1258}> g_h_1_0 c_1 ie_2 g_t_3 g_t_4 g_t_1_1) (_ -> <{CloogleDB.c;341;65_209}> g_t_3 c_1 g_t_4)
-<{CloogleDB.g_c2;341;103_1258}> !g_h_0 c_1 ie_2 g_t_3 g_t_4 g_t_5 = case g_h_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (TypeDef.Type t_2_0 _x_2_1 -> _predefined._Cons (_Tuple2 t_2_0 (_Tuple2 (CloogleDB.getName c_1) ie_2)) (<{CloogleDB.c;341;88_208}> g_t_3 c_1 g_t_4 ie_2 g_t_5)) ) (_ -> <{CloogleDB.c;341;88_208}> g_t_3 c_1 g_t_4 ie_2 g_t_5)
-<{CloogleDB.g_c1;341;70_1257}> !g_l_0 g_t_1 c_2 = case g_l_0 (_predefined._Cons ie_1_0 g_t_1_1 -> <{CloogleDB.c;341;88_208}> g_t_1 c_2 g_t_1_1 ie_1_0 (select ie_1_0::CloogleDB._InstanceEntry 0)) (_ -> <{CloogleDB.c;341;29_210}> g_t_1)
-<{CloogleDB.g_c1;341;39_1256}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;341;39_1255}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
-<{CloogleDB.g_c2;341;39_1255}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 c_1_0 ce_1_1 -> <{CloogleDB.c;341;65_209}> g_t_1 c_1_0 (select ce_1_1::CloogleDB._ClassEntry 4)) (_ -> <{CloogleDB.c;341;29_210}> g_t_1)
+<{CloogleDB.c;342;88_208}> g_t_0 c_1 g_t_2 ie_3 !g_l_4 = <{CloogleDB.g_c1;342;103_1259}> g_l_4 c_1 ie_3 g_t_0 g_t_2
+<{CloogleDB.c;342;65_209}> g_t_0 c_1 !g_l_2 = <{CloogleDB.g_c1;342;70_1257}> g_l_2 g_t_0 c_1
+<{CloogleDB.c;342;29_210}> !g_l_0 = <{CloogleDB.g_c1;342;39_1256}> g_l_0
+<{CloogleDB.g_c1;342;103_1259}> !g_l_0 c_1 ie_2 g_t_3 g_t_4 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;342;103_1258}> g_h_1_0 c_1 ie_2 g_t_3 g_t_4 g_t_1_1) (_ -> <{CloogleDB.c;342;65_209}> g_t_3 c_1 g_t_4)
+<{CloogleDB.g_c2;342;103_1258}> !g_h_0 c_1 ie_2 g_t_3 g_t_4 g_t_5 = case g_h_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (TypeDef.Type t_2_0 _x_2_1 -> _predefined._Cons (_Tuple2 t_2_0 (_Tuple2 (CloogleDB.getName c_1) ie_2)) (<{CloogleDB.c;342;88_208}> g_t_3 c_1 g_t_4 ie_2 g_t_5)) ) (_ -> <{CloogleDB.c;342;88_208}> g_t_3 c_1 g_t_4 ie_2 g_t_5)
+<{CloogleDB.g_c1;342;70_1257}> !g_l_0 g_t_1 c_2 = case g_l_0 (_predefined._Cons ie_1_0 g_t_1_1 -> <{CloogleDB.c;342;88_208}> g_t_1 c_2 g_t_1_1 ie_1_0 (select ie_1_0::CloogleDB._InstanceEntry 0)) (_ -> <{CloogleDB.c;342;29_210}> g_t_1)
+<{CloogleDB.g_c1;342;39_1256}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;342;39_1255}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{CloogleDB.g_c2;342;39_1255}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 c_1_0 ce_1_1 -> <{CloogleDB.c;342;65_209}> g_t_1 c_1_0 (select ce_1_1::CloogleDB._ClassEntry 4)) (_ -> <{CloogleDB.c;342;29_210}> g_t_1)
 CloogleDB.anon_207::B !<{_v<_0}> a_1 b_2 = select <{_v<_0}>::<{StdOverloaded.<;}> 0 (select a_1::_Tuple2 0) (select b_2::_Tuple2 0)
 CloogleDB.anon_206::B !<{_v==_0}> a_1 b_2 = select <{_v==_0}>::<{StdOverloaded.==;}> 0 (select a_1::_Tuple2 0) (select b_2::_Tuple2 0)
 CloogleDB.snd_283 !tuple_0 = select tuple_0::_Tuple2 1
 CloogleDB.anon_205 !cs_0 = case cs_0 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple2 t_2_0 _x_2_1 -> _Tuple2 t_2_0 (StdList.map CloogleDB.snd_283 cs_0)) ) 
-<{CloogleDB.c;344;70_214}> g_t_0 g_1 !g_l_2 = <{CloogleDB.g_c1;344;96_1263}> g_l_2 g_1 g_t_0
-<{CloogleDB.c;344;32_215}> !g_l_0 = <{CloogleDB.g_c1;344;43_1261}> g_l_0
-<{CloogleDB.g_c1;344;96_1263}> !g_l_0 g_1 g_t_2 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;344;96_1262}> g_h_1_0 g_1 g_t_2 g_t_1_1) (_ -> <{CloogleDB.c;344;32_215}> g_t_2)
-<{CloogleDB.g_c2;344;96_1262}> !g_h_0 g_1 g_t_2 g_t_3 = case g_h_0 (CloogleDB._DeriveEntry de_type_1_0 de_type_representation_1_1 de_locations_1_2 -> case de_type_1_0 (TypeDef.Type t_2_0 _x_2_1 -> case _x_2_1 (_predefined._Nil -> _predefined._Cons (_Tuple3 t_2_0 g_1 (select g_h_0::CloogleDB._DeriveEntry 2)) (<{CloogleDB.c;344;70_214}> g_t_2 g_1 g_t_3)) ) ) (_ -> <{CloogleDB.c;344;70_214}> g_t_2 g_1 g_t_3)
-<{CloogleDB.g_c1;344;43_1261}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;344;43_1260}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
-<{CloogleDB.g_c2;344;43_1260}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 g_1_0 des_1_1 -> <{CloogleDB.c;344;70_214}> g_t_1 g_1_0 des_1_1) (_ -> <{CloogleDB.c;344;32_215}> g_t_1)
+<{CloogleDB.c;345;70_214}> g_t_0 g_1 !g_l_2 = <{CloogleDB.g_c1;345;96_1263}> g_l_2 g_1 g_t_0
+<{CloogleDB.c;345;32_215}> !g_l_0 = <{CloogleDB.g_c1;345;43_1261}> g_l_0
+<{CloogleDB.g_c1;345;96_1263}> !g_l_0 g_1 g_t_2 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;345;96_1262}> g_h_1_0 g_1 g_t_2 g_t_1_1) (_ -> <{CloogleDB.c;345;32_215}> g_t_2)
+<{CloogleDB.g_c2;345;96_1262}> !g_h_0 g_1 g_t_2 g_t_3 = case g_h_0 (CloogleDB._DeriveEntry de_type_1_0 de_type_representation_1_1 de_locations_1_2 -> case de_type_1_0 (TypeDef.Type t_2_0 _x_2_1 -> case _x_2_1 (_predefined._Nil -> _predefined._Cons (_Tuple3 t_2_0 g_1 (select g_h_0::CloogleDB._DeriveEntry 2)) (<{CloogleDB.c;345;70_214}> g_t_2 g_1 g_t_3)) ) ) (_ -> <{CloogleDB.c;345;70_214}> g_t_2 g_1 g_t_3)
+<{CloogleDB.g_c1;345;43_1261}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;345;43_1260}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{CloogleDB.g_c2;345;43_1260}> !g_h_0 g_t_1 = case g_h_0 (_Tuple2 g_1_0 des_1_1 -> <{CloogleDB.c;345;70_214}> g_t_1 g_1_0 des_1_1) (_ -> <{CloogleDB.c;345;32_215}> g_t_1)
 CloogleDB.anon_213::B !<{_v==_0}> a_1 b_2 = select <{_v==_0}>::<{StdOverloaded.==;}> 0 (select a_1::_Tuple3 0) (select b_2::_Tuple3 0)
-<{CloogleDB.c;342;66_211}> !g_l_0 = <{CloogleDB.g_c1;342;78_1265}> g_l_0
-<{CloogleDB.g_c1;342;78_1265}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;342;78_1264}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
-<{CloogleDB.g_c2;342;78_1264}> !g_h_0 g_t_1 = case g_h_0 (_Tuple3 _x_1_0 g_1_1 ls_1_2 -> _predefined._Cons (_Tuple2 g_1_1 ls_1_2) (<{CloogleDB.c;342;66_211}> g_t_1)) (_ -> <{CloogleDB.c;342;66_211}> g_t_1)
-CloogleDB.anon_212 !gs_0 = case gs_0 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple3 t_2_0 _x_2_1 _x_2_2 -> _Tuple2 t_2_0 (<{CloogleDB.c;342;66_211}> gs_0)) ) 
+<{CloogleDB.c;343;66_211}> !g_l_0 = <{CloogleDB.g_c1;343;78_1265}> g_l_0
+<{CloogleDB.g_c1;343;78_1265}> !g_l_0 = case g_l_0 (_predefined._Cons g_h_1_0 g_t_1_1 -> <{CloogleDB.g_c2;343;78_1264}> g_h_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{CloogleDB.g_c2;343;78_1264}> !g_h_0 g_t_1 = case g_h_0 (_Tuple3 _x_1_0 g_1_1 ls_1_2 -> _predefined._Cons (_Tuple2 g_1_1 ls_1_2) (<{CloogleDB.c;343;66_211}> g_t_1)) (_ -> <{CloogleDB.c;343;66_211}> g_t_1)
+CloogleDB.anon_212 !gs_0 = case gs_0 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (_Tuple3 t_2_0 _x_2_1 _x_2_2 -> _Tuple2 t_2_0 (<{CloogleDB.c;343;66_211}> gs_0)) ) 
 CloogleDB.anon_1014::B !a_0 !b_1 = <{StdString.==_2}> (select a_0::_Tuple3 0) (select b_1::_Tuple3 0)
 CloogleDB.anon_1013::B !a_0 !b_1 = <{StdString.<_3}> (select a_0::_Tuple2 0) (select b_1::_Tuple2 0)
 CloogleDB.anon_1012::B !a_0 !b_1 = <{StdString.==_2}> (select a_0::_Tuple2 0) (select b_1::_Tuple2 0)
-CloogleDB.syncDb !db_0 = update db_0::CloogleDB._CloogleDB [5:Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (StdList.map CloogleDB.anon_205 (Data.List.groupBy CloogleDB.anon_1012 (StdOrdList.sortBy CloogleDB.anon_1013 (<{CloogleDB.c;341;29_210}> (Data.Map.foldrWithKey CloogleDB.anon_284 _predefined._Nil (select db_0::CloogleDB._CloogleDB 1)))))),6:Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (StdList.map CloogleDB.anon_212 (Data.List.groupBy CloogleDB.anon_1014 (StdOrdList.sort (<{StdClass.Ord;}> (<{StdOverloaded.<;}> (<{StdTuple.<_7}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> (<{StdList.<_46}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{CloogleDB.<_219}>)))))))) (<{CloogleDB.c;344;32_215}> (Data.Map.foldrWithKey CloogleDB.anon_285 _predefined._Nil (select db_0::CloogleDB._CloogleDB 3))))))]
+CloogleDB.syncDb !db_0 = update db_0::CloogleDB._CloogleDB [5:Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (StdList.map CloogleDB.anon_205 (Data.List.groupBy CloogleDB.anon_1012 (StdOrdList.sortBy CloogleDB.anon_1013 (<{CloogleDB.c;342;29_210}> (Data.Map.foldrWithKey CloogleDB.anon_284 _predefined._Nil (select db_0::CloogleDB._CloogleDB 1)))))),6:Data.Map.fromList (<{StdOverloaded.==;}> <{StdString.==_2}>) (<{StdOverloaded.<;}> <{StdString.<_3}>) (StdList.map CloogleDB.anon_212 (Data.List.groupBy CloogleDB.anon_1014 (StdOrdList.sort (<{StdClass.Ord;}> (<{StdOverloaded.<;}> (<{StdTuple.<_7}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> (<{StdList.<_46}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{CloogleDB.<_219}>)))))))) (<{CloogleDB.c;345;32_215}> (Data.Map.foldrWithKey CloogleDB.anon_285 _predefined._Nil (select db_0::CloogleDB._CloogleDB 3))))))]
 CloogleDB.findField_525 !match_0 !_x_1 = case _x_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (_Tuple2 l_2_0 x_2_1 -> case (<{StdString.==_2}> l_2_0 match_0) (True -> _predefined._Cons x_2_1 _predefined._Nil) (False -> CloogleDB.findField_525 match_0 xs_1_1) ) ) (_predefined._Nil -> _predefined._Nil) 
 CloogleDB.JSONDecode_FIELD_524 gfd_name_0 _x_1::I fx_2 !_x_3::B !l_4 = case l_4 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = CloogleDB.findField_525 gfd_name_0 fields_2_0 in <{CloogleDB._c;139;5_1266}> (fx_2 True field_4_0) l_4) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{CloogleDB._c;150;5_1267}> (fx_2 True (_predefined._Cons field_4_0 _predefined._Nil)) l_4) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
 <{CloogleDB._c;150;5_1267}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
@@ -655,13 +655,13 @@ CloogleDB.printersperse_1232 !_vprint_0 ia_1::B a_2 bs_3 = Data.List.intercalate
 CloogleDB.printersperse_1235 ia_0::B a_1 bs_2 = Data.List.intercalate (TypeUtil.print_4 False a_1) (StdList.map (TypeUtil.print_4 ia_0) bs_2)
 <{CloogleDB.--_1234}> a_0 b_1 = <{StdList.++}> (TypeUtil.print_6 (<{TypeUtil.print;}> TypeUtil.print_4) False a_0) (TypeUtil.print_4 False b_1)
 <{CloogleDB.--_1236}> a_0 b_1 = <{StdList.++}> (TypeUtil.print_6 (<{TypeUtil.print;}> TypeUtil.print_4) False a_0) (TypeUtil.print_6 (<{TypeUtil.print;}> TypeUtil.print_4) False b_1)
-CloogleDB.print_53 b_0::B !_x_1 = case _x_1 (_Tuple2 f_1_0 fe_1_1 -> let vars_2_0 = <{CloogleDB._c;132;16_1328}> (select fe_1_1::CloogleDB._FunctionEntry 3) b_0 vars_2_0 in <{CloogleDB.--_1230}> (<{CloogleDB._if;135;15_1329}> (Data.Maybe.isJust (select fe_1_1::CloogleDB._FunctionEntry 3))) (<{CloogleDB.--_1230}> (CloogleDB.fname_216 f_1_0 fe_1_1) (<{CloogleDB.--_1230}> " " (<{CloogleDB.--_1236}> (<{CloogleDB._c;129;16_1330}> (select fe_1_1::CloogleDB._FunctionEntry 2) b_0) (<{CloogleDB.--_1236}> vars_2_0 (<{CloogleDB._if;127;50_1331}> (Data.Maybe.isJust (select fe_1_1::CloogleDB._FunctionEntry 1)) fe_1_1)))))) 
-<{CloogleDB._if;127;50_1331}> !_x_0::B fe_1 = case _x_0 (True -> <{CloogleDB.--_1233}> ":: " (select fe_1::CloogleDB._FunctionEntry 1)) (_ -> _predefined._Nil)
-<{CloogleDB._c;129;16_1330}> !_x_0 b_1::B = case _x_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just p_1_0 -> <{CloogleDB.--_1234}> (TypeUtil.print_13 b_1 p_1_0) " ") 
-<{CloogleDB._if;135;15_1329}> !_x_0::B = case _x_0 (True -> "generic ") (_ -> "")
-<{CloogleDB._c;132;16_1328}> !_x_0 b_1::B vars_2 = case _x_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just vs_1_0 -> <{CloogleDB.--_1234}> (CloogleDB.printersperse_1235 b_1 " " vars_2) " ") 
-CloogleDB.gLexOrd_s_928 !_vgLexOrd_s_0 x1_1 x2_2 = CloogleDB.gLexOrd_Maybe_226 (select _vgLexOrd_s_0::<{CloogleDB.gLexOrd_s;}> 0) x1_1 x2_2
-<{CloogleDB.<_220}>::B !<{_vgLexOrd*_0}> !a_1 !b_2 = <{GenEq.===}> (<{CloogleDB.gEq_s;}> GenLexOrd.gEq_LexOrd_1) (<{GenLexOrd.=?=}> (<{CloogleDB.gLexOrd_s;}> (CloogleDB.gLexOrd_s_928 <{_vgLexOrd*_0}>)) a_1 b_2) GenLexOrd.LT
+CloogleDB.print_53 b_0::B !_x_1 = case _x_1 (_Tuple2 f_1_0 fe_1_1 -> let vars_2_0 = <{CloogleDB._c;133;16_1328}> (select fe_1_1::CloogleDB._FunctionEntry 3) b_0 vars_2_0 in <{CloogleDB.--_1230}> (<{CloogleDB._if;136;15_1329}> (Data.Maybe.isJust (select fe_1_1::CloogleDB._FunctionEntry 3))) (<{CloogleDB.--_1230}> (CloogleDB.fname_216 f_1_0 fe_1_1) (<{CloogleDB.--_1230}> " " (<{CloogleDB.--_1236}> (<{CloogleDB._c;130;16_1330}> (select fe_1_1::CloogleDB._FunctionEntry 2) b_0) (<{CloogleDB.--_1236}> vars_2_0 (<{CloogleDB._if;128;50_1331}> (Data.Maybe.isJust (select fe_1_1::CloogleDB._FunctionEntry 1)) fe_1_1)))))) 
+<{CloogleDB._if;128;50_1331}> !_x_0::B fe_1 = case _x_0 (True -> <{CloogleDB.--_1233}> ":: " (select fe_1::CloogleDB._FunctionEntry 1)) (_ -> _predefined._Nil)
+<{CloogleDB._c;130;16_1330}> !_x_0 b_1::B = case _x_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just p_1_0 -> <{CloogleDB.--_1234}> (TypeUtil.print_13 b_1 p_1_0) " ") 
+<{CloogleDB._if;136;15_1329}> !_x_0::B = case _x_0 (True -> "generic ") (_ -> "")
+<{CloogleDB._c;133;16_1328}> !_x_0 b_1::B vars_2 = case _x_0 (Data.Maybe.Nothing -> _predefined._Nil) (Data.Maybe.Just vs_1_0 -> <{CloogleDB.--_1234}> (CloogleDB.printersperse_1235 b_1 " " vars_2) " ") 
+CloogleDB.gLexOrd_s_585 !_vgLexOrd_s_0 x1_1 x2_2 = CloogleDB.gLexOrd_Maybe_226 (select _vgLexOrd_s_0::<{CloogleDB.gLexOrd_s;}> 0) x1_1 x2_2
+<{CloogleDB.<_220}>::B !<{_vgLexOrd*_0}> !a_1 !b_2 = <{GenEq.===}> (<{CloogleDB.gEq_s;}> GenLexOrd.gEq_LexOrd_1) (<{GenLexOrd.=?=}> (<{CloogleDB.gLexOrd_s;}> (CloogleDB.gLexOrd_s_585 <{_vgLexOrd*_0}>)) a_1 b_2) GenLexOrd.LT
 CloogleDB.gLexOrd_Kind_228 x1_0 x2_1 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 GenLexOrd.gLexOrd_UNIT_7) (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd__List_14 CloogleDB.gLexOrd_Kind_228))) (CloogleDB.toGenericKind_355 x1_0) (CloogleDB.toGenericKind_355 x2_1)
 CloogleDB.gLexOrd_ClassOrGeneric_227 x1_0 x2_1 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 GenLexOrd.gLexOrd__String_6) (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 GenLexOrd.gLexOrd__String_6 CloogleDB.gLexOrd_Kind_228))) (CloogleDB.toGenericClassOrGeneric_346 x1_0) (CloogleDB.toGenericClassOrGeneric_346 x2_1)
 CloogleDB.gLexOrd_Type_229 x1_0 x2_1 = GenLexOrd.gLexOrd_OBJECT_12 (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 GenLexOrd.gLexOrd__String_6 (GenLexOrd.gLexOrd__List_14 CloogleDB.gLexOrd_Type_229))) (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd__List_14 CloogleDB.gLexOrd_Type_229) (GenLexOrd.gLexOrd_PAIR_8 CloogleDB.gLexOrd_Type_229 (GenLexOrd.gLexOrd__List_14 (GenLexOrd.gLexOrd__Tuple2_17 CloogleDB.gLexOrd_ClassOrGeneric_227 CloogleDB.gLexOrd_Type_229))))) (GenLexOrd.gLexOrd_CONS_11 GenLexOrd.gLexOrd__String_6))) (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 GenLexOrd.gLexOrd__String_6 (GenLexOrd.gLexOrd__List_14 CloogleDB.gLexOrd_Type_229))) (GenLexOrd.gLexOrd_CONS_11 CloogleDB.gLexOrd_Type_229)) (GenLexOrd.gLexOrd_EITHER_9 (GenLexOrd.gLexOrd_CONS_11 (GenLexOrd.gLexOrd_PAIR_8 (GenLexOrd.gLexOrd__List_14 CloogleDB.gLexOrd_Type_229) (GenLexOrd.gLexOrd_PAIR_8 CloogleDB.gLexOrd_Type_229 (GenLexOrd.gLexOrd__List_14 (GenLexOrd.gLexOrd__Tuple2_17 CloogleDB.gLexOrd_ClassOrGeneric_227 CloogleDB.gLexOrd_Type_229))))) (GenLexOrd.gLexOrd_CONS_11 (CloogleDB.gLexOrd_Maybe_226 CloogleDB.gLexOrd_Type_229))))) (CloogleDB.toGenericType_337 x1_0) (CloogleDB.toGenericType_337 x2_1)
@@ -921,6 +921,18 @@ CloogleDB.gEq_CloogleDB_59::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 
 
 :: CloogleDB._DeriveEntry = {CloogleDB.de_type, CloogleDB.de_type_representation, CloogleDB.de_locations}
 
+:: <{CloogleDB.gEditor_s;}> = {CloogleDB.gEditor_s}
+
+:: <{CloogleDB.gEditor_ss;}> = {CloogleDB.gEditor_ss}
+
+:: <{CloogleDB.gEditor_sss;}> = {CloogleDB.gEditor_sss}
+
+:: <{CloogleDB.gText_s;}> = {!CloogleDB.gText_s}
+
+:: <{CloogleDB.gText_ss;}> = {!CloogleDB.gText_ss}
+
+:: <{CloogleDB.gText_sss;}> = {!CloogleDB.gText_sss}
+
 :: <{CloogleDB.JSONEncode_s;}> = {!CloogleDB.JSONEncode_s}
 
 :: <{CloogleDB.JSONEncode_ss;}> = {!CloogleDB.JSONEncode_ss}
@@ -939,23 +951,17 @@ CloogleDB.gEq_CloogleDB_59::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 
 
 :: <{CloogleDB.gDefault_sss;}> = {CloogleDB.gDefault_sss}
 
-:: <{CloogleDB.gText_s;}> = {!CloogleDB.gText_s}
-
-:: <{CloogleDB.gText_ss;}> = {!CloogleDB.gText_ss}
-
-:: <{CloogleDB.gText_sss;}> = {!CloogleDB.gText_sss}
-
-:: <{CloogleDB.gEditor_s;}> = {CloogleDB.gEditor_s}
-
-:: <{CloogleDB.gEditor_ss;}> = {CloogleDB.gEditor_ss}
-
-:: <{CloogleDB.gEditor_sss;}> = {CloogleDB.gEditor_sss}
-
 :: <{CloogleDB.gEq_s;}> = {!CloogleDB.gEq_s}
 
 :: <{CloogleDB.gEq_ss;}> = {!CloogleDB.gEq_ss}
 
 :: <{CloogleDB.gEq_sss;}> = {!CloogleDB.gEq_sss}
+
+:: <{CloogleDB.gLexOrd_s;}> = {!CloogleDB.gLexOrd_s}
+
+:: <{CloogleDB.gLexOrd_ss;}> = {!CloogleDB.gLexOrd_ss}
+
+:: <{CloogleDB.gLexOrd_sss;}> = {!CloogleDB.gLexOrd_sss}
 
 :: <{CloogleDB.gEq_ssss;}> = {!CloogleDB.gEq_ssss}
 
@@ -1030,12 +1036,6 @@ CloogleDB.gEq_CloogleDB_59::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 
 :: <{CloogleDB.gEditor_ssssss;}> = {CloogleDB.gEditor_ssssss}
 
 :: <{CloogleDB.gEditor_sssssss;}> = {CloogleDB.gEditor_sssssss}
-
-:: <{CloogleDB.gLexOrd_s;}> = {!CloogleDB.gLexOrd_s}
-
-:: <{CloogleDB.gLexOrd_ss;}> = {!CloogleDB.gLexOrd_ss}
-
-:: <{CloogleDB.gLexOrd_sss;}> = {!CloogleDB.gLexOrd_sss}
 
 :: <{CloogleDB.gLexOrd_ssss;}> = {!CloogleDB.gLexOrd_ssss}
 

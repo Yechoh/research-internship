@@ -382,6 +382,7 @@ do 6-7
 14:14 en committen
 14:20 en beginnen met cloogle integreren
 15:17 cloogle doorgekeken en geprobeerd cloogle.org te runnen, maar het importeert een niet-bestaand general.dcl, beweert de compiler
+-- 3u
 
 vr 7-7
 9:57 vandaag na 12 zou ingrid berenbroek op de uni moeten zijn, dus dan heb ik een sleutel. ik ga overal de ref naar general.dcl verwijderen en dan kijken welke functies missen.
@@ -417,6 +418,7 @@ De reden dat de folderselection task eerst klaar moet zijn voordat het de value 
 14:30 was het mogelijk om foutmeldingen te geven in Ace? Zoja, dan heb ik dat nodig. De cleanversie van Ace die we nu hebben kan het niet.
 14:45 een tijd geleden moest ik uitzoeken hoe workers werken, maar ik heb daar geen conclusie over. Ook staat er op de drive in wat ik aan Bas voor Ace vroeg, dat ik dit via Clean ging regelen. Natuurlijk ontdekte ik de workers pas later, maar ik denk dat dit de beste optie is. Dan is nu mijn taak vakjes te maken onder elkaar van dezelfde grootte als een tekstregel, en die kunnen vullen met functies. Nu ik er over nadenk is dat zonder hulp niet haalbaar. We kijken verder.
 15:48 bas is er en beantwoord vragen! De menus die missen is bekend, en staat niet hoog in het todolijstje.
+<<<<<<< HEAD
 ~16:50 ik weet dat ik rond deze tijd naar huis ging, maar ben het wss vergeten te noteren
 
 do 13-7 
@@ -424,6 +426,37 @@ do 13-7
 7:44 directory functions werken niet helemaal lekker. Ik ga de locatie van cpm dus maar even hardcoden, totdat ik een oplossing heb.
 8:21 WARNING: Cannot get directory info from file: /home/martin/Documents/clean-bundle-itasks-windows-x86-latest/research-internship/eigen_filesystem_leesbaar/pagesWebIDE-sapl/../pagesWebIDE-sapl/../pagesWebIDE-sapl/graph_to_string_and_descriptors.sapl
 
+=======
+~16:50 ik weet dat ik tot deze tijd bezig was, maar ben het wss vergeten te noteren.
+-- 6 1/2u
+
+do 13-7
+7:32 dit is de laatste dag voor kamp dat ik hieraan werk. Er mist een deel van mijn log, dus ik weet niet precies waar ik mee bezig was. oh right, ik had alleen Atom werkend toen mijn tijd al weer op was.
+7:44 directory functions werken niet helemaal lekker. Ik ga de locatie van cpm dus maar even hardcoden, totdat ik een oplossing heb.
+8:21 WARNING: Cannot get directory info from file: /home/martin/Documents/clean-bundle-itasks-windows-x86-latest/research-internship/eigen_filesystem_leesbaar/pagesWebIDE-sapl/../pagesWebIDE-sapl/../pagesWebIDE-sapl/graph_to_string_and_descriptors.sapl
+8:24 ubuntu werkt even niet, dus hier verder. Nu we weten dat de reden, waarom de 'up' functie in selectFromTree niet werkt, is door een bug, kunnen we gewoon verder alsof het gewoon wel werkt. Alle aanroepen van selectFromTree-like functions vervangen door aanroepen van selectFromTree.
+8:39 we willen onze data als een tree, zodat we het kunnen laten zien. Maar zodra we iets geselecteerd hebben, willen we het als een path. Nu is het probleem dat we deze transformatie pas kunnen doen nadat er iets geselecteerd is, maar dan hebben we bepaalde data niet meer. Tenzij we het opsplitsen in 3 functies: createTree :: task Shared Tree, selectFromTree :: Shared Tree -> Task [Int], TreeToPath :: (Shared Tree) (Task [Int]) -> (String,String)
+9:15 functies hebben iets ander type, maar verder gaat het wel prima. Ik heb alleen het idee dat de originele functie iets heel onlogisch doet. Het springt heel de tijd van dirs naar sdirs en terug, en ik vraag me af of dat wel nodig is.
+9:26 het komt er op neer dat dit heel moeilijk uit te zoeken is zonder te kunnen testen, wat pas kan als de bug is opgelost.
+10:45 bezig geweest met autoWrite. werkt met een watch functie, wat altijd vreemd is. pauze
+
+12:02 
+12:22 autoWrite schrijft alleen soms een spatie en geeft een stackoverflow. Me er al een tijd op doodgestaard. Ga nu overal checkpointtasks toevoegen.  
+12:29 de stackoverflow komt doordat ik de cursor terug naar de functieregel laat springen en de conditie opnieuw geldt. Het eerste is intended behaviour, maar de conditie zou niet moeten triggeren. Ook verklaart dit niet waarom ik nog steeds mijn cursor kan bewegen daarna.
+12:36 oh leuk. Als ik de app start, dan geeft hij een index-out-of-bounds listerror.
+13:30 het doet het gewoon niet. En dit is heel moeilijk te testen, dus ik ga gewoon iets anders doen.
+13:35 errorchecking op 10 seconden gezet ipv 2 minuten zodat ik makkelijker iets met de errors kan doen. Maar het blijkt niet te updaten.. zucht.
+13:39 het probleem is dat de icl file niet geupdate wordt. Voor mijn gevoel had ik dit al opgelost.
+13:57 oke, error updating doet het weer en deze keer echt. Als een var niet voorkomt, is de foutmelding: "Error [rommel.icl,5,]: henk undefined". Ik wil nu dat het de optie geeft deze te maken. Eerst moeten we uitzoeken hoe ik twee windows naast elkaar krijg (zodat het er ook een beetje redelijk er uit ziet). Rinus filesystem heeft dit, dus we kijken daar.
+14:22 pauze
+-- 5 1/2 u
+
+-- totaal na kamp: 172 1/2
+
+-- te doen: 247 1/2 uur
+
+week 1 van 5
+>>>>>>> qol
 ma 24-7
 8:09 ik moet een betere logstructuur regelen. Ik zit nu op ubuntu en kan nu niet bij de windows partition aangezien die aan het hibernaten is. Dat betekent dat ik niet bij de log kan. Ook wil ik de beschrijving van dit vak wel weer eens een keer zien. Daarna wil ik kijken waar ik gebleven ben.
 8:32 awkward. Ik ben me vergeten in te schrijven voor het vak. Blijkbaar had ik in week 1 een mail moeten krijgen waarin ik aangaf wie mijn supervisor was en wat ik wil doen. Zodra Tim er is, het hier eens met hem over hebben. En hopen dat dit geen problemen (zoals invalidatie van mijn werk) oplevert.
@@ -449,6 +482,10 @@ ma 24-7
 14:58 docker-compose is zijn ding aan het doen om een cloogle server te maken. fancy fancy.
 15:34 er ging iets fout. onduidelijke foutmelding, maar ik ga er van uit dat de reden is dat ik er al op windows een beetje mee gekloot heb. Nieuwe fresh copy gedownload. Maar eerst geleerd over git op ubuntu
 16:15 faalt nog steeds. Een tijd voor me uitgestaard, errors doorgekeken, opgezocht wat Bash is, en mart en camil een mailtje gestuurd. Next up: dit laten voor wat het is en verdergaan op windows.
+<<<<<<< HEAD
+=======
+16:51 wat verder gesleuteld aan solutions laten zien als er een foutmelding wordt gegeven.
+>>>>>>> qol
 
 di 25-7
 8:03 op ubuntu. Ik heb een mail van Camil over wat er fout ging bij cloogle.
@@ -460,15 +497,212 @@ di 25-7
 	uitvinden hoe ik dingen toevoeg aan en verwijder uit de db
 9:07 ik heb findfunction nodig om een vraag te sturen (dat is iig een goed begin), maar die heeft een db nodig, die ik dus ergens vandaan moet krijgen.
 10:47 mailtje gestuurd naar mart en camil over waar hoe ik een database laad en geprobeerd ipdv in mijn project een database te maken. De db is een derived abstract type (volgens mij betekent dat dat er zo'n ! voor staat) en mag dus niet als itask gebruikt worden. Ik kan nu de ! overal verwijderen, maar het lijkt mij slimmer om gewoon even te wachten op wat mart en camil te zeggen hebben. Dus door op windows.
+<<<<<<< HEAD
 
 wo 26-7
+=======
+10:56 windows. verder met offerSolutions
+12:14 gesprek met Tim over zorgen vanuit Rinus over de validiteit van mijn project. Mijn volgende taak wordt op papier te zetten een afgebakende definitie en doel van mijn project en een halverwege-observatie. Daarna wat gepraat over wat Tim maakt.
+16:53 aw, bijna klaar met midterm review
+
+wo 26-7
+8:33 verder met midterm review
+10:27 klaar. door op ubuntu met de mail van Camil
+>>>>>>> qol
 10:38 Camil heet Staps en niet Stappen
 11:00 bezig met de CloogleDB laten zien in mijn project. Net ontdekt dat het ook mogelijk is om een record type abstract te laten zien. Dus dan kun je niet in de recordfields kijken als daar geen hulpfunctie voor in dezelfde file voor is. Dit is een optie die we toe moeten voegen als we de dcl gaan abstraheren.
 11:27 ik heb het probleem dat als ik alle dependencies van een CloogleDB wil classderiven naar een iTask, ik dan opeens Type en Kind moet deriven, wat natuurlijk niet kan. Ik heb hier een tijd naar zitten staren, maar herinner me opeens dat ik dit probleem een keer gehad had tijdens de koningsdagpuzzel en dat Markus me toen hielp het op te lossen. Ik weet niet meer wat de oplossing was, maar hopelijk kunnen we het terugvinden in de koningsdagpuzzel.
 11:32 nope
 11:36 mail naar Bas gestuurd. Wachten op antwoord of wachten op Markus om het hem te vragen. Door op Windows
+<<<<<<< HEAD
 
 find: grep -rn term ./
 compile: /home/martin/Documents/clean-bundle-itasks/bin/cpm ./pagesWebIDE.prj
 ctrl-L: grep -rn 'term [^\n]*::'  ./
 
+=======
+11:46 door met 'if a var is unknown, give the option to make it'. Ik meen me te herinneren dat ik hier iets verder in was. Clean waarschuwt niet als ik iets niet gesaved heb?
+12:14 pauze
+
+12:53 eind pauze
+13:27 error waar we wel een makkelijke solution voor kunnen maken: Error [..icl,47,funnaam]: function body expected. Nu ik er over nadenk, ik kan wel veel zijsituaties bedenken waar je het anders wil.
+14:48 pauze
+
+do 27-7
+8:06 mail checken
+8:14 geen mail terug van Bas, maar wel van Tim over mijn project plan en midterm review. Hij heeft een boel punten haha.
+9:00 een betere project plan. Nu nog de midterm review
+11:03 opgestuurd. door met 'if a var is unknown, give the option to make it'.
+11:41 Markus kwam net binnen. Gevraagd of hij mijn foutmelding qua Cloogle herkende. Nee. Laten zien, maar het was een andere foutmelding. Deze wist hij ook niet. Opgestuurd naar Bas.
+14:04 update. Nog steeds bezig met 'if a var..'. Een uitdaging hierbij is dat cpm alleen de filename geeft en niet de filepath. Ik heb op dit moment alleen een oplossing als de file geopend is (en daar ben ik halverwege mee). Later wil ik mss toevoegen dat het ook niet geopende files kan vinden, maar dit wordt dan in samenwerking met Cloogle.
+14:59 de functie placeText werkt niet correct. Het geeft een lege file met het aantal enters gelijk aan het aantal enters in de bedoelde te placen text. Dit kan aan placeText zelf liggen of aan setContent
+15:12 mail gecheckt. mail terug van Tim dat midterm review wel prima is en heb ik nu gestuurd naar Rinus.
+15:40 ik heb een fout en ik kom er niet uit. Ik ga het eens uitschrijven in aant.
+15:51 als je viewInformation op een task [String] doet, laat het niks zien. Dit is lichtelijk irritant en moeilijk te debuggen gedrag.
+16:01 maar dat lost het hoofdprobleem niet op. En dat is dat als ik placeText doe, (daarna sluit de file) en daarna de file open, dan zijn er extra enters in de file verschenen, maar niet de bedoelde tekst. Stap voor stap in aant.
+16:15 eigenlijk vrij logisch. Aangezien de file gesloten wordt, wordt hij niet meer gesaved. Maar dit is maar een gedeelte van de fout. Blijkbaar, als je een file sluit en opent, verdubbelt die alle enters. Ik zou zweren dat ik dit al lang opgelost had.
+16:20 het moet fout gaan bij het openen, want saven doet hij constant en ik zou het gemerkt hebben als er dan elke keer enters bij kwamen.
+16:36 er gaat ook iets fout bij het saven. De window wil niet sluiten. Er lijkt eigenlijk uberhaupt niet veel te werken op deze manier.
+16:51 oke, het feit dat er extra enters tevoorschijn komen bij het saven, alswel dat het savewindow soms niet sluit, zijn dingen waar ik geen oplossing voor zie en die ik liever negeer. Nee serieus, ik zie geen reden waarom dit zo werkt en heb er ook geen oplossing voor. Dan het probleem van placeText in het geval dat ik een solution voor een error probeer op te lossen: ik kan niet meer bij die fout komen. de cpm-aanroep lijkt ook iets harder te flippen dan normaal. Ik heb geen idee
+16:55 naar huis.
+
+vr 28-7
+9:37 gisteravond mail gecheckt en geantwoord. s'ochtends mail gecheckt. Nog geen antwoord waardoor ik verder kan met Cloogle. Gister mijn werkdag afgesloten met wat unexpected gedrag. Deze ga ik in testfiles namaken en dan opsturen naar Bas. Ook moet ik maar eens een lijst van feature requests gaan maken in aant.
+De testfiles bevatten:
+	- savewindow sluit niet
+	- file saven en openen genereert extra enters.
+daarna moet ik er nog achter zien te komen wat er ook al weer fout ging bij placeText.
+9:49 feature request lijst gemaakt. laten we beginnen.
+9:55
+
+10:43 eind pauze
+10:48 observed: als ik saveAs klik, verschijnt er een window die mij de optie geeft om te saven, met de knippen save en cancel. Als ik op save duw, verdwijnt SaveAs.
+11:30 door alles in stores te doen en door gewoon >>* ipv >^* te gebruiken, is het probleem van het nietsluitende window opgelost. Het probleem van extra enters kan ik niet repliceren, maar mss is dat magisch verdwenen als ik het eerste probleem fix.
+11:37 doorgevoerd in grote project. Werkt als een tierelier. Problemen die nog opgelost moeten worden is dat de tab zijn naam behoudt en dat hij niet verspringt naar een andere tab (maar dat wordt wss veroorzaakt door de naamwisseling). Maar het dubbele-enter probleem is nog niet opgelost. Wss heeft Ace hiermee te maken.
+12:11 twee dingen: 1. for some reason wordt de ace editor in mijn testprojectje niet weergegeven. Dat is irritant en vreemd. 2. De aceEditor zorgt voor de extra enters. Dus dat is goed om te weten.
+
+12:56 terug van pauze.
+13:00 de Ace Editor zorgt voor de extra enters wanneer er gesaved wordt.
+13:10 het is mysterieus opgelost als ik niet joinWithNewline. Maar waarom ik de AceEditor nog niet kan bekijken is een raadsel.
+13:20 bug opgelost. newlines verwijdert bij het openen van een file. Nu nog zorgen dat de tabnaam gelijk blijft.
+13:31 tabnaam blijft gelijk, maar hij verspringt wel van tab, wss omdat de tab heel even leeg wordt. Maar hier zie ik zo geen oplossing voor. Ook is het dubbel-enter probleem niet helemaal opgelost.
+13:51 oke het volgende probleem was dat als ik rommel.icl veranderde, maar daarna opsloeg, een oude versie werd opgeslagen en een oude versie weer werd geladen. Daarvan heb ik gevonden waar dat door komt. Er gaat iets fout in als ik typ, dat de contentstore mee geupdate wordt. Dit kan komen door twee mogelijkheden:
+ - er zit een fout in mijn mapping tussen de twee stores
+ - updating the stores gaat gewoon te sloom.
+We kunnen hier achter komen door de verandering te doen en dan heel lang te wachten.
+13:56 er zit een fout in de mapping
+14:02 of zou het een fout in de Ace Editor kunnen zijn? dat het het wel laat zien alsof het op een regel zit, maar het eigenlijk nog op twee regels staat?
+14:04 Ace doorgekeken, maar daar word ik ook niet echt gelukkig van. Negeren en verder met placeText
+14:06 werkt prima afgezien van:
+	- de text wordt op de verkeerde plek geplakt
+	- ik krijg niet de mogelijkheid nog een solution toe te passen
+	- er slingert nog heel veel debugcode rond
+14:17 probleem 1 zou opgelost moeten zijn, moet ik nog testen. Ik heb een wijze les geleerd, die zou kunnen helpen bij probleem 2: het beste is vaak zo min mogelijk >^* en >&> te gebruiken, aangezien die je minder controle geven dan je zou willen, en ipdv >>* te gebruiken. (ik moet eerlijk zeggen dat dit gebaseerd is op intuitie en niet op een echte reden. Mss zit er ergens een bug ofzo, maar iig worden >^* en >&> snel buggy. Zo had ik die saveFile die niet wou afsluiten en ook deze offerSolutions die ook al niet wil afsluiten).
+14:22 wacht, wat ik zeg kan niet. Dan moet ik de enterchoice opnieuw laden, maar dan is natuurlijk de error die ik selecteerde niet meer geladen. Tijd voor een aant.
+14:27 realisatie: ik gebruik feedSideways, maar ik kan ook gewoon feedForward gebruiken en wss is die minder buggy
+14:34 aha, wat ik wil is dat als de gegeven input aan offerSolutions verandert, dat hij dan meteen de task die hij laat zien afbreekt en opnieuw diagnostiseert. Maar op het moment zit er wel een watchtask in het begin, maar niet een watchtask over als hij een oplossing heeft.
+15:19 jahaha! offerSolutions werkt als een tierelier. Het enige wat nog niet helemaal werkt, is dat hij de juiste file moet openen. Maar dat stellen we nog even uit. Waar ik nu heel veel zin in heb is om van tabs en offerSolutions bruikbare libraries te maken. Ten eerste heb ik dat namelijk al uitgedacht in mijn hoofd zitten, ten tweede geeft dit iets nuttigs, ook als mijn IDE faalt.
+16:53 de dynamicTabs lib wordt een juweeltje! ongetest, maar wss geeft het een error omdat het een task() verwacht, (dus met () als uitkomst).
+
+za 29-7
+11:52 tijd voor testen
+12:26
+
+12:53
+13:28 'internal overloading of ... could not be solved' betekent dat er een voorwaarde aan een functie binnen deze functie is, die niet wordt doorgegeven aan deze functie. Bijv: '| iTask a'
+13:35 getest. Het werkt niet helemaal lekker. Als ik een task wil beeindigen, wordt de element wel uit de map gegooid, maar blijft de taak bestaan. Als je vervolgens een andere taak wil sluiten, sluit de ene taak, dus alsof updateTabs achterloopt. Er is een verschil tussen deze versie en de editorversie en dat is dat deze niet de stores merged op sommige plekken. Ik ga hier naar kijken wat de verschillen zijn en wat voor invloed dat kan hebben.
+13:47 pauze
+
+week 2 van 5
+ma 31-7
+9:56
+10:16 ik probeer nu de toParallel functie zo te maken dat als de gegeven task sluit, ook de bijbehorende el verwijdert wordt. Maar is dit het gedrag dat we willen? Het is op zich wel duidelijk, want de task is gekoppeld aan de el.
+10:35 'type variable <a> of type of lifted argument appears in the specified type': <a> kan hier alles zijn. Dit is een foutmelding die gegeven wordt als de compiler het liften van de where-functie niet voor mekaar krijgt, voor wat voor reden dan ook. Probeer de functie uit de where-clause te halen, om te kijken wat de reden is.
+11:23 heel vreemd iTask gedrag gehad. Over gepraat met Tim en daarna opgestuurd naar Bas. Ook met Tim gehad over het probleem dat ik Type en Kind niet kan deriven voor de CloogleDB. Hij zegt dat dat wel gewoon mogelijk zou moeten zijn. Ik ga dus verder op linux om te kijken waar dit nu precies fout ging.
+11:27 op ubuntu
+14:35 cloogleDBfactory heeft allerlei modules nodig die helemaal niet bestaan. Nu komen die toch echt wel ergens vandaan, want ik heb hem een keer werkend gecompiled. Deze files komen denk ik dan van een server, en als ik de readme lees, vind ik mss de file die deze server aanroept en kan ik die downloaden of zo.
+15:12 in de cloogle readme (dus niet de cloogle.org readme) staat dat het dingen uit de oude compiler code gebruikt en een terminal comando om die te verkrijgen. Dit lost een groot deel van de dependencies op, maar creeert ook weer nieuwe. Nu ging de terminal comando niet helemaal perfect, dus mss moet ik hier nog even naar kijken.
+15:53 ik kan de file ArgEnv niet vinden. Mailtje gestuurd naar Mart en Camil. door op Windows.
+15:57 op windows. mailtje van Bas gehad dat het vreemde itask gedrag op zijn computer niet voorkomt. Eens kijken of de store resetten iets oplost.
+16:31 het ligt wss aan >^*. Mailtje gestuurd naar Bas hierover. En een workaround gevonden, dus ik kan weer verder.
+16:34 deleting a value sluit nog niet de corresponderende task
+16:48 interessant. Als er iets gedelete wordt, dan wordt de taak aangeroepen om de twee stores weer gelijk te trekken, maar aan het eind is er nog steeds een difference.
+16:51 test toegevoegd aan aux_remove waaraan ik het verschil zou kunnen merken. Volgende keer runnen. Maar ik moet nu naar huis.
+
+di 1-8
+9:34 mail van Mart gehad dat ArgEnv niet meer bestaat, maar ook hoe ik er een verkrijg.
+10:37 volgens mij heb ik de db running, ik heb er nog niks vanuit iTasks opgevraagd. Maar er worden geen modules in geladen. Dat is vreemd en moet ik oplossen.
+11:11 buildit krijgt instructies vanuit de commandline. Deze worden volgens mij gegeven vanuit de makefile. Makefile tutorial lezen.
+12:09 tijd voor pauze. plan daarna is CLI er uit slopen, want daar doen we niet aan. Makefile was niet zo nuttig. parseCLI was nuttiger. De clean_home environment variable bestaat niet (vreemd genoeg) dus die heb ik aangemaakt.
+14:46 een stuk verder. Modules worden geladen, maar er zitten vrij veel errors in. Ook komt het project in een eternal loop als het iTasks.Internal.Generic.Visualization probeert te observeren, gevolgde door een Heap Full.
+15:01 oke, vreemd. Een veelvoorkomende tekst in de output is Platform, maar er is geen functie in Cloogle die die tekst lijkt te printen, volgens grep.
+15:35 hij liep vast op het feit dat hij het moest weergeven in een viewInformation. Nu werkt het.
+16:36 helpwindow cloogleFind gemaakt. Maar die lijkt niets te geven. Ook ziet mijn project er verkrackt uit omdat tabs gebroken zijn. Ik weet niet of dat door Ubuntu komt, of omdat dat iets was dat ik moest fixen, maar ik meen me te herinneren dat het het laatste was. Dus het wordt tijd om de windows en ubuntu project te mergen.
+16:48 installed git cola, een git GUI. Hiermee kan ik morgen committen. Maar nu naar huis
+
+wo 2-8
+8:48 git Gui bekijken en hopelijk committen
+8:54 ik snap hem niet
+9:05 pauze
+
+9:27 eind pauze
+9:36 ik wil qol mergen om te kijken of dat het verkrackt zijn oplost, maar blijkbaar heb ik de laatste changes in qol nog niet gesaved. Dus dat ga ik nu doen. op windows.
+10:13 clean_home environment variable definitief toegevoegd (blijkbaar was dat niet). Een van de vele redenen waarom ik windows fijner vindt.
+10:25 de termen layoutSubs SelectRoot bestaan niet in de nieuwere itasks, maar ze lijken ook niet nodig. Ik moet een keer testen of ze ook nutteloos zijn op windows. iig, we hebben weer tabs
+11:41 Mats van het werk afgehouden.
+11:53 opmerking: ctrl-L zoals beneden gedefinieerd is nog niet perfect, want bij types staat :: voor de term
+11:57 betekenis Location:
+	Location libmap-string modulenaam(omzetbaar naar pad in het geval van de library) (linenr in dcl) (linenr in icl) (naam)
+12:24 cloogleserver heeft een functie handle, die zelf search in Search aanroept. Samen maken die een heel uitgebreide resultatenlijst, een stuk gevulder dan een simpele findFunction. De vraag is, willen we deze functionaliteit overnemen? Dat is namelijk veel werk.
+
+14:15 eind pauze. functionaliteit nemen we later mss over. Nu een funtie die het resultaat van findFunction een beetje mooi weergeeft.
+14:43 ipdv preferences in atom aangepast
+15:15 cloogle kan geen functies vinden als ze niet in de dcl voorkomen. Dat moeten we mss veranderen. (Of alleen veranderen over het eigen project).
+15:23 coole code stub zou zijn 'to auxiliary function', wat het volgende doet:
+a :: b -> c
+a b = c b + a (b-1)
+naar
+a :: b ->
+where
+  a' :: b -> c
+  a' b = c b + a' (b-1)
+15:31 ik wil nu de list to options functie kunnen gebruiken. Die moet ik nog maken in de homemade library, dus laten we daar verder gaan.
+15:40 pauze
+
+do 3-8
+10:09 ik had iets gemaakt zodat er meer info tevoorschijn zou komen over waarom er een difference was, maar ik zag gister niets.
+10:39 mapTasksSequentially is een maffe functie en ik wil even voor mezelf bewijzen dat deze het doet.
+het krijgt een b->task() en een [b]
+foldr krijgt een functie, een startvalue en een lijst.
+De functie krijgt eerst het element en daarna de vorige value.
+\b return(). return() >>| task() >>| task()
+ja deze functie werkt.
+10:48 de task wordt wel verwijderd, maar de tabid in de tabstore niet.
+11:50 geluisterd naar tim terwijl hij vertelde over zijn onderzoek
+12:30 hoop verandert aan de functie. Maar klopt nog steeds niet.
+
+13:20
+13:26 hij geeft aan geen difference te deleten te hebben, maar terug delete hij alles.
+13:28 ah, .intersection is niet .minus. Het is keep what is equal. wat ik nodig heb is .difference
+13:33 add werkt. maar delete gooit hem nu wel weg uit de tabsstore, maar delete de task niet.
+14:08 voorbeeld tabs.icl verder uitgewerkt, namelijk removeTask toegevoegd. Werkt precies zoals verwacht. Dus daar ligt het niet aan. Het vreemde is dat ik oprecht niks out of the ordinary zie waar het aan fout kan gaan dat de task niet geremoved wordt. Mss dat de taskid wijzigt als een combinator aangeroepen wordt.
+15:04 Bas gevraagd hoe ik een sharedtasklist kan inzien. Mail van Rinus gehad over mijn review. Hij vraagt of het feasible is dat ik de ACE editor uitbreid. Nu mijn review aan het doorkijken hoe nodig dat is.
+15:51 mail gestuurd naar Rinus dat ik liever mijn eigen stappenplan aanhoud. Next up: giveSolutions (of hoe het ook heet) tot een library function verwerken.
+17:27 tijd om te gaan. bezig geweest met library function viewSharedListWithDescriptionAndOptions
+
+za 5-8
+8:21 mailtje gehad van Bas. Ik snap hem nog niet echt.
+8:40 pauze
+
+12:05
+12:07 oh, er bestaat gewoon een functie taskListIds in sdsCombinators
+
+12:23 oke, de task is deleted in de tasklist, maar dat betekent blijkbaar niet dat hij removed wordt uit de tabs. Het betekent gewoon dat hij unresponsive wordt. Wat een vreemde functie. Maar als er geen shares in het spel zijn, doet hij het wel. testfile maken en bug opsturen naar Bas.
+12:33
+
+12:56
+13:10 share toevoegen zorgde er niet voor dat het brak. Ik merkte dat niet alle taken de tasklist goed weergaven. Mss komt het probleem tevoorschijn als tasks andere tasks removen.
+13:35 yup dat was hem. Bug opgestuurd naar Bas. Ik zou op zich wel om deze bug heen kunnen werken, maar het lijkt me beter om de andere libfunc af te maken, zodat we weer verder kunnen met cloogle.
+15:50 viewSharedListWithDescriptionAndOptions en viewListWithDescriptionAndOptions gemaakt. Maar wat ik er nu bij wil maken is een task waarbij je de optie er langs ziet en een waarbij de task niet de window afsluit. Bij beide zie ik de opties liever als grid, dan als buttons.
+16:25 we hebben een duidelijkere benaming nodig. Wss iets van doubleEnterChoice. Ook, als we de opties als grid doen, dan kunnen we geen beschrijving meer geven. 
+Heeft het dan wel nut? Ook, we maken nu drie versies, forward, sideways, viewableSideways. Hoe gaat dat voor de originele enterChoice? Daar plak je een >&> of ^&> achter. Als de tweede task viewable is, dan wordt die weergegeven, anders verdwijnt hij. Op deze manier wordt het niet zo'n fantastische library function.
+16:56 enterMultipleChoice vs enterChoice is dropdown vs radiobuttons. editChoice: enterChoice >&> editInformation? Nee, want het krijgt een Maybe a. updateChoice krijgt een a mee. Ik gok dat die de geselecteerde vervangt.
+17:34 lib gemaakt en gesubmit. Dingen uitgezocht over waarom hij niet lekker synct, maar het is eigk gewoon vreemd. Verkeerde rebase ofzo.
+
+zo 6-8
+16:04 planning maken voor de komende drie weken
+16:56
+
+ma 7-8
+12:40
+13:11 project veranderd zodat het nu de lib function gebruikt. nu naar Ubuntu
+
+find: grep -rn --include \*.icl --include \*.dcl term ./
+compile: /home/martin/Documents/clean-bundle-itasks/bin/cpm ./pagesWebIDE.prj
+ctrl-L: grep -rn --include \*.icl --include \*.dcl 'term [^\n]*::'  ./
+
+types and programming languages: typeringssystemen
+programming language pragmatics: hoofdstuk core issues in language design
+essentials of programming languages: algemene concepten
+structure and interpretation of computer programs: algemene concepten (online)
+>>>>>>> qol
