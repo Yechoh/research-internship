@@ -4,10 +4,10 @@ itasks.TextField = {
 		var me = this,
 			el = this.domEl;
 		el.type = 'text';
-		el.value = me.value ? me.value : '';
+		el.value = me.attributes.value ? me.attributes.value : '';
 		el.addEventListener('keyup',function(e) {
             var value = e.target.value === "" ? null : e.target.value
-			me.doEditEvent(me.taskId,me.editorId,value);
+			me.doEditEvent(me.attributes.taskId,me.attributes.editorId,value);
 		});
 	},
 	onAttributeChange: function(name,value) {
@@ -21,14 +21,16 @@ itasks.TextField = {
 };
 itasks.TextArea = {
     domTag: 'textarea',
-	height: 150,
+	attributes: {
+		height: 150
+	},
     initDOMEl: function() {
         var me = this,
             el = this.domEl;
-        el.innerHTML = me.value ? me.value : '';
+        el.innerHTML = me.attributes.value ? me.attributes.value : '';
         el.addEventListener('keyup',function(e) {
 			var value = e.target.value === "" ? null : e.target.value
-			me.doEditEvent(me.taskId,me.editorId,value);
+			me.doEditEvent(me.attributes.taskId,me.attributes.editorId,value);
         });
     },
 	onAttributeChange: function(name,value) {
@@ -46,10 +48,10 @@ itasks.PasswordField = {
 		var me = this,
 			el = this.domEl;
 		el.type = 'password';
-		el.value = me.value ? me.value : '';
+		el.value = me.attributes.value ? me.attributes.value : '';
 		el.addEventListener('keyup',function(e) {
             var value = e.target.value === "" ? null : e.target.value
-			me.doEditEvent(me.taskId,me.editorId,value);
+			me.doEditEvent(me.attributes.taskId,me.attributes.editorId,value);
 		});
 	}
 	,onAttributeChange: function(name,value) {
@@ -64,12 +66,14 @@ itasks.PasswordField = {
 itasks.NumberField = {
 	domTag: 'input',
     allowDecimal: false,
-	width: 150,
+	attributes: {
+		width: 150
+	},
     initDOMEl: function() {
         var me = this,
             el = this.domEl;
         el.type = 'text';
-		el.value = (me.value === undefined || me.value === null) ? '' : me.value;
+		el.value = (me.attributes.value === undefined || me.attributes.value === null) ? '' : me.attributes.value;
 
         el.addEventListener('keypress',function(e) {
             if(me.invalidKey(e.which)) {
@@ -89,7 +93,7 @@ itasks.NumberField = {
             } else {
                 value = me.allowDecimal ? parseFloat(e.target.value) : (e.target.value | 0);
             }
-            me.doEditEvent(me.taskId,me.editorId,value);
+            me.doEditEvent(me.attributes.taskId,me.attributes.editorId,value);
         });
     },
     invalidKey: function(charCode) {
@@ -142,7 +146,7 @@ itasks.DocumentField = {
         el.appendChild(me.actionEl);
 
         me.xhr = null;
-        me.value = me.value || null;
+        me.value = me.attributes.value || null;
         me.showValue();
     },
     showUploading: function(progress) {
@@ -151,8 +155,8 @@ itasks.DocumentField = {
     },
     showValue: function() {
         var me = this;
-        if(me.value !== null) {
-            me.labelEl.innerHTML = '<a href="'+me.value.contentUrl+'" target="_blank">'+me.value.name+'</a>';
+        if(me.attributes.value !== null) {
+            me.labelEl.innerHTML = '<a href="' + me.attributes.value[1] + '" target="_blank">' + me.attributes.value[2] + '</a>';
             me.actionEl.innerHTML = 'Clear';
         } else {
             me.labelEl.innerHTML = 'No file selected';
@@ -169,9 +173,9 @@ itasks.DocumentField = {
             me.showValue();
             return;
         }
-        if(me.value != null) { //Clear;
-            me.doEditEvent(me.taskId,me.editorId,null);
-            me.value = null;
+        if(me.attributes.value != null) { //Clear;
+            me.doEditEvent(me.attributes.taskId,me.attributes.editorId,null);
+            me.attributes.value = null;
             me.showValue();
         } else { //Select
             me.fileEl.click();
@@ -194,41 +198,58 @@ itasks.DocumentField = {
         me.xhr.send(fd);
     },
     onUploadStateChange: function(e) {
-        var me = this, rsp;
+        var me = this, rsp,doc,value;
 
         if (me.xhr.readyState == 4 && me.xhr.status == 200) {
             //Upload ready
             rsp = JSON.parse(me.xhr.responseText);
+			doc = rsp[0];	
+			value = [doc.documentId,doc.contentUrl,doc.name,doc.mime,doc.size];
 
             //Switch to value state
-            me.doEditEvent(me.taskId,me.editorId,rsp[0]);
+            me.doEditEvent(me.attributes.taskId,me.attributes.editorId,value);
             me.xhr = null;
-            me.value = rsp[0];
+			
+            me.attributes.value = value;
             me.showValue();
         }
     },
+	onAttributeChange: function(name,value) {
+		var me = this;
+		if(name == 'value') {
+			me.setEditorValue(value);
+		}
+	},
     setEditorValue: function(value) {
+		var me = this;
+
         if(me.xhr != null) {
             me.xhr.abort();
             me.xhr = null;
         }
-        me.value = value; 
+        me.attributes.value = value; 
         me.showValue();
     }
 };
 itasks.Checkbox = {
 	domTag: 'input',
-    width: 'wrap',
+	attributes: {
+    	width: 'wrap'
+	},
     initDOMEl: function() {
         var me = this,
             el = this.domEl;
         el.type = 'checkbox';
-        el.checked = me.value;
+        el.checked = me.attributes.value;
 
-        el.addEventListener('click',function(e) {
-			var value = e.target.checked;
-            me.doEditEvent(me.taskId,me.editorId,value);
-        });
+		if('enabled' in me.attributes && me.attributes['enabled'] === false) {
+			el.disabled = true;
+		} else {
+	        el.addEventListener('click',function(e) {
+				var value = e.target.checked;
+   					me.doEditEvent(me.attributes.taskId,me.attributes.editorId,value);
+	        });
+		}
     },
 	onAttributeChange: function(name,value) {
 		var me = this;
@@ -243,12 +264,12 @@ itasks.Slider = {
         var me = this,
             el = this.domEl;
         el.type = 'range';
-        el.min = me.min;
-        el.max = me.max;
-        el.value = me.value;
+        el.min = me.attributes.min;
+        el.max = me.attributes.max;
+        el.value = me.attributes.value;
 
         el.addEventListener('change',function(e) {
-            me.doEditEvent(me.taskId,me.editorId, (e.target.value | 0),true);
+            me.doEditEvent(me.attributes.taskId,me.attributes.editorId, (e.target.value | 0),true);
         });
     },
 	onAttributeChange: function(name,value) {
@@ -261,36 +282,37 @@ itasks.Slider = {
 itasks.Button = {
 	domTag: 'a',
 	cssCls: 'button',
-	height: 'wrap',
-	width: 'wrap',
-	enabled: true,
-
+	attributes: {
+		height: 'wrap',
+		width: 'wrap',
+		enabled: true
+	},
 	initDOMEl: function() {
 		var me = this,
 			el = me.domEl;
 
 		el.href = '#';
-		if(me.iconCls) {
+		if(me.attributes.iconCls) {
 			me.icon = document.createElement('div');
 			me.icon.classList.add(me.cssPrefix + 'button-icon');
-			me.icon.classList.add(me.iconCls);
+			me.icon.classList.add(me.attributes.iconCls);
 			el.appendChild(me.icon);
 		}
-		if(!me.enabled) {
+		if(!me.attributes.enabled) {
 			el.classList.add(me.cssPrefix + 'button-disabled');
 		}
-		if(me.text) {
+		if(me.attributes.text) {
 			me.label = document.createElement('div');
-			me.label.innerHTML = me.text;
+			me.label.innerHTML = me.attributes.text;
 			me.label.classList.add(me.cssPrefix + 'button-label');
 			el.appendChild(me.label);
 		}
         el.addEventListener('click',function(e) {
-			if(typeof(me.value) == 'boolean') { //Toggle edit buttons
-				me.value = !me.value;
+			if(typeof(me.attributes.value) == 'boolean') { //Toggle edit buttons
+				me.attributes.value = !me.attributes.value;
 			}
-            if(me.enabled) {
-				me.doEditEvent(me.taskId,me.editorId,me.value);
+            if(me.attributes.enabled) {
+				me.doEditEvent(me.attributes.taskId,me.attributes.editorId,me.attributes.value);
             }
 			e.preventDefault();
 			return false;
@@ -302,7 +324,6 @@ itasks.Button = {
 		var me = this;
 		switch(name) {
 			case 'enabled':
-				me.enabled = value;
 				if(value) {
 					me.domEl.classList.remove(me.cssPrefix + 'button-disabled');
 				} else {
@@ -318,22 +339,23 @@ itasks.Label = {
     initDOMEl: function() {
         var me = this,
             el = me.domEl;
-        el.innerHTML = me.text;
+        el.innerHTML = me.attributes.text;
     }
 };
 itasks.Icon = {
-
-	width: 'wrap',
-	height: 'wrap',
+	attributes: {
+		width: 'wrap',
+		height: 'wrap'
+	},
 	initDOMEl: function() {
 		var me = this,
 			el = me.domEl;
 		el.classList.add(me.cssPrefix + 'icon');
-		el.classList.add(me.iconCls);
-		me.currentIcon = me.iconCls;
+		el.classList.add(me.attributes.iconCls);
+		me.currentIcon = me.attributes.iconCls;
 
-		if(me.tooltip) {
-			el.setAttribute('tooltip',me.tooltip);
+		if(me.attributes.tooltip) {
+			el.setAttribute('tooltip',me.attributes.tooltip);
 		}
     },
 	onAttributeChange: function(name,value) {

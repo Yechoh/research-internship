@@ -275,9 +275,9 @@ where
 
 askUserForFile:: !FileName !(FileName -> Bool) -> Task (FilePath,FileName)
 askUserForFile file isWantedFile
-	=						viewInformation ("Where is " +++ file +++ "?") [] ""
-		||-					getPwdName
- 		>>- \pwd ->			selectFromTreeLocal True pwd isWantedFile
+	=						getPwdName
+	>>- \pwd ->				viewInformation ("Where is " +++ file +++ "?") [] ""
+		||-					selectFromTreeLocal True pwd isWantedFile
 
 selectFromTreeLocal :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
 selectFromTreeLocal show fp isWantedFile

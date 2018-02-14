@@ -42,15 +42,18 @@ where
 				  							}) project
 		>>|					get settings
 		>>- \curSet ->		get project
-		>>- \myProj ->		createProject (curSet.cleanHome </> "bin" </> "cpm") myProj.projectPath myProj.projectName
+		>>- \myProj ->		createProject (curSet.cleanHome </> "bin" </> "cpm") "/" (myProj.projectPath </> myProj.projectName)
 		>>|- setContents (path </> file)
 
 setContents :: String -> Task ()
 setContents iclloc
 	= 							readLinesFromFile iclloc
 	>>- \(Just contenttxt) ->	get contents
-	>>- \contentmap ->			set ('DM'.put iclloc contenttxt contentmap) contents
+	>>- \contentmap ->			set (setText iclloc contenttxt contentmap) contents
 								>>|- return ()
+
+setText :: String [String] (Map String AceState) -> Map String AceState
+setText iclloc contenttxt contentmap = 'DM'.put iclloc {zero & lines=contenttxt} contentmap
 
 mbCancel :: (Task a) -> Task ()
 mbCancel ta

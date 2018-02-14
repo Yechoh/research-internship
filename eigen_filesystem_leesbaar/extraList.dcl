@@ -2,6 +2,8 @@ definition module extraList
 
 import StdList
 
+index :: a [a] -> Int | == a
+
 //j is the length
 subset :: Int Int [a] -> [a]
 

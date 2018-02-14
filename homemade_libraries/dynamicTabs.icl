@@ -15,31 +15,30 @@ import extraTaskCombinators
  * @param The Shared Map
  * @param A function from Map key to tab name
  * @param The viewable Task. It receives a key and a shared element
- * @param an element nullvalue, needed for consistency, but will never be shown. The nullvalue of int is 0, the nullvalue of list is []
  * @result A Task displaying the tabs
  */
-dynamicTabs :: (Shared (Map k e)) (k -> String) (k (Shared e) -> Task ()) e -> Task [(TaskTime,TaskValue ())] | iTask k & iTask e & < k
-dynamicTabs mapstore totabname t elnull =
+dynamicTabs :: (Shared (Map k e)) (k -> String) (k (Shared e) -> Task ()) -> Task [(Int,TaskValue ())] | iTask k & iTask e & < k & zero e
+dynamicTabs mapstore totabname t =
 	withShared 'DM'.newMap (\tabsstore.
 	get mapstore >>- \c.
-	parallel [(Embedded,(waitf c tabsstore (updateTabs tabsstore mapstore (ptask tabsstore)))):(map (\k.(Embedded,((ptask tabsstore k)))) ('DM'.keys c))] [] <<@ ApplyLayout (layoutSubs SelectRoot arrangeWithTabs))
+	parallel [(Embedded,(waitf c tabsstore (updateTabs tabsstore mapstore (ptask tabsstore)))):(map (\k.(Embedded,((ptask tabsstore k)))) ('DM'.keys c))] [] <<@ ApplyLayout (arrangeWithTabs))
 	where
-	ptask tabsstore key = toParallel t (mapstore >*< tabsstore) totabname elnull key
+	ptask tabsstore key = toParallel t (mapstore >*< tabsstore) totabname key
 
 //takes a task makes it a parallelTask appropiate for use in the dynamic tabs
-toParallel :: (k (Shared e) -> Task ()) (Shared ((Map k e),(Map k TaskId))) (k -> String) e k -> ParallelTask () | iTask k & iTask e & < k
-toParallel t (maptabsstore) totabname elnull key =
+toParallel :: (k (Shared e) -> Task ()) (Shared ((Map k e),(Map k TaskId))) (k -> String) k -> ParallelTask () | iTask k & iTask e & < k & zero e
+toParallel t (maptabsstore) totabname key =
 	\tasklist.
-	get (taskListSelfId tasklist) >>- \selfid.
-	upd (\(map,tabs).(map,'DM'.put key selfid tabs)) maptabsstore >>|
-	(t key (mapReadWrite (mapntabs2elRead key elnull,el2mapntabsWrite key) maptabsstore)) <<@ Title (totabname key)
-	>>| upd (\(map,tabs).(('DM'.del key map),('DM'.del key tabs))) maptabsstore >>|- return ()
+	(get (taskListSelfId tasklist) >>- \selfid.
+	upd (\(map,tabs).(map,'DM'.put key selfid tabs)) maptabsstore >>|-
+	(t key (mapReadWrite (getEl key ,putEl key) maptabsstore))
+	>>| upd (\(map,tabs).(('DM'.del key map),('DM'.del key tabs))) maptabsstore >>|- return ())<<@ Title (totabname key)
 	where
-	mapntabs2elRead :: k e ((Map k e),(Map k TaskId)) -> e | < k
-	mapntabs2elRead key elnull (map,tabs) = maybe elnull id ('DM'.get key map)
+	getEl :: k ((Map k e),(Map k TaskId)) -> e | < k & zero e
+	getEl key (map,tabs) = maybe zero id ('DM'.get key map)
 
-el2mapntabsWrite :: k e ((Map k e),(Map k TaskId)) -> Maybe ((Map k e),(Map k TaskId)) | < k
-el2mapntabsWrite key el (map,tabs) = Just (('DM'.put key el map),tabs)
+putEl :: k e ((Map k e),(Map k TaskId)) -> Maybe ((Map k e),(Map k TaskId)) | < k
+putEl key el (map,tabs) = Just (('DM'.put key el map),tabs)
 
 //wait until the amount of tabs equals the amount of map keys, in other words, wait until all tabs are loaded.
 waitf :: (Map k e) (Shared (Map k TaskId)) (ParallelTask ()) -> ParallelTask () | iTask k & iTask e
@@ -52,10 +51,10 @@ waitf c tabsstore ptask = \tasklist. watch tabsstore >>* [ OnValue (ifValue (\ta
 //opens tab and task when a Map element is added.
 updateTabs :: (Shared (Map k TaskId)) (Shared (Map k e)) (k -> ParallelTask ()) -> ParallelTask () | iTask k & iTask e & < k
 updateTabs tabsstore mapstore keyToPtask = \tasklist.
-	viewInformation "" [] "equal" >>| (viewSharedInformation "" [] tabsstore ||- watch (mapstore >*< tabsstore))
+	(watch (mapstore >*< tabsstore))
 	>>*
 	[	OnValue		(ifValue (\(c,tabs). differentLengths c tabs) (\(c,tabs). (auxa ('DM'.difference c tabs) ('DM'.difference tabs c) tabsstore tasklist keyToPtask) >>|-
-			viewInformation "" [] "difference" >>| (viewSharedInformation "" [] tabsstore ||- watch tabsstore)
+			(watch tabsstore)
 			 >>*
 			 [ 	OnValue (ifValue (\tabs. 'DM'.mapSize tabs == length ('DM'.keys c)) (\tabs. updateTabs tabsstore mapstore keyToPtask tasklist))
 			 ]))
@@ -80,8 +79,6 @@ updateTabs tabsstore mapstore keyToPtask = \tasklist.
 
 	aux_remove :: (Map k TaskId) (Shared (Map k TaskId)) (SharedTaskList ()) -> Task () | iTask k & <k
 	aux_remove difference tabsstore tasklist =
-		viewInformation "keys" [] ('DM'.keys difference) -||
-		 viewSharedInformation "tasklist" [] (taskListIds tasklist) >>|
 		mapTasksSequentially (\taskid. removeTask taskid tasklist >>|- return () ) ('DM'.elems difference) >>|-
 		upd (\tabs. 'DM'.difference tabs difference) tabsstore >>|-
 		return ()

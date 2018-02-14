@@ -260,3 +260,54 @@ ik heb een enterChoiceWithShared. Dit is een continuous task die output wat ik s
 Nu gebruik ik
 
 ---
+doel: parallel extenden zodat het aangeeft welke task bekeken wordt.
+parallel krijgt twee args: de paralleltasks, en of ze embedded zijn.
+Je kunt dingen embedden met name, of detachen. Markus denkt dat dit UI-gerelateerd is. Detached, betekent dat het niet weergegeven wordt. Dat zou impliceren dat de name ook alleen maar UI-gerelateerd is.
+Task: onbekende functie
+//create initial tasklist : gebruikt eval en TCCInit. Ik weet niet of we het hier moeten zoeken.
+taskAttributes is een map van String naar String. Ik heb dus niet echt een idee wat dit doet.
+//
+in het type ParallelTaskState komt de attribute LastFocus voor, dat een Maybe TaskTime is. Nu kunnen we zorgen dat we die in een share constant vergelijken, maar nog beter lijkt me om te kijken waar deze gezet wordt, en daarmee iets doen.
+Dit lijkt op een dood spoor. Maar ik bedenk me dat applyLayout wel gewoon moet weten waar op geklikt is.
+
+
+
+
+
+
+
+---
+layouts die het waard zijn herinnerd te worden:
+
+/**
+* Extract one child item and put it in a separate panel at the side of the screen
+*
+* @param Index of the task in the set that should be put in the sidebar
+* @param Location of the sidebar
+* @param Initial size of the sidebar
+* @param Enable resize?
+*/
+arrangeWithSideBar :: !Int !UISide !Int !Bool -> Layout
+
+/**
+* Divide the available screen space
+*
+* @param Direction to split the available space in
+* @param Enable resize?
+*/
+arrangeSplit :: !UIDirection !Bool -> Layout
+
+/home/martin/Documents/clean-bundle-itasks-windows-x86-latest/clean-bundle-itasks/Libraries/iTasks/iTasks/UI/Layout/Common.dcl
+
+:: UIDirection
+	= Horizontal
+	| Vertical
+	
+:: UISide
+	= TopSide
+	| RightSide
+	| BottomSide
+	| LeftSide
+
+
+

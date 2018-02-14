@@ -6,12 +6,14 @@ import extraTaskCombinators
 import pagetypes
 import shares
 import qualified Data.Map as DM
+import pageEditor
+import content
 
-pageCreateFile :: CreateFileRedirects -> Task ()
-pageCreateFile ((actionCreate, pagenodeEditor),(actionCancel,pagenodeEditor2)) =
+pageCreateFile :: Task ()
+pageCreateFile =
 	(askFolder -&&- chooseFileName)
-	>>*	[	OnAction actionCreate (hasValue(\(a,c).createFile (a,c) >>|- pagenodeEditor))
-		,	OnAction actionCancel (always pagenodeEditor)
+	>>*	[	OnAction (Action "Create") (hasValue(\(a,c).createFile (a,c) >>|- pageEditor))
+		,	OnAction (Action "Cancel") (always pageEditor)
 		]
 
 askFolder :: Task String
@@ -30,12 +32,3 @@ createFile (a,b)
 	setContents (a </> b+++".icl") >>|-
 	upd (\dcls. 'DM'.put (a </> b+++".icl") [(Sharedi,"import iTasks","")] dcls) dclStore
 	>>|- return ()
-
-setContents :: String -> Task ()
-setContents iclloc
-	= 							'DB'.readLinesFromFile (iclloc)
-	>>- \mct -> case mct of
-		Nothing = viewInformation "" [] iclloc >>| return ()
-		(Just contenttxt) =	get contents
-				>>- \contentmap ->			set ('DM'.put iclloc contenttxt contentmap) contents
-								>>|- return ()

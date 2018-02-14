@@ -18,6 +18,7 @@ doubleEnterChoiceWithShared d options container d2 options2 container2 =
 	second` =
 		enterChoice (d2 a) (options2 a) (container2 a) >&> watch sma
 */
+
 chooseTaskBasedOnElementOfSharedList :: d (Shared [a]) (a->d2) (a->[a2]) (a a2 ->Task ()) -> Task () | toPrompt d & iTask a & toPrompt d2 & iTask a2 & ==a
 chooseTaskBasedOnElementOfSharedList d container d2 container2 taskFun =
 	first >>|- return ()

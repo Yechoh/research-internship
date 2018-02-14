@@ -3,6 +3,14 @@ implementation module extraList
 import	StdClass, StdMisc, StdEnum, StdInt, StdChar, StdBool, StdArray, StdString, StdReal, StdTuple
 import StdList
 
+index :: a [a] -> Int | == a
+index a l = index` a l 0
+    where
+        index` a [] i = -1
+        index` a [x:y] i
+        | a == x = i
+        | otherwise = index` a y (i+1)
+
 //j is the length
 subset :: Int Int [a] -> [a]
 subset i j a = snd (splitAt i (fst (splitAt (j+i) a)))

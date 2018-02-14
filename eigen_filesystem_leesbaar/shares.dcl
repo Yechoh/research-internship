@@ -15,11 +15,12 @@ import CloogleDBFactory
 					, projectSources	:: [FilePath]		// not cashed, all file names read in after every cycle
 					}
 
+instance zero AceState
+instance zero AceOptions
+
 derive class iTask Settings, Project, Sharenum
 
 dclStore :: Shared (Map String [(Sharenum,String,Comment)])
-
-updateDclStore :: Task (Map String [(Sharenum,String,Comment)])
 
 :: Sharenum = Sharedf | Unsharedf | Deprecatedf | Sharedi | Unsharedi
 
@@ -31,16 +32,12 @@ project 		:: Shared Project
 errorStore :: Shared [String]
 
 //contents = ([(filename,[line])],prev_time)
-contents :: Shared (Map String [String])
+//contents :: Shared (Map String [String])
+contents :: Shared (Map String AceState)
 
 :: Comment :== String
 
-//functions to get specific content
-contentLinesOf :: String -> Task [String]
-setContent :: String [String] -> Task (Map String [String])
-joinWithNewline :: String String -> String
-contentOf :: String -> Task String
-filenameToFilepath :: String -> Task (Maybe String)
+instance zero [(Sharenum,String,Comment)]
 
 :: Shortcut = No_shortcut
 			| Ctrl_slash
@@ -67,17 +64,7 @@ filenameToFilepath :: String -> Task (Maybe String)
 			| Ctrl_w
 			| Ctrl_Shift_w
 
-:: EditorInfo =
-	{
-		shortcuts :: [Shortcut],
-		selection :: Maybe AceRange,
-		position :: (Int,Int),
-		theme :: String,
-		readOnly :: Bool,
-		prev_time :: Time
-	}
-
-derive class iTask EditorInfo, Shortcut
+derive class iTask Shortcut
 
 cpmFile			 :== "cpm.exe"
 cleanIDE		 :== "CleanIDE.exe"

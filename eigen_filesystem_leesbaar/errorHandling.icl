@@ -13,98 +13,13 @@ import doubleEnterChoice
 import builddb
 import CloogleDB
 import System.OS
+import content
 
 //!String !(Shared (!AceOptions,!AceState))
 
-errorWindow :: String (Shared (EditorInfo,Map String [String])) -> ParallelTask ()
-errorWindow nameOfFileInEditor editorStore
-	= \tasklist.
-	(chooseTaskBasedOnElementOfSharedList
-		""
-		errorStore
-		(\a.diagnosedErrorToDescription (diagnose a))
-		(\a.diagnosedErrorToSolutions (diagnose a))
-		(\a b.diagnosedErrorToTask (diagnose a) b editorStore)
-	 )<<@ (Title "Errors")
-	//(
-	/*(doubleEnterChoiceWithShared
-		""
-		[ChooseFromGrid id]
-		errorStore
-		(\a.diagnosedErrorToDescription(diagnose(a)))
-		(\a.[ChooseFromGrid fst])
-		(\a.diagnosedErrorToSolutions (diagnose a) editorStore)
-	)>>- \b.snd b) <<@ (Title "Errors")*/
 
-:: DiagnosedError :== (FileName, Int, ErrorDiagnosis)
-:: ErrorDiagnosis = UndefinedVar String | Unknown String
 
-diagnosedErrorToDescription :: DiagnosedError -> String
-diagnosedErrorToDescription (_,_,UndefinedVar varname) = varname+++" undefined"
-diagnosedErrorToDescription (_,_,Unknown err) = "unknown error "+++err
 
-diagnosedErrorToSolutions :: DiagnosedError -> [String]
-diagnosedErrorToSolutions (filename,i,diagnosis)= ["Go to error"] ++
-	case diagnosis of
-	UndefinedVar varname =
-		["Create "+++varname]
-	_ = []
-
-diagnosedErrorToTask :: DiagnosedError String (Shared (EditorInfo,Map String [String])) -> Task ()
-diagnosedErrorToTask (filename,line,_) "Go to error" editorStore = return ()
-diagnosedErrorToTask (filename,line,UndefinedVar varname) _ editorStore = solutionCreateVar filename editorStore line varname
-diagnosedErrorToTask (filename,line,_) actiona editorStore = viewInformation "" [] ("undefined action "+++ actiona) >>| return ()
-
-getErrorInt :: String -> Int
-getErrorInt err
-	#(rest,err) = splitOnce "[" err
-	#(errinfo,errmessage) = splitOnce "]" err
-	#[filename,line,obj:rest] = split "," errinfo
-	= (toInt line) - 1
-
-diagnose :: String -> DiagnosedError
-diagnose err
-	#(rest,err) = splitOnce "[" err
-	#(errinfo,errmessage) = splitOnce "]" err
-	#[filename,line,obj:rest] = split "," errinfo
-	#errwords = split " " (dropChars 2 errmessage)
-	#line = (toInt line) - 1
-	| length errwords == 2
-		| indexOf "undefined" (errwords!!1) <> -1
-			= (filename,line,UndefinedVar (errwords!!0))
-		| otherwise = (filename,line,Unknown errmessage)
-	| otherwise = (filename,line,Unknown errmessage)
-
-showButtons :: String [(Action,Task ())] String (ReadOnlyShared (Maybe String)) (Task ()) -> Task ()
-showButtons message l str smstr t = viewInformation "" [] message ||- watch smstr >>*
-		[(OnValue (ifValue (\mstr. mstr <> (Just str)) \a.t)):(map (\(a,t). OnAction a (always t)) l)]
-
-startOfFunction :: String Int -> Task Int
-startOfFunction filepath i = contentLinesOf filepath >>- \l. return (sof l (i+1))
-	where
-	sof :: [String] Int -> Int
-	sof l 0 = 0
-	sof l i
-		| (indexOf "::" (l!!i)) == -1 && (indexOf "Start" (l!!i)) == -1	=  sof l (i-1)
-		| otherwise						= i
-
-placeText :: String Int [String] -> Task ()
-placeText filepath i text =
-	contentLinesOf filepath >>- \l.
-	setContent filepath ((\(a,b).a++text++b) (splitAt i l)) >>| return ()
-
-jumpToLine :: (Shared (EditorInfo,Map String [String])) Int -> Task ()
-jumpToLine editorstore i =
-	upd (\(ei,c). ({ei & position = (i, snd ei.EditorInfo.position)},c)) editorstore >>| return ()
-
-solutionCreateVar :: String (Shared (EditorInfo,Map String [String])) Int String -> Task ()
-solutionCreateVar filename editorstore i var = filenameToFilepath filename >>- (\a. case a of
-	Nothing = viewInformation "" [] "cannot find file" >>| return ()
-	Just filepath =
-		startOfFunction filepath i >>- \funi.
-		placeText filepath funi [var+++" :: ",""] >>|
-		jumpToLine editorstore funi
-	)
 
 //offerSolutions shows possible actions on selecting an error.
 /*offerSolutions editorstore error = forever ((viewSharedInformation "" [] error ||- watch error) >>*
@@ -130,7 +45,7 @@ build
 			= 				get settings
 			>>- \curSet ->	get project
 			>>- \myProj ->	get contents
-			>>- \c -> 		'DM'.foldrWithKey (\k v t -> t >>|- saveFile (k) (foldr joinWithNewline "" v)) (return ()) c
+			>>- \c -> 		'DM'.foldrWithKey (\k v t -> t >>|- saveFile (k) (foldr joinWithNewline "" v.lines)) (return ()) c
 			//>>|-			get clooglestore
 			//>>- \db -> 		accWorld (\w0. (\(tempdb,w).(finaliseDb tempdb db,w)) ('DM'.foldrWithKey (\k v (tempdb,w) .indexModule (""</>"") k ("") False tempdb w) (newTemporaryDb,w0) c))
 			//>>- \db ->		set db clooglestore
@@ -156,7 +71,7 @@ commentToFilecomment c
 toDcl :: String [(Sharenum,String,String)] -> String
 toDcl filename dcl
 # dcl = filter (\(x,y,z).x === Sharedi || x === Sharedf) dcl
-= join (OS_NEWLINE+++OS_NEWLINE) ["implementation module "+++(dropExtension (dropDirectory filename)):map (\(x,y,z).joinWithNewline (commentToFilecomment z) y ) dcl]
+= join (OS_NEWLINE+++OS_NEWLINE) ["definition module "+++(dropExtension (dropDirectory filename)):map (\(x,y,z).joinWithNewline (commentToFilecomment z) y ) dcl]
 
 compile :: String String String   -> Task ()
 compile cpmBin buildDir mainModule =

@@ -6,15 +6,14 @@ import shares
 import directoryBrowsing
 import extraTaskCombinators
 import qualified Data.Map as DM
-//import callCpm
 import System.OS
 import Text
 import iTasks.UI.Editor.Builtin
 import errorHandling
-//import callCpm
+import pageEditor
 
-pageAskImportPaths :: AskImportPathsRedirects -> Task ()
-pageAskImportPaths ((actioncontinue,pagenodeEditor),(actioncancel,pagenodeEditor2)) =
+pageAskImportPaths :: Task ()
+pageAskImportPaths =
 	get project >>- \proj.
 	readFromFile ((proj.projectPath </> proj.projectName)+++".prj") >>- \mprojtxt. case mprojtxt of
 	Nothing = viewInformation "" [] (proj.projectPath +++ "   " +++ proj.projectName) >>| return ()
@@ -22,8 +21,8 @@ pageAskImportPaths ((actioncontinue,pagenodeEditor),(actioncancel,pagenodeEditor
 		showUnresolvedImports
 		||-
 		showMapSelector proj.projectName
-		>>* [   OnAction  actioncontinue   	(always (pagenodeEditor))
-			,	OnAction actioncancel		(always (writeToFile (proj.projectName) projtxt >>|- pagenodeEditor))
+		>>* [   OnAction  (Action "Continue")   	(always (pageEditor))
+			,	OnAction (Action "Cancel")		(always (writeToFile (proj.projectName) projtxt >>|- pageEditor))
 			]
 
 Errors2Imports :: [String] -> String

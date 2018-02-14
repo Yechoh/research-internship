@@ -20,7 +20,7 @@ selectFromTreeMaybe :: !Bool !FilePath !(FileName -> Bool) -> Task (Maybe (FileP
 selectFolder 		:: !FilePath -> Task (String,String)
 //selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task [Int]
 selectFromTree :: !Bool !FilePath !(FileName -> Bool) -> Task (FilePath,String)
-browseDirectory 	:: (FilePath -> Bool) -> Task ((FilePath,[FilePath]),Maybe FilePath)
+//browseDirectory 	:: (FilePath -> Bool) -> Task ((FilePath,[FilePath]),Maybe FilePath)
 
 //
 

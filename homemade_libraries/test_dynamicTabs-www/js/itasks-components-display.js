@@ -1,12 +1,13 @@
 itasks.TextView = {
-	paddingTop: 5,
-	paddingRight: 5,
-	paddingBottom: 5,
-	paddingLeft: 5,
 	cssCls: 'textview',
-
+	attributes: {
+		paddingTop: 5,
+		paddingRight: 5,
+		paddingBottom: 5,
+		paddingLeft: 5
+	},
 	initDOMEl: function() {
-		this.domEl.innerHTML = this.value || '';
+		this.domEl.innerHTML = this.attributes.value || '';
 	},
 	setValue: function(html) {
 		this.domEl.innerHTML = html;	
@@ -18,14 +19,16 @@ itasks.TextView = {
 	}
 };
 itasks.HtmlView = {
+	cssCls: 'htmlview',
 	//Default padding
-	paddingTop: 5,
-	paddingRight: 5,
-	paddingBottom: 5,
-	paddingLeft: 5,
-
+	attributes: {
+		paddingTop: 5,
+		paddingRight: 5,
+		paddingBottom: 5,
+		paddingLeft: 5
+	},
 	initDOMEl: function() {
-		this.domEl.innerHTML = this.value || '';
+		this.domEl.innerHTML = this.attributes.value || '';
 	},
 	setValue: function(html) {
 		this.domEl.innerHTML = html;	
@@ -38,17 +41,19 @@ itasks.HtmlView = {
 };
 itasks.ProgressBar = {
     domTag: 'progress',
-	width: 'flex',
-	height: 'wrap',
+	attributes: {
+		width: 'flex',
+		height: 'wrap'
+	},
     initDOMEl: function() {
         var me = this,
             el = this.domEl;
 
-        el.innerHTML = me.text;
+        el.innerHTML = me.attributes.text;
 		el.min = 0;
         el.max = 100;
-        if(typeof me.value == 'number') {
-            el.value = me.value;
+        if(typeof me.attributes.value == 'number') {
+            el.value = me.attributes.value;
         }
     },
 	onAttributeChange:function(name,value) {

@@ -2,23 +2,23 @@
 itasks.Selector = { 
 	select: function (selection, toggle = false) {
         var me = this,
-			options = me.options,
-			oldSelection = me.value.slice(0),
+			options = me.attributes.options,
+			oldSelection = me.attributes.value.slice(0),
 			i;
 		if(toggle) {
  			//Unselect items in the toggle set
-			me.value = me.value.filter(function(x) {return !selection.includes(x)});
+			me.attributes.value = me.attributes.value.filter(function(x) {return !selection.includes(x)});
 			//Add the items from the selection that were not already selected
-			me.value = me.value.concat(selection.filter(function(x) {return !oldSelection.includes(x)}));
+			me.attributes.value = me.attributes.value.concat(selection.filter(function(x) {return !oldSelection.includes(x)}));
 		} else {
-			me.value = selection;
+			me.attributes.value = selection;
 		}
 		//Update DOM
 		options.forEach(me.selectOptionsInDOM.bind(me));
 	},
 	selectOptionsInDOM: function(option) {
 		var me = this;
-		me.selectInDOM(option.domEl,me.value.includes(option.id));
+		me.selectInDOM(option.domEl,me.attributes.value.includes(option.id));
 		if(option.children) {
 			option.children.forEach(me.selectOptionsInDOM.bind(me));
 		}
@@ -41,9 +41,11 @@ itasks.Selector = {
 
 itasks.Dropdown = Object.assign({
     domTag: 'select',
-    width: 150,
-	multiple: false,
-
+	attributes: {
+    	width: 150,
+		height: 'wrap',
+		multiple: false
+	},
     initDOMEl: function() {
         var me = this,
             el = me.domEl,
@@ -55,12 +57,12 @@ itasks.Dropdown = Object.assign({
         optionEl.value = "";
         el.appendChild(optionEl);
 
-        me.options.forEach(function(option) {
+        me.attributes.options.forEach(function(option) {
 
             optionEl = document.createElement('option');
             optionEl.value = option.id;
             optionEl.innerHTML = option.text;
-            if(me.value.includes(option.id)) {
+            if(me.attributes.value.includes(option.id)) {
                 optionEl.selected = true;
             }
             el.appendChild(optionEl);
@@ -69,7 +71,7 @@ itasks.Dropdown = Object.assign({
 
         el.addEventListener('change',function(e) {
 			me.select(e.target.value === '' ? [] : [parseInt(e.target.value)]);
-            me.doEditEvent(me.taskId,me.editorId,me.value);
+            me.doEditEvent(me.attributes.taskId,me.attributes.editorId,me.attributes.value);
         });
     },
 	selectInDOM: function(el,selected) {
@@ -83,26 +85,28 @@ itasks.Dropdown = Object.assign({
 itasks.CheckGroup = Object.assign({
 	domTag: 'ul',
 	cssCls: 'checkgroup',
-	multiple: false,
+	attributes: {
+		multiple: false,
+	},
 	initDOMEl: function() {
 		var me = this,
 			el = me.domEl,
-			inputName = "choice-" + me.taskId + "-" + me.editorId;
+			inputName = "choice-" + me.attributes.taskId + "-" + me.attributes.editorId;
 
-		me.options.forEach(function(option,idx) {
+		me.attributes.options.forEach(function(option,idx) {
 			var liEl,inputEl,labelEl;
 			liEl = document.createElement('li');
 			inputEl = document.createElement('input');
-			inputEl.type = me.multiple ? 'checkbox' : 'radio';
+			inputEl.type = me.attributes.multiple ? 'checkbox' : 'radio';
 			inputEl.value = idx;
 			inputEl.name = inputName;
 			inputEl.id = inputName + "-option-" + option.id;
-			if(me.value.includes(option.id)) {
+			if(me.attributes.value.includes(option.id)) {
 				inputEl.checked = true;
             }
             inputEl.addEventListener('click',function(e) {
-				me.select([option.id],me.multiple);
-				me.doEditEvent(me.taskId,me.editorId,me.value);
+				me.select([option.id],me.attributes.multiple);
+				me.doEditEvent(me.attributes.taskId,me.attributes.editorId,me.attributes.value);
             });
 			liEl.appendChild(inputEl);
 
@@ -126,19 +130,21 @@ itasks.CheckGroup = Object.assign({
 
 itasks.ChoiceList = Object.assign({
 	cssCls: 'choice-list',
-	multiple: false,
+	attributes: {
+		multiple: false
+	},
     initDOMEl: function() {
         var me = this,
             el = me.domEl;
 
-        me.options.forEach(function(option,idx) {
+        me.attributes.options.forEach(function(option,idx) {
             var optionEl;
             optionEl = document.createElement('div');
             optionEl.classList.add(me.cssPrefix + 'choice-list-option');
 
             optionEl.addEventListener('click',function(e) {
-				me.select([option.id], me.multiple && (e.metaKey || e.ctrlKey));
-                me.doEditEvent(me.taskId,me.editorId,me.value);
+				me.select([option.id], me.attributes.multiple && (e.metaKey || e.ctrlKey));
+                me.doEditEvent(me.attributes.taskId,me.attributes.editorId,me.attributes.value);
 				e.preventDefault();
             });
             optionEl.innerHTML = option.text;
@@ -147,6 +153,9 @@ itasks.ChoiceList = Object.assign({
 			option.domEl = optionEl;
         });
 		me.optionsDOM = me.domEl.children;
+
+		//Highlight initital selection
+		me.select(me.attributes.value,false);
     },
 	setOptions: function(options) {
 	},
@@ -157,10 +166,11 @@ itasks.ChoiceList = Object.assign({
 
 itasks.Grid = Object.assign({
 	cssCls: 'choicegrid',
-	width: 'flex',
-	height: 'flex',
-	multiple: false,
-
+	attributes: {
+		width: 'flex',
+		height: 'flex',
+		multiple: false
+	},
     initDOMEl: function() {
         var me = this,
             el = me.domEl,
@@ -169,7 +179,7 @@ itasks.Grid = Object.assign({
         //Create header
         headerEl = me.headerEl = document.createElement('div');
         headerEl.classList.add(me.cssPrefix + 'choicegrid-header');
-        me.columns.forEach(function(column) {
+        me.attributes.columns.forEach(function(column) {
             cellEl = document.createElement('div');
             cellEl.innerHTML = column;
             headerEl.appendChild(cellEl);
@@ -181,36 +191,11 @@ itasks.Grid = Object.assign({
         bodyEl.classList.add(me.cssPrefix + 'choicegrid-body');
 
 		//Fill with options
-		me.setOptions(me.options);
-/*
-        me.options.forEach(function(option,rowIdx) {
-            rowEl = document.createElement('div');
-            rowEl.addEventListener('click',function(e) {
-				me.select([option.id], me.multiple && (e.metaKey || e.ctrlKey));
-                me.doEditEvent(me.taskId,me.editorId,me.value);
-            },me);
-            if(me.doubleClickAction) {
-                rowEl.addEventListener('dblclick',function(e) {
-					me.select([option.id]);
-                    me.doEditEvent(me.taskId,me.editorId,me.value);
-                    me.sendActionEvent(me.doubleClickAction[0],me.doubleClickAction[1]);
+		me.setOptions(me.attributes.options);
 
-                    e.stopPropagation();
-                    e.preventDefault();
-                },me);
-            }
-            option.cells.forEach(function(cell) {
-                cellEl = document.createElement('div');
-                cellEl.innerHTML = cell;
-                rowEl.appendChild(cellEl);
-            });
-            bodyEl.appendChild(rowEl);
-			option.domEl = rowEl;
-        });
-*/
         //Indicate initial selection
-        if(me.value.length) {
-            me.value.forEach(function(selectedIdx) {
+        if(me.attributes.value.length) {
+            me.attributes.value.forEach(function(selectedIdx) {
                 bodyEl.childNodes[selectedIdx].classList.add(me.cssPrefix + 'selected');
             });
         }
@@ -219,7 +204,7 @@ itasks.Grid = Object.assign({
 	setOptions: function(options) {
 		var me = this, bodyEl = me.bodyEl;
 		//Store options
-		me.options = options;
+		me.attributes.options = options;
 
 		//Clear
 		while (bodyEl.lastChild) {
@@ -229,14 +214,14 @@ itasks.Grid = Object.assign({
         options.forEach(function(option,rowIdx) {
             rowEl = document.createElement('div');
             rowEl.addEventListener('click',function(e) {
-				me.select([option.id], me.multiple && (e.metaKey || e.ctrlKey));
-                me.doEditEvent(me.taskId,me.editorId,me.value);
+				me.select([option.id], me.attributes.multiple && (e.metaKey || e.ctrlKey));
+                me.doEditEvent(me.attributes.taskId,me.attributes.editorId,me.attributes.value);
             },me);
-            if(me.doubleClickAction) {
+            if(me.attributes.doubleClickAction) {
                 rowEl.addEventListener('dblclick',function(e) {
 					me.select([option.id]);
-                    me.doEditEvent(me.taskId,me.editorId,me.value);
-                    me.sendActionEvent(me.doubleClickAction[0],me.doubleClickAction[1]);
+                    me.doEditEvent(me.attributes.taskId,me.attributes.editorId,me.attributes.value);
+                    me.sendActionEvent(me.attributes.doubleClickAction[0],me.attributes.doubleClickAction[1]);
 
                     e.stopPropagation();
                     e.preventDefault();
@@ -258,24 +243,29 @@ itasks.Grid = Object.assign({
 },itasks.Selector);
 
 itasks.Tree = Object.assign({
-    height: 'flex',
-	multiple: false,
+	attributes: {
+    	height: 'flex',
+		multiple: false,
+		options: []
+	},
     initDOMEl: function() {
         var me = this,
             el = me.domEl,
-            rootNodeId = me.taskId+ "-" + me.editorId + "-node",
+            rootNodeId = me.attributes.taskId + "-" + me.attributes.editorId + "-node",
             rootNode,node;
 
         el.classList.add(me.cssPrefix + 'choicetree');
 
         rootNode = document.createElement('ol');
 
-        me.options.forEach(function(option,idx) {
+        me.attributes.options.forEach(function(option,idx) {
             me.addNode(option,rootNode,rootNodeId,idx);
         },me);
 
-        me.value.forEach(function(idx) {
-            me.nodes[idx].classList.add(me.cssPrefix + 'selected');
+        me.attributes.value.forEach(function(idx) {
+			if(me.attributes.options && me.attributes.options[idx]) {
+				me.attributes.options[idx].domEl.classList.add(me.cssPrefix + 'selected');
+			}
         });
         el.appendChild(rootNode);
     },
@@ -297,15 +287,15 @@ itasks.Tree = Object.assign({
         }
         label.innerHTML = option.text;
         label.addEventListener('click',function(e) {
-				me.select([option.id],me.multiple && (e.metaKey || e.ctrlKey));
-                me.doEditEvent(me.taskId,me.editorId,me.value);
+				me.select([option.id],me.attributes.multiple && (e.metaKey || e.ctrlKey));
+                me.doEditEvent(me.attributes.taskId,me.attributes.editorId,me.attributes.value);
         },me);
 
-        if(me.doubleClickAction) {
+        if(me.attributes.doubleClickAction) {
             label.addEventListener('dblclick',function(e) {
 				me.select([option.id]);
-                me.doEditEvent(me.taskId,me.editorId,me.value);
-                me.doEditEvent(me.doubleClickAction[0],null,me.doubleClickAction[1]);
+                me.doEditEvent(me.attributes.taskId,me.attributes.editorId,me.attributes.value);
+                me.doEditEvent(me.attributes.doubleClickAction[0],null,me.attributes.doubleClickAction[1]);
 
                 e.stopPropagation();
                 e.preventDefault();

@@ -186,24 +186,8 @@ var Sapl = new function () {
 					return ret;
 				}
 
-				// SPECIALIZED OVERRIDES!!!
-				if(consname === "iTasks.API.Core.SystemTypes.Username" || consname === "iTasks.API.Core.SystemTypes.Password"){
-					return Sapl.feval(expr[2]);
-				}else if(consname === "iTasks.API.Core.SystemTypes._Date"){
-					var year = this.feval(expr[4]),
-					    month = this.feval(expr[3]),
-						day = this.feval(expr[2]);
-					return year.toString().lpad("0",4)+"-"+month.toString().lpad("0",2)+"-"+day.toString().lpad("0",2);
-				}else if(consname === "iTasks.API.Core.SystemTypes._Time"){
-					var hour = this.feval(expr[2]),
-					    min = this.feval(expr[3]),
-						sec = this.feval(expr[4]);
-					return hour.toString().lpad("0",2)+":"+min.toString().lpad("0",2)+":"+sec.toString().lpad("0",2);
-				}else if(consname === "iTasks.API.Core.SystemTypes.DateTime"){
-					var date = this.feval(expr[2]);
-					var time = this.feval(expr[3]);
-					return this._toJS(false,date) + " " + this._toJS(false,time);
-				}else if(consname === "_SystemDynamic._DynamicTemp"){
+				// Special case for dynamics
+				if(consname === "_SystemDynamic._DynamicTemp"){
 					// Do not do anything
 					return expr;
 				}
@@ -265,8 +249,6 @@ var Sapl = new function () {
 				}
 			}
 
-	/*	} else if (isFunction(expr)) {
-			return this.print_ident(expr.name);*/
 		} else {
 			return expr;
 		}

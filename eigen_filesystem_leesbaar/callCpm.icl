@@ -10,8 +10,8 @@ import qualified Data.Map as DM
 cpmCreateProject :: String -> Task ()
 cpmCreateProject projname =
 	get settings >>- \settings ->
-	(appWorld (\w. snd ('SP'.callProcess settings.cpmDir ["project",projname,"create"] Nothing w))) 
-	
+	(appWorld (\w. snd ('SP'.callProcess settings.cpmDir ["project",projname,"create"] Nothing w)))
+
 cpmSetErrorstateWithErrlog :: Task ()
 cpmSetErrorstateWithErrlog =
 	get project >>- \p.
@@ -20,12 +20,12 @@ cpmSetErrorstateWithErrlog =
 	get settings >>- \settings ->
 	appWorld (\w. snd ('SP'.callProcess settings.dirCmd ["start","/c",settings.dirCpm,p,"--envs="+++settings.dirIDEEnvs,"1>templog.txt","2>errlog.txt"] Nothing w))
 	>>|- readFromFile "templog.txt"
-	>>- \(Just errors). 
+	>>- \(Just errors).
 	set (errors) errorstate
 	>>|- return ()
 
 cpmSetErrorstate :: Task ()
-cpmSetErrorstate = 		
+cpmSetErrorstate =
 	get settings >>- \sett.
 	get project >>- \p.
 	compile sett.dirCpm (projdir p) (projname p) sett.dirIDEEnvs >>|
@@ -34,14 +34,14 @@ cpmSetErrorstate =
 	return ()
 	where
 	projname p = dropDirectory p
-	projdir p = takeDirectory p 
+	projdir p = takeDirectory p
 	errordir sett = (takeDirectory sett.dirCpm) </> "Temp" </> "errors"
-	
+
 compile :: String String String String  -> Task ()
 compile cpmBin buildDir mainModule env
 		= appWorld (\w. snd ('SP'.callProcess cpmBin [mainModule,"--envs="+++env] (Just buildDir) w)) @! ()
-	
-	
+
+
 cpmSetErrorstateUsingCmd :: Task ()
 cpmSetErrorstateUsingCmd =
 	get project >>- \p.
@@ -51,8 +51,6 @@ cpmSetErrorstateUsingCmd =
 	appWorld (\w. snd ('SP'.callProcess settings.dirCpm [p,"--envs="+++settings.dirIDEEnvs] Nothing w))
 	//appWorld (\w. snd ('SP'.callProcess settings.dirCmd ["start","/c",settings.dirCpm,p,"--envs="+++settings.dirIDEEnvs,"1>templog.txt","2>errlog.txt"] Nothing w))
 	>>|- readFromFile "templog.txt"
-	>>- \(Just errors). 
+	>>- \(Just errors).
 	set (errors) errorstate
 	>>|- return ()
-
-

@@ -5,7 +5,7 @@ import dynamicTabs
 import qualified Data.Map as DM
 
 mapstore :: Shared (Map Int String)
-mapstore = sharedStore "mapstore" ('DM'.fromList 
+mapstore = sharedStore "mapstore" ('DM'.fromList
 	[
 		(1,"001"),
 		(2,"010"),
@@ -46,14 +46,17 @@ map2 = 'DM'.fromList
 
 //Start = parallel
 
+instance zero String
+	where
+		zero = ""
+
 Start world = startEngine
 	(
 		f
 	||-
-		dynamicTabs 
-			(mapstore) 
-			(toString) 
+		dynamicTabs
+			(mapstore)
+			(toString)
 			(\k e.updateSharedInformation "" [] e >>* [OnAction (Action "Close") (always (return ()))])
-			("harige harry")
 	)
 	world

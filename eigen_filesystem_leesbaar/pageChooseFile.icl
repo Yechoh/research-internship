@@ -9,64 +9,30 @@ import extraTaskCombinators
 import qualified Data.Map as DM
 import extraText
 import System.OS
+import pageEditor
+import content
+import dcls
 
-pageChooseFile :: ChooseFileRedirects -> Task ()
-pageChooseFile (actionContinue,pagenodeEditor) =
+pageChooseFile :: Task ()
+pageChooseFile =
 	askPath
 	-||
 	updateSharedInformation "paths" [] settings
 	>>- \miclloc -> case miclloc of
-		Nothing = pagenodeEditor
-		(Just (a,b)) = setContents (a </> b) >>|- /*setProject iclloc >>|*/ (pagenodeEditor)
+		Nothing = pageEditor
+		(Just (a,b)) = setContents (a </> b) >>|- /*setProject iclloc >>|*/ (pageEditor)
 
 askPath :: Task (Maybe (String,String))
 askPath
-	=							getPwdName
-	>>- \pwd ->					(selectFromTreeMaybe True pwd isCleanFile)
+	=							get project
+	>>- \p ->					(selectFromTreeMaybe True p.projectPath isCleanFile)
 	//>>- \(a,b)->				return (Just (a </> b))
 	//>>- \path -> return (takeDirectory path, dropDirectory path)
 
-addDcl :: String -> Task ()
-addDcl dclloc = readLinesFromFile dclloc >>- \mct ->
-	case mct of
-		Nothing = viewInformation "not found" [] dclloc >>| return ()
-		(Just contenttxt) = get dclStore
-			>>- \dcls ->
-			set ('DM'.put dclloc (readDcl contenttxt) dcls) dclStore
-			>>|- return ()
-
-isComment :: String -> Bool
-isComment a = startsWith "/*" a || startsWith "*" a || startsWith "//" a
-
-readDcl :: [String] -> [(Sharenum,String,Comment)]
-readDcl text
-# text = filter (\line. line <> "") text
-= readDcl` text
-	where
-		readDcl` [x:y]
-		| isComment x
-			# comment = join OS_NEWLINE [x:takeWhile (isComment) y]
-			# [f:y] = dropWhile isComment y
-			= [(Sharedf,f,comment):readDcl` y]
-		| startsWith "import " x || startsWith "derive " x = [(Sharedi,x,""):readDcl` y]
-		| contains "::" x = [(Sharedf,x,""): readDcl` y]
-		| otherwise = readDcl` y
-
-readComment :: [String] -> Comment
-readComment c
-	= join OS_NEWLINE (map (\a.replaceSubString "*" "" (replaceSubString "*/" "" (replaceSubString "/*" "" a))) c)
 
 
 
-setContents :: String -> Task ()
-setContents iclloc =
-	readLinesFromFile (iclloc)>>- \mct ->
-	case mct of
-		Nothing = viewInformation "not found" [] iclloc >>| return ()
-		(Just contenttxt) =	get contents
-				>>- \contentmap ->
-				set ('DM'.put iclloc contenttxt contentmap) contents
-				>>|- return ()
+
 
 //if there do not already exist	a temp icl and temp proj
 	//create temp icl
