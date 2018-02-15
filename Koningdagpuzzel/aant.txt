@@ -1,0 +1,42 @@
+for the customer
+enter name
+-||-
+	fill in new request 
+	fill in questionaire about open requests
+
+for the worker
+enter name
+-||-
+	give approval of an open request
+	process a formal complaint
+	see all archived unfounded complaints
+	see all processed complaints
+	see all workers and customers
+
+customernames [customernames]
+employeenames [employeenames]
+complaints [(datetime,name,addres,req,questionaire,status)]
+archive [(datetime,name,addres,req,questionaire,status)]
+
+
+:: status = Approved String | Denied String | Processed [String]
+	
+database:
+i have some customernames
+give me all corresponding complaints
+
+i have some ids of customernames
+give me the ids of corresponding complaints
+
+hoe is een database anders?
+adding data gives an id
+there are relations. Suppose a customer has multiple complaint, i can say: customer.complaints.
+in Clean i could write instead getComplaints customer, where customer is of type customerId and getComplaints is overloaded. All are still in the shared environment i guess?
+
+how does this hold up if the customer is deleted? It should always be a maybe value. 
+
+kan ik dit nu ook al doen?
+()
+Map coid Complaint
+Map cuid Customer
+Map cuid [coid]
