@@ -14,9 +14,6 @@ msget key smap = get smap >>- \map.
 msgetm :: a (Shared (Map a b)) -> Task (Maybe b) | iTask b & < a & iTask a
 msgetm key smap = get smap >>- \map. return ('DM'.get key map)
 
-put :: a (b) (Map a b) -> Maybe (Map a b) | zero b & < a
-
-
 msgets :: a (Shared (Map a b)) -> (Shared b) | zero b & < a
 msgets key smap = mapReadWrite (get,put) smap
 	where

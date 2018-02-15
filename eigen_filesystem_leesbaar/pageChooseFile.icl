@@ -1,7 +1,6 @@
 implementation module pageChooseFile
 
 import iTasks
-import pagetypes
 import directoryBrowsing
 import shares
 import extraTaskCombinators

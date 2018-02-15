@@ -1,8 +1,0 @@
-|| ?module? type_io_common
-
-
-type_io_common.CharIndex_1 !s_0 !i_1::I !char_2::C = case (<{StdInt.==_16}> i_1 (_SystemArray.size_20 s_0)) (True -> <{_Tuple2!3}> False (_SystemArray.size_20 s_0)) (False -> case (<{StdInt.<_17}> i_1 (_SystemArray.size_20 s_0)) (True -> case (<{StdChar.==_18}> (_SystemArray.select_19 s_0 i_1) char_2) (True -> <{_Tuple2!3}> True i_1) (False -> type_io_common.CharIndex_1 s_0 (<{StdInt.+_6}> i_1 StdInt.one_11) char_2) ) (False -> StdMisc.abort "CharIndex: index out of range") ) 
-type_io_common.get_type_name_and_module_name_from_type_string !type_string_0 = let !_x_1_0 = type_io_common.CharIndex_1 type_string_0 0 '\'' in case (select _x_1_0::_Tuple2 0) (True -> let !type_ident_3_0 = <{StdString.%_10}> type_string_0 (_Tuple2 0 (<{StdInt.-_7}> sep_pos_3_2 StdInt.one_11)), !module_name_3_1 = <{StdString.%_10}> type_string_0 (_Tuple2 (<{StdInt.+_6}> sep_pos_3_2 StdInt.one_11) (<{StdInt.-_7}> (_SystemArray.size_20 type_string_0) StdInt.one_11)), sep_pos_3_2::I = select _x_1_0::_Tuple2 1 in <{_Tuple2!3}> type_ident_3_0 module_name_3_1) (False -> case (<{StdString.==_2}> type_string_0 " -> ") (True -> <{_Tuple2!3}> type_string_0 "_predefined") ) 
-
-
-|| Converted Records

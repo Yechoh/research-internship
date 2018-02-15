@@ -114,8 +114,8 @@
 .depend "iTasks" "20170707023452"
 .depend "StdOverloaded" "20170707023452"
 .depend "_SystemDynamic" "20170707023452"
-.depend "extraTaskCombinators" "20170705162321"
-.module m_extraTaskCombinators "extraTaskCombinators" "20170807152039"
+.depend "extraTaskCombinators" "20180215142456"
+.module m_extraTaskCombinators "extraTaskCombinators" "20180215142456"
 .endinfo
 .impmod _system
 .implab _cycle_in_spine
@@ -223,7 +223,7 @@ ea7
 .o 2 3 iii
 s7
 	push_a 0
-	build e_extraTaskCombinators_drepeatEveryTwoMinutes 1 e_extraTaskCombinators_nrepeatEveryTwoMinutes
+	build e_extraTaskCombinators_drepeatEveryTenSeconds 1 e_extraTaskCombinators_nrepeatEveryTenSeconds
 	push_b 2
 	pushI 10
 	push_b 1
@@ -262,25 +262,25 @@ s7
 	updatepop_a 0 1
 .d 3 0
 	jmp s13
-.export e_extraTaskCombinators_srepeatEveryTwoMinutes
-.export e_extraTaskCombinators_earepeatEveryTwoMinutes
-.descexp e_extraTaskCombinators_drepeatEveryTwoMinutes e_extraTaskCombinators_nrepeatEveryTwoMinutes e_extraTaskCombinators_lrepeatEveryTwoMinutes 1 0 "repeatEveryTwoMinutes"
+.export e_extraTaskCombinators_srepeatEveryTenSeconds
+.export e_extraTaskCombinators_earepeatEveryTenSeconds
+.descexp e_extraTaskCombinators_drepeatEveryTenSeconds e_extraTaskCombinators_nrepeatEveryTenSeconds e_extraTaskCombinators_lrepeatEveryTenSeconds 1 0 "repeatEveryTenSeconds"
 .o 2 0
-e_extraTaskCombinators_lrepeatEveryTwoMinutes
+e_extraTaskCombinators_lrepeatEveryTenSeconds
 	update_a 1 0
 	create
 	update_a 0 2
 	pop_a 1
 .d 2 0
-	jmp e_extraTaskCombinators_earepeatEveryTwoMinutes
-.n 1 e_extraTaskCombinators_drepeatEveryTwoMinutes e_extraTaskCombinators_earepeatEveryTwoMinutes
+	jmp e_extraTaskCombinators_earepeatEveryTenSeconds
+.n 1 e_extraTaskCombinators_drepeatEveryTenSeconds e_extraTaskCombinators_earepeatEveryTenSeconds
 .o 1 0
-e_extraTaskCombinators_nrepeatEveryTwoMinutes
+e_extraTaskCombinators_nrepeatEveryTenSeconds
 	push_node _cycle_in_spine 1
 .o 2 0
-e_extraTaskCombinators_earepeatEveryTwoMinutes
+e_extraTaskCombinators_earepeatEveryTenSeconds
 .o 2 0
-e_extraTaskCombinators_srepeatEveryTwoMinutes
+e_extraTaskCombinators_srepeatEveryTenSeconds
 .o 2 0
 s3
 	push_a 0

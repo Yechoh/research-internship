@@ -51,7 +51,7 @@ heeft als argumenten
 createExec in createAndRunExec in filesystem_rinus
 doet in volgorde:
 createCleanProject
-	
+
 buildCleanProject
 
 ---
@@ -84,14 +84,14 @@ cpm roept doCpmAction van cpmLogic aan
 				onduidelijk of deze log eerder geinitialiseerd wordt of zo, of hoe het werkt. het roept appPLoc aan, maar die husselt alleen wat info
 				logfile zit in generalSt, wat een verzameling is van info, maar ook een world. logfile is een file. Hoe deze dan gemaakt, geprint, watefs wordt is onduidelijk. Dit moet logischerwijs gezien later in de programflow gebeuren. De vraag is waar.
 doCpmAction is het laatste wat cpm aanroept. Deze moet de logfile dus printen
-	
+
 ---
 om een program te compilen, hebben we nodig: een project, een icl
 de icl hebben we (sortof)
-de project niet. 
-	Wat als import missen. 
-		Dan moeten die worden toegevoegd. 
-			Hoe doet de clean ide dit? 
+de project niet.
+	Wat als import missen.
+		Dan moeten die worden toegevoegd.
+			Hoe doet de clean ide dit?
 				Wss is die functie wel te vinden.
 					Valt die ook om te zetten naar een itask?
 						Onduidelijk. Het roept een venster aan.
@@ -141,8 +141,8 @@ de continue is veroorzaakt omdat viewinformation een waarde geeft die we nodig h
 wat ik wil:
 ik wil een icl die een overzicht geeft van welke pagina's naar welke pagina's wijzen.
 waarom is dit niet makkelijk:
-ik heb het nu opgedeeld in pages en buttons, maar die hebben informatie nodig. Bijv: 
-	- editorPage heeft het path nodig van de icl waar we naar kijken, die zou die moeten krijgen van chooseFile. 
+ik heb het nu opgedeeld in pages en buttons, maar die hebben informatie nodig. Bijv:
+	- editorPage heeft het path nodig van de icl waar we naar kijken, die zou die moeten krijgen van chooseFile.
 	- een Button zou een voorwaarde kunnen hebben, waar info voor nodig is
 nieuw plan:
 we hebben pages en pagenodes. pages zijn functies die (action,pagenode) tuples vragen en een pagina opleveren.
@@ -154,7 +154,7 @@ chooseFile doet meerdere dingen
 
 ---
 hoe werkt >>* precies?
-het type van >>* is 
+het type van >>* is
 	(task a) [TaskCont a (Task b)] -> Task b
 TaskCont a (Task b) is
 	OnAction    Action  ((TaskValue a)  -> Maybe b)
@@ -162,7 +162,7 @@ een voorbeeld hiervan is
 	OnAction (Action "hoi") always (return ())
 het type van always is
 	b (TaskValue a) -> Maybe b
-	
+
 ---
 wat mist nog aan Bas zijn kant van de Ace Editor?
 shortcuts
@@ -175,7 +175,7 @@ Als er geen files in de sharedstore zijn:
 	vraag aan user om een file te selecteren
 Als er wel files in de sharedstore zijn:
 	Welke file laten we dan zien? we hebben geen userspecific data. Doe maar gewoon de eerste.
-	
+
 ---
 wat is een paralleltask?
 Het krijgt een sharedTaskList van meerdere ietsen en returnt een zo'n iets.
@@ -302,12 +302,9 @@ arrangeSplit :: !UIDirection !Bool -> Layout
 :: UIDirection
 	= Horizontal
 	| Vertical
-	
+
 :: UISide
 	= TopSide
 	| RightSide
 	| BottomSide
 	| LeftSide
-
-
-

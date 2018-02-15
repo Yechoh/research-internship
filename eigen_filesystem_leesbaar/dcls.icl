@@ -7,6 +7,7 @@ import extraText
 import extraTaskCombinators
 import qualified Data.Map as DM
 import directoryBrowsing
+import extraList
 
 readDcl :: [String] -> [(Sharenum,String,Comment)]
 readDcl text

@@ -1,7 +1,6 @@
 implementation module pageAskImportPaths
 
 import iTasks
-import pagetypes
 import shares
 import directoryBrowsing
 import extraTaskCombinators

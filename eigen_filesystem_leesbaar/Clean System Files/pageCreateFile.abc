@@ -1,9 +1,7 @@
 .comp 920 000111010011
 .start _nostart_
 .depend "content" "20170907140123"
-.depend "extraTaskCombinators" "20170705162321"
-.depend "directoryBrowsing" "20170811141029"
-.depend "pageEditor" "20170906151851"
+.depend "pageEditor" "20180215142456"
 .depend "CloogleDBFactory" "20170725081135"
 .depend "Cloogle" "20170731120145"
 .depend "Doc" "20170725081135"
@@ -14,8 +12,9 @@
 .depend "Type" "20170725081138"
 .depend "CloogleDB" "20170816111716"
 .depend "iTasks.Extensions.Editors.Ace" "20170707023452"
-.depend "shares" "20170907140846"
-.depend "pagetypes" "20170807152038"
+.depend "shares" "20180215142457"
+.depend "extraTaskCombinators" "20180215153910"
+.depend "directoryBrowsing" "20180215142456"
 .depend "iTasks.Extensions.Admin.WorkflowAdmin" "20170707023452"
 .depend "iTasks.Extensions.Admin.UserAdmin" "20170707023452"
 .depend "iTasks.UI.Layout.Common" "20170707023452"
@@ -130,8 +129,8 @@
 .depend "iTasks" "20170707023452"
 .depend "StdOverloaded" "20170707023452"
 .depend "_SystemDynamic" "20170707023452"
-.depend "pageCreateFile" "20170906140425"
-.module m_pageCreateFile "pageCreateFile" "20170907135553"
+.depend "pageCreateFile" "20180215142456"
+.module m_pageCreateFile "pageCreateFile" "20180215154333"
 .endinfo
 .impmod _system
 .implab _cycle_in_spine
@@ -171,6 +170,22 @@
 .impmod content
 .impdesc e_content_dsetContents
 .implab e_content_nsetContents e_content_easetContents
+.impmod pageEditor
+.impdesc e_pageEditor_dpageEditor
+.implab e_pageEditor_npageEditor e_pageEditor_eapageEditor
+.impmod shares
+.impdesc e_shares_ddclStore
+.implab e_shares_ndclStore e_shares_eadclStore
+.impdesc e_shares_dgEditor_Sharenum;22
+.implab e_shares_ngEditor_Sharenum;22
+.impdesc e_shares_dgText_Sharenum;23
+.impdesc e_shares_dJSONEncode_Sharenum;24
+.impdesc e_shares_dJSONDecode_Sharenum;25
+.impdesc e_shares_dgDefault_Sharenum;26
+.implab e_shares_ngDefault_Sharenum;26 e_shares_eagDefault_Sharenum;26
+.impdesc e_shares_dgEq_Sharenum;27
+.impdesc e_shares_dTD;Sharenum
+.impdesc e_shares_dSharedi
 .impmod extraTaskCombinators
 .implab e_extraTaskCombinators_s>>|-
 .impmod directoryBrowsing
@@ -178,22 +193,6 @@
 .implab e_directoryBrowsing_ngetPwdName e_directoryBrowsing_eagetPwdName
 .impdesc e_directoryBrowsing_dcreateFile
 .implab e_directoryBrowsing_ncreateFile e_directoryBrowsing_eacreateFile
-.impmod pageEditor
-.impdesc e_pageEditor_dpageEditor
-.implab e_pageEditor_npageEditor e_pageEditor_eapageEditor
-.impmod shares
-.impdesc e_shares_ddclStore
-.implab e_shares_ndclStore e_shares_eadclStore
-.impdesc e_shares_dgEditor_Sharenum;24
-.implab e_shares_ngEditor_Sharenum;24
-.impdesc e_shares_dgText_Sharenum;25
-.impdesc e_shares_dJSONEncode_Sharenum;26
-.impdesc e_shares_dJSONDecode_Sharenum;27
-.impdesc e_shares_dgDefault_Sharenum;28
-.implab e_shares_ngDefault_Sharenum;28 e_shares_eagDefault_Sharenum;28
-.impdesc e_shares_dgEq_Sharenum;29
-.impdesc e_shares_dTD;Sharenum
-.impdesc e_shares_dSharedi
 .impmod iTasks.WF.Combinators.Common
 .implab e_iTasks.WF.Combinators.Common_s>>*
 .implab e_iTasks.WF.Combinators.Common_s-&&-
@@ -672,7 +671,7 @@ s2
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
 .d 17 0
 	jmp e_iTasks.WF.Combinators.Overloaded_s>>=;3
-.desc d92 _hnf l92 1 0 "<lambda>[line:22];9;410"
+.desc d92 _hnf l92 1 0 "<lambda>[line:21];9;410"
 .o 2 0
 l92
 	update_a 1 0
@@ -772,7 +771,7 @@ s3
 	pop_a 1
 .d 11 0
 	jmp e_iTasks.WF.Tasks.Interaction_senterInformation
-.desc d5 _hnf l5 1 0 "<lambda>[line:15];50;4"
+.desc d5 _hnf l5 1 0 "<lambda>[line:14];50;4"
 .o 2 0
 l5
 	update_a 1 0
@@ -1906,11 +1905,11 @@ s73
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
 	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
-	buildh e_shares_dJSONDecode_Sharenum;27 0
-	buildh e_shares_dJSONEncode_Sharenum;26 0
-	build e_shares_dgDefault_Sharenum;28 0 e_shares_ngDefault_Sharenum;28
-	buildh e_shares_dgText_Sharenum;25 0
-	build e_shares_dgEditor_Sharenum;24 0 e_shares_ngEditor_Sharenum;24
+	buildh e_shares_dJSONDecode_Sharenum;25 0
+	buildh e_shares_dJSONEncode_Sharenum;24 0
+	build e_shares_dgDefault_Sharenum;26 0 e_shares_ngDefault_Sharenum;26
+	buildh e_shares_dgText_Sharenum;23 0
+	build e_shares_dgEditor_Sharenum;22 0 e_shares_ngEditor_Sharenum;22
 .d 15 0
 	jmp e_iTasks.UI.Editor.Generic_sgEditor__Tuple3;15
 .desc d38 _hnf l38 2 0 "gText_s;356"
@@ -1956,7 +1955,7 @@ ea59
 s59
 	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
 	buildh e_iTasks.Internal.Generic.Visualization_dgText__String;15 0
-	buildh e_shares_dgText_Sharenum;25 0
+	buildh e_shares_dgText_Sharenum;23 0
 	push_a 4
 	push_a 4
 	push_a 4
@@ -2026,7 +2025,7 @@ ea57
 s57
 	buildh e_Text.JSON_dJSONEncode__String;15 0
 	buildh e_Text.JSON_dJSONEncode__String;15 0
-	buildh e_shares_dJSONEncode_Sharenum;26 0
+	buildh e_shares_dJSONEncode_Sharenum;24 0
 	push_a 5
 	push_a 5
 	push_a 5
@@ -2112,7 +2111,7 @@ ea55
 s55
 	buildh e_Text.JSON_dJSONDecode__String;39 0
 	buildh e_Text.JSON_dJSONDecode__String;39 0
-	buildh e_shares_dJSONDecode_Sharenum;27 0
+	buildh e_shares_dJSONDecode_Sharenum;25 0
 	push_a 3
 	push_b 0
 	push_a 3
@@ -2159,7 +2158,7 @@ ea53
 s53
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
 	build e_iTasks.Internal.Generic.Defaults_dgDefault__String;12 0 e_iTasks.Internal.Generic.Defaults_ngDefault__String;12
-	build e_shares_dgDefault_Sharenum;28 0 e_shares_ngDefault_Sharenum;28
+	build e_shares_dgDefault_Sharenum;26 0 e_shares_ngDefault_Sharenum;26
 .d 3 0
 	jmp e_iTasks.Internal.Generic.Defaults_sgDefault__Tuple3;16
 .desc d48 _hnf l48 2 0 "gEq_s;366"
@@ -2213,7 +2212,7 @@ ea51
 s51
 	buildh e_GenEq_dgEq__String;6 0
 	buildh e_GenEq_dgEq__String;6 0
-	buildh e_shares_dgEq_Sharenum;29 0
+	buildh e_shares_dgEq_Sharenum;27 0
 	push_a 4
 	push_a 4
 	push_a 4
@@ -2230,7 +2229,7 @@ s51
 	updatepop_a 0 2
 .d 5 0
 	jmp e_GenEq_sgEq__Tuple3;18
-.desc d7 _hnf l7 3 0 "<lambda>[line:33];10;6"
+.desc d7 _hnf l7 3 0 "<lambda>[line:32];10;6"
 .a 3 ea7
 .o 2 0
 l7

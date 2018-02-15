@@ -3,6 +3,7 @@ implementation module pageEditor
 import iTasks
 import shares
 import extraTaskCombinators
+from extraTaskCombinators import repeatEveryTwoMinutes
 import qualified Data.Map as DM
 import directoryBrowsing
 import iTasks.Extensions.Editors.Ace

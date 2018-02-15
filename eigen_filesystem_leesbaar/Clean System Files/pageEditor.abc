@@ -6,15 +6,15 @@
 .depend "helpwindowShare" "20170906151223"
 .depend "helpwindowSearch" "20170906151644"
 .depend "helpwindowErrors" "20170906142434"
-.depend "mapshare" "20170906091255"
-.depend "dynamicTabs" "20170818113103"
+.depend "pageAskImportPaths" "20180215145807"
+.depend "pageCreateFile" "20180215142456"
+.depend "mapshare" "20180208171143"
+.depend "dynamicTabs" "20180215142457"
 .depend "builddb" "20170801162535"
+.depend "errorHandling" "20180215142456"
 .depend "content" "20170907140123"
-.depend "extraTaskCombinators" "20170705162321"
-.depend "directoryBrowsing" "20170811141029"
-.depend "errorHandling" "20170907134143"
-.depend "pageCreateFile" "20170906140425"
-.depend "pageAskImportPaths" "20170906140832"
+.depend "extraTaskCombinators" "20180215153910"
+.depend "directoryBrowsing" "20180215142456"
 .depend "CloogleDBFactory" "20170725081135"
 .depend "Cloogle" "20170731120145"
 .depend "Doc" "20170725081135"
@@ -25,8 +25,7 @@
 .depend "Type" "20170725081138"
 .depend "CloogleDB" "20170816111716"
 .depend "iTasks.Extensions.Editors.Ace" "20170707023452"
-.depend "shares" "20170907140846"
-.depend "pagetypes" "20170807152038"
+.depend "shares" "20180215142457"
 .depend "iTasks.Extensions.Admin.WorkflowAdmin" "20170707023452"
 .depend "iTasks.Extensions.Admin.UserAdmin" "20170707023452"
 .depend "iTasks.UI.Layout.Common" "20170707023452"
@@ -139,11 +138,11 @@
 .depend "StdList" "20170707023452"
 .depend "iTasks.Internal.Engine" "20170707023452"
 .depend "iTasks" "20170707023452"
-.depend "pageChooseFile" "20170907140412"
 .depend "StdOverloaded" "20170707023452"
 .depend "_SystemDynamic" "20170707023452"
-.depend "pageEditor" "20170906151851"
-.module m_pageEditor "pageEditor" "20170907140623"
+.depend "pageChooseFile" "20180215145729"
+.depend "pageEditor" "20180215142456"
+.module m_pageEditor "pageEditor" "20180215153419"
 .endinfo
 .impmod _system
 .implab _cycle_in_spine
@@ -183,9 +182,6 @@
 .impmod helpwindowReplace
 .impdesc e_helpwindowReplace_dhelpwindowReplace
 .implab e_helpwindowReplace_nhelpwindowReplace e_helpwindowReplace_eahelpwindowReplace
-.impmod helpwindowImports
-.impdesc e_helpwindowImports_dhelpwindowImports
-.implab e_helpwindowImports_nhelpwindowImports e_helpwindowImports_eahelpwindowImports
 .impmod helpwindowSelected
 .impdesc e_helpwindowSelected_dhelpwindowSelected
 .implab e_helpwindowSelected_nhelpwindowSelected e_helpwindowSelected_eahelpwindowSelected
@@ -198,10 +194,19 @@
 .impmod helpwindowErrors
 .impdesc e_helpwindowErrors_dhelpwindowErrors
 .implab e_helpwindowErrors_nhelpwindowErrors e_helpwindowErrors_eahelpwindowErrors
+.impmod pageAskImportPaths
+.impdesc e_pageAskImportPaths_dpageAskImportPaths
+.implab e_pageAskImportPaths_npageAskImportPaths e_pageAskImportPaths_eapageAskImportPaths
+.impmod pageCreateFile
+.impdesc e_pageCreateFile_dpageCreateFile
+.implab e_pageCreateFile_npageCreateFile e_pageCreateFile_eapageCreateFile
 .impmod dynamicTabs
 .implab e_dynamicTabs_sdynamicTabs
 .impmod builddb
 .impdesc e_builddb_dbuildit
+.impmod errorHandling
+.impdesc e_errorHandling_dbuild
+.implab e_errorHandling_nbuild e_errorHandling_eabuild
 .impmod content
 .implab e_content_sjoinWithNewline
 .impmod extraTaskCombinators
@@ -213,15 +218,6 @@
 .implab e_directoryBrowsing_nsaveFile e_directoryBrowsing_easaveFile
 .impdesc e_directoryBrowsing_dsaveFileAs
 .implab e_directoryBrowsing_nsaveFileAs e_directoryBrowsing_easaveFileAs
-.impmod errorHandling
-.impdesc e_errorHandling_dbuild
-.implab e_errorHandling_nbuild e_errorHandling_eabuild
-.impmod pageCreateFile
-.impdesc e_pageCreateFile_dpageCreateFile
-.implab e_pageCreateFile_npageCreateFile e_pageCreateFile_eapageCreateFile
-.impmod pageAskImportPaths
-.impdesc e_pageAskImportPaths_dpageAskImportPaths
-.implab e_pageAskImportPaths_npageAskImportPaths e_pageAskImportPaths_eapageAskImportPaths
 .impmod CloogleDB
 .impdesc e_CloogleDB_dgEditor_CloogleDB;54
 .implab e_CloogleDB_ngEditor_CloogleDB;54
@@ -260,9 +256,9 @@
 .implab e_shares_nclooglestore e_shares_eaclooglestore
 .impdesc e_shares_dcontents
 .implab e_shares_ncontents e_shares_eacontents
-.implab e_shares_szero;9
-.impdesc e_shares_dzero;10
-.implab e_shares_nzero;10
+.implab e_shares_szero;7
+.impdesc e_shares_dzero;8
+.implab e_shares_nzero;8
 .impmod iTasks.UI.Layout.Common
 .impdesc e_iTasks.UI.Layout.Common_darrangeWithTabs
 .implab e_iTasks.UI.Layout.Common_narrangeWithTabs
@@ -354,9 +350,6 @@
 .impdesc e_System.FilePath_ddropDirectory
 .impmod StdList
 .implab e_StdList_smap
-.impmod pageChooseFile
-.impdesc e_pageChooseFile_dpageChooseFile
-.implab e_pageChooseFile_npageChooseFile e_pageChooseFile_eapageChooseFile
 .impmod StdOverloaded
 .impdesc e_StdOverloaded_rzero;
 .impdesc e_StdOverloaded_r<;
@@ -370,6 +363,9 @@
 .impdesc e__SystemDynamic_dTC__Tuple2
 .impdesc e__SystemDynamic_dTC__UnboxedArray
 .impdesc e__SystemDynamic_dTC__Unit
+.impmod pageChooseFile
+.impdesc e_pageChooseFile_dpageChooseFile
+.implab e_pageChooseFile_npageChooseFile e_pageChooseFile_eapageChooseFile
 .record r148 a 1 0 "JSONEncode_s;"
 .record r154 a 1 0 "JSONDecode_s;"
 .record r160 a 1 0 "gDefault_s;"
@@ -459,7 +455,7 @@ s258
 	updatepop_a 0 3
 .d 9 0
 	jmp e_iTasks.WF.Tasks.Core_saccWorld
-.desc d6 _hnf l6 1 0 "<lambda>[line:27];36;5"
+.desc d6 _hnf l6 1 0 "<lambda>[line:28];36;5"
 .o 2 0
 l6
 	update_a 1 0
@@ -1385,7 +1381,7 @@ s5
 	buildh e_System.FilePath_ddropDirectory 0
 	build e_shares_dcontents 0 e_shares_ncontents
 .d 0 0
-	jsr e_shares_szero;9
+	jsr e_shares_szero;7
 .o 2 3 iib
 .impmod iTasks.Extensions.Editors.Ace
 .impdesc e_iTasks.Extensions.Editors.Ace_rAceState
@@ -1422,7 +1418,7 @@ s5
 	build e_iTasks.UI.Editor.Generic_dgEditor__String;11 0 e_iTasks.UI.Editor.Generic_ngEditor__String;11
 .d 20 0
 	jmp e_dynamicTabs_sdynamicTabs
-.desc d11 _hnf l11 3 0 "<lambda>[line:109];14;10"
+.desc d11 _hnf l11 3 0 "<lambda>[line:110];14;10"
 .a 3 ea11
 .o 2 0
 l11
@@ -2667,13 +2663,13 @@ s49
 	updatepop_a 0 2
 .d 3 0
 	jmp e_iTasks.WF.Derives_sgEq_TaskValue;190
-.desc d58 _hnf l58 1 0 "<lambda>[line:105];49;382"
+.desc d58 _hnf l58 1 0 "<lambda>[line:106];49;382"
 .o 2 0
 l58
 	pop_a 1
 .o 1 0
 ea58
-	build e_shares_dzero;10 0 e_shares_nzero;10
+	build e_shares_dzero;8 0 e_shares_nzero;8
 	push_a 1
 	push_a 1
 	update_a 1 2
@@ -2727,7 +2723,7 @@ case.2
 	updatepop_a 0 4
 .d 2 0
 	jmp e_content_sjoinWithNewline
-.desc d10 _hnf l10 2 0 "<lambda>[line:105];64;9"
+.desc d10 _hnf l10 2 0 "<lambda>[line:106];64;9"
 .a 0 ea10
 .o 2 0
 l10
@@ -2759,16 +2755,6 @@ s3
 	buildh e_iTasks.WF.Combinators.Tune_dApplyLayout 1
 	buildh _Nil 0
 	buildh _Nil 0
-	push_a 3
-	build e_helpwindowImports_dhelpwindowImports 1 e_helpwindowImports_nhelpwindowImports
-	buildAC "Imports"
-	buildh ARRAY 1
-	push_a 1
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-	buildh _Tuple 2
-	buildh _Cons 2
 	push_a 3
 	build e_helpwindowShare_dhelpwindowShare 1 e_helpwindowShare_nhelpwindowShare
 	buildAC "Share"
@@ -2875,7 +2861,7 @@ s2
 	updatepop_a 0 1
 .d 3 0
 	jmp e_StdList_smap
-.desc d8 _hnf l8 1 0 "<lambda>[line:37];16;7"
+.desc d8 _hnf l8 1 0 "<lambda>[line:38];16;7"
 .o 2 0
 l8
 	pop_a 1
@@ -2895,7 +2881,7 @@ ea8
 	updatepop_a 0 2
 .d 1 0
 	rtn
-.desc d7 _hnf l7 3 0 "<lambda>[line:37];35;6"
+.desc d7 _hnf l7 3 0 "<lambda>[line:38];35;6"
 .a 3 ea7
 .o 2 0
 l7
@@ -2928,7 +2914,7 @@ s7
 	updatepop_a 0 3
 .d 4 0
 	jmp e_iTasks.WF.Combinators.Common_s<<@
-.desc d12 _hnf l12 2 0 "<lambda>[line:112];14;11"
+.desc d12 _hnf l12 2 0 "<lambda>[line:113];14;11"
 .a 2 ea12
 .o 2 0
 l12

@@ -3,7 +3,6 @@ implementation module pageCreateFile
 import iTasks
 import qualified directoryBrowsing as DB
 import extraTaskCombinators
-import pagetypes
 import shares
 import qualified Data.Map as DM
 import pageEditor
